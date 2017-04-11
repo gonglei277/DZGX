@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="E61-Sq-55L" customClass="NodataView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_nodata" translatesAutoresizingMaskIntoConstraints="NO" id="fhH-rB-ERI">
+                    <rect key="frame" x="158" y="283.5" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="MVE-yp-ON3"/>
+                        <constraint firstAttribute="width" constant="60" id="pDe-7H-Hdc"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(T _ T)这已经是我能给的全部了" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSt-Ce-cvU">
+                    <rect key="frame" x="10" y="348.5" width="355" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="6Sp-Bf-eey"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="fhH-rB-ERI" firstAttribute="centerY" secondItem="E61-Sq-55L" secondAttribute="centerY" constant="-20" id="NT1-RQ-BUj"/>
+                <constraint firstItem="fhH-rB-ERI" firstAttribute="centerX" secondItem="E61-Sq-55L" secondAttribute="centerX" id="Nsy-Eh-uoE"/>
+                <constraint firstItem="iSt-Ce-cvU" firstAttribute="top" secondItem="fhH-rB-ERI" secondAttribute="bottom" constant="5" id="Xw6-ag-NMh"/>
+                <constraint firstItem="iSt-Ce-cvU" firstAttribute="leading" secondItem="E61-Sq-55L" secondAttribute="leading" constant="10" id="urH-OV-JgC"/>
+                <constraint firstAttribute="trailing" secondItem="iSt-Ce-cvU" secondAttribute="trailing" constant="10" id="xS5-Sb-CgT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="pic_nodata" width="116" height="116"/>
+    </resources>
+</document>

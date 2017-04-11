@@ -1,0 +1,23 @@
+//
+//  GLDonationRecordModel.h
+//  PovertyAlleviation
+//
+//  Created by gonglei on 17/2/27.
+//  Copyright © 2017年 四川三君科技有限公司. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface GLDonationRecordModel : NSObject
+
+@property (nonatomic, copy)NSString *picture;
+
+@property (nonatomic, copy)NSString *receivename;
+
+//@property (nonatomic, copy)NSString *picture;
+
+@property (nonatomic, copy)NSString *beannum;
+
+@property (nonatomic, copy)NSString *donationtime;
+
+@end

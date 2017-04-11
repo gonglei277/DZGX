@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="140" id="KGk-i7-Jjw" customClass="GLDonationRecordCell">
+            <rect key="frame" x="0.0" y="0.0" width="286" height="140"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="286" height="139.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zeh-eb-b40">
+                        <rect key="frame" x="10" y="57.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="1HW-Ni-2Qe"/>
+                            <constraint firstAttribute="width" secondItem="Zeh-eb-b40" secondAttribute="height" multiplier="1:1" id="2QN-m4-T34"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRM-BE-g9B">
+                        <rect key="frame" x="45" y="62.5" width="40" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="b1n-50-Okb"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="wxL-5n-twN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHH-Iu-fss">
+                        <rect key="frame" x="183" y="63.5" width="29" height="13.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="13.5" id="0Iv-xV-Wq9"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="29" id="PaV-MM-21H"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.8980392157" green="0.14901960780000001" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMm-i5-ehr">
+                        <rect key="frame" x="207.5" y="63.5" width="60.5" height="13.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="13.5" id="MMN-yQ-elB"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60.5" id="pgb-tL-VXk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mylove_bean" translatesAutoresizingMaskIntoConstraints="NO" id="TVm-Vb-tmc">
+                        <rect key="frame" x="123" y="60" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="0gu-1O-Kzn"/>
+                            <constraint firstAttribute="width" constant="20" id="YgV-3g-j11"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="lHH-Iu-fss" firstAttribute="leading" secondItem="TVm-Vb-tmc" secondAttribute="trailing" constant="40" id="3py-TX-p4y"/>
+                    <constraint firstItem="TVm-Vb-tmc" firstAttribute="centerY" secondItem="Zeh-eb-b40" secondAttribute="centerY" id="8Ui-0g-1tx"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="MMm-i5-ehr" secondAttribute="trailing" constant="10" id="BDJ-iY-GG2"/>
+                    <constraint firstItem="TVm-Vb-tmc" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="-10" id="BF0-HL-cin"/>
+                    <constraint firstItem="VRM-BE-g9B" firstAttribute="centerY" secondItem="Zeh-eb-b40" secondAttribute="centerY" id="NbD-yx-X8N"/>
+                    <constraint firstItem="VRM-BE-g9B" firstAttribute="leading" secondItem="Zeh-eb-b40" secondAttribute="trailing" constant="10" id="QTX-at-9C4"/>
+                    <constraint firstItem="Zeh-eb-b40" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="VuQ-pk-LFU"/>
+                    <constraint firstItem="MMm-i5-ehr" firstAttribute="centerY" secondItem="lHH-Iu-fss" secondAttribute="centerY" id="ig8-EA-HQP"/>
+                    <constraint firstItem="Zeh-eb-b40" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="m0F-os-Nsw"/>
+                    <constraint firstItem="lHH-Iu-fss" firstAttribute="centerY" secondItem="TVm-Vb-tmc" secondAttribute="centerY" id="w33-1M-9Ua"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="beanNumLabel" destination="lHH-Iu-fss" id="4t8-Cd-y4x"/>
+                <outlet property="dateLabel" destination="MMm-i5-ehr" id="osS-dn-e4Y"/>
+                <outlet property="imageV" destination="Zeh-eb-b40" id="76n-wC-beA"/>
+                <outlet property="nameTitle" destination="VRM-BE-g9B" id="Wyk-aQ-x7L"/>
+            </connections>
+            <point key="canvasLocation" x="-30" y="-30"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="mylove_bean" width="42" height="45"/>
+    </resources>
+</document>
