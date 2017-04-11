@@ -568,6 +568,20 @@
 		F961AA1C1E9CDD3400275F52 /* GLRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F961AA141E9CDD3400275F52 /* GLRegisterController.xib */; };
 		F961AA1D1E9CDD3400275F52 /* LoginIdentityView.m in Sources */ = {isa = PBXBuildFile; fileRef = F961AA171E9CDD3400275F52 /* LoginIdentityView.m */; };
 		F961AA1E1E9CDD3400275F52 /* LoginIdentityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F961AA181E9CDD3400275F52 /* LoginIdentityView.xib */; };
+		F961AA291E9CE17800275F52 /* LBConsumptionSeriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F961AA211E9CE17800275F52 /* LBConsumptionSeriesViewController.m */; };
+		F961AA2A1E9CE17800275F52 /* LBConsumptionSeriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F961AA221E9CE17800275F52 /* LBConsumptionSeriesViewController.xib */; };
+		F961AA2B1E9CE17800275F52 /* LBMerchantcreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F961AA241E9CE17800275F52 /* LBMerchantcreditViewController.m */; };
+		F961AA2C1E9CE17800275F52 /* LBMerchantcreditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F961AA251E9CE17800275F52 /* LBMerchantcreditViewController.xib */; };
+		F961AA2D1E9CE17800275F52 /* LBUserKonwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F961AA271E9CE17800275F52 /* LBUserKonwViewController.m */; };
+		F961AA2E1E9CE17800275F52 /* LBUserKonwViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F961AA281E9CE17800275F52 /* LBUserKonwViewController.xib */; };
+		F961AA321E9CE1D200275F52 /* LBMoreOperateView.m in Sources */ = {isa = PBXBuildFile; fileRef = F961AA301E9CE1D200275F52 /* LBMoreOperateView.m */; };
+		F961AA331E9CE1D200275F52 /* LBMoreOperateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F961AA311E9CE1D200275F52 /* LBMoreOperateView.xib */; };
+		F961AA381E9CE33200275F52 /* LBConsumptionSeriesViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F961AA361E9CE33200275F52 /* LBConsumptionSeriesViewTableViewCell.m */; };
+		F961AA391E9CE33200275F52 /* LBConsumptionSeriesViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F961AA371E9CE33200275F52 /* LBConsumptionSeriesViewTableViewCell.xib */; };
+		F961AA3D1E9CE35200275F52 /* LBUserKonwViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F961AA3B1E9CE35200275F52 /* LBUserKonwViewTableViewCell.m */; };
+		F961AA3E1E9CE35200275F52 /* LBUserKonwViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F961AA3C1E9CE35200275F52 /* LBUserKonwViewTableViewCell.xib */; };
+		F961AA421E9CE37600275F52 /* LBMerchantcreditTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F961AA401E9CE37600275F52 /* LBMerchantcreditTableViewCell.m */; };
+		F961AA431E9CE37600275F52 /* LBMerchantcreditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F961AA411E9CE37600275F52 /* LBMerchantcreditTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1606,6 +1620,27 @@
 		F961AA161E9CDD3400275F52 /* LoginIdentityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginIdentityView.h; sourceTree = "<group>"; };
 		F961AA171E9CDD3400275F52 /* LoginIdentityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginIdentityView.m; sourceTree = "<group>"; };
 		F961AA181E9CDD3400275F52 /* LoginIdentityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginIdentityView.xib; sourceTree = "<group>"; };
+		F961AA201E9CE17800275F52 /* LBConsumptionSeriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBConsumptionSeriesViewController.h; sourceTree = "<group>"; };
+		F961AA211E9CE17800275F52 /* LBConsumptionSeriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBConsumptionSeriesViewController.m; sourceTree = "<group>"; };
+		F961AA221E9CE17800275F52 /* LBConsumptionSeriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBConsumptionSeriesViewController.xib; sourceTree = "<group>"; };
+		F961AA231E9CE17800275F52 /* LBMerchantcreditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMerchantcreditViewController.h; sourceTree = "<group>"; };
+		F961AA241E9CE17800275F52 /* LBMerchantcreditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMerchantcreditViewController.m; sourceTree = "<group>"; };
+		F961AA251E9CE17800275F52 /* LBMerchantcreditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMerchantcreditViewController.xib; sourceTree = "<group>"; };
+		F961AA261E9CE17800275F52 /* LBUserKonwViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUserKonwViewController.h; sourceTree = "<group>"; };
+		F961AA271E9CE17800275F52 /* LBUserKonwViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBUserKonwViewController.m; sourceTree = "<group>"; };
+		F961AA281E9CE17800275F52 /* LBUserKonwViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBUserKonwViewController.xib; sourceTree = "<group>"; };
+		F961AA2F1E9CE1D200275F52 /* LBMoreOperateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMoreOperateView.h; sourceTree = "<group>"; };
+		F961AA301E9CE1D200275F52 /* LBMoreOperateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMoreOperateView.m; sourceTree = "<group>"; };
+		F961AA311E9CE1D200275F52 /* LBMoreOperateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMoreOperateView.xib; sourceTree = "<group>"; };
+		F961AA351E9CE33200275F52 /* LBConsumptionSeriesViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBConsumptionSeriesViewTableViewCell.h; sourceTree = "<group>"; };
+		F961AA361E9CE33200275F52 /* LBConsumptionSeriesViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBConsumptionSeriesViewTableViewCell.m; sourceTree = "<group>"; };
+		F961AA371E9CE33200275F52 /* LBConsumptionSeriesViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBConsumptionSeriesViewTableViewCell.xib; sourceTree = "<group>"; };
+		F961AA3A1E9CE35200275F52 /* LBUserKonwViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUserKonwViewTableViewCell.h; sourceTree = "<group>"; };
+		F961AA3B1E9CE35200275F52 /* LBUserKonwViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBUserKonwViewTableViewCell.m; sourceTree = "<group>"; };
+		F961AA3C1E9CE35200275F52 /* LBUserKonwViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBUserKonwViewTableViewCell.xib; sourceTree = "<group>"; };
+		F961AA3F1E9CE37600275F52 /* LBMerchantcreditTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMerchantcreditTableViewCell.h; sourceTree = "<group>"; };
+		F961AA401E9CE37600275F52 /* LBMerchantcreditTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMerchantcreditTableViewCell.m; sourceTree = "<group>"; };
+		F961AA411E9CE37600275F52 /* LBMerchantcreditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMerchantcreditTableViewCell.xib; sourceTree = "<group>"; };
 		FC2B7A4A425FAC91F43C98C0 /* Pods-Universialshare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Universialshare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Universialshare/Pods-Universialshare.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1850,6 +1885,11 @@
 				4A4608D11E9C9E6D0045824F /* GLFirstPageController.h */,
 				4A4608D21E9C9E6D0045824F /* GLFirstPageController.m */,
 				4A4608D31E9C9E6D0045824F /* GLFirstPageController.xib */,
+				F961AA2F1E9CE1D200275F52 /* LBMoreOperateView.h */,
+				F961AA301E9CE1D200275F52 /* LBMoreOperateView.m */,
+				F961AA311E9CE1D200275F52 /* LBMoreOperateView.xib */,
+				F961AA1F1E9CE17800275F52 /* 更多操作 */,
+				F961AA341E9CE2F500275F52 /* view */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3866,6 +3906,38 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		F961AA1F1E9CE17800275F52 /* 更多操作 */ = {
+			isa = PBXGroup;
+			children = (
+				F961AA201E9CE17800275F52 /* LBConsumptionSeriesViewController.h */,
+				F961AA211E9CE17800275F52 /* LBConsumptionSeriesViewController.m */,
+				F961AA221E9CE17800275F52 /* LBConsumptionSeriesViewController.xib */,
+				F961AA231E9CE17800275F52 /* LBMerchantcreditViewController.h */,
+				F961AA241E9CE17800275F52 /* LBMerchantcreditViewController.m */,
+				F961AA251E9CE17800275F52 /* LBMerchantcreditViewController.xib */,
+				F961AA261E9CE17800275F52 /* LBUserKonwViewController.h */,
+				F961AA271E9CE17800275F52 /* LBUserKonwViewController.m */,
+				F961AA281E9CE17800275F52 /* LBUserKonwViewController.xib */,
+			);
+			path = "更多操作";
+			sourceTree = "<group>";
+		};
+		F961AA341E9CE2F500275F52 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F961AA351E9CE33200275F52 /* LBConsumptionSeriesViewTableViewCell.h */,
+				F961AA361E9CE33200275F52 /* LBConsumptionSeriesViewTableViewCell.m */,
+				F961AA371E9CE33200275F52 /* LBConsumptionSeriesViewTableViewCell.xib */,
+				F961AA3A1E9CE35200275F52 /* LBUserKonwViewTableViewCell.h */,
+				F961AA3B1E9CE35200275F52 /* LBUserKonwViewTableViewCell.m */,
+				F961AA3C1E9CE35200275F52 /* LBUserKonwViewTableViewCell.xib */,
+				F961AA3F1E9CE37600275F52 /* LBMerchantcreditTableViewCell.h */,
+				F961AA401E9CE37600275F52 /* LBMerchantcreditTableViewCell.m */,
+				F961AA411E9CE37600275F52 /* LBMerchantcreditTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3996,6 +4068,7 @@
 				4A4610231E9CC6360045824F /* UMShareEditViewController.xib in Resources */,
 				4A46090B1E9CA0880045824F /* GLIntegralMallTopCell.xib in Resources */,
 				4A4609FD1E9CB78E0045824F /* GLDonationMaskView.xib in Resources */,
+				F961AA331E9CE1D200275F52 /* LBMoreOperateView.xib in Resources */,
 				4A46103D1E9CC6360045824F /* markdown.css in Resources */,
 				F92309721E9B8BFF00ECDC94 /* LBMineCenterAddAdreassViewController.xib in Resources */,
 				4A0D97751E9729C100A26B84 /* GLHourseDetailFirstCell.xib in Resources */,
@@ -4007,6 +4080,7 @@
 				F923094E1E9B8BFF00ECDC94 /* LBMineMessageSetupViewController.xib in Resources */,
 				4A46111D1E9CCC010045824F /* Mine_sixPart.xcassets in Resources */,
 				F923092B1E9B8BFF00ECDC94 /* LBMineCenterBalanceRechargeViewController.xib in Resources */,
+				F961AA391E9CE33200275F52 /* LBConsumptionSeriesViewTableViewCell.xib in Resources */,
 				F9061FD81E83C4730080E9D9 /* Assets.xcassets in Resources */,
 				F92309391E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeDetailOneTableViewCell.xib in Resources */,
 				F92309231E9B8BFF00ECDC94 /* LBMineCenterRechargeBankCardTableViewCell.xib in Resources */,
@@ -4023,6 +4097,7 @@
 				4A4608EE1E9C9E6D0045824F /* GLFirstHeartCell.xib in Resources */,
 				F923094A1E9B8BFF00ECDC94 /* LBMineCenterReceivingGoodsViewController.xib in Resources */,
 				4A460A171E9CBBE20045824F /* GLNoticeView.xib in Resources */,
+				F961AA2E1E9CE17800275F52 /* LBUserKonwViewController.xib in Resources */,
 				F923097E1E9B8BFF00ECDC94 /* LBMineCenterSafeModifySecondSecretViewController.xib in Resources */,
 				F923092D1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeDetailViewController.xib in Resources */,
 				4A4608EA1E9C9E6D0045824F /* GLDailyView.xib in Resources */,
@@ -4046,6 +4121,7 @@
 				4A4610381E9CC6360045824F /* ios-social-sdk-login-quick.html in Resources */,
 				F92309351E9B8BFF00ECDC94 /* LBMineMessageSeviceViewController.xib in Resources */,
 				F961AA1A1E9CDD3400275F52 /* GLLoginController.xib in Resources */,
+				F961AA2A1E9CE17800275F52 /* LBConsumptionSeriesViewController.xib in Resources */,
 				F92309821E9B8BFF00ECDC94 /* LBMineCenterModifyLoginSecretViewController.xib in Resources */,
 				F923096F1E9B8BFF00ECDC94 /* LBMineCentermodifyAdressTableViewCell.xib in Resources */,
 				F906201C1E83C8770080E9D9 /* tabbarimage.xcassets in Resources */,
@@ -4107,8 +4183,11 @@
 				4A4610211E9CC6360045824F /* UMSCommentInputController.xib in Resources */,
 				F923097A1E9B8BFF00ECDC94 /* LBMineCenterAccountSafeViewController.xib in Resources */,
 				4A4608F41E9C9E6D0045824F /* GLRewardView.xib in Resources */,
+				F961AA431E9CE37600275F52 /* LBMerchantcreditTableViewCell.xib in Resources */,
 				4A4608EC1E9C9E6D0045824F /* GLFirstFollowCell.xib in Resources */,
 				F923095C1E9B8BFF00ECDC94 /* LBMyOrderEveluationSucessOneCollectionViewCell.xib in Resources */,
+				F961AA2C1E9CE17800275F52 /* LBMerchantcreditViewController.xib in Resources */,
+				F961AA3E1E9CE35200275F52 /* LBUserKonwViewTableViewCell.xib in Resources */,
 				4A4610331E9CC6360045824F /* iOS-social-releasenote.html in Resources */,
 				F923095E1E9B8BFF00ECDC94 /* LBMyOrderListTableViewCell.xib in Resources */,
 				4A4608F21E9C9E6D0045824F /* GLRankingView.xib in Resources */,
@@ -4251,6 +4330,7 @@
 				4A4610D81E9CC6370045824F /* ZXITFWriter.m in Sources */,
 				4A0D97901E9729C100A26B84 /* GLHomeRecommendCollectionCell.m in Sources */,
 				4A4610C71E9CC6370045824F /* ZXRSSDataCharacter.m in Sources */,
+				F961AA381E9CE33200275F52 /* LBConsumptionSeriesViewTableViewCell.m in Sources */,
 				4A460D311E9CC2C50045824F /* GLShareView.m in Sources */,
 				4A4610721E9CC6360045824F /* ZXMonochromeRectangleDetector.m in Sources */,
 				4A4610F51E9CC6370045824F /* ZXPDF417BarcodeMatrix.m in Sources */,
@@ -4263,6 +4343,7 @@
 				4A4610621E9CC6360045824F /* ZXTelParsedResult.m in Sources */,
 				4A4610481E9CC6360045824F /* ZXAztecReader.m in Sources */,
 				4A0023F71E84AD6700B2A9FE /* UIButton+SetEdgeInsets.m in Sources */,
+				F961AA3D1E9CE35200275F52 /* LBUserKonwViewTableViewCell.m in Sources */,
 				F92309571E9B8BFF00ECDC94 /* LBMyOrderPendingRefundViewController.m in Sources */,
 				4A4610A41E9CC6360045824F /* ZXDataMatrixTextEncoder.m in Sources */,
 				4A4609E11E9CB78E0045824F /* GLMyheartModel.m in Sources */,
@@ -4316,6 +4397,7 @@
 				4A46110D1E9CC6370045824F /* ZXQRCodeFinderPatternInfo.m in Sources */,
 				4A4610FC1E9CC6370045824F /* ZXPDF417ResultMetadata.m in Sources */,
 				4A4610F71E9CC6370045824F /* ZXPDF417Dimensions.m in Sources */,
+				F961AA2B1E9CE17800275F52 /* LBMerchantcreditViewController.m in Sources */,
 				4A4610DB1E9CC6370045824F /* ZXOneDimensionalCodeWriter.m in Sources */,
 				4A46108F1E9CC6360045824F /* ZXLuminanceSource.m in Sources */,
 				4A4610911E9CC6360045824F /* ZXResult.m in Sources */,
@@ -4366,6 +4448,7 @@
 				4A4610A51E9CC6360045824F /* ZXDataMatrixX12Encoder.m in Sources */,
 				4A0D97851E9729C100A26B84 /* GLOrderPayView.m in Sources */,
 				F92309301E9B8BFF00ECDC94 /* LBMineCenterserviceNoticeViewController.m in Sources */,
+				F961AA291E9CE17800275F52 /* LBConsumptionSeriesViewController.m in Sources */,
 				F923091E1E9B8BFF00ECDC94 /* LBMineCenterDetailedView.m in Sources */,
 				4A46106A1E9CC6360045824F /* ZXVINParsedResult.m in Sources */,
 				4A460A5D1E9CC0310045824F /* SubLBXScanViewController.m in Sources */,
@@ -4391,6 +4474,7 @@
 				4A4610AC1E9CC6360045824F /* ZXByQuadrantReader.m in Sources */,
 				4A46111A1E9CC6370045824F /* README.md in Sources */,
 				F92309241E9B8BFF00ECDC94 /* LBMineCenterRechargeBankCardView.m in Sources */,
+				F961AA421E9CE37600275F52 /* LBMerchantcreditTableViewCell.m in Sources */,
 				F92309621E9B8BFF00ECDC94 /* XBTagTitleModel.m in Sources */,
 				F92309851E9B8BFF00ECDC94 /* LBMineCenterSafeChangePhoneViewController.m in Sources */,
 				4A4610DE1E9CC6370045824F /* ZXUPCAWriter.m in Sources */,
@@ -4420,6 +4504,7 @@
 				F92309631E9B8BFF00ECDC94 /* XBPageCell.m in Sources */,
 				4A4610F01E9CC6370045824F /* ZXPDF417DetectionResultRowIndicatorColumn.m in Sources */,
 				F92309501E9B8BFF00ECDC94 /* LBMineCenterMyOrderViewController.m in Sources */,
+				F961AA321E9CE1D200275F52 /* LBMoreOperateView.m in Sources */,
 				4A4610D21E9CC6370045824F /* ZXEAN13Reader.m in Sources */,
 				4A46107D1E9CC6360045824F /* ZXCharacterSetECI.m in Sources */,
 				4A46100E1E9CC6360045824F /* UIAlertView+LBXAlertAction.m in Sources */,
@@ -4478,6 +4563,7 @@
 				4A4610E01E9CC6370045824F /* ZXUPCEANExtension5Support.m in Sources */,
 				F961A9DC1E9C765A00275F52 /* NetworkManager.m in Sources */,
 				F9061FD01E83C4720080E9D9 /* AppDelegate.m in Sources */,
+				F961AA2D1E9CE17800275F52 /* LBUserKonwViewController.m in Sources */,
 				4A0D978C1E9729C100A26B84 /* GLHomePageController.m in Sources */,
 				F9061FCD1E83C4720080E9D9 /* main.m in Sources */,
 				4A4608F11E9C9E6D0045824F /* GLRankingView.m in Sources */,

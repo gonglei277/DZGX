@@ -14,6 +14,11 @@
 #import "GLRankingView.h"
 #import "GLRewardView.h"
 
+#import "LBUserKonwViewController.h"
+#import "LBMoreOperateView.h"
+#import "LBMerchantcreditViewController.h"
+#import "LBConsumptionSeriesViewController.h"
+
 @interface GLFirstPageController ()
 
 {
@@ -39,6 +44,8 @@
 @property (weak, nonatomic) IBOutlet UIView *bgView2;
 @property (weak, nonatomic) IBOutlet UIView *bgView3;
 
+@property (strong, nonatomic)UIView *maskView;//遮罩
+@property (strong, nonatomic)LBMoreOperateView *moreOperateView;//遮罩
 @end
 
 static NSString *ID = @"GLFirstHeartCell";
@@ -66,6 +73,12 @@ static NSString *followID = @"GLFirstFollowCell";
     button.titleLabel.font = [UIFont systemFontOfSize:13];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
 
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+    
 }
 
 - (GLDailyView *)dailyContentView{
@@ -120,6 +133,18 @@ static NSString *followID = @"GLFirstFollowCell";
     self.bgView.backgroundColor = YYSRGBColor(179, 179, 179, 0.3);
     self.bgView2.backgroundColor = YYSRGBColor(179, 179, 179, 0.3);
     self.bgView3.backgroundColor = YYSRGBColor(179, 179, 179, 0.3);
+    
+    
+    UITapGestureRecognizer *tapgesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapgestrueMsakView)];
+    [self.maskView addGestureRecognizer:tapgesture];
+    //点击用户须知
+    [self.moreOperateView.userKnowBt addTarget:self action:@selector(userkonwbutton) forControlEvents:UIControlEventTouchUpInside];
+    //点击运营公告
+    [self.moreOperateView.OperationBt addTarget:self action:@selector(Operationbutton) forControlEvents:UIControlEventTouchUpInside];
+    //点击用商家信用
+    [self.moreOperateView.merchantBt addTarget:self action:@selector(merchantbutton) forControlEvents:UIControlEventTouchUpInside];
+    //点击消费系列
+    [self.moreOperateView.consumptionBt addTarget:self action:@selector(consumptionbutton) forControlEvents:UIControlEventTouchUpInside];
 
 }
 - (void)changeView:(UITapGestureRecognizer *)tap {
@@ -186,6 +211,18 @@ static NSString *followID = @"GLFirstFollowCell";
 
     }
 }
+
+- (IBAction)showMoreButton:(UIButton *)sender {
+    
+    [self.view addSubview:self.maskView];
+    [self.maskView addSubview:self.moreOperateView];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.moreOperateView.frame=CGRectMake(SCREEN_WIDTH-65, 60, 65, 270);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
 
 #pragma mark ------------------self.view的滑动手势
 #pragma mark 添加手势
@@ -268,6 +305,77 @@ static NSString *followID = @"GLFirstFollowCell";
             
         }
     }
+}
+
+-(void)tapgestrueMsakView{
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.moreOperateView.frame=CGRectMake(SCREEN_WIDTH+65, 60, 65, 270);
+    } completion:^(BOOL finished) {
+        [self.maskView removeFromSuperview];
+    }];
+}
+#pragma mark - 点击更多操作
+
+-(void)userkonwbutton{
+    self.hidesBottomBarWhenPushed = YES;
+    LBUserKonwViewController *vc=[[LBUserKonwViewController alloc]init];
+    vc.titlestr=@"用户须知";
+    vc.indexType=@"21";
+    [self.navigationController pushViewController:vc animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+    
+}
+
+-(void)Operationbutton{
+    
+    self.hidesBottomBarWhenPushed = YES;
+    LBUserKonwViewController *vc=[[LBUserKonwViewController alloc]init];
+    vc.titlestr=@"运营.公告";
+    vc.indexType=@"20";
+    [self.navigationController pushViewController:vc animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+    
+}
+
+-(void)merchantbutton{
+    
+    self.hidesBottomBarWhenPushed = YES;
+    LBMerchantcreditViewController *vc=[[LBMerchantcreditViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+    
+}
+
+-(void)consumptionbutton{
+    
+    self.hidesBottomBarWhenPushed = YES;
+    LBConsumptionSeriesViewController *vc=[[LBConsumptionSeriesViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+    
+}
+
+
+-(UIView*)maskView{
+    
+    if (!_maskView) {
+        _maskView=[[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        _maskView.backgroundColor=[UIColor clearColor];
+    }
+    
+    return _maskView;
+    
+}
+
+-(LBMoreOperateView*)moreOperateView{
+    
+    if (!_moreOperateView) {
+        _moreOperateView=[[NSBundle mainBundle]loadNibNamed:@"LBMoreOperateView" owner:self options:nil
+                          ].firstObject;
+        _moreOperateView.frame=CGRectMake(SCREEN_WIDTH+65, 60, 65, 270);
+    }
+    return _moreOperateView;
 }
 
 

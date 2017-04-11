@@ -45,7 +45,7 @@
     LBMineViewController *minevc = [[LBMineViewController alloc] init];
     
    
-    
+     BaseNavigationViewController *firstNav = [[BaseNavigationViewController alloc] initWithRootViewController:firstVC];
     BaseNavigationViewController *Homenav = [[BaseNavigationViewController alloc] initWithRootViewController:Homevc];
     BaseNavigationViewController *IntegralMallnav = [[BaseNavigationViewController alloc] initWithRootViewController:IntegralMallvc];
     BaseNavigationViewController *minenav = [[BaseNavigationViewController alloc] initWithRootViewController:minevc];
@@ -62,7 +62,7 @@
     minevc.tabBarItem = [self barTitle:@"我的" image:@"mine_normal" selectImage:@"mine_select"];
     
     
-    self.viewControllers = @[firstVC, Homenav, IntegralMallnav, minenav,];
+    self.viewControllers = @[firstNav, Homenav, IntegralMallnav, minenav,];
     
 }
 
