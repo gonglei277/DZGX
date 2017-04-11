@@ -416,10 +416,6 @@
 		4A46111D1E9CCC010045824F /* Mine_sixPart.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A46111C1E9CCC010045824F /* Mine_sixPart.xcassets */; };
 		4A8572EC1E977E7200A7A51E /* GLHourseOptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8572EB1E977E7200A7A51E /* GLHourseOptionModel.m */; };
 		4A8572EF1E977E8500A7A51E /* GLHourseOptionFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8572EE1E977E8500A7A51E /* GLHourseOptionFrameModel.m */; };
-		4AEE9ECB1E94FEE2004FFDB9 /* GLLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE9EC91E94FEE2004FFDB9 /* GLLoginController.m */; };
-		4AEE9ECC1E94FEE2004FFDB9 /* GLLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE9ECA1E94FEE2004FFDB9 /* GLLoginController.xib */; };
-		4AF3C2851E95DFA9001747A7 /* GLRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF3C2831E95DFA9001747A7 /* GLRegisterController.m */; };
-		4AF3C2861E95DFA9001747A7 /* GLRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AF3C2841E95DFA9001747A7 /* GLRegisterController.xib */; };
 		4F9D6A29F2E5B95EBA14BE59 /* Pods_Universialshare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */; };
 		F9061FCD1E83C4720080E9D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCC1E83C4720080E9D9 /* main.m */; };
 		F9061FD01E83C4720080E9D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCF1E83C4720080E9D9 /* AppDelegate.m */; };
@@ -566,6 +562,12 @@
 		F961A9D81E9C75AF00275F52 /* UIView+SFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F961A9D41E9C75AF00275F52 /* UIView+SFrame.m */; };
 		F961A9DC1E9C765A00275F52 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F961A9DB1E9C765A00275F52 /* NetworkManager.m */; };
 		F961A9E51E9C7B4700275F52 /* MBProgressHUD+LB.m in Sources */ = {isa = PBXBuildFile; fileRef = F961A9E41E9C7B4700275F52 /* MBProgressHUD+LB.m */; };
+		F961AA191E9CDD3400275F52 /* GLLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = F961AA101E9CDD3400275F52 /* GLLoginController.m */; };
+		F961AA1A1E9CDD3400275F52 /* GLLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F961AA111E9CDD3400275F52 /* GLLoginController.xib */; };
+		F961AA1B1E9CDD3400275F52 /* GLRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = F961AA131E9CDD3400275F52 /* GLRegisterController.m */; };
+		F961AA1C1E9CDD3400275F52 /* GLRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F961AA141E9CDD3400275F52 /* GLRegisterController.xib */; };
+		F961AA1D1E9CDD3400275F52 /* LoginIdentityView.m in Sources */ = {isa = PBXBuildFile; fileRef = F961AA171E9CDD3400275F52 /* LoginIdentityView.m */; };
+		F961AA1E1E9CDD3400275F52 /* LoginIdentityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F961AA181E9CDD3400275F52 /* LoginIdentityView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1358,12 +1360,6 @@
 		4A8572EB1E977E7200A7A51E /* GLHourseOptionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHourseOptionModel.m; sourceTree = "<group>"; };
 		4A8572ED1E977E8500A7A51E /* GLHourseOptionFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHourseOptionFrameModel.h; sourceTree = "<group>"; };
 		4A8572EE1E977E8500A7A51E /* GLHourseOptionFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHourseOptionFrameModel.m; sourceTree = "<group>"; };
-		4AEE9EC81E94FEE2004FFDB9 /* GLLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLoginController.h; sourceTree = "<group>"; };
-		4AEE9EC91E94FEE2004FFDB9 /* GLLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLoginController.m; sourceTree = "<group>"; };
-		4AEE9ECA1E94FEE2004FFDB9 /* GLLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLLoginController.xib; sourceTree = "<group>"; };
-		4AF3C2821E95DFA9001747A7 /* GLRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRegisterController.h; sourceTree = "<group>"; };
-		4AF3C2831E95DFA9001747A7 /* GLRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRegisterController.m; sourceTree = "<group>"; };
-		4AF3C2841E95DFA9001747A7 /* GLRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLRegisterController.xib; sourceTree = "<group>"; };
 		5F26EB2407F06AA6E9CA0664 /* Pods-Universialshare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Universialshare.release.xcconfig"; path = "Pods/Target Support Files/Pods-Universialshare/Pods-Universialshare.release.xcconfig"; sourceTree = "<group>"; };
 		C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Universialshare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9061FC81E83C4720080E9D9 /* Universialshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Universialshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1601,6 +1597,15 @@
 		F961A9DB1E9C765A00275F52 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		F961A9E31E9C7B4700275F52 /* MBProgressHUD+LB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+LB.h"; sourceTree = "<group>"; };
 		F961A9E41E9C7B4700275F52 /* MBProgressHUD+LB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+LB.m"; sourceTree = "<group>"; };
+		F961AA0F1E9CDD3400275F52 /* GLLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLoginController.h; sourceTree = "<group>"; };
+		F961AA101E9CDD3400275F52 /* GLLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLoginController.m; sourceTree = "<group>"; };
+		F961AA111E9CDD3400275F52 /* GLLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLLoginController.xib; sourceTree = "<group>"; };
+		F961AA121E9CDD3400275F52 /* GLRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRegisterController.h; sourceTree = "<group>"; };
+		F961AA131E9CDD3400275F52 /* GLRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRegisterController.m; sourceTree = "<group>"; };
+		F961AA141E9CDD3400275F52 /* GLRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLRegisterController.xib; sourceTree = "<group>"; };
+		F961AA161E9CDD3400275F52 /* LoginIdentityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginIdentityView.h; sourceTree = "<group>"; };
+		F961AA171E9CDD3400275F52 /* LoginIdentityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginIdentityView.m; sourceTree = "<group>"; };
+		F961AA181E9CDD3400275F52 /* LoginIdentityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginIdentityView.xib; sourceTree = "<group>"; };
 		FC2B7A4A425FAC91F43C98C0 /* Pods-Universialshare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Universialshare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Universialshare/Pods-Universialshare.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3166,38 +3171,9 @@
 		4AEE9EC41E94FEBA004FFDB9 /* 登录注册 */ = {
 			isa = PBXGroup;
 			children = (
-				4AEE9EC51E94FEBA004FFDB9 /* Controller */,
-				4AEE9EC61E94FEBA004FFDB9 /* Model */,
-				4AEE9EC71E94FEBA004FFDB9 /* View */,
+				F961AA0E1E9CDD3400275F52 /* Controller */,
 			);
 			path = "登录注册";
-			sourceTree = "<group>";
-		};
-		4AEE9EC51E94FEBA004FFDB9 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				4AEE9EC81E94FEE2004FFDB9 /* GLLoginController.h */,
-				4AEE9EC91E94FEE2004FFDB9 /* GLLoginController.m */,
-				4AEE9ECA1E94FEE2004FFDB9 /* GLLoginController.xib */,
-				4AF3C2821E95DFA9001747A7 /* GLRegisterController.h */,
-				4AF3C2831E95DFA9001747A7 /* GLRegisterController.m */,
-				4AF3C2841E95DFA9001747A7 /* GLRegisterController.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		4AEE9EC61E94FEBA004FFDB9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		4AEE9EC71E94FEBA004FFDB9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		BB2598459FE627C586E51511 /* Frameworks */ = {
@@ -3866,6 +3842,30 @@
 			path = "网络请求";
 			sourceTree = "<group>";
 		};
+		F961AA0E1E9CDD3400275F52 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F961AA0F1E9CDD3400275F52 /* GLLoginController.h */,
+				F961AA101E9CDD3400275F52 /* GLLoginController.m */,
+				F961AA111E9CDD3400275F52 /* GLLoginController.xib */,
+				F961AA121E9CDD3400275F52 /* GLRegisterController.h */,
+				F961AA131E9CDD3400275F52 /* GLRegisterController.m */,
+				F961AA141E9CDD3400275F52 /* GLRegisterController.xib */,
+				F961AA151E9CDD3400275F52 /* view */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F961AA151E9CDD3400275F52 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F961AA161E9CDD3400275F52 /* LoginIdentityView.h */,
+				F961AA171E9CDD3400275F52 /* LoginIdentityView.m */,
+				F961AA181E9CDD3400275F52 /* LoginIdentityView.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3987,7 +3987,6 @@
 				4A4610321E9CC6360045824F /* iOS-social-analytics-releasenote.html in Resources */,
 				F92309881E9B8BFF00ECDC94 /* LBMineCenterPriviteInfoViewController.xib in Resources */,
 				4A0D977D1E9729C100A26B84 /* GLImage_textDetailCell.xib in Resources */,
-				4AEE9ECC1E94FEE2004FFDB9 /* GLLoginController.xib in Resources */,
 				4A4610221E9CC6360045824F /* UMSCommentInputControlleriPad.xib in Resources */,
 				F9061FDB1E83C4730080E9D9 /* LaunchScreen.storyboard in Resources */,
 				4A0D978D1E9729C100A26B84 /* GLHomePageController.xib in Resources */,
@@ -4002,7 +4001,6 @@
 				4A0D97751E9729C100A26B84 /* GLHourseDetailFirstCell.xib in Resources */,
 				F92309801E9B8BFF00ECDC94 /* LBMineCenterSafeSecondSecretViewController.xib in Resources */,
 				4A0D97711E9729C100A26B84 /* GLHomeLiveCell.xib in Resources */,
-				4AF3C2861E95DFA9001747A7 /* GLRegisterController.xib in Resources */,
 				4A4610261E9CC6360045824F /* UMSnsAccountViewController.xib in Resources */,
 				4A4610341E9CC6360045824F /* ios-social-sdk-comment-detail.html in Resources */,
 				4A4609EB1E9CB78E0045824F /* GLMyBeanCell.xib in Resources */,
@@ -4047,6 +4045,7 @@
 				F92309211E9B8BFF00ECDC94 /* LBMineCenterMyBalabceTableViewCell.xib in Resources */,
 				4A4610381E9CC6360045824F /* ios-social-sdk-login-quick.html in Resources */,
 				F92309351E9B8BFF00ECDC94 /* LBMineMessageSeviceViewController.xib in Resources */,
+				F961AA1A1E9CDD3400275F52 /* GLLoginController.xib in Resources */,
 				F92309821E9B8BFF00ECDC94 /* LBMineCenterModifyLoginSecretViewController.xib in Resources */,
 				F923096F1E9B8BFF00ECDC94 /* LBMineCentermodifyAdressTableViewCell.xib in Resources */,
 				F906201C1E83C8770080E9D9 /* tabbarimage.xcassets in Resources */,
@@ -4113,6 +4112,7 @@
 				4A4610331E9CC6360045824F /* iOS-social-releasenote.html in Resources */,
 				F923095E1E9B8BFF00ECDC94 /* LBMyOrderListTableViewCell.xib in Resources */,
 				4A4608F21E9C9E6D0045824F /* GLRankingView.xib in Resources */,
+				F961AA1C1E9CDD3400275F52 /* GLRegisterController.xib in Resources */,
 				4A4609D51E9CB78E0045824F /* GLBuyBackRecordController.xib in Resources */,
 				4A4610101E9CC6360045824F /* LICENSE in Resources */,
 				F92309841E9B8BFF00ECDC94 /* LBMineCenterSafeBindPhoneViewController.xib in Resources */,
@@ -4120,6 +4120,7 @@
 				4A4610271E9CC6360045824F /* UMSShareListController.xib in Resources */,
 				4A0D97791E9729C100A26B84 /* GLHourseDetailThirdCell.xib in Resources */,
 				F92309691E9B8BFF00ECDC94 /* LBMyOrderEvaluationSucessViewController.xib in Resources */,
+				F961AA1E1E9CDD3400275F52 /* LoginIdentityView.xib in Resources */,
 				4A0D97821E9729C100A26B84 /* GLConfirmOrderController.xib in Resources */,
 				4A4610371E9CC6360045824F /* ios-social-sdk-login-detail.html in Resources */,
 				F923093D1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeTableViewCell.xib in Resources */,
@@ -4239,6 +4240,7 @@
 				4A4611101E9CC6370045824F /* ZXQRCodeEncoder.m in Sources */,
 				4A4610E31E9CC6370045824F /* ZXUPCEANWriter.m in Sources */,
 				4A4610AE1E9CC6370045824F /* ZXAbstractExpandedDecoder.m in Sources */,
+				F961AA1D1E9CDD3400275F52 /* LoginIdentityView.m in Sources */,
 				4A46105F1E9CC6360045824F /* ZXSMSParsedResult.m in Sources */,
 				F923095F1E9B8BFF00ECDC94 /* LBMyOrderUnsubscribeRecordTableViewCell.m in Sources */,
 				4A4611131E9CC6370045824F /* ZXMultiDetector.m in Sources */,
@@ -4269,7 +4271,6 @@
 				4A4610E81E9CC6370045824F /* ZXPDF417BarcodeMetadata.m in Sources */,
 				4A0D976E1E9729C100A26B84 /* GLEvaluateCell.m in Sources */,
 				F92309811E9B8BFF00ECDC94 /* LBMineCenterModifyLoginSecretViewController.m in Sources */,
-				4AEE9ECB1E94FEE2004FFDB9 /* GLLoginController.m in Sources */,
 				4A46107A1E9CC6360045824F /* ZXBitSource.m in Sources */,
 				F923098E1E9B8BFF00ECDC94 /* LBMineCenterCollectionViewCell.m in Sources */,
 				4A4609D21E9CB78E0045824F /* GLBuyBackRecord_FailController.m in Sources */,
@@ -4463,6 +4464,7 @@
 				F90620061E83C5D00080E9D9 /* BasetabbarViewController.m in Sources */,
 				4A4609F31E9CB78E0045824F /* GLDirectDnationView.m in Sources */,
 				4A4610A01E9CC6360045824F /* ZXDataMatrixErrorCorrection.m in Sources */,
+				F961AA1B1E9CDD3400275F52 /* GLRegisterController.m in Sources */,
 				F961A9E51E9C7B4700275F52 /* MBProgressHUD+LB.m in Sources */,
 				4A4610F41E9CC6370045824F /* ZXPDF417.m in Sources */,
 				4A4610BA1E9CC6370045824F /* ZXRSSExpandedCurrentParsingState.m in Sources */,
@@ -4548,7 +4550,6 @@
 				4A4609FC1E9CB78E0045824F /* GLDonationMaskView.m in Sources */,
 				4A4610BC1E9CC6370045824F /* ZXRSSExpandedDecodedInformation.m in Sources */,
 				F92309731E9B8BFF00ECDC94 /* LBMineCenterChooseAreaViewController.m in Sources */,
-				4AF3C2851E95DFA9001747A7 /* GLRegisterController.m in Sources */,
 				4A4610C91E9CC6370045824F /* ZXRSSPair.m in Sources */,
 				4A4611081E9CC6370045824F /* ZXQRCodeAlignmentPattern.m in Sources */,
 				4A4610FE1E9CC6370045824F /* ZXQRCodeBitMatrixParser.m in Sources */,
@@ -4563,6 +4564,7 @@
 				F923095D1E9B8BFF00ECDC94 /* LBMyOrderListTableViewCell.m in Sources */,
 				F961A9D71E9C75AF00275F52 /* ScaleSizeImage.m in Sources */,
 				4A4610431E9CC6360045824F /* ZXAztecHighLevelEncoder.m in Sources */,
+				F961AA191E9CDD3400275F52 /* GLLoginController.m in Sources */,
 				F92309661E9B8BFF00ECDC94 /* LBMineCenterMYOrderEvaluationDetailViewController.m in Sources */,
 				4A46108B1E9CC6360045824F /* ZXDimension.m in Sources */,
 				4A4610BD1E9CC6370045824F /* ZXRSSExpandedDecodedNumeric.m in Sources */,
