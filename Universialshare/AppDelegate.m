@@ -26,11 +26,11 @@
     [self.window makeKeyAndVisible];
     
     
-     GLLoginController *loginVC = [[GLLoginController alloc] init];
-    BaseNavigationViewController *nav = [[BaseNavigationViewController alloc]initWithRootViewController:loginVC];
+     //GLLoginController *loginVC = [[GLLoginController alloc] init];
+    //BaseNavigationViewController *nav = [[BaseNavigationViewController alloc]initWithRootViewController:loginVC];
    
-    self.window.rootViewController = nav;
-//     self.window.rootViewController = [[BasetabbarViewController alloc]init];
+    //self.window.rootViewController = nav;
+     self.window.rootViewController = [[BasetabbarViewController alloc]init];
 
     return YES;
 }

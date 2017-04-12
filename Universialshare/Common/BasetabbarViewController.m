@@ -14,6 +14,7 @@
 
 #import "GLLoginController.h"
 #import "GLFirstPageController.h"
+#import "GLLoginController.h"
 
 @interface BasetabbarViewController ()<UITabBarControllerDelegate>
 
@@ -82,8 +83,27 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
     
+    if (viewController == [tabBarController.viewControllers objectAtIndex:0]) {
+
+    }
+    if (viewController == [tabBarController.viewControllers objectAtIndex:1]) {
+      
+    }
+    if (viewController == [tabBarController.viewControllers objectAtIndex:2]) {
+       
+    }
+    if (viewController == [tabBarController.viewControllers objectAtIndex:3]) {
+       
+        GLLoginController *loginVC = [[GLLoginController alloc] init];
+        BaseNavigationViewController *nav = [[BaseNavigationViewController alloc]initWithRootViewController:loginVC];
+        nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:nav animated:YES completion:nil];
+        return NO;
+        
+    }
     
     return YES;
 }
+
 
 @end

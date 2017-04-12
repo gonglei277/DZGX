@@ -10,7 +10,6 @@
 #import "GLRegisterController.h"
 #import "BasetabbarViewController.h"
 #import "LoginIdentityView.h"
-#import "LBMineCenterModifyLoginSecretViewController.h"
 
 @interface GLLoginController ()<UITextFieldDelegate>
 
@@ -52,7 +51,8 @@
     //
     [self.loginView.lingView addGestureRecognizer:lingVgesture];
     
-    self.usertype = @"7";
+    self.phone.text = @"15228988355";
+    
     
 }
 
@@ -61,7 +61,7 @@
     self.navigationController.navigationBar.hidden = YES;
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
     
-    
+    self.usertype = @"7";
 
 }
 //注册
@@ -113,13 +113,12 @@
 //退出
 - (IBAction)exitLoginEvent:(UIButton *)sender {
     
-    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 //忘记密码
 - (IBAction)forgetButtonEvent:(UIButton *)sender {
     
-    LBMineCenterModifyLoginSecretViewController *registerVC = [[LBMineCenterModifyLoginSecretViewController alloc] init];
-    [self.navigationController pushViewController:registerVC animated:YES];
+
    
 }
 
@@ -128,7 +127,6 @@
 
     
     [NetworkManager requestPOSTWithURLStr:@"user/login" paramDic:@{@"userphone":self.phone.text,@"password":self.scretTf.text,@"groupID":self.usertype} finish:^(id responseObject) {
-        
         if ([responseObject[@"code"] integerValue]==1) {
             [MBProgressHUD showError:responseObject[@"message"]];
             
