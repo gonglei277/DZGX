@@ -554,6 +554,10 @@
 		F92309921E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F92309181E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m */; };
 		F92309931E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F92309191E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.xib */; };
 		F94D6E1E1E9DC15300412E64 /* loginRegister.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94D6E1D1E9DC15300412E64 /* loginRegister.xcassets */; };
+		F94D6E231E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94D6E211E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m */; };
+		F94D6E241E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94D6E221E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.xib */; };
+		F94D6E281E9E074300412E64 /* SelectUserTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F94D6E261E9E074300412E64 /* SelectUserTypeView.m */; };
+		F94D6E291E9E074300412E64 /* SelectUserTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94D6E271E9E074300412E64 /* SelectUserTypeView.xib */; };
 		F961A9C81E9C747700275F52 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F961A9C51E9C747700275F52 /* UserModel.m */; };
 		F961A9C91E9C747700275F52 /* usermodelachivar.m in Sources */ = {isa = PBXBuildFile; fileRef = F961A9C71E9C747700275F52 /* usermodelachivar.m */; };
 		F961A9CC1E9C750300275F52 /* UILabel+UILabel_ChangeLineSpaceAndWordSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = F961A9CB1E9C750300275F52 /* UILabel+UILabel_ChangeLineSpaceAndWordSpace.m */; };
@@ -1595,6 +1599,12 @@
 		F92309181E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineCenterMessageTableViewCell.m; sourceTree = "<group>"; };
 		F92309191E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineCenterMessageTableViewCell.xib; sourceTree = "<group>"; };
 		F94D6E1D1E9DC15300412E64 /* loginRegister.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = loginRegister.xcassets; sourceTree = "<group>"; };
+		F94D6E201E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeLoginFortgetSecretViewController.h; sourceTree = "<group>"; };
+		F94D6E211E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeLoginFortgetSecretViewController.m; sourceTree = "<group>"; };
+		F94D6E221E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBHomeLoginFortgetSecretViewController.xib; sourceTree = "<group>"; };
+		F94D6E251E9E074300412E64 /* SelectUserTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectUserTypeView.h; sourceTree = "<group>"; };
+		F94D6E261E9E074300412E64 /* SelectUserTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectUserTypeView.m; sourceTree = "<group>"; };
+		F94D6E271E9E074300412E64 /* SelectUserTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectUserTypeView.xib; sourceTree = "<group>"; };
 		F961A9C41E9C747700275F52 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		F961A9C51E9C747700275F52 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		F961A9C61E9C747700275F52 /* usermodelachivar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usermodelachivar.h; sourceTree = "<group>"; };
@@ -3865,6 +3875,16 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		F94D6E1F1E9DFB0300412E64 /* 忘记密码 */ = {
+			isa = PBXGroup;
+			children = (
+				F94D6E201E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.h */,
+				F94D6E211E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m */,
+				F94D6E221E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.xib */,
+			);
+			path = "忘记密码";
+			sourceTree = "<group>";
+		};
 		F961A9C31E9C747700275F52 /* 数据保存 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3894,6 +3914,7 @@
 				F961AA121E9CDD3400275F52 /* GLRegisterController.h */,
 				F961AA131E9CDD3400275F52 /* GLRegisterController.m */,
 				F961AA141E9CDD3400275F52 /* GLRegisterController.xib */,
+				F94D6E1F1E9DFB0300412E64 /* 忘记密码 */,
 				F961AA151E9CDD3400275F52 /* view */,
 			);
 			path = Controller;
@@ -3905,6 +3926,9 @@
 				F961AA161E9CDD3400275F52 /* LoginIdentityView.h */,
 				F961AA171E9CDD3400275F52 /* LoginIdentityView.m */,
 				F961AA181E9CDD3400275F52 /* LoginIdentityView.xib */,
+				F94D6E251E9E074300412E64 /* SelectUserTypeView.h */,
+				F94D6E261E9E074300412E64 /* SelectUserTypeView.m */,
+				F94D6E271E9E074300412E64 /* SelectUserTypeView.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -4087,6 +4111,7 @@
 				F9061FD81E83C4730080E9D9 /* Assets.xcassets in Resources */,
 				F92309391E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeDetailOneTableViewCell.xib in Resources */,
 				F92309231E9B8BFF00ECDC94 /* LBMineCenterRechargeBankCardTableViewCell.xib in Resources */,
+				F94D6E241E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.xib in Resources */,
 				4A4610361E9CC6360045824F /* ios-social-sdk-like.html in Resources */,
 				4A46101E1E9CC6360045824F /* UMSocialLocalizable.strings in Resources */,
 				4A4609EF1E9CB78E0045824F /* GLDirectDonationController.xib in Resources */,
@@ -4125,6 +4150,7 @@
 				F92309351E9B8BFF00ECDC94 /* LBMineMessageSeviceViewController.xib in Resources */,
 				F961AA1A1E9CDD3400275F52 /* GLLoginController.xib in Resources */,
 				F961AA2A1E9CE17800275F52 /* LBConsumptionSeriesViewController.xib in Resources */,
+				F94D6E291E9E074300412E64 /* SelectUserTypeView.xib in Resources */,
 				F92309821E9B8BFF00ECDC94 /* LBMineCenterModifyLoginSecretViewController.xib in Resources */,
 				F923096F1E9B8BFF00ECDC94 /* LBMineCentermodifyAdressTableViewCell.xib in Resources */,
 				F906201C1E83C8770080E9D9 /* tabbarimage.xcassets in Resources */,
@@ -4317,6 +4343,7 @@
 				4A46110C1E9CC6370045824F /* ZXQRCodeFinderPatternFinder.m in Sources */,
 				4A4610411E9CC6360045824F /* ZXAztecCode.m in Sources */,
 				F92309551E9B8BFF00ECDC94 /* LBMyOrderPendingPaymentViewController.m in Sources */,
+				F94D6E281E9E074300412E64 /* SelectUserTypeView.m in Sources */,
 				4A4610801E9CC6360045824F /* ZXDetectorResult.m in Sources */,
 				4A4610171E9CC6360045824F /* LBXScanView.m in Sources */,
 				4A4610191E9CC6360045824F /* LBXScanViewStyle.m in Sources */,
@@ -4554,6 +4581,7 @@
 				4A4609F31E9CB78E0045824F /* GLDirectDnationView.m in Sources */,
 				4A4610A01E9CC6360045824F /* ZXDataMatrixErrorCorrection.m in Sources */,
 				F961AA1B1E9CDD3400275F52 /* GLRegisterController.m in Sources */,
+				F94D6E231E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m in Sources */,
 				F961A9E51E9C7B4700275F52 /* MBProgressHUD+LB.m in Sources */,
 				4A4610F41E9CC6370045824F /* ZXPDF417.m in Sources */,
 				4A4610BA1E9CC6370045824F /* ZXRSSExpandedCurrentParsingState.m in Sources */,

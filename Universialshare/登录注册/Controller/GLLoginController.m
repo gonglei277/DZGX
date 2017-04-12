@@ -10,6 +10,7 @@
 #import "GLRegisterController.h"
 #import "BasetabbarViewController.h"
 #import "LoginIdentityView.h"
+#import "LBHomeLoginFortgetSecretViewController.h"
 
 @interface GLLoginController ()<UITextFieldDelegate>
 
@@ -118,7 +119,10 @@
 //忘记密码
 - (IBAction)forgetButtonEvent:(UIButton *)sender {
     
-
+    
+    LBHomeLoginFortgetSecretViewController *vc=[[LBHomeLoginFortgetSecretViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+  
    
 }
 
@@ -149,6 +153,7 @@
             [UserModel defaultUser].version = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"version"]];
             [UserModel defaultUser].vsnAddress = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"vsnAddress"]];
             [UserModel defaultUser].vsnUpdateTime = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"vsnUpdateTime"]];
+            [UserModel defaultUser].loginstatus = YES;
             
             if ([[UserModel defaultUser].banknumber rangeOfString:@"null"].location != NSNotFound) {
                 
@@ -165,10 +170,7 @@
             
             [usermodelachivar achive];
             
-            BasetabbarViewController *baseVC = [[BasetabbarViewController alloc] init];
-            baseVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-            [self presentViewController:baseVC animated:YES completion:nil];
-            [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
             
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];

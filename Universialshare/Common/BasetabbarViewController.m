@@ -94,6 +94,9 @@
     }
     if (viewController == [tabBarController.viewControllers objectAtIndex:3]) {
        
+        if ([UserModel defaultUser].loginstatus == YES) {
+            return YES;
+        }
         GLLoginController *loginVC = [[GLLoginController alloc] init];
         BaseNavigationViewController *nav = [[BaseNavigationViewController alloc]initWithRootViewController:loginVC];
         nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

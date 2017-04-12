@@ -74,8 +74,8 @@
         [MBProgressHUD showError:@"密码不能为空"];
         return;
     }
-    if (self.secretTf.text.length < 6 || self.secretTf.text.length > 16) {
-        [MBProgressHUD showError:@"请输入6-16位密码"];
+    if (self.secretTf.text.length < 6 || self.secretTf.text.length > 20) {
+        [MBProgressHUD showError:@"请输入6-20位密码"];
         return;
     }
     
