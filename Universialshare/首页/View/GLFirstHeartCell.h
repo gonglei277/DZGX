@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLFirstPageDailyModel.h"
 
 @interface GLFirstHeartCell : UITableViewCell
+
+@property (nonatomic, strong)GLFirstPageDailyModel *model;
 
 @end

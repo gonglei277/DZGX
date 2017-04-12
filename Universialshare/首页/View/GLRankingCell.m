@@ -8,17 +8,24 @@
 
 #import "GLRankingCell.h"
 
+@interface GLRankingCell()
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+
+@end
+
 @implementation GLRankingCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setModel:(GLFirstPageRankingModel *)model{
+    _model = model;
+    _nameLabel.text = model.truename;
+    _moneyLabel.text = model.money1;
 }
 
 @end

@@ -38,13 +38,14 @@
 -(void)loadData{
 
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"Index/news" paramDic:@{@"noticetype":self.indexType} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"index/index_alert" paramDic:@{@"type":self.indexType} finish:^(id responseObject) {
         [_loadV removeloadview];
 
-        if ([responseObject[@"code"] integerValue]==0) {
+//        NSLog(@"%@",responseObject);
+        if ([responseObject[@"code"] integerValue]==1) {
              
             self.dataDic = responseObject[@"data"];
-            
+//            NSLog(@"content = %@",self.dataDic[@"content"]);
             [self.tableview reloadData];
             
         }else{
@@ -68,7 +69,7 @@
     
     
     NSDictionary *dict = @{NSFontAttributeName : [UIFont systemFontOfSize:13]};
-    NSString *str=[NSString stringWithFormat:@"     %@",self.dataDic[@"rows"][0][@"content"]];
+    NSString *str=[NSString stringWithFormat:@"     %@",self.dataDic[@"content"]];
     CGRect sizeconent=[str boundingRectWithSize:CGSizeMake(self.view.bounds.size.width-20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil];
     return sizeconent.size.height;
     
@@ -82,7 +83,7 @@
     LBUserKonwViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBUserKonwViewTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (self.dataDic.count > 0) {
-        cell.contentLb.text = [NSString stringWithFormat:@"     %@",self.dataDic[@"rows"][0][@"content"]];
+        cell.contentLb.text = [NSString stringWithFormat:@"     %@",self.dataDic[@"content"]];
     }else{
       cell.contentLb.text = @"";
     }

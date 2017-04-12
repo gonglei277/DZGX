@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GLDailyView : UIView
 
+@interface GLDailyView : UIView
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong)NSMutableArray *models;
 @end
