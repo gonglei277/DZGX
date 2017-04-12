@@ -12,6 +12,9 @@
 #import "GLTweleveFourController.h"
 
 @interface GLMyHeartController ()
+{
+    UIButton *_tmpBtn;
+}
 
 @property (nonatomic, strong)GLSixPersentController *sixPersentVC;
 @property (nonatomic, strong)GLTwelevePersentController *twelvePercentVC;
@@ -68,31 +71,54 @@
 
 //百分之六激励
 - (IBAction)buttonEvent:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    if (sender.selected == NO) {
-        sender.selected = YES;
-        return;
-    }
-        [UIView animateWithDuration:0.2 animations:^{
-
-        } completion:^(BOOL finished) {
-            self.currentButton = sender;
-            sender.selected = !sender.selected;
-        }];
+//    sender.selected = !sender.selected;
+//    if (sender.selected == NO) {
+//        sender.selected = YES;
+//        return;
+//    }
+        if (_tmpBtn == nil){
+            sender.selected = YES;
+            _tmpBtn = sender;
+        }
+        else if (_tmpBtn !=nil && _tmpBtn == sender){
+            sender.selected = YES;
+    
+            sender.titleLabel.backgroundColor = [UIColor redColor];
+            [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    
+        }
+        else if (_tmpBtn!= sender && _tmpBtn!=nil){
+            _tmpBtn.selected = NO;
+            _tmpBtn.titleLabel.backgroundColor = [UIColor whiteColor];
+//            _tmpBtn.titleLabel.textColor = [UIColor darkGrayColor];
+            [sender setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
+            sender.selected = YES;
+            sender.titleLabel.backgroundColor = [UIColor redColor];
+//            sender.titleLabel.textColor = [UIColor whiteColor];
+            [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+            _tmpBtn = sender;
+        }
+    
+//        [UIView animateWithDuration:0.2 animations:^{
+//
+//        } completion:^(BOOL finished) {
+//            self.currentButton = sender;
+//            sender.selected = !sender.selected;
+//        }];
     
     if (sender == self.sixBtn) {
-        self.twelveBtn.selected = NO;
-        self.twelveFourBtn.selected = NO;
+//        self.twelveBtn.selected = NO;
+//        self.twelveFourBtn.selected = NO;
         [self transitionFromVC:self.currentViewController toviewController:_sixPersentVC];
         [self fitFrameForChildViewController:_sixPersentVC];
     }else if (sender == self.twelveBtn){
-        self.sixBtn.selected = NO;
-        self.twelveFourBtn.selected = NO;
+//        self.sixBtn.selected = NO;
+//        self.twelveFourBtn.selected = NO;
         [self transitionFromVC:self.currentViewController toviewController:_twelvePercentVC];
         [self fitFrameForChildViewController:_twelvePercentVC];
     }else{
-        self.sixBtn.selected = NO;
-        self.twelveBtn.selected = NO;
+//        self.sixBtn.selected = NO;
+//        self.twelveBtn.selected = NO;
         [self transitionFromVC:self.currentViewController toviewController:_twentyfourPercentVC];
         [self fitFrameForChildViewController:_twentyfourPercentVC];
     }
