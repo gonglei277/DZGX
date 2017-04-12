@@ -51,13 +51,17 @@
     //
     [self.loginView.lingView addGestureRecognizer:lingVgesture];
     
-    self.usertype = @"7";
+    self.phone.text = @"15228988355";
+    
     
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
+    
+    self.usertype = @"7";
 
 }
 //注册
@@ -70,30 +74,111 @@
 //登录
 - (IBAction)login:(id)sender {
     
+    
+    if (self.phone.text.length <=0 ) {
+        [MBProgressHUD showError:@"请输入手机号码"];
+        return;
+    }else{
+        if (![predicateModel valiMobile:self.phone.text]) {
+            [MBProgressHUD showError:@"手机号格式不对"];
+            return;
+        }
+    }
+    
+    if (self.scretTf.text.length <= 0) {
+        [MBProgressHUD showError:@"密码不能为空"];
+        return;
+    }
+    
     [self.view addSubview:self.maskView];
     [self.view addSubview:self.loginView];
     
     
 }
+//隐藏或显示图片
+- (IBAction)showOrHide:(UIButton *)sender {
+    
+    sender.selected = !sender.selected;
+    
+    if (sender.selected) {
+        [self.scretTf setSecureTextEntry:NO];
+        [sender setImage:[UIImage imageNamed:@"隐藏"] forState:UIControlStateNormal];
+        
+    }else{
+        [self.scretTf setSecureTextEntry:YES];
+        [sender setImage:[UIImage imageNamed:@"显示"] forState:UIControlStateNormal];
+    
+    }
+}
+//退出
+- (IBAction)exitLoginEvent:(UIButton *)sender {
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+//忘记密码
+- (IBAction)forgetButtonEvent:(UIButton *)sender {
+    
 
+   
+}
 
 //确定按
 -(void)surebuttonEvent{
 
     
     [NetworkManager requestPOSTWithURLStr:@"user/login" paramDic:@{@"userphone":self.phone.text,@"password":self.scretTf.text,@"groupID":self.usertype} finish:^(id responseObject) {
-        
-        NSLog(@"%@",responseObject);
+        if ([responseObject[@"code"] integerValue]==1) {
+            [MBProgressHUD showError:responseObject[@"message"]];
+            
+            [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"banknumber"]];
+            [UserModel defaultUser].counta = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"count"]];
+            [UserModel defaultUser].giveMeMark = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"giveMeMark"]];
+            [UserModel defaultUser].groupId = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"groupId"]];
+            [UserModel defaultUser].headPic = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"headPic"]];
+            [UserModel defaultUser].ketiBean = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"ketiBean"]];
+            [UserModel defaultUser].lastFanLiTime = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"lastFanLiTime"]];
+            [UserModel defaultUser].lastTime = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"lastTime"]];
+            [UserModel defaultUser].loveNum = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"loveNum"]];
+            [UserModel defaultUser].mark = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"mark"]];
+            [UserModel defaultUser].name = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"name"]];
+            [UserModel defaultUser].phone = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"phone"]];
+            [UserModel defaultUser].recommendMark = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"recommendMark"]];
+            [UserModel defaultUser].regTime = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"regTime"]];
+            [UserModel defaultUser].token = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"token"]];
+            [UserModel defaultUser].uid = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"uid"]];
+            [UserModel defaultUser].version = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"version"]];
+            [UserModel defaultUser].vsnAddress = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"vsnAddress"]];
+            [UserModel defaultUser].vsnUpdateTime = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"vsnUpdateTime"]];
+            
+            if ([[UserModel defaultUser].banknumber rangeOfString:@"null"].location != NSNotFound) {
+                
+                [UserModel defaultUser].banknumber = @"";
+            }
+            if ([[UserModel defaultUser].counta rangeOfString:@"null"].location != NSNotFound) {
+                
+                [UserModel defaultUser].counta = @"";
+            }
+            if ([[UserModel defaultUser].giveMeMark rangeOfString:@"null"].location != NSNotFound) {
+                
+                [UserModel defaultUser].giveMeMark = @"";
+            }
+            
+            [usermodelachivar achive];
+            
+            BasetabbarViewController *baseVC = [[BasetabbarViewController alloc] init];
+            baseVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self presentViewController:baseVC animated:YES completion:nil];
+            [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
+            
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
         
     } enError:^(NSError *error) {
         
-        NSLog(@"%@",error.localizedDescription);
+        [MBProgressHUD showError:error.localizedDescription];
         
     }];
-        BasetabbarViewController *baseVC = [[BasetabbarViewController alloc] init];
-         baseVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        [self presentViewController:baseVC animated:YES completion:nil];
-        [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
 
 }
 
@@ -101,16 +186,16 @@
 -(void)shangViewgesture{
     
     self.usertype = @"7";
-    self.loginView.shangImage.image=[UIImage imageNamed:@"lblocation_on"];
-    self.loginView.lingimage.image=[UIImage imageNamed:@"lblocation_off"];
+    self.loginView.shangImage.image=[UIImage imageNamed:@"location_on"];
+    self.loginView.lingimage.image=[UIImage imageNamed:@"location_off"];
     
 }
 //一级零售商
 -(void)lingViewgesture{
     
     self.usertype = @"7";
-    self.loginView.shangImage.image=[UIImage imageNamed:@"lblocation_off"];
-    self.loginView.lingimage.image=[UIImage imageNamed:@"lblocation_on"];
+    self.loginView.shangImage.image=[UIImage imageNamed:@"location_off"];
+    self.loginView.lingimage.image=[UIImage imageNamed:@"location_on"];
     
 }
 

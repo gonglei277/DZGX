@@ -10,6 +10,7 @@
 #import "BasetabbarViewController.h"
 #import "GLLoginController.h"
 #import "IQKeyboardManager.h"
+#import "BaseNavigationViewController.h"
 
 @interface AppDelegate ()
 
@@ -24,9 +25,12 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    GLLoginController *loginVC = [[GLLoginController alloc] init];
-    self.window.rootViewController = loginVC;
-//     self.window.rootViewController = [[BasetabbarViewController alloc]init];
+    
+     //GLLoginController *loginVC = [[GLLoginController alloc] init];
+    //BaseNavigationViewController *nav = [[BaseNavigationViewController alloc]initWithRootViewController:loginVC];
+   
+    //self.window.rootViewController = nav;
+     self.window.rootViewController = [[BasetabbarViewController alloc]init];
 
     return YES;
 }
