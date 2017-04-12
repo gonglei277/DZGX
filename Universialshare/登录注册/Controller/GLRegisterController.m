@@ -43,6 +43,7 @@
     
     [self startTime];//获取倒计时
     [NetworkManager requestPOSTWithURLStr:@"user/get_yzm" paramDic:@{@"phone":self.phoneTf.text} finish:^(id responseObject) {
+        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue]==1) {
             
         }else{
@@ -55,6 +56,29 @@
 }
 //注册
 - (IBAction)regsiterEventBt:(UIButton *)sender {
+    
+    if (self.recomendId.text.length <= 0) {
+        [MBProgressHUD showError:@"推荐人ID不能为空"];
+        return;
+    }
+    if (self.phoneTf.text.length <=0 ) {
+        [MBProgressHUD showError:@"请输入手机号码"];
+        return;
+    }else{
+        if (![predicateModel valiMobile:self.phoneTf.text]) {
+            [MBProgressHUD showError:@"手机号格式不对"];
+            return;
+        }
+    }
+    
+    if (self.secretTf.text.length <= 0) {
+        [MBProgressHUD showError:@"密码不能为空"];
+        return;
+    }
+    if (self.secretTf.text.length < 6 || self.secretTf.text.length > 16) {
+        [MBProgressHUD showError:@"密码不能为空"];
+        return;
+    }
     
     [NetworkManager requestPOSTWithURLStr:@"user/register" paramDic:@{@"userphone":self.phoneTf.text , @"password":self.secretTf.text , @"uid":self.recomendId.text , @"yzm":self.verificationTf.text} finish:^(id responseObject) {
         if ([responseObject[@"code"] integerValue]==1) {
