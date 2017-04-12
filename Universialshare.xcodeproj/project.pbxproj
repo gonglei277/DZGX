@@ -4848,7 +4848,7 @@
 					"$(PROJECT_DIR)/Universialshare/三方库/umeng_ios_social_sdk_5.2.1_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Universialshare/universialshare.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Universialshare/universialshare.pch";
 				INFOPLIST_FILE = Universialshare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -4875,7 +4875,7 @@
 					"$(PROJECT_DIR)/Universialshare/三方库/umeng_ios_social_sdk_5.2.1_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Universialshare/universialshare.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Universialshare/universialshare.pch";
 				INFOPLIST_FILE = Universialshare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -78,24 +78,65 @@ static NSString *followID = @"GLFirstFollowCell";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+
+    
     
 }
 
 - (GLDailyView *)dailyContentView{
     if (!_dailyContentView) {
         _dailyContentView = [[NSBundle mainBundle] loadNibNamed:@"GLDailyView" owner:nil options:nil].lastObject;
+        
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        dic[@"type"] = @"1";
+        
+        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
+            
+            NSLog(@"%@",responseObject);
+            
+        } enError:^(NSError *error) {
+            
+            NSLog(@"%@",error);
+            
+        }];
     }
     return _dailyContentView;
 }
 - (GLRankingView *)rankingContentView{
     if (!_rankingContentView) {
         _rankingContentView =  [[NSBundle mainBundle] loadNibNamed:@"GLRankingView" owner:nil options:nil].lastObject;
+        
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        dic[@"type"] = @"2";
+        
+        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
+            
+            NSLog(@"%@",responseObject);
+            
+        } enError:^(NSError *error) {
+            
+            NSLog(@"%@",error);
+            
+        }];
     }
     return _rankingContentView;
 }
 - (GLRewardView *)rewardContentView{
     if (!_rewardContentView) {
         _rewardContentView =  [[NSBundle mainBundle] loadNibNamed:@"GLRewardView" owner:nil options:nil].lastObject;
+        
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        dic[@"type"] = @"3";
+        
+        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
+            
+            NSLog(@"%@",responseObject);
+            
+        } enError:^(NSError *error) {
+            
+            NSLog(@"%@",error);
+            
+        }];
     }
     return _rewardContentView;
 }
@@ -160,13 +201,11 @@ static NSString *followID = @"GLFirstFollowCell";
             CATransition *animation = [CATransition animation];
             animation.duration = 0.6;
             animation.timingFunction = UIViewAnimationCurveEaseInOut;
-            animation.type = @"rippleEffect";
+            animation.type = @"cube";
             self.dailyContentView.frame = CGRectMake(0, 0, self.contentView.yy_width, self.contentView.yy_height);
             
             [self.dailyContentView.layer addAnimation:animation forKey:nil];
-//            [UIView animateWithDuration:0.3 animations:^{
-//                self.dailyContentView.frame = CGRectMake(0, 0, self.contentView.yy_width, self.contentView.yy_height);
-//            }];
+
         }
         
     }else if(tap.view == self.rankingView){
@@ -183,10 +222,7 @@ static NSString *followID = @"GLFirstFollowCell";
             self.rankingContentView.frame = CGRectMake(0, 0, self.contentView.yy_width, self.contentView.yy_height);
             
             [self.rankingContentView.layer addAnimation:animation forKey:nil];
-//            self.rankingContentView.frame = CGRectMake(-SCREEN_WIDTH, 0, self.contentView.yy_width, self.contentView.yy_height);
-//            [UIView animateWithDuration:0.3 animations:^{
-//                self.rankingContentView.frame = CGRectMake(0, 0, self.contentView.yy_width, self.contentView.yy_height);
-//            }];
+
         }
 
     }else{
@@ -197,16 +233,13 @@ static NSString *followID = @"GLFirstFollowCell";
             self.rewardContentView.alpha = 1;
             
             CATransition *animation = [CATransition animation];
-            animation.duration = 0.4;
+            animation.duration = 0.5;
             animation.timingFunction = UIViewAnimationCurveEaseInOut;
-            animation.type = @"oglFlip";
+            animation.type = @"cube";
             self.rewardContentView.frame = CGRectMake(0, 0, self.contentView.yy_width, self.contentView.yy_height);
             
             [self.rewardContentView.layer addAnimation:animation forKey:nil];
-//            self.rewardContentView.frame = CGRectMake(-SCREEN_WIDTH, 0, self.contentView.yy_width, self.contentView.yy_height);
-//            [UIView animateWithDuration:0.3 animations:^{
-//                self.rewardContentView.frame = CGRectMake(0, 0, self.contentView.yy_width, self.contentView.yy_height);
-//            }];
+
         }
 
     }

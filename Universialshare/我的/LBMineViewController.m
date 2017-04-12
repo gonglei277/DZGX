@@ -112,6 +112,7 @@
             
             [self.navigationController pushViewController:vc animated:YES];
             self.hidesBottomBarWhenPushed=NO;
+            
         }
             break;
         case 3:
