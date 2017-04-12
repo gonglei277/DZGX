@@ -56,11 +56,8 @@
     self.currentViewController = _encourageVC;
     [self fitFrameForChildViewController:_encourageVC];
     [self.contentView addSubview:_encourageVC.view];
-    
-    self.currentButton = self.encourageBtn;
-    self.encourageBtn.selected = NO;
-    self.recommendBtn.selected = NO;
-    self.receiveBtn.selected = NO;
+
+    [self buttonEvent:_encourageBtn];
     
     __block typeof(self) bself = self;
     _encourageVC.retureValue = ^(NSString *remainBeans){
@@ -86,40 +83,28 @@
 
 //按钮点击事件
 - (IBAction)buttonEvent:(UIButton *)sender {
-    
-    sender.selected = !sender.selected;
-    if (sender.selected == NO) {
-        sender.selected = YES;
-        
-        return;
-    }else{
-        [UIView animateWithDuration:0.2 animations:^{
-            [sender setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
 
-        } completion:^(BOOL finished) {
-            self.currentButton = sender;
-        }];
-    }
+    [self.encourageBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [self.recommendBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [self.receiveBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    
+    [sender setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     if (sender == self.encourageBtn) {
 
-        self.recommendBtn.selected = NO;
-        self.receiveBtn.selected = NO;
         [self transitionFromVC:self.currentViewController toviewController:_encourageVC];
         [self fitFrameForChildViewController:_encourageVC];
 
         [self changeColor:self.beanRemainLabel rangeNumber:_firstBeanRemainNum];
         
     }else if (sender == self.recommendBtn){
-        self.encourageBtn.selected = NO;
-        self.receiveBtn.selected = NO;
+
         [self transitionFromVC:self.currentViewController toviewController:_recommendVC];
         [self fitFrameForChildViewController:_recommendVC];
 
         [self changeColor:self.beanRemainLabel rangeNumber:_secondBeanRemainNum];
     }else{
-        self.encourageBtn.selected = NO;
-        self.recommendBtn.selected = NO;
+
         [self transitionFromVC:self.currentViewController toviewController:_receiveVC];
         [self fitFrameForChildViewController:_receiveVC];
         
