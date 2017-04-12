@@ -39,6 +39,7 @@
     
     NSString *urlStr1 = [NSString stringWithFormat:@"%@%@",URL_Base,urlStr];
     
+    
     [manager POST:urlStr1 parameters:paramDic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         finish(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

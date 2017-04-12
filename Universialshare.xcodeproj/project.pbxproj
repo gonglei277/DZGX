@@ -553,6 +553,7 @@
 		F92309911E9B8BFF00ECDC94 /* LBMineCenterinfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F92309161E9B8BFF00ECDC94 /* LBMineCenterinfoTableViewCell.xib */; };
 		F92309921E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F92309181E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m */; };
 		F92309931E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F92309191E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.xib */; };
+		F94D6E1E1E9DC15300412E64 /* loginRegister.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94D6E1D1E9DC15300412E64 /* loginRegister.xcassets */; };
 		F961A9C81E9C747700275F52 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F961A9C51E9C747700275F52 /* UserModel.m */; };
 		F961A9C91E9C747700275F52 /* usermodelachivar.m in Sources */ = {isa = PBXBuildFile; fileRef = F961A9C71E9C747700275F52 /* usermodelachivar.m */; };
 		F961A9CC1E9C750300275F52 /* UILabel+UILabel_ChangeLineSpaceAndWordSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = F961A9CB1E9C750300275F52 /* UILabel+UILabel_ChangeLineSpaceAndWordSpace.m */; };
@@ -1593,6 +1594,7 @@
 		F92309171E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineCenterMessageTableViewCell.h; sourceTree = "<group>"; };
 		F92309181E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineCenterMessageTableViewCell.m; sourceTree = "<group>"; };
 		F92309191E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineCenterMessageTableViewCell.xib; sourceTree = "<group>"; };
+		F94D6E1D1E9DC15300412E64 /* loginRegister.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = loginRegister.xcassets; sourceTree = "<group>"; };
 		F961A9C41E9C747700275F52 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		F961A9C51E9C747700275F52 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		F961A9C61E9C747700275F52 /* usermodelachivar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usermodelachivar.h; sourceTree = "<group>"; };
@@ -3323,6 +3325,7 @@
 				F906201B1E83C8770080E9D9 /* tabbarimage.xcassets */,
 				F92308301E9B8BCC00ECDC94 /* personCenter.xcassets */,
 				4A46111C1E9CCC010045824F /* Mine_sixPart.xcassets */,
+				F94D6E1D1E9DC15300412E64 /* loginRegister.xcassets */,
 			);
 			path = "图片资源";
 			sourceTree = "<group>";
@@ -4189,6 +4192,7 @@
 				F961AA2C1E9CE17800275F52 /* LBMerchantcreditViewController.xib in Resources */,
 				F961AA3E1E9CE35200275F52 /* LBUserKonwViewTableViewCell.xib in Resources */,
 				4A4610331E9CC6360045824F /* iOS-social-releasenote.html in Resources */,
+				F94D6E1E1E9DC15300412E64 /* loginRegister.xcassets in Resources */,
 				F923095E1E9B8BFF00ECDC94 /* LBMyOrderListTableViewCell.xib in Resources */,
 				4A4608F21E9C9E6D0045824F /* GLRankingView.xib in Resources */,
 				F961AA1C1E9CDD3400275F52 /* GLRegisterController.xib in Resources */,
