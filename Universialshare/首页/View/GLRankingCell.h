@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLFirstPageRankingModel.h"
 
 @interface GLRankingCell : UITableViewCell
+
+@property (nonatomic, strong)GLFirstPageRankingModel *model;
 
 @end

@@ -10,6 +10,9 @@
 		4A0023F71E84AD6700B2A9FE /* UIButton+SetEdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0023F31E84AD6700B2A9FE /* UIButton+SetEdgeInsets.m */; };
 		4A0023F81E84AD6700B2A9FE /* UIView+YYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0023F51E84AD6700B2A9FE /* UIView+YYExtension.m */; };
 		4A0023FA1E84AEFF00B2A9FE /* HomePage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0023F91E84AEFF00B2A9FE /* HomePage.xcassets */; };
+		4A013C9E1E9DC67300BB3764 /* GLFirstPageDailyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A013C9D1E9DC67300BB3764 /* GLFirstPageDailyModel.m */; };
+		4A013CA11E9DCE1500BB3764 /* GLFirstPageRankingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A013CA01E9DCE1500BB3764 /* GLFirstPageRankingModel.m */; };
+		4A013CA41E9DCE2800BB3764 /* GLFirstPageRewardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A013CA31E9DCE2800BB3764 /* GLFirstPageRewardModel.m */; };
 		4A0D97631E9729C100A26B84 /* GLHomeLiveChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0D970A1E9729C100A26B84 /* GLHomeLiveChooseController.m */; };
 		4A0D97641E9729C100A26B84 /* GLHomeLiveChooseController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0D970B1E9729C100A26B84 /* GLHomeLiveChooseController.xib */; };
 		4A0D97651E9729C100A26B84 /* GLHomeLiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0D970D1E9729C100A26B84 /* GLHomeLiveController.m */; };
@@ -607,6 +610,12 @@
 		4A0023F41E84AD6700B2A9FE /* UIView+YYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YYExtension.h"; sourceTree = "<group>"; };
 		4A0023F51E84AD6700B2A9FE /* UIView+YYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YYExtension.m"; sourceTree = "<group>"; };
 		4A0023F91E84AEFF00B2A9FE /* HomePage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HomePage.xcassets; sourceTree = "<group>"; };
+		4A013C9C1E9DC67300BB3764 /* GLFirstPageDailyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFirstPageDailyModel.h; sourceTree = "<group>"; };
+		4A013C9D1E9DC67300BB3764 /* GLFirstPageDailyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFirstPageDailyModel.m; sourceTree = "<group>"; };
+		4A013C9F1E9DCE1500BB3764 /* GLFirstPageRankingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFirstPageRankingModel.h; sourceTree = "<group>"; };
+		4A013CA01E9DCE1500BB3764 /* GLFirstPageRankingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFirstPageRankingModel.m; sourceTree = "<group>"; };
+		4A013CA21E9DCE2800BB3764 /* GLFirstPageRewardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFirstPageRewardModel.h; sourceTree = "<group>"; };
+		4A013CA31E9DCE2800BB3764 /* GLFirstPageRewardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFirstPageRewardModel.m; sourceTree = "<group>"; };
 		4A0D97091E9729C100A26B84 /* GLHomeLiveChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHomeLiveChooseController.h; sourceTree = "<group>"; };
 		4A0D970A1E9729C100A26B84 /* GLHomeLiveChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHomeLiveChooseController.m; sourceTree = "<group>"; };
 		4A0D970B1E9729C100A26B84 /* GLHomeLiveChooseController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLHomeLiveChooseController.xib; sourceTree = "<group>"; };
@@ -1709,6 +1718,19 @@
 			path = "Tool(工具类)";
 			sourceTree = "<group>";
 		};
+		4A013C9B1E9DC63200BB3764 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A013C9C1E9DC67300BB3764 /* GLFirstPageDailyModel.h */,
+				4A013C9D1E9DC67300BB3764 /* GLFirstPageDailyModel.m */,
+				4A013C9F1E9DCE1500BB3764 /* GLFirstPageRankingModel.h */,
+				4A013CA01E9DCE1500BB3764 /* GLFirstPageRankingModel.m */,
+				4A013CA21E9DCE2800BB3764 /* GLFirstPageRewardModel.h */,
+				4A013CA31E9DCE2800BB3764 /* GLFirstPageRewardModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4A0D97031E9729C100A26B84 /* 商城首页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1875,6 +1897,7 @@
 			children = (
 				4A4608D01E9C9E6D0045824F /* Controller */,
 				4A4608D41E9C9E6D0045824F /* View */,
+				4A013C9B1E9DC63200BB3764 /* Model */,
 			);
 			path = "首页";
 			sourceTree = "<group>";
@@ -1907,8 +1930,8 @@
 				4A4608DC1E9C9E6D0045824F /* GLFirstHeartCell.m */,
 				4A4608DD1E9C9E6D0045824F /* GLFirstHeartCell.xib */,
 				4A4608DE1E9C9E6D0045824F /* GLRankingCell.h */,
-				4A4608DF1E9C9E6D0045824F /* GLRankingCell.m */,
 				4A4608E01E9C9E6D0045824F /* GLRankingCell.xib */,
+				4A4608DF1E9C9E6D0045824F /* GLRankingCell.m */,
 				4A4608E11E9C9E6D0045824F /* GLRankingView.h */,
 				4A4608E21E9C9E6D0045824F /* GLRankingView.m */,
 				4A4608E31E9C9E6D0045824F /* GLRankingView.xib */,
@@ -4426,9 +4449,11 @@
 				4A46108D1E9CC6360045824F /* ZXErrors.m in Sources */,
 				4A4610A11E9CC6360045824F /* ZXDataMatrixHighLevelEncoder.m in Sources */,
 				4A46109F1E9CC6360045824F /* ZXDataMatrixEncoderContext.m in Sources */,
+				4A013CA11E9DCE1500BB3764 /* GLFirstPageRankingModel.m in Sources */,
 				F961A9C91E9C747700275F52 /* usermodelachivar.m in Sources */,
 				4A46110E1E9CC6370045824F /* ZXQRCode.m in Sources */,
 				4A4610E61E9CC6370045824F /* ZXModulusPoly.m in Sources */,
+				4A013C9E1E9DC67300BB3764 /* GLFirstPageDailyModel.m in Sources */,
 				4A0D977C1E9729C100A26B84 /* GLImage_textDetailCell.m in Sources */,
 				4A4610121E9CC6360045824F /* LBXScanLineAnimation.m in Sources */,
 				4A4610701E9CC6360045824F /* ZXImage.m in Sources */,
@@ -4606,6 +4631,7 @@
 				4A46103F1E9CC6360045824F /* ZXAztecDetector.m in Sources */,
 				4A4608F31E9C9E6D0045824F /* GLRewardView.m in Sources */,
 				4A4609E91E9CB78E0045824F /* GLMyBeanModel.m in Sources */,
+				4A013CA41E9DCE2800BB3764 /* GLFirstPageRewardModel.m in Sources */,
 				4A0D97801E9729C100A26B84 /* TypeView.m in Sources */,
 				4A4611021E9CC6370045824F /* ZXQRCodeDecoder.m in Sources */,
 				4A460A5A1E9CC0310045824F /* MyQRViewController.m in Sources */,

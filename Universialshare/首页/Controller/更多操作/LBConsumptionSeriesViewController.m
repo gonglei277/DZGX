@@ -42,9 +42,10 @@
 -(void)loadData{
    
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"Index/love" paramDic:@{} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/index_alert" paramDic:@{@"type":@"4"} finish:^(id responseObject) {
         [_loadV removeloadview];
-        if ([responseObject[@"code"] integerValue]==0) {
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"code"] integerValue]==1) {
             
             self.dataDic = responseObject[@"data"];
             

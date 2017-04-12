@@ -10,7 +10,7 @@
 #import "GLFirstHeartCell.h"
 
 @interface GLDailyView()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
 
@@ -25,12 +25,13 @@ static NSString *ID = @"GLFirstHeartCell";
 #pragma UITableViewDelegate UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return self.models.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     GLFirstHeartCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.model = self.models[indexPath.row];
     
     return cell;
 }

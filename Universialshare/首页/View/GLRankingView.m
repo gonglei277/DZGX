@@ -10,7 +10,7 @@
 #import "GLRankingCell.h"
 
 @interface GLRankingView ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
 
@@ -25,13 +25,13 @@ static NSString *ID = @"GLRankingCell";
 #pragma UITableViewDelegate UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 6;
+    return self.models.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     GLRankingCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    cell.model = self.models[indexPath.row];
     return cell;
 }
 

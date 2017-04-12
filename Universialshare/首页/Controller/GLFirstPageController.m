@@ -14,10 +14,15 @@
 #import "GLRankingView.h"
 #import "GLRewardView.h"
 
+#import "GLFirstPageDailyModel.h"
+#import "GLFirstPageRankingModel.h"
+
 #import "LBUserKonwViewController.h"
 #import "LBMoreOperateView.h"
 #import "LBMerchantcreditViewController.h"
 #import "LBConsumptionSeriesViewController.h"
+
+
 
 @interface GLFirstPageController ()
 
@@ -46,6 +51,11 @@
 
 @property (strong, nonatomic)UIView *maskView;//遮罩
 @property (strong, nonatomic)LBMoreOperateView *moreOperateView;//遮罩
+
+@property (nonatomic, strong)NSMutableArray *dailyModels;
+@property (nonatomic, strong)NSMutableArray *rankingModels;
+@property (nonatomic, strong)NSMutableArray *rewardModels;
+
 @end
 
 static NSString *ID = @"GLFirstHeartCell";
@@ -82,61 +92,79 @@ static NSString *followID = @"GLFirstFollowCell";
     
     
 }
-
-- (GLDailyView *)dailyContentView{
-    if (!_dailyContentView) {
-        _dailyContentView = [[NSBundle mainBundle] loadNibNamed:@"GLDailyView" owner:nil options:nil].lastObject;
+- (NSMutableArray *)dailyModels{
+    if (!_dailyModels) {
+        _dailyModels = [NSMutableArray array];
         
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         dic[@"type"] = @"1";
         
-        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
+        [NetworkManager requestPOSTWithURLStr:@"user/index" paramDic:dic finish:^(id responseObject) {
             
-            NSLog(@"%@",responseObject);
-            
+//            NSLog(@"%@",responseObject);
+            NSArray *dicArr = responseObject[@"data"][@"head"];
+            for (int i = 0; i < dicArr.count; i ++) {
+                GLFirstPageDailyModel *model = [[GLFirstPageDailyModel alloc] init];
+                model = [GLFirstPageDailyModel mj_objectWithKeyValues:dicArr[i]];
+                [_dailyModels addObject:model];
+                
+            }
+            [_dailyContentView.tableView reloadData];
         } enError:^(NSError *error) {
             
             NSLog(@"%@",error);
             
         }];
+    }
+    return _dailyModels;
+}
+- (NSMutableArray *)rankingModels{
+    
+    if (!_rankingModels) {
+        
+        _rankingModels = [NSMutableArray array];
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        dic[@"type"] = @"2";
+        
+        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
+//            NSLog(@"%@",responseObject[@"message"]);
+//            NSLog(@"%@",responseObject);
+            NSArray *dicArr = responseObject[@"data"][@"head2"];
+            for (int i = 0; i < dicArr.count; i ++) {
+                
+                GLFirstPageRankingModel *model = [GLFirstPageRankingModel mj_objectWithKeyValues:dicArr[i]];
+                [_rankingModels addObject:model];
+                
+            }
+            [_rankingContentView.tableView reloadData];
+        } enError:^(NSError *error) {
+            
+            NSLog(@"%@",error);
+            
+        }];
+    }
+    return _rankingModels;
+}
+- (GLDailyView *)dailyContentView{
+    if (!_dailyContentView) {
+        _dailyContentView = [[NSBundle mainBundle] loadNibNamed:@"GLDailyView" owner:nil options:nil].lastObject;
+        _dailyContentView.models = self.dailyModels;
+       
     }
     return _dailyContentView;
 }
 - (GLRankingView *)rankingContentView{
     if (!_rankingContentView) {
         _rankingContentView =  [[NSBundle mainBundle] loadNibNamed:@"GLRankingView" owner:nil options:nil].lastObject;
-        
-        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-        dic[@"type"] = @"2";
-        
-        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
-            
-            NSLog(@"%@",responseObject);
-            
-        } enError:^(NSError *error) {
-            
-            NSLog(@"%@",error);
-            
-        }];
-    }
+        _rankingContentView.models = self.rankingModels;
+        }
     return _rankingContentView;
 }
 - (GLRewardView *)rewardContentView{
     if (!_rewardContentView) {
         _rewardContentView =  [[NSBundle mainBundle] loadNibNamed:@"GLRewardView" owner:nil options:nil].lastObject;
         
-        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-        dic[@"type"] = @"3";
-        
-        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
-            
-            NSLog(@"%@",responseObject);
-            
-        } enError:^(NSError *error) {
-            
-            NSLog(@"%@",error);
-            
-        }];
+       
     }
     return _rewardContentView;
 }
@@ -182,8 +210,7 @@ static NSString *followID = @"GLFirstFollowCell";
     [self.moreOperateView.userKnowBt addTarget:self action:@selector(userkonwbutton) forControlEvents:UIControlEventTouchUpInside];
     //点击运营公告
     [self.moreOperateView.OperationBt addTarget:self action:@selector(Operationbutton) forControlEvents:UIControlEventTouchUpInside];
-    //点击用商家信用
-    [self.moreOperateView.merchantBt addTarget:self action:@selector(merchantbutton) forControlEvents:UIControlEventTouchUpInside];
+
     //点击消费系列
     [self.moreOperateView.consumptionBt addTarget:self action:@selector(consumptionbutton) forControlEvents:UIControlEventTouchUpInside];
 
@@ -250,11 +277,76 @@ static NSString *followID = @"GLFirstFollowCell";
     [self.view addSubview:self.maskView];
     [self.maskView addSubview:self.moreOperateView];
     [UIView animateWithDuration:0.3 animations:^{
-        self.moreOperateView.frame=CGRectMake(SCREEN_WIDTH-65, 60, 65, 270);
+        self.moreOperateView.frame=CGRectMake(SCREEN_WIDTH-65, 64, 65, 200);
     } completion:^(BOOL finished) {
         
     }];
 }
+
+#pragma mark - 点击更多操作
+
+-(void)userkonwbutton{
+    self.hidesBottomBarWhenPushed = YES;
+    LBUserKonwViewController *vc=[[LBUserKonwViewController alloc]init];
+    vc.titlestr=@"用户须知";
+    vc.indexType=@"2";
+    [self.navigationController pushViewController:vc animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+    
+}
+
+-(void)Operationbutton{
+    
+    self.hidesBottomBarWhenPushed = YES;
+    LBUserKonwViewController *vc=[[LBUserKonwViewController alloc]init];
+    vc.titlestr=@"运营.公告";
+    vc.indexType=@"3";
+    [self.navigationController pushViewController:vc animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+    
+}
+
+//-(void)merchantbutton{
+//    
+//    self.hidesBottomBarWhenPushed = YES;
+//    LBMerchantcreditViewController *vc=[[LBMerchantcreditViewController alloc]init];
+//    [self.navigationController pushViewController:vc animated:YES];
+//    self.hidesBottomBarWhenPushed = NO;
+//    
+//}
+
+-(void)consumptionbutton{
+    
+    self.hidesBottomBarWhenPushed = YES;
+    LBUserKonwViewController *vc=[[LBUserKonwViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    vc.titlestr=@"运营.公告";
+    vc.indexType=@"3";
+    self.hidesBottomBarWhenPushed = NO;
+    
+}
+
+
+-(UIView*)maskView{
+    
+    if (!_maskView) {
+        _maskView=[[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        _maskView.backgroundColor=[UIColor clearColor];
+    }
+    
+    return _maskView;
+    
+}
+
+-(LBMoreOperateView*)moreOperateView{
+    
+    if (!_moreOperateView) {
+        _moreOperateView=[[NSBundle mainBundle]loadNibNamed:@"LBMoreOperateView" owner:self options:nil].firstObject;
+        _moreOperateView.frame=CGRectMake(SCREEN_WIDTH+65, 64, 65, 200);
+    }
+    return _moreOperateView;
+}
+
 
 
 #pragma mark ------------------self.view的滑动手势
@@ -347,68 +439,6 @@ static NSString *followID = @"GLFirstFollowCell";
     } completion:^(BOOL finished) {
         [self.maskView removeFromSuperview];
     }];
-}
-#pragma mark - 点击更多操作
-
--(void)userkonwbutton{
-    self.hidesBottomBarWhenPushed = YES;
-    LBUserKonwViewController *vc=[[LBUserKonwViewController alloc]init];
-    vc.titlestr=@"用户须知";
-    vc.indexType=@"21";
-    [self.navigationController pushViewController:vc animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
-    
-}
-
--(void)Operationbutton{
-    
-    self.hidesBottomBarWhenPushed = YES;
-    LBUserKonwViewController *vc=[[LBUserKonwViewController alloc]init];
-    vc.titlestr=@"运营.公告";
-    vc.indexType=@"20";
-    [self.navigationController pushViewController:vc animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
-    
-}
-
--(void)merchantbutton{
-    
-    self.hidesBottomBarWhenPushed = YES;
-    LBMerchantcreditViewController *vc=[[LBMerchantcreditViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
-    
-}
-
--(void)consumptionbutton{
-    
-    self.hidesBottomBarWhenPushed = YES;
-    LBConsumptionSeriesViewController *vc=[[LBConsumptionSeriesViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
-    
-}
-
-
--(UIView*)maskView{
-    
-    if (!_maskView) {
-        _maskView=[[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        _maskView.backgroundColor=[UIColor clearColor];
-    }
-    
-    return _maskView;
-    
-}
-
--(LBMoreOperateView*)moreOperateView{
-    
-    if (!_moreOperateView) {
-        _moreOperateView=[[NSBundle mainBundle]loadNibNamed:@"LBMoreOperateView" owner:self options:nil
-                          ].firstObject;
-        _moreOperateView.frame=CGRectMake(SCREEN_WIDTH+65, 60, 65, 270);
-    }
-    return _moreOperateView;
 }
 
 

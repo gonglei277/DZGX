@@ -54,10 +54,11 @@
     _leftLineLeading.constant = ADAPT(10);
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setModel:(GLFirstPageDailyModel *)model{
+    _model = model;
+    _sixValueLabel.text = model.love_price;
+    _twelveValueLabel.text = model.love_price1;
+    _twenty_fourValueLabel.text = model.love_price2;
 }
 
 @end
