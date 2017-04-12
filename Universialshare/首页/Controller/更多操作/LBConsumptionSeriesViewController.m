@@ -38,16 +38,23 @@
     [self loadData];//加载数据
     
 }
-
+-(NSArray*)imageArr{
+    
+    if (!_imageArr) {
+        _imageArr=[NSArray arrayWithObjects:@"5xilie",@"10xilie",@"20xilie", nil];
+    }
+    
+    return _imageArr;
+}
 -(void)loadData{
    
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"user/index_alert" paramDic:@{@"type":@"4"} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"index/index_alert" paramDic:@{@"type":@4} finish:^(id responseObject) {
         [_loadV removeloadview];
         NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue]==1) {
             
-            self.dataDic = responseObject[@"data"];
+            self.dataDic = responseObject[@"data"][@"head"];
             
             [self.tableview reloadData];
             
@@ -70,7 +77,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 90;
+    return ADAPT(100);
     
 }
 
@@ -82,47 +89,41 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.imageV.image=[UIImage imageNamed:self.imageArr[indexPath.row]];
-    if ([self.dataDic[indexPath.row][@"drivetype"] integerValue] == 6) {
+
         if (indexPath.row == 0) {
-            cell.xiaoFLb.text=[NSString stringWithFormat:@"消费金额: %@元",self.dataDic[indexPath.row][@"amount"]];
-            cell.heartLb.text=[NSString stringWithFormat:@"善心总数: %@颗",self.dataDic[indexPath.row][@"lovenumber"]];
-            cell.beanLB.text=[NSString stringWithFormat:@"总善行豆: %@颗",self.dataDic[indexPath.row][@"beannum"]];
-        }
+            cell.xiaoFLb.text=[NSString stringWithFormat:@"消费金额: %@元",self.dataDic[indexPath.row][@"money"]];
+            cell.heartLb.text=[NSString stringWithFormat:@"善心总数: %@颗",self.dataDic[indexPath.row][@"love"]];
+            cell.beanLB.text=[NSString stringWithFormat:@"总善行豆: %@颗",self.dataDic[indexPath.row][@"love"]];
+             cell.timeLb.text = [NSString stringWithFormat:@"%@",self.dataDic[indexPath.row][@"time"]];
+        }else if (indexPath.row == 1){
         
-    }else if ([self.dataDic[indexPath.row][@"drivetype"] integerValue] == 12 && indexPath.row == 1){
-        
-        cell.xiaoFLb.text=[NSString stringWithFormat:@"消费金额: %@元",self.dataDic[indexPath.row][@"amount"]];
-        cell.heartLb.text=[NSString stringWithFormat:@"善心总数: %@颗",self.dataDic[indexPath.row][@"lovenumber"]];
-        cell.beanLB.text=[NSString stringWithFormat:@"总善行豆: %@颗",self.dataDic[indexPath.row][@"beannum"]];
+        cell.xiaoFLb.text=[NSString stringWithFormat:@"消费金额: %@元",self.dataDic[indexPath.row][@"money"]];
+        cell.heartLb.text=[NSString stringWithFormat:@"善心总数: %@颗",self.dataDic[indexPath.row][@"love"]];
+        cell.beanLB.text=[NSString stringWithFormat:@"总善行豆: %@颗",self.dataDic[indexPath.row][@"love"]];
+        cell.timeLb.text = [NSString stringWithFormat:@"%@",self.dataDic[indexPath.row][@"time"]];
     
-    }else if ([self.dataDic[indexPath.row][@"drivetype"] integerValue] == 24 && indexPath.row == 2){
+    }else if (indexPath.row == 2){
         
-        cell.xiaoFLb.text=[NSString stringWithFormat:@"消费金额: %@元",self.dataDic[indexPath.row][@"amount"]];
-        cell.heartLb.text=[NSString stringWithFormat:@"善心总数: %@颗",self.dataDic[indexPath.row][@"lovenumber"]];
-        cell.beanLB.text=[NSString stringWithFormat:@"总善行豆: %@颗",self.dataDic[indexPath.row][@"beannum"]];
+        cell.xiaoFLb.text=[NSString stringWithFormat:@"消费金额: %@元",self.dataDic[indexPath.row][@"money"]];
+        cell.heartLb.text=[NSString stringWithFormat:@"善心总数: %@颗",self.dataDic[indexPath.row][@"love"]];
+        cell.beanLB.text=[NSString stringWithFormat:@"总善行豆: %@颗",self.dataDic[indexPath.row][@"love"]];
+        cell.timeLb.text = [NSString stringWithFormat:@"%@",self.dataDic[indexPath.row][@"time"]];
         
     }
-    NSDate * date = [NSDate date];//当前时间
-    NSDate *lastDay = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:date];
-    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];//创建一个日期格式化器
-    dateFormatter.dateFormat=@"yyyy-MM-dd";//指定转date得日期格式化形式
-    NSString *datestr=[dateFormatter stringFromDate:lastDay];
-    
-    cell.timeLb.text=datestr;
+//    NSDate * date = [NSDate date];//当前时间
+//    NSDate *lastDay = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:date];
+//    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];//创建一个日期格式化器
+//    dateFormatter.dateFormat=@"yyyy-MM-dd";//指定转date得日期格式化形式
+//    NSString *datestr=[dateFormatter stringFromDate:lastDay];
+//    
+//    cell.timeLb.text=datestr;
     
     return cell;
     
     
 }
 
--(NSArray*)imageArr{
 
-    if (!_imageArr) {
-        _imageArr=[NSArray arrayWithObjects:@"consumption_dirtype_6",@"consumption_dirtype_12",@"consumption_dirtype_24", nil];
-    }
-
-    return _imageArr;
-}
 
 -(NSArray*)dataDic{
     

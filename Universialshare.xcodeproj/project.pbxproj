@@ -13,6 +13,8 @@
 		4A013C9E1E9DC67300BB3764 /* GLFirstPageDailyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A013C9D1E9DC67300BB3764 /* GLFirstPageDailyModel.m */; };
 		4A013CA11E9DCE1500BB3764 /* GLFirstPageRankingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A013CA01E9DCE1500BB3764 /* GLFirstPageRankingModel.m */; };
 		4A013CA41E9DCE2800BB3764 /* GLFirstPageRewardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A013CA31E9DCE2800BB3764 /* GLFirstPageRewardModel.m */; };
+		4A013CA81E9E036900BB3764 /* LBHomepopinfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A013CA61E9E036900BB3764 /* LBHomepopinfoView.m */; };
+		4A013CA91E9E036900BB3764 /* LBHomepopinfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A013CA71E9E036900BB3764 /* LBHomepopinfoView.xib */; };
 		4A0D97631E9729C100A26B84 /* GLHomeLiveChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0D970A1E9729C100A26B84 /* GLHomeLiveChooseController.m */; };
 		4A0D97641E9729C100A26B84 /* GLHomeLiveChooseController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0D970B1E9729C100A26B84 /* GLHomeLiveChooseController.xib */; };
 		4A0D97651E9729C100A26B84 /* GLHomeLiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0D970D1E9729C100A26B84 /* GLHomeLiveController.m */; };
@@ -617,6 +619,9 @@
 		4A013CA01E9DCE1500BB3764 /* GLFirstPageRankingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFirstPageRankingModel.m; sourceTree = "<group>"; };
 		4A013CA21E9DCE2800BB3764 /* GLFirstPageRewardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFirstPageRewardModel.h; sourceTree = "<group>"; };
 		4A013CA31E9DCE2800BB3764 /* GLFirstPageRewardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFirstPageRewardModel.m; sourceTree = "<group>"; };
+		4A013CA51E9E036900BB3764 /* LBHomepopinfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomepopinfoView.h; sourceTree = "<group>"; };
+		4A013CA61E9E036900BB3764 /* LBHomepopinfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomepopinfoView.m; sourceTree = "<group>"; };
+		4A013CA71E9E036900BB3764 /* LBHomepopinfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBHomepopinfoView.xib; sourceTree = "<group>"; };
 		4A0D97091E9729C100A26B84 /* GLHomeLiveChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHomeLiveChooseController.h; sourceTree = "<group>"; };
 		4A0D970A1E9729C100A26B84 /* GLHomeLiveChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHomeLiveChooseController.m; sourceTree = "<group>"; };
 		4A0D970B1E9729C100A26B84 /* GLHomeLiveChooseController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLHomeLiveChooseController.xib; sourceTree = "<group>"; };
@@ -3960,6 +3965,9 @@
 				F961AA3F1E9CE37600275F52 /* LBMerchantcreditTableViewCell.h */,
 				F961AA401E9CE37600275F52 /* LBMerchantcreditTableViewCell.m */,
 				F961AA411E9CE37600275F52 /* LBMerchantcreditTableViewCell.xib */,
+				4A013CA51E9E036900BB3764 /* LBHomepopinfoView.h */,
+				4A013CA61E9E036900BB3764 /* LBHomepopinfoView.m */,
+				4A013CA71E9E036900BB3764 /* LBHomepopinfoView.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -4110,6 +4118,7 @@
 				F9061FD81E83C4730080E9D9 /* Assets.xcassets in Resources */,
 				F92309391E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeDetailOneTableViewCell.xib in Resources */,
 				F92309231E9B8BFF00ECDC94 /* LBMineCenterRechargeBankCardTableViewCell.xib in Resources */,
+				4A013CA91E9E036900BB3764 /* LBHomepopinfoView.xib in Resources */,
 				4A4610361E9CC6360045824F /* ios-social-sdk-like.html in Resources */,
 				4A46101E1E9CC6360045824F /* UMSocialLocalizable.strings in Resources */,
 				4A4609EF1E9CB78E0045824F /* GLDirectDonationController.xib in Resources */,
@@ -4495,6 +4504,7 @@
 				F961A9CC1E9C750300275F52 /* UILabel+UILabel_ChangeLineSpaceAndWordSpace.m in Sources */,
 				4A4610131E9CC6360045824F /* LBXScanNative.m in Sources */,
 				F90620071E83C5D00080E9D9 /* LBLoginNavigationViewController.m in Sources */,
+				4A013CA81E9E036900BB3764 /* LBHomepopinfoView.m in Sources */,
 				F923091C1E9B8BFF00ECDC94 /* LBMineCenterMyBalanceViewController.m in Sources */,
 				4A4609F71E9CB78E0045824F /* GLDonationController.m in Sources */,
 				4A4610151E9CC6360045824F /* LBXScanResult.m in Sources */,

@@ -119,7 +119,6 @@
 - (IBAction)forgetButtonEvent:(UIButton *)sender {
     
 
-   
 }
 
 //确定按

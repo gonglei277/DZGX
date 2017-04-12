@@ -22,6 +22,8 @@
 #import "LBMerchantcreditViewController.h"
 #import "LBConsumptionSeriesViewController.h"
 
+//公告弹出框
+#import "LBHomepopinfoView.h"
 
 
 @interface GLFirstPageController ()
@@ -29,6 +31,7 @@
 {
     UIImageView *_imageviewLeft , *_imageviewRight;
 }
+@property (weak, nonatomic) IBOutlet UILabel *totalSumLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *sidebarView;
 
@@ -56,6 +59,9 @@
 @property (nonatomic, strong)NSMutableArray *rankingModels;
 @property (nonatomic, strong)NSMutableArray *rewardModels;
 
+@property (strong, nonatomic)LBHomepopinfoView *homepopinfoView;
+@property (strong, nonatomic)UIView *homepopinfoViewmask;
+
 @end
 
 static NSString *ID = @"GLFirstHeartCell";
@@ -69,6 +75,7 @@ static NSString *followID = @"GLFirstFollowCell";
     [self addMySelfPanGesture];
     
     [self setupNav];
+    [self initInterDataSorceinfomessage];
     [self setupUI];
 }
 
@@ -88,8 +95,6 @@ static NSString *followID = @"GLFirstFollowCell";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
-
-    
     
 }
 - (NSMutableArray *)dailyModels{
@@ -99,16 +104,18 @@ static NSString *followID = @"GLFirstFollowCell";
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         dic[@"type"] = @"1";
         
-        [NetworkManager requestPOSTWithURLStr:@"user/index" paramDic:dic finish:^(id responseObject) {
+        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
             
-//            NSLog(@"%@",responseObject);
+            NSLog(@"%@",responseObject);
             NSArray *dicArr = responseObject[@"data"][@"head"];
+            
             for (int i = 0; i < dicArr.count; i ++) {
                 GLFirstPageDailyModel *model = [[GLFirstPageDailyModel alloc] init];
                 model = [GLFirstPageDailyModel mj_objectWithKeyValues:dicArr[i]];
                 [_dailyModels addObject:model];
                 
             }
+            _totalSumLabel.text = [NSString stringWithFormat:@"全联盟昨日消费:%@元",responseObject[@"zjz"]];
             [_dailyContentView.tableView reloadData];
         } enError:^(NSError *error) {
             
@@ -271,6 +278,128 @@ static NSString *followID = @"GLFirstFollowCell";
 
     }
 }
+-(void)initInterDataSorceinfomessage{
+    
+    [NetworkManager requestPOSTWithURLStr:@"index/notice" paramDic:nil finish:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        
+        if ([responseObject[@"code"] integerValue] == 1) {
+            
+//            NSString *strtitle=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"title"]];
+//            NSString *strcontent=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"content"]];
+//            NSString *strtime=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"release_time"]];
+            
+            NSString *strtitle = @"公告";
+            NSString *strcontent = @"你大爷我擦 海鸟后奥发撒解放啦就是邓丽君 你大爷我擦 海鸟后奥发撒解放啦就是邓丽君   ";
+            NSString *strtime = @"2017-04-01";
+            
+            if ([strtitle rangeOfString:@"null"].location == NSNotFound) {
+                self.homepopinfoView.titlename.text = strtitle;
+            }else{
+                self.homepopinfoView.titlename.text = @"";
+            }
+            if ([strcontent rangeOfString:@"null"].location == NSNotFound) {
+                self.homepopinfoView.infoLb.attributedText = [self strToAttriWithStr:strcontent];
+            }else{
+                self.homepopinfoView.infoLb.text = @"";
+            }
+            if ([strtime rangeOfString:@"null"].location == NSNotFound) {
+                self.homepopinfoView.timeLb.text = strtime;
+            }else{
+                
+                self.homepopinfoView.timeLb.text = @"";
+            }
+//
+//            if (self.homepopinfoView.infoLb.text.length<=1) {
+//                return ;
+//            }
+            
+            CGRect sizetitle=[self.homepopinfoView.titlename.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil];
+            
+            CGRect sizecontent=[self.homepopinfoView.infoLb.attributedText  boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+            
+            NSLog(@"%@",NSStringFromCGRect(sizecontent));
+            if ((110 + sizetitle.size.height + sizecontent.size.height) >= ((SCREEN_HEIGHT/2) - 30)) {
+                
+                self.homepopinfoView.frame = CGRectMake(20, (SCREEN_HEIGHT - ((SCREEN_HEIGHT/2) - 30)) / 2, SCREEN_WIDTH - 40, ((SCREEN_HEIGHT/2) - 30));
+                
+                self.homepopinfoView.scrollViewH.constant = (SCREEN_HEIGHT/2) - 105;
+                self.homepopinfoView.contentW.constant = SCREEN_WIDTH - 80;
+                self.homepopinfoView.contentH.constant = sizetitle.size.height + sizecontent.size.height + 20;
+                
+            }else{
+                
+                self.homepopinfoView.frame = CGRectMake(20, (SCREEN_HEIGHT - (110 + sizetitle.size.height + sizecontent.size.height)) / 2, SCREEN_WIDTH - 40, 110 + sizetitle.size.height + sizecontent.size.height);
+                
+                self.homepopinfoView.scrollViewH.constant = 110 + sizetitle.size.height + sizecontent.size.height - 105;
+                self.homepopinfoView.contentW.constant = SCREEN_WIDTH - 80;
+                self.homepopinfoView.contentH.constant = 110 + sizetitle.size.height + sizecontent.size.height - 105;
+                
+            }
+            
+            
+            [self.view addSubview:self.homepopinfoViewmask];
+            [self.homepopinfoViewmask addSubview:self.homepopinfoView];
+            
+        }
+
+    } enError:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+   
+}
+//关闭
+-(void)closeinfobutton{
+    //
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        self.homepopinfoViewmask.transform = CGAffineTransformMakeScale(0.07, 0.07);
+        
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.homepopinfoViewmask.center = CGPointMake(SCREEN_WIDTH - 30,30);
+        } completion:^(BOOL finished) {
+            [self.homepopinfoViewmask removeFromSuperview];
+        }];
+    }];
+    
+}
+-(UIView*)homepopinfoViewmask{
+    if (!_homepopinfoViewmask) {
+        _homepopinfoViewmask=[[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        _homepopinfoViewmask.backgroundColor=[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.2];
+    }
+    
+    return _homepopinfoViewmask;
+    
+}
+-(LBHomepopinfoView*)homepopinfoView{
+    if (!_homepopinfoView) {
+        _homepopinfoView=[[NSBundle mainBundle]loadNibNamed:@"LBHomepopinfoView" owner:self options:nil].firstObject;
+        _homepopinfoView.layer.cornerRadius=5;
+        _homepopinfoView.clipsToBounds=YES;
+        _homepopinfoView.closeBt.layer.cornerRadius=5;
+        _homepopinfoView.clipsToBounds=YES;
+        [_homepopinfoView.closeBt addTarget:self action:@selector(closeinfobutton) forControlEvents:UIControlEventTouchUpInside];
+        
+    }
+    return _homepopinfoView;
+}
+
+/**
+ *  字符串转富文本
+ */
+- (NSMutableAttributedString *)strToAttriWithStr:(NSString *)htmlStr{
+    
+    NSMutableAttributedString *AttributedString=[[NSMutableAttributedString alloc] initWithData:[htmlStr dataUsingEncoding:NSUnicodeStringEncoding]
+                                                                                        options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}
+                                                                             documentAttributes:nil
+                                                                                          error:nil];
+    
+    [AttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0, [AttributedString length])];//设置字体大小
+    
+    return AttributedString;
+}
 
 - (IBAction)showMoreButton:(UIButton *)sender {
     
@@ -318,10 +447,9 @@ static NSString *followID = @"GLFirstFollowCell";
 -(void)consumptionbutton{
     
     self.hidesBottomBarWhenPushed = YES;
-    LBUserKonwViewController *vc=[[LBUserKonwViewController alloc]init];
+    LBConsumptionSeriesViewController *vc=[[LBConsumptionSeriesViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
-    vc.titlestr=@"运营.公告";
-    vc.indexType=@"3";
+   
     self.hidesBottomBarWhenPushed = NO;
     
 }
