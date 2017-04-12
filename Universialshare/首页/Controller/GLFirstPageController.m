@@ -31,11 +31,12 @@
 {
     UIImageView *_imageviewLeft , *_imageviewRight;
 }
+@property (weak, nonatomic) IBOutlet UIButton *head_iconBtn;
 @property (weak, nonatomic) IBOutlet UILabel *totalSumLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *sidebarView;
 
-@property (nonatomic, strong) GLDailyView*dailyContentView;
+@property (nonatomic, strong)GLDailyView *dailyContentView;
 @property (nonatomic, strong)GLRankingView *rankingContentView;
 @property (nonatomic, strong)GLRewardView *rewardContentView;
 
@@ -74,23 +75,11 @@ static NSString *followID = @"GLFirstFollowCell";
     
     [self addMySelfPanGesture];
     
-    [self setupNav];
+
     [self initInterDataSorceinfomessage];
     [self setupUI];
 }
 
-- (void)setupNav{
-    
-    //自定义导航栏右按钮
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(SCREEN_WIDTH - 60, 14, 60, 30);
-    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
-    [button setTitle:@"回购记录" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont systemFontOfSize:13];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
-
-}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -108,7 +97,6 @@ static NSString *followID = @"GLFirstFollowCell";
             
             NSLog(@"%@",responseObject);
             NSArray *dicArr = responseObject[@"data"][@"head"];
-            
             for (int i = 0; i < dicArr.count; i ++) {
                 GLFirstPageDailyModel *model = [[GLFirstPageDailyModel alloc] init];
                 model = [GLFirstPageDailyModel mj_objectWithKeyValues:dicArr[i]];
@@ -134,7 +122,7 @@ static NSString *followID = @"GLFirstFollowCell";
         dic[@"type"] = @"2";
         
         [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
-//            NSLog(@"%@",responseObject[@"message"]);
+            NSLog(@"%@",responseObject[@"message"]);
 //            NSLog(@"%@",responseObject);
             NSArray *dicArr = responseObject[@"data"][@"head2"];
             for (int i = 0; i < dicArr.count; i ++) {
@@ -170,7 +158,26 @@ static NSString *followID = @"GLFirstFollowCell";
 - (GLRewardView *)rewardContentView{
     if (!_rewardContentView) {
         _rewardContentView =  [[NSBundle mainBundle] loadNibNamed:@"GLRewardView" owner:nil options:nil].lastObject;
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        dic[@"type"] = @"3";
         
+        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
+            
+            NSLog(@"%@",responseObject);
+            _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"djz"]];
+            _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"zjz"]];
+            _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"ltime"]];
+            _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"money"]];
+            _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"sh_sum"]];
+            _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"people"]];
+            
+            _rewardContentView.timeLabel.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"time"]];
+            
+        } enError:^(NSError *error) {
+            
+            NSLog(@"%@",error);
+            
+        }];
        
     }
     return _rewardContentView;
@@ -220,6 +227,14 @@ static NSString *followID = @"GLFirstFollowCell";
 
     //点击消费系列
     [self.moreOperateView.consumptionBt addTarget:self action:@selector(consumptionbutton) forControlEvents:UIControlEventTouchUpInside];
+    
+    // 判断是否登录
+    if ([UserModel defaultUser].loginstatus) {
+        NSString *imageName = [UserModel defaultUser].headPic;
+        [self.head_iconBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    }else{
+        [self.head_iconBtn setImage:[UIImage imageNamed:@"mine_head"] forState:UIControlStateNormal];
+    }
 
 }
 - (void)changeView:(UITapGestureRecognizer *)tap {
@@ -235,7 +250,7 @@ static NSString *followID = @"GLFirstFollowCell";
             CATransition *animation = [CATransition animation];
             animation.duration = 0.6;
             animation.timingFunction = UIViewAnimationCurveEaseInOut;
-            animation.type = @"cube";
+            animation.type = @"rippleEffect";
             self.dailyContentView.frame = CGRectMake(0, 0, self.contentView.yy_width, self.contentView.yy_height);
             
             [self.dailyContentView.layer addAnimation:animation forKey:nil];
@@ -252,7 +267,7 @@ static NSString *followID = @"GLFirstFollowCell";
             CATransition *animation = [CATransition animation];
             animation.duration = 0.5;
             animation.timingFunction = UIViewAnimationCurveEaseInOut;
-            animation.type = @"cube";
+            animation.type = @"rippleEffect";
             self.rankingContentView.frame = CGRectMake(0, 0, self.contentView.yy_width, self.contentView.yy_height);
             
             [self.rankingContentView.layer addAnimation:animation forKey:nil];
@@ -269,7 +284,7 @@ static NSString *followID = @"GLFirstFollowCell";
             CATransition *animation = [CATransition animation];
             animation.duration = 0.5;
             animation.timingFunction = UIViewAnimationCurveEaseInOut;
-            animation.type = @"cube";
+            animation.type = @"rippleEffect";
             self.rewardContentView.frame = CGRectMake(0, 0, self.contentView.yy_width, self.contentView.yy_height);
             
             [self.rewardContentView.layer addAnimation:animation forKey:nil];

@@ -118,16 +118,10 @@
 }
 //忘记密码
 - (IBAction)forgetButtonEvent:(UIButton *)sender {
-    
-<<<<<<< HEAD
 
-=======
-    
     LBHomeLoginFortgetSecretViewController *vc=[[LBHomeLoginFortgetSecretViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
-  
-   
->>>>>>> bc813d5c7b3020b09c0663643fe4c3626a8e4821
+
 }
 
 //确定按

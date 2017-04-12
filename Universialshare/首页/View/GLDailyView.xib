@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,19 +15,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="善心日值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jh7-Oa-bb2">
-                    <rect key="frame" x="140.5" y="5" width="53.5" height="16"/>
+                    <rect key="frame" x="140.5" y="5" width="53.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="激励日期:2017-02-19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yF-5h-6Oi">
-                    <rect key="frame" x="116.5" y="26" width="101" height="12"/>
+                    <rect key="frame" x="116.5" y="27" width="101" height="12"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iZJ-FR-rTF">
-                    <rect key="frame" x="0.0" y="43" width="334" height="185"/>
+                    <rect key="frame" x="0.0" y="44" width="334" height="184"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="iN0-l3-epB" id="462-K9-47p"/>
