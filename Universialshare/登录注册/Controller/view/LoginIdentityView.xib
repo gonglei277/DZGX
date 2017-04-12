@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,7 +28,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfZ-9h-LNZ">
                     <rect key="frame" x="15" y="40" width="350" height="25"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lblocation_on" translatesAutoresizingMaskIntoConstraints="NO" id="LXb-uR-c2N">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_on" translatesAutoresizingMaskIntoConstraints="NO" id="LXb-uR-c2N">
                             <rect key="frame" x="0.0" y="3" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="erg-i0-NGb"/>
@@ -56,7 +55,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PW0-Av-QsM">
                     <rect key="frame" x="15" y="75" width="350" height="25"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lblocation_off" translatesAutoresizingMaskIntoConstraints="NO" id="nUx-bm-FuE">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_off" translatesAutoresizingMaskIntoConstraints="NO" id="nUx-bm-FuE">
                             <rect key="frame" x="0.0" y="3" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="HQh-1M-70I"/>
@@ -138,7 +137,7 @@
     </objects>
     <resources>
         <image name="imcc_record_bg" width="17" height="16"/>
-        <image name="lblocation_off" width="32" height="32"/>
-        <image name="lblocation_on" width="32" height="32"/>
+        <image name="location_off" width="42" height="42"/>
+        <image name="location_on" width="42" height="42"/>
     </resources>
 </document>

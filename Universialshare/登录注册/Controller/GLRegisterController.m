@@ -98,7 +98,7 @@
 
         if ([responseObject[@"code"] integerValue]==1) {
              [MBProgressHUD showError:responseObject[@"message"]];
-            [self.presentingViewController popoverPresentationController];
+             [self dismissViewControllerAnimated:YES completion:nil];
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
         }

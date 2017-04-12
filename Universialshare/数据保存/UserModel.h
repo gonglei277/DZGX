@@ -31,6 +31,7 @@
 @property (nonatomic, copy)NSString  *version;//版本号
 @property (nonatomic, copy)NSString  *vsnUpdateTime;//版本上次更新时间
 @property (nonatomic, copy)NSString  *vsnAddress;//版本地址
+@property (nonatomic, copy)NSString  *counta;//
 
 +(UserModel*)defaultUser;
 
