@@ -54,6 +54,8 @@
 //退出登录
 - (IBAction)exitEvent:(UIButton *)sender {
     
+    [UserModel defaultUser].loginstatus = NO;
+    [usermodelachivar achive];
     
 }
 
