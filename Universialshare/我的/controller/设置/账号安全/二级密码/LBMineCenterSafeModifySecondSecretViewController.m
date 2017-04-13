@@ -43,6 +43,7 @@
 @property (strong, nonatomic)NSString *sixSecret;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *secretViewH;
+@property (strong, nonatomic)LoadWaitView *loadV;
 
 @end
 
@@ -113,8 +114,9 @@
         [MBProgressHUD showError:@"密码长度错误"];
         return;
     }
-    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/checkTwoPass" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].name,@"psd":_sixSecret} finish:^(id responseObject) {
+        [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
             
             [self.view endEditing:YES];
@@ -125,6 +127,7 @@
             [MBProgressHUD showError:responseObject[@"message"]];
         }
     } enError:^(NSError *error) {
+        [_loadV removeloadview];
         [MBProgressHUD showError:error.localizedDescription];
     }];
     
@@ -159,8 +162,9 @@
         [MBProgressHUD showError:@"两次输入的密码不一致"];
         return;
     }
-    
+     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/setTwoPass" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].name,@"psd":self.basTRepSecTf.text} finish:^(id responseObject) {
+        [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
             
             [MBProgressHUD showError:responseObject[@"message"]];
@@ -172,6 +176,7 @@
             [MBProgressHUD showError:responseObject[@"message"]];
         }
     } enError:^(NSError *error) {
+        [_loadV removeloadview];
         [MBProgressHUD showError:error.localizedDescription];
     }];
 

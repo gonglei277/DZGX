@@ -23,6 +23,7 @@
 @property (strong, nonatomic)LoginIdentityView *loginView;
 @property (strong, nonatomic)UIView *maskView;
 @property (strong, nonatomic)NSString *usertype;//用户类型 默认为善行者
+@property (strong, nonatomic)LoadWaitView *loadV;
 
 @end
 
@@ -138,8 +139,9 @@
 //确定按
 -(void)surebuttonEvent{
 
-    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/login" paramDic:@{@"userphone":self.phone.text,@"password":self.scretTf.text,@"groupID":self.usertype} finish:^(id responseObject) {
+        [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
             [MBProgressHUD showError:responseObject[@"message"]];
             
@@ -186,7 +188,7 @@
         }
         
     } enError:^(NSError *error) {
-        
+        [_loadV removeloadview];
         [MBProgressHUD showError:error.localizedDescription];
         
     }];
