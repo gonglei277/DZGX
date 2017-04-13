@@ -10,14 +10,14 @@
 
 @interface GLMine_MyHeartCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *costDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *heartDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *taxLabel;
-@property (weak, nonatomic) IBOutlet UILabel *acountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *totalHeartLabel;
-@property (weak, nonatomic) IBOutlet UILabel *loveValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *consumeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *encourageSumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *heartSumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *encouragingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jiliCompleteLabel;
+@property (weak, nonatomic) IBOutlet UILabel *daijiliLabel;
 @property (weak, nonatomic) IBOutlet UILabel *finishedNumLabel;
-@property (weak, nonatomic) IBOutlet UILabel *returnValueLabel;
+
 
 
 @end
@@ -30,36 +30,36 @@
 }
 - (void)setModel:(GLMyheartModel *)model{
     _model = model;
-    if([model.amount rangeOfString:@"null"].location != NSNotFound){
-        model.amount = @"0";
+    if([model.money rangeOfString:@"null"].location != NSNotFound){
+        model.money = @"0";
     }
-    if([model.tax rangeOfString:@"null"].location != NSNotFound){
-        model.tax = @"0";
+    if([model.zjl rangeOfString:@"null"].location != NSNotFound){
+        model.zjl = @"0";
     }
-    if([model.lovevalue rangeOfString:@"null"].location != NSNotFound){
-        model.lovevalue = @"0";
+    if([model.love rangeOfString:@"null"].location != NSNotFound){
+        model.love = @"0";
     }
-    if([model.endnumber rangeOfString:@"null"].location != NSNotFound){
-        model.endnumber = @"0";
+    if([model.jl_love rangeOfString:@"null"].location != NSNotFound){
+        model.jl_love = @"0";
     }
-    if([model.returnvalue rangeOfString:@"null"].location != NSNotFound){
-        model.returnvalue = @"0";
+    if([model.end_love rangeOfString:@"null"].location != NSNotFound){
+        model.end_love = @"0";
     }
-    if([model.expensetime rangeOfString:@"null"].location != NSNotFound){
-        model.expensetime = @"";
+    if([model.end_bean rangeOfString:@"null"].location != NSNotFound){
+        model.end_bean = @"";
     }
-    if([model.expensetime rangeOfString:@"null"].location != NSNotFound){
-        model.expensetime = @"";
+    if([model.bean rangeOfString:@"null"].location != NSNotFound){
+        model.bean = @"";
     }
     
-    self.costDateLabel.text = model.expensetime;
-    self.heartDateLabel.text = model.gather_date;
-    self.acountLabel.text = model.amount;
-    self.totalHeartLabel.text = model.tax;
-    self.loveValueLabel.text = model.lovevalue;
-    self.finishedNumLabel.text = model.endnumber;
-    self.returnValueLabel.text = model.returnvalue;
-    self.taxLabel.text = model.tax;
+    self.consumeLabel.text = model.money;
+    self.encourageSumLabel.text = model.zjl;
+    self.heartSumLabel.text = model.love;
+    self.encouragingLabel.text = model.jl_love;
+    self.jiliCompleteLabel.text = model.end_love;
+    self.daijiliLabel.text = model.end_bean;
+    self.finishedNumLabel.text = model.bean;
+
 }
 
 

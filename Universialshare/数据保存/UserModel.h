@@ -15,7 +15,7 @@
 
 @property (nonatomic, copy)NSString  *uid;//用户uid
 @property (nonatomic, copy)NSString  *phone;//用户手机号
-@property (nonatomic, copy)NSString  *name;//用户名
+@property (nonatomic, copy)NSString  *name;//用户ID
 @property (nonatomic, copy)NSString  *banknumber;//默认银行卡
 @property (nonatomic, copy)NSString  *groupId;//用户组id
 @property (nonatomic, copy)NSString  *regTime;//注册时间

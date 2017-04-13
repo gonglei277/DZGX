@@ -19,13 +19,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Universialshare/&#x9996;&#x9875;/Controller/&#x66f4;&#x591a;&#x64cd;&#x4f5c;/LBUserKonwViewController.m"
-            timestampString = "513743190.32856"
+            filePath = "Universialshare/&#x6211;&#x7684;/controller/&#x6211;&#x7684;&#x5584;&#x5fc3; /View/GLMine_MyHeartCell.m"
+            timestampString = "513754315.849906"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-loadData"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-setModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Universialshare/&#x6211;&#x7684;/controller/&#x6211;&#x7684;&#x5584;&#x5fc3; /Controller/GLSixPersentController.m"
+            timestampString = "513754481.298245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-models"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

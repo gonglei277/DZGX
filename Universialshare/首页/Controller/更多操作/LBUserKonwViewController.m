@@ -42,7 +42,7 @@
         [_loadV removeloadview];
 
 //        NSLog(@"%@",responseObject);
-        if ([responseObject[@"code"] integerValue]==1) {
+        if ([responseObject[@"code"] integerValue] == 1) {
              
             self.dataDic = responseObject[@"data"];
 //            NSLog(@"content = %@",self.dataDic[@"content"]);

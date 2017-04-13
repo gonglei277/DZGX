@@ -22,6 +22,7 @@
 #import "GLBuyBackController.h"
 #import "GLDonationController.h"
 #import "GLRecommendController.h"
+#import "GLMine_InfoController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface LBMineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
@@ -42,7 +43,9 @@
     
     [self addMySelfPanGesture];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushToInfoVC)];
     
+    [self.headview.headimage addGestureRecognizer:tap];
     // 注册表头
     [self.collectionV registerClass:[MineCollectionHeaderV class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"MineCollectionHeaderV"];
     [self.collectionV registerNib:[UINib nibWithNibName:@"LBMineCenterCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"LBMineCenterCollectionViewCell"];
@@ -73,6 +76,10 @@
         self.headview.namelebel.text = @"用户名";
     }
 
+}
+-(void)pushToInfoVC{
+    GLMine_InfoController *infoVC = [[GLMine_InfoController alloc] init];
+    [self.navigationController pushViewController:infoVC animated:YES];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

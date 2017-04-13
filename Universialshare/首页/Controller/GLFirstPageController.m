@@ -30,6 +30,9 @@
 
 {
     UIImageView *_imageviewLeft , *_imageviewRight;
+    
+    LoadWaitView *_loadV;
+    
 }
 @property (weak, nonatomic) IBOutlet UIButton *head_iconBtn;
 @property (weak, nonatomic) IBOutlet UILabel *totalSumLabel;
@@ -134,11 +137,15 @@ static NSString *followID = @"GLFirstFollowCell";
     [self.moreOperateView.consumptionBt addTarget:self action:@selector(consumptionbutton) forControlEvents:UIControlEventTouchUpInside];
     
     // 判断是否登录
-    if ([UserModel defaultUser].loginstatus) {
+    if ([UserModel defaultUser].loginstatus == YES) {
         NSString *imageName = [UserModel defaultUser].headPic;
         [self.head_iconBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+        if (self.head_iconBtn.imageView.image == nil) {
+            [self.head_iconBtn setImage:[UIImage imageNamed:@"mine_head"] forState:UIControlStateNormal];
+        }
     }else{
-        [self.head_iconBtn setImage:[UIImage imageNamed:@"mine_head"] forState:UIControlStateNormal];
+//        [self.head_iconBtn setImage:[UIImage imageNamed:@"mine_head"] forState:UIControlStateNormal];
+        [self.head_iconBtn setTitle:@"登录" forState:UIControlStateNormal];
     }
 
 }
@@ -209,7 +216,7 @@ static NSString *followID = @"GLFirstFollowCell";
     
     [NetworkManager requestPOSTWithURLStr:@"index/notice" paramDic:nil finish:^(id responseObject) {
 //        NSLog(@"%@",responseObject);
-        
+//        [_loadV removeFromSuperview];
         if ([responseObject[@"code"] integerValue] == 1) {
             
             NSString *strtitle=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"title"]];
@@ -408,22 +415,27 @@ static NSString *followID = @"GLFirstFollowCell";
         
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         dic[@"type"] = @"1";
+        
+         _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
         [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
-            //            NSLog(@"%@",responseObject);
-            
-            NSArray *dicArr = responseObject[@"data"][@"head"];
-            for (int i = 0; i < dicArr.count; i ++) {
-                GLFirstPageDailyModel *model = [[GLFirstPageDailyModel alloc] init];
-                model = [GLFirstPageDailyModel mj_objectWithKeyValues:dicArr[i]];
-                [_dailyModels addObject:model];
+            [_loadV removeFromSuperview];
+            if ([responseObject[@"code"] intValue] == 1) {
                 
+                NSArray *dicArr = responseObject[@"data"][@"head"];
+                for (int i = 0; i < dicArr.count; i ++) {
+                    GLFirstPageDailyModel *model = [[GLFirstPageDailyModel alloc] init];
+                    model = [GLFirstPageDailyModel mj_objectWithKeyValues:dicArr[i]];
+                    [_dailyModels addObject:model];
+                    
+                }
+                CGFloat sum = [responseObject[@"zjz"] floatValue];
+                NSString *sumStr = [NSString stringWithFormat:@"%.2f万",sum/10000];
+                _totalSumLabel.text = [NSString stringWithFormat:@"全联盟昨日消费:%@元",sumStr];
             }
-            CGFloat sum = [responseObject[@"zjz"] floatValue];
-            NSString *sumStr = [NSString stringWithFormat:@"%.2f万",sum/10000];
-            _totalSumLabel.text = [NSString stringWithFormat:@"全联盟昨日消费:%@元",sumStr];
+            
             [_dailyContentView.tableView reloadData];
         } enError:^(NSError *error) {
-            
+            [_loadV removeFromSuperview];
             NSLog(@"%@",error);
             
         }];
@@ -437,19 +449,22 @@ static NSString *followID = @"GLFirstFollowCell";
         _rankingModels = [NSMutableArray array];
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         dic[@"type"] = @"2";
-        
+//         _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
         [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
-            
+            [_loadV removeFromSuperview];
+             if ([responseObject[@"code"] intValue] == 1) {
             NSArray *dicArr = responseObject[@"data"][@"head2"];
             for (int i = 0; i < dicArr.count; i ++) {
                 
                 GLFirstPageRankingModel *model = [GLFirstPageRankingModel mj_objectWithKeyValues:dicArr[i]];
                 [_rankingModels addObject:model];
                 
-            }
+                }
+             }
+            
             [_rankingContentView.tableView reloadData];
         } enError:^(NSError *error) {
-            
+            [_loadV removeFromSuperview];
             NSLog(@"%@",error);
             
         }];
@@ -476,9 +491,10 @@ static NSString *followID = @"GLFirstFollowCell";
         _rewardContentView =  [[NSBundle mainBundle] loadNibNamed:@"GLRewardView" owner:nil options:nil].lastObject;
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         dic[@"type"] = @"3";
-        
+//         _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
         [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
             //            NSLog(@"%@",responseObject);
+            [_loadV removeFromSuperview];
             if ([responseObject[@"code"] intValue] == 1) {
                 
                 _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"djz"]];
@@ -492,7 +508,7 @@ static NSString *followID = @"GLFirstFollowCell";
             }
             
         } enError:^(NSError *error) {
-            
+            [_loadV removeFromSuperview];
             NSLog(@"%@",error);
             
         }];
