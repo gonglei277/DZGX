@@ -53,30 +53,90 @@
     self.navigationItem.title = @"登录密码";
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    self.base1phone.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].phone];
+    
 }
 
 //获取验证身份里的验证码
 - (IBAction)baseOneCode:(UIButton *)sender {
     
+    if (self.base1phone.text.length <=0 ) {
+        [MBProgressHUD showError:@"验证手机号为空"];
+        return;
+    }else{
+        if (![predicateModel valiMobile:self.base1phone.text]) {
+            [MBProgressHUD showError:@"验证手机号格式不对"];
+            return;
+        }
+    }
+    
+    [self startTime];//获取倒计时
+    [NetworkManager requestPOSTWithURLStr:@"user/get_yzm" paramDic:@{@"phone":self.base1phone.text} finish:^(id responseObject) {
+        if ([responseObject[@"code"] integerValue]==1) {
+            
+        }else{
+            
+        }
+    } enError:^(NSError *error) {
+        
+    }];
     
 }
 //下一步
 - (IBAction)nextutton:(UIButton *)sender {
     
+    if (self.base1Tf.text.length <= 0) {
+        
+        [MBProgressHUD showError:@"验证不能为空"];
+        return;
+    }
     
-    CATransition *animation = [CATransition animation];
-    animation.duration = 0.5;
-    animation.timingFunction = UIViewAnimationCurveEaseInOut;
-    animation.type = @"pageCurl";
-    [self.contentview exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
-    [self.contentview.layer addAnimation:animation forKey:nil];
-    
-    self.imageOne.backgroundColor = YYSRGBColor(239, 239, 244, 1);
-    self.imageTwo.backgroundColor = YYSRGBColor(194, 50, 25, 1);
+    [NetworkManager requestPOSTWithURLStr:@"user/check_yzm" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid,@"yzm":self.base1Tf.text} finish:^(id responseObject) {
+        if ([responseObject[@"code"] integerValue]==1) {
+            
+            CATransition *animation = [CATransition animation];
+            animation.duration = 0.5;
+            animation.timingFunction = UIViewAnimationCurveEaseInOut;
+            animation.type = @"pageCurl";
+            [self.contentview exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
+            [self.contentview.layer addAnimation:animation forKey:nil];
+            
+            self.imageOne.image = [UIImage imageNamed:@"1未选中"];
+            self.imageTwo.image = [UIImage imageNamed:@"2选中"];
+            
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+    } enError:^(NSError *error) {
+        [MBProgressHUD showError:error.localizedDescription];
+    }];
     
 }
 //提交
 - (IBAction)submiteent:(UIButton *)sender {
+    
+    
+    
+    [NetworkManager requestPOSTWithURLStr:@"user/check_yzm" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid,@"yzm":self.base1Tf.text} finish:^(id responseObject) {
+        if ([responseObject[@"code"] integerValue]==1) {
+            
+            CATransition *animation = [CATransition animation];
+            animation.duration = 0.5;
+            animation.timingFunction = UIViewAnimationCurveEaseInOut;
+            animation.type = @"pageCurl";
+            [self.contentview exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
+            [self.contentview.layer addAnimation:animation forKey:nil];
+            
+            self.imageOne.image = [UIImage imageNamed:@"1未选中"];
+            self.imageTwo.image = [UIImage imageNamed:@"2选中"];
+            
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+    } enError:^(NSError *error) {
+        [MBProgressHUD showError:error.localizedDescription];
+    }];
+    
 }
 
 
@@ -141,5 +201,39 @@
 
 
 }
+
+//获取倒计时
+-(void)startTime{
+    
+    __block int timeout=60; //倒计时时间
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+    dispatch_source_set_event_handler(_timer, ^{
+        if(timeout<=0){ //倒计时结束，关闭
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //设置界面的按钮显示 根据自己需求设置
+                [self.base1Bt setTitle:@"重发验证码" forState:UIControlStateNormal];
+                self.base1Bt.userInteractionEnabled = YES;
+                self.base1Bt.backgroundColor = YYSRGBColor(193, 50, 25, 1);
+                self.base1Bt.titleLabel.font = [UIFont systemFontOfSize:13];
+            });
+        }else{
+            int seconds = timeout % 61;
+            NSString *strTime = [NSString stringWithFormat:@"%.2d秒后重新发送", seconds];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.base1Bt setTitle:[NSString stringWithFormat:@"%@",strTime] forState:UIControlStateNormal];
+                self.base1Bt.userInteractionEnabled = NO;
+                self.base1Bt.backgroundColor = YYSRGBColor(184, 184, 184, 1);
+                self.base1Bt.titleLabel.font = [UIFont systemFontOfSize:11];
+            });
+            timeout--;
+        }
+    });
+    dispatch_resume(_timer);
+    
+}
+
 
 @end

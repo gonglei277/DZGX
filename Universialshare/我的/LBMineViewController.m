@@ -22,6 +22,7 @@
 #import "GLBuyBackController.h"
 #import "GLDonationController.h"
 #import "GLRecommendController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface LBMineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
     UIImageView *_imageviewLeft;
@@ -47,8 +48,31 @@
     [self.collectionV registerNib:[UINib nibWithNibName:@"LBMineCenterCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"LBMineCenterCollectionViewCell"];
     
     [self.view addSubview:self.collectionV];
-
     
+    
+    
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+     self.navigationController.navigationBar.hidden = YES;
+
+    [self.headview.headimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[UserModel defaultUser].headPic]]];
+
+    if (!self.headview.headimage.image) {
+        
+        self.headview.headimage.image = [UIImage imageNamed:@"mine_head"];
+    }
+    
+    self.headview.namelebel.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].name];
+    
+    if (self.headview.namelebel.text.length <= 0) {
+        
+        self.headview.namelebel.text = @"用户名";
+    }
+
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -329,11 +353,6 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
     
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = YES;
-
-}
 
 - (void)viewDidAppear:(BOOL)animated{
     /********用于创建pan********/       //将左右的tab页面绘制出来，并把UIView添加到当前的self.view中

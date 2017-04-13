@@ -33,6 +33,8 @@
     [self addViewControllers];
     
     self.selectedIndex=0;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(pushToHome) name:@"notification_push" object:nil];
 }
 
 - (void)addViewControllers {
@@ -87,10 +89,12 @@
 
     }
     if (viewController == [tabBarController.viewControllers objectAtIndex:1]) {
-      
+        [MBProgressHUD showError:@"此功能暂未开放"];
+        return NO;
     }
     if (viewController == [tabBarController.viewControllers objectAtIndex:2]) {
-       
+        [MBProgressHUD showError:@"此功能暂未开放"];
+        return NO;
     }
     if (viewController == [tabBarController.viewControllers objectAtIndex:3]) {
        
@@ -108,5 +112,9 @@
     return YES;
 }
 
+- (void)pushToHome{
+    
+     self.selectedIndex=0;
+}
 
 @end

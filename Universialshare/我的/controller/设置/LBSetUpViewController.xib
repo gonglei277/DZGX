@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LBSetUpViewController">
             <connections>
                 <outlet property="exitBt" destination="4dy-Rc-ucW" id="vfJ-M3-vU0"/>
+                <outlet property="momeryLb" destination="nLz-YS-mrd" id="3Qn-Ql-RhV"/>
+                <outlet property="verionLb" destination="oWi-YE-cOT" id="fEW-Iy-iaA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
