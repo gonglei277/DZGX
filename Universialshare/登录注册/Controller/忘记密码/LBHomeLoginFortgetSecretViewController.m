@@ -31,6 +31,7 @@
 
 @property (strong, nonatomic)UIView *maskView;
 @property (strong, nonatomic)SelectUserTypeView *selectUserTypeView;
+@property (strong, nonatomic)LoadWaitView *loadV;
 
 @property (assign, nonatomic)NSInteger usertype;
 
@@ -82,6 +83,11 @@
         return;
     }
     
+    if ([predicateModel checkIsHaveNumAndLetter:self.secretTf.text] != 3) {
+        
+        [MBProgressHUD showError:@"密码只能包含数字和字母"];
+        return;
+    }
     if (self.sureSecretTf.text.length <= 0) {
         [MBProgressHUD showError:@"请输入确认密码"];
         return;
@@ -91,9 +97,9 @@
         [MBProgressHUD showError:@"两次输入的密码不一致"];
         return;
     }
-    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/forget_pwd" paramDic:@{@"userphone":self.phoneTf.text , @"password":self.secretTf.text , @"groupID":[NSNumber numberWithInteger:self.usertype] , @"yzm":self.yabzTf.text} finish:^(id responseObject) {
-        
+        [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
             [MBProgressHUD showError:responseObject[@"message"]];
             [self.navigationController popViewControllerAnimated:YES];
@@ -101,7 +107,7 @@
             [MBProgressHUD showError:responseObject[@"message"]];
         }
     } enError:^(NSError *error) {
-        
+        [_loadV removeloadview];
         [MBProgressHUD showError:error.localizedDescription];
         
     }];

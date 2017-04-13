@@ -42,6 +42,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *contentview;
 
+@property (strong, nonatomic)LoadWaitView *loadV;
+
 @end
 
 @implementation LBMineCenterModifyLoginSecretViewController
@@ -92,8 +94,9 @@
         [MBProgressHUD showError:@"验证不能为空"];
         return;
     }
-    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/check_yzm" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].name,@"yzm":self.base1Tf.text} finish:^(id responseObject) {
+        [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
             
             CATransition *animation = [CATransition animation];
@@ -110,6 +113,7 @@
             [MBProgressHUD showError:responseObject[@"message"]];
         }
     } enError:^(NSError *error) {
+        [_loadV removeloadview];
         [MBProgressHUD showError:error.localizedDescription];
     }];
     
@@ -144,8 +148,9 @@
         [MBProgressHUD showError:@"两次输入的密码不一致"];
         return;
     }
-    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/setPass" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].name,@"psd":self.baseTwoSecret.text} finish:^(id responseObject) {
+        [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
             
              [MBProgressHUD showError:responseObject[@"message"]];
@@ -156,6 +161,7 @@
             [MBProgressHUD showError:responseObject[@"message"]];
         }
     } enError:^(NSError *error) {
+        [_loadV removeloadview];
         [MBProgressHUD showError:error.localizedDescription];
     }];
     

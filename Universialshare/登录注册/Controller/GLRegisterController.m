@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *verificationTf;
 @property (weak, nonatomic) IBOutlet UIButton *getcodeBt;
 @property (weak, nonatomic) IBOutlet UIButton *registerBt;
-
+@property (strong, nonatomic)LoadWaitView *loadV;
 
 @end
 
@@ -100,9 +100,9 @@
         [MBProgressHUD showError:@"请输入验证码"];
         return;
     }
-    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/register" paramDic:@{@"userphone":self.phoneTf.text , @"password":self.secretTf.text , @"uid":self.recomendId.text , @"yzm":self.verificationTf.text} finish:^(id responseObject) {
-
+        [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
              [MBProgressHUD showError:responseObject[@"message"]];
              [self dismissViewControllerAnimated:YES completion:nil];
@@ -110,7 +110,7 @@
             [MBProgressHUD showError:responseObject[@"message"]];
         }
     } enError:^(NSError *error) {
-        
+        [_loadV removeloadview];
         [MBProgressHUD showError:error.localizedDescription];
         
     }];

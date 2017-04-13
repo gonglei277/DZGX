@@ -23,6 +23,7 @@
 @property (strong, nonatomic)LoginIdentityView *loginView;
 @property (strong, nonatomic)UIView *maskView;
 @property (strong, nonatomic)NSString *usertype;//用户类型 默认为善行者
+@property (strong, nonatomic)LoadWaitView *loadV;
 
 @end
 
@@ -52,7 +53,6 @@
     //
     [self.loginView.lingView addGestureRecognizer:lingVgesture];
     
-    self.phone.text = @"15228988355";
     
     
 }
@@ -138,8 +138,9 @@
 //确定按
 -(void)surebuttonEvent{
 
-    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/login" paramDic:@{@"userphone":self.phone.text,@"password":self.scretTf.text,@"groupID":self.usertype} finish:^(id responseObject) {
+        [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
             [MBProgressHUD showError:responseObject[@"message"]];
             
@@ -163,6 +164,7 @@
             [UserModel defaultUser].vsnAddress = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"vsnAddress"]];
             [UserModel defaultUser].vsnUpdateTime = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"vsnUpdateTime"]];
             [UserModel defaultUser].loginstatus = YES;
+            [UserModel defaultUser].usrtype = self.usertype;
             
             if ([[UserModel defaultUser].banknumber rangeOfString:@"null"].location != NSNotFound) {
                 
@@ -186,14 +188,14 @@
         }
         
     } enError:^(NSError *error) {
-        
+        [_loadV removeloadview];
         [MBProgressHUD showError:error.localizedDescription];
         
     }];
 
 }
 
-//选择善行者
+//普通用户
 -(void)shangViewgesture{
     
     self.usertype = @"7";
@@ -201,10 +203,10 @@
     self.loginView.lingimage.image=[UIImage imageNamed:@"location_off"];
     
 }
-//一级零售商
+//零售商
 -(void)lingViewgesture{
     
-    self.usertype = @"7";
+    self.usertype = @"6";
     self.loginView.shangImage.image=[UIImage imageNamed:@"location_off"];
     self.loginView.lingimage.image=[UIImage imageNamed:@"location_on"];
     
