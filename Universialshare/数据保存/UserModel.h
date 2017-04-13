@@ -33,7 +33,7 @@
 @property (nonatomic, copy)NSString  *vsnAddress;//版本地址
 @property (nonatomic, copy)NSString  *counta;//
 @property (nonatomic, copy)NSString  *usrtype;//用户类型
-
+@property (nonatomic ,copy)NSString  *djs_bean;//代缴税
 
 
 +(UserModel*)defaultUser;

@@ -140,7 +140,7 @@
     
     if (sender== _directV.normalBtn) {
         self.beanStyleLabel.text = @"普通志愿豆";
-        self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%ld",[[UserModel defaultUser].ketiBean integerValue]];
+        self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%ld",(long)[[UserModel defaultUser].ketiBean integerValue]];
         [_maskV removeFromSuperview];
     }else{
   
