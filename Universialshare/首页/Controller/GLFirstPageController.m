@@ -86,104 +86,9 @@ static NSString *followID = @"GLFirstFollowCell";
     self.navigationController.navigationBar.hidden = YES;
     
 }
-- (NSMutableArray *)dailyModels{
-    if (!_dailyModels) {
-        _dailyModels = [NSMutableArray array];
-        
-        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-        dic[@"type"] = @"1";
-        
-        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
-            
-            NSLog(@"%@",responseObject);
-            NSArray *dicArr = responseObject[@"data"][@"head"];
-            for (int i = 0; i < dicArr.count; i ++) {
-                GLFirstPageDailyModel *model = [[GLFirstPageDailyModel alloc] init];
-                model = [GLFirstPageDailyModel mj_objectWithKeyValues:dicArr[i]];
-                [_dailyModels addObject:model];
-                
-            }
-            _totalSumLabel.text = [NSString stringWithFormat:@"全联盟昨日消费:%@元",responseObject[@"zjz"]];
-            [_dailyContentView.tableView reloadData];
-        } enError:^(NSError *error) {
-            
-            NSLog(@"%@",error);
-            
-        }];
-    }
-    return _dailyModels;
-}
-- (NSMutableArray *)rankingModels{
-    
-    if (!_rankingModels) {
-        
-        _rankingModels = [NSMutableArray array];
-        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-        dic[@"type"] = @"2";
-        
-        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
-            NSLog(@"%@",responseObject[@"message"]);
-//            NSLog(@"%@",responseObject);
-            NSArray *dicArr = responseObject[@"data"][@"head2"];
-            for (int i = 0; i < dicArr.count; i ++) {
-                
-                GLFirstPageRankingModel *model = [GLFirstPageRankingModel mj_objectWithKeyValues:dicArr[i]];
-                [_rankingModels addObject:model];
-                
-            }
-            [_rankingContentView.tableView reloadData];
-        } enError:^(NSError *error) {
-            
-            NSLog(@"%@",error);
-            
-        }];
-    }
-    return _rankingModels;
-}
-- (GLDailyView *)dailyContentView{
-    if (!_dailyContentView) {
-        _dailyContentView = [[NSBundle mainBundle] loadNibNamed:@"GLDailyView" owner:nil options:nil].lastObject;
-        _dailyContentView.models = self.dailyModels;
-       
-    }
-    return _dailyContentView;
-}
-- (GLRankingView *)rankingContentView{
-    if (!_rankingContentView) {
-        _rankingContentView =  [[NSBundle mainBundle] loadNibNamed:@"GLRankingView" owner:nil options:nil].lastObject;
-        _rankingContentView.models = self.rankingModels;
-        }
-    return _rankingContentView;
-}
-- (GLRewardView *)rewardContentView{
-    if (!_rewardContentView) {
-        _rewardContentView =  [[NSBundle mainBundle] loadNibNamed:@"GLRewardView" owner:nil options:nil].lastObject;
-        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-        dic[@"type"] = @"3";
-        
-        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
-            
-            NSLog(@"%@",responseObject);
-            _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"djz"]];
-            _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"zjz"]];
-            _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"ltime"]];
-            _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"money"]];
-            _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"sh_sum"]];
-            _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"people"]];
-            
-            _rewardContentView.timeLabel.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"time"]];
-            
-        } enError:^(NSError *error) {
-            
-            NSLog(@"%@",error);
-            
-        }];
-       
-    }
-    return _rewardContentView;
-}
 - (void)setupUI{
 
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.sidebarView.layer.cornerRadius = 5.f;
     self.sidebarView.layer.masksToBounds = YES;
@@ -237,6 +142,13 @@ static NSString *followID = @"GLFirstFollowCell";
     }
 
 }
+
+- (IBAction)head_iconClick:(id)sender {
+    
+    
+}
+
+
 - (void)changeView:(UITapGestureRecognizer *)tap {
     
     if (tap.view == self.dailyView) {
@@ -296,17 +208,13 @@ static NSString *followID = @"GLFirstFollowCell";
 -(void)initInterDataSorceinfomessage{
     
     [NetworkManager requestPOSTWithURLStr:@"index/notice" paramDic:nil finish:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         
         if ([responseObject[@"code"] integerValue] == 1) {
             
-//            NSString *strtitle=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"title"]];
-//            NSString *strcontent=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"content"]];
-//            NSString *strtime=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"release_time"]];
-            
-            NSString *strtitle = @"公告";
-            NSString *strcontent = @"你大爷我擦 海鸟后奥发撒解放啦就是邓丽君 你大爷我擦 海鸟后奥发撒解放啦就是邓丽君   ";
-            NSString *strtime = @"2017-04-01";
+            NSString *strtitle=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"title"]];
+            NSString *strcontent=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"content"]];
+            NSString *strtime=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"release_time"]];
             
             if ([strtitle rangeOfString:@"null"].location == NSNotFound) {
                 self.homepopinfoView.titlename.text = strtitle;
@@ -324,16 +232,17 @@ static NSString *followID = @"GLFirstFollowCell";
                 
                 self.homepopinfoView.timeLb.text = @"";
             }
-//
-//            if (self.homepopinfoView.infoLb.text.length<=1) {
-//                return ;
-//            }
+
+            if (self.homepopinfoView.infoLb.text.length<=1) {
+                return ;
+            }
             
             CGRect sizetitle=[self.homepopinfoView.titlename.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil];
             
             CGRect sizecontent=[self.homepopinfoView.infoLb.attributedText  boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
             
             NSLog(@"%@",NSStringFromCGRect(sizecontent));
+            
             if ((110 + sizetitle.size.height + sizecontent.size.height) >= ((SCREEN_HEIGHT/2) - 30)) {
                 
                 self.homepopinfoView.frame = CGRectMake(20, (SCREEN_HEIGHT - ((SCREEN_HEIGHT/2) - 30)) / 2, SCREEN_WIDTH - 40, ((SCREEN_HEIGHT/2) - 30));
@@ -346,9 +255,10 @@ static NSString *followID = @"GLFirstFollowCell";
                 
                 self.homepopinfoView.frame = CGRectMake(20, (SCREEN_HEIGHT - (110 + sizetitle.size.height + sizecontent.size.height)) / 2, SCREEN_WIDTH - 40, 110 + sizetitle.size.height + sizecontent.size.height);
                 
-                self.homepopinfoView.scrollViewH.constant = 110 + sizetitle.size.height + sizecontent.size.height - 105;
+                self.homepopinfoView.scrollViewH.constant = 110 + sizetitle.size.height + sizecontent.size.height - 80;
+                self.homepopinfoView.scrollView.scrollEnabled = NO;
                 self.homepopinfoView.contentW.constant = SCREEN_WIDTH - 80;
-                self.homepopinfoView.contentH.constant = 110 + sizetitle.size.height + sizecontent.size.height - 105;
+                self.homepopinfoView.contentH.constant = 110 + sizetitle.size.height + sizecontent.size.height - 80;
                 
             }
             
@@ -490,6 +400,106 @@ static NSString *followID = @"GLFirstFollowCell";
     return _moreOperateView;
 }
 
+
+
+- (NSMutableArray *)dailyModels{
+    if (!_dailyModels) {
+        _dailyModels = [NSMutableArray array];
+        
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        dic[@"type"] = @"1";
+        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
+            //            NSLog(@"%@",responseObject);
+            
+            NSArray *dicArr = responseObject[@"data"][@"head"];
+            for (int i = 0; i < dicArr.count; i ++) {
+                GLFirstPageDailyModel *model = [[GLFirstPageDailyModel alloc] init];
+                model = [GLFirstPageDailyModel mj_objectWithKeyValues:dicArr[i]];
+                [_dailyModels addObject:model];
+                
+            }
+            CGFloat sum = [responseObject[@"zjz"] floatValue];
+            NSString *sumStr = [NSString stringWithFormat:@"%.2f万",sum/10000];
+            _totalSumLabel.text = [NSString stringWithFormat:@"全联盟昨日消费:%@元",sumStr];
+            [_dailyContentView.tableView reloadData];
+        } enError:^(NSError *error) {
+            
+            NSLog(@"%@",error);
+            
+        }];
+    }
+    return _dailyModels;
+}
+- (NSMutableArray *)rankingModels{
+    
+    if (!_rankingModels) {
+        
+        _rankingModels = [NSMutableArray array];
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        dic[@"type"] = @"2";
+        
+        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
+            
+            NSArray *dicArr = responseObject[@"data"][@"head2"];
+            for (int i = 0; i < dicArr.count; i ++) {
+                
+                GLFirstPageRankingModel *model = [GLFirstPageRankingModel mj_objectWithKeyValues:dicArr[i]];
+                [_rankingModels addObject:model];
+                
+            }
+            [_rankingContentView.tableView reloadData];
+        } enError:^(NSError *error) {
+            
+            NSLog(@"%@",error);
+            
+        }];
+    }
+    return _rankingModels;
+}
+- (GLDailyView *)dailyContentView{
+    if (!_dailyContentView) {
+        _dailyContentView = [[NSBundle mainBundle] loadNibNamed:@"GLDailyView" owner:nil options:nil].lastObject;
+        _dailyContentView.models = self.dailyModels;
+        
+    }
+    return _dailyContentView;
+}
+- (GLRankingView *)rankingContentView{
+    if (!_rankingContentView) {
+        _rankingContentView =  [[NSBundle mainBundle] loadNibNamed:@"GLRankingView" owner:nil options:nil].lastObject;
+        _rankingContentView.models = self.rankingModels;
+    }
+    return _rankingContentView;
+}
+- (GLRewardView *)rewardContentView{
+    if (!_rewardContentView) {
+        _rewardContentView =  [[NSBundle mainBundle] loadNibNamed:@"GLRewardView" owner:nil options:nil].lastObject;
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        dic[@"type"] = @"3";
+        
+        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
+            //            NSLog(@"%@",responseObject);
+            if ([responseObject[@"code"] intValue] == 1) {
+                
+                _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"djz"]];
+                _rewardContentView.label2.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"zjz"]];
+                _rewardContentView.label3.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"ltime"]];
+                _rewardContentView.label4.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"money"]];
+                _rewardContentView.label5.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"sh_sum"]];
+                _rewardContentView.label6.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"people"]];
+                
+                _rewardContentView.timeLabel.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"time"]];
+            }
+            
+        } enError:^(NSError *error) {
+            
+            NSLog(@"%@",error);
+            
+        }];
+        
+    }
+    return _rewardContentView;
+}
 
 
 #pragma mark ------------------self.view的滑动手势

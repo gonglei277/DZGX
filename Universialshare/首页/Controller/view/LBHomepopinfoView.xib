@@ -103,6 +103,7 @@
                 <outlet property="contentH" destination="bid-3A-yFg" id="Bvu-da-IQG"/>
                 <outlet property="contentW" destination="Hl5-c6-4cN" id="1Gk-cG-N2I"/>
                 <outlet property="infoLb" destination="ZyO-PJ-81H" id="Mjf-yc-Dbw"/>
+                <outlet property="scrollView" destination="aho-8A-Jij" id="7FM-fj-T5m"/>
                 <outlet property="scrollViewH" destination="seL-1W-sJR" id="Bk0-On-MBU"/>
                 <outlet property="timeLb" destination="x2C-5J-Gx8" id="eyh-HE-Zbc"/>
                 <outlet property="titlename" destination="k3e-oq-6n5" id="FOe-Bq-kOI"/>

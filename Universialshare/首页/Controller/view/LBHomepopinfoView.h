@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *closeBt;
 @property (weak, nonatomic) IBOutlet UILabel *titlename;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentW;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentH;

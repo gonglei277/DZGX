@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong)GLFirstPageDailyModel *model;
 
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+
 @end

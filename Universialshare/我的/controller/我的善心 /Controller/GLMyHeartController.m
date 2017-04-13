@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的爱心";
+    self.title = @"米粒";
     
     self.navigationController.navigationBar.hidden = NO;
     self.view.backgroundColor=[UIColor whiteColor];
@@ -54,11 +54,7 @@
     self.currentViewController = _sixPersentVC;
     [self fitFrameForChildViewController:_sixPersentVC];
     [self.contentView addSubview:_sixPersentVC.view];
-    
-//    self.currentButton = self.sixBtn;
-//    self.sixBtn.selected = YES;
-//    self.twelveBtn.selected = NO;
-//    self.twelveFourBtn.selected = NO;
+
     [self buttonEvent:_sixBtn];
     
        
@@ -71,36 +67,24 @@
 
 //百分之六激励
 - (IBAction)buttonEvent:(UIButton *)sender {
-//    sender.selected = !sender.selected;
-//    if (sender.selected == NO) {
-//        sender.selected = YES;
-//        return;
-//    }
+
     [self.sixBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [self.twelveBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [self.twelveFourBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     
     [sender setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-//        [UIView animateWithDuration:0.2 animations:^{
 
-//        } completion:^(BOOL finished) {
-//            self.currentButton = sender;
-//            sender.selected = !sender.selected;
-//        }];
     
     if (sender == self.sixBtn) {
-//        self.twelveBtn.selected = NO;
-//        self.twelveFourBtn.selected = NO;
+
         [self transitionFromVC:self.currentViewController toviewController:_sixPersentVC];
         [self fitFrameForChildViewController:_sixPersentVC];
     }else if (sender == self.twelveBtn){
-//        self.sixBtn.selected = NO;
-//        self.twelveFourBtn.selected = NO;
+
         [self transitionFromVC:self.currentViewController toviewController:_twelvePercentVC];
         [self fitFrameForChildViewController:_twelvePercentVC];
     }else{
-//        self.sixBtn.selected = NO;
-//        self.twelveBtn.selected = NO;
+
         [self transitionFromVC:self.currentViewController toviewController:_twentyfourPercentVC];
         [self fitFrameForChildViewController:_twentyfourPercentVC];
     }
