@@ -43,9 +43,6 @@
     
     [self addMySelfPanGesture];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushToInfoVC)];
-    
-    [self.headview.headimage addGestureRecognizer:tap];
     // 注册表头
     [self.collectionV registerClass:[MineCollectionHeaderV class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"MineCollectionHeaderV"];
     [self.collectionV registerNib:[UINib nibWithNibName:@"LBMineCenterCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"LBMineCenterCollectionViewCell"];
@@ -61,20 +58,7 @@
     [super viewWillAppear:animated];
     
      self.navigationController.navigationBar.hidden = YES;
-
-    [self.headview.headimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[UserModel defaultUser].headPic]]];
-
-    if (!self.headview.headimage.image) {
-        
-        self.headview.headimage.image = [UIImage imageNamed:@"mine_head"];
-    }
-    
-    self.headview.namelebel.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].name];
-    
-    if (self.headview.namelebel.text.length <= 0) {
-        
-        self.headview.namelebel.text = @"用户名";
-    }
+    [self.collectionV reloadData];
 
 }
 -(void)pushToInfoVC{
@@ -256,6 +240,23 @@
             weakself.hidesBottomBarWhenPushed=NO;
 
         };
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushToInfoVC)];
+        [_headview.headimage addGestureRecognizer:tap];
+        
+        [_headview.headimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[UserModel defaultUser].headPic]]];
+        
+        if (!_headview.headimage.image) {
+            
+            _headview.headimage.image = [UIImage imageNamed:@"mine_head"];
+        }
+        
+        _headview.namelebel.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].name];
+        
+        if (_headview.namelebel.text.length <= 0) {
+            
+            _headview.namelebel.text = @"用户名";
+        }
     }
     
     return _headview;
@@ -302,12 +303,6 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 
 
 
-
-
-
-
-
-
 #pragma mark 懒加载
 
 -(UICollectionView *)collectionV{
@@ -335,7 +330,11 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 -(NSArray*)titlearr{
 
     if (!_titlearr) {
-        _titlearr=[NSArray arrayWithObjects:@"米粒",@"米仓",@"米袋",@"米券",@"转赠",@"我要推荐",@"余额",@"我的返利",@"我的积分", nil];
+        if ([[UserModel defaultUser].usrtype isEqualToString:@"6"]) {
+            _titlearr=[NSArray arrayWithObjects:@"米粒",@"米仓",@"米袋",@"米券",@"转赠",@"我要推荐",@"营业额",@"我的返利",@"我的积分", nil];
+        }else if ([[UserModel defaultUser].usrtype isEqualToString:@"7"]) {
+           _titlearr=[NSArray arrayWithObjects:@"米粒",@"米仓",@"米袋",@"米券",@"转赠",@"我要推荐",@"我的余额",@"我的返利",@"我的积分", nil];
+        }
     }
     return _titlearr;
 

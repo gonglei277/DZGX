@@ -53,7 +53,6 @@
     //
     [self.loginView.lingView addGestureRecognizer:lingVgesture];
     
-    self.phone.text = @"15228988355";
     
     
 }
@@ -165,6 +164,7 @@
             [UserModel defaultUser].vsnAddress = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"vsnAddress"]];
             [UserModel defaultUser].vsnUpdateTime = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"vsnUpdateTime"]];
             [UserModel defaultUser].loginstatus = YES;
+            [UserModel defaultUser].usrtype = self.usertype;
             
             if ([[UserModel defaultUser].banknumber rangeOfString:@"null"].location != NSNotFound) {
                 
@@ -195,7 +195,7 @@
 
 }
 
-//选择善行者
+//普通用户
 -(void)shangViewgesture{
     
     self.usertype = @"7";
@@ -203,10 +203,10 @@
     self.loginView.lingimage.image=[UIImage imageNamed:@"location_off"];
     
 }
-//一级零售商
+//零售商
 -(void)lingViewgesture{
     
-    self.usertype = @"7";
+    self.usertype = @"6";
     self.loginView.shangImage.image=[UIImage imageNamed:@"location_off"];
     self.loginView.lingimage.image=[UIImage imageNamed:@"location_on"];
     
