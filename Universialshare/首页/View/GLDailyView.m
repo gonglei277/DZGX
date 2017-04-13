@@ -25,14 +25,22 @@ static NSString *ID = @"GLFirstHeartCell";
 #pragma UITableViewDelegate UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.models.count;
+    return 2;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     GLFirstHeartCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.model = self.models[indexPath.row];
     
+    if(self.models.count != 0){
+       
+        cell.model = self.models[indexPath.row];
+    }
+    if (indexPath.row == 0) {
+        cell.typeLabel.text = @"全联盟";
+    }else{
+        cell.typeLabel.text = @"零售商";
+    }
     return cell;
 }
 

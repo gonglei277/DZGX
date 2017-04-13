@@ -10,6 +10,9 @@
 
 @implementation LBHomepopinfoView
 
-
+-(void)awakeFromNib {
+    [super awakeFromNib];
+    
+}
 
 @end

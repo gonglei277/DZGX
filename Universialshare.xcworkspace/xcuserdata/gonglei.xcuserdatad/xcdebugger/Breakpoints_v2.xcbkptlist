@@ -19,29 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Universialshare/&#x9996;&#x9875;/Controller/GLFirstPageController.m"
-            timestampString = "513683329.073916"
+            filePath = "Universialshare/&#x9996;&#x9875;/Controller/&#x66f4;&#x591a;&#x64cd;&#x4f5c;/LBUserKonwViewController.m"
+            timestampString = "513743190.32856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "-rewardContentView"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Universialshare/&#x9996;&#x9875;/Controller/GLFirstPageController.m"
-            timestampString = "513683386.124705"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "-rewardContentView"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "-loadData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

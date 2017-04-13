@@ -10,7 +10,7 @@
 
 @interface GLFirstHeartCell()
 
-@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *sixLabel;
 @property (weak, nonatomic) IBOutlet UILabel *twelveLabel;
 @property (weak, nonatomic) IBOutlet UILabel *twenty_fourLabel;
