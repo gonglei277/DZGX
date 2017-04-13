@@ -10,10 +10,16 @@
 #import "LBMineCentermodifyAdressViewController.h"
 #import "LBMineCenterAccountSafeViewController.h"
 
+#define PATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) objectAtIndex:0]
 
-@interface LBSetUpViewController ()
+@interface LBSetUpViewController ()<UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *exitBt;
+@property (weak, nonatomic) IBOutlet UILabel *momeryLb;
+@property (weak, nonatomic) IBOutlet UILabel *verionLb;
+
+@property (nonatomic , assign)float folderSize;//缓存
+
 
 
 @end
@@ -25,6 +31,12 @@
     
      self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.title = @"设置";
+    
+    self.verionLb.text = [UserModel defaultUser].version;
+    
+    self.folderSize = [self filePath];
+    
+    self.momeryLb.text = [NSString stringWithFormat:@"%.2fM",self.folderSize];
 }
 //修改收货地址
 - (IBAction)exchangeAdress:(UITapGestureRecognizer *)sender {
@@ -36,6 +48,15 @@
 //清除缓存
 - (IBAction)clearMomery:(UITapGestureRecognizer *)sender {
     
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您确定要删除缓存吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1) {
+        
+        [self clearFile];//清楚缓存
+
+    }
     
 }
 //账号安全
@@ -61,6 +82,65 @@
     [self.navigationController popViewControllerAnimated:YES];
     
 }
+
+//*********************清理缓存********************//
+//显示缓存大小
+-( float )filePath
+{
+    NSString * cachPath = [ NSSearchPathForDirectoriesInDomains ( NSCachesDirectory , NSUserDomainMask , YES ) firstObject ];
+    
+    return [ self folderSizeAtPath :cachPath];
+    
+}
+//单个文件的大小
+
+- ( long long ) fileSizeAtPath:( NSString *) filePath{
+    
+    NSFileManager * manager = [ NSFileManager defaultManager ];
+    
+    if ([manager fileExistsAtPath :filePath]){
+        
+        return [[manager attributesOfItemAtPath :filePath error : nil ] fileSize ];
+    }
+    
+    return 0 ;
+    
+}
+//返回多少 M
+- ( float ) folderSizeAtPath:( NSString *) folderPath{
+    NSFileManager * manager = [ NSFileManager defaultManager ];
+    if (![manager fileExistsAtPath :folderPath]) return 0 ;
+    NSEnumerator *childFilesEnumerator = [[manager subpathsAtPath :folderPath] objectEnumerator ];
+    NSString * fileName;
+    long long folderSize = 0 ;
+    while ((fileName = [childFilesEnumerator nextObject ]) != nil ){
+        NSString * fileAbsolutePath = [folderPath stringByAppendingPathComponent :fileName];
+        folderSize += [ self fileSizeAtPath :fileAbsolutePath];
+    }
+    return folderSize/( 1024.0 * 1024.0 );
+}
+// 清理缓存
+- (void)clearFile
+{
+    NSString * cachPath = [ NSSearchPathForDirectoriesInDomains ( NSCachesDirectory , NSUserDomainMask , YES ) firstObject ];
+    NSArray * files = [[ NSFileManager defaultManager ] subpathsAtPath :cachPath];
+    //NSLog ( @"cachpath = %@" , cachPath);
+    for ( NSString * p in files) {
+        NSError * error = nil ;
+        NSString * path = [cachPath stringByAppendingPathComponent :p];
+        if ([[ NSFileManager defaultManager ] fileExistsAtPath :path]) {
+            [[ NSFileManager defaultManager ] removeItemAtPath :path error :&error];
+        }
+    }
+    [ self performSelectorOnMainThread : @selector (clearCachSuccess) withObject : nil waitUntilDone : YES ];
+}
+
+-(void)clearCachSuccess{
+    self.folderSize=[self filePath];
+    self.momeryLb.text = [NSString stringWithFormat:@"%.2fM",self.folderSize];
+    
+}
+
 
 
 -(void)updateViewConstraints{

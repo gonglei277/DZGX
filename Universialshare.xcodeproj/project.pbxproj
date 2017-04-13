@@ -558,6 +558,7 @@
 		F92309911E9B8BFF00ECDC94 /* LBMineCenterinfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F92309161E9B8BFF00ECDC94 /* LBMineCenterinfoTableViewCell.xib */; };
 		F92309921E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F92309181E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m */; };
 		F92309931E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F92309191E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.xib */; };
+		F93F84D21E9F02C500F76E0B /* loadWait.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F93F84D11E9F02C500F76E0B /* loadWait.xcassets */; };
 		F94D6E1E1E9DC15300412E64 /* loginRegister.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94D6E1D1E9DC15300412E64 /* loginRegister.xcassets */; };
 		F94D6E231E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94D6E211E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m */; };
 		F94D6E241E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94D6E221E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.xib */; };
@@ -1613,6 +1614,7 @@
 		F92309171E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineCenterMessageTableViewCell.h; sourceTree = "<group>"; };
 		F92309181E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineCenterMessageTableViewCell.m; sourceTree = "<group>"; };
 		F92309191E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineCenterMessageTableViewCell.xib; sourceTree = "<group>"; };
+		F93F84D11E9F02C500F76E0B /* loadWait.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = loadWait.xcassets; sourceTree = "<group>"; };
 		F94D6E1D1E9DC15300412E64 /* loginRegister.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = loginRegister.xcassets; sourceTree = "<group>"; };
 		F94D6E201E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeLoginFortgetSecretViewController.h; sourceTree = "<group>"; };
 		F94D6E211E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeLoginFortgetSecretViewController.m; sourceTree = "<group>"; };
@@ -3367,6 +3369,7 @@
 				4A46111C1E9CCC010045824F /* Mine_sixPart.xcassets */,
 				F94D6E1D1E9DC15300412E64 /* loginRegister.xcassets */,
 				F94D6E2A1E9E2A6D00412E64 /* setUp.xcassets */,
+				F93F84D11E9F02C500F76E0B /* loadWait.xcassets */,
 			);
 			path = "图片资源";
 			sourceTree = "<group>";
@@ -4208,6 +4211,7 @@
 				4A0D97841E9729C100A26B84 /* GLOrderDetailController.xib in Resources */,
 				4A4609DD1E9CB78E0045824F /* GLMyHeartController.xib in Resources */,
 				F923092F1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeViewController.xib in Resources */,
+				F93F84D21E9F02C500F76E0B /* loadWait.xcassets in Resources */,
 				F923097C1E9B8BFF00ECDC94 /* LBMineCenterSafeForgetSecondSecretViewController.xib in Resources */,
 				F92309371E9B8BFF00ECDC94 /* LBMineMessageViewController.xib in Resources */,
 				4A4610241E9CC6360045824F /* UMShareEditViewControlleriPad.xib in Resources */,
