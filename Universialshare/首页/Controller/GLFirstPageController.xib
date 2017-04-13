@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,11 +18,13 @@
                 <outlet property="contentView" destination="Vps-tD-MOK" id="dDk-PT-eEt"/>
                 <outlet property="dailyLabel" destination="7kn-xm-Lul" id="zUq-hs-zYF"/>
                 <outlet property="dailyView" destination="O5L-Ol-K0I" id="3SV-k9-skU"/>
+                <outlet property="head_iconBtn" destination="B5B-4O-VLF" id="SJx-Mf-kwY"/>
                 <outlet property="rankingLabel" destination="PKj-dW-PdC" id="D6Q-5c-WCU"/>
                 <outlet property="rankingView" destination="nR5-cD-Z5v" id="8N3-V0-ADh"/>
                 <outlet property="rewardLabel" destination="hZ6-F3-nrv" id="n1m-Sd-Qvs"/>
                 <outlet property="rewardView" destination="zyY-Q1-0rW" id="sz5-Ec-H47"/>
                 <outlet property="sidebarView" destination="wGO-dZ-2Ad" id="Nds-3d-noZ"/>
+                <outlet property="totalSumLabel" destination="lwF-Ju-fMs" id="IjZ-bl-TFX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -37,7 +39,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="yP5-7F-pWO"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -165,7 +167,8 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="LJB-dL-W0V"/>
                             </constraints>
-                            <state key="normal" image="XRPlaceholder">
+                            <inset key="imageEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                            <state key="normal" image="mine_head">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
@@ -319,14 +322,14 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="33.5" y="48"/>
+            <point key="canvasLocation" x="29" y="-148"/>
         </view>
     </objects>
     <resources>
-        <image name="XRPlaceholder" width="391" height="220"/>
         <image name="home_index" width="27" height="18"/>
         <image name="home_left_bom" width="165" height="164"/>
         <image name="home_right_bom" width="151" height="80"/>
+        <image name="mine_head" width="204" height="200"/>
         <image name="r_boult" width="15" height="13"/>
     </resources>
 </document>
