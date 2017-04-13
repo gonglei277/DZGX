@@ -10,19 +10,19 @@
 
 @interface GLMyheartModel : NSObject
 
-@property (nonatomic, copy)NSString *expensetime;
+@property (nonatomic, copy)NSString *money;
 
-@property (nonatomic, copy)NSString *gather_date;
+@property (nonatomic, copy)NSString *zjl;
 
-@property (nonatomic, copy)NSString *amount;
+@property (nonatomic, copy)NSString *love;
 
-@property (nonatomic, copy)NSString *tax;
+@property (nonatomic, copy)NSString *jl_love;
 
-@property (nonatomic, copy)NSString *lovevalue;
+@property (nonatomic, copy)NSString *end_love;
 
-@property (nonatomic, copy)NSString *endnumber;
+@property (nonatomic, copy)NSString *end_bean;
 
-@property (nonatomic, copy)NSString *returnvalue;
+@property (nonatomic, copy)NSString *bean;
 
 //@property (nonatomic, copy)NSString *tax;
 

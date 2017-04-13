@@ -217,6 +217,8 @@
         _headimage.clipsToBounds = YES;
         _headimage.layer.cornerRadius = (80  *  autoSizeScaleX )/2 -2 ;
         _headimage.contentMode = UIViewContentModeScaleAspectFill;
+        _headimage.userInteractionEnabled = YES;
+        
     }
     
     return _headimage;

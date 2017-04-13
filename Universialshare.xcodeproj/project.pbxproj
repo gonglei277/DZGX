@@ -61,6 +61,10 @@
 		4A0D97931E9729C100A26B84 /* GLHotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0D975C1E9729C100A26B84 /* GLHotCell.xib */; };
 		4A0D97941E9729C100A26B84 /* GLTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0D975E1E9729C100A26B84 /* GLTopCell.m */; };
 		4A0D97951E9729C100A26B84 /* GLTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0D975F1E9729C100A26B84 /* GLTopCell.xib */; };
+		4A203D9A1E9F21E200DF22F7 /* GLMine_InfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203D931E9F21E200DF22F7 /* GLMine_InfoController.m */; };
+		4A203D9B1E9F21E200DF22F7 /* GLMine_InfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203D941E9F21E200DF22F7 /* GLMine_InfoController.xib */; };
+		4A203D9C1E9F21E200DF22F7 /* GLMine_InfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203D981E9F21E200DF22F7 /* GLMine_InfoCell.m */; };
+		4A203D9D1E9F21E200DF22F7 /* GLMine_InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203D991E9F21E200DF22F7 /* GLMine_InfoCell.xib */; };
 		4A4608E71E9C9E6D0045824F /* GLFirstPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4608D21E9C9E6D0045824F /* GLFirstPageController.m */; };
 		4A4608E81E9C9E6D0045824F /* GLFirstPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4608D31E9C9E6D0045824F /* GLFirstPageController.xib */; };
 		4A4608E91E9C9E6D0045824F /* GLDailyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4608D61E9C9E6D0045824F /* GLDailyView.m */; };
@@ -698,6 +702,12 @@
 		4A0D975D1E9729C100A26B84 /* GLTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTopCell.h; sourceTree = "<group>"; };
 		4A0D975E1E9729C100A26B84 /* GLTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTopCell.m; sourceTree = "<group>"; };
 		4A0D975F1E9729C100A26B84 /* GLTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLTopCell.xib; sourceTree = "<group>"; };
+		4A203D921E9F21E200DF22F7 /* GLMine_InfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMine_InfoController.h; sourceTree = "<group>"; };
+		4A203D931E9F21E200DF22F7 /* GLMine_InfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMine_InfoController.m; sourceTree = "<group>"; };
+		4A203D941E9F21E200DF22F7 /* GLMine_InfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMine_InfoController.xib; sourceTree = "<group>"; };
+		4A203D971E9F21E200DF22F7 /* GLMine_InfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMine_InfoCell.h; sourceTree = "<group>"; };
+		4A203D981E9F21E200DF22F7 /* GLMine_InfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMine_InfoCell.m; sourceTree = "<group>"; };
+		4A203D991E9F21E200DF22F7 /* GLMine_InfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMine_InfoCell.xib; sourceTree = "<group>"; };
 		4A4608D11E9C9E6D0045824F /* GLFirstPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFirstPageController.h; sourceTree = "<group>"; };
 		4A4608D21E9C9E6D0045824F /* GLFirstPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFirstPageController.m; sourceTree = "<group>"; };
 		4A4608D31E9C9E6D0045824F /* GLFirstPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLFirstPageController.xib; sourceTree = "<group>"; };
@@ -1911,6 +1921,43 @@
 				4A0D975F1E9729C100A26B84 /* GLTopCell.xib */,
 			);
 			path = "首页";
+			sourceTree = "<group>";
+		};
+		4A203D901E9F21E200DF22F7 /* 个人信息 */ = {
+			isa = PBXGroup;
+			children = (
+				4A203D911E9F21E200DF22F7 /* Controller */,
+				4A203D951E9F21E200DF22F7 /* Model */,
+				4A203D961E9F21E200DF22F7 /* View */,
+			);
+			path = "个人信息";
+			sourceTree = "<group>";
+		};
+		4A203D911E9F21E200DF22F7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4A203D921E9F21E200DF22F7 /* GLMine_InfoController.h */,
+				4A203D931E9F21E200DF22F7 /* GLMine_InfoController.m */,
+				4A203D941E9F21E200DF22F7 /* GLMine_InfoController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4A203D951E9F21E200DF22F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A203D961E9F21E200DF22F7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A203D971E9F21E200DF22F7 /* GLMine_InfoCell.h */,
+				4A203D981E9F21E200DF22F7 /* GLMine_InfoCell.m */,
+				4A203D991E9F21E200DF22F7 /* GLMine_InfoCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		4A4608CF1E9C9E6D0045824F /* 首页 */ = {
@@ -3399,6 +3446,7 @@
 				F923088F1E9B8BFE00ECDC94 /* 积分 */,
 				F92308901E9B8BFE00ECDC94 /* 订单 */,
 				F92308D01E9B8BFF00ECDC94 /* 设置 */,
+				4A203D901E9F21E200DF22F7 /* 个人信息 */,
 				F92309051E9B8BFF00ECDC94 /* 返利 */,
 				4A4609601E9CB78E0045824F /* 回购 */,
 				4A4609731E9CB78E0045824F /* 推荐 */,
@@ -4155,10 +4203,12 @@
 				F92309521E9B8BFF00ECDC94 /* LBMyOrderAlreadyCompletedViewController.xib in Resources */,
 				F92309861E9B8BFF00ECDC94 /* LBMineCenterSafeChangePhoneViewController.xib in Resources */,
 				F92309911E9B8BFF00ECDC94 /* LBMineCenterinfoTableViewCell.xib in Resources */,
+				4A203D9B1E9F21E200DF22F7 /* GLMine_InfoController.xib in Resources */,
 				4A4610281E9CC6360045824F /* UMSocialSDKResourcesNew.bundle in Resources */,
 				4A4609F21E9CB78E0045824F /* GLDirectDnationRecordCell.xib in Resources */,
 				4A4609CE1E9CB78E0045824F /* GLBuyBackChooseCardController.xib in Resources */,
 				4A0D97931E9729C100A26B84 /* GLHotCell.xib in Resources */,
+				4A203D9D1E9F21E200DF22F7 /* GLMine_InfoCell.xib in Resources */,
 				4A4608EE1E9C9E6D0045824F /* GLFirstHeartCell.xib in Resources */,
 				F923094A1E9B8BFF00ECDC94 /* LBMineCenterReceivingGoodsViewController.xib in Resources */,
 				4A460A171E9CBBE20045824F /* GLNoticeView.xib in Resources */,
@@ -4448,6 +4498,7 @@
 				F92309771E9B8BFF00ECDC94 /* LBMineCentermodifyAdressViewController.m in Sources */,
 				4A4610831E9CC6360045824F /* ZXHybridBinarizer.m in Sources */,
 				4A4610C21E9CC6370045824F /* ZXRSSExpandedPair.m in Sources */,
+				4A203D9A1E9F21E200DF22F7 /* GLMine_InfoController.m in Sources */,
 				4A0D97651E9729C100A26B84 /* GLHomeLiveController.m in Sources */,
 				F961A9D81E9C75AF00275F52 /* UIView+SFrame.m in Sources */,
 				4A46101C1E9CC6360045824F /* ZXingWrapper.m in Sources */,
@@ -4507,6 +4558,7 @@
 				4A4610121E9CC6360045824F /* LBXScanLineAnimation.m in Sources */,
 				4A4610701E9CC6360045824F /* ZXImage.m in Sources */,
 				4A4610D11E9CC6370045824F /* ZXCode93Reader.m in Sources */,
+				4A203D9C1E9F21E200DF22F7 /* GLMine_InfoCell.m in Sources */,
 				4A4610CE1E9CC6370045824F /* ZXCode128Writer.m in Sources */,
 				4A46109B1E9CC6360045824F /* ZXDataMatrixBase256Encoder.m in Sources */,
 				4A4610F61E9CC6370045824F /* ZXPDF417BarcodeRow.m in Sources */,

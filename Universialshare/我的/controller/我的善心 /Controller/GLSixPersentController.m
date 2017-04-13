@@ -26,32 +26,32 @@ static NSString *ID = @"GLMine_MyHeartCell";
     if (_models == nil) {
         _models = [NSMutableArray array];
         
-//        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//        dict[@"token"] = [UserModel defaultUser].aukeyValue;
-//        dict[@"drivetype"] = @"24";
-//        dict[@"page"] = @"1";
-//        
-//        _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-//        [NetworkManager requestPOSTWithURLStr:@"Index/mylove" paramDic:dict finish:^(id responseObject) {
-//            
-//            [_loadV removeloadview];
-//           if ([responseObject[@"code"] integerValue]==0) {
-//            
-//                GLMyheartModel *model = [GLMyheartModel mj_objectWithKeyValues:responseObject[@"data"][@"rows"]];
-//                [self.models addObject:model];
-//             
-//            [self.tableView reloadData];
-//           
-//           }else{
-//               [MBProgressHUD showError:responseObject[@"msg"]];
-//           }
-//            
-//        } enError:^(NSError *error) {
-//            
-//            [_loadV removeloadview];
-//            [MBProgressHUD showError:error.localizedDescription];
-//            
-//        }];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        dict[@"token"] = [UserModel defaultUser].token;
+        dict[@"uid"] = [UserModel defaultUser].uid;
+        dict[@"type"] = @"3";
+        
+        _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+        [NetworkManager requestPOSTWithURLStr:@"user/mylove" paramDic:dict finish:^(id responseObject) {
+            NSLog(@"%@",responseObject);
+            [_loadV removeloadview];
+           if ([responseObject[@"code"] integerValue]== 1) {
+            
+                GLMyheartModel *model = [GLMyheartModel mj_objectWithKeyValues:responseObject[@"data"]];
+                [self.models addObject:model];
+             
+            [self.tableView reloadData];
+           
+           }else{
+               [MBProgressHUD showError:responseObject[@"msg"]];
+           }
+            
+        } enError:^(NSError *error) {
+            
+            [_loadV removeloadview];
+            [MBProgressHUD showError:error.localizedDescription];
+            
+        }];
     }
     return _models;
 }
@@ -76,7 +76,7 @@ static NSString *ID = @"GLMine_MyHeartCell";
 
 #pragma  UITableviewDatasource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return self.models.count;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (self.models.count == 0) {
@@ -88,31 +88,8 @@ static NSString *ID = @"GLMine_MyHeartCell";
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     GLMine_MyHeartCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-//    GLMyheartModel *model = self.models[indexPath.row];
-//
-//    if ([model.expensetime rangeOfString:@"null"].location != NSNotFound) {
-//        model.expensetime = @"1970-01-01";
-//    }
-//    if ([model.gather_date rangeOfString:@"null"].location != NSNotFound) {
-//        model.gather_date = @"1970-01-01";
-//    }
-//    if ([model.amount rangeOfString:@"null"].location != NSNotFound) {
-//        model.amount = @"0.00";
-//    }
-//    if ([model.tax rangeOfString:@"null"].location != NSNotFound) {
-//        model.tax = @"0.00";
-//    }
-//    if ([model.lovevalue rangeOfString:@"null"].location != NSNotFound) {
-//        model.lovevalue = @"0.00";
-//    }
-//    if ([model.endnumber rangeOfString:@"null"].location != NSNotFound) {
-//        model.endnumber = @"0.00";
-//    }
-//    if ([model.returnvalue rangeOfString:@"null"].location != NSNotFound) {
-//        model.returnvalue = @"0.00";
-//    }
-
-//    cell.model = model;
+    GLMyheartModel *model = self.models[indexPath.row];
+    cell.model = model;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
