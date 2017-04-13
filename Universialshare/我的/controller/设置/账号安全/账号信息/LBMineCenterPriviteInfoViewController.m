@@ -30,6 +30,8 @@
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.title = @"账号信息";
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+   
 }
 
 -(void)updateViewConstraints{

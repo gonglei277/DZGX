@@ -33,6 +33,10 @@
     self.navigationItem.title = @"账号安全";
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    self.nameTF.text = [UserModel defaultUser].name;
+    self.userId.text = [UserModel defaultUser].name;
+    
+    
 }
 //账号信息
 - (IBAction)AccountInfo:(UITapGestureRecognizer *)sender {

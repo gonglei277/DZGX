@@ -33,6 +33,8 @@
     [self addViewControllers];
     
     self.selectedIndex=0;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(pushToHome) name:@"notification_push" object:nil];
 }
 
 - (void)addViewControllers {
@@ -108,5 +110,9 @@
     return YES;
 }
 
+- (void)pushToHome{
+    
+     self.selectedIndex=0;
+}
 
 @end

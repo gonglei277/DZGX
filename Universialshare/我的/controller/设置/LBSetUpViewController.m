@@ -54,8 +54,11 @@
 //退出登录
 - (IBAction)exitEvent:(UIButton *)sender {
     
+    
     [UserModel defaultUser].loginstatus = NO;
     [usermodelachivar achive];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"notification_push" object:nil];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 

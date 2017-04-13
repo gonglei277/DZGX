@@ -10,6 +10,7 @@
 #import <Masonry/Masonry.h>
 #import "LBMineCenterinfoTableViewCell.h"
 #import "UIButton+SetEdgeInsets.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MineCollectionHeaderV ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -97,6 +98,21 @@
     [self.CollectinGoodsBt verticalCenterImageAndTitle:10];
     [self.ShoppingCartBt verticalCenterImageAndTitle:10];
     [self.OrderBt verticalCenterImageAndTitle:10];
+    
+    [self.headimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[UserModel defaultUser].headPic]]];
+    
+    if (!self.headimage.image) {
+        
+        self.headimage.image = [UIImage imageNamed:@"mine_head"];
+    }
+    
+    self.namelebel.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].name];
+    
+    if (self.namelebel.text.length <= 0) {
+        
+        self.namelebel.text = @"用户名";
+    }
+    
 
 }
 
@@ -200,6 +216,7 @@
         _headimage.backgroundColor=[UIColor whiteColor];
         _headimage.clipsToBounds = YES;
         _headimage.layer.cornerRadius = (80  *  autoSizeScaleX )/2 -2 ;
+        _headimage.contentMode = UIViewContentModeScaleAspectFill;
     }
     
     return _headimage;
@@ -211,7 +228,6 @@
     if (!_namelebel) {
         _namelebel=[[UILabel alloc]init];
         _namelebel.backgroundColor=[UIColor clearColor];
-        _namelebel.text=@"姓名";
         _namelebel.textColor=[UIColor blackColor];
         _namelebel.font=[UIFont systemFontOfSize:12 * autoSizeScaleX];
         _namelebel.textAlignment=NSTextAlignmentCenter;
