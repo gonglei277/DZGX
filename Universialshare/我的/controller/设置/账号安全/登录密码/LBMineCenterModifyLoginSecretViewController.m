@@ -53,7 +53,9 @@
     self.navigationItem.title = @"登录密码";
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.base1phone.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].phone];
+    
+    
+    self.base1phone.text = [NSString stringWithFormat:@"%@*****%@",[[UserModel defaultUser].phone substringToIndex:3],[[UserModel defaultUser].phone substringFromIndex:7]];
     
 }
 
@@ -91,7 +93,7 @@
         return;
     }
     
-    [NetworkManager requestPOSTWithURLStr:@"user/check_yzm" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid,@"yzm":self.base1Tf.text} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/check_yzm" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].name,@"yzm":self.base1Tf.text} finish:^(id responseObject) {
         if ([responseObject[@"code"] integerValue]==1) {
             
             CATransition *animation = [CATransition animation];
@@ -115,20 +117,40 @@
 //提交
 - (IBAction)submiteent:(UIButton *)sender {
     
+    if (self.baseTwoSecret.text.length <= 0) {
+        
+        [MBProgressHUD showError:@"密码不能为空"];
+        return;
+    }
+    if (self.RepeatSecret.text.length <= 0) {
+        
+        [MBProgressHUD showError:@"确认密码不能为空"];
+        return;
+    }
     
+    if (self.baseTwoSecret.text.length < 6 || self.baseTwoSecret.text.length > 20) {
+        
+        [MBProgressHUD showError:@"请输入6-20位密码"];
+        return;
+    }
     
-    [NetworkManager requestPOSTWithURLStr:@"user/check_yzm" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid,@"yzm":self.base1Tf.text} finish:^(id responseObject) {
+    if ([predicateModel checkIsHaveNumAndLetter:self.baseTwoSecret.text] != 3) {
+        
+        [MBProgressHUD showError:@"密码只能包含数字和字母"];
+        return;
+    }
+    
+    if (![self.baseTwoSecret.text isEqualToString:self.RepeatSecret.text]) {
+        [MBProgressHUD showError:@"两次输入的密码不一致"];
+        return;
+    }
+    
+    [NetworkManager requestPOSTWithURLStr:@"user/setPass" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].name,@"psd":self.baseTwoSecret.text} finish:^(id responseObject) {
         if ([responseObject[@"code"] integerValue]==1) {
             
-            CATransition *animation = [CATransition animation];
-            animation.duration = 0.5;
-            animation.timingFunction = UIViewAnimationCurveEaseInOut;
-            animation.type = @"pageCurl";
-            [self.contentview exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
-            [self.contentview.layer addAnimation:animation forKey:nil];
-            
-            self.imageOne.image = [UIImage imageNamed:@"1未选中"];
-            self.imageTwo.image = [UIImage imageNamed:@"2选中"];
+             [MBProgressHUD showError:responseObject[@"message"]];
+            [self.navigationController popViewControllerAnimated:YES];
+           
             
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];

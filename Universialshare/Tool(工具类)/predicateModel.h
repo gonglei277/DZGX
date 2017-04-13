@@ -23,5 +23,7 @@
 + (BOOL) IsChinese:(NSString *)str;
 //判断只含有数字或字母
 +(BOOL)judgePassWordLegal:(NSString *)pass;
+//判断字符串是否包含数字，字母，或混合
++(int)checkIsHaveNumAndLetter:(NSString*)password;
 
 @end

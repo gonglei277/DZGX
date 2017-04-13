@@ -66,27 +66,27 @@
             
         }else if (_sixSecret.length == 1){
             
-            [self showimageone:@"XRPlaceholder" imagetwo:@"" imagethree:@"" imagefour:@"" imagefive:@"" imagesix:@""];
+            [self showimageone:@"加密密码" imagetwo:@"" imagethree:@"" imagefour:@"" imagefive:@"" imagesix:@""];
         
         }else if (_sixSecret.length == 2){
             
-            [self showimageone:@"XRPlaceholder" imagetwo:@"XRPlaceholder" imagethree:@"" imagefour:@"" imagefive:@"" imagesix:@""];
+            [self showimageone:@"加密密码" imagetwo:@"加密密码" imagethree:@"" imagefour:@"" imagefive:@"" imagesix:@""];
             
         }else if (_sixSecret.length == 3){
             
-            [self showimageone:@"XRPlaceholder" imagetwo:@"XRPlaceholder" imagethree:@"XRPlaceholder" imagefour:@"" imagefive:@"" imagesix:@""];
+            [self showimageone:@"加密密码" imagetwo:@"加密密码" imagethree:@"加密密码" imagefour:@"" imagefive:@"" imagesix:@""];
             
         }else if (_sixSecret.length == 4){
             
-            [self showimageone:@"XRPlaceholder" imagetwo:@"XRPlaceholder" imagethree:@"XRPlaceholder" imagefour:@"XRPlaceholder" imagefive:@"" imagesix:@""];
+            [self showimageone:@"加密密码" imagetwo:@"加密密码" imagethree:@"加密密码" imagefour:@"加密密码" imagefive:@"" imagesix:@""];
             
         }else if (_sixSecret.length == 5){
             
-            [self showimageone:@"XRPlaceholder" imagetwo:@"XRPlaceholder" imagethree:@"XRPlaceholder" imagefour:@"XRPlaceholder" imagefive:@"XRPlaceholder" imagesix:@""];
+            [self showimageone:@"加密密码" imagetwo:@"加密密码" imagethree:@"加密密码" imagefour:@"加密密码" imagefive:@"加密密码" imagesix:@""];
             
         }else if (_sixSecret.length == 6){
             
-            [self showimageone:@"XRPlaceholder" imagetwo:@"XRPlaceholder" imagethree:@"XRPlaceholder" imagefour:@"XRPlaceholder" imagefive:@"XRPlaceholder" imagesix:@"XRPlaceholder"];
+            [self showimageone:@"加密密码" imagetwo:@"加密密码" imagethree:@"加密密码" imagefour:@"加密密码" imagefive:@"加密密码" imagesix:@"加密密码"];
             
         }
         
@@ -109,14 +109,72 @@
 
 - (IBAction)clickNextBt:(UIButton *)sender {
     
-    [self.view endEditing:YES];
-     [self.scrollview setContentOffset:CGPointMake(SCREEN_WIDTH - 60, 0) animated:YES];
+    if (_sixSecret.length <=0 || _sixSecret.length >6) {
+        [MBProgressHUD showError:@"密码长度错误"];
+        return;
+    }
+    
+    [NetworkManager requestPOSTWithURLStr:@"user/checkTwoPass" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].name,@"psd":_sixSecret} finish:^(id responseObject) {
+        if ([responseObject[@"code"] integerValue]==1) {
+            
+            [self.view endEditing:YES];
+            [self.scrollview setContentOffset:CGPointMake(SCREEN_WIDTH - 60, 0) animated:YES];
+            
+            
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+    } enError:^(NSError *error) {
+        [MBProgressHUD showError:error.localizedDescription];
+    }];
+    
 }
 
 - (IBAction)ClickDonebt:(UIButton *)sender {
     
+    if (self.bseTsecret.text.length <= 0) {
+        
+        [MBProgressHUD showError:@"密码不能为空"];
+        return;
+    }
+    if (self.basTRepSecTf.text.length <= 0) {
+        
+        [MBProgressHUD showError:@"确认密码不能为空"];
+        return;
+    }
+    
+    if (self.bseTsecret.text.length < 6 || self.bseTsecret.text.length > 20) {
+        
+        [MBProgressHUD showError:@"请输入6-20位密码"];
+        return;
+    }
+    
+    if ([predicateModel checkIsHaveNumAndLetter:self.bseTsecret.text] != 3) {
+        
+        [MBProgressHUD showError:@"密码只能包含数字和字母"];
+        return;
+    }
+    
+    if (![self.bseTsecret.text isEqualToString:self.basTRepSecTf.text]) {
+        [MBProgressHUD showError:@"两次输入的密码不一致"];
+        return;
+    }
+    
+    [NetworkManager requestPOSTWithURLStr:@"user/setTwoPass" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].name,@"psd":self.basTRepSecTf.text} finish:^(id responseObject) {
+        if ([responseObject[@"code"] integerValue]==1) {
+            
+            [MBProgressHUD showError:responseObject[@"message"]];
+            [self.view endEditing:YES];
+            
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"LoveConsumptionVC" object:nil];
+            
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+    } enError:^(NSError *error) {
+        [MBProgressHUD showError:error.localizedDescription];
+    }];
 
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"LoveConsumptionVC" object:nil];
 }
 
 -(void)updateViewConstraints{

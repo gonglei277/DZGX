@@ -49,12 +49,23 @@
 - (IBAction)clearMomery:(UITapGestureRecognizer *)sender {
     
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您确定要删除缓存吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alert.tag = 11;
     [alert show];
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex==1) {
         
-        [self clearFile];//清楚缓存
+        if (alertView.tag == 10) {
+            
+            [UserModel defaultUser].loginstatus = NO;
+            [usermodelachivar achive];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"notification_push" object:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }else if (alertView.tag == 11){
+        
+             [self clearFile];//清楚缓存
+        }
 
     }
     
@@ -75,11 +86,9 @@
 //退出登录
 - (IBAction)exitEvent:(UIButton *)sender {
     
-    
-    [UserModel defaultUser].loginstatus = NO;
-    [usermodelachivar achive];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"notification_push" object:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您确定要退出吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alert.tag = 10;
+    [alert show];
     
 }
 
