@@ -19,29 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Universialshare/&#x6211;&#x7684;/controller/&#x6211;&#x7684;&#x5584;&#x5fc3; /View/GLMine_MyHeartCell.m"
-            timestampString = "513754315.849906"
+            filePath = "Universialshare/&#x6211;&#x7684;/controller/&#x6211;&#x8981;&#x76f4;&#x6350;/Model/GLDirectDonationModel.m"
+            timestampString = "513760419.187831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "-setModel:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Universialshare/&#x6211;&#x7684;/controller/&#x6211;&#x7684;&#x5584;&#x5fc3; /Controller/GLSixPersentController.m"
-            timestampString = "513754481.298245"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-models"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "-setValue:forUndefinedKey:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -65,6 +65,7 @@
 		4A203D9B1E9F21E200DF22F7 /* GLMine_InfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203D941E9F21E200DF22F7 /* GLMine_InfoController.xib */; };
 		4A203D9C1E9F21E200DF22F7 /* GLMine_InfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203D981E9F21E200DF22F7 /* GLMine_InfoCell.m */; };
 		4A203D9D1E9F21E200DF22F7 /* GLMine_InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203D991E9F21E200DF22F7 /* GLMine_InfoCell.xib */; };
+		4A203DA91E9F646500DF22F7 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A203DA81E9F646500DF22F7 /* libxml2.2.tbd */; };
 		4A4608E71E9C9E6D0045824F /* GLFirstPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4608D21E9C9E6D0045824F /* GLFirstPageController.m */; };
 		4A4608E81E9C9E6D0045824F /* GLFirstPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4608D31E9C9E6D0045824F /* GLFirstPageController.xib */; };
 		4A4608E91E9C9E6D0045824F /* GLDailyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4608D61E9C9E6D0045824F /* GLDailyView.m */; };
@@ -708,6 +709,7 @@
 		4A203D971E9F21E200DF22F7 /* GLMine_InfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMine_InfoCell.h; sourceTree = "<group>"; };
 		4A203D981E9F21E200DF22F7 /* GLMine_InfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMine_InfoCell.m; sourceTree = "<group>"; };
 		4A203D991E9F21E200DF22F7 /* GLMine_InfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMine_InfoCell.xib; sourceTree = "<group>"; };
+		4A203DA81E9F646500DF22F7 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		4A4608D11E9C9E6D0045824F /* GLFirstPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFirstPageController.h; sourceTree = "<group>"; };
 		4A4608D21E9C9E6D0045824F /* GLFirstPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFirstPageController.m; sourceTree = "<group>"; };
 		4A4608D31E9C9E6D0045824F /* GLFirstPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLFirstPageController.xib; sourceTree = "<group>"; };
@@ -1689,6 +1691,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A203DA91E9F646500DF22F7 /* libxml2.2.tbd in Frameworks */,
 				4A46102C1E9CC6360045824F /* libSocialQQ.a in Frameworks */,
 				4A46102D1E9CC6360045824F /* TencentOpenAPI.framework in Frameworks */,
 				4A4610301E9CC6360045824F /* libWeChatSDK.a in Frameworks */,
@@ -3310,6 +3313,7 @@
 		BB2598459FE627C586E51511 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A203DA81E9F646500DF22F7 /* libxml2.2.tbd */,
 				C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */,
 			);
 			name = Frameworks;

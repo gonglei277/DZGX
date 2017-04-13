@@ -63,7 +63,7 @@
     self.donationNumT.delegate = self;
     self.secondPwdT.delegate = self;
     
-//    self.useableBeanNumLabel.text = [UserModel defaultUser].couriercount;
+    self.useableBeanNumLabel.text = [UserModel defaultUser].ketiBean;
     
     self.bgViewH.constant = SCREEN_HEIGHT - 64;
     self.bgViewW.constant = SCREEN_WIDTH;
@@ -79,13 +79,13 @@
 }
 - (void)dismiss {
     
-    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
-    CGRect rect=[self.chooseBtn convertRect: self.chooseBtn.bounds toView:window];
-    
+//    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
+//    CGRect rect=[self.chooseBtn convertRect: self.chooseBtn.bounds toView:window];
+//    
 //    _directV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 4 * self.chooseBtn.yy_height);
     
     [UIView animateWithDuration:0.3 animations:^{
-        _directV.frame = CGRectMake(0, CGRectGetMaxY(rect), SCREEN_WIDTH, 0);
+        
         _maskV.alpha = 0;
     } completion:^(BOOL finished) {
         [_maskV removeFromSuperview];
@@ -138,22 +138,17 @@
 
 - (void)chooseValue:(UIButton *)sender {
     
-//    if (sender== _directV.normalBtn) {
-//        self.beanStyleLabel.text = @"普通志愿豆";
-//        self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%ld",[[UserModel defaultUser].couriercount integerValue]];
-//        [_maskV removeFromSuperview];
-//    }else{
-//        
-//        if([[UserModel defaultUser].userLogin integerValue] == 1){
-//            self.beanStyleLabel.text = @"代缴税志愿豆";
-//            
-//        }else{
-//            
-//            self.beanStyleLabel.text = @"待提供发票志愿豆";
-//        }
-//        self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%ld",[[UserModel defaultUser].nopaycount integerValue]];
-//        [_maskV removeFromSuperview];
-//    }
+    if (sender== _directV.normalBtn) {
+        self.beanStyleLabel.text = @"普通志愿豆";
+        self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%ld",[[UserModel defaultUser].ketiBean integerValue]];
+        [_maskV removeFromSuperview];
+    }else{
+  
+        self.beanStyleLabel.text = @"待缴税志愿豆";
+        
+        self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%ld",[[UserModel defaultUser].djs_bean integerValue]];
+        [_maskV removeFromSuperview];
+    }
 }
 
 - (BOOL)isPureNumandCharacters:(NSString *)string
@@ -206,7 +201,7 @@
     contentView.layer.masksToBounds = YES;
     [contentView.cancelBtn addTarget:self action:@selector(cancelDonation) forControlEvents:UIControlEventTouchUpInside];
     [contentView.ensureBtn addTarget:self action:@selector(ensureDonation) forControlEvents:UIControlEventTouchUpInside];
-    contentView.contentLabel.text = @"您是否选择捐赠?中国文学艺术基金会将会感谢您的每一份善心!";
+    contentView.contentLabel.text = @"您是否选择捐赠?大众共享基金会将会感谢您的每一份善心!";
     [_maskV showViewWithContentView:contentView];
     
 }
@@ -219,69 +214,75 @@
 }
 - (void)ensureDonation {
     
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    dict[@"token"] = [UserModel defaultUser].aukeyValue;
-//    dict[@"password"] = self.secondPwdT.text;
-//    dict[@"beannum"] = @([self.donationNumT.text doubleValue]);
-//    NSString *beanStyle = self.beanStyleLabel.text;
-//    //0 普通善行豆   1 激励善行豆
-//    
-//    if ([beanStyle isEqualToString:@"普通志愿豆"]) {
-//        dict[@"donatetype"] = @"0";
-//    }else{
-//        dict[@"donatetype"] = @"1";
-//    }
-//    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-//    
-//    [NetworkManager requestPOSTWithURLStr:@"Index/donates" paramDic:dict finish:^(id responseObject) {
-//        
-//        if ([responseObject[@"code"] integerValue] == 0) {
-//            
-//            [self cancelDonation];
-//            self.donationNumT.text = nil;
-//            self.secondPwdT.text = nil;
-//            
-//            //刷新信息
-//            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//            dict[@"token"] = [UserModel defaultUser].aukeyValue;
-//            
-//            [NetworkManager requestPOSTWithURLStr:@"Index/updata" paramDic:dict finish:^(id responseObject) {
-//                
-//                [_loadV removeloadview];
-//                if ([responseObject[@"code"] integerValue] == 0){
-//                    
-//                    //                    NSLog(@"%@",responseObject);
-//                    [UserModel defaultUser].couriercount = [NSString stringWithFormat:@"%@",responseObject[@"couriercount"]];
-//                    [UserModel defaultUser].nopaycount = [NSString stringWithFormat:@"%@",responseObject[@"nopaycount"]];
-//                    [usermodelachivar achive];
-//                    [[NSNotificationCenter defaultCenter] postNotificationName:@"updataNotification" object:nil];
-//                    
-//                    if ([beanStyle isEqualToString:@"普通志愿豆"]) {
-//                        
-//                        self.useableBeanNumLabel.text = [UserModel defaultUser].couriercount;
-//                    }else{
-//                        self.useableBeanNumLabel.text = [UserModel defaultUser].nopaycount;
-//                    }
-//                    [MBProgressHUD showSuccess:@"直捐成功!"];
-//                }else{
-//                    
-//                    [MBProgressHUD showError:@"数据提交异常,请重试!"];
-//                }
-//                
-//            } enError:^(NSError *error) {
-//                [_loadV removeloadview];
-//                [MBProgressHUD showError:@"数据提交异常,请重试!"];
-//            }];
-//            
-//        }else{
-//            [_loadV removeloadview];
-//            [MBProgressHUD showError:responseObject[@"msg"]];
-//        }
-//    } enError:^(NSError *error) {
-//        
-//        [_loadV removeloadview];
-//        [MBProgressHUD showError:error.localizedDescription];
-//    }];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    dict[@"password"] = self.secondPwdT.text;
+    dict[@"num"] = @([self.donationNumT.text doubleValue]);
+    NSString *beanStyle = self.beanStyleLabel.text;
+    //0 普通善行豆   1 激励善行豆
+    
+    if ([beanStyle isEqualToString:@"普通志愿豆"]) {
+        dict[@"donatetype"] = @"1";
+    }else{
+        dict[@"donatetype"] = @"0";
+    }
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    
+    [NetworkManager requestPOSTWithURLStr:@"user/donation" paramDic:dict finish:^(id responseObject) {
+//        NSLog(@"%@",responseObject);
+        if ([responseObject[@"code"] integerValue] == 1) {
+            
+            [self cancelDonation];
+            self.donationNumT.text = nil;
+            self.secondPwdT.text = nil;
+            
+            [self updateData];
+            
+        }else{
+            [_loadV removeloadview];
+            [MBProgressHUD showError:responseObject[@"msg"]];
+        }
+    } enError:^(NSError *error) {
+        
+        [_loadV removeloadview];
+        [MBProgressHUD showError:error.localizedDescription];
+    }];
+}
+- (void)updateData {
+    //刷新信息
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    
+    [NetworkManager requestPOSTWithURLStr:@"user/refresh" paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        if ([responseObject[@"code"] integerValue] == 1){
+            
+            //                    NSLog(@"%@",responseObject);
+            [UserModel defaultUser].ketiBean = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"common"]];
+            [UserModel defaultUser].djs_bean = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"taxes"]];
+            [usermodelachivar achive];
+            //                    [[NSNotificationCenter defaultCenter] postNotificationName:@"updataNotification" object:nil];
+            
+            if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]) {
+                
+                self.useableBeanNumLabel.text = [UserModel defaultUser].ketiBean;
+            }else{
+                self.useableBeanNumLabel.text = [UserModel defaultUser].djs_bean;
+            }
+            [MBProgressHUD showSuccess:@"直捐成功!"];
+        }else{
+            
+            [MBProgressHUD showError:@"数据提交异常,请重试!"];
+        }
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        [MBProgressHUD showError:@"数据提交异常,请重试!"];
+    }];
+
 }
 //用 bounces 属性
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

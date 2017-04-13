@@ -79,7 +79,7 @@ static NSString *followID = @"GLFirstFollowCell";
     [self addMySelfPanGesture];
     
 
-    [self initInterDataSorceinfomessage];
+//    [self initInterDataSorceinfomessage];
     [self setupUI];
 }
 
@@ -215,7 +215,7 @@ static NSString *followID = @"GLFirstFollowCell";
 -(void)initInterDataSorceinfomessage{
     
     [NetworkManager requestPOSTWithURLStr:@"index/notice" paramDic:nil finish:^(id responseObject) {
-//        NSLog(@"%@",responseObject);
+        NSLog(@"%@",responseObject);
 //        [_loadV removeFromSuperview];
         if ([responseObject[@"code"] integerValue] == 1) {
             
@@ -229,7 +229,11 @@ static NSString *followID = @"GLFirstFollowCell";
                 self.homepopinfoView.titlename.text = @"";
             }
             if ([strcontent rangeOfString:@"null"].location == NSNotFound) {
-                self.homepopinfoView.infoLb.attributedText = [self strToAttriWithStr:strcontent];
+                 self.homepopinfoView.infoLb.attributedText = [self strToAttriWithStr:strcontent];
+//                self.homepopinfoView.infoLb.attributedText
+                
+//                NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:strcontent];
+//                NSLog(@"attributedText = %@",attributedText);
             }else{
                 self.homepopinfoView.infoLb.text = @"";
             }
@@ -248,7 +252,7 @@ static NSString *followID = @"GLFirstFollowCell";
             
             CGRect sizecontent=[self.homepopinfoView.infoLb.attributedText  boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
             
-            NSLog(@"%@",NSStringFromCGRect(sizecontent));
+//            NSLog(@"%@",NSStringFromCGRect(sizecontent));
             
             if ((110 + sizetitle.size.height + sizecontent.size.height) >= ((SCREEN_HEIGHT/2) - 30)) {
                 

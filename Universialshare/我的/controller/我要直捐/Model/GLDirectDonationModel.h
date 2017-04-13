@@ -10,11 +10,10 @@
 
 @interface GLDirectDonationModel : NSObject
 
-@property (nonatomic, copy)NSString *beannum;
+@property (nonatomic, copy)NSString *num;
 
-@property (nonatomic, copy)NSString *donatetime;
+@property (nonatomic, copy)NSString *timeStr;
 
-@property (nonatomic, copy)NSString *donatetype;
-
+@property (nonatomic, copy)NSString *Donaldtype;
 
 @end

@@ -33,6 +33,8 @@
 @property (nonatomic, copy)NSString  *vsnAddress;//版本地址
 @property (nonatomic, copy)NSString  *counta;//
 
+
+
 +(UserModel*)defaultUser;
 
 @end
