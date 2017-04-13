@@ -25,6 +25,8 @@
   
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.title = @"绑定手机号";
+    
+    self.phonelb.text = [NSString stringWithFormat:@"%@*****%@",[[UserModel defaultUser].phone substringToIndex:3],[[UserModel defaultUser].phone substringFromIndex:7]];
 
 }
 

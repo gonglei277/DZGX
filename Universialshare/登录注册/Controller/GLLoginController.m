@@ -91,6 +91,17 @@
         return;
     }
     
+    if (self.scretTf.text.length < 6 || self.scretTf.text.length > 20) {
+        [MBProgressHUD showError:@"请输入6-20位密码"];
+        return;
+    }
+    
+    if ([predicateModel checkIsHaveNumAndLetter:self.scretTf.text] != 3) {
+        
+        [MBProgressHUD showError:@"密码只能包含数字和字母"];
+        return;
+    }
+    
     [self.view addSubview:self.maskView];
     [self.view addSubview:self.loginView];
     

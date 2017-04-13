@@ -79,6 +79,12 @@
         return;
     }
     
+    if ([predicateModel checkIsHaveNumAndLetter:self.secretTf.text] != 3) {
+        
+        [MBProgressHUD showError:@"密码只能包含数字和字母"];
+        return;
+    }
+    
     if (self.sureSecretTf.text.length <= 0) {
         [MBProgressHUD showError:@"请输入确认密码"];
         return;
@@ -88,6 +94,7 @@
         [MBProgressHUD showError:@"两次输入的密码不一致"];
         return;
     }
+    
     
     if (self.verificationTf.text.length <= 0) {
         [MBProgressHUD showError:@"请输入验证码"];
