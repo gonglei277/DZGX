@@ -44,6 +44,13 @@ static NSString *ID = @"GLReceiveBeansCell";
     return _nodataV;
     
 }
+- (NSMutableArray *)models{
+    if (_models == nil) {
+        _models = [NSMutableArray array];
+    }
+    return _models;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];

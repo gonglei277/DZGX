@@ -84,8 +84,8 @@
 //    
 //    [UILabel changeLineSpaceForLabel:self.noticeLabel WithSpace:5.0];
 //
-//    self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].couriercount floatValue]];
-//    self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].couriercount floatValue]];
+    self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].ketiBean floatValue]];
+    self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].ketiBean floatValue]];
     
     
     self.buybackNumF.returnKeyType = UIReturnKeyNext;
@@ -96,49 +96,59 @@
     self.contentViewWidth.constant = SCREEN_WIDTH;
     self.contentViewHeight.constant = 250;
     
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    dict[@"token"] = [UserModel defaultUser].aukeyValue;
-//    
-//    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-//    [NetworkManager requestPOSTWithURLStr:@"Index/prompt" paramDic:dict finish:^(id responseObject) {
-//        
-//        [_loadV removeloadview];
-////        NSLog(@"%@",responseObject);
-//        if ([responseObject[@"code"] integerValue] == 0){
-//
-//            if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankacount"]] rangeOfString:@"null"].location != NSNotFound) {
-//                [UserModel defaultUser].cardNumber = @"";
-//            }else{
-//                [UserModel defaultUser].cardNumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankacount"]];
-//            }
-//            if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]] rangeOfString:@"null"].location != NSNotFound) {
-//                [UserModel defaultUser].bankName = @"";
-//            }else{
-//                
-//                [UserModel defaultUser].bankName = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]];
-//            }
-//            if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"icon"]] rangeOfString:@"null"].location != NSNotFound)  {
-//                [UserModel defaultUser].bankIcon = @"";
-//            }else{
-//                
-//                [UserModel defaultUser].bankIcon = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"icon"]];
-//            }
-//            [usermodelachivar achive];
-//        }else{
-//            [UserModel defaultUser].cardNumber = @"";
-//            [UserModel defaultUser].bankName = @"";
-//            [UserModel defaultUser].bankIcon = @"";
-//        }
-//        [self updateBankInfo];
-//    } enError:^(NSError *error) {
-//        [_loadV removeloadview];
-//        
-//    }];
-//    
+    [self updateData];
     
     //注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"maskView_dismiss" object:nil];
     
+}
+- (void)updateData {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"user/refresh" paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        //        NSLog(@"%@",responseObject);
+        if ([responseObject[@"code"] integerValue] == 1){
+            
+            if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]] rangeOfString:@"null"].location != NSNotFound) {
+                [UserModel defaultUser].banknumber = @"";
+            }else{
+                [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankacount"]];
+            }
+            if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]] rangeOfString:@"null"].location != NSNotFound) {
+                [UserModel defaultUser].bankname = @"";
+            }else{
+                
+                [UserModel defaultUser].bankname = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]];
+            }
+            [UserModel defaultUser].ketiBean = [NSString stringWithFormat:@"%@元",responseObject[@"data"][@"common"]];
+            [UserModel defaultUser].djs_bean = [NSString stringWithFormat:@"%@元",responseObject[@"data"][@"taxes"]];
+            
+            [usermodelachivar achive];
+            
+            if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]) {
+                
+                self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].ketiBean floatValue]];
+                self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].ketiBean floatValue]];
+            }else{
+                self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].djs_bean floatValue]];
+                self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].djs_bean floatValue]];
+            }
+        }else{
+            [UserModel defaultUser].banknumber = @"";
+            [UserModel defaultUser].bankname = @"";
+//            [UserModel defaultUser].bankIcon = @"";
+        }
+        [self updateBankInfo];
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        
+    }];
+
 }
 //移除通知
 - (void)dealloc {
@@ -156,39 +166,39 @@
 }
 - (void)updateBankInfo {
 //    
-//    if ([[UserModel defaultUser].cardNumber isEqualToString:@""] || [[UserModel defaultUser].cardNumber rangeOfString:@"null"].location != NSNotFound){
-//        
-//        self.bankStyleImageV.hidden = YES;
-//        self.cardNumLabel.hidden = YES;
-//        self.cardStyleLabel.hidden = YES;
-//        self.detailImageV.hidden = YES;
-//        
-//        self.addImageV.hidden = NO;
-//        self.addLabel.hidden = NO;
-//        
-//    }else{
-//        
-//        self.bankStyleImageV.hidden = NO;
-//        self.cardNumLabel.hidden = NO;
-//        self.cardStyleLabel.hidden = NO;
-//        self.detailImageV.hidden = NO;
-//        
-//        self.addImageV.hidden = YES;
-//        self.addLabel.hidden = YES;
-//        
-//        self.cardNumLabel.text = [UserModel defaultUser].cardNumber;
-//        self.cardStyleLabel.text = [UserModel defaultUser].bankName;
-//        [self.bankStyleImageV sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].bankIcon]];
-//        if (!self.bankStyleImageV.image) {
-//            self.bankStyleImageV.image = [UIImage imageNamed:@"mine_icbc"];
-//        }
-//    }
-//    if ([[UserModel defaultUser].userLogin integerValue] == 1) {
-//        self.buybackNumF.placeholder = @"请输入100的整数倍";
-//    }else{
-//        self.buybackNumF.placeholder = @"请输入500的整数倍";
-//        
-//    }
+    if ([[UserModel defaultUser].banknumber isEqualToString:@""] || [[UserModel defaultUser].banknumber rangeOfString:@"null"].location != NSNotFound){
+        
+        self.bankStyleImageV.hidden = YES;
+        self.cardNumLabel.hidden = YES;
+        self.cardStyleLabel.hidden = YES;
+        self.detailImageV.hidden = YES;
+        
+        self.addImageV.hidden = NO;
+        self.addLabel.hidden = NO;
+        
+    }else{
+        
+        self.bankStyleImageV.hidden = NO;
+        self.cardNumLabel.hidden = NO;
+        self.cardStyleLabel.hidden = NO;
+        self.detailImageV.hidden = NO;
+        
+        self.addImageV.hidden = YES;
+        self.addLabel.hidden = YES;
+        
+        self.cardNumLabel.text = [UserModel defaultUser].banknumber;
+        self.cardStyleLabel.text = [UserModel defaultUser].bankname;
+        [self.bankStyleImageV sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].bankIcon]];
+        if (!self.bankStyleImageV.image) {
+            self.bankStyleImageV.image = [UIImage imageNamed:@"mine_icbc"];
+        }
+    }
+    if ([[UserModel defaultUser].groupId integerValue] == 7) {
+        self.buybackNumF.placeholder = @"请输入100的整数倍";
+    }else{
+        self.buybackNumF.placeholder = @"请输入500的整数倍";
+        
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -227,18 +237,18 @@
         [MBProgressHUD showError:@"余额不足!"];
         return;
     }
-//    if([[UserModel defaultUser].userLogin integerValue] == 1){
-//        
-//        if ([self.buybackNumF.text integerValue] %100 != 0){
-//            [MBProgressHUD showError:@"数量必须是100的整数倍!"];
-//            return;
-//        }
-//    }else{
-//        if ([self.buybackNumF.text integerValue] % 500 != 0){
-//            [MBProgressHUD showError:@"数量必须是500的整数倍!"];
-//            return;
-//        }
-//    }
+    if([[UserModel defaultUser].groupId integerValue] == 1){
+        
+        if ([self.buybackNumF.text integerValue] %100 != 0){
+            [MBProgressHUD showError:@"数量必须是100的整数倍!"];
+            return;
+        }
+    }else{
+        if ([self.buybackNumF.text integerValue] % 500 != 0){
+            [MBProgressHUD showError:@"数量必须是500的整数倍!"];
+            return;
+        }
+    }
     if ( [self.buybackNumF.text integerValue] > 50000){
         [MBProgressHUD showError:@"单笔最多回购50000颗志愿豆"];
         return;
@@ -323,79 +333,41 @@
 - (void)ensureBuyback{
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    dict[@"token"] = [UserModel defaultUser].aukeyValue;
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
     dict[@"password"] = self.secondPwdF.text;
-    dict[@"beannum"] = self.buybackNumF.text;
-    dict[@"bankacount"] = self.cardNumLabel.text;
-    dict[@"subbankname"] = self.cardStyleLabel.text;
-//
-//    if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]) {
-//        dict[@"withdrawtype"] = @"0";
-//    }else{
-//        dict[@"withdrawtype"] = @"1";
-//    }
-////    NSLog(@"%@",dict);
-//    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-//    [NetworkManager requestPOSTWithURLStr:@"Index/get_buys" paramDic:dict finish:^(id responseObject) {
-//        
-//        [_loadV removeloadview];
-//        if ([responseObject[@"code"] integerValue] == 0) {
-//            [self cancelBuyback];
-//            self.secondPwdF.text = nil;
-//            self.buybackNumF.text = nil;
-//            
-//            //刷新信息
-//            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//            dict[@"token"] = [UserModel defaultUser].aukeyValue;
-//            
-//            [NetworkManager requestPOSTWithURLStr:@"Index/updata" paramDic:dict finish:^(id responseObject) {
-//                
-//                [_loadV removeloadview];
-//                if ([responseObject[@"code"] integerValue] == 0){
-//                    
-//                    //                    NSLog(@"%@",responseObject);
-//                    if ([responseObject[@"couriercount"] rangeOfString:@"null"].location != NSNotFound) {
-//                        [UserModel defaultUser].couriercount = @"0.00";
-//                    }
-//                    if ([responseObject[@"nopaycount"] rangeOfString:@"null"].location != NSNotFound) {
-//                        [UserModel defaultUser].nopaycount = @"0.00";
-//                    }
-//                    
-//                    [UserModel defaultUser].couriercount = responseObject[@"couriercount"];
-//                    [UserModel defaultUser].nopaycount = responseObject[@"nopaycount"];
-//                    [usermodelachivar achive];
-//                    
-//                    [[NSNotificationCenter defaultCenter] postNotificationName:@"updataNotification" object:nil];
-//                 
-//                    if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]) {
-//                        
-//                        self.remainBeanLabel.text = [UserModel defaultUser].couriercount;
-//                        self.convertibleMoneyLabel.text = [UserModel defaultUser].couriercount;
-//                    }else{
-//                        self.remainBeanLabel.text = [UserModel defaultUser].nopaycount;
-//                        self.convertibleMoneyLabel.text = [UserModel defaultUser].nopaycount;
-//                    }
-//
-//                    [MBProgressHUD showSuccess:@"回购申请成功!"];
-//                }else{
-//                    
-//                    [MBProgressHUD showError:@"数据提交异常,请重试!"];
-//                }
-//            } enError:^(NSError *error) {
-//                [_loadV removeloadview];
-//                [MBProgressHUD showError:@"数据提交异常,请重试!"];
-//            }];
-//
-//            
-//        }else{
-//            [MBProgressHUD showError:responseObject[@"msg"]];
-//        }
-//        
-//    } enError:^(NSError *error) {
-//        [_loadV removeloadview];
-//        [MBProgressHUD showError:error.localizedDescription];
-//    }];
-//
+    dict[@"num"] = self.buybackNumF.text;
+    dict[@"IDcar"] = self.cardNumLabel.text;
+    //开户行地址  ???
+    dict[@"address"] = self.cardStyleLabel.text;
+
+    if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]) {
+        dict[@"withdrawtype"] = @"1";
+    }else{
+        dict[@"withdrawtype"] = @"0";
+    }
+//    NSLog(@"%@",dict);
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"user/back" paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        if ([responseObject[@"code"] integerValue] == 0) {
+            [self cancelBuyback];
+            self.secondPwdF.text = nil;
+            self.buybackNumF.text = nil;
+            
+            //刷新信息
+            [self updateData];
+            
+        }else{
+            [MBProgressHUD showError:responseObject[@"msg"]];
+        }
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        [MBProgressHUD showError:error.localizedDescription];
+    }];
+
 }
 //跳转回购记录
 - (void)pushToBuyBackVC{
@@ -445,20 +417,20 @@
     
     if (sender== _directV.normalBtn) {
         self.beanStyleLabel.text = @"普通志愿豆";
-//        self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].couriercount floatValue]];
-//        self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].couriercount floatValue]];
+        self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
+        self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
         [_maskV removeFromSuperview];;
     }else{
 //        if([[UserModel defaultUser].userLogin integerValue] == 1){
-//            self.beanStyleLabel.text = @"代缴税志愿豆";
-//            
+            self.beanStyleLabel.text = @"代缴税志愿豆";
+//
 //        }else{
 //            
-            self.beanStyleLabel.text = @"待提供发票志愿豆";
+//            self.beanStyleLabel.text = @"待提供发票志愿豆";
 //        }
-//        self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].nopaycount floatValue]];
-//        [_maskV removeFromSuperview];;
-//        self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].nopaycount floatValue]];
+        self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
+        [_maskV removeFromSuperview];;
+        self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
       
         [_maskV removeFromSuperview];
     }

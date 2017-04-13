@@ -36,6 +36,10 @@
 @property (nonatomic ,copy)NSString  *djs_bean;//代缴税
 
 
+@property (nonatomic ,copy)NSString  *bankname;//银行名
+@property (nonatomic ,copy)NSString  *bankIcon;//银行图标
+
+
 +(UserModel*)defaultUser;
 
 @end

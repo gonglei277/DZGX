@@ -7,16 +7,13 @@
 //
 
 #import "GLEncourageBeansController.h"
-#import "GLMyBeanCell.h"
 #import <MJRefresh/MJRefresh.h>
 #import "GLEncourageModel.h"
 #import "GLEncourageBeansCell.h"
 
 @interface GLEncourageBeansController ()<UITableViewDelegate,UITableViewDataSource>
 {
-//    NSMutableArray *_return_timeArr;
-//    NSMutableArray *_returnamountArr;
-//    NSMutableArray *_persentArr;
+
     LoadWaitView *_loadV;
 
     float _beanSum;

@@ -65,7 +65,6 @@
 		4A203D9B1E9F21E200DF22F7 /* GLMine_InfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203D941E9F21E200DF22F7 /* GLMine_InfoController.xib */; };
 		4A203D9C1E9F21E200DF22F7 /* GLMine_InfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203D981E9F21E200DF22F7 /* GLMine_InfoCell.m */; };
 		4A203D9D1E9F21E200DF22F7 /* GLMine_InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203D991E9F21E200DF22F7 /* GLMine_InfoCell.xib */; };
-		4A203DA91E9F646500DF22F7 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A203DA81E9F646500DF22F7 /* libxml2.2.tbd */; };
 		4A203DCF1E9F82A700DF22F7 /* GLEncourageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203DCE1E9F82A700DF22F7 /* GLEncourageModel.m */; };
 		4A203DD31E9F842F00DF22F7 /* GLEncourageBeansCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203DD11E9F842F00DF22F7 /* GLEncourageBeansCell.m */; };
 		4A203DD41E9F842F00DF22F7 /* GLEncourageBeansCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203DD21E9F842F00DF22F7 /* GLEncourageBeansCell.xib */; };
@@ -125,9 +124,6 @@
 		4A4609E61E9CB78E0045824F /* GLMine_MyBeansController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4609991E9CB78E0045824F /* GLMine_MyBeansController.xib */; };
 		4A4609E71E9CB78E0045824F /* GLReceiveBeansController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A46099B1E9CB78E0045824F /* GLReceiveBeansController.m */; };
 		4A4609E81E9CB78E0045824F /* GLRecommendBeansController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A46099D1E9CB78E0045824F /* GLRecommendBeansController.m */; };
-		4A4609E91E9CB78E0045824F /* GLMyBeanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4609A01E9CB78E0045824F /* GLMyBeanModel.m */; };
-		4A4609EA1E9CB78E0045824F /* GLMyBeanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4609A31E9CB78E0045824F /* GLMyBeanCell.m */; };
-		4A4609EB1E9CB78E0045824F /* GLMyBeanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4609A41E9CB78E0045824F /* GLMyBeanCell.xib */; };
 		4A4609EC1E9CB78E0045824F /* GLDirectDnationRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4609A81E9CB78E0045824F /* GLDirectDnationRecordController.m */; };
 		4A4609ED1E9CB78E0045824F /* GLDirectDnationRecordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4609A91E9CB78E0045824F /* GLDirectDnationRecordController.xib */; };
 		4A4609EE1E9CB78E0045824F /* GLDirectDonationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4609AB1E9CB78E0045824F /* GLDirectDonationController.m */; };
@@ -815,11 +811,6 @@
 		4A46099B1E9CB78E0045824F /* GLReceiveBeansController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLReceiveBeansController.m; sourceTree = "<group>"; };
 		4A46099C1E9CB78E0045824F /* GLRecommendBeansController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRecommendBeansController.h; sourceTree = "<group>"; };
 		4A46099D1E9CB78E0045824F /* GLRecommendBeansController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRecommendBeansController.m; sourceTree = "<group>"; };
-		4A46099F1E9CB78E0045824F /* GLMyBeanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMyBeanModel.h; sourceTree = "<group>"; };
-		4A4609A01E9CB78E0045824F /* GLMyBeanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMyBeanModel.m; sourceTree = "<group>"; };
-		4A4609A21E9CB78E0045824F /* GLMyBeanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMyBeanCell.h; sourceTree = "<group>"; };
-		4A4609A31E9CB78E0045824F /* GLMyBeanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMyBeanCell.m; sourceTree = "<group>"; };
-		4A4609A41E9CB78E0045824F /* GLMyBeanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMyBeanCell.xib; sourceTree = "<group>"; };
 		4A4609A71E9CB78E0045824F /* GLDirectDnationRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLDirectDnationRecordController.h; sourceTree = "<group>"; };
 		4A4609A81E9CB78E0045824F /* GLDirectDnationRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLDirectDnationRecordController.m; sourceTree = "<group>"; };
 		4A4609A91E9CB78E0045824F /* GLDirectDnationRecordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLDirectDnationRecordController.xib; sourceTree = "<group>"; };
@@ -1715,7 +1706,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A203DA91E9F646500DF22F7 /* libxml2.2.tbd in Frameworks */,
 				4A46102C1E9CC6360045824F /* libSocialQQ.a in Frameworks */,
 				4A46102D1E9CC6360045824F /* TencentOpenAPI.framework in Frameworks */,
 				4A4610301E9CC6360045824F /* libWeChatSDK.a in Frameworks */,
@@ -2238,8 +2228,6 @@
 		4A46099E1E9CB78E0045824F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4A46099F1E9CB78E0045824F /* GLMyBeanModel.h */,
-				4A4609A01E9CB78E0045824F /* GLMyBeanModel.m */,
 				4A203DCD1E9F82A700DF22F7 /* GLEncourageModel.h */,
 				4A203DCE1E9F82A700DF22F7 /* GLEncourageModel.m */,
 				4A203DD51E9F8A0B00DF22F7 /* GLRecommendModel.h */,
@@ -2253,9 +2241,6 @@
 		4A4609A11E9CB78E0045824F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4A4609A21E9CB78E0045824F /* GLMyBeanCell.h */,
-				4A4609A31E9CB78E0045824F /* GLMyBeanCell.m */,
-				4A4609A41E9CB78E0045824F /* GLMyBeanCell.xib */,
 				4A203DD01E9F842F00DF22F7 /* GLEncourageBeansCell.h */,
 				4A203DD11E9F842F00DF22F7 /* GLEncourageBeansCell.m */,
 				4A203DD21E9F842F00DF22F7 /* GLEncourageBeansCell.xib */,
@@ -4231,7 +4216,6 @@
 				4A0D97711E9729C100A26B84 /* GLHomeLiveCell.xib in Resources */,
 				4A4610261E9CC6360045824F /* UMSnsAccountViewController.xib in Resources */,
 				4A4610341E9CC6360045824F /* ios-social-sdk-comment-detail.html in Resources */,
-				4A4609EB1E9CB78E0045824F /* GLMyBeanCell.xib in Resources */,
 				F923094E1E9B8BFF00ECDC94 /* LBMineMessageSetupViewController.xib in Resources */,
 				4A46111D1E9CCC010045824F /* Mine_sixPart.xcassets in Resources */,
 				F923092B1E9B8BFF00ECDC94 /* LBMineCenterBalanceRechargeViewController.xib in Resources */,
@@ -4707,7 +4691,6 @@
 				4A4610A31E9CC6360045824F /* ZXDataMatrixSymbolInfo144.m in Sources */,
 				F961A9C81E9C747700275F52 /* UserModel.m in Sources */,
 				4A46108E1E9CC6360045824F /* ZXInvertedLuminanceSource.m in Sources */,
-				4A4609EA1E9CB78E0045824F /* GLMyBeanCell.m in Sources */,
 				4A4608E91E9C9E6D0045824F /* GLDailyView.m in Sources */,
 				4A0D977E1E9729C100A26B84 /* GLTwoButtonCell.m in Sources */,
 				F92309401E9B8BFF00ECDC94 /* LBMinecenterSeverceNoticeHeaderView.m in Sources */,
@@ -4783,7 +4766,6 @@
 				4A46100F1E9CC6360045824F /* LBXAlertAction.m in Sources */,
 				4A46103F1E9CC6360045824F /* ZXAztecDetector.m in Sources */,
 				4A4608F31E9C9E6D0045824F /* GLRewardView.m in Sources */,
-				4A4609E91E9CB78E0045824F /* GLMyBeanModel.m in Sources */,
 				4A013CA41E9DCE2800BB3764 /* GLFirstPageRewardModel.m in Sources */,
 				4A0D97801E9729C100A26B84 /* TypeView.m in Sources */,
 				4A4611021E9CC6370045824F /* ZXQRCodeDecoder.m in Sources */,
