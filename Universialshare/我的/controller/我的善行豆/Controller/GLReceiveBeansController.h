@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface GLReceiveBeansController : UIViewController
+
 @property (nonatomic, copy)void(^retureValue)(NSString *remainBeans);
+
 @end

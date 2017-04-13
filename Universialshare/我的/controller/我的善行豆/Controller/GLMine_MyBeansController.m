@@ -88,7 +88,7 @@
     [self.recommendBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [self.receiveBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     
-    [sender setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [sender setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     
     if (sender == self.encourageBtn) {
 

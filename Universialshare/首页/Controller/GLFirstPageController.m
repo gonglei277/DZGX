@@ -608,7 +608,7 @@ static NSString *followID = @"GLFirstFollowCell";
 -(void)tapgestrueMsakView{
     
     [UIView animateWithDuration:0.3 animations:^{
-        self.moreOperateView.frame=CGRectMake(SCREEN_WIDTH+65, 60, 65, 270);
+        self.moreOperateView.frame=CGRectMake(SCREEN_WIDTH + 65, 64, 65, 200);
     } completion:^(BOOL finished) {
         [self.maskView removeFromSuperview];
     }];

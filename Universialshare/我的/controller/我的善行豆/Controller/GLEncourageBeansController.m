@@ -9,23 +9,27 @@
 #import "GLEncourageBeansController.h"
 #import "GLMyBeanCell.h"
 #import <MJRefresh/MJRefresh.h>
+#import "GLEncourageModel.h"
+#import "GLEncourageBeansCell.h"
 
 @interface GLEncourageBeansController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    NSMutableArray *_return_timeArr;
-    NSMutableArray *_returnamountArr;
-    NSMutableArray *_persentArr;
+//    NSMutableArray *_return_timeArr;
+//    NSMutableArray *_returnamountArr;
+//    NSMutableArray *_persentArr;
     LoadWaitView *_loadV;
 
     float _beanSum;
 }
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)NodataView *nodataV;
+@property (nonatomic,strong)NSMutableArray *models;
+@property (nonatomic,assign)NSInteger page;
 
 
 @end
 
-static NSString *ID = @"GLMyBeanCell";
+static NSString *ID = @"GLEncourageBeansCell";
 @implementation GLEncourageBeansController
 
 -(UITableView*)tableView {
@@ -44,6 +48,13 @@ static NSString *ID = @"GLMyBeanCell";
     return _nodataV;
     
 }
+- (NSMutableArray *)models{
+    if (_models == nil) {
+        _models = [NSMutableArray array];
+    }
+    return _models;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -56,11 +67,11 @@ static NSString *ID = @"GLMyBeanCell";
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.tableView registerNib:[UINib nibWithNibName:@"GLMyBeanCell" bundle:nil] forCellReuseIdentifier:ID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"GLEncourageBeansCell" bundle:nil] forCellReuseIdentifier:ID];
     
-    _return_timeArr = [NSMutableArray array];
-    _returnamountArr = [NSMutableArray array];
-    _persentArr = [NSMutableArray array];
+//    _return_timeArr = [NSMutableArray array];
+//    _returnamountArr = [NSMutableArray array];
+//    _persentArr = [NSMutableArray array];
     
     __weak __typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -85,53 +96,39 @@ static NSString *ID = @"GLMyBeanCell";
     
     if (status) {
         
-        [_return_timeArr removeAllObjects];
-        [_returnamountArr removeAllObjects];
-        [_persentArr removeAllObjects];
+        _page = 1;
+        [self.models removeAllObjects];
+        
+    }else{
+        _page ++;
     }
     
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    dict[@"token"] = [UserModel defaultUser].aukeyValue;
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    dict[@"page"] = [NSString stringWithFormat:@"%ld",_page];
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"Index/volunteerBean" paramDic:dict finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/myfh_list" paramDic:dict finish:^(id responseObject) {
  
         [_loadV removeloadview];
         [self endRefresh];
-
-        NSDate *date = [NSDate date];
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        
-        [formatter setDateStyle:NSDateFormatterMediumStyle];
-        
-        [formatter setTimeStyle:NSDateFormatterShortStyle];
-        
-        [formatter setDateFormat:@"YYYY-MM-dd"];
-        
-//        NSLog(@"%@",responseObject);
-        NSString *DateTime = [formatter stringFromDate:date];
-        if ([responseObject[@"code"] integerValue]==0) {
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"code"] integerValue] == 1) {
             
-            for (NSDictionary *dict in responseObject[@"data"][@"rows"]) {
-//                [_return_timeArr addObject:[NSString stringWithFormat:@"%@",dict[@"return_date"]]];
-                NSArray *array = [dict[@"return_date"] componentsSeparatedByString:@"/"]; //从字符A中分隔成2个元素的数组
-                [_return_timeArr addObject:array[0]];
-                if (array.count == 1) {
-                    [_persentArr addObject:@""];
-                }else{
-                    
-                    [_persentArr addObject:array[1]];
-                }
-                [_returnamountArr addObject: [NSString stringWithFormat:@"%@",dict[@"returnamount"]]];
-                if ([array[0] isEqualToString:DateTime]) {
-                    
-                    _beanSum += [dict[@"returnamount"] floatValue];
-                }
+            for (NSDictionary *dict in responseObject[@"data"]) {
+                
+                GLEncourageModel *model = [GLEncourageModel mj_objectWithKeyValues:dict];
+                model.timeStr = dict[@"time"];
+                
+                [_models addObject:model];
             }
+
+            _beanSum = [responseObject[@"count"] floatValue];
         }
         
-        if (_returnamountArr.count <= 0 ) {
+        if (self.models.count <= 0 ) {
             self.nodataV.hidden = NO;
         }else{
             self.nodataV.hidden = YES;
@@ -165,18 +162,13 @@ static NSString *ID = @"GLMyBeanCell";
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (_return_timeArr.count == 0) {
-        return 0;
-    }else{
-        
-        return _return_timeArr.count;
-    }
+
+    return self.models.count;
+    
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    GLMyBeanCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    cell.dateLabel.text = _return_timeArr[indexPath.row];
-    cell.numberLabel.text = _returnamountArr[indexPath.row];
-    cell.persentLabel.text = _persentArr[indexPath.row];
+    GLEncourageBeansCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    cell.model = self.models[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

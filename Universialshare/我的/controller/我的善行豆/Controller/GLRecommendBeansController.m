@@ -7,21 +7,26 @@
 //
 
 #import "GLRecommendBeansController.h"
-#import "GLMyBeanCell.h"
+
+#import "GLRecommendModel.h"
+#import "GLRecommendCell.h"
 
 @interface GLRecommendBeansController ()<UITableViewDelegate,UITableViewDataSource>
 {
 
-    NSMutableArray *_return_timeArr;
-    NSMutableArray *_returnamountArr;
+//    NSMutableArray *_return_timeArr;
+//    NSMutableArray *_returnamountArr;
     LoadWaitView *_loadV;
     float _beanSum;
 }
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)NodataView *nodataV;
 @property (nonatomic,assign)NSInteger page;
+@property (nonatomic,strong)NSMutableArray *models;
+
+
 @end
-static NSString *ID = @"GLMyBeanCell";
+static NSString *ID = @"GLRecommendCell";
 @implementation GLRecommendBeansController
 
 -(UITableView*)tableView {
@@ -40,14 +45,17 @@ static NSString *ID = @"GLMyBeanCell";
     return _nodataV;
     
 }
+- (NSMutableArray *)models{
+    if (_models == nil) {
+        _models = [NSMutableArray array];
+    }
+    return _models;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    
-    _return_timeArr = [NSMutableArray array];
-    _returnamountArr = [NSMutableArray array];
-    
+
     
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.nodataV];
@@ -56,7 +64,7 @@ static NSString *ID = @"GLMyBeanCell";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
-    [self.tableView registerNib:[UINib nibWithNibName:@"GLMyBeanCell" bundle:nil] forCellReuseIdentifier:ID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"GLRecommendCell" bundle:nil] forCellReuseIdentifier:ID];
     __weak __typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
@@ -75,66 +83,64 @@ static NSString *ID = @"GLMyBeanCell";
     [self updateData:YES];
 }
 - (void)updateData:(BOOL)status {
-//    
-//    if (status) {
-//
-//        [_return_timeArr removeAllObjects];
-//        [_returnamountArr removeAllObjects];
-//    }
-//   
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    dict[@"token"] = [UserModel defaultUser].aukeyValue;
-//    
-//    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-//    [NetworkManager requestPOSTWithURLStr:@"Index/volunteerBean1" paramDic:dict finish:^(id responseObject) {
-////        NSLog(@"%@",responseObject);
-//        [_loadV removeloadview];
-//        [self endRefresh];
-//        if ([responseObject[@"code"] integerValue]==0) {
-//            
-//            NSDate *date = [NSDate date];
-//            
-//            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//            
-//            [formatter setDateStyle:NSDateFormatterMediumStyle];
-//            
-//            [formatter setTimeStyle:NSDateFormatterShortStyle];
-//            
-//            [formatter setDateFormat:@"YYYY-MM-dd"];
-//            NSString *DateTime = [formatter stringFromDate:date];
-//            for (NSDictionary *dict in responseObject[@"data"][@"rows"]) {
-//                [_return_timeArr addObject:dict[@"returntime"]];
-//                [_returnamountArr addObject:dict[@"amount"]];
-//                if ([dict[@"returntime"] isEqualToString:DateTime]) {
-//                    
-//                    _beanSum += [dict[@"amount"] floatValue];
-//                }
-//            }
-//            
-//        }
-//        if (_return_timeArr.count <= 0 ) {
-//            self.nodataV.hidden = NO;
-//        }else{
-//            self.nodataV.hidden = YES;
-//        }
-//        
-//        //赋值
-//        if (self.retureValue) {
-//            self.retureValue([NSString stringWithFormat:@"%.2f",_beanSum]);
-//        }
-//        _beanSum = 0;
-//        [self.tableView reloadData];
-//        
-//        
-//    } enError:^(NSError *error) {
-//        if (self.retureValue) {
-//            self.retureValue(@"0");
-//        }
-//
-//        [self endRefresh];
-//        [_loadV removeloadview];
-//        self.nodataV.hidden = NO;
-//    }];
+    
+    if (status) {
+        
+        _page = 1;
+        [self.models removeAllObjects];
+        
+    }else{
+        _page ++;
+    }
+    
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    dict[@"page"] = [NSString stringWithFormat:@"%ld",_page];
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"user/rec_list" paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        [self endRefresh];
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"code"] integerValue] == 1) {
+            
+            for (NSDictionary *dict in responseObject[@"data"]) {
+                
+                GLRecommendModel *model = [GLRecommendModel mj_objectWithKeyValues:dict];
+                
+                [_models addObject:model];
+            }
+            
+            _beanSum = [responseObject[@"sum"] floatValue];
+        }
+        
+        if (self.models.count <= 0 ) {
+            self.nodataV.hidden = NO;
+        }else{
+            self.nodataV.hidden = YES;
+        }
+        
+        //赋值
+        if (self.retureValue) {
+            self.retureValue([NSString stringWithFormat:@"%.2f",_beanSum]);
+        }
+        _beanSum = 0;
+        
+        [self.tableView reloadData];
+        
+    } enError:^(NSError *error) {
+        //赋值
+        if (self.retureValue) {
+            self.retureValue(@"0");
+        }
+        
+        [_loadV removeloadview];
+        [self endRefresh];
+        self.nodataV.hidden = NO;
+    }];
 }
 - (void)endRefresh {
     [self.tableView.mj_header endRefreshing];
@@ -146,12 +152,11 @@ static NSString *ID = @"GLMyBeanCell";
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return _return_timeArr.count;
+    return self.models.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    GLMyBeanCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    cell.dateLabel.text = _return_timeArr[indexPath.row];
-    cell.numberLabel.text = _returnamountArr[indexPath.row];
+    GLRecommendCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    cell.model = self.models[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

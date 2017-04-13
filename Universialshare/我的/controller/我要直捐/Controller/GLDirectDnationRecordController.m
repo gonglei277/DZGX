@@ -89,10 +89,13 @@ static NSString *ID = @"GLDirectDnationRecordCell";
         [self endRefresh];
 
         if ([responseObject[@"code"] integerValue] == 1) {
-
+            
+            
             for (NSDictionary *dict in responseObject[@"data"]) {
+             
                 GLDirectDonationModel *model = [GLDirectDonationModel mj_objectWithKeyValues:dict];
-                model.timeStr = responseObject[@"data"][@"time"];
+                model.timeStr = dict[@"time"];
+                
                 [_models addObject:model];
             }
         }else{

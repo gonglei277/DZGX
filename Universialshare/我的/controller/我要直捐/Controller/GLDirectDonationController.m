@@ -168,18 +168,19 @@
         [MBProgressHUD showError:@"请输入捐赠数量"];
         return;
     }
-//    if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]){
-//        
-//        if([self.donationNumT.text integerValue] > [[UserModel defaultUser].couriercount integerValue]){
-//            [MBProgressHUD showError:@"余额不足,请充值!"];
-//            return;
-//        }
-//    }else{
-//        if([self.donationNumT.text integerValue] > [[UserModel defaultUser].nopaycount integerValue]){
-//            [MBProgressHUD showError:@"余额不足,请充值!"];
-//            return;
-//        }
-//    }
+    if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]){
+        
+        if([self.donationNumT.text integerValue] > [[UserModel defaultUser].ketiBean integerValue]){
+            [MBProgressHUD showError:@"余额不足,请充值!"];
+            return;
+        }
+    }else{
+        if([self.donationNumT.text integerValue] > [[UserModel defaultUser].djs_bean integerValue]){
+            [MBProgressHUD showError:@"余额不足,请充值!"];
+            return;
+        }
+    }
+    
     if(![self isPureNumandCharacters:self.donationNumT.text]){
         [MBProgressHUD showError:@"捐赠数量只能为正整数"];
         return;
