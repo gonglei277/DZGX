@@ -24,9 +24,9 @@
 }
 - (void)setModel:(GLDirectDonationModel *)model{
     _model = model;
-    self.dateLabel.text = model.donatetime;
-    self.beanStyleLabel.text = model.donatetype;
-    self.beanNumLabel.text = model.beannum;
+    self.dateLabel.text = model.timeStr;
+    self.beanStyleLabel.text = model.Donaldtype;
+    self.beanNumLabel.text = model.num;
 }
 
 

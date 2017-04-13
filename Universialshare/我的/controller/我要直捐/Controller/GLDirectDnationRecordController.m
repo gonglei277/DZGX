@@ -68,61 +68,55 @@ static NSString *ID = @"GLDirectDnationRecordCell";
 }
 - (void)updateData:(BOOL)status {
     
-//    if (status) {
-//        
-//        _page = 1;
-//        [self.models removeAllObjects];
-//        
-//    }else{
-//        _page ++;
-//    }
-//    
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    dict[@"token"] = [UserModel defaultUser].aukeyValue;
-//    dict[@"page"] = [NSString stringWithFormat:@"%ld",_page];
-//    
-//    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-//    [NetworkManager requestPOSTWithURLStr:@"Index/donate_list" paramDic:dict  finish:^(id responseObject) {
-////        NSLog(@"%@",responseObject);
-//        [_loadV removeloadview];
-//        [self endRefresh];
-//
-//        if ([responseObject[@"code"] integerValue] == 0) {
-//
-//            for (NSDictionary *dict in responseObject[@"data"][@"rows"]) {
-//                GLDirectDonationModel *model = [GLDirectDonationModel mj_objectWithKeyValues:dict];
-//                [_models addObject:model];
-//            }
-//        }else{
-//            if (_models.count != 0){
-//                [MBProgressHUD showError:@"已经没有更多数据了!"];
-//            }
-//        }
-//
-//        
-//        if(status){
-//            _totalNum = [responseObject[@"data"][@"total"] integerValue];
-//             self.beanSumLabel.text = [NSString stringWithFormat:@"%lu", _totalNum];
-//        }else{
-//           
-//            _totalNum += [responseObject[@"data"][@"total"] integerValue];
-//            
-//            self.beanSumLabel.text = [NSString stringWithFormat:@"%lu", _totalNum];
-//        }
-//       
-//        if (_models.count <= 0 ) {
-//            self.nodataV.hidden = NO;
-//        }else{
-//            self.nodataV.hidden = YES;
-//        }
-//        [self.tableView reloadData];
-//        
-//    } enError:^(NSError *error) {
-//        self.beanSumLabel.text = @"0";
-//        [_loadV removeloadview];
-//        [self endRefresh];
-//        self.nodataV.hidden = NO;
-//    }];
+    if (status) {
+        
+        _page = 1;
+        [self.models removeAllObjects];
+        
+    }else{
+        _page ++;
+    }
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    dict[@"page"] = [NSString stringWithFormat:@"%ld",_page];
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"user/donation_list" paramDic:dict  finish:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        [_loadV removeloadview];
+        [self endRefresh];
+
+        if ([responseObject[@"code"] integerValue] == 1) {
+
+            for (NSDictionary *dict in responseObject[@"data"]) {
+                GLDirectDonationModel *model = [GLDirectDonationModel mj_objectWithKeyValues:dict];
+                model.timeStr = responseObject[@"data"][@"time"];
+                [_models addObject:model];
+            }
+        }else{
+            if (_models.count != 0){
+                [MBProgressHUD showError:@"已经没有更多数据了!"];
+            }
+        }
+    
+        _totalNum = [responseObject[@"total"] integerValue];
+             self.beanSumLabel.text = [NSString stringWithFormat:@"%lu", _totalNum];
+      
+        if (_models.count <= 0 ) {
+            self.nodataV.hidden = NO;
+        }else{
+            self.nodataV.hidden = YES;
+        }
+        [self.tableView reloadData];
+        
+    } enError:^(NSError *error) {
+        self.beanSumLabel.text = @"0";
+        [_loadV removeloadview];
+        [self endRefresh];
+        self.nodataV.hidden = NO;
+    }];
 }
 - (void)endRefresh {
     [self.tableView.mj_header endRefreshing];

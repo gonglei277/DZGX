@@ -10,4 +10,10 @@
 
 @implementation GLDirectDonationModel
 
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    if([key isEqualToString:@"time"]){
+        _timeStr = value;
+    }
+}
+
 @end

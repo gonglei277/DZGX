@@ -34,6 +34,8 @@
 @property (nonatomic, copy)NSString  *counta;//
 @property (nonatomic, copy)NSString  *usrtype;//用户类型
 
+
+
 +(UserModel*)defaultUser;
 
 @end

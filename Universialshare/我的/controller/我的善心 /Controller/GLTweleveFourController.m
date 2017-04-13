@@ -26,33 +26,33 @@ static NSString *ID = @"GLMine_MyHeartCell";
     if (_models == nil) {
         _models = [NSMutableArray array];
         
-//        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//        dict[@"token"] = [UserModel defaultUser].aukeyValue;
-//        dict[@"drivetype"] = @"6";
-//        dict[@"page"] = @"1";
-//        
-//        _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-//        [NetworkManager requestPOSTWithURLStr:@"Index/mylove" paramDic:dict finish:^(id responseObject) {
-//            
-//            [_loadV removeloadview];
-//            if ([responseObject[@"code"] integerValue]==0) {
-//                
-//                GLMyheartModel *model = [GLMyheartModel mj_objectWithKeyValues:responseObject[@"data"][@"rows"]];
-//                [self.models addObject:model];
-//                
-//                [self.tableView reloadData];
-//                
-//            }else{
-//                
-//                [MBProgressHUD showError:responseObject[@"msg"]];
-//            }
-//            
-//        } enError:^(NSError *error) {
-//            
-//            [_loadV removeloadview];
-//            [MBProgressHUD showError:error.localizedDescription];
-//            
-//        }];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        dict[@"token"] = [UserModel defaultUser].token;
+        dict[@"uid"] = [UserModel defaultUser].uid;
+        dict[@"type"] = @"3";
+        
+        _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+        [NetworkManager requestPOSTWithURLStr:@"user/mylove" paramDic:dict finish:^(id responseObject) {
+//            NSLog(@"%@",responseObject);
+            [_loadV removeloadview];
+            if ([responseObject[@"code"] integerValue]== 1) {
+                
+                GLMyheartModel *model = [GLMyheartModel mj_objectWithKeyValues:responseObject[@"data"]];
+                [self.models addObject:model];
+                
+                [self.tableView reloadData];
+                
+            }else{
+                [MBProgressHUD showError:responseObject[@"msg"]];
+            }
+            
+        } enError:^(NSError *error) {
+            
+            [_loadV removeloadview];
+            [MBProgressHUD showError:error.localizedDescription];
+            
+        }];
+
     }
     return _models;
 }

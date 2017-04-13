@@ -27,23 +27,22 @@ static NSString *ID = @"GLMine_MyHeartCell";
         _models = [NSMutableArray array];
         
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//        dict[@"token"] = [UserModel defaultUser].aukeyValue;
-        dict[@"drivetype"] = @"12";
-        dict[@"page"] = @"1";
+        dict[@"token"] = [UserModel defaultUser].token;
+        dict[@"uid"] = [UserModel defaultUser].uid;
+        dict[@"type"] = @"2";
         
         _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-        [NetworkManager requestPOSTWithURLStr:@"Index/mylove" paramDic:dict finish:^(id responseObject) {
-            
+        [NetworkManager requestPOSTWithURLStr:@"user/mylove" paramDic:dict finish:^(id responseObject) {
+//            NSLog(@"%@",responseObject);
             [_loadV removeloadview];
-            if ([responseObject[@"code"] integerValue]==0) {
+            if ([responseObject[@"code"] integerValue]== 1) {
                 
-                GLMyheartModel *model = [GLMyheartModel mj_objectWithKeyValues:responseObject[@"data"][@"rows"]];
+                GLMyheartModel *model = [GLMyheartModel mj_objectWithKeyValues:responseObject[@"data"]];
                 [self.models addObject:model];
                 
                 [self.tableView reloadData];
                 
             }else{
-                
                 [MBProgressHUD showError:responseObject[@"msg"]];
             }
             
@@ -53,6 +52,7 @@ static NSString *ID = @"GLMine_MyHeartCell";
             [MBProgressHUD showError:error.localizedDescription];
             
         }];
+
     }
     return _models;
 }
