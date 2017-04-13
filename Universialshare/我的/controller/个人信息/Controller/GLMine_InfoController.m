@@ -24,6 +24,12 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTop;
 
+@property (strong, nonatomic)UIImageView *headimage;//头像
+@property (strong, nonatomic)NSString *username;//用户明
+@property (strong, nonatomic)NSString *adress;//店铺地址
+@property (strong, nonatomic)NSString *storeType;//商家类型
+@property (strong, nonatomic)NSString *shenfCode;//身份证号
+
 @end
 
 static NSString *ID = @"GLMine_InfoCell";
@@ -33,6 +39,7 @@ static NSString *ID = @"GLMine_InfoCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.hidden = NO;
     self.title = @"个人资料";
     [self logoQrCode];
     self.tableView.delegate = self;
@@ -40,7 +47,6 @@ static NSString *ID = @"GLMine_InfoCell";
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
-//    [self updateInfo];
     [self.tableView registerNib:[UINib nibWithNibName:@"GLMine_InfoCell" bundle:nil] forCellReuseIdentifier:ID];
       
 }
@@ -49,82 +55,15 @@ static NSString *ID = @"GLMine_InfoCell";
 }
 - (void)updateInfo{
     
-//    if ([[UserModel defaultUser].usernumber rangeOfString:@"null"].location != NSNotFound){
-//        [UserModel defaultUser].usernumber = @"";
-//    }
-//    if ([[UserModel defaultUser].picture rangeOfString:@"null"].location != NSNotFound){
-//        [UserModel defaultUser].picture = @"";
-//    }
-//    if ([[UserModel defaultUser].username rangeOfString:@"null"].location != NSNotFound){
-//        [UserModel defaultUser].username = @"";
-//    }
-//    if ([[UserModel defaultUser].realname rangeOfString:@"null"].location != NSNotFound){
-//        [UserModel defaultUser].realname = @"";
-//    }
-//    if ([[UserModel defaultUser].address rangeOfString:@"null"].location != NSNotFound){
-//        [UserModel defaultUser].address = @"";
-//    }
-//    if ([[UserModel defaultUser].idcard rangeOfString:@"null"].location != NSNotFound){
-//        [UserModel defaultUser].idcard = @"0";
-//    }
-//    if ([[UserModel defaultUser].referrer_name rangeOfString:@"null"].location != NSNotFound){
-//        [UserModel defaultUser].referrer_name = @"";
-//    }
-//    if ([[UserModel defaultUser].referrer_usernumber rangeOfString:@"null"].location != NSNotFound){
-//        [UserModel defaultUser].referrer_usernumber = @"";
-//    }
-//    if ([[UserModel defaultUser].industry rangeOfString:@"null"].location != NSNotFound){
-//        [UserModel defaultUser].industry = @"";
-//    }
-//    if ([[UserModel defaultUser].shopname rangeOfString:@"null"].location != NSNotFound){
-//        [UserModel defaultUser].shopname = @"";
-//    }
-//    if ([[UserModel defaultUser].principal rangeOfString:@"null"].location != NSNotFound || [[UserModel defaultUser].principal isEqualToString:@"0"]) {
-//        [UserModel defaultUser].principal = @"";
-//    }
-//    if ([[UserModel defaultUser].size rangeOfString:@"null"].location != NSNotFound||[[UserModel defaultUser].size isEqualToString:@"0"]) {
-//        [UserModel defaultUser].size = @"0人";
-//    }
-//
-//    if ([[UserModel defaultUser].userLogin integerValue] == 1) {
-//
-//        _titlesArr = @[@"志愿者ID",@"我的头像",@"用户名",@"姓名",@"地区",@"身份证号",@"推荐人姓名",@"推荐人ID"];
-//        
-//        _valuesArr = [NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%@",[UserModel defaultUser].usernumber],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].picture],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].username],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].realname],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].address],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].idcard],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].referrer_name],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].referrer_usernumber], nil];
-//    }else{
-//        self.tableViewTop.constant = -CGRectGetMaxY(self.myLabel.frame) + 74;
-//        
-//        self.codeImageV.hidden = YES;
-//        self.userStyleLabel.hidden = YES;
-//        self.myLabel.hidden = YES;
-//        
-//        
-//        _titlesArr = @[@"我的头像",@"用户名",@"ID",@"商家地址",@"行业类别",@"规模",@"负责人",@"店铺名"];
-//        
-//        _valuesArr = [NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%@",[UserModel defaultUser].picture],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].username],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].usernumber],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].address],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].industry],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].size],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].principal],
-//                      [NSString stringWithFormat:@"%@",[UserModel defaultUser].shopname],nil
-//                      ];
-//    }
-//    NSString *userType;
-//    if([[UserModel defaultUser].userLogin integerValue] == 1){
-//        userType = @"志愿者";
-//    }else {
-//        userType = @"商家";
-//    }
-//    self.userStyleLabel.text = [NSString stringWithFormat:@"%@信息",userType];
+    if ([[UserModel defaultUser].usrtype isEqualToString:@"6"]) {
+        
+        _titlesArr = @[@"头像",@"用户名",@"ID",@"店铺地址",@"商家类型",@"身份证号",@"推荐人ID",@"推荐人姓名"];
+        
+    }else if ([[UserModel defaultUser].usrtype isEqualToString:@"7"]) {
+        
+        _titlesArr = @[@"头像",@"用户名",@"ID",@"身份证号",@"推荐人ID",@"推荐人姓名"];
+    }
+
 }
 
 //MARK: 二维码中间内置图片,可以是公司logo
@@ -161,7 +100,7 @@ static NSString *ID = @"GLMine_InfoCell";
     
     
     //再把小图片画上去
-    UIImage *sImage = [UIImage imageNamed:@"mine_logo"];
+    UIImage *sImage = [UIImage imageNamed:@""];
     
     CGFloat sImageW = 100;
     CGFloat sImageH= sImageW;
@@ -199,64 +138,102 @@ static NSString *ID = @"GLMine_InfoCell";
 
 #pragma UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     return _titlesArr.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     GLMine_InfoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    if ([[UserModel defaultUser].userLogin integerValue] == 1) {
-//        cell.addBtn.hidden = YES;
-//        if (indexPath.row == 1) {
-//            cell.imageV.hidden = NO;
-//            [cell.imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_valuesArr[indexPath.row]]] placeholderImage:[UIImage imageNamed:@"mine_head"]];
-//            cell.valueLabel.hidden = YES;
-//            
-//        }else{
-//            cell.imageV.hidden = YES;
-//            cell.valueLabel.hidden = NO;
-//        }
-//
-//    }else {
-//        if (indexPath.row == 0) {
-////            cell.addBtn.hidden = YES;
-//            cell.imageV.hidden = NO;
-//            cell.valueLabel.hidden = YES;
-//            [cell.imageV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_valuesArr[indexPath.row]]] placeholderImage:[UIImage imageNamed:@"mine_head"]];
-//            //            cell.backgroundColor= [UIColor redColor];
-//        }else if (indexPath.row == 3) {
-////            cell.addBtn.hidden = YES;
-//            cell.imageV.hidden = YES;
-//            cell.valueLabel.hidden = NO;
-//            
-////            [cell.addBtn addTarget:self action:@selector(addAddress) forControlEvents:UIControlEventTouchUpInside];
-//                cell.valueLabel.textAlignment = NSTextAlignmentLeft;
-//            cell.valueLabelLeftConstraint.constant = 45;
-//            
-//        }else {
-////            cell.addBtn.hidden = YES;
-//            cell.imageV.hidden = YES;
-//            cell.valueLabel.hidden = NO;
-//
-//        }
-//    }
-//    cell.titleLabel.text = _titlesArr[indexPath.row];
-//    cell.valueLabel.text = _valuesArr[indexPath.row];
+    cell.titleLabel.text = [NSString stringWithFormat:@"%@",_titlesArr[indexPath.row]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //@[@"头像",@"用户名",@"ID",@"店铺地址",@"商家类型",@"身份证号",@"推荐人ID",@"推荐人姓名"]
+    if ([[UserModel defaultUser].usrtype isEqualToString:@"6"]) {
+        
+        if (indexPath.row == 0) {
+            cell.headimage.hidden = NO;
+            cell.imageW.constant = 30;
+            cell.textTf.enabled = NO;
+            
+        }else{
+            cell.headimage.hidden = YES;
+            cell.imageW.constant = 0;
+            
+            if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 7) {
+                cell.textTf.enabled = NO;
+            }else{
+                cell.textTf.enabled = YES;
+            }
+            
+            __weak typeof(self) weakself = self;
+            cell.returnEditing = ^(NSString *content , NSInteger index){
+                
+                if (index == 1) {
+                    weakself.username = content;
+                }else if (index == 3){
+                    
+                    self.adress = content;
+                    
+                }else if (index == 4){
+                    
+                    self.storeType = content;
+                    
+                }else if (index == 5){
+                    
+                    self.shenfCode = content;
+                    
+                }
+                
+            };
+            
+        }
+        
+    }else if ([[UserModel defaultUser].usrtype isEqualToString:@"7"]) {
+        
+        if (indexPath.row == 0) {
+            cell.headimage.hidden = NO;
+            cell.imageW.constant = 30;
+            cell.textTf.enabled = NO;
+            
+        }else{
+            cell.headimage.hidden = YES;
+            cell.imageW.constant = 0;
+            
+            if (indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 5) {
+                cell.textTf.enabled = NO;
+            }else{
+                cell.textTf.enabled = YES;
+            }
+            
+        }
+        __weak typeof(self) weakself = self;
+        cell.returnEditing = ^(NSString *content , NSInteger index){
+        
+            if (index == 1) {
+                weakself.username = content;
+            }else if (index == 3){
+            
+                self.shenfCode = content;
+            
+            }
+        
+        };
+        
+        
+    }
+    
+
     return cell;
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    if ([[UserModel defaultUser].userLogin integerValue] == 1) {
-//        
-//        if (indexPath.row == 1) {
-//            return 70;
-//        }
-//    }else{
-//        if (indexPath.row == 0) {
-//            return 70;
-//        }
-//    }
-    
     return 50;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+
+}
+
+
+
 @end

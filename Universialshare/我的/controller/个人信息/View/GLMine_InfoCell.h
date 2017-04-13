@@ -10,9 +10,12 @@
 
 @interface GLMine_InfoCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *imageV;
-@property (weak, nonatomic) IBOutlet UIButton *addBtn;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *valueLabelLeftConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *headimage;
+@property (weak, nonatomic) IBOutlet UITextField *textTf;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageW;
+
+@property (assign, nonatomic)NSInteger index;
+
+@property (copy, nonatomic)void(^returnEditing)(NSString *content,NSInteger index);
 
 @end

@@ -8,19 +8,31 @@
 
 #import "GLMine_InfoCell.h"
 
+@interface GLMine_InfoCell ()<UITextFieldDelegate>
+
+@end
+
 @implementation GLMine_InfoCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.imageV.layer.cornerRadius = 20;
-    self.imageV.clipsToBounds = YES;
+    self.headimage.layer.cornerRadius = 15;
+    self.headimage.clipsToBounds = YES;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
 
-    // Configure the view for the selected state
+    
+    return YES;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+
+    if (self.returnEditing) {
+        self.returnEditing(textField.text , self.index);
+    }
+
 }
 
 @end

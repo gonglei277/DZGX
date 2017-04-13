@@ -58,12 +58,14 @@
     [super viewWillAppear:animated];
     
      self.navigationController.navigationBar.hidden = YES;
-    [self.collectionV reloadData];
+
 
 }
 -(void)pushToInfoVC{
+    self.hidesBottomBarWhenPushed=YES;
     GLMine_InfoController *infoVC = [[GLMine_InfoController alloc] init];
     [self.navigationController pushViewController:infoVC animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
