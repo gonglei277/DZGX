@@ -15,6 +15,8 @@
 		4A013CA41E9DCE2800BB3764 /* GLFirstPageRewardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A013CA31E9DCE2800BB3764 /* GLFirstPageRewardModel.m */; };
 		4A013CAD1E9E1A2800BB3764 /* LBHomepopinfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A013CAB1E9E1A2800BB3764 /* LBHomepopinfoView.m */; };
 		4A013CAE1E9E1A2800BB3764 /* LBHomepopinfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A013CAC1E9E1A2800BB3764 /* LBHomepopinfoView.xib */; };
+		4A07A86D1EA0571E005A9B67 /* GLBuyBackChooseBankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A07A86C1EA0571E005A9B67 /* GLBuyBackChooseBankView.m */; };
+		4A07A86F1EA0572D005A9B67 /* GLBuyBackChooseBankView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A07A86E1EA0572D005A9B67 /* GLBuyBackChooseBankView.xib */; };
 		4A0D97631E9729C100A26B84 /* GLHomeLiveChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0D970A1E9729C100A26B84 /* GLHomeLiveChooseController.m */; };
 		4A0D97641E9729C100A26B84 /* GLHomeLiveChooseController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0D970B1E9729C100A26B84 /* GLHomeLiveChooseController.xib */; };
 		4A0D97651E9729C100A26B84 /* GLHomeLiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0D970D1E9729C100A26B84 /* GLHomeLiveController.m */; };
@@ -638,6 +640,9 @@
 		4A013CAA1E9E1A2800BB3764 /* LBHomepopinfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomepopinfoView.h; sourceTree = "<group>"; };
 		4A013CAB1E9E1A2800BB3764 /* LBHomepopinfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomepopinfoView.m; sourceTree = "<group>"; };
 		4A013CAC1E9E1A2800BB3764 /* LBHomepopinfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBHomepopinfoView.xib; sourceTree = "<group>"; };
+		4A07A86B1EA0571E005A9B67 /* GLBuyBackChooseBankView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBuyBackChooseBankView.h; sourceTree = "<group>"; };
+		4A07A86C1EA0571E005A9B67 /* GLBuyBackChooseBankView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBuyBackChooseBankView.m; sourceTree = "<group>"; };
+		4A07A86E1EA0572D005A9B67 /* GLBuyBackChooseBankView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLBuyBackChooseBankView.xib; sourceTree = "<group>"; };
 		4A0D97091E9729C100A26B84 /* GLHomeLiveChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHomeLiveChooseController.h; sourceTree = "<group>"; };
 		4A0D970A1E9729C100A26B84 /* GLHomeLiveChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHomeLiveChooseController.m; sourceTree = "<group>"; };
 		4A0D970B1E9729C100A26B84 /* GLHomeLiveChooseController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLHomeLiveChooseController.xib; sourceTree = "<group>"; };
@@ -2109,6 +2114,9 @@
 				4A460A0B1E9CBB2F0045824F /* GLBuyBackRecordCell.h */,
 				4A460A0C1E9CBB2F0045824F /* GLBuyBackRecordCell.m */,
 				4A460A0D1E9CBB2F0045824F /* GLBuyBackRecordCell.xib */,
+				4A07A86B1EA0571E005A9B67 /* GLBuyBackChooseBankView.h */,
+				4A07A86C1EA0571E005A9B67 /* GLBuyBackChooseBankView.m */,
+				4A07A86E1EA0572D005A9B67 /* GLBuyBackChooseBankView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4211,6 +4219,7 @@
 				F961AA331E9CE1D200275F52 /* LBMoreOperateView.xib in Resources */,
 				4A46103D1E9CC6360045824F /* markdown.css in Resources */,
 				F92309721E9B8BFF00ECDC94 /* LBMineCenterAddAdreassViewController.xib in Resources */,
+				4A07A86F1EA0572D005A9B67 /* GLBuyBackChooseBankView.xib in Resources */,
 				4A0D97751E9729C100A26B84 /* GLHourseDetailFirstCell.xib in Resources */,
 				F92309801E9B8BFF00ECDC94 /* LBMineCenterSafeSecondSecretViewController.xib in Resources */,
 				4A0D97711E9729C100A26B84 /* GLHomeLiveCell.xib in Resources */,
@@ -4489,6 +4498,7 @@
 				4A4610631E9CC6360045824F /* ZXTelResultParser.m in Sources */,
 				4A4611061E9CC6370045824F /* ZXQRCodeMode.m in Sources */,
 				F92309641E9B8BFF00ECDC94 /* XBTagTitleCell.m in Sources */,
+				4A07A86D1EA0571E005A9B67 /* GLBuyBackChooseBankView.m in Sources */,
 				4A4610BE1E9CC6370045824F /* ZXRSSExpandedDecodedObject.m in Sources */,
 				4A46105E1E9CC6360045824F /* ZXSMSMMSResultParser.m in Sources */,
 				4A8572EC1E977E7200A7A51E /* GLHourseOptionModel.m in Sources */,

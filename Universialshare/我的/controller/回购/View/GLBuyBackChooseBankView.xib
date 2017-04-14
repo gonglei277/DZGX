@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GLBuyBackChooseBankView">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="167"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4W-If-jzx">
+                    <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="中国银行">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dS8-c4-X97">
+                    <rect key="frame" x="0.0" y="42" width="343" height="42"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="中国工商银行">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ae5-Ky-Pom">
+                    <rect key="frame" x="0.0" y="126" width="343" height="41"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="中国建设银行">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmV-BM-Lno">
+                    <rect key="frame" x="0.0" y="84" width="343" height="42"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="中国农业银行">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="J4W-If-jzx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="63w-7H-gHY"/>
+                <constraint firstItem="dS8-c4-X97" firstAttribute="leading" secondItem="J4W-If-jzx" secondAttribute="leading" id="A4W-FR-Ge5"/>
+                <constraint firstAttribute="trailing" secondItem="Ae5-Ky-Pom" secondAttribute="trailing" id="Bic-ey-PXl"/>
+                <constraint firstItem="J4W-If-jzx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DuW-tT-dig"/>
+                <constraint firstItem="dS8-c4-X97" firstAttribute="trailing" secondItem="J4W-If-jzx" secondAttribute="trailing" id="Fyq-PC-RJO"/>
+                <constraint firstAttribute="bottom" secondItem="Ae5-Ky-Pom" secondAttribute="bottom" id="Fzt-9i-suL"/>
+                <constraint firstItem="J4W-If-jzx" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1/4" id="Ih3-WV-96f"/>
+                <constraint firstItem="lmV-BM-Lno" firstAttribute="height" secondItem="J4W-If-jzx" secondAttribute="height" id="Ooy-jb-LVB"/>
+                <constraint firstItem="dS8-c4-X97" firstAttribute="height" secondItem="J4W-If-jzx" secondAttribute="height" id="Rp9-sa-Meq"/>
+                <constraint firstItem="Ae5-Ky-Pom" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="X7O-PQ-xy4"/>
+                <constraint firstItem="lmV-BM-Lno" firstAttribute="top" secondItem="dS8-c4-X97" secondAttribute="bottom" id="Yn3-Rh-0k2"/>
+                <constraint firstAttribute="trailing" secondItem="J4W-If-jzx" secondAttribute="trailing" id="cQS-vB-2xf"/>
+                <constraint firstItem="dS8-c4-X97" firstAttribute="top" secondItem="J4W-If-jzx" secondAttribute="bottom" id="nQU-Aq-2Ic"/>
+                <constraint firstItem="lmV-BM-Lno" firstAttribute="leading" secondItem="J4W-If-jzx" secondAttribute="leading" id="pzo-3b-K3V"/>
+                <constraint firstItem="Ae5-Ky-Pom" firstAttribute="top" secondItem="lmV-BM-Lno" secondAttribute="bottom" id="so1-85-rVs"/>
+                <constraint firstItem="lmV-BM-Lno" firstAttribute="trailing" secondItem="J4W-If-jzx" secondAttribute="trailing" id="zSo-Z5-Zdb"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="abcBtn" destination="lmV-BM-Lno" id="DFM-GE-Kuk"/>
+                <outlet property="ccbBtn" destination="Ae5-Ky-Pom" id="NFB-aT-k5K"/>
+                <outlet property="chinaBankBtn" destination="J4W-If-jzx" id="yMb-ps-8nZ"/>
+                <outlet property="icbcBtn" destination="dS8-c4-X97" id="jMB-Pg-0km"/>
+            </connections>
+            <point key="canvasLocation" x="25.5" y="-134.5"/>
+        </view>
+    </objects>
+</document>

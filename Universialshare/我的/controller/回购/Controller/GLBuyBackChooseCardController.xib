@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="bankLabel" destination="6ot-Nu-Xn6" id="vBx-Ve-XbV"/>
                 <outlet property="cardTextF" destination="J0o-KL-bFq" id="aYd-LW-hPq"/>
+                <outlet property="chooseBankBtn" destination="Zec-Lq-FSc" id="lvX-ch-HoC"/>
                 <outlet property="ensureBtn" destination="u6a-8L-zB9" id="iGa-LT-YWI"/>
                 <outlet property="nameLabel" destination="q0i-IT-wsZ" id="hac-XL-GQ2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

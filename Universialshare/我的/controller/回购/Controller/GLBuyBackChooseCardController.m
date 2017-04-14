@@ -8,15 +8,21 @@
 
 #import "GLBuyBackChooseCardController.h"
 #import "predicateModel.h"
+#import "GLSet_MaskVeiw.h"
+#import "GLBuyBackChooseBankView.h"
 
 @interface GLBuyBackChooseCardController ()
 {
     LoadWaitView *_loadV;
+    GLSet_MaskVeiw *_maskV;
+    GLBuyBackChooseBankView *_contentV;
+    
 }
 @property (weak, nonatomic) IBOutlet UIButton *ensureBtn;
 @property (weak, nonatomic) IBOutlet UILabel *bankLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *cardTextF;
+@property (weak, nonatomic) IBOutlet UIButton *chooseBankBtn;
 
 
 @end
@@ -34,8 +40,43 @@
     self.block = block;
 }
 - (IBAction)chooseBank:(id)sender {
+    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    _maskV.bgView.alpha = 0.1;
     
-    NSLog(@"选择银行");
+    _contentV = [[NSBundle mainBundle] loadNibNamed:@"GLBuyBackChooseBankView" owner:nil options:nil].lastObject;
+    [_contentV.chinaBankBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
+    [_contentV.icbcBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
+    [_contentV.abcBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
+    [_contentV.ccbBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
+    CGRect rect=[self.chooseBankBtn convertRect: self.chooseBankBtn.bounds toView:window];
+    
+    _contentV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 4 * self.chooseBankBtn.yy_height);
+    //    if([[UserModel defaultUser].userLogin integerValue] == 1){
+    //        [_directV.taxBtn setTitle:@"待缴税志愿豆" forState:UIControlStateNormal];
+    //
+    //    }else{
+    //
+    //        [_directV.taxBtn setTitle:@"待提供发票志愿豆" forState:UIControlStateNormal];
+    //    }
+    _contentV.backgroundColor = [UIColor whiteColor];
+    _contentV.layer.cornerRadius = 4;
+    _contentV.layer.masksToBounds = YES;
+    
+    [_maskV showViewWithContentView:_contentV];
+}
+- (void)chooseValue:(UIButton *)sender{
+    if (sender == _contentV.chinaBankBtn) {
+        self.bankLabel.text = @"中国银行";
+    }else if(sender == _contentV.icbcBtn){
+         self.bankLabel.text = @"中国工商银行";
+    }else if(sender == _contentV.abcBtn){
+        self.bankLabel.text = @"中国农业银行";
+    }else{
+        self.bankLabel.text = @"中国建设银行";
+    }
+    
 }
 - (BOOL)isPureNumandCharacters:(NSString *)string
 {
