@@ -142,33 +142,33 @@
 
         NSLog(@"dict = %@",dict);
         NSLog(@"responseObject = %@",responseObject);
-        if ([responseObject[@"code"] integerValue] == 0) {
+        if ([responseObject[@"code"] integerValue] == 1) {
             
             self.cardTextF.text = nil;
             
-            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-            dict[@"token"] = [UserModel defaultUser].token;
-    
-            [NetworkManager requestPOSTWithURLStr:@"user/add_bank_num" paramDic:dict finish:^(id responseObject) {
-                
-                [_loadV removeloadview];
-
-                if ([responseObject[@"code"] integerValue] == 0){
-                    
-                    [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankacount"]];
-                    [UserModel defaultUser].bankname = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]];
-                    [UserModel defaultUser].bankIcon = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"icon"]];
-                    [usermodelachivar achive];
-
-                    //发送通知
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateBankInfo" object:nil];
-                }
-            } enError:^(NSError *error) {
-                [_loadV removeloadview];
-                
-            }];
-
-            [MBProgressHUD showSuccess:@"修改银行卡成功"];
+//            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//            dict[@"token"] = [UserModel defaultUser].token;
+//    
+//            [NetworkManager requestPOSTWithURLStr:@"user/add_bank_num" paramDic:dict finish:^(id responseObject) {
+//                
+//                [_loadV removeloadview];
+//
+//                if ([responseObject[@"code"] integerValue] == 0){
+//                    
+//                    [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankacount"]];
+//                    [UserModel defaultUser].bankname = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]];
+//                    [UserModel defaultUser].bankIcon = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"icon"]];
+//                    [usermodelachivar achive];
+//
+//                    //发送通知
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateBankInfo" object:nil];
+//                }
+//            } enError:^(NSError *error) {
+//                [_loadV removeloadview];
+//                
+//            }];
+           
+            [MBProgressHUD showSuccess:@"添加银行卡成功"];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
         

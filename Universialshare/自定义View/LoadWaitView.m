@@ -29,10 +29,8 @@
         
         [self initinterface];
         
-        
     }
     return self;
-
 
 }
 
