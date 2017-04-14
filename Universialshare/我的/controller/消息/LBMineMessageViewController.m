@@ -19,6 +19,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic)NSArray *titleArr;
+@property (strong, nonatomic)NSArray *imagearr;
+@property (strong, nonatomic)NSMutableArray *detailArr;
 
 @end
 
@@ -30,6 +32,8 @@
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.title = @"消息中心";
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.imagearr = @[@"客户服务",@"热卖精选",@"客户服务",@"物流通知",@"矢量智能对象2"];
+    self.detailArr = [NSMutableArray arrayWithObjects:@"单击查看更多详情信息",@"单击查看更多详情信息",@"单击查看更多详情信息",@"单击查看更多详情信息",@"单击查看更多详情信息", nil];
     
     self.tableview.tableFooterView = [UIView new];
     
@@ -72,16 +76,21 @@
     if (indexPath.row == 0) {
         cell.timelb.hidden = YES;
     }else if (indexPath.row == 1){
-        cell.timelb.hidden = NO;
+        cell.timelb.hidden = YES;
     
     }else if (indexPath.row == 2){
-        cell.timelb.hidden = NO;
+        cell.timelb.hidden = YES;
         
     }else if (indexPath.row == 3){
-        cell.timelb.hidden = NO;
+        cell.timelb.hidden = YES;
+        
+    }else if (indexPath.row == 4){
+        cell.timelb.hidden = YES;
         
     }
     
+    cell.detaillb.text = [NSString stringWithFormat:@"%@",self.detailArr[indexPath.row]];
+    cell.image.image =[UIImage imageNamed:self.imagearr[indexPath.row]];
     
     return cell;
     

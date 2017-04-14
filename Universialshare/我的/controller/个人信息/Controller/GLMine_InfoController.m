@@ -151,8 +151,8 @@ static NSString *ID = @"GLMine_InfoCell";
             
         }success:^(NSURLSessionDataTask *task, id responseObject) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-          
-            if ([dic[@"status"][@"succeed"]integerValue]==1) {
+   
+            if ([dic[@"code"]integerValue]==1) {
                 
                 [MBProgressHUD showError:dic[@"message"]];
             }else{
