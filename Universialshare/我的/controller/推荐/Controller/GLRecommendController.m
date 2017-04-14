@@ -29,16 +29,17 @@
     [super viewDidLoad];
     
 //    self.navigationController.navigationBar.hidden = NO;
-    self.navigationItem.title = @"我要推荐";
-    //自定义导航栏右按钮
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(SCREEN_WIDTH - 60, 14, 60, 30);
-    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
-    [button setTitle:@"推荐记录" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont systemFontOfSize:13];
-    [button addTarget:self action:@selector(pushToRecordVC) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+//    self.navigationItem.title = @"我要推荐";
+//    //自定义导航栏右按钮
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = CGRectMake(SCREEN_WIDTH - 60, 14, 60, 30);
+//    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
+//    [button setTitle:@"推荐记录" forState:UIControlStateNormal];
+//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    button.titleLabel.font = [UIFont systemFontOfSize:13];
+//    [button addTarget:self action:@selector(pushToRecordVC) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
     self.noticeLabel.text = @"扫面此二维码,注册\n 长按此二维码分享到您的社交圈";
     [self.backBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 0, 5, 20)];
     [self logoQrCode];
@@ -144,7 +145,7 @@
     [qrImageFilter setDefaults];
     
     //将字符串转换成 NSdata (虽然二维码本质上是 字符串,但是这里需要转换,不转换就崩溃)
-//    NSString *contentStr = [NSString stringWithFormat:@"%@%@",SHARE_URL,[UserModel defaultUser].usernumber];
+//    NSString *contentStr = [NSString stringWithFormat:@"%@%@",SHARE_URL,[UserModel defaultUser].name];
     NSString *contentStr = @"";
     NSData *qrImageData = [contentStr dataUsingEncoding:NSUTF8StringEncoding];
     

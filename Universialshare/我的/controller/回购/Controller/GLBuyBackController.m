@@ -197,7 +197,7 @@
             self.bankStyleImageV.image = [UIImage imageNamed:@"mine_icbc"];
         }
     }
-    if ([[UserModel defaultUser].groupId integerValue] == 7) {
+    if ([[UserModel defaultUser].groupId integerValue] == [OrdinaryUser integerValue]) {
         self.buybackNumF.placeholder = @"请输入100的整数倍";
     }else{
         self.buybackNumF.placeholder = @"请输入500的整数倍";
@@ -241,7 +241,7 @@
         [MBProgressHUD showError:@"余额不足!"];
         return;
     }
-    if([[UserModel defaultUser].groupId integerValue] == 1){
+    if([[UserModel defaultUser].groupId integerValue] == [OrdinaryUser integerValue]){
         
         if ([self.buybackNumF.text integerValue] %100 != 0){
             [MBProgressHUD showError:@"数量必须是100的整数倍!"];

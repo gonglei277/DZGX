@@ -24,25 +24,41 @@
 
 - (void)setModel:(GLDonationRecordModel *)model{
     _model = model;
-    if ([model.picture rangeOfString:@"null"].location != NSNotFound) {
-        model.picture = @"mine_head";
+//    if ([model.picture rangeOfString:@"null"].location != NSNotFound) {
+//        model.picture = @"mine_head";
+//    }
+    if ([model.cname rangeOfString:@"null"].location != NSNotFound) {
+        model.cname = @"";
     }
-    if ([model.receivename rangeOfString:@"null"].location != NSNotFound) {
-        model.receivename = @"";
+    if ([model.num rangeOfString:@"null"].location != NSNotFound) {
+        model.num = @"0";
     }
-    if ([model.beannum rangeOfString:@"null"].location != NSNotFound) {
-        model.beannum = @"0";
+    if ([model.time rangeOfString:@"null"].location != NSNotFound) {
+        model.time = @"";
     }
-    if ([model.donationtime rangeOfString:@"null"].location != NSNotFound) {
-        model.donationtime = @"";
-    }
-    self.imageV.image = [UIImage imageNamed:model.picture];
-    self.nameTitle.text = model.receivename;
-    self.beanNumLabel.text = model.beannum;
-    self.dateLabel.text = model.donationtime;
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *currentDate = [dateFormatter dateFromString:model.time];
+    
+    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:@"yyyy-MM-dd"];
+    NSString *timeStr = [dateFormatter1 stringFromDate:currentDate];
+    
+    
+    self.nameTitle.text = model.cname;
+    self.beanNumLabel.text = model.num;
+    self.dateLabel.text = timeStr;
     
     if (self.imageV.image ==nil) {
         self.imageV.image = [UIImage imageNamed:@"mine_head"];
+    }
+    
+    if ([self.beanNumLabel.text intValue] > 10000) {
+        
+        CGFloat num = [self.beanNumLabel.text floatValue] / 10000;
+        self.beanNumLabel.text = [NSString stringWithFormat:@"%.2f万",num];
+        
     }
 }
 @end

@@ -10,14 +10,12 @@
 
 @interface GLDonationRecordModel : NSObject
 
-@property (nonatomic, copy)NSString *picture;
-
-@property (nonatomic, copy)NSString *receivename;
-
 //@property (nonatomic, copy)NSString *picture;
 
-@property (nonatomic, copy)NSString *beannum;
+@property (nonatomic, copy)NSString *cname;
 
-@property (nonatomic, copy)NSString *donationtime;
+@property (nonatomic, copy)NSString *num;
+
+@property (nonatomic, copy)NSString *time;
 
 @end
