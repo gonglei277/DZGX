@@ -112,18 +112,20 @@
     switch (indexPath.row) {
         case 0:
         {
-            self.hidesBottomBarWhenPushed=YES;
             
             if ([[UserModel defaultUser].groupId isEqualToString:OrdinaryUser]) {
                 
+                self.hidesBottomBarWhenPushed=YES;
                 GLMyHeartController *vc=[[GLMyHeartController alloc]init];
                 [self.navigationController pushViewController:vc animated:YES];
+                 self.hidesBottomBarWhenPushed=NO;
             }else{
+                self.hidesBottomBarWhenPushed=YES;
                 GLNoneOfDonationController *vc = [[GLNoneOfDonationController alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
+                self.hidesBottomBarWhenPushed=NO;
             }
             
-            self.hidesBottomBarWhenPushed=NO;
            
         }
         

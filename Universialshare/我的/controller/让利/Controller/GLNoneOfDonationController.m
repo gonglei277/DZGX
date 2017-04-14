@@ -18,7 +18,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (nonatomic ,strong)NSMutableArray *models;
-@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rangliLabel;
+@property (weak, nonatomic) IBOutlet UILabel *yirangliLabel;
+
 
 @property (nonatomic ,strong)NodataView *nodataV;
 
@@ -47,6 +49,7 @@ static NSString *ID = @"GLNoneOfDonationCell";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.hidden = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"让利捐赠";
     self.tableView.delegate = self;
@@ -80,7 +83,12 @@ static NSString *ID = @"GLNoneOfDonationCell";
 - (void)updateData:(BOOL)status {
     
     if (status) {
-        [_models removeAllObjects];
+        
+        _page = 1;
+        [self.models removeAllObjects];
+        
+    }else{
+        _page ++;
     }
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -92,7 +100,7 @@ static NSString *ID = @"GLNoneOfDonationCell";
     [NetworkManager requestPOSTWithURLStr:@"user/myRl_list" paramDic:dict finish:^(id responseObject) {
         [_loadV removeloadview];
         [self endRefresh];
-//        NSLog(@"%@",responseObject);
+        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
             for (NSDictionary *dict in responseObject[@"data"]) {
@@ -100,14 +108,23 @@ static NSString *ID = @"GLNoneOfDonationCell";
                 [_models addObject:model];
             }
 
+            _rangliLabel.text =[NSString stringWithFormat:@"应让利合计:%@",responseObject[@"surrendersun"]];
+            _yirangliLabel.text = [NSString stringWithFormat:@"已让利合计:%@",responseObject[@"surrender"]];
             
+        }else{
+            _rangliLabel.text = @"0";
+            _yirangliLabel.text = @"0";
+            
+            if (_models.count != 0){
+                [MBProgressHUD showError:@"已经没有更多数据了!"];
+            }
         }
         if (_models.count <= 0 ) {
             self.nodataV.hidden = NO;
-            self.totalLabel.text = @"0";
+            
         }else{
             self.nodataV.hidden = YES;
-            self.totalLabel.text = [NSString stringWithFormat:@"%@", responseObject[@"data"][@"donationamt"]];
+           
         }
         
         [self.tableView reloadData];
@@ -140,6 +157,6 @@ static NSString *ID = @"GLNoneOfDonationCell";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50;
+    return 70;
 }
 @end
