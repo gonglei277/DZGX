@@ -162,9 +162,9 @@
 }
 - (void)dismiss {
     [UIView animateWithDuration:0.3 animations:^{
-        _maskV.frame = CGRectMake(0, 0, SCREEN_WIDTH, 0);
-    } completion:^(BOOL finished) {
         _maskV.alpha = 0;
+    } completion:^(BOOL finished) {
+        [_maskV removeFromSuperview];
         
     }];
 }
@@ -455,7 +455,7 @@
         self.beanStyleLabel.text = @"普通志愿豆";
         self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
         self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
-        [_maskV removeFromSuperview];;
+        
     }else{
 //        if([[UserModel defaultUser].userLogin integerValue] == 1){
             self.beanStyleLabel.text = @"代缴税志愿豆";
@@ -468,8 +468,8 @@
         [_maskV removeFromSuperview];;
         self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
       
-        [self dismiss];
     }
+    [self dismiss];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

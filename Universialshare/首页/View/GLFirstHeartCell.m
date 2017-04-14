@@ -37,13 +37,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.typeLabel.font = [UIFont systemFontOfSize:ADAPT(12)];
-    self.sixLabel.font = [UIFont systemFontOfSize:ADAPT(12)];
-    self.twelveLabel.font = [UIFont systemFontOfSize:ADAPT(12)];
-    self.twenty_fourLabel.font = [UIFont systemFontOfSize:ADAPT(12)];
-    self.sixValueLabel.font = [UIFont systemFontOfSize:ADAPT(12)];
-    self.twelveValueLabel.font = [UIFont systemFontOfSize:ADAPT(12)];
-    self.twenty_fourValueLabel.font = [UIFont systemFontOfSize:ADAPT(12)];
+    self.typeLabel.font = [UIFont systemFontOfSize:ADAPT(13)];
+    self.sixLabel.font = [UIFont systemFontOfSize:ADAPT(13)];
+    self.twelveLabel.font = [UIFont systemFontOfSize:ADAPT(13)];
+    self.twenty_fourLabel.font = [UIFont systemFontOfSize:ADAPT(13)];
+    self.sixValueLabel.font = [UIFont systemFontOfSize:ADAPT(13)];
+    self.twelveValueLabel.font = [UIFont systemFontOfSize:ADAPT(13)];
+    self.twenty_fourValueLabel.font = [UIFont systemFontOfSize:ADAPT(13)];
     
     _starWidth.constant = ADAPT(12);
     _heartHeight.constant = ADAPT(12);
@@ -52,6 +52,7 @@
     _xilieLabelleading.constant = ADAPT(3);
     _starLaeading.constant = ADAPT(10);
     _leftLineLeading.constant = ADAPT(10);
+    
 }
 
 - (void)setModel:(GLFirstPageDailyModel *)model{

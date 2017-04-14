@@ -25,6 +25,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.statusLabel.layer.borderWidth = 1;
+    self.statusLabel.layer.borderColor = YYSRGBColor(56, 136, 39, 1).CGColor;
+    self.statusLabel.layer.cornerRadius = 3.f;
+    self.statusLabel.layer.masksToBounds = YES;
 }
 - (void)setModel:(GLNoneOfDonationModel *)model {
     _model = model;
@@ -41,9 +45,12 @@
     self.sellNumLabel.text = model.market;
     self.rangliLabel.text = model.rl_money;
    
-    
-    if([model.status isEqualToString:@""]){
-        
+    if([model.status isEqualToString:@"1"]){
+        self.statusLabel.text = @" 成功 ";
+    }else if([model.status isEqualToString:@"0"]){
+        self.statusLabel.text = @" 失败 ";
+    }else{
+        self.statusLabel.text = @" 未审核 ";
     }
 }
 
