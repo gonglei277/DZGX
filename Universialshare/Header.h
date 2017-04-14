@@ -26,5 +26,9 @@
 #define URL_Base @"http://192.168.0.113/api/"
 
 #define DOWNLOAD_URL @""
+//普通用户
+#define OrdinaryUser @"6"
+//零售商
+#define Retailer @"7"
 
 #endif /* Header_h */

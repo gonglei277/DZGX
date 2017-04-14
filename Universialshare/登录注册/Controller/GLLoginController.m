@@ -62,7 +62,7 @@
     self.navigationController.navigationBar.hidden = YES;
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
     
-    self.usertype = @"7";
+    self.usertype = OrdinaryUser;
 
 }
 //注册
@@ -198,7 +198,7 @@
 //普通用户
 -(void)shangViewgesture{
     
-    self.usertype = @"7";
+    self.usertype = OrdinaryUser;
     self.loginView.shangImage.image=[UIImage imageNamed:@"location_on"];
     self.loginView.lingimage.image=[UIImage imageNamed:@"location_off"];
     
@@ -206,7 +206,7 @@
 //零售商
 -(void)lingViewgesture{
     
-    self.usertype = @"6";
+    self.usertype = Retailer;
     self.loginView.shangImage.image=[UIImage imageNamed:@"location_off"];
     self.loginView.lingimage.image=[UIImage imageNamed:@"location_on"];
     

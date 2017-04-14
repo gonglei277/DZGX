@@ -11,8 +11,11 @@
 #import "GLLoginController.h"
 #import "IQKeyboardManager.h"
 #import "BaseNavigationViewController.h"
+#import <BaiduMapAPI_Map/BMKMapComponent.h>
 
 @interface AppDelegate ()
+
+@property(strong,nonatomic)BMKMapManager* mapManager;
 
 @end
 
@@ -31,6 +34,13 @@
    
     //self.window.rootViewController = nav;
      self.window.rootViewController = [[BasetabbarViewController alloc]init];
+    
+    // 要使用百度地图，请先启动BaiduMapManager
+    _mapManager = [[BMKMapManager alloc]init];
+    BOOL ret = [_mapManager start:@"AEgIAA5j2QlPKPMIuNoOat6j3ZAagsFd" generalDelegate:self];
+    if (!ret) {
+        [MBProgressHUD showError:@"启动百度地图失败"];
+    }
 
     return YES;
 }
