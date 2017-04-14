@@ -36,8 +36,9 @@
 @property (nonatomic ,copy)NSString  *djs_bean;//代缴税
 
 
-@property (nonatomic ,copy)NSString  *bankname;//银行名
-@property (nonatomic ,copy)NSString  *bankIcon;//银行图标
+//@property (nonatomic ,copy)NSString  *defaultBanknumber;//默认银行卡号
+@property (nonatomic ,copy)NSString  *defaultBankname;//默认银行名
+@property (nonatomic ,copy)NSString  *defaultBankIcon;//默认银行图标
 
 
 +(UserModel*)defaultUser;

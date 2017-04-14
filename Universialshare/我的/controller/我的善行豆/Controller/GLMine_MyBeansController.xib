@@ -29,7 +29,7 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="15.5" id="FLY-xT-Qit"/>
                         <constraint firstAttribute="height" constant="20" id="l4m-rl-x0i"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>

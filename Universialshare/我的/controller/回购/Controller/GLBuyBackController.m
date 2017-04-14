@@ -14,6 +14,8 @@
 #import "GLNoticeView.h"
 #import "UIImageView+WebCache.h"
 
+#import "GLBuyBackChooseController.h"
+
 @interface GLBuyBackController ()<UITextFieldDelegate,UIScrollViewDelegate>
 {
     GLDirectDnationView *_directV;
@@ -57,6 +59,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.navigationBar.hidden = NO;
     self.title = @"回购";
     self.view.backgroundColor = [UIColor whiteColor];
@@ -111,22 +114,23 @@
     [NetworkManager requestPOSTWithURLStr:@"user/refresh" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-        //        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
             
             if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]] rangeOfString:@"null"].location != NSNotFound) {
                 [UserModel defaultUser].banknumber = @"";
             }else{
-                [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankacount"]];
+                [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]];
             }
             if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]] rangeOfString:@"null"].location != NSNotFound) {
-                [UserModel defaultUser].bankname = @"";
+                [UserModel defaultUser].defaultBankname = @"";
             }else{
                 
-                [UserModel defaultUser].bankname = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]];
+                [UserModel defaultUser].defaultBankname = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]];
             }
             [UserModel defaultUser].ketiBean = [NSString stringWithFormat:@"%@元",responseObject[@"data"][@"common"]];
             [UserModel defaultUser].djs_bean = [NSString stringWithFormat:@"%@元",responseObject[@"data"][@"taxes"]];
+            [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]];
+            [UserModel defaultUser].defaultBankname = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]];
             
             [usermodelachivar achive];
             
@@ -140,7 +144,7 @@
             }
         }else{
             [UserModel defaultUser].banknumber = @"";
-            [UserModel defaultUser].bankname = @"";
+            [UserModel defaultUser].defaultBankname = @"";
 //            [UserModel defaultUser].bankIcon = @"";
         }
         [self updateBankInfo];
@@ -187,8 +191,8 @@
         self.addLabel.hidden = YES;
         
         self.cardNumLabel.text = [UserModel defaultUser].banknumber;
-        self.cardStyleLabel.text = [UserModel defaultUser].bankname;
-        [self.bankStyleImageV sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].bankIcon]];
+        self.cardStyleLabel.text = [UserModel defaultUser].defaultBankname;
+        [self.bankStyleImageV sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].defaultBankIcon]];
         if (!self.bankStyleImageV.image) {
             self.bankStyleImageV.image = [UIImage imageNamed:@"mine_icbc"];
         }
@@ -258,7 +262,31 @@
         return;
     }
    
-    [self showOkayCancelAlert];
+    
+    CGFloat contentViewH = 200;
+    CGFloat contentViewW = SCREEN_WIDTH - 40;
+    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    
+    _maskV.bgView.alpha = 0.4;
+    
+    GLNoticeView *contentView = [[NSBundle mainBundle] loadNibNamed:@"GLNoticeView" owner:nil options:nil].lastObject;
+    contentView.frame = CGRectMake(20, (SCREEN_HEIGHT - contentViewH)/2, contentViewW, contentViewH);
+    contentView.layer.cornerRadius = 4;
+    contentView.layer.masksToBounds = YES;
+    [contentView.cancelBtn addTarget:self action:@selector(cancelBuyback) forControlEvents:UIControlEventTouchUpInside];
+    [contentView.ensureBtn addTarget:self action:@selector(ensureBuyback) forControlEvents:UIControlEventTouchUpInside];
+    if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]) {
+        
+        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为%.1f(颗)志愿豆\n可兑换金额%.1f元",[self.buybackNumF.text integerValue] * 0.05,[self.buybackNumF.text integerValue] * 0.95];
+    }else{
+        
+        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗志愿豆\n代扣税为%.2f(颗)志愿豆\n可兑换金额为%.2f元",[self.buybackNumF.text integerValue]*0.0048,([self.buybackNumF.text integerValue]-[self.buybackNumF.text integerValue]*0.0048 - 5)];
+        
+    }
+    
+    [_maskV showViewWithContentView:contentView];
+
+//    [self showOkayCancelAlert];
 
 }
 - (void)showOkayCancelAlert {
@@ -378,12 +406,20 @@
     
 }
 - (IBAction)chooseBank:(id)sender {
-    self.hidesBottomBarWhenPushed = YES;
-    GLBuyBackChooseCardController *chooseVC = [[GLBuyBackChooseCardController alloc] init];
-    chooseVC.block = ^(NSString *cardNum){
-        self.cardNumLabel.text = cardNum;
-    };
-    [self.navigationController pushViewController:chooseVC animated:YES];
+    if (self.addImageV.hidden) {
+        self.hidesBottomBarWhenPushed = YES;
+        GLBuyBackChooseController *chooseVC = [[GLBuyBackChooseController alloc] init];
+        
+        [self.navigationController pushViewController:chooseVC animated:YES];
+    }else{
+        
+        self.hidesBottomBarWhenPushed = YES;
+        GLBuyBackChooseCardController *chooseVC = [[GLBuyBackChooseCardController alloc] init];
+        chooseVC.block = ^(NSString *cardNum){
+            self.cardNumLabel.text = cardNum;
+        };
+        [self.navigationController pushViewController:chooseVC animated:YES];
+    }
     
 }
 - (IBAction)chooseStyle:(id)sender {
@@ -432,7 +468,7 @@
         [_maskV removeFromSuperview];;
         self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
       
-        [_maskV removeFromSuperview];
+        [self dismiss];
     }
 }
 
