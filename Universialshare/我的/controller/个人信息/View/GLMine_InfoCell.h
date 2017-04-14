@@ -18,4 +18,6 @@
 
 @property (copy, nonatomic)void(^returnEditing)(NSString *content,NSInteger index);
 
+@property (copy, nonatomic)void(^returnkeyBoard)(NSInteger index);
+
 @end
