@@ -379,14 +379,14 @@
     [NetworkManager requestPOSTWithURLStr:@"user/back" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-        if ([responseObject[@"code"] integerValue] == 0) {
+        if ([responseObject[@"code"] integerValue] == 1) {
             [self cancelBuyback];
             self.secondPwdF.text = nil;
             self.buybackNumF.text = nil;
             
             //刷新信息
             [self updateData];
-            
+             [MBProgressHUD showSuccess:@"回购申请成功"];
         }else{
             [MBProgressHUD showError:responseObject[@"msg"]];
         }
