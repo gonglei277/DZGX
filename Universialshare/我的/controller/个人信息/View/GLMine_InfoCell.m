@@ -19,11 +19,16 @@
     // Initialization code
     self.headimage.layer.cornerRadius = 15;
     self.headimage.clipsToBounds = YES;
+    
+    self.textTf.delegate = self;
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
 
-    
+    if (self.returnkeyBoard) {
+        self.returnkeyBoard(_index);
+    }
+
     return YES;
 }
 

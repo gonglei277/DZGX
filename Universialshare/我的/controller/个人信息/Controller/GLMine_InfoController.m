@@ -11,7 +11,7 @@
 //#import "LBBaiduMapViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface GLMine_InfoController ()<UITableViewDelegate,UITableViewDataSource>
+@interface GLMine_InfoController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIActionSheetDelegate>
 {
     NSArray *_titlesArr;
     NSMutableArray *_valuesArr;
@@ -24,11 +24,17 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTop;
 
-@property (strong, nonatomic)UIImageView *headimage;//头像
+@property (strong, nonatomic)UIImage *imagehead;//头像
 @property (strong, nonatomic)NSString *username;//用户明
 @property (strong, nonatomic)NSString *adress;//店铺地址
 @property (strong, nonatomic)NSString *storeType;//商家类型
 @property (strong, nonatomic)NSString *shenfCode;//身份证号
+@property (strong, nonatomic)NSString *ID;//用户ID
+@property (strong, nonatomic)NSString *recomendID;//推荐人ID
+@property (strong, nonatomic)NSString *recomendName;//推荐姓名
+
+@property (strong, nonatomic)UIButton *buttonedt;
+@property (assign, nonatomic)BOOL EditBool;//判断是否可编辑
 
 @end
 
@@ -41,6 +47,7 @@ static NSString *ID = @"GLMine_InfoCell";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.hidden = NO;
     self.title = @"个人资料";
+    _EditBool = NO;
     [self logoQrCode];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -48,10 +55,23 @@ static NSString *ID = @"GLMine_InfoCell";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
     [self.tableView registerNib:[UINib nibWithNibName:@"GLMine_InfoCell" bundle:nil] forCellReuseIdentifier:ID];
+    
+    _buttonedt=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 60)];
+    [_buttonedt setTitle:@"编辑" forState:UIControlStateNormal];
+    [_buttonedt setTitle:@"保存" forState:UIControlStateSelected];
+    [_buttonedt setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
+    _buttonedt.titleLabel.font = [UIFont systemFontOfSize:14];
+    [_buttonedt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_buttonedt addTarget:self action:@selector(edtingInfo:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_buttonedt];
+    
+    [self updateInfo];
       
 }
 - (void)viewWillAppear:(BOOL)animated{
-    [self updateInfo];
+    [super viewWillAppear:animated];
+    
 }
 - (void)updateInfo{
     
@@ -63,6 +83,28 @@ static NSString *ID = @"GLMine_InfoCell";
         
         _titlesArr = @[@"头像",@"用户名",@"ID",@"身份证号",@"推荐人ID",@"推荐人姓名"];
     }
+    
+  
+    self.ID = [UserModel defaultUser].name;
+    self.imagehead =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
+    
+
+}
+//编辑按钮
+-(void)edtingInfo:(UIButton*)sender{
+    sender.selected = !sender.selected;
+    _EditBool = !_EditBool;
+    [self.view endEditing:YES];
+    
+    if (sender.selected) {
+        
+        
+    }else{//保存
+    
+    
+    }
+    
+    [self.tableView reloadData];
 
 }
 
@@ -145,13 +187,15 @@ static NSString *ID = @"GLMine_InfoCell";
     GLMine_InfoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
     cell.titleLabel.text = [NSString stringWithFormat:@"%@",_titlesArr[indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //@[@"头像",@"用户名",@"ID",@"店铺地址",@"商家类型",@"身份证号",@"推荐人ID",@"推荐人姓名"]
+    cell.index = indexPath.row;
+    
     if ([[UserModel defaultUser].usrtype isEqualToString:@"6"]) {
         
         if (indexPath.row == 0) {
             cell.headimage.hidden = NO;
             cell.imageW.constant = 30;
             cell.textTf.enabled = NO;
+            
             
         }else{
             cell.headimage.hidden = YES;
@@ -160,10 +204,34 @@ static NSString *ID = @"GLMine_InfoCell";
             if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 7) {
                 cell.textTf.enabled = NO;
             }else{
-                cell.textTf.enabled = YES;
+                if (_EditBool == NO) {
+                    cell.textTf.enabled = NO;
+                }else{
+                    cell.textTf.enabled = YES;
+                }
+
+            }
+            //设置初始值
+            if (indexPath.row == 1) {
+                cell.textTf.text = self.username;
+            }else if (indexPath.row == 2){
+                cell.textTf.text = self.ID;
+            }else if (indexPath.row == 3){
+                cell.textTf.text = self.adress;
+            }else if (indexPath.row == 4){
+                cell.textTf.text = self.storeType;
+            }else if (indexPath.row == 5){
+                cell.textTf.text = self.shenfCode;
+            }else if (indexPath.row == 6){
+                cell.textTf.text = self.recomendID;
+            }else if (indexPath.row == 7){
+                cell.textTf.text = self.recomendName;
             }
             
+            
+            
             __weak typeof(self) weakself = self;
+            //编辑赋值
             cell.returnEditing = ^(NSString *content , NSInteger index){
                 
                 if (index == 1) {
@@ -184,6 +252,31 @@ static NSString *ID = @"GLMine_InfoCell";
                 
             };
             
+            //弹出键盘
+            cell.returnkeyBoard = ^(NSInteger index){
+                
+                if (index == 1) {
+                    NSIndexPath *indexPath =  [NSIndexPath indexPathForRow:3 inSection:0];
+                    GLMine_InfoCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
+                    [cell.textTf becomeFirstResponder];
+                }else if (index == 3){
+                    
+                    NSIndexPath *indexPath =  [NSIndexPath indexPathForRow:4 inSection:0];
+                    GLMine_InfoCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
+                    [cell.textTf becomeFirstResponder];
+                }else if (index == 4){
+                    
+                    NSIndexPath *indexPath =  [NSIndexPath indexPathForRow:5 inSection:0];
+                    GLMine_InfoCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
+                    [cell.textTf becomeFirstResponder];
+                }else if (index == 5){
+                    [weakself.view endEditing:YES];
+                }
+                
+                
+            };
+            
+            
         }
         
     }else if ([[UserModel defaultUser].usrtype isEqualToString:@"7"]) {
@@ -192,6 +285,10 @@ static NSString *ID = @"GLMine_InfoCell";
             cell.headimage.hidden = NO;
             cell.imageW.constant = 30;
             cell.textTf.enabled = NO;
+            cell.headimage.image = self.imagehead;
+            if (!cell.headimage.image) {
+                cell.headimage.image = [UIImage imageNamed:@"mine_head"];
+            }
             
         }else{
             cell.headimage.hidden = YES;
@@ -200,11 +297,31 @@ static NSString *ID = @"GLMine_InfoCell";
             if (indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 5) {
                 cell.textTf.enabled = NO;
             }else{
-                cell.textTf.enabled = YES;
+                if (_EditBool == NO) {
+                    cell.textTf.enabled = NO;
+                }else{
+                    cell.textTf.enabled = YES;
+                }
             }
             
         }
+        
+        //设置初始值
+        if (indexPath.row == 1) {
+            cell.textTf.text = self.username;
+        }else if (indexPath.row == 2){
+            cell.textTf.text = self.ID;
+        }else if (indexPath.row == 3){
+            cell.textTf.text = self.shenfCode;
+        }else if (indexPath.row == 4){
+            cell.textTf.text = self.recomendID;
+        }else if (indexPath.row == 5){
+            cell.textTf.text = self.recomendName;
+        }
+        
+        
         __weak typeof(self) weakself = self;
+        // 赋值
         cell.returnEditing = ^(NSString *content , NSInteger index){
         
             if (index == 1) {
@@ -216,6 +333,22 @@ static NSString *ID = @"GLMine_InfoCell";
             }
         
         };
+        
+        //弹出键盘
+        cell.returnkeyBoard = ^(NSInteger index){
+
+            if (index == 1) {
+                NSIndexPath *indexPath =  [NSIndexPath indexPathForRow:3 inSection:0];
+                GLMine_InfoCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
+                [cell.textTf becomeFirstResponder];
+            }else if (index == 3){
+                
+                [weakself.view endEditing:YES];
+            }
+            
+            
+        };
+
         
         
     }
@@ -230,10 +363,99 @@ static NSString *ID = @"GLMine_InfoCell";
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.row == 0) {
+        
+        UIActionSheet* actionSheet = [[UIActionSheet alloc]initWithTitle:@"请选择图片来源" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"去相册选择",@"用相机拍照", nil];
+        [actionSheet showInView:self.view];
+    }
 
+    
+    if ([[UserModel defaultUser].usrtype isEqualToString:@"6"]) {
+        
+        if (indexPath.row == 3) {//选择地址
+//                self.hidesBottomBarWhenPushed = YES;
+//                LBBaiduMapViewController *mapVC = [[LBBaiduMapViewController alloc] init];
+//                mapVC.returePositon = ^(NSString *strposition,NSString *pro,NSString *city,NSString *area,CLLocationCoordinate2D coors){
+//                    self.adress = strposition;
+//                    [self.tableView reloadData];
+//                };
+                //[self.navigationController pushViewController:mapVC animated:YES];
+        }
+        
+    }else if ([[UserModel defaultUser].usrtype isEqualToString:@"7"]) {
+        
+        
+    }
 
 }
 
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:{
+            [self getpicture];//获取相册
+        }break;
+            
+        case 1:{
+            [self getcamera];//获取照相机
+        }break;
+        default:
+            break;
+    }
+}
+
+-(void)getpicture{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    //    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.delegate = self;
+    //    // 设置选择后的图片可以被编辑
+    //    picker.allowsEditing = YES;
+    //    [self presentViewController:picker animated:YES completion:nil];
+    //1.获取媒体支持格式
+    NSArray *mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+    picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    picker.mediaTypes = @[mediaTypes[0]];
+    //5.其他配置
+    //allowsEditing是否允许编辑，如果值为no，选择照片之后就不会进入编辑界面
+    picker.allowsEditing = YES;
+    //6.推送
+    [self presentViewController:picker animated:YES completion:nil];
+}
+-(void)getcamera{
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        // 设置拍照后的图片可以被编辑
+        picker.allowsEditing = YES;
+        picker.sourceType = sourceType;
+        [self presentViewController:picker animated:YES completion:nil];
+    }else {
+        
+    }
+}
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+    if ([type isEqualToString:@"public.image"]) {
+        // 先把图片转成NSData
+        UIImage *image = [info objectForKey:@"UIImagePickerControllerEditedImage"];
+        NSData *data;
+        if (UIImagePNGRepresentation(image) == nil) {
+            
+            data = UIImageJPEGRepresentation(image, 0.1);
+        }else {
+            data=    UIImageJPEGRepresentation(image, 0.1);
+        }
+        //#warning 这里来做操作，提交的时候要上传
+        // 图片保存的路径
+        self.imagehead = [UIImage imageWithData:data];
+        [self.tableView reloadData];
+        
+        [picker dismissViewControllerAnimated:YES completion:nil];
+        
+    }
+}
 
 
 @end

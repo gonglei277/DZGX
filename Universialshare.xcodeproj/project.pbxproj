@@ -61,10 +61,6 @@
 		4A0D97931E9729C100A26B84 /* GLHotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0D975C1E9729C100A26B84 /* GLHotCell.xib */; };
 		4A0D97941E9729C100A26B84 /* GLTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0D975E1E9729C100A26B84 /* GLTopCell.m */; };
 		4A0D97951E9729C100A26B84 /* GLTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0D975F1E9729C100A26B84 /* GLTopCell.xib */; };
-		4A203D9A1E9F21E200DF22F7 /* GLMine_InfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203D931E9F21E200DF22F7 /* GLMine_InfoController.m */; };
-		4A203D9B1E9F21E200DF22F7 /* GLMine_InfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203D941E9F21E200DF22F7 /* GLMine_InfoController.xib */; };
-		4A203D9C1E9F21E200DF22F7 /* GLMine_InfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203D981E9F21E200DF22F7 /* GLMine_InfoCell.m */; };
-		4A203D9D1E9F21E200DF22F7 /* GLMine_InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203D991E9F21E200DF22F7 /* GLMine_InfoCell.xib */; };
 		4A203DCF1E9F82A700DF22F7 /* GLEncourageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203DCE1E9F82A700DF22F7 /* GLEncourageModel.m */; };
 		4A203DD31E9F842F00DF22F7 /* GLEncourageBeansCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203DD11E9F842F00DF22F7 /* GLEncourageBeansCell.m */; };
 		4A203DD41E9F842F00DF22F7 /* GLEncourageBeansCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203DD21E9F842F00DF22F7 /* GLEncourageBeansCell.xib */; };
@@ -444,6 +440,10 @@
 		F90620061E83C5D00080E9D9 /* BasetabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90620021E83C5D00080E9D9 /* BasetabbarViewController.m */; };
 		F90620071E83C5D00080E9D9 /* LBLoginNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90620041E83C5D00080E9D9 /* LBLoginNavigationViewController.m */; };
 		F906201C1E83C8770080E9D9 /* tabbarimage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F906201B1E83C8770080E9D9 /* tabbarimage.xcassets */; };
+		F9126EBC1EA05692004785EA /* GLMine_InfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9126EB61EA05692004785EA /* GLMine_InfoController.m */; };
+		F9126EBD1EA05692004785EA /* GLMine_InfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9126EB71EA05692004785EA /* GLMine_InfoController.xib */; };
+		F9126EBE1EA05692004785EA /* GLMine_InfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9126EBA1EA05692004785EA /* GLMine_InfoCell.m */; };
+		F9126EBF1EA05692004785EA /* GLMine_InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9126EBB1EA05692004785EA /* GLMine_InfoCell.xib */; };
 		F923082F1E9B8B6B00ECDC94 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = F923082E1E9B8B6B00ECDC94 /* Address.plist */; };
 		F92308311E9B8BCC00ECDC94 /* personCenter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92308301E9B8BCC00ECDC94 /* personCenter.xcassets */; };
 		F923091A1E9B8BFF00ECDC94 /* HWCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = F92308361E9B8BFE00ECDC94 /* HWCalendar.m */; };
@@ -708,12 +708,6 @@
 		4A0D975D1E9729C100A26B84 /* GLTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTopCell.h; sourceTree = "<group>"; };
 		4A0D975E1E9729C100A26B84 /* GLTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTopCell.m; sourceTree = "<group>"; };
 		4A0D975F1E9729C100A26B84 /* GLTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLTopCell.xib; sourceTree = "<group>"; };
-		4A203D921E9F21E200DF22F7 /* GLMine_InfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMine_InfoController.h; sourceTree = "<group>"; };
-		4A203D931E9F21E200DF22F7 /* GLMine_InfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMine_InfoController.m; sourceTree = "<group>"; };
-		4A203D941E9F21E200DF22F7 /* GLMine_InfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMine_InfoController.xib; sourceTree = "<group>"; };
-		4A203D971E9F21E200DF22F7 /* GLMine_InfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMine_InfoCell.h; sourceTree = "<group>"; };
-		4A203D981E9F21E200DF22F7 /* GLMine_InfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMine_InfoCell.m; sourceTree = "<group>"; };
-		4A203D991E9F21E200DF22F7 /* GLMine_InfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMine_InfoCell.xib; sourceTree = "<group>"; };
 		4A203DA81E9F646500DF22F7 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		4A203DCD1E9F82A700DF22F7 /* GLEncourageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLEncourageModel.h; sourceTree = "<group>"; };
 		4A203DCE1E9F82A700DF22F7 /* GLEncourageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLEncourageModel.m; sourceTree = "<group>"; };
@@ -1449,6 +1443,12 @@
 		F906201B1E83C8770080E9D9 /* tabbarimage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = tabbarimage.xcassets; sourceTree = "<group>"; };
 		F906201D1E83CBAD0080E9D9 /* universialshare.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = universialshare.pch; sourceTree = "<group>"; };
 		F906201F1E83CC900080E9D9 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		F9126EB51EA05692004785EA /* GLMine_InfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMine_InfoController.h; sourceTree = "<group>"; };
+		F9126EB61EA05692004785EA /* GLMine_InfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMine_InfoController.m; sourceTree = "<group>"; };
+		F9126EB71EA05692004785EA /* GLMine_InfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMine_InfoController.xib; sourceTree = "<group>"; };
+		F9126EB91EA05692004785EA /* GLMine_InfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMine_InfoCell.h; sourceTree = "<group>"; };
+		F9126EBA1EA05692004785EA /* GLMine_InfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMine_InfoCell.m; sourceTree = "<group>"; };
+		F9126EBB1EA05692004785EA /* GLMine_InfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMine_InfoCell.xib; sourceTree = "<group>"; };
 		F923082E1E9B8B6B00ECDC94 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		F92308301E9B8BCC00ECDC94 /* personCenter.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = personCenter.xcassets; sourceTree = "<group>"; };
 		F92308351E9B8BFE00ECDC94 /* HWCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWCalendar.h; sourceTree = "<group>"; };
@@ -1938,43 +1938,6 @@
 				4A0D975F1E9729C100A26B84 /* GLTopCell.xib */,
 			);
 			path = "首页";
-			sourceTree = "<group>";
-		};
-		4A203D901E9F21E200DF22F7 /* 个人信息 */ = {
-			isa = PBXGroup;
-			children = (
-				4A203D911E9F21E200DF22F7 /* Controller */,
-				4A203D951E9F21E200DF22F7 /* Model */,
-				4A203D961E9F21E200DF22F7 /* View */,
-			);
-			path = "个人信息";
-			sourceTree = "<group>";
-		};
-		4A203D911E9F21E200DF22F7 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				4A203D921E9F21E200DF22F7 /* GLMine_InfoController.h */,
-				4A203D931E9F21E200DF22F7 /* GLMine_InfoController.m */,
-				4A203D941E9F21E200DF22F7 /* GLMine_InfoController.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		4A203D951E9F21E200DF22F7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		4A203D961E9F21E200DF22F7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				4A203D971E9F21E200DF22F7 /* GLMine_InfoCell.h */,
-				4A203D981E9F21E200DF22F7 /* GLMine_InfoCell.m */,
-				4A203D991E9F21E200DF22F7 /* GLMine_InfoCell.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		4A4608CF1E9C9E6D0045824F /* 首页 */ = {
@@ -3449,6 +3412,35 @@
 			path = "图片资源";
 			sourceTree = "<group>";
 		};
+		F9126EB31EA05692004785EA /* 个人信息 */ = {
+			isa = PBXGroup;
+			children = (
+				F9126EB41EA05692004785EA /* Controller */,
+				F9126EB81EA05692004785EA /* View */,
+			);
+			path = "个人信息";
+			sourceTree = "<group>";
+		};
+		F9126EB41EA05692004785EA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F9126EB51EA05692004785EA /* GLMine_InfoController.h */,
+				F9126EB61EA05692004785EA /* GLMine_InfoController.m */,
+				F9126EB71EA05692004785EA /* GLMine_InfoController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F9126EB81EA05692004785EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F9126EB91EA05692004785EA /* GLMine_InfoCell.h */,
+				F9126EBA1EA05692004785EA /* GLMine_InfoCell.m */,
+				F9126EBB1EA05692004785EA /* GLMine_InfoCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F92308321E9B8BFE00ECDC94 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3467,6 +3459,7 @@
 		F92308331E9B8BFE00ECDC94 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F9126EB31EA05692004785EA /* 个人信息 */,
 				4A460A521E9CC0310045824F /* 扫码 */,
 				F92308341E9B8BFE00ECDC94 /* 余额 */,
 				F92308541E9B8BFE00ECDC94 /* 待收货 */,
@@ -3474,7 +3467,6 @@
 				F923088F1E9B8BFE00ECDC94 /* 积分 */,
 				F92308901E9B8BFE00ECDC94 /* 订单 */,
 				F92308D01E9B8BFF00ECDC94 /* 设置 */,
-				4A203D901E9F21E200DF22F7 /* 个人信息 */,
 				F92309051E9B8BFF00ECDC94 /* 返利 */,
 				4A4609601E9CB78E0045824F /* 回购 */,
 				4A4609731E9CB78E0045824F /* 推荐 */,
@@ -4214,6 +4206,7 @@
 				4A0D97751E9729C100A26B84 /* GLHourseDetailFirstCell.xib in Resources */,
 				F92309801E9B8BFF00ECDC94 /* LBMineCenterSafeSecondSecretViewController.xib in Resources */,
 				4A0D97711E9729C100A26B84 /* GLHomeLiveCell.xib in Resources */,
+				F9126EBD1EA05692004785EA /* GLMine_InfoController.xib in Resources */,
 				4A4610261E9CC6360045824F /* UMSnsAccountViewController.xib in Resources */,
 				4A4610341E9CC6360045824F /* ios-social-sdk-comment-detail.html in Resources */,
 				F923094E1E9B8BFF00ECDC94 /* LBMineMessageSetupViewController.xib in Resources */,
@@ -4230,12 +4223,10 @@
 				F92309521E9B8BFF00ECDC94 /* LBMyOrderAlreadyCompletedViewController.xib in Resources */,
 				F92309861E9B8BFF00ECDC94 /* LBMineCenterSafeChangePhoneViewController.xib in Resources */,
 				F92309911E9B8BFF00ECDC94 /* LBMineCenterinfoTableViewCell.xib in Resources */,
-				4A203D9B1E9F21E200DF22F7 /* GLMine_InfoController.xib in Resources */,
 				4A4610281E9CC6360045824F /* UMSocialSDKResourcesNew.bundle in Resources */,
 				4A4609F21E9CB78E0045824F /* GLDirectDnationRecordCell.xib in Resources */,
 				4A4609CE1E9CB78E0045824F /* GLBuyBackChooseCardController.xib in Resources */,
 				4A0D97931E9729C100A26B84 /* GLHotCell.xib in Resources */,
-				4A203D9D1E9F21E200DF22F7 /* GLMine_InfoCell.xib in Resources */,
 				4A4608EE1E9C9E6D0045824F /* GLFirstHeartCell.xib in Resources */,
 				F923094A1E9B8BFF00ECDC94 /* LBMineCenterReceivingGoodsViewController.xib in Resources */,
 				4A460A171E9CBBE20045824F /* GLNoticeView.xib in Resources */,
@@ -4293,6 +4284,7 @@
 				F923097C1E9B8BFF00ECDC94 /* LBMineCenterSafeForgetSecondSecretViewController.xib in Resources */,
 				F92309371E9B8BFF00ECDC94 /* LBMineMessageViewController.xib in Resources */,
 				4A4610241E9CC6360045824F /* UMShareEditViewControlleriPad.xib in Resources */,
+				F9126EBF1EA05692004785EA /* GLMine_InfoCell.xib in Resources */,
 				4A4609DB1E9CB78E0045824F /* GLRecommendRcordCell.xib in Resources */,
 				4A4609071E9CA0880045824F /* GLIntegralGoodsCell.xib in Resources */,
 				4A203DD41E9F842F00DF22F7 /* GLEncourageBeansCell.xib in Resources */,
@@ -4444,6 +4436,7 @@
 				4A4610B31E9CC6370045824F /* ZXAI013x0x1xDecoder.m in Sources */,
 				4A0D97671E9729C100A26B84 /* GLHourseDetailController.m in Sources */,
 				4A4610CD1E9CC6370045824F /* ZXCode128Reader.m in Sources */,
+				F9126EBC1EA05692004785EA /* GLMine_InfoController.m in Sources */,
 				4A46103E1E9CC6360045824F /* ZXAztecDecoder.m in Sources */,
 				F92309831E9B8BFF00ECDC94 /* LBMineCenterSafeBindPhoneViewController.m in Sources */,
 				F923092E1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeViewController.m in Sources */,
@@ -4519,6 +4512,7 @@
 				4A203DD71E9F8A0B00DF22F7 /* GLRecommendModel.m in Sources */,
 				4A4610DC1E9CC6370045824F /* ZXOneDReader.m in Sources */,
 				4A4610EF1E9CC6370045824F /* ZXPDF417DetectionResultColumn.m in Sources */,
+				F9126EBE1EA05692004785EA /* GLMine_InfoCell.m in Sources */,
 				4A4608ED1E9C9E6D0045824F /* GLFirstHeartCell.m in Sources */,
 				4A4610FD1E9CC6370045824F /* ZXPDF417Writer.m in Sources */,
 				4A4611051E9CC6370045824F /* ZXQRCodeFormatInformation.m in Sources */,
@@ -4531,7 +4525,6 @@
 				F92309771E9B8BFF00ECDC94 /* LBMineCentermodifyAdressViewController.m in Sources */,
 				4A4610831E9CC6360045824F /* ZXHybridBinarizer.m in Sources */,
 				4A4610C21E9CC6370045824F /* ZXRSSExpandedPair.m in Sources */,
-				4A203D9A1E9F21E200DF22F7 /* GLMine_InfoController.m in Sources */,
 				4A0D97651E9729C100A26B84 /* GLHomeLiveController.m in Sources */,
 				F961A9D81E9C75AF00275F52 /* UIView+SFrame.m in Sources */,
 				4A46101C1E9CC6360045824F /* ZXingWrapper.m in Sources */,
@@ -4591,7 +4584,6 @@
 				4A4610121E9CC6360045824F /* LBXScanLineAnimation.m in Sources */,
 				4A4610701E9CC6360045824F /* ZXImage.m in Sources */,
 				4A4610D11E9CC6370045824F /* ZXCode93Reader.m in Sources */,
-				4A203D9C1E9F21E200DF22F7 /* GLMine_InfoCell.m in Sources */,
 				4A4610CE1E9CC6370045824F /* ZXCode128Writer.m in Sources */,
 				4A46109B1E9CC6360045824F /* ZXDataMatrixBase256Encoder.m in Sources */,
 				4A4610F61E9CC6370045824F /* ZXPDF417BarcodeRow.m in Sources */,
