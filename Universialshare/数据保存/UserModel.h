@@ -34,7 +34,14 @@
 @property (nonatomic, copy)NSString  *counta;//
 @property (nonatomic, copy)NSString  *usrtype;//用户类型
 @property (nonatomic ,copy)NSString  *djs_bean;//代缴税
+@property (nonatomic ,copy)NSString  *idcard;//身份证
+@property (nonatomic ,copy)NSString  *truename;//真实姓名
+@property (nonatomic ,copy)NSString  *tjr;//推荐人
+@property (nonatomic ,copy)NSString  *tjrname;//推荐人姓名
 
+@property (nonatomic ,copy)NSString  *shop_name;//商家
+@property (nonatomic ,copy)NSString  *shop_address;//商家地址
+@property (nonatomic ,copy)NSString  *shop_type;//商家类型
 
 //@property (nonatomic ,copy)NSString  *defaultBanknumber;//默认银行卡号
 @property (nonatomic ,copy)NSString  *defaultBankname;//默认银行名

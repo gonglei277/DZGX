@@ -27,8 +27,8 @@
 
 #define DOWNLOAD_URL @""
 //普通用户
-#define OrdinaryUser @"6"
+#define OrdinaryUser @"7"
 //零售商
-#define Retailer @"7"
+#define Retailer @"6"
 
 #endif /* Header_h */

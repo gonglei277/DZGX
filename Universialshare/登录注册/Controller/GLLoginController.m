@@ -142,7 +142,7 @@
     [NetworkManager requestPOSTWithURLStr:@"user/login" paramDic:@{@"userphone":self.phone.text,@"password":self.scretTf.text,@"groupID":self.usertype} finish:^(id responseObject) {
         [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
-            NSLog(@"%@",responseObject);
+
             [MBProgressHUD showError:responseObject[@"message"]];
             
             [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"banknumber"]];
@@ -164,6 +164,13 @@
             [UserModel defaultUser].version = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"version"]];
             [UserModel defaultUser].vsnAddress = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"vsnAddress"]];
             [UserModel defaultUser].vsnUpdateTime = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"vsnUpdateTime"]];
+            [UserModel defaultUser].djs_bean = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"djs_bean"]];
+            
+            [UserModel defaultUser].idcard = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]];
+            [UserModel defaultUser].truename = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"truename"]];
+            [UserModel defaultUser].tjr = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"tjr"]];
+            [UserModel defaultUser].tjrname = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"tjrname"]];
+            
             [UserModel defaultUser].loginstatus = YES;
             [UserModel defaultUser].usrtype = self.usertype;
             
@@ -178,6 +185,37 @@
             if ([[UserModel defaultUser].giveMeMark rangeOfString:@"null"].location != NSNotFound) {
                 
                 [UserModel defaultUser].giveMeMark = @"";
+            }
+            if ([[UserModel defaultUser].tjr rangeOfString:@"null"].location != NSNotFound) {
+                
+                [UserModel defaultUser].tjr = @"";
+            }
+            if ([[UserModel defaultUser].tjrname rangeOfString:@"null"].location != NSNotFound) {
+                
+                [UserModel defaultUser].tjrname = @"";
+            }
+            
+            if ([self.usertype isEqualToString:Retailer]) {//零售商
+                [UserModel defaultUser].shop_name = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"shop_name"]];
+                [UserModel defaultUser].shop_address = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"shop_address"]];
+                [UserModel defaultUser].shop_type = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"shop_type"]];
+                if ([[UserModel defaultUser].shop_name rangeOfString:@"null"].location != NSNotFound) {
+                    
+                    [UserModel defaultUser].shop_name = @"";
+                }
+                if ([[UserModel defaultUser].shop_address rangeOfString:@"null"].location != NSNotFound) {
+                    
+                    [UserModel defaultUser].shop_address = @"";
+                }
+                if ([[UserModel defaultUser].shop_type rangeOfString:@"null"].location != NSNotFound) {
+                    
+                    [UserModel defaultUser].shop_type = @"";
+                }
+            }else{//普通用户
+                [UserModel defaultUser].shop_name = @"";
+                [UserModel defaultUser].shop_address = @"";
+                [UserModel defaultUser].shop_type = @"";
+            
             }
             
             [usermodelachivar achive];

@@ -474,6 +474,10 @@
 		F9126EEA1EA0599B004785EA /* RouteAnnotation.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9126EE51EA0599B004785EA /* RouteAnnotation.mm */; };
 		F9126EEB1EA0599B004785EA /* UIImage+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = F9126EE71EA0599B004785EA /* UIImage+Rotate.m */; };
 		F9126EED1EA059A9004785EA /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9126EEC1EA059A9004785EA /* mapapi.bundle */; };
+		F9126EF11EA0B042004785EA /* LBMineSystemMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9126EEF1EA0B042004785EA /* LBMineSystemMessageViewController.m */; };
+		F9126EF21EA0B042004785EA /* LBMineSystemMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9126EF01EA0B042004785EA /* LBMineSystemMessageViewController.xib */; };
+		F9126EF61EA0B086004785EA /* LBMineSystemMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9126EF41EA0B086004785EA /* LBMineSystemMessageTableViewCell.m */; };
+		F9126EF71EA0B086004785EA /* LBMineSystemMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9126EF51EA0B086004785EA /* LBMineSystemMessageTableViewCell.xib */; };
 		F923082F1E9B8B6B00ECDC94 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = F923082E1E9B8B6B00ECDC94 /* Address.plist */; };
 		F92308311E9B8BCC00ECDC94 /* personCenter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92308301E9B8BCC00ECDC94 /* personCenter.xcassets */; };
 		F923091A1E9B8BFF00ECDC94 /* HWCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = F92308361E9B8BFE00ECDC94 /* HWCalendar.m */; };
@@ -1518,6 +1522,12 @@
 		F9126EE61EA0599B004785EA /* UIImage+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotate.h"; sourceTree = "<group>"; };
 		F9126EE71EA0599B004785EA /* UIImage+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotate.m"; sourceTree = "<group>"; };
 		F9126EEC1EA059A9004785EA /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
+		F9126EEE1EA0B042004785EA /* LBMineSystemMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineSystemMessageViewController.h; sourceTree = "<group>"; };
+		F9126EEF1EA0B042004785EA /* LBMineSystemMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineSystemMessageViewController.m; sourceTree = "<group>"; };
+		F9126EF01EA0B042004785EA /* LBMineSystemMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineSystemMessageViewController.xib; sourceTree = "<group>"; };
+		F9126EF31EA0B086004785EA /* LBMineSystemMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineSystemMessageTableViewCell.h; sourceTree = "<group>"; };
+		F9126EF41EA0B086004785EA /* LBMineSystemMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineSystemMessageTableViewCell.m; sourceTree = "<group>"; };
+		F9126EF51EA0B086004785EA /* LBMineSystemMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineSystemMessageTableViewCell.xib; sourceTree = "<group>"; };
 		F923082E1E9B8B6B00ECDC94 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		F92308301E9B8BCC00ECDC94 /* personCenter.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = personCenter.xcassets; sourceTree = "<group>"; };
 		F92308351E9B8BFE00ECDC94 /* HWCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWCalendar.h; sourceTree = "<group>"; };
@@ -3701,6 +3711,9 @@
 		F92308551E9B8BFE00ECDC94 /* 消息 */ = {
 			isa = PBXGroup;
 			children = (
+				F9126EEE1EA0B042004785EA /* LBMineSystemMessageViewController.h */,
+				F9126EEF1EA0B042004785EA /* LBMineSystemMessageViewController.m */,
+				F9126EF01EA0B042004785EA /* LBMineSystemMessageViewController.xib */,
 				F92308561E9B8BFE00ECDC94 /* LBMineCenterFlyNoticeDetailViewController.h */,
 				F92308571E9B8BFE00ECDC94 /* LBMineCenterFlyNoticeDetailViewController.m */,
 				F92308581E9B8BFE00ECDC94 /* LBMineCenterFlyNoticeDetailViewController.xib */,
@@ -3755,6 +3768,9 @@
 				F92308801E9B8BFE00ECDC94 /* LBMineMessageHotPickTableViewCell.h */,
 				F92308811E9B8BFE00ECDC94 /* LBMineMessageHotPickTableViewCell.m */,
 				F92308821E9B8BFE00ECDC94 /* LBMineMessageHotPickTableViewCell.xib */,
+				F9126EF31EA0B086004785EA /* LBMineSystemMessageTableViewCell.h */,
+				F9126EF41EA0B086004785EA /* LBMineSystemMessageTableViewCell.m */,
+				F9126EF51EA0B086004785EA /* LBMineSystemMessageTableViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -4382,6 +4398,7 @@
 				F92309861E9B8BFF00ECDC94 /* LBMineCenterSafeChangePhoneViewController.xib in Resources */,
 				F92309911E9B8BFF00ECDC94 /* LBMineCenterinfoTableViewCell.xib in Resources */,
 				4A4610281E9CC6360045824F /* UMSocialSDKResourcesNew.bundle in Resources */,
+				F9126EF21EA0B042004785EA /* LBMineSystemMessageViewController.xib in Resources */,
 				4A4609F21E9CB78E0045824F /* GLDirectDnationRecordCell.xib in Resources */,
 				4A4609CE1E9CB78E0045824F /* GLBuyBackChooseCardController.xib in Resources */,
 				4A0D97931E9729C100A26B84 /* GLHotCell.xib in Resources */,
@@ -4477,6 +4494,7 @@
 				4A4609F81E9CB78E0045824F /* GLDonationController.xib in Resources */,
 				4A0023FA1E84AEFF00B2A9FE /* HomePage.xcassets in Resources */,
 				4A4610351E9CC6360045824F /* ios-social-sdk-comment-quick.html in Resources */,
+				F9126EF71EA0B086004785EA /* LBMineSystemMessageTableViewCell.xib in Resources */,
 				4A4609E61E9CB78E0045824F /* GLMine_MyBeansController.xib in Resources */,
 				4A4610211E9CC6360045824F /* UMSCommentInputController.xib in Resources */,
 				F923097A1E9B8BFF00ECDC94 /* LBMineCenterAccountSafeViewController.xib in Resources */,
@@ -4583,6 +4601,7 @@
 				4A4609061E9CA0880045824F /* GLIntegralGoodsCell.m in Sources */,
 				4A4610961E9CC6360045824F /* ZXDataMatrixDecodedBitStreamParser.m in Sources */,
 				4A4610B71E9CC6370045824F /* ZXAI01weightDecoder.m in Sources */,
+				F9126EF11EA0B042004785EA /* LBMineSystemMessageViewController.m in Sources */,
 				4A4610671E9CC6360045824F /* ZXURLTOResultParser.m in Sources */,
 				4A4609D81E9CB78E0045824F /* GLRecommendRecordController.m in Sources */,
 				4A46110B1E9CC6370045824F /* ZXQRCodeFinderPattern.m in Sources */,
@@ -4645,6 +4664,7 @@
 				4A4611061E9CC6370045824F /* ZXQRCodeMode.m in Sources */,
 				F92309641E9B8BFF00ECDC94 /* XBTagTitleCell.m in Sources */,
 				4A07A86D1EA0571E005A9B67 /* GLBuyBackChooseBankView.m in Sources */,
+				F9126EF61EA0B086004785EA /* LBMineSystemMessageTableViewCell.m in Sources */,
 				4A4610BE1E9CC6370045824F /* ZXRSSExpandedDecodedObject.m in Sources */,
 				4A46105E1E9CC6360045824F /* ZXSMSMMSResultParser.m in Sources */,
 				4A8572EC1E977E7200A7A51E /* GLHourseOptionModel.m in Sources */,

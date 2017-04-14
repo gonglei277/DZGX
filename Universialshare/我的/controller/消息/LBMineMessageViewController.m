@@ -13,6 +13,7 @@
 #import "LBMineCenterserviceNoticeViewController.h"
 #import "LBMineCenterFlyNoticeViewController.h"
 #import "LBMineMessageSetupViewController.h"
+#import "LBMineSystemMessageViewController.h"
 
 @interface LBMineMessageViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -110,6 +111,13 @@
         [self.navigationController pushViewController:vc animated:YES];
 
         
+    }else if (indexPath.row == 4){
+        
+        self.hidesBottomBarWhenPushed = YES;
+        LBMineSystemMessageViewController *vc=[[LBMineSystemMessageViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        
     }
 
 
@@ -128,7 +136,7 @@
 -(NSArray*)titleArr{
 
     if (!_titleArr) {
-        _titleArr=[NSArray arrayWithObjects:@"客户服务",@"热卖精选",@"服务通知",@"物流通知", nil];
+        _titleArr=[NSArray arrayWithObjects:@"客户服务",@"热卖精选",@"服务通知",@"物流通知",@"系统消息", nil];
     }
     
     return _titleArr;

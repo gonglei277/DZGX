@@ -50,8 +50,15 @@
     
     [self.view addSubview:self.collectionV];
     
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshMineCollection) name:@"refreshMine" object:nil];
     
     
+}
+
+-(void)refreshMineCollection{
+    
+    [self.collectionV reloadData];
+    [self.headview.tableview reloadData];
     
 }
 
@@ -268,6 +275,11 @@
             
             _headview.namelebel.text = @"用户名";
         }
+        
+        
+        
+
+        
     }
     
     return _headview;
