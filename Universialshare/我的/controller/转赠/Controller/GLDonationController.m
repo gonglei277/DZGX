@@ -38,16 +38,16 @@
     self.navigationController.navigationBar.hidden = NO;
     self.getCodeBtn.layer.cornerRadius = 5.f;
     self.ensureBtn.layer.cornerRadius = 5.f;
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"转赠记录" style:UIBarButtonItemStylePlain target:self action:@selector(pushToRecordVC)];
+    
     //可转赠善行豆
-//    self.useableBeanLabel.text = [NSString stringWithFormat:@"%@颗",[UserModel defaultUser].couriercount];
-//    NSString *userType;
-//    if ([[UserModel defaultUser].userLogin isEqualToString:@"1"]) {
-//        userType = @"志愿者";
-//    }else{
-//        userType = @"零售商";
-//    }
-//    self.noticeLabel.text = [NSString stringWithFormat:@"*您可以将您的志愿豆转赠给您的%@朋友,或者需要帮助的%@.",userType,userType];
+    self.useableBeanLabel.text = [NSString stringWithFormat:@"%@颗",[UserModel defaultUser].ketiBean];
+    NSString *userType;
+    if ([[UserModel defaultUser].groupId isEqualToString:OrdinaryUser]) {
+        userType = @"志愿者";
+    }else{
+        userType = @"零售商";
+    }
+    self.noticeLabel.text = [NSString stringWithFormat:@"*您可以将您的志愿豆转赠给您的%@朋友,或者需要帮助的%@.",userType,userType];
     
     //自定义导航栏右按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -89,22 +89,22 @@
 }
 
 - (IBAction)getCodeBtnClick:(id)sender {
-//    [self startTime];
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    dict[@"mobilenumber"] = [UserModel defaultUser].mobilenumber;
-//
-////    NSLog(@"%@",dict);
-//    [NetworkManager requestPOSTWithURLStr:@"Index/play" paramDic:dict finish:^(id responseObject) {
-//        
-//        if ([responseObject[@"code"] integerValue]==0) {
-//            [MBProgressHUD showSuccess:@"验证码已发送！"];
-//        }else{
-//            [MBProgressHUD showError:responseObject[@"msg"]];
-//        }
-//    } enError:^(NSError *error) {
-//        [MBProgressHUD showError:error.localizedDescription];
-//        
-//    }];
+    [self startTime];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"phone"] = [UserModel defaultUser].phone;
+
+//    NSLog(@"%@",dict);
+    [NetworkManager requestPOSTWithURLStr:@"user/get_yzm" paramDic:dict finish:^(id responseObject) {
+        
+        if ([responseObject[@"code"] integerValue] == 1) {
+            [MBProgressHUD showSuccess:@"验证码已发送！"];
+        }else{
+            [MBProgressHUD showError:responseObject[@"msg"]];
+        }
+    } enError:^(NSError *error) {
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
 }
 //获取倒计时
 -(void)startTime{
@@ -212,10 +212,10 @@
         [MBProgressHUD showError:@"转赠数量只能是正整数"];
         return;
     }
-//    if ([self.beanNumF.text integerValue] >[[UserModel defaultUser].couriercount integerValue]) {
-//        [MBProgressHUD showError:@"余额不足"];
-//        return;
-//    }
+    if ([self.beanNumF.text integerValue] >[[UserModel defaultUser].ketiBean integerValue]) {
+        [MBProgressHUD showError:@"余额不足"];
+        return;
+    }
     if (self.idCodeF.text == nil||self.idCodeF.text.length == 0) {
         [MBProgressHUD showError:@"请输入验证码"];
         return;
@@ -229,14 +229,14 @@
     }
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    dict[@"name"] = self.donationIDF.text;
+    dict[@"uid"] = self.donationIDF.text;
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"Index/sel" paramDic:dict finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/get_give_id" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
     
-        if ([responseObject[@"code"] integerValue]==0) {
+        if ([responseObject[@"code"] integerValue] == 1) {
             
             CGFloat contentViewH = 200;
             CGFloat contentViewW = SCREEN_WIDTH - 40;
@@ -250,7 +250,7 @@
             contentView.layer.masksToBounds = YES;
             [contentView.cancelBtn addTarget:self action:@selector(cancelDonation) forControlEvents:UIControlEventTouchUpInside];
             [contentView.ensureBtn addTarget:self action:@selector(ensureDonation) forControlEvents:UIControlEventTouchUpInside];
-            contentView.contentLabel.text = [NSString stringWithFormat:@"您是否要将善行豆转赠给%@",responseObject[@"data"]];
+            contentView.contentLabel.text = [NSString stringWithFormat:@"您是否要将志愿豆转赠给%@",responseObject[@"data"][@"count"]];
             [_maskView showViewWithContentView:contentView];
         }else{
             [MBProgressHUD showError:@"获赠人ID输入有误"];
@@ -280,73 +280,52 @@
 -(void)ensureDonation{
  
     
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-////    dict[@"token"] = [UserModel defaultUser].aukeyValue;
-//    dict[@"password"] = self.secondPwdF.text;
-//    dict[@"beannum"] = self.beanNumF.text;
-//    dict[@"receivename"] = self.donationIDF.text;
-//    dict[@"verifyCode"] = self.idCodeF.text;
-//    
-//    
-//    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-//    [NetworkManager requestPOSTWithURLStr:@"Index/loadUser" paramDic:dict finish:^(id responseObject) {
-//        if ([responseObject[@"code"] integerValue]==0) {
-//            
-//            [UIView animateWithDuration:0.2 animations:^{
-//                _maskView.alpha = 0;
-//            }completion:^(BOOL finished) {
-//                
-//                [_maskView removeFromSuperview];
-//                
-//            }];
-//    
-//            [MBProgressHUD showError:responseObject[@"msg"]];
-//            
-//            self.secondPwdF.text = nil;
-//            self.donationIDF.text = nil;
-//            self.idCodeF.text = nil;
-//            self.beanNumF.text = nil;
-//            
-//            //刷新信息
-//            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//            dict[@"token"] = [UserModel defaultUser].aukeyValue;
-//            
-//            [NetworkManager requestPOSTWithURLStr:@"Index/updata" paramDic:dict finish:^(id responseObject) {
-//                
-//                [_loadV removeloadview];
-//                if ([responseObject[@"code"] integerValue] == 0){
-//                    
-//                    //                    NSLog(@"%@",responseObject);
-//                    [UserModel defaultUser].couriercount = [NSString stringWithFormat:@"%ld",[responseObject[@"couriercount"] integerValue]];
-//                    [UserModel defaultUser].nopaycount = [NSString stringWithFormat:@"%ld",[responseObject[@"nopaycount"] integerValue]];
-//                    [usermodelachivar achive];
-//                    [[NSNotificationCenter defaultCenter] postNotificationName:@"updataNotification" object:nil];
-//                  
-//                    self.useableBeanLabel.text = [NSString stringWithFormat:@"%ld",[[UserModel defaultUser].couriercount integerValue]];
-//
-//                    [MBProgressHUD showSuccess:@"转赠成功!"];
-//                }else{
-//                    
-//                    [MBProgressHUD showError:@"数据提交异常,请重试!"];
-//                }
-//            } enError:^(NSError *error) {
-//                [_loadV removeloadview];
-//                [MBProgressHUD showError:@"数据提交异常,请重试!"];
-//            }];
-//
-//
-//        }else{
-//            [_loadV removeloadview];
-//            [MBProgressHUD showError:responseObject[@"msg"]];
-//        }
-//        
-//        
-//    } enError:^(NSError *error) {
-//        
-//        [_loadV removeloadview];
-//        [MBProgressHUD showError:error.localizedDescription];
-//        
-//    }];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    dict[@"password"] = self.secondPwdF.text;
+    dict[@"number"] = self.beanNumF.text;
+    dict[@"DonationID"] = self.donationIDF.text;
+    dict[@"yzm"] = self.idCodeF.text;
+    
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"user/give_to" paramDic:dict finish:^(id responseObject) {
+        [_loadV removeloadview];
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"code"] integerValue] == 1) {
+            
+            [UIView animateWithDuration:0.2 animations:^{
+                _maskView.alpha = 0;
+            }completion:^(BOOL finished) {
+                
+                [_maskView removeFromSuperview];
+            }];
+    
+            [MBProgressHUD showError:responseObject[@"msg"]];
+            
+            self.secondPwdF.text = nil;
+            self.donationIDF.text = nil;
+            self.idCodeF.text = nil;
+            self.beanNumF.text = nil;
+            
+            NSString *useableNum = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue] - [self.beanNumF.text floatValue]];
+            
+            self.useableBeanLabel.text = useableNum;
+            [MBProgressHUD showSuccess:@"转赠成功"];
+
+        }else{
+            [_loadV removeloadview];
+            [MBProgressHUD showError:responseObject[@"msg"]];
+        }
+        
+        
+    } enError:^(NSError *error) {
+        
+        [_loadV removeloadview];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
 }
 - (void)pushToRecordVC {
     self.hidesBottomBarWhenPushed = YES;

@@ -33,8 +33,8 @@
 - (void)setModel:(GLRecommendRecordModel *)model {
     _model = model;
     self.pictureV.image = [UIImage imageNamed:model.picture];
-    self.realnameLabel.text = model.realname;
-    self.dateLabel.text = model.createtime;
+    self.realnameLabel.text = model.username;
+    self.dateLabel.text = model.reg_time;
 }
 
 

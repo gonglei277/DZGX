@@ -24,6 +24,7 @@
 #import "GLRecommendController.h"
 #import "GLMine_InfoController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "GLNoneOfDonationController.h"
 
 @interface LBMineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
     UIImageView *_imageviewLeft;
@@ -105,10 +106,18 @@
         case 0:
         {
             self.hidesBottomBarWhenPushed=YES;
-              GLMyHeartController *vc=[[GLMyHeartController alloc]init];
-           
-            [self.navigationController pushViewController:vc animated:YES];
+            
+            if ([[UserModel defaultUser].groupId isEqualToString:OrdinaryUser]) {
+                
+                GLMyHeartController *vc=[[GLMyHeartController alloc]init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }else{
+                GLNoneOfDonationController *vc = [[GLNoneOfDonationController alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            
             self.hidesBottomBarWhenPushed=NO;
+           
         }
         
             break;

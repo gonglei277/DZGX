@@ -96,16 +96,17 @@ static NSString *ID = @"GLRecommendRcordCell";
     }
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    dict[@"token"] = [UserModel defaultUser].aukeyValue;
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
     dict[@"page"] = [NSString stringWithFormat:@"%ld",_page];
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"Index/recommend" paramDic:dict finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/rec_list" paramDic:dict finish:^(id responseObject) {
         [_loadV removeloadview];
          [self endRefresh];
-        if ([responseObject[@"code"] integerValue] == 0) {
+        if ([responseObject[@"code"] integerValue] == 1) {
             
-            for (NSDictionary *dict in responseObject[@"data"][@"rows"]) {
+            for (NSDictionary *dict in responseObject[@"data"]) {
                 
                 GLRecommendRecordModel *model = [GLRecommendRecordModel mj_objectWithKeyValues:dict];
                 [_models addObject:model];

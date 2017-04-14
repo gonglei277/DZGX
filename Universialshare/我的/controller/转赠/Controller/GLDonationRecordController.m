@@ -35,6 +35,11 @@ static NSString *ID = @"GLDonationRecordCell";
 -(UITableView*)tableView {
     if (_tableView == nil) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        self.tableView.showsVerticalScrollIndicator = NO;
     }
     return _tableView;
 }
@@ -54,10 +59,7 @@ static NSString *ID = @"GLDonationRecordCell";
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.nodataV];
     self.nodataV.hidden = YES;
-    
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+
     [self.tableView registerNib:[UINib nibWithNibName:@"GLDonationRecordCell" bundle:nil] forCellReuseIdentifier:ID];
     
     
@@ -97,17 +99,18 @@ static NSString *ID = @"GLDonationRecordCell";
     }
     
     NSMutableDictionary *dit = [NSMutableDictionary dictionary];
-//    dit[@"token"] = [NSString stringWithFormat:@"%@",[UserModel defaultUser].aukeyValue];
+    dit[@"token"] = [UserModel defaultUser].token;
+    dit[@"uid"] = [UserModel defaultUser].uid;
     dit[@"page"] = [NSString stringWithFormat:@"%ld",_page];
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"Index/donationrecord" paramDic:dit finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/give_list" paramDic:dit finish:^(id responseObject) {
         
         [_loadV removeloadview];
         [self endRefresh];
-        if ([responseObject[@"code"] integerValue] == 0) {
+        if ([responseObject[@"code"] integerValue] == 1) {
 //            NSLog(@"%@",responseObject);
-            for (NSDictionary *dic in responseObject[@"data"][@"rows"]) {
+            for (NSDictionary *dic in responseObject[@"data"]) {
                 GLDonationRecordModel *model = [GLDonationRecordModel mj_objectWithKeyValues:dic];
                 
                 [_models addObject:model];
@@ -137,9 +140,9 @@ static NSString *ID = @"GLDonationRecordCell";
     [self.tableView.mj_footer endRefreshing];
 }
 #pragma  UITableviewDatasource
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
+//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+//    return 1;
+//}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
    
     return self.models.count;
@@ -152,35 +155,35 @@ static NSString *ID = @"GLDonationRecordCell";
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return ADAPT(60);
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 300.0, 30)];
-    customView.backgroundColor = YYSRGBColor(244,248, 250,1);
-    UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.opaque = NO;
-    headerLabel.textColor = [UIColor darkGrayColor];
-    headerLabel.highlightedTextColor = [UIColor whiteColor];
-//    headerLabel.shadowColor = [UIColor lightGrayColor];
-    headerLabel.font = [UIFont systemFontOfSize:13];
-    headerLabel.frame = CGRectMake(10.0, 0.0, 300.0, 30);
-    
-    if (section == 0) {
-        headerLabel.text =  @"本月";
-    }else {
-        headerLabel.text = @"上个月";
-    }
-    
-    [customView addSubview:headerLabel];
-    
-    return customView;
-}
-//别忘了设置高度
-- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 30;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 300.0, 30)];
+//    customView.backgroundColor = YYSRGBColor(244,248, 250,1);
+//    UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+//    headerLabel.backgroundColor = [UIColor clearColor];
+//    headerLabel.opaque = NO;
+//    headerLabel.textColor = [UIColor darkGrayColor];
+//    headerLabel.highlightedTextColor = [UIColor whiteColor];
+////    headerLabel.shadowColor = [UIColor lightGrayColor];
+//    headerLabel.font = [UIFont systemFontOfSize:13];
+//    headerLabel.frame = CGRectMake(10.0, 0.0, 300.0, 30);
+//    
+//    if (section == 0) {
+//        headerLabel.text =  @"本月";
+//    }else {
+//        headerLabel.text = @"上个月";
+//    }
+//    
+//    [customView addSubview:headerLabel];
+//    
+//    return customView;
+//}
+////别忘了设置高度
+//- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 30;
+//}
 -(NodataView*)nodataV{
     
     if (!_nodataV) {

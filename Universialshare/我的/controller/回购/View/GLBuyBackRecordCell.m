@@ -11,10 +11,8 @@
 @interface GLBuyBackRecordCell()
 @property (weak, nonatomic) IBOutlet UILabel *beanTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *IDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+
 
 
 
@@ -28,17 +26,27 @@
 }
 - (void)setModel:(GLBuyBackRecordModel *)model{
     _model = model;
-    self.IDLabel.text = model.withdrawno;
-    self.beanTypeLabel.text = model.withdrawtype;
-    self.priceLabel.text = model.beannum;
-    self.dateLabel.text = model.applytime;
-    if ([model.status isEqualToString:@"0"]) {
-        self.typeLabel.text = @"申请中";
-    }else if ([model.status isEqualToString:@"1"]){
-        self.typeLabel.text = @"回购完成";
-    }else{
-        self.typeLabel.text = @"回购失败";
-    }
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *currentDate = [dateFormatter dateFromString:model.time];
+    
+    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:@"yyyy-MM-dd"];
+    NSString *timeStr = [dateFormatter1 stringFromDate:currentDate];
+    
+    
+    self.beanTypeLabel.text = model.Donaldtype;
+    self.priceLabel.text = model.num;
+    self.dateLabel.text = timeStr;
+    
+//    if ([model.status isEqualToString:@"0"]) {
+//        self.typeLabel.text = @"申请中";
+//    }else if ([model.status isEqualToString:@"1"]){
+//        self.typeLabel.text = @"回购完成";
+//    }else{
+//        self.typeLabel.text = @"回购失败";
+//    }
     
 }
 

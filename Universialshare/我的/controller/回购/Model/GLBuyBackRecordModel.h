@@ -10,14 +10,12 @@
 
 @interface GLBuyBackRecordModel : NSObject
 
-@property (nonatomic, copy)NSString *beannum;
+@property (nonatomic, copy)NSString *num;
 
-@property (nonatomic, copy)NSString *withdrawno;
+//@property (nonatomic, copy)NSString *status;
 
-@property (nonatomic, copy)NSString *status;
+@property (nonatomic, copy)NSString *time;
 
-@property (nonatomic, copy)NSString *applytime;
-
-@property (nonatomic, copy)NSString *withdrawtype;
+@property (nonatomic, copy)NSString *Donaldtype;
 
 @end

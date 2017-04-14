@@ -93,24 +93,20 @@ static NSString *ID = @"GLBuyBackRecordCell";
     }
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    dict[@"token"] = [UserModel defaultUser].aukeyValue;
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
     dict[@"page"] = [NSString stringWithFormat:@"%ld",_page];
-    dict[@"status"] = @"2";
-    /*
-     status:0 申请中
-     1 完成
-     2 失败
-     */
-    
+    dict[@"status"] = @"0";
+
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     
-    [NetworkManager requestPOSTWithURLStr:@"Index/record_recover" paramDic:dict finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/back_list" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
         [self endRefresh];
-        if ([responseObject[@"code"] integerValue] == 0){
+        if ([responseObject[@"code"] integerValue] == 1){
             
-            for (NSDictionary *dict in responseObject[@"data"][@"rows"]) {
+            for (NSDictionary *dict in responseObject[@"data"]) {
                 
                 GLBuyBackRecordModel *model = [GLBuyBackRecordModel mj_objectWithKeyValues:dict];
                 [_models addObject:model];
@@ -148,9 +144,7 @@ static NSString *ID = @"GLBuyBackRecordCell";
 }
 
 #pragma  UITableviewDatasource
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.models.count;
 }
@@ -163,32 +157,32 @@ static NSString *ID = @"GLBuyBackRecordCell";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 80;
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 300.0, 30)];
-    customView.backgroundColor = YYSRGBColor(244,248, 250,1);
-    
-    UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.opaque = NO;
-    headerLabel.textColor = [UIColor darkGrayColor];
-    headerLabel.highlightedTextColor = [UIColor whiteColor];
-    //    headerLabel.shadowColor = [UIColor lightGrayColor];
-    headerLabel.font = [UIFont systemFontOfSize:14];
-    headerLabel.frame = CGRectMake(10.0, 0.0, 300.0, 30);
-    
-    if (section == 0) {
-        headerLabel.text =  @"本月";
-    }else {
-        headerLabel.text = @"上月";
-    }
-    
-    [customView addSubview:headerLabel];
-    
-    return customView;
-}
-//别忘了设置高度
-- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 30;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 300.0, 30)];
+//    customView.backgroundColor = YYSRGBColor(244,248, 250,1);
+//    
+//    UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+//    headerLabel.backgroundColor = [UIColor clearColor];
+//    headerLabel.opaque = NO;
+//    headerLabel.textColor = [UIColor darkGrayColor];
+//    headerLabel.highlightedTextColor = [UIColor whiteColor];
+//    //    headerLabel.shadowColor = [UIColor lightGrayColor];
+//    headerLabel.font = [UIFont systemFontOfSize:14];
+//    headerLabel.frame = CGRectMake(10.0, 0.0, 300.0, 30);
+//    
+//    if (section == 0) {
+//        headerLabel.text =  @"本月";
+//    }else {
+//        headerLabel.text = @"上月";
+//    }
+//    
+//    [customView addSubview:headerLabel];
+//    
+//    return customView;
+//}
+////别忘了设置高度
+//- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 30;
+//}
 @end

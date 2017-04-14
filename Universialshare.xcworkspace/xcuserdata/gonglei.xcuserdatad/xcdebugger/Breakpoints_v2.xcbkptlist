@@ -29,5 +29,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Universialshare/&#x6211;&#x7684;/controller/&#x8f6c;&#x8d60;/Controller/GLDonationController.m"
+            timestampString = "513844680.948065"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
+            landmarkName = "-ensureDonation"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Universialshare/&#x6211;&#x7684;/controller/&#x8f6c;&#x8d60;/Controller/GLDonationController.m"
+            timestampString = "513844769.489208"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "-ensureBtnClick:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[GLDonationController ensureBtnClick:]"
+                  moduleName = "Universialshare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gonglei/Desktop/ppp/Universialshare/%E6%88%91%E7%9A%84/controller/%E8%BD%AC%E8%B5%A0/Controller/GLDonationController.m"
+                  timestampString = "513849254.971833"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "235"
+                  endingLineNumber = "235"
+                  offsetFromSymbolStart = "2772">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__39-[GLDonationController ensureBtnClick:]_block_invoke"
+                  moduleName = "Universialshare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gonglei/Desktop/ppp/Universialshare/%E6%88%91%E7%9A%84/controller/%E8%BD%AC%E8%B5%A0/Controller/GLDonationController.m"
+                  timestampString = "513849254.974366"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "235"
+                  endingLineNumber = "235"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

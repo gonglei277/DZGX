@@ -33,17 +33,6 @@
                         <action selector="backToSuperController:" destination="-1" eventType="touchUpInside" id="u60-xf-u66"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GH9-9q-UZc">
-                    <rect key="frame" x="311" y="26.5" width="54" height="30"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="推荐记录">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="pushToRecordVC:" destination="-1" eventType="touchUpInside" id="rqV-YD-ZTC"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我要推荐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHx-zp-dQA">
                     <rect key="frame" x="154.5" y="26.5" width="65.5" height="30"/>
                     <constraints>
@@ -99,13 +88,11 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.93758672475814819" green="0.78526508808135986" blue="0.26893606781959534" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.1551630795" green="0.58942979569999998" blue="0.2282119095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="BGd-tz-2lR" firstAttribute="height" secondItem="Hwp-MZ-H6V" secondAttribute="height" id="24w-wR-nro"/>
-                <constraint firstItem="GH9-9q-UZc" firstAttribute="centerY" secondItem="SLI-ze-6d8" secondAttribute="centerY" id="7zY-zD-BEv"/>
                 <constraint firstItem="BGd-tz-2lR" firstAttribute="top" secondItem="Hwp-MZ-H6V" secondAttribute="bottom" constant="20" id="9Mw-HW-JDX"/>
                 <constraint firstItem="zO7-6w-XP3" firstAttribute="width" secondItem="BGd-tz-2lR" secondAttribute="width" id="BAh-yp-IL5"/>
-                <constraint firstItem="GH9-9q-UZc" firstAttribute="height" secondItem="SLI-ze-6d8" secondAttribute="height" id="CcD-Sv-LjQ"/>
                 <constraint firstItem="SLI-ze-6d8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="27" id="ENk-sa-FhZ"/>
                 <constraint firstItem="bDh-S5-s7j" firstAttribute="width" secondItem="Hwp-MZ-H6V" secondAttribute="width" id="JLq-PU-wIz"/>
                 <constraint firstAttribute="trailing" secondItem="bDh-S5-s7j" secondAttribute="trailing" constant="110" id="K0k-SK-Wdh"/>
@@ -124,7 +111,6 @@
                 <constraint firstItem="YHx-zp-dQA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="i3W-vh-bnG"/>
                 <constraint firstItem="YHx-zp-dQA" firstAttribute="centerY" secondItem="SLI-ze-6d8" secondAttribute="centerY" id="js5-7u-vkC"/>
                 <constraint firstItem="SLI-ze-6d8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="l9f-Nb-sqB"/>
-                <constraint firstAttribute="trailing" secondItem="GH9-9q-UZc" secondAttribute="trailing" constant="10" id="sIp-nt-fu1"/>
                 <constraint firstItem="Hwp-MZ-H6V" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="110" id="sYB-Of-heA"/>
                 <constraint firstItem="BGd-tz-2lR" firstAttribute="width" secondItem="Hwp-MZ-H6V" secondAttribute="width" id="tT0-jV-juN"/>
             </constraints>
