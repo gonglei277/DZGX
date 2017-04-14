@@ -53,16 +53,90 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_buttonedt];
     
+    __weak __typeof(self) weakSelf = self;
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [weakSelf loadNewData];
+        
+    }];
+    
+    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf footerrefresh];
+        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
+    }];
+    
+    
+    // 设置文字
+    
+    [header setTitle:@"快扯我，快点" forState:MJRefreshStateIdle];
+    
+    [header setTitle:@"数据要来啦" forState:MJRefreshStatePulling];
+    
+    [header setTitle:@"服务器正在狂奔 ..." forState:MJRefreshStateRefreshing];
+    
+    
+    self.tableview.mj_header = header;
+    self.tableview.mj_footer = footer;
+    
 }
 
 -(void)initdatasource{
 
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"user/msg_list" paramDic:@{@"page":[NSNumber numberWithInteger:_page] , @"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token ,@"type":[NSNumber numberWithInteger:self.messageType]} finish:^(id responseObject) {
+        [_loadV removeloadview];
+        [self.tableview.mj_header endRefreshing];
+        [self.tableview.mj_footer endRefreshing];
+        if ([responseObject[@"code"] integerValue]==1) {
+           
+            if (_refreshType == NO) {
+                [self.dataarr removeAllObjects];
+                
+                [self.dataarr addObjectsFromArray:responseObject[@"data"]];
+                
+                [self.tableview reloadData];
+            }else{
+                
+                [self.dataarr addObjectsFromArray:responseObject[@"data"]];
+                
+                [self.tableview reloadData];
+                
+            }
+            
+        }else{
+            
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        [self.tableview.mj_header endRefreshing];
+        [self.tableview.mj_footer endRefreshing];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
 
 
 }
+
+//下拉刷新
+-(void)loadNewData{
+    
+    _refreshType = NO;
+    _page=1;
+    
+    [self initdatasource];
+}
+//上啦刷新
+-(void)footerrefresh{
+    _refreshType = YES;
+    _page++;
+    
+    [self initdatasource];
+}
 //筛选
 -(void)edtingInfo{
-
+    [self.view addSubview:self.pickerViewMask];
+    [self.pickerViewMask addSubview:self.pickerView];
 
 
 }
@@ -86,6 +160,9 @@
     
         LBMineSystemMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMineSystemMessageTableViewCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+        cell.contentlb.text = [NSString stringWithFormat:@"%@",self.dataarr[indexPath.row][@"content"]];
+    cell.timelb.text = [NSString stringWithFormat:@"%@",self.dataarr[indexPath.row][@"time"]];
     
        cell.titlelb.text=self.messageArr[self.messageType - 1];
         
@@ -122,7 +199,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     
-    
+    self.messageType = row + 1;
 
 }
 
@@ -163,7 +240,11 @@
     
     [self.pickerView removeFromSuperview];
     [self.pickerViewMask removeFromSuperview];
+    //重新刷新
+    _refreshType = NO;
+    _page=1;
     
+    [self initdatasource];
     
 }
 

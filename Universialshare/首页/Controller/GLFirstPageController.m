@@ -21,6 +21,10 @@
 #import "LBMoreOperateView.h"
 #import "LBMerchantcreditViewController.h"
 #import "LBConsumptionSeriesViewController.h"
+#import "GLLoginController.h"
+#import "BaseNavigationViewController.h"
+#import "GLMine_InfoController.h"
+#import <SDWebImage/UIButton+WebCache.h>
 
 //公告弹出框
 #import "LBHomepopinfoView.h"
@@ -88,6 +92,20 @@ static NSString *followID = @"GLFirstFollowCell";
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     
+    
+    UIImage *imaage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
+    
+    if (!imaage) {
+        [self.head_iconBtn setImage:[UIImage imageNamed:@"mine_head"] forState:UIControlStateNormal];
+    }else{
+        [self.head_iconBtn setImage:imaage forState:UIControlStateNormal];
+    }
+   
+    
+
+    
+    
+    
 }
 - (void)setupUI{
 
@@ -98,6 +116,9 @@ static NSString *followID = @"GLFirstFollowCell";
     
     self.contentView.layer.cornerRadius = 5.f;
     self.contentView.layer.masksToBounds = YES;
+    
+    self.head_iconBtn.layer.cornerRadius = 20.f;
+    self.head_iconBtn.layer.masksToBounds = YES;
     
     self.dailyLabel.text = @"善心\n日值";
     self.rankingLabel.text = @"善心\n排行";
@@ -152,6 +173,20 @@ static NSString *followID = @"GLFirstFollowCell";
 
 - (IBAction)head_iconClick:(id)sender {
     
+    if ([UserModel defaultUser].loginstatus == YES) {
+        self.hidesBottomBarWhenPushed = YES;
+        GLMine_InfoController *VC = [[GLMine_InfoController alloc] init];
+        [self.navigationController pushViewController:VC animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
+        
+    }else{
+    
+        GLLoginController *loginVC = [[GLLoginController alloc] init];
+        BaseNavigationViewController *nav = [[BaseNavigationViewController alloc]initWithRootViewController:loginVC];
+        nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:nav animated:YES completion:nil];
+    
+    }
     
 }
 
