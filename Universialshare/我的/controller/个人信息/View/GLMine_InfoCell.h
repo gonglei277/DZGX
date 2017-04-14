@@ -20,4 +20,7 @@
 
 @property (copy, nonatomic)void(^returnkeyBoard)(NSInteger index);
 
+@property (weak, nonatomic) IBOutlet UILabel *adressLb;
+
+
 @end

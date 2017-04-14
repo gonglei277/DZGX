@@ -8,10 +8,10 @@
 
 #import "GLMine_InfoController.h"
 #import "GLMine_InfoCell.h"
-//#import "LBBaiduMapViewController.h"
+#import "LBBaiduMapViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface GLMine_InfoController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIActionSheetDelegate>
+@interface GLMine_InfoController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIActionSheetDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
     NSArray *_titlesArr;
     NSMutableArray *_valuesArr;
@@ -33,8 +33,16 @@
 @property (strong, nonatomic)NSString *recomendID;//推荐人ID
 @property (strong, nonatomic)NSString *recomendName;//推荐姓名
 
+@property (strong, nonatomic)NSString *sprovince;//省
+@property (strong, nonatomic)NSString *scity;//市
+@property (strong, nonatomic)NSString *saera;//区
+
 @property (strong, nonatomic)UIButton *buttonedt;
 @property (assign, nonatomic)BOOL EditBool;//判断是否可编辑
+@property (strong, nonatomic)UIPickerView *pickerView;
+@property (strong, nonatomic)UIView *pickerViewMask;
+@property (strong, nonatomic)NSArray *usertypeArr;
+@property (strong, nonatomic)LoadWaitView *loadV;
 
 @end
 
@@ -75,16 +83,18 @@ static NSString *ID = @"GLMine_InfoCell";
 }
 - (void)updateInfo{
     
-    if ([[UserModel defaultUser].usrtype isEqualToString:@"6"]) {
+    if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
         
         _titlesArr = @[@"头像",@"用户名",@"ID",@"店铺地址",@"商家类型",@"身份证号",@"推荐人ID",@"推荐人姓名"];
         
-    }else if ([[UserModel defaultUser].usrtype isEqualToString:@"7"]) {
+    }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]) {
         
         _titlesArr = @[@"头像",@"用户名",@"ID",@"身份证号",@"推荐人ID",@"推荐人姓名"];
     }
     
-  
+    self.sprovince = @"";
+    self.scity = @"";
+    self.saera = @"";
     self.ID = [UserModel defaultUser].name;
     self.imagehead =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
     
@@ -101,6 +111,38 @@ static NSString *ID = @"GLMine_InfoCell";
         
     }else{//保存
     
+//        if (self.imagehead == [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]]) {
+//            
+//        }
+        
+        _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
+        manager.requestSerializer.timeoutInterval = 10;
+        [manager POST:[NSString stringWithFormat:@"%@%@",URL_Base,@"user/userAndShopInfoBq"] parameters:@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].name , @"sprovince":self.sprovince , @"scity":self.scity,@"saera":self.saera,@"saddress":self.adress}  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            //将图片以表单形式上传
+            NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+            formatter.dateFormat=@"yyyyMMddHHmmss";
+            NSString *str=[formatter stringFromDate:[NSDate date]];
+            NSString *fileName=[NSString stringWithFormat:@"%@.png",str];
+            
+            [formData appendPartWithFileData:UIImagePNGRepresentation(self.imagehead) name:[NSString stringWithFormat:@"pic"] fileName:fileName mimeType:@"image/png"];
+            
+        }progress:^(NSProgress *uploadProgress){
+            
+        }success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            if ([dic[@"status"][@"succeed"]integerValue]==1) {
+                
+                [MBProgressHUD showError:responseObject[@"message"]];
+            }else{
+                [MBProgressHUD showError:responseObject[@"message"]];
+            }
+            [_loadV removeloadview];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [_loadV removeloadview];
+            [MBProgressHUD showError:error.localizedDescription];
+        }];
     
     }
     
@@ -189,19 +231,22 @@ static NSString *ID = @"GLMine_InfoCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.index = indexPath.row;
     
-    if ([[UserModel defaultUser].usrtype isEqualToString:@"6"]) {
+    if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {//零售商
         
         if (indexPath.row == 0) {
             cell.headimage.hidden = NO;
             cell.imageW.constant = 30;
             cell.textTf.enabled = NO;
-            
+            cell.headimage.image = self.imagehead;
+            if (!cell.headimage.image) {
+                cell.headimage.image = [UIImage imageNamed:@"mine_head"];
+            }
             
         }else{
             cell.headimage.hidden = YES;
             cell.imageW.constant = 0;
             
-            if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 7) {
+            if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 7 ||indexPath.row == 4) {
                 cell.textTf.enabled = NO;
             }else{
                 if (_EditBool == NO) {
@@ -213,18 +258,32 @@ static NSString *ID = @"GLMine_InfoCell";
             }
             //设置初始值
             if (indexPath.row == 1) {
+                cell.textTf.hidden = NO;
+                cell.adressLb.hidden= YES;
                 cell.textTf.text = self.username;
             }else if (indexPath.row == 2){
+                cell.textTf.hidden = NO;
+                cell.adressLb.hidden= YES;
                 cell.textTf.text = self.ID;
             }else if (indexPath.row == 3){
-                cell.textTf.text = self.adress;
+                cell.textTf.hidden = YES;
+                cell.adressLb.hidden= NO;
+                cell.adressLb.text = self.adress;
             }else if (indexPath.row == 4){
+                cell.textTf.hidden = NO;
+                cell.adressLb.hidden= YES;
                 cell.textTf.text = self.storeType;
             }else if (indexPath.row == 5){
+                cell.textTf.hidden = NO;
+                cell.adressLb.hidden= YES;
                 cell.textTf.text = self.shenfCode;
             }else if (indexPath.row == 6){
+                cell.textTf.hidden = NO;
+                cell.adressLb.hidden= YES;
                 cell.textTf.text = self.recomendID;
             }else if (indexPath.row == 7){
+                cell.textTf.hidden = NO;
+                cell.adressLb.hidden= YES;
                 cell.textTf.text = self.recomendName;
             }
             
@@ -256,21 +315,12 @@ static NSString *ID = @"GLMine_InfoCell";
             cell.returnkeyBoard = ^(NSInteger index){
                 
                 if (index == 1) {
-                    NSIndexPath *indexPath =  [NSIndexPath indexPathForRow:3 inSection:0];
-                    GLMine_InfoCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
-                    [cell.textTf becomeFirstResponder];
-                }else if (index == 3){
-                    
-                    NSIndexPath *indexPath =  [NSIndexPath indexPathForRow:4 inSection:0];
-                    GLMine_InfoCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
-                    [cell.textTf becomeFirstResponder];
-                }else if (index == 4){
-                    
                     NSIndexPath *indexPath =  [NSIndexPath indexPathForRow:5 inSection:0];
                     GLMine_InfoCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
                     [cell.textTf becomeFirstResponder];
                 }else if (index == 5){
-                    [weakself.view endEditing:YES];
+                    
+                   [weakself.view endEditing:YES];
                 }
                 
                 
@@ -279,7 +329,7 @@ static NSString *ID = @"GLMine_InfoCell";
             
         }
         
-    }else if ([[UserModel defaultUser].usrtype isEqualToString:@"7"]) {
+    }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]) {//普通用户
         
         if (indexPath.row == 0) {
             cell.headimage.hidden = NO;
@@ -365,25 +415,36 @@ static NSString *ID = @"GLMine_InfoCell";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.row == 0) {
-        
-        UIActionSheet* actionSheet = [[UIActionSheet alloc]initWithTitle:@"请选择图片来源" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"去相册选择",@"用相机拍照", nil];
-        [actionSheet showInView:self.view];
+        if (_EditBool == YES) {
+            UIActionSheet* actionSheet = [[UIActionSheet alloc]initWithTitle:@"请选择图片来源" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"去相册选择",@"用相机拍照", nil];
+            [actionSheet showInView:self.view];
+        }
     }
 
     
-    if ([[UserModel defaultUser].usrtype isEqualToString:@"6"]) {
+    if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
         
-        if (indexPath.row == 3) {//选择地址
-//                self.hidesBottomBarWhenPushed = YES;
-//                LBBaiduMapViewController *mapVC = [[LBBaiduMapViewController alloc] init];
-//                mapVC.returePositon = ^(NSString *strposition,NSString *pro,NSString *city,NSString *area,CLLocationCoordinate2D coors){
-//                    self.adress = strposition;
-//                    [self.tableView reloadData];
-//                };
-                //[self.navigationController pushViewController:mapVC animated:YES];
+        if (_EditBool == YES) {
+            if (indexPath.row == 3) {//选择地址
+                self.hidesBottomBarWhenPushed = YES;
+                LBBaiduMapViewController *mapVC = [[LBBaiduMapViewController alloc] init];
+                mapVC.returePositon = ^(NSString *strposition,NSString *pro,NSString *city,NSString *area,CLLocationCoordinate2D coors){
+                    self.adress = strposition;
+                    self.sprovince = pro;
+                    self.scity =city;
+                    self.saera = area;
+                    [self.tableView reloadData];
+                };
+                [self.navigationController pushViewController:mapVC animated:YES];
+            }else if (indexPath.row == 4){
+            
+                [self.view addSubview:self.pickerViewMask];
+                [self.pickerViewMask addSubview:self.pickerView];
+            
+            }
         }
         
-    }else if ([[UserModel defaultUser].usrtype isEqualToString:@"7"]) {
+    }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]) {
         
         
     }
@@ -457,5 +518,97 @@ static NSString *ID = @"GLMine_InfoCell";
     }
 }
 
+#pragma Mark -- UIPickerViewDataSource
+// pickerView 列数
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+// pickerView 每列个数
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    
+    return self.usertypeArr.count;
+}
+
+#pragma Mark -- UIPickerViewDelegate
+// 每列宽度
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    
+    
+    return SCREEN_WIDTH -20;
+}
+
+-(CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component{
+
+    return 50;
+}
+// 返回选中的行
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+   
+    self.storeType = self.usertypeArr[row];
+    [self.tableView reloadData];
+}
+
+//返回当前行的内容,此处是将数组中数值添加到滚动的那个显示栏上
+-(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+   
+    return self.usertypeArr[row];
+}
+
+////重写方法
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    UILabel* pickerLabel = (UILabel*)view;
+    if (!pickerLabel){
+        pickerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH -20 , 50)];
+        [pickerLabel setTextAlignment:NSTextAlignmentCenter];
+        [pickerLabel setBackgroundColor:[UIColor clearColor]];
+        [pickerLabel setFont:[UIFont boldSystemFontOfSize:15]];
+    }
+    // Fill the label text here
+    pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
+    return pickerLabel;
+}
+
+//点击pickerViewMask
+-(void)tapgestureMask{
+
+    [self.pickerView removeFromSuperview];
+    [self.pickerViewMask removeFromSuperview];
+
+
+}
+
+-(UIPickerView*)pickerView{
+
+    if (!_pickerView) {
+        _pickerView=[[UIPickerView alloc]initWithFrame:CGRectMake(10, SCREEN_HEIGHT - 150, SCREEN_WIDTH - 20, 150)];
+        _pickerView.dataSource=self;
+        _pickerView.delegate=self;
+        _pickerView.backgroundColor=[UIColor whiteColor];
+    }
+    return _pickerView;
+
+}
+
+-(UIView*)pickerViewMask{
+
+    if (!_pickerViewMask) {
+        _pickerViewMask=[[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        _pickerViewMask.backgroundColor= YYSRGBColor(0, 0, 0, 0.2);
+        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapgestureMask)];
+        [_pickerViewMask addGestureRecognizer:tap];
+    }
+
+    return _pickerViewMask;
+}
+
+-(NSArray*)usertypeArr{
+    if (!_usertypeArr) {
+        _usertypeArr=[NSArray arrayWithObjects:@"制造业",@"餐饮业", nil];
+    }
+    return _usertypeArr;
+}
 
 @end

@@ -332,9 +332,9 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 -(NSArray*)titlearr{
 
     if (!_titlearr) {
-        if ([[UserModel defaultUser].usrtype isEqualToString:@"6"]) {
+        if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
             _titlearr=[NSArray arrayWithObjects:@"米粒",@"米仓",@"米袋",@"米券",@"转赠",@"我要推荐",@"营业额",@"我的返利",@"我的积分", nil];
-        }else if ([[UserModel defaultUser].usrtype isEqualToString:@"7"]) {
+        }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]) {
            _titlearr=[NSArray arrayWithObjects:@"米粒",@"米仓",@"米袋",@"米券",@"转赠",@"我要推荐",@"我的余额",@"我的返利",@"我的积分", nil];
         }
     }
