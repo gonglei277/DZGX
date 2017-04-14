@@ -184,9 +184,6 @@
 		4A4610291E9CC6360045824F /* libSocialSinaSSO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A460DED1E9CC6350045824F /* libSocialSinaSSO.a */; };
 		4A46102A1E9CC6360045824F /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A460DEE1E9CC6350045824F /* libWeiboSDK.a */; };
 		4A46102B1E9CC6360045824F /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A460DF91E9CC6350045824F /* WeiboSDK.bundle */; };
-		4A46102C1E9CC6360045824F /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A460DFD1E9CC6350045824F /* libSocialQQ.a */; };
-		4A46102D1E9CC6360045824F /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A460DFE1E9CC6350045824F /* TencentOpenAPI.framework */; };
-		4A46102E1E9CC6360045824F /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A460DFF1E9CC6350045824F /* TencentOpenApi_IOS_Bundle.bundle */; };
 		4A46102F1E9CC6360045824F /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A460E021E9CC6350045824F /* libSocialWechat.a */; };
 		4A4610301E9CC6360045824F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A460E031E9CC6350045824F /* libWeChatSDK.a */; };
 		4A4610311E9CC6360045824F /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4A460E041E9CC6350045824F /* README.txt */; };
@@ -429,7 +426,7 @@
 		4A8572EF1E977E8500A7A51E /* GLHourseOptionFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8572EE1E977E8500A7A51E /* GLHourseOptionFrameModel.m */; };
 		4F9D6A29F2E5B95EBA14BE59 /* Pods_Universialshare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */; };
 		F9061FCD1E83C4720080E9D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCC1E83C4720080E9D9 /* main.m */; };
-		F9061FD01E83C4720080E9D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCF1E83C4720080E9D9 /* AppDelegate.m */; };
+		F9061FD01E83C4720080E9D9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCF1E83C4720080E9D9 /* AppDelegate.mm */; };
 		F9061FD31E83C4730080E9D9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9061FD21E83C4720080E9D9 /* ViewController.m */; };
 		F9061FD61E83C4730080E9D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9061FD41E83C4730080E9D9 /* Main.storyboard */; };
 		F9061FD81E83C4730080E9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9061FD71E83C4730080E9D9 /* Assets.xcassets */; };
@@ -444,6 +441,27 @@
 		F9126EBD1EA05692004785EA /* GLMine_InfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9126EB71EA05692004785EA /* GLMine_InfoController.xib */; };
 		F9126EBE1EA05692004785EA /* GLMine_InfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9126EBA1EA05692004785EA /* GLMine_InfoCell.m */; };
 		F9126EBF1EA05692004785EA /* GLMine_InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9126EBB1EA05692004785EA /* GLMine_InfoCell.xib */; };
+		F9126EC11EA0586E004785EA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126EC01EA0586E004785EA /* CoreLocation.framework */; };
+		F9126EC31EA05880004785EA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126EC21EA05880004785EA /* QuartzCore.framework */; };
+		F9126EC51EA0588A004785EA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126EC41EA0588A004785EA /* OpenGLES.framework */; };
+		F9126EC71EA05894004785EA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126EC61EA05894004785EA /* SystemConfiguration.framework */; };
+		F9126EC91EA058AB004785EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126EC81EA058AB004785EA /* CoreGraphics.framework */; };
+		F9126ECB1EA058B5004785EA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126ECA1EA058B5004785EA /* Security.framework */; };
+		F9126ECD1EA058D0004785EA /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126ECC1EA058D0004785EA /* libsqlite3.0.tbd */; };
+		F9126ECF1EA058E0004785EA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126ECE1EA058DF004785EA /* CoreTelephony.framework */; };
+		F9126ED11EA058EE004785EA /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126ED01EA058EE004785EA /* libstdc++.6.0.9.tbd */; };
+		F9126ED71EA0597B004785EA /* BaiduMapAPI_Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126ED21EA0597B004785EA /* BaiduMapAPI_Base.framework */; };
+		F9126ED81EA0597B004785EA /* BaiduMapAPI_Location.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126ED31EA0597B004785EA /* BaiduMapAPI_Location.framework */; };
+		F9126ED91EA0597B004785EA /* BaiduMapAPI_Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126ED41EA0597B004785EA /* BaiduMapAPI_Map.framework */; };
+		F9126EDA1EA0597B004785EA /* BaiduMapAPI_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126ED51EA0597B004785EA /* BaiduMapAPI_Search.framework */; };
+		F9126EDB1EA0597B004785EA /* BaiduMapAPI_Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126ED61EA0597B004785EA /* BaiduMapAPI_Utils.framework */; };
+		F9126EDE1EA05984004785EA /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126EDC1EA05984004785EA /* libcrypto.a */; };
+		F9126EDF1EA05984004785EA /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9126EDD1EA05984004785EA /* libssl.a */; };
+		F9126EE81EA0599B004785EA /* LBBaiduMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9126EE21EA0599B004785EA /* LBBaiduMapViewController.m */; };
+		F9126EE91EA0599B004785EA /* LBBaiduMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9126EE31EA0599B004785EA /* LBBaiduMapViewController.xib */; };
+		F9126EEA1EA0599B004785EA /* RouteAnnotation.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9126EE51EA0599B004785EA /* RouteAnnotation.mm */; };
+		F9126EEB1EA0599B004785EA /* UIImage+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = F9126EE71EA0599B004785EA /* UIImage+Rotate.m */; };
+		F9126EED1EA059A9004785EA /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9126EEC1EA059A9004785EA /* mapapi.bundle */; };
 		F923082F1E9B8B6B00ECDC94 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = F923082E1E9B8B6B00ECDC94 /* Address.plist */; };
 		F92308311E9B8BCC00ECDC94 /* personCenter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92308301E9B8BCC00ECDC94 /* personCenter.xcassets */; };
 		F923091A1E9B8BFF00ECDC94 /* HWCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = F92308361E9B8BFE00ECDC94 /* HWCalendar.m */; };
@@ -928,10 +946,6 @@
 		4A460DF91E9CC6350045824F /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		4A460DFA1E9CC6350045824F /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
 		4A460DFB1E9CC6350045824F /* WeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboUser.h; sourceTree = "<group>"; };
-		4A460DFD1E9CC6350045824F /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
-		4A460DFE1E9CC6350045824F /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
-		4A460DFF1E9CC6350045824F /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
-		4A460E001E9CC6350045824F /* UMSocialQQHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialQQHandler.h; sourceTree = "<group>"; };
 		4A460E021E9CC6350045824F /* libSocialWechat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWechat.a; sourceTree = "<group>"; };
 		4A460E031E9CC6350045824F /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		4A460E041E9CC6350045824F /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
@@ -1421,7 +1435,7 @@
 		F9061FC81E83C4720080E9D9 /* Universialshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Universialshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9061FCC1E83C4720080E9D9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F9061FCE1E83C4720080E9D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		F9061FCF1E83C4720080E9D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F9061FCF1E83C4720080E9D9 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		F9061FD11E83C4720080E9D9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		F9061FD21E83C4720080E9D9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F9061FD51E83C4730080E9D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1449,6 +1463,30 @@
 		F9126EB91EA05692004785EA /* GLMine_InfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMine_InfoCell.h; sourceTree = "<group>"; };
 		F9126EBA1EA05692004785EA /* GLMine_InfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMine_InfoCell.m; sourceTree = "<group>"; };
 		F9126EBB1EA05692004785EA /* GLMine_InfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMine_InfoCell.xib; sourceTree = "<group>"; };
+		F9126EC01EA0586E004785EA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F9126EC21EA05880004785EA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F9126EC41EA0588A004785EA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F9126EC61EA05894004785EA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F9126EC81EA058AB004785EA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F9126ECA1EA058B5004785EA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F9126ECC1EA058D0004785EA /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		F9126ECE1EA058DF004785EA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		F9126ED01EA058EE004785EA /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		F9126ED21EA0597B004785EA /* BaiduMapAPI_Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Base.framework; sourceTree = "<group>"; };
+		F9126ED31EA0597B004785EA /* BaiduMapAPI_Location.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Location.framework; sourceTree = "<group>"; };
+		F9126ED41EA0597B004785EA /* BaiduMapAPI_Map.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Map.framework; sourceTree = "<group>"; };
+		F9126ED51EA0597B004785EA /* BaiduMapAPI_Search.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Search.framework; sourceTree = "<group>"; };
+		F9126ED61EA0597B004785EA /* BaiduMapAPI_Utils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Utils.framework; sourceTree = "<group>"; };
+		F9126EDC1EA05984004785EA /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		F9126EDD1EA05984004785EA /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		F9126EE11EA0599B004785EA /* LBBaiduMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBBaiduMapViewController.h; sourceTree = "<group>"; };
+		F9126EE21EA0599B004785EA /* LBBaiduMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBBaiduMapViewController.m; sourceTree = "<group>"; };
+		F9126EE31EA0599B004785EA /* LBBaiduMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBBaiduMapViewController.xib; sourceTree = "<group>"; };
+		F9126EE41EA0599B004785EA /* RouteAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteAnnotation.h; sourceTree = "<group>"; };
+		F9126EE51EA0599B004785EA /* RouteAnnotation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RouteAnnotation.mm; sourceTree = "<group>"; };
+		F9126EE61EA0599B004785EA /* UIImage+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotate.h"; sourceTree = "<group>"; };
+		F9126EE71EA0599B004785EA /* UIImage+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotate.m"; sourceTree = "<group>"; };
+		F9126EEC1EA059A9004785EA /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		F923082E1E9B8B6B00ECDC94 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		F92308301E9B8BCC00ECDC94 /* personCenter.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = personCenter.xcassets; sourceTree = "<group>"; };
 		F92308351E9B8BFE00ECDC94 /* HWCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWCalendar.h; sourceTree = "<group>"; };
@@ -1706,14 +1744,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A46102C1E9CC6360045824F /* libSocialQQ.a in Frameworks */,
-				4A46102D1E9CC6360045824F /* TencentOpenAPI.framework in Frameworks */,
+				F9126ED11EA058EE004785EA /* libstdc++.6.0.9.tbd in Frameworks */,
+				F9126ECF1EA058E0004785EA /* CoreTelephony.framework in Frameworks */,
+				F9126EDB1EA0597B004785EA /* BaiduMapAPI_Utils.framework in Frameworks */,
+				F9126ECD1EA058D0004785EA /* libsqlite3.0.tbd in Frameworks */,
+				F9126ED91EA0597B004785EA /* BaiduMapAPI_Map.framework in Frameworks */,
+				F9126ECB1EA058B5004785EA /* Security.framework in Frameworks */,
+				F9126EC91EA058AB004785EA /* CoreGraphics.framework in Frameworks */,
+				F9126EC71EA05894004785EA /* SystemConfiguration.framework in Frameworks */,
+				F9126EDF1EA05984004785EA /* libssl.a in Frameworks */,
+				F9126EC51EA0588A004785EA /* OpenGLES.framework in Frameworks */,
+				F9126EC31EA05880004785EA /* QuartzCore.framework in Frameworks */,
+				F9126EC11EA0586E004785EA /* CoreLocation.framework in Frameworks */,
 				4A4610301E9CC6360045824F /* libWeChatSDK.a in Frameworks */,
 				4A46101F1E9CC6360045824F /* libUMSocial_Sdk_5.2.1.a in Frameworks */,
 				4F9D6A29F2E5B95EBA14BE59 /* Pods_Universialshare.framework in Frameworks */,
 				4A4610291E9CC6360045824F /* libSocialSinaSSO.a in Frameworks */,
+				F9126EDE1EA05984004785EA /* libcrypto.a in Frameworks */,
+				F9126ED81EA0597B004785EA /* BaiduMapAPI_Location.framework in Frameworks */,
+				F9126ED71EA0597B004785EA /* BaiduMapAPI_Base.framework in Frameworks */,
 				4A46102A1E9CC6360045824F /* libWeiboSDK.a in Frameworks */,
 				4A46102F1E9CC6360045824F /* libSocialWechat.a in Frameworks */,
+				F9126EDA1EA0597B004785EA /* BaiduMapAPI_Search.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2339,6 +2391,7 @@
 		4A460D9B1E9CC6350045824F /* 三方库 */ = {
 			isa = PBXGroup;
 			children = (
+				F9126EEC1EA059A9004785EA /* mapapi.bundle */,
 				4A460D9C1E9CC6350045824F /* CodeScan.bundle */,
 				4A460DA91E9CC6350045824F /* LBXAlertAction */,
 				4A460DB61E9CC6350045824F /* LBXScan */,
@@ -2471,7 +2524,6 @@
 			isa = PBXGroup;
 			children = (
 				4A460DEC1E9CC6350045824F /* SinaSSO */,
-				4A460DFC1E9CC6350045824F /* TencentOpenAPI */,
 				4A460E011E9CC6350045824F /* Wechat */,
 			);
 			path = UMSocial_Sdk_Extra_Frameworks;
@@ -2497,17 +2549,6 @@
 				4A460DFB1E9CC6350045824F /* WeiboUser.h */,
 			);
 			path = SinaSSO;
-			sourceTree = "<group>";
-		};
-		4A460DFC1E9CC6350045824F /* TencentOpenAPI */ = {
-			isa = PBXGroup;
-			children = (
-				4A460DFD1E9CC6350045824F /* libSocialQQ.a */,
-				4A460DFE1E9CC6350045824F /* TencentOpenAPI.framework */,
-				4A460DFF1E9CC6350045824F /* TencentOpenApi_IOS_Bundle.bundle */,
-				4A460E001E9CC6350045824F /* UMSocialQQHandler.h */,
-			);
-			path = TencentOpenAPI;
 			sourceTree = "<group>";
 		};
 		4A460E011E9CC6350045824F /* Wechat */ = {
@@ -3300,6 +3341,22 @@
 		BB2598459FE627C586E51511 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F9126EDC1EA05984004785EA /* libcrypto.a */,
+				F9126EDD1EA05984004785EA /* libssl.a */,
+				F9126ED21EA0597B004785EA /* BaiduMapAPI_Base.framework */,
+				F9126ED31EA0597B004785EA /* BaiduMapAPI_Location.framework */,
+				F9126ED41EA0597B004785EA /* BaiduMapAPI_Map.framework */,
+				F9126ED51EA0597B004785EA /* BaiduMapAPI_Search.framework */,
+				F9126ED61EA0597B004785EA /* BaiduMapAPI_Utils.framework */,
+				F9126ED01EA058EE004785EA /* libstdc++.6.0.9.tbd */,
+				F9126ECE1EA058DF004785EA /* CoreTelephony.framework */,
+				F9126ECC1EA058D0004785EA /* libsqlite3.0.tbd */,
+				F9126ECA1EA058B5004785EA /* Security.framework */,
+				F9126EC81EA058AB004785EA /* CoreGraphics.framework */,
+				F9126EC61EA05894004785EA /* SystemConfiguration.framework */,
+				F9126EC41EA0588A004785EA /* OpenGLES.framework */,
+				F9126EC21EA05880004785EA /* QuartzCore.framework */,
+				F9126EC01EA0586E004785EA /* CoreLocation.framework */,
 				4A203DA81E9F646500DF22F7 /* libxml2.2.tbd */,
 				C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */,
 			);
@@ -3332,7 +3389,7 @@
 			isa = PBXGroup;
 			children = (
 				F9061FCE1E83C4720080E9D9 /* AppDelegate.h */,
-				F9061FCF1E83C4720080E9D9 /* AppDelegate.m */,
+				F9061FCF1E83C4720080E9D9 /* AppDelegate.mm */,
 				F9061FD11E83C4720080E9D9 /* ViewController.h */,
 				F9061FD21E83C4720080E9D9 /* ViewController.m */,
 				4A460D9B1E9CC6350045824F /* 三方库 */,
@@ -3441,6 +3498,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F9126EE01EA0599B004785EA /* 地图 */ = {
+			isa = PBXGroup;
+			children = (
+				F9126EE11EA0599B004785EA /* LBBaiduMapViewController.h */,
+				F9126EE21EA0599B004785EA /* LBBaiduMapViewController.m */,
+				F9126EE31EA0599B004785EA /* LBBaiduMapViewController.xib */,
+				F9126EE41EA0599B004785EA /* RouteAnnotation.h */,
+				F9126EE51EA0599B004785EA /* RouteAnnotation.mm */,
+				F9126EE61EA0599B004785EA /* UIImage+Rotate.h */,
+				F9126EE71EA0599B004785EA /* UIImage+Rotate.m */,
+			);
+			path = "地图";
+			sourceTree = "<group>";
+		};
 		F92308321E9B8BFE00ECDC94 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3459,6 +3530,7 @@
 		F92308331E9B8BFE00ECDC94 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F9126EE01EA0599B004785EA /* 地图 */,
 				F9126EB31EA05692004785EA /* 个人信息 */,
 				4A460A521E9CC0310045824F /* 扫码 */,
 				F92308341E9B8BFE00ECDC94 /* 余额 */,
@@ -4202,6 +4274,7 @@
 				4A4609FD1E9CB78E0045824F /* GLDonationMaskView.xib in Resources */,
 				F961AA331E9CE1D200275F52 /* LBMoreOperateView.xib in Resources */,
 				4A46103D1E9CC6360045824F /* markdown.css in Resources */,
+				F9126EED1EA059A9004785EA /* mapapi.bundle in Resources */,
 				F92309721E9B8BFF00ECDC94 /* LBMineCenterAddAdreassViewController.xib in Resources */,
 				4A0D97751E9729C100A26B84 /* GLHourseDetailFirstCell.xib in Resources */,
 				F92309801E9B8BFF00ECDC94 /* LBMineCenterSafeSecondSecretViewController.xib in Resources */,
@@ -4261,7 +4334,6 @@
 				F923096F1E9B8BFF00ECDC94 /* LBMineCentermodifyAdressTableViewCell.xib in Resources */,
 				F906201C1E83C8770080E9D9 /* tabbarimage.xcassets in Resources */,
 				F923098A1E9B8BFF00ECDC94 /* LBMineViewController.xib in Resources */,
-				4A46102E1E9CC6360045824F /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				F923082F1E9B8B6B00ECDC94 /* Address.plist in Resources */,
 				F923094C1E9B8BFF00ECDC94 /* LBMineCenterReceivingGoodsTableViewCell.xib in Resources */,
 				F9061FD61E83C4730080E9D9 /* Main.storyboard in Resources */,
@@ -4286,6 +4358,7 @@
 				4A4610241E9CC6360045824F /* UMShareEditViewControlleriPad.xib in Resources */,
 				F9126EBF1EA05692004785EA /* GLMine_InfoCell.xib in Resources */,
 				4A4609DB1E9CB78E0045824F /* GLRecommendRcordCell.xib in Resources */,
+				F9126EE91EA0599B004785EA /* LBBaiduMapViewController.xib in Resources */,
 				4A4609071E9CA0880045824F /* GLIntegralGoodsCell.xib in Resources */,
 				4A203DD41E9F842F00DF22F7 /* GLEncourageBeansCell.xib in Resources */,
 				4A0D977B1E9729C100A26B84 /* GLHourseOptionCell.xib in Resources */,
@@ -4470,6 +4543,7 @@
 				4A4611131E9CC6370045824F /* ZXMultiDetector.m in Sources */,
 				F92309221E9B8BFF00ECDC94 /* LBMineCenterRechargeBankCardTableViewCell.m in Sources */,
 				4A4608EB1E9C9E6D0045824F /* GLFirstFollowCell.m in Sources */,
+				F9126EE81EA0599B004785EA /* LBBaiduMapViewController.m in Sources */,
 				4A4610B01E9CC6370045824F /* ZXAI01320xDecoder.m in Sources */,
 				4A46101A1E9CC6360045824F /* LBXScanWrapper.m in Sources */,
 				4A4610D81E9CC6370045824F /* ZXITFWriter.m in Sources */,
@@ -4506,6 +4580,7 @@
 				4A46100C1E9CC6360045824F /* UIActionSheet+LBXAlertAction.m in Sources */,
 				4A4610ED1E9CC6370045824F /* ZXPDF417DecodedBitStreamParser.m in Sources */,
 				4A4610D01E9CC6370045824F /* ZXCode39Writer.m in Sources */,
+				F9126EEA1EA0599B004785EA /* RouteAnnotation.mm in Sources */,
 				4A4610561E9CC6360045824F /* ZXGeoParsedResult.m in Sources */,
 				4A203DDF1E9F8D8300DF22F7 /* GLReceiveBeansModel.m in Sources */,
 				4A4610C61E9CC6370045824F /* ZXRSS14Reader.m in Sources */,
@@ -4573,6 +4648,7 @@
 				4A4610541E9CC6360045824F /* ZXExpandedProductParsedResult.m in Sources */,
 				4A4609FB1E9CB78E0045824F /* GLDonationRecordModel.m in Sources */,
 				4A46108D1E9CC6360045824F /* ZXErrors.m in Sources */,
+				F9126EEB1EA0599B004785EA /* UIImage+Rotate.m in Sources */,
 				4A4610A11E9CC6360045824F /* ZXDataMatrixHighLevelEncoder.m in Sources */,
 				4A46109F1E9CC6360045824F /* ZXDataMatrixEncoderContext.m in Sources */,
 				4A013CA11E9DCE1500BB3764 /* GLFirstPageRankingModel.m in Sources */,
@@ -4715,7 +4791,7 @@
 				4A4610E91E9CC6370045824F /* ZXPDF417BarcodeValue.m in Sources */,
 				4A4610E01E9CC6370045824F /* ZXUPCEANExtension5Support.m in Sources */,
 				F961A9DC1E9C765A00275F52 /* NetworkManager.m in Sources */,
-				F9061FD01E83C4720080E9D9 /* AppDelegate.m in Sources */,
+				F9061FD01E83C4720080E9D9 /* AppDelegate.mm in Sources */,
 				F961AA2D1E9CE17800275F52 /* LBUserKonwViewController.m in Sources */,
 				4A0D978C1E9729C100A26B84 /* GLHomePageController.m in Sources */,
 				F9061FCD1E83C4720080E9D9 /* main.m in Sources */,
@@ -4997,9 +5073,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GCU762TQ3E;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Universialshare/三方库/umeng_ios_social_sdk_5.2.1_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Universialshare/universialshare.pch";
@@ -5012,6 +5090,31 @@
 					"$(PROJECT_DIR)/Universialshare/三方库/umeng_ios_social_sdk_5.2.1_arm64_custom/UMSocial_Sdk_Extra_Frameworks/SinaSSO",
 					"$(PROJECT_DIR)/Universialshare/三方库/umeng_ios_social_sdk_5.2.1_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Universialshare/三方库/umeng_ios_social_sdk_5.2.1_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJExtension\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"ReactiveCocoa\"",
+					"-framework",
+					"\"SDCycleScrollView\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.UniversalShare.Universialshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5024,9 +5127,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GCU762TQ3E;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Universialshare/三方库/umeng_ios_social_sdk_5.2.1_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Universialshare/universialshare.pch";
@@ -5039,6 +5144,31 @@
 					"$(PROJECT_DIR)/Universialshare/三方库/umeng_ios_social_sdk_5.2.1_arm64_custom/UMSocial_Sdk_Extra_Frameworks/SinaSSO",
 					"$(PROJECT_DIR)/Universialshare/三方库/umeng_ios_social_sdk_5.2.1_arm64_custom/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"$(PROJECT_DIR)/Universialshare/三方库/umeng_ios_social_sdk_5.2.1_arm64_custom/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJExtension\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"ReactiveCocoa\"",
+					"-framework",
+					"\"SDCycleScrollView\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.UniversalShare.Universialshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
