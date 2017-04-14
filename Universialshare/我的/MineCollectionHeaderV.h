@@ -16,6 +16,7 @@
 @property(nonatomic , strong) UIView *headview;
 @property(nonatomic , strong) UIImageView *headimage;
 @property(nonatomic , strong) UILabel *namelebel;//用户名
+@property (strong, nonatomic)NSArray *titleArr;
 
 @property (strong, nonatomic)UITableView *tableview;
 
@@ -26,5 +27,6 @@
 @property(nonatomic , copy)void(^returnCollectinGoodsBt)();
 @property(nonatomic , copy)void(^returnShoppingCartBt)();
 @property(nonatomic , copy)void(^returnOrderBt)();
+
 
 @end

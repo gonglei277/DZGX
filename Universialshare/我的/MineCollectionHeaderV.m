@@ -14,7 +14,7 @@
 
 @interface MineCollectionHeaderV ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (strong, nonatomic)NSArray *titleArr;
+
 
 @end
 
@@ -134,7 +134,46 @@
     LBMineCenterinfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMineCenterinfoTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.nameLb.text= [NSString stringWithFormat:@"%@",self.titleArr[indexPath.row]];
-   
+    
+    if (indexPath.row == 0) {
+        cell.infoL.text = [UserModel defaultUser].mark;
+        if ([cell.infoL.text isEqualToString:@""]) {
+            cell.infoL.text = @"0";
+        }
+    }else if (indexPath.row == 1){
+        cell.infoL.text = [UserModel defaultUser].loveNum;
+        if ([cell.infoL.text isEqualToString:@""]) {
+            cell.infoL.text = @"0";
+        }
+    }else if (indexPath.row == 2){
+        cell.infoL.text = [UserModel defaultUser].ketiBean;
+        if ([cell.infoL.text isEqualToString:@""]) {
+            cell.infoL.text = @"0";
+        }
+    }else if (indexPath.row == 3){
+        cell.infoL.text = [UserModel defaultUser].djs_bean;
+     
+        if ([cell.infoL.text isEqualToString:@""]) {
+            cell.infoL.text = @"0";
+        }
+    }else if (indexPath.row == 4){
+        cell.infoL.text = [UserModel defaultUser].recommendMark;
+        if ([cell.infoL.text isEqualToString:@""]) {
+            cell.infoL.text = @"0";
+        }
+    }else if (indexPath.row == 5){
+        cell.infoL.text = [UserModel defaultUser].giveMeMark;
+        if ([cell.infoL.text isEqualToString:@""]) {
+            cell.infoL.text = @"0";
+        }
+    }else if (indexPath.row == 6){
+        cell.infoL.text = [UserModel defaultUser].lastFanLiTime;
+        if ([cell.infoL.text isEqualToString:@""]) {
+            cell.infoL.text = @"暂无";
+        }
+    }
+    
+    
     return cell;
     
     
@@ -260,7 +299,7 @@
 -(NSArray*)titleArr{
 
     if (!_titleArr) {
-        _titleArr=[NSArray arrayWithObjects:@"爱心总数",@"普通信使豆",@"代缴税信使豆",@"注册奖励",@"上个激励日",@"获得信使豆", nil];
+        _titleArr=[NSArray arrayWithObjects:@"米券",@"米袋",@"米子",@"代缴税米子",@"注册奖励",@"获得米子",@"上个激励日", nil];
     }
 return _titleArr;
 }

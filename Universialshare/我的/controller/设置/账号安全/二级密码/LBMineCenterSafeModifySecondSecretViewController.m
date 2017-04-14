@@ -115,7 +115,7 @@
         return;
     }
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"user/checkTwoPass" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].name,@"psd":_sixSecret} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/checkTwoPass" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid,@"psd":_sixSecret} finish:^(id responseObject) {
         [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
             
@@ -163,7 +163,7 @@
         return;
     }
      _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"user/setTwoPass" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].name,@"psd":self.basTRepSecTf.text} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/setTwoPass" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid,@"psd":self.basTRepSecTf.text} finish:^(id responseObject) {
         [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
             

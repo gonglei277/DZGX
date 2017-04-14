@@ -95,8 +95,16 @@ static NSString *ID = @"GLMine_InfoCell";
     self.sprovince = @"";
     self.scity = @"";
     self.saera = @"";
+    self.adress = @"";
     self.ID = [UserModel defaultUser].name;
     self.imagehead =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
+    self.username = [UserModel defaultUser].truename;
+    self.adress = [UserModel defaultUser].shop_address;
+    self.storeType = [UserModel defaultUser].shop_type;
+    self.shenfCode = [UserModel defaultUser].idcard;
+    self.recomendID = [UserModel defaultUser].tjr;
+    self.recomendName = [UserModel defaultUser].tjrname;
+    
     
 
 }
@@ -111,15 +119,26 @@ static NSString *ID = @"GLMine_InfoCell";
         
     }else{//保存
     
-//        if (self.imagehead == [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]]) {
-//            
-//        }
+        NSDictionary *dic;
+        
+        if ((self.imagehead == [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]] || self.imagehead == [UIImage imageNamed:@"mine_head"]) && [self.username isEqualToString:[UserModel defaultUser].truename] && [self.adress isEqualToString:[UserModel defaultUser].shop_address] && [self.storeType isEqualToString:[UserModel defaultUser].shop_type] && [self.shenfCode isEqualToString:[UserModel defaultUser].idcard] && [self.recomendID isEqualToString:[UserModel defaultUser].tjr] && [self.recomendName isEqualToString:[UserModel defaultUser].tjrname]) {
+            
+            [MBProgressHUD showError:@"未做任何修改"];
+            return;
+            
+        }
+        
+        
+        dic=@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].uid , @"sprovince":self.sprovince , @"scity":self.scity,@"saera":self.saera,@"saddress":self.adress,@"truename":self.username,@"idcard":self.shenfCode,@"shop_type":self.storeType};
+        
+  
+        
         
         _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
         manager.requestSerializer.timeoutInterval = 10;
-        [manager POST:[NSString stringWithFormat:@"%@%@",URL_Base,@"user/userAndShopInfoBq"] parameters:@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].name , @"sprovince":self.sprovince , @"scity":self.scity,@"saera":self.saera,@"saddress":self.adress}  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [manager POST:[NSString stringWithFormat:@"%@%@",URL_Base,@"user/userAndShopInfoBq"] parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             //将图片以表单形式上传
             NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
             formatter.dateFormat=@"yyyyMMddHHmmss";
@@ -132,11 +151,12 @@ static NSString *ID = @"GLMine_InfoCell";
             
         }success:^(NSURLSessionDataTask *task, id responseObject) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+          
             if ([dic[@"status"][@"succeed"]integerValue]==1) {
                 
-                [MBProgressHUD showError:responseObject[@"message"]];
+                [MBProgressHUD showError:dic[@"message"]];
             }else{
-                [MBProgressHUD showError:responseObject[@"message"]];
+                [MBProgressHUD showError:dic[@"message"]];
             }
             [_loadV removeloadview];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
