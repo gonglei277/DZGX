@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *cardTextF;
 @property (weak, nonatomic) IBOutlet UIButton *chooseBankBtn;
+@property (weak, nonatomic) IBOutlet UITextField *addressF;
+@property (weak, nonatomic) IBOutlet UISwitch *switchBtn;
 
 
 @end
@@ -35,6 +37,30 @@
     self.title = @"修改银行卡";
     self.nameLabel.text =[NSString stringWithFormat:@"%@",[UserModel defaultUser].name];
     
+    //注册通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"maskView_dismiss" object:nil];
+    
+}
+//移除通知
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+}
+- (void)dismiss {
+    
+    //    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
+    //    CGRect rect=[self.chooseBtn convertRect: self.chooseBtn.bounds toView:window];
+    //
+    //    _directV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 4 * self.chooseBtn.yy_height);
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        _maskV.alpha = 0;
+    } completion:^(BOOL finished) {
+        [_maskV removeFromSuperview];
+        
+    }];
 }
 - (void)text:(newBlock)block{
     self.block = block;
@@ -52,7 +78,7 @@
     UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
     CGRect rect=[self.chooseBankBtn convertRect: self.chooseBankBtn.bounds toView:window];
     
-    _contentV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 4 * self.chooseBankBtn.yy_height);
+    _contentV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 6 * self.chooseBankBtn.yy_height);
     //    if([[UserModel defaultUser].userLogin integerValue] == 1){
     //        [_directV.taxBtn setTitle:@"待缴税志愿豆" forState:UIControlStateNormal];
     //
@@ -76,7 +102,7 @@
     }else{
         self.bankLabel.text = @"中国建设银行";
     }
-    
+    [_maskV removeFromSuperview];
 }
 - (BOOL)isPureNumandCharacters:(NSString *)string
 {
@@ -96,19 +122,26 @@
     }else if(![self isPureNumandCharacters:self.cardTextF.text]){
         [MBProgressHUD showError:@"银行卡号只能为数字"];
         return;
-    }else if(![predicateModel IsBankCard:self.cardTextF.text]){
-        [MBProgressHUD showError:@"输入的银行卡不合法"];
-        return;
     }
+//    }else if(![predicateModel IsBankCard:self.cardTextF.text]){
+//        [MBProgressHUD showError:@"输入的银行卡不合法"];
+//        return;
+//    }
 //
     self.block(self.cardTextF.text);
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
-    dict[@"bankacount"] = [NSString stringWithFormat:@"%@",self.cardTextF.text];
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    dict[@"bankname"] = self.bankLabel.text;
+    dict[@"address"] = self.addressF.text;
+    dict[@"isDefault"] = @(self.switchBtn.isOn);
+    dict[@"number"] = [NSString stringWithFormat:@"%@",self.cardTextF.text];
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"Index/addbankcard" paramDic:dict finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/add_bank_num" paramDic:dict finish:^(id responseObject) {
 
+        NSLog(@"dict = %@",dict);
+        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 0) {
             
             self.cardTextF.text = nil;
