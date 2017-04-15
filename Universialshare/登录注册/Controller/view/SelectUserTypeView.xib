@@ -20,7 +20,7 @@
                         <constraint firstAttribute="height" constant="30" id="hUy-YM-7US"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="普通用户">
+                    <state key="normal" title="米家">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
                 </button>
@@ -30,7 +30,7 @@
                         <constraint firstAttribute="height" constant="30" id="R5X-U9-Spx"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="零售商">
+                    <state key="normal" title="米商">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>

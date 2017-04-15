@@ -81,7 +81,7 @@
     
     if ([predicateModel checkIsHaveNumAndLetter:self.secretTf.text] != 3) {
         
-        [MBProgressHUD showError:@"密码只能包含数字和字母"];
+        [MBProgressHUD showError:@"密码须包含数字和字母"];
         return;
     }
     
@@ -141,6 +141,18 @@
         return NO;
     }
     
+    if (textField == self.recomendId || textField == self.phoneTf ||self.sureSecretTf || self.secretTf||self.verificationTf) {
+        
+        for(int i=0; i< [string length];i++){
+            
+            int a = [string characterAtIndex:i];
+            
+            if( a > 0x4e00 && a < 0x9fff)
+                
+                return NO;
+        }
+    }
+    
     return YES;
     
 }
@@ -183,5 +195,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+
+}
 
 @end
