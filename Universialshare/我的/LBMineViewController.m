@@ -25,6 +25,7 @@
 #import "GLMine_InfoController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "GLNoneOfDonationController.h"
+#import "LBMineStoreOrderingViewController.h"
 
 @interface LBMineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
     UIImageView *_imageviewLeft;
@@ -264,10 +265,21 @@
         //    订单
         _headview.returnOrderBt = ^(){
             
-            weakself.hidesBottomBarWhenPushed=YES;
-            LBMineCenterMyOrderViewController *vc=[[LBMineCenterMyOrderViewController alloc]init];
-            [weakself.navigationController pushViewController:vc animated:YES];
-            weakself.hidesBottomBarWhenPushed=NO;
+            if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
+                
+                weakself.hidesBottomBarWhenPushed=YES;
+                LBMineStoreOrderingViewController *vc=[[LBMineStoreOrderingViewController alloc]init];
+                [weakself.navigationController pushViewController:vc animated:YES];
+                weakself.hidesBottomBarWhenPushed=NO;
+                
+            }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]){
+            
+                weakself.hidesBottomBarWhenPushed=YES;
+                LBMineCenterMyOrderViewController *vc=[[LBMineCenterMyOrderViewController alloc]init];
+                [weakself.navigationController pushViewController:vc animated:YES];
+                weakself.hidesBottomBarWhenPushed=NO;
+            
+            }
 
         };
         
