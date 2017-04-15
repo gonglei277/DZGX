@@ -34,7 +34,7 @@
                             <constraint firstAttribute="height" constant="20" id="uJT-bf-6Hl"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="textColor" red="0.77709561589999998" green="0.19865089650000001" blue="0.056773729619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="商品信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ior-Zq-0fU">
@@ -46,15 +46,25 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWZ-dZ-VZW">
+                        <rect key="frame" x="0.0" y="58" width="320" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="sE1-oO-4BV"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="o3O-cU-BqX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4Jk-Yo-cJj"/>
                     <constraint firstItem="o3O-cU-BqX" firstAttribute="leading" secondItem="Ior-Zq-0fU" secondAttribute="trailing" constant="20" id="W35-yu-HAP"/>
                     <constraint firstItem="DLx-9g-G44" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="X1H-Fk-803"/>
+                    <constraint firstItem="rWZ-dZ-VZW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aue-bN-Z5v"/>
+                    <constraint firstAttribute="bottom" secondItem="rWZ-dZ-VZW" secondAttribute="bottom" id="kdR-r4-xh1"/>
                     <constraint firstAttribute="trailing" secondItem="o3O-cU-BqX" secondAttribute="trailing" constant="10" id="lQQ-wg-k2v"/>
                     <constraint firstItem="DLx-9g-G44" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="qh2-iL-UGB"/>
                     <constraint firstItem="Ior-Zq-0fU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qyN-cG-7kS"/>
                     <constraint firstItem="Ior-Zq-0fU" firstAttribute="leading" secondItem="DLx-9g-G44" secondAttribute="trailing" constant="40" id="uuQ-iP-XzW"/>
+                    <constraint firstAttribute="trailing" secondItem="rWZ-dZ-VZW" secondAttribute="trailing" id="xhF-x5-mcm"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

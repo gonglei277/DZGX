@@ -18,6 +18,9 @@
 @property (strong, nonatomic)LBMineStoreHistoryOrderingViewController *historyVc;
 @property (nonatomic, strong)UIViewController *currentViewController;
 @property (nonatomic, strong)UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIView *buttonView;
+
+@property (nonatomic, strong)UIView *lineView;
 
 @end
 
@@ -43,6 +46,8 @@
     [self fitFrameForChildViewController:_todayVc];
     [self.contentView addSubview:_todayVc.view];
     
+    [self.buttonView addSubview:self.lineView];
+    
 }
 
 - (void)fitFrameForChildViewController:(UIViewController *)childViewController{
@@ -63,10 +68,19 @@
     }];
     
     
+    
 }
 
 - (IBAction)todaybutton:(UIButton *)sender {
     
+    [UIView animateWithDuration:0.3 animations:^{
+        self.lineView.frame = CGRectMake(0, 49, SCREEN_WIDTH / 2, 2);
+         [self.todatbutton setTitleColor:YYSRGBColor(196, 52, 28, 1) forState:UIControlStateNormal];
+        [self.historybutton setTitleColor:YYSRGBColor(0, 0, 0, 1) forState:UIControlStateNormal];
+    } completion:^(BOOL finished) {
+        
+    }];
+
     [self transitionFromVC:self.currentViewController toviewController:_todayVc];
     [self fitFrameForChildViewController:_todayVc];
     
@@ -74,6 +88,13 @@
 
 - (IBAction)historybutton:(UIButton *)sender {
     
+    [UIView animateWithDuration:0.3 animations:^{
+          [self.historybutton setTitleColor:YYSRGBColor(196, 52, 28, 1) forState:UIControlStateNormal];
+         [self.todatbutton setTitleColor:YYSRGBColor(0, 0, 0, 1) forState:UIControlStateNormal];
+         self.lineView.frame = CGRectMake(SCREEN_WIDTH / 2, 49, SCREEN_WIDTH / 2, 2);
+    } completion:^(BOOL finished) {
+        
+    }];
     [self transitionFromVC:self.currentViewController toviewController:_historyVc];
     [self fitFrameForChildViewController:_historyVc];
 
@@ -81,6 +102,16 @@
     
 }
 
+-(UIView*)lineView{
+
+    if (!_lineView) {
+        _lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 49, SCREEN_WIDTH / 2, 2)];
+        _lineView.backgroundColor = YYSRGBColor(196, 52, 28, 1);
+    }
+    
+    return _lineView;
+
+}
 
 
 @end

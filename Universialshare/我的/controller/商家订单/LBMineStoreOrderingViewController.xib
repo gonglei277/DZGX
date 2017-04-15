@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LBMineStoreOrderingViewController">
             <connections>
+                <outlet property="buttonView" destination="JYA-oV-maX" id="wSj-Ae-AT2"/>
                 <outlet property="historybutton" destination="vic-RS-Xo0" id="vCV-Zw-JCP"/>
                 <outlet property="todatbutton" destination="L5k-Qv-JhV" id="xDo-2K-XxN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -27,7 +28,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5k-Qv-JhV">
                             <rect key="frame" x="0.0" y="0.0" width="188" height="49"/>
                             <state key="normal" title="今日订单">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" red="0.77709561586380005" green="0.19865089654922485" blue="0.056773729622364044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="todaybutton:" destination="-1" eventType="touchUpInside" id="N2f-uG-PDC"/>
@@ -43,7 +44,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="L5k-Qv-JhV" secondAttribute="bottom" constant="1" id="2lL-VE-Jdm"/>
                         <constraint firstAttribute="bottom" secondItem="vic-RS-Xo0" secondAttribute="bottom" constant="1" id="ARg-bR-8jQ"/>
