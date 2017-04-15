@@ -87,11 +87,14 @@
 //        cell.contentLb.text;
         NSString *str = [NSString stringWithFormat:@"     %@",self.dataDic[@"content"]];
 //        cell.contentLb.attributedText = [self strToAttriWithStr:str];
-
-        cell.contentLb.text = [self filterHTML:str];
-      
-        //            NSLog(@"%@",NSStringFromCGRect(sizecontent));
+//        
+//        NSString *string = [NSString stringWithFormat:@"%@",cell.contentLb.attributedText];
+//        NSRange startRange = [string rangeOfString:@"p>"];
+//        NSRange endRange = [string rangeOfString:@"</"];
+//        NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
+//        NSString *result = [string substringWithRange:range];
         
+        cell.contentLb.text = str;
         
     }else{
       cell.contentLb.text = @"";
@@ -121,7 +124,7 @@
  */
 - (NSMutableAttributedString *)strToAttriWithStr:(NSString *)htmlStr{
     
-    NSMutableAttributedString *AttributedString=[[NSMutableAttributedString alloc] initWithData:[htmlStr dataUsingEncoding:NSUnicodeStringEncoding]
+    NSMutableAttributedString *AttributedString=[[NSMutableAttributedString alloc] initWithData:[htmlStr dataUsingEncoding:NSUTF8StringEncoding]
                                                                                         options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}
                                                                              documentAttributes:nil
                                                                                           error:nil];

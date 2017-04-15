@@ -13,6 +13,10 @@
 #import "BaseNavigationViewController.h"
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
 
+#import "UMSocial.h"
+#import "UMSocialSinaSSOHandler.h"
+#import "UMSocialWechatHandler.h"
+
 @interface AppDelegate ()
 
 @property(strong,nonatomic)BMKMapManager* mapManager;
@@ -41,6 +45,13 @@
     if (!ret) {
         [MBProgressHUD showError:@"启动百度地图失败"];
     }
+    
+    //友盟分享
+    [UMSocialData setAppKey:UMSHARE_APPKEY];
+    [UMSocialWechatHandler setWXAppId:WEIXI_APPKEY appSecret:WEIXI_SECRET url:@"http://www.umeng.com/social"];
+    [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:WEIBO_APPKEY
+                                              secret:WEIBO_SECRET
+                                         RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
 
     return YES;
 }

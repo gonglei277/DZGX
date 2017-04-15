@@ -41,6 +41,10 @@
     [super viewDidLoad];
     [self setupUI];
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self updateData];
+}
 - (void)setupUI{
     self.title = @"我要直捐";
     
@@ -239,7 +243,7 @@
             self.secondPwdT.text = nil;
             
             [self updateData];
-            
+            [MBProgressHUD showSuccess:@"直捐成功!"];
         }else{
             [_loadV removeloadview];
             [MBProgressHUD showError:responseObject[@"msg"]];
@@ -273,7 +277,7 @@
             }else{
                 self.useableBeanNumLabel.text = [UserModel defaultUser].djs_bean;
             }
-            [MBProgressHUD showSuccess:@"直捐成功!"];
+//            [MBProgressHUD showSuccess:@"直捐成功!"];
         }else{
             
             [MBProgressHUD showError:@"数据提交异常,请重试!"];

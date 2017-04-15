@@ -483,6 +483,8 @@
     
     [super viewWillAppear:animated];
 
+    [self updateData];
+    
 //    if ([[UserModel defaultUser].cardNumber isEqualToString:@""]){
 //        
 //        self.bankStyleImageV.hidden = YES;
