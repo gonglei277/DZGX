@@ -26,6 +26,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "GLNoneOfDonationController.h"
 #import "LBMineStoreOrderingViewController.h"
+#import "LBMineSelectCustomerTypeView.h"
+#import "LBMineCenterUsualUnderOrderViewController.h"
 
 @interface LBMineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
     UIImageView *_imageviewLeft;
@@ -35,6 +37,9 @@
 @property(nonatomic,strong) MineCollectionHeaderV *headview;
 @property(nonatomic,strong)NSArray *titlearr;
 @property(nonatomic,strong)NSArray *imageArr;
+@property (strong, nonatomic)LBMineSelectCustomerTypeView *SelectCustomerTypeView;
+@property (strong, nonatomic)UIView *maskView;
+@property (strong, nonatomic)NSString *ordertype;//订单类型 默认为线上类型 1 为线上 2线下
 
 @end
 
@@ -53,6 +58,7 @@
     
      [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshMineCollection) name:@"refreshMine" object:nil];
     
+    _ordertype = @"1";
     
 }
 
@@ -271,13 +277,12 @@
                 LBMineStoreOrderingViewController *vc=[[LBMineStoreOrderingViewController alloc]init];
                 [weakself.navigationController pushViewController:vc animated:YES];
                 weakself.hidesBottomBarWhenPushed=NO;
+            
                 
             }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]){
             
-                weakself.hidesBottomBarWhenPushed=YES;
-                LBMineCenterMyOrderViewController *vc=[[LBMineCenterMyOrderViewController alloc]init];
-                [weakself.navigationController pushViewController:vc animated:YES];
-                weakself.hidesBottomBarWhenPushed=NO;
+                [weakself.view addSubview:weakself.maskView];
+                [weakself.maskView addSubview:weakself.SelectCustomerTypeView];
             
             }
 
@@ -395,6 +400,95 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
     return _imageArr;
 
 }
+
+//点击maskview
+-(void)maskviewgesture{
+    
+   
+    
+}
+//线上订单
+-(void)selectonlineorder{
+
+    self.ordertype = @"1";
+    self.SelectCustomerTypeView.imagev1.image = [UIImage imageNamed:@"location_on"];
+    self.SelectCustomerTypeView.imagev2.image = [UIImage imageNamed:@"location_off"];
+
+}
+//线下订单
+-(void)selectunderlineorder{
+    
+    self.ordertype = @"2";
+    self.SelectCustomerTypeView.imagev1.image = [UIImage imageNamed:@"location_off"];
+    self.SelectCustomerTypeView.imagev2.image = [UIImage imageNamed:@"location_on"];
+    
+}
+#pragma mark ---- 选择线上线下订单类型
+-(void)selectCustomerTypeViewCancelBt{
+
+    [self.maskView removeFromSuperview];
+    [self.SelectCustomerTypeView removeFromSuperview];
+}
+
+-(void)selectCustomerTypeViewsureBt{
+    
+    if ([self.ordertype isEqualToString:@"1"]) {//线上
+        self.hidesBottomBarWhenPushed=YES;
+        LBMineCenterMyOrderViewController *vc=[[LBMineCenterMyOrderViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        self.hidesBottomBarWhenPushed=NO;
+        [self.maskView removeFromSuperview];
+        [self.SelectCustomerTypeView removeFromSuperview];
+    }else  if ([self.ordertype isEqualToString:@"2"]) {//线下
+        
+        self.hidesBottomBarWhenPushed=YES;
+        LBMineCenterUsualUnderOrderViewController *vc=[[LBMineCenterUsualUnderOrderViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+        self.hidesBottomBarWhenPushed=NO;
+        [self.maskView removeFromSuperview];
+        [self.SelectCustomerTypeView removeFromSuperview];
+    }
+}
+
+-(LBMineSelectCustomerTypeView*)SelectCustomerTypeView{
+    
+    if (!_SelectCustomerTypeView) {
+        _SelectCustomerTypeView=[[NSBundle mainBundle]loadNibNamed:@"LBMineSelectCustomerTypeView" owner:self options:nil].firstObject;
+        _SelectCustomerTypeView.frame=CGRectMake(20, (SCREEN_HEIGHT - 210)/2, SCREEN_WIDTH-40, 201);
+        _SelectCustomerTypeView.alpha=1;
+        UITapGestureRecognizer *shanVgesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectonlineorder)];
+        
+        [_SelectCustomerTypeView.baseView1 addGestureRecognizer:shanVgesture];
+        //
+        UITapGestureRecognizer *lingVgesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectunderlineorder)];
+        //
+        [_SelectCustomerTypeView.baseView2 addGestureRecognizer:lingVgesture];
+        [_SelectCustomerTypeView.cancelBt addTarget:self action:@selector(selectCustomerTypeViewCancelBt) forControlEvents:UIControlEventTouchUpInside];
+        [_SelectCustomerTypeView.sureBt addTarget:self action:@selector(selectCustomerTypeViewsureBt) forControlEvents:UIControlEventTouchUpInside];
+        _SelectCustomerTypeView.layer.cornerRadius = 4;
+        _SelectCustomerTypeView.clipsToBounds = YES;
+        
+    }
+    
+    return _SelectCustomerTypeView;
+    
+}
+
+-(UIView*)maskView{
+    
+    if (!_maskView) {
+        _maskView=[[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        [_maskView setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2f]];
+        //UITapGestureRecognizer *maskvgesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(maskviewgesture)];
+        //[_maskView addGestureRecognizer:maskvgesture];
+        
+       
+        
+    }
+    return _maskView;
+    
+}
+
 
 #pragma mark ------------------self.view的滑动手势
 #pragma mark 添加手势

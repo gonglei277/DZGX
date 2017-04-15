@@ -47,9 +47,10 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell.payBt setTitle:@"去评价" forState:UIControlStateNormal];
     cell.stauesLb.text = @"待评价";
-    
+    cell.index = indexPath.row;
+    cell.deleteBt.hidden = YES;
     __weak typeof(self)  weakself = self;
-    cell.retunpaybutton = ^(){
+    cell.retunpaybutton = ^(NSInteger index){
         
         LBMineCenterMYOrderEvaluationDetailViewController *vc=[[LBMineCenterMYOrderEvaluationDetailViewController alloc]init];
         [weakself.navigationController pushViewController:vc animated:YES];

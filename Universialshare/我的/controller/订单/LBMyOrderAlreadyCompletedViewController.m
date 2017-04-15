@@ -9,7 +9,7 @@
 #import "LBMyOrderAlreadyCompletedViewController.h"
 #import "LBMyOrderListTableViewCell.h"
 
-@interface LBMyOrderAlreadyCompletedViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface LBMyOrderAlreadyCompletedViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
@@ -48,13 +48,20 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell.payBt setTitle:@"再次购买" forState:UIControlStateNormal];
     __weak typeof(self)  weakself = self;
+    cell.index = indexPath.row;
     
-    cell.retunpaybutton = ^(){
+    cell.retunpaybutton = ^(NSInteger index){
     
         
-    
     };
-   
+    
+    cell.retundeletebutton = ^(NSInteger index){
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您确定要删除吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
+        
+    };
+
     return cell;
     
 }
@@ -64,6 +71,13 @@
     
     
 }
-
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1) {
+            
+       
+        
+    }
+    
+}
 
 @end

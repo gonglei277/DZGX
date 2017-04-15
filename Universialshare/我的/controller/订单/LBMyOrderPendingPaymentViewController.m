@@ -45,9 +45,11 @@
     LBMyOrderListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMyOrderListTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell.payBt setTitle:@"去支付" forState:UIControlStateNormal];
+    cell.index = indexPath.row;
+    cell.deleteBt.hidden = YES;
     __weak typeof(self)  weakself = self;
     
-    cell.retunpaybutton = ^(){
+    cell.retunpaybutton = ^(NSInteger index){
         
         
         

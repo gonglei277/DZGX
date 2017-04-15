@@ -210,7 +210,7 @@
                 [UserModel defaultUser].shop_name = @"";
                 [UserModel defaultUser].shop_address = @"";
                 [UserModel defaultUser].shop_type = @"";
-            
+
             }
             
             [usermodelachivar achive];
