@@ -131,8 +131,6 @@ static NSString *ID = @"GLMine_InfoCell";
         
         dic=@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].uid , @"sprovince":self.sprovince , @"scity":self.scity,@"saera":self.saera,@"saddress":self.adress,@"truename":self.username,@"idcard":self.shenfCode,@"shop_type":self.storeType};
         
-  
-        
         
         _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -155,6 +153,9 @@ static NSString *ID = @"GLMine_InfoCell";
             if ([dic[@"code"]integerValue]==1) {
                 
                 [MBProgressHUD showError:dic[@"message"]];
+                
+                
+                
             }else{
                 [MBProgressHUD showError:dic[@"message"]];
             }

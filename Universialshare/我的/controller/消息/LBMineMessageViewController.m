@@ -32,7 +32,7 @@
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.title = @"消息中心";
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.imagearr = @[@"客户服务",@"热卖精选",@"客户服务",@"物流通知",@"矢量智能对象2"];
+    self.imagearr = @[@"客户服务",@"热卖精选",@"服务通知",@"物流通知",@"矢量智能对象2"];
     self.detailArr = [NSMutableArray arrayWithObjects:@"单击查看更多详情信息",@"单击查看更多详情信息",@"单击查看更多详情信息",@"单击查看更多详情信息",@"单击查看更多详情信息", nil];
     
     self.tableview.tableFooterView = [UIView new];

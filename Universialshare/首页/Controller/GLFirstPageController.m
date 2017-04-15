@@ -91,7 +91,7 @@ static NSString *followID = @"GLFirstFollowCell";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
-    
+     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
     
     UIImage *imaage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
     
@@ -101,10 +101,6 @@ static NSString *followID = @"GLFirstFollowCell";
         [self.head_iconBtn setImage:imaage forState:UIControlStateNormal];
     }
    
-    
-
-    
-    
     
 }
 - (void)setupUI{

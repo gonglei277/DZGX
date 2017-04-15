@@ -478,6 +478,14 @@
 		F9126EF21EA0B042004785EA /* LBMineSystemMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9126EF01EA0B042004785EA /* LBMineSystemMessageViewController.xib */; };
 		F9126EF61EA0B086004785EA /* LBMineSystemMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9126EF41EA0B086004785EA /* LBMineSystemMessageTableViewCell.m */; };
 		F9126EF71EA0B086004785EA /* LBMineSystemMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9126EF51EA0B086004785EA /* LBMineSystemMessageTableViewCell.xib */; };
+		F91274971EA0E5E300B7A539 /* LBMineStoreOrderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91274951EA0E5E300B7A539 /* LBMineStoreOrderingViewController.m */; };
+		F91274981EA0E5E300B7A539 /* LBMineStoreOrderingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91274961EA0E5E300B7A539 /* LBMineStoreOrderingViewController.xib */; };
+		F912749C1EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F912749A1EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.m */; };
+		F912749D1EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F912749B1EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.xib */; };
+		F91274A11EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F912749F1EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.m */; };
+		F91274A21EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91274A01EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.xib */; };
+		F91274A71EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F91274A51EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.m */; };
+		F91274A81EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91274A61EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.xib */; };
 		F923082F1E9B8B6B00ECDC94 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = F923082E1E9B8B6B00ECDC94 /* Address.plist */; };
 		F92308311E9B8BCC00ECDC94 /* personCenter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92308301E9B8BCC00ECDC94 /* personCenter.xcassets */; };
 		F923091A1E9B8BFF00ECDC94 /* HWCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = F92308361E9B8BFE00ECDC94 /* HWCalendar.m */; };
@@ -1528,6 +1536,18 @@
 		F9126EF31EA0B086004785EA /* LBMineSystemMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineSystemMessageTableViewCell.h; sourceTree = "<group>"; };
 		F9126EF41EA0B086004785EA /* LBMineSystemMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineSystemMessageTableViewCell.m; sourceTree = "<group>"; };
 		F9126EF51EA0B086004785EA /* LBMineSystemMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineSystemMessageTableViewCell.xib; sourceTree = "<group>"; };
+		F91274941EA0E5E300B7A539 /* LBMineStoreOrderingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineStoreOrderingViewController.h; sourceTree = "<group>"; };
+		F91274951EA0E5E300B7A539 /* LBMineStoreOrderingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineStoreOrderingViewController.m; sourceTree = "<group>"; };
+		F91274961EA0E5E300B7A539 /* LBMineStoreOrderingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineStoreOrderingViewController.xib; sourceTree = "<group>"; };
+		F91274991EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineStoreTodayOrderingViewController.h; sourceTree = "<group>"; };
+		F912749A1EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineStoreTodayOrderingViewController.m; sourceTree = "<group>"; };
+		F912749B1EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineStoreTodayOrderingViewController.xib; sourceTree = "<group>"; };
+		F912749E1EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineStoreHistoryOrderingViewController.h; sourceTree = "<group>"; };
+		F912749F1EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineStoreHistoryOrderingViewController.m; sourceTree = "<group>"; };
+		F91274A01EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineStoreHistoryOrderingViewController.xib; sourceTree = "<group>"; };
+		F91274A41EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineStoreOrderingTableViewCell.h; sourceTree = "<group>"; };
+		F91274A51EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineStoreOrderingTableViewCell.m; sourceTree = "<group>"; };
+		F91274A61EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineStoreOrderingTableViewCell.xib; sourceTree = "<group>"; };
 		F923082E1E9B8B6B00ECDC94 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		F92308301E9B8BCC00ECDC94 /* personCenter.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = personCenter.xcassets; sourceTree = "<group>"; };
 		F92308351E9B8BFE00ECDC94 /* HWCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWCalendar.h; sourceTree = "<group>"; };
@@ -3603,6 +3623,33 @@
 			path = "地图";
 			sourceTree = "<group>";
 		};
+		F91274931EA0E58400B7A539 /* 商家订单 */ = {
+			isa = PBXGroup;
+			children = (
+				F91274941EA0E5E300B7A539 /* LBMineStoreOrderingViewController.h */,
+				F91274951EA0E5E300B7A539 /* LBMineStoreOrderingViewController.m */,
+				F91274961EA0E5E300B7A539 /* LBMineStoreOrderingViewController.xib */,
+				F91274991EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.h */,
+				F912749A1EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.m */,
+				F912749B1EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.xib */,
+				F912749E1EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.h */,
+				F912749F1EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.m */,
+				F91274A01EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.xib */,
+				F91274A31EA0E68A00B7A539 /* view */,
+			);
+			path = "商家订单";
+			sourceTree = "<group>";
+		};
+		F91274A31EA0E68A00B7A539 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F91274A41EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.h */,
+				F91274A51EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.m */,
+				F91274A61EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		F92308321E9B8BFE00ECDC94 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3621,6 +3668,7 @@
 		F92308331E9B8BFE00ECDC94 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F91274931EA0E58400B7A539 /* 商家订单 */,
 				F9126EE01EA0599B004785EA /* 地图 */,
 				F9126EB31EA05692004785EA /* 个人信息 */,
 				4A460A521E9CC0310045824F /* 扫码 */,
@@ -4376,6 +4424,7 @@
 				4A46103D1E9CC6360045824F /* markdown.css in Resources */,
 				F9126EED1EA059A9004785EA /* mapapi.bundle in Resources */,
 				F92309721E9B8BFF00ECDC94 /* LBMineCenterAddAdreassViewController.xib in Resources */,
+				F91274A21EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.xib in Resources */,
 				4A07A86F1EA0572D005A9B67 /* GLBuyBackChooseBankView.xib in Resources */,
 				4A0D97751E9729C100A26B84 /* GLHourseDetailFirstCell.xib in Resources */,
 				F92309801E9B8BFF00ECDC94 /* LBMineCenterSafeSecondSecretViewController.xib in Resources */,
@@ -4452,6 +4501,7 @@
 				4A4608F01E9C9E6D0045824F /* GLRankingCell.xib in Resources */,
 				4A460D321E9CC2C50045824F /* GLShareView.xib in Resources */,
 				4A0D97841E9729C100A26B84 /* GLOrderDetailController.xib in Resources */,
+				F91274A81EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.xib in Resources */,
 				4A4609DD1E9CB78E0045824F /* GLMyHeartController.xib in Resources */,
 				F923092F1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeViewController.xib in Resources */,
 				F93F84D21E9F02C500F76E0B /* loadWait.xcassets in Resources */,
@@ -4494,6 +4544,7 @@
 				4A4609F81E9CB78E0045824F /* GLDonationController.xib in Resources */,
 				4A0023FA1E84AEFF00B2A9FE /* HomePage.xcassets in Resources */,
 				4A4610351E9CC6360045824F /* ios-social-sdk-comment-quick.html in Resources */,
+				F912749D1EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.xib in Resources */,
 				F9126EF71EA0B086004785EA /* LBMineSystemMessageTableViewCell.xib in Resources */,
 				4A4609E61E9CB78E0045824F /* GLMine_MyBeansController.xib in Resources */,
 				4A4610211E9CC6360045824F /* UMSCommentInputController.xib in Resources */,
@@ -4503,6 +4554,7 @@
 				F94D6E2B1E9E2A6D00412E64 /* setUp.xcassets in Resources */,
 				4A4608EC1E9C9E6D0045824F /* GLFirstFollowCell.xib in Resources */,
 				F923095C1E9B8BFF00ECDC94 /* LBMyOrderEveluationSucessOneCollectionViewCell.xib in Resources */,
+				F91274981EA0E5E300B7A539 /* LBMineStoreOrderingViewController.xib in Resources */,
 				F961AA2C1E9CE17800275F52 /* LBMerchantcreditViewController.xib in Resources */,
 				F961AA3E1E9CE35200275F52 /* LBUserKonwViewTableViewCell.xib in Resources */,
 				4A4610331E9CC6360045824F /* iOS-social-releasenote.html in Resources */,
@@ -4619,6 +4671,7 @@
 				4A46103E1E9CC6360045824F /* ZXAztecDecoder.m in Sources */,
 				F92309831E9B8BFF00ECDC94 /* LBMineCenterSafeBindPhoneViewController.m in Sources */,
 				F923092E1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeViewController.m in Sources */,
+				F91274A11EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.m in Sources */,
 				4A46105D1E9CC6360045824F /* ZXResultParser.m in Sources */,
 				4A4609E41E9CB78E0045824F /* GLEncourageBeansController.m in Sources */,
 				4A4611071E9CC6370045824F /* ZXQRCodeVersion.m in Sources */,
@@ -4674,6 +4727,7 @@
 				F961AA3D1E9CE35200275F52 /* LBUserKonwViewTableViewCell.m in Sources */,
 				F92309571E9B8BFF00ECDC94 /* LBMyOrderPendingRefundViewController.m in Sources */,
 				4A4610A41E9CC6360045824F /* ZXDataMatrixTextEncoder.m in Sources */,
+				F91274971EA0E5E300B7A539 /* LBMineStoreOrderingViewController.m in Sources */,
 				4A4609E11E9CB78E0045824F /* GLMyheartModel.m in Sources */,
 				F92309531E9B8BFF00ECDC94 /* LBMyOrderPendingEvaluationViewController.m in Sources */,
 				4A07A88C1EA0BBF1005A9B67 /* GLNoneOfDonationCell.m in Sources */,
@@ -4836,6 +4890,7 @@
 				4A46109A1E9CC6360045824F /* ZXDataMatrixASCIIEncoder.m in Sources */,
 				4A4610A71E9CC6360045824F /* ZXDataMatrixWriter.m in Sources */,
 				4A4610881E9CC6360045824F /* ZXBinaryBitmap.m in Sources */,
+				F91274A71EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.m in Sources */,
 				4A4610DA1E9CC6370045824F /* ZXMultiFormatUPCEANReader.m in Sources */,
 				F92309431E9B8BFF00ECDC94 /* LBMineMesageServiceTableViewCell.m in Sources */,
 				4A4610601E9CC6360045824F /* ZXSMSTOMMSTOResultParser.m in Sources */,
@@ -4969,6 +5024,7 @@
 				4A46107C1E9CC6360045824F /* ZXByteArray.m in Sources */,
 				4A4610401E9CC6360045824F /* ZXAztecBinaryShiftToken.m in Sources */,
 				4A4609041E9CA0880045824F /* LBIntegralMallViewController.m in Sources */,
+				F912749C1EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.m in Sources */,
 				F923093E1E9B8BFF00ECDC94 /* LBMineCenterHotPickView.m in Sources */,
 				4A4610501E9CC6360045824F /* ZXCalendarParsedResult.m in Sources */,
 				4A4610F31E9CC6370045824F /* ZXPDF417DetectorResult.m in Sources */,
