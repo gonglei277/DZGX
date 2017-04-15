@@ -66,6 +66,16 @@
     [super viewWillAppear:animated];
     
      self.navigationController.navigationBar.hidden = YES;
+    
+    UIImage *imaage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
+    
+    if (!imaage) {
+
+        self.headview.headimage.image = [UIImage imageNamed:@"mine_head"];
+    }else{
+        
+        self.headview.headimage.image = imaage;
+    }
 
 
 }
@@ -456,5 +466,25 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
     }
 }
 
+//刷新数据
+-(void)refreshDataSource{
+
+   
+    [NetworkManager requestPOSTWithURLStr:@"user/rec_list" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid} finish:^(id responseObject) {
+        
+        if ([responseObject[@"code"] integerValue] == 1) {
+            
+           
+        }else{
+            
+            
+        }
+
+    } enError:^(NSError *error) {
+        
+    }];
+
+
+}
 
 @end

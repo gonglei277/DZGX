@@ -243,6 +243,7 @@
     //重新刷新
     _refreshType = NO;
     _page=1;
+    [self.dataarr removeAllObjects];
     
     [self initdatasource];
     
