@@ -128,6 +128,7 @@
 //        
 //        [_directV.taxBtn setTitle:@"待提供发票志愿豆" forState:UIControlStateNormal];
 //    }
+    
     _directV.backgroundColor = [UIColor whiteColor];
     _directV.layer.cornerRadius = 4;
     _directV.layer.masksToBounds = YES;
@@ -141,14 +142,13 @@
     if (sender== _directV.normalBtn) {
         self.beanStyleLabel.text = @"普通志愿豆";
         self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%ld",(long)[[UserModel defaultUser].ketiBean integerValue]];
-        [_maskV removeFromSuperview];
+        
     }else{
-  
         self.beanStyleLabel.text = @"待缴税志愿豆";
         
         self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%ld",[[UserModel defaultUser].djs_bean integerValue]];
-        [_maskV removeFromSuperview];
     }
+    [self dismiss];
 }
 
 - (BOOL)isPureNumandCharacters:(NSString *)string

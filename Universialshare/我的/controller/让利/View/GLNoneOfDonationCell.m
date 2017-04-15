@@ -7,9 +7,15 @@
 //
 
 #import "GLNoneOfDonationCell.h"
+
 @interface GLNoneOfDonationCell ()
+
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sellNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rangliLabel;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+
+
 
 @end
 
@@ -19,12 +25,33 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.statusLabel.layer.borderWidth = 1;
+    self.statusLabel.layer.borderColor = YYSRGBColor(56, 136, 39, 1).CGColor;
+    self.statusLabel.layer.cornerRadius = 3.f;
+    self.statusLabel.layer.masksToBounds = YES;
 }
 - (void)setModel:(GLNoneOfDonationModel *)model {
     _model = model;
-    self.dateLabel.text = model.returntime;
-    self.moneyLabel.text = model.amount;
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *currentDate = [dateFormatter dateFromString:model.time];
+    
+    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:@"yyyy-MM-dd"];
+    NSString *timeStr = [dateFormatter1 stringFromDate:currentDate];
+    
+    self.dateLabel.text = timeStr;
+    self.sellNumLabel.text = model.market;
+    self.rangliLabel.text = model.rl_money;
+   
+    if([model.status isEqualToString:@"1"]){
+        self.statusLabel.text = @" 成功 ";
+    }else if([model.status isEqualToString:@"0"]){
+        self.statusLabel.text = @" 失败 ";
+    }else{
+        self.statusLabel.text = @" 未审核 ";
+    }
 }
 
 

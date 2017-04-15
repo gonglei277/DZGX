@@ -10,9 +10,13 @@
 
 @interface GLNoneOfDonationModel : NSObject
 
-@property (nonatomic,copy)NSString *returntime;
+@property (nonatomic,copy)NSString *time;
 
-@property (nonatomic,copy)NSString *amount;
+@property (nonatomic,copy)NSString *market;
+
+@property (nonatomic,copy)NSString *rl_money;
+
+@property (nonatomic,copy)NSString *status;
 
 
 @end

@@ -60,7 +60,7 @@
             
         }else{
             
-            [MBProgressHUD showError:responseObject[@"msg"]];
+            [MBProgressHUD showError:responseObject[@"message"]];
         }
     } enError:^(NSError *error) {
         [_loadV removeloadview];
