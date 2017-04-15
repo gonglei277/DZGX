@@ -144,11 +144,11 @@
 - (void)chooseValue:(UIButton *)sender {
     
     if (sender== _directV.normalBtn) {
-        self.beanStyleLabel.text = @"普通志愿豆";
+        self.beanStyleLabel.text = @"米子";
         self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%ld",(long)[[UserModel defaultUser].ketiBean integerValue]];
         
     }else{
-        self.beanStyleLabel.text = @"待缴税志愿豆";
+        self.beanStyleLabel.text = @"待缴税米子";
         
         self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%ld",[[UserModel defaultUser].djs_bean integerValue]];
     }
@@ -172,7 +172,7 @@
         [MBProgressHUD showError:@"请输入捐赠数量"];
         return;
     }
-    if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]){
+    if ([self.beanStyleLabel.text isEqualToString:@"米子"]){
         
         if([self.donationNumT.text integerValue] > [[UserModel defaultUser].ketiBean integerValue]){
             [MBProgressHUD showError:@"余额不足,请充值!"];
@@ -227,7 +227,7 @@
     NSString *beanStyle = self.beanStyleLabel.text;
     //0 普通善行豆   1 激励善行豆
     
-    if ([beanStyle isEqualToString:@"普通志愿豆"]) {
+    if ([beanStyle isEqualToString:@"米子"]) {
         dict[@"donatetype"] = @"1";
     }else{
         dict[@"donatetype"] = @"0";
@@ -246,7 +246,7 @@
             [MBProgressHUD showSuccess:@"直捐成功!"];
         }else{
             [_loadV removeloadview];
-            [MBProgressHUD showError:responseObject[@"msg"]];
+            [MBProgressHUD showError:responseObject[@"message"]];
         }
     } enError:^(NSError *error) {
         
@@ -271,7 +271,7 @@
             [usermodelachivar achive];
             //                    [[NSNotificationCenter defaultCenter] postNotificationName:@"updataNotification" object:nil];
             
-            if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]) {
+            if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
                 
                 self.useableBeanNumLabel.text = [UserModel defaultUser].ketiBean;
             }else{

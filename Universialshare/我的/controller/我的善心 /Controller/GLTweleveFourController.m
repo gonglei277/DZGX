@@ -43,7 +43,7 @@ static NSString *ID = @"GLMine_MyHeartCell";
                 [self.tableView reloadData];
                 
             }else{
-                [MBProgressHUD showError:responseObject[@"msg"]];
+                [MBProgressHUD showError:responseObject[@"message"]];
             }
             
         } enError:^(NSError *error) {

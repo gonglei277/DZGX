@@ -98,16 +98,16 @@
 }
 - (void)shareTo:(NSArray *)type{
     [UMSocialData defaultData].extConfig.wechatSessionData.url = DOWNLOAD_URL;
-    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"零点扶贫";
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"大众共享";
     
     [UMSocialData defaultData].extConfig.wechatTimelineData.url = DOWNLOAD_URL;
-    [UMSocialData defaultData].extConfig.wechatTimelineData.title = @"零点扶贫";
+    [UMSocialData defaultData].extConfig.wechatTimelineData.title = @"大众共享";
     
     [UMSocialData defaultData].extConfig.sinaData.urlResource.url = DOWNLOAD_URL;
     //    [UMSocialData defaultData].extConfig.sinaData.title = @"加入我们吧";
     
     UIImage *image=[UIImage imageNamed:@"mine_logo"];
-    [[UMSocialDataService defaultDataService]  postSNSWithTypes:type content:[NSString stringWithFormat:@"零点扶贫，让每一个有心参与公益事业的人都能参与进来(用safari浏览器打开)%@",DOWNLOAD_URL] image:image location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+    [[UMSocialDataService defaultDataService]  postSNSWithTypes:type content:[NSString stringWithFormat:@"大众共享，让每一个有心参与公益事业的人都能参与进来(用safari浏览器打开)%@",DOWNLOAD_URL] image:image location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
         if (response.responseCode == UMSResponseCodeSuccess) {
             
         }

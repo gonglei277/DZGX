@@ -43,11 +43,11 @@
     self.useableBeanLabel.text = [NSString stringWithFormat:@"%@颗",[UserModel defaultUser].ketiBean];
     NSString *userType;
     if ([[UserModel defaultUser].groupId isEqualToString:OrdinaryUser]) {
-        userType = @"志愿者";
+        userType = @"米家";
     }else{
-        userType = @"零售商";
+        userType = @"商家";
     }
-    self.noticeLabel.text = [NSString stringWithFormat:@"*您可以将您的志愿豆转赠给您的%@朋友,或者需要帮助的%@.",userType,userType];
+    self.noticeLabel.text = [NSString stringWithFormat:@"*您可以将您的米子转赠给您的%@朋友,或者需要帮助的%@.",userType,userType];
     
     //自定义导航栏右按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -99,7 +99,7 @@
         if ([responseObject[@"code"] integerValue] == 1) {
             [MBProgressHUD showSuccess:@"验证码已发送！"];
         }else{
-            [MBProgressHUD showError:responseObject[@"msg"]];
+            [MBProgressHUD showError:responseObject[@"message"]];
         }
     } enError:^(NSError *error) {
         [MBProgressHUD showError:error.localizedDescription];
@@ -250,7 +250,7 @@
             contentView.layer.masksToBounds = YES;
             [contentView.cancelBtn addTarget:self action:@selector(cancelDonation) forControlEvents:UIControlEventTouchUpInside];
             [contentView.ensureBtn addTarget:self action:@selector(ensureDonation) forControlEvents:UIControlEventTouchUpInside];
-            contentView.contentLabel.text = [NSString stringWithFormat:@"您是否要将志愿豆转赠给%@",responseObject[@"data"][@"count"]];
+            contentView.contentLabel.text = [NSString stringWithFormat:@"您是否要将米子转赠给%@",responseObject[@"data"][@"count"]];
             [_maskView showViewWithContentView:contentView];
         }else{
             [MBProgressHUD showError:@"获赠人ID输入有误"];
@@ -302,7 +302,7 @@
                 [_maskView removeFromSuperview];
             }];
     
-            [MBProgressHUD showError:responseObject[@"msg"]];
+            [MBProgressHUD showError:responseObject[@"message"]];
             
             self.secondPwdF.text = nil;
             self.donationIDF.text = nil;
@@ -316,7 +316,7 @@
 
         }else{
             [_loadV removeloadview];
-            [MBProgressHUD showError:responseObject[@"msg"]];
+            [MBProgressHUD showError:responseObject[@"message"]];
         }
         
         

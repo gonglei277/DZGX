@@ -121,6 +121,8 @@ static NSString *ID = @"GLReceiveBeansCell";
             }
             
             _beanSum = [responseObject[@"sum"] floatValue];
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
         }
         
         if (self.models.count <= 0 ) {
