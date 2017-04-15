@@ -106,6 +106,7 @@
         }else{
             
             [MBProgressHUD showError:responseObject[@"message"]];
+             [self.tableview reloadData];
         }
     } enError:^(NSError *error) {
         [_loadV removeloadview];

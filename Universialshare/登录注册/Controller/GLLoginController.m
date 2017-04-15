@@ -96,11 +96,6 @@
         return;
     }
     
-    if ([predicateModel checkIsHaveNumAndLetter:self.scretTf.text] != 3) {
-        
-        [MBProgressHUD showError:@"密码只能包含数字和字母"];
-        return;
-    }
     
     [self.view addSubview:self.maskView];
     [self.view addSubview:self.loginView];
