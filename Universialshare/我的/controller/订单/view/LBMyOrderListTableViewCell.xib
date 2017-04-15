@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                         <subviews>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已完成" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOm-fk-kKa">
-                                <rect key="frame" x="267" y="8" width="43" height="20"/>
+                                <rect key="frame" x="10" y="8" width="43" height="20"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="tls-uv-Aq9"/>
@@ -32,11 +31,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NrA-as-cA6">
+                                <rect key="frame" x="270" y="3" width="40" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="jxh-nj-2OT"/>
+                                    <constraint firstAttribute="width" constant="40" id="lI0-YV-bQj"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="address_dele"/>
+                                <connections>
+                                    <action selector="deletebutton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Vrp-V8-ytX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="6wc-ZT-A5D"/>
-                            <constraint firstAttribute="trailing" secondItem="AOm-fk-kKa" secondAttribute="trailing" constant="10" id="hhM-r0-25m"/>
+                            <constraint firstItem="NrA-as-cA6" firstAttribute="centerY" secondItem="AOm-fk-kKa" secondAttribute="centerY" id="7qe-ts-QzO"/>
+                            <constraint firstAttribute="trailing" secondItem="NrA-as-cA6" secondAttribute="trailing" constant="10" id="FFV-Ck-eZN"/>
+                            <constraint firstItem="AOm-fk-kKa" firstAttribute="leading" secondItem="e38-tu-Kgp" secondAttribute="leading" constant="10" id="UeH-pM-Kop"/>
                             <constraint firstItem="AOm-fk-kKa" firstAttribute="centerY" secondItem="e38-tu-Kgp" secondAttribute="centerY" id="jXO-Kq-9m0"/>
                         </constraints>
                     </view>
@@ -122,6 +136,9 @@
             </tableViewCellContentView>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <connections>
+                <outlet property="baseView1H" destination="6wc-ZT-A5D" id="43g-nh-i0a"/>
+                <outlet property="baseview1" destination="e38-tu-Kgp" id="maL-fF-gyE"/>
+                <outlet property="deleteBt" destination="NrA-as-cA6" id="rDb-cO-Izb"/>
                 <outlet property="imagev" destination="yEg-Jw-33U" id="A9E-M4-6x7"/>
                 <outlet property="namelb" destination="xnY-Vy-hhu" id="Jde-M4-ZfK"/>
                 <outlet property="numlb" destination="eIY-01-pdT" id="gZp-QT-xQl"/>
@@ -133,5 +150,6 @@
     </objects>
     <resources>
         <image name="XRPlaceholder" width="391" height="220"/>
+        <image name="address_dele" width="19" height="19"/>
     </resources>
 </document>

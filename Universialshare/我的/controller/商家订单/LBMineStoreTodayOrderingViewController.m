@@ -8,7 +8,6 @@
 
 #import "LBMineStoreTodayOrderingViewController.h"
 #import "LBMineStoreOrderingTableViewCell.h"
-#import <MJRefresh/MJRefresh.h>
 
 @interface LBMineStoreTodayOrderingViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;

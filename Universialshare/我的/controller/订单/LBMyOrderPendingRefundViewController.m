@@ -47,9 +47,11 @@
     [cell.payBt setTitle:@"取消退款" forState:UIControlStateNormal];
     cell.stauesLb.text = @"查看退款进度";
     cell.delegete = self;
+    cell.index = indexPath.row;
+    cell.deleteBt.hidden = YES;
     __weak typeof(self)  weakself = self;
     
-    cell.retunpaybutton = ^(){
+    cell.retunpaybutton = ^(NSInteger index){
         
         
         

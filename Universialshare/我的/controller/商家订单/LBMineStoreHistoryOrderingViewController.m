@@ -8,7 +8,6 @@
 
 #import "LBMineStoreHistoryOrderingViewController.h"
 #import "LBMineStoreOrderingTableViewCell.h"
-#import <MJRefresh/MJRefresh.h>
 
 @interface LBMineStoreHistoryOrderingViewController ()<UITableViewDelegate,UITableViewDataSource>
 

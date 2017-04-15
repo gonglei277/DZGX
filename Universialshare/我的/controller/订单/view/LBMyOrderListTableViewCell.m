@@ -25,7 +25,7 @@
 - (IBAction)paEvent:(UIButton *)sender {
     
     if (self.retunpaybutton) {
-        self.retunpaybutton();
+        self.retunpaybutton(self.index);
     }
     
 }
@@ -38,5 +38,14 @@
     }
 
 }
+
+- (IBAction)deletebutton:(UIButton *)sender {
+    
+    if (self.retundeletebutton) {
+        self.retundeletebutton(self.index);
+    }
+    
+}
+
 
 @end
