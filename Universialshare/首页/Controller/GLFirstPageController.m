@@ -528,18 +528,36 @@ static NSString *followID = @"GLFirstFollowCell";
         dic[@"type"] = @"3";
 //         _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
         [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
-            //            NSLog(@"%@",responseObject);
+//                        NSLog(@"%@",responseObject);
             [_loadV removeFromSuperview];
             if ([responseObject[@"code"] intValue] == 1) {
                 
-                _rewardContentView.label.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"djz"]];
-                _rewardContentView.label2.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"zjz"]];
                 _rewardContentView.label3.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"ltime"]];
-                _rewardContentView.label4.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"money"]];
                 _rewardContentView.label5.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"sh_sum"]];
                 _rewardContentView.label6.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"people"]];
                 
                 _rewardContentView.timeLabel.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"time"]];
+                
+                if([responseObject[@"data"][@"head3"][@"djz"] floatValue] > 10000){
+                    
+                    _rewardContentView.label.text =[NSString stringWithFormat:@"%.2f万",[responseObject[@"data"][@"head3"][@"djz"] floatValue]/10000];
+                }else{
+                    _rewardContentView.label.text = responseObject[@"data"][@"head3"][@"djz"];
+                }
+                
+                if ([responseObject[@"data"][@"head3"][@"zjz"] floatValue] > 10000) {
+                    
+                    _rewardContentView.label2.text = [NSString stringWithFormat:@"%.2f万",[responseObject[@"data"][@"head3"][@"zjz"] floatValue]/10000];
+                }else{
+                    _rewardContentView.label2.text = responseObject[@"data"][@"head3"][@"zjz"];
+                }
+               
+                if ([responseObject[@"data"][@"head3"][@"money"] floatValue] > 10000) {
+                    
+                    _rewardContentView.label4.text = [NSString stringWithFormat:@"%.2f万",[responseObject[@"data"][@"head3"][@"money"] floatValue]/10000];
+                }else{
+                    _rewardContentView.label4.text = responseObject[@"data"][@"head3"][@"money"];
+                }
             }
             
         } enError:^(NSError *error) {

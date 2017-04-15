@@ -197,12 +197,12 @@
             self.bankStyleImageV.image = [UIImage imageNamed:@"mine_icbc"];
         }
     }
-    if ([[UserModel defaultUser].groupId integerValue] == [OrdinaryUser integerValue]) {
+//    if ([[UserModel defaultUser].groupId integerValue] == [OrdinaryUser integerValue]) {
         self.buybackNumF.placeholder = @"请输入100的整数倍";
-    }else{
-        self.buybackNumF.placeholder = @"请输入500的整数倍";
-        
-    }
+//    }else{
+//        self.buybackNumF.placeholder = @"请输入500的整数倍";
+//        
+//    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -241,18 +241,18 @@
         [MBProgressHUD showError:@"余额不足!"];
         return;
     }
-    if([[UserModel defaultUser].groupId integerValue] == [OrdinaryUser integerValue]){
-        
+//    if([[UserModel defaultUser].groupId integerValue] == [OrdinaryUser integerValue]){
+    
         if ([self.buybackNumF.text integerValue] %100 != 0){
             [MBProgressHUD showError:@"数量必须是100的整数倍!"];
             return;
         }
-    }else{
-        if ([self.buybackNumF.text integerValue] % 500 != 0){
-            [MBProgressHUD showError:@"数量必须是500的整数倍!"];
-            return;
-        }
-    }
+//    }else{
+//        if ([self.buybackNumF.text integerValue] % 500 != 0){
+//            [MBProgressHUD showError:@"数量必须是500的整数倍!"];
+//            return;
+//        }
+//    }
     if ( [self.buybackNumF.text integerValue] > 50000){
         [MBProgressHUD showError:@"单笔最多回购50000颗志愿豆"];
         return;
@@ -465,7 +465,7 @@
 //            self.beanStyleLabel.text = @"待提供发票志愿豆";
 //        }
         self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
-        [_maskV removeFromSuperview];;
+        
         self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
       
     }

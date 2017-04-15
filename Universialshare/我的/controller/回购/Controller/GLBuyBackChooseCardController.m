@@ -102,7 +102,7 @@
     }else{
         self.bankLabel.text = @"中国建设银行";
     }
-    [_maskV removeFromSuperview];
+    [self dismiss];
 }
 - (BOOL)isPureNumandCharacters:(NSString *)string
 {

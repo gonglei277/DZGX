@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor=[UIColor whiteColor];
     self.navigationController.navigationBar.hidden = NO;
     self.title=@"消费系列";
