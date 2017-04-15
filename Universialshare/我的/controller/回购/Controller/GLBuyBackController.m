@@ -15,6 +15,7 @@
 #import "UIImageView+WebCache.h"
 
 #import "GLBuyBackChooseController.h"
+#import "GLBankCardModel.h"
 
 @interface GLBuyBackController ()<UITextFieldDelegate,UIScrollViewDelegate>
 {
@@ -45,6 +46,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *detailImageV;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 
 @end
 
@@ -409,7 +411,12 @@
     if (self.addImageV.hidden) {
         self.hidesBottomBarWhenPushed = YES;
         GLBuyBackChooseController *chooseVC = [[GLBuyBackChooseController alloc] init];
-        
+//        chooseVC.models = self.cardModels;
+        [chooseVC returnModel:^(GLBankCardModel *model) {
+            self.cardNumLabel.text = model.bankNum;
+            self.cardStyleLabel.text = model.bankName;
+            self.bankStyleImageV.image = [UIImage imageNamed:model.iconName];
+        }];
         [self.navigationController pushViewController:chooseVC animated:YES];
     }else{
         

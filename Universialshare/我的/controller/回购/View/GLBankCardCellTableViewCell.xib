@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="340" height="65"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="340" height="64.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="340" height="64"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_icbc" translatesAutoresizingMaskIntoConstraints="NO" id="rwN-ZE-gDD">
@@ -67,7 +67,12 @@
                     <constraint firstItem="rwN-ZE-gDD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="zPZ-l2-DTn"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="38" y="37.5"/>
+            <connections>
+                <outlet property="bankNumLabel" destination="RLz-Pc-pqF" id="hny-Kr-erZ"/>
+                <outlet property="banknameLabel" destination="HiE-OP-4NU" id="fXT-Im-nGm"/>
+                <outlet property="iconImageV" destination="rwN-ZE-gDD" id="tP3-kZ-G74"/>
+            </connections>
+            <point key="canvasLocation" x="41" y="-101"/>
         </tableViewCell>
     </objects>
     <resources>

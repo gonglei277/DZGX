@@ -261,10 +261,12 @@ static NSString *followID = @"GLFirstFollowCell";
             }
             if ([strcontent rangeOfString:@"null"].location == NSNotFound) {
                  self.homepopinfoView.infoLb.attributedText = [self strToAttriWithStr:strcontent];
+                
 //                self.homepopinfoView.infoLb.attributedText
                 
 //                NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:strcontent];
 //                NSLog(@"attributedText = %@",attributedText);
+                
             }else{
                 self.homepopinfoView.infoLb.text = @"";
             }
@@ -275,9 +277,9 @@ static NSString *followID = @"GLFirstFollowCell";
                 self.homepopinfoView.timeLb.text = @"";
             }
 
-            if (self.homepopinfoView.infoLb.text.length<=1) {
-                return ;
-            }
+//            if (self.homepopinfoView.infoLb.text.length<=1) {
+//                return ;
+//            }
             
             CGRect sizetitle=[self.homepopinfoView.titlename.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil];
             

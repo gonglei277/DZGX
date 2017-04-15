@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GLBankCardModel;
+
+typedef void (^ReturnBlock)(GLBankCardModel *model);
 
 @interface GLBuyBackChooseController : UIViewController
+
+@property (nonatomic, strong)NSMutableArray *models;
+
+@property (nonatomic, copy) ReturnBlock returnBlock;
+
+- (void)returnModel:(ReturnBlock)block;
 
 @end

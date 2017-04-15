@@ -46,7 +46,7 @@
     self.twenty_fourValueLabel.font = [UIFont systemFontOfSize:ADAPT(13)];
     
     _starWidth.constant = ADAPT(12);
-    _heartHeight.constant = ADAPT(12);
+    _heartHeight.constant = ADAPT(14);
     _rightLineLeading.constant = ADAPT(10);
 
     _xilieLabelleading.constant = ADAPT(3);
