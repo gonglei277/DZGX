@@ -84,6 +84,7 @@
         self.headview.headimage.image = imaage;
     }
 
+    [self refreshDataSource];
 
 }
 -(void)pushToInfoVC{
@@ -579,7 +580,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 
    
     [NetworkManager requestPOSTWithURLStr:@"user/rec_list" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid} finish:^(id responseObject) {
-        
+      
         if ([responseObject[@"code"] integerValue] == 1) {
             
            
