@@ -70,6 +70,7 @@
 @property (strong, nonatomic)LBHomepopinfoView *homepopinfoView;
 @property (strong, nonatomic)UIView *homepopinfoViewmask;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeight;
 @end
 
 static NSString *ID = @"GLFirstHeartCell";
@@ -91,7 +92,7 @@ static NSString *followID = @"GLFirstFollowCell";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
-     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
+     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     UIImage *imaage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
     
@@ -105,6 +106,7 @@ static NSString *followID = @"GLFirstFollowCell";
 }
 - (void)setupUI{
 
+    self.contentViewHeight.constant = 220 *autoSizeScaleY;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.sidebarView.layer.cornerRadius = 5.f;

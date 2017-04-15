@@ -115,6 +115,8 @@ static NSString *ID = @"GLRecommendCell";
             }
             
             _beanSum = [responseObject[@"sum"] floatValue];
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
         }
         
         if (self.models.count <= 0 ) {

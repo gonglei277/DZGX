@@ -123,6 +123,8 @@ static NSString *ID = @"GLEncourageBeansCell";
             }
 
             _beanSum = [responseObject[@"count"] floatValue];
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
         }
         
         if (self.models.count <= 0 ) {

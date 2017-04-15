@@ -18,14 +18,14 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqm-dH-Ny0">
                     <rect key="frame" x="0.0" y="0.0" width="341" height="186"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="普通志愿豆">
+                    <state key="normal" title="米子">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMQ-y1-dYx">
                     <rect key="frame" x="0.0" y="186" width="341" height="186"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="待缴税志愿豆">
+                    <state key="normal" title="待缴税米子">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
@@ -47,7 +47,7 @@
                 <outlet property="normalBtn" destination="hqm-dH-Ny0" id="2VW-sa-34j"/>
                 <outlet property="taxBtn" destination="OMQ-y1-dYx" id="F2i-nZ-xL3"/>
             </connections>
-            <point key="canvasLocation" x="30" y="-164"/>
+            <point key="canvasLocation" x="77" y="-212"/>
         </view>
     </objects>
 </document>

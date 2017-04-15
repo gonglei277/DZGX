@@ -82,7 +82,7 @@
 
 //    if([[UserModel defaultUser].userLogin integerValue] == 1){
 //        
-        self.noticeLabel.text = @" 1. 回购建议优先选择工商银行\n 2. 单笔最多回购50000颗志愿豆\n 3. 单笔普通志愿豆扣除回购金额5%的手续费\n 4. 单笔待交税志愿豆回购扣除手续费5(颗)志愿豆手续费,以及回购金额4.8‰的代缴税\n 5. 待缴税志愿豆任意时间允许回购\n ";
+        self.noticeLabel.text = @" 1. 回购建议优先选择工商银行\n 2. 单笔最多回购50000颗米子\n 3. 单笔米子扣除回购金额5%的手续费\n 4. 单笔待交税米子回购扣除手续费5(颗)米子手续费,以及回购金额4.8‰的代缴税\n 5. 待缴税米子任意时间允许回购\n ";
 //    }else{
 //        self.noticeLabel.text = @" 1. 回购建议优先选择工商银行\n 2. 单笔普通志愿豆扣除回购金额5%的手续费\n 3. 单笔待提供发票志愿豆回购扣除手续费5(颗)志愿豆手续费,以及回购金额4.8‰的代缴税\n 4. 待提供发票志愿豆任意时间允许回购\n";
 //    }
@@ -136,7 +136,7 @@
             
             [usermodelachivar achive];
             
-            if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]) {
+            if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
                 
                 self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].ketiBean floatValue]];
                 self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].ketiBean floatValue]];
@@ -256,7 +256,7 @@
 //        }
 //    }
     if ( [self.buybackNumF.text integerValue] > 50000){
-        [MBProgressHUD showError:@"单笔最多回购50000颗志愿豆"];
+        [MBProgressHUD showError:@"单笔最多回购50000颗米子"];
         return;
     }
     if (self.secondPwdF.text == nil||self.secondPwdF.text.length == 0) {
@@ -277,12 +277,12 @@
     contentView.layer.masksToBounds = YES;
     [contentView.cancelBtn addTarget:self action:@selector(cancelBuyback) forControlEvents:UIControlEventTouchUpInside];
     [contentView.ensureBtn addTarget:self action:@selector(ensureBuyback) forControlEvents:UIControlEventTouchUpInside];
-    if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]) {
+    if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
         
-        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为%.1f(颗)志愿豆\n可兑换金额%.1f元",[self.buybackNumF.text integerValue] * 0.05,[self.buybackNumF.text integerValue] * 0.95];
+        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为%.1f(颗)米子\n可兑换金额%.1f元",[self.buybackNumF.text integerValue] * 0.05,[self.buybackNumF.text integerValue] * 0.95];
     }else{
         
-        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗志愿豆\n代扣税为%.2f(颗)志愿豆\n可兑换金额为%.2f元",[self.buybackNumF.text integerValue]*0.0048,([self.buybackNumF.text integerValue]-[self.buybackNumF.text integerValue]*0.0048 - 5)];
+        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗米子\n代扣税为%.2f(颗)米子\n可兑换金额为%.2f元",[self.buybackNumF.text integerValue]*0.0048,([self.buybackNumF.text integerValue]-[self.buybackNumF.text integerValue]*0.0048 - 5)];
         
     }
     
@@ -323,12 +323,12 @@
             contentView.layer.masksToBounds = YES;
             [contentView.cancelBtn addTarget:self action:@selector(cancelBuyback) forControlEvents:UIControlEventTouchUpInside];
             [contentView.ensureBtn addTarget:self action:@selector(ensureBuyback) forControlEvents:UIControlEventTouchUpInside];
-            if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]) {
+            if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
         
-                contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为%.1f(颗)志愿豆\n可兑换金额%.1f元",[self.buybackNumF.text integerValue] * 0.05,[self.buybackNumF.text integerValue] * 0.95];
+                contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为%.1f(颗)米子\n可兑换金额%.1f元",[self.buybackNumF.text integerValue] * 0.05,[self.buybackNumF.text integerValue] * 0.95];
             }else{
         
-                contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗志愿豆\n代扣税为%.2f(颗)志愿豆\n可兑换金额为%.2f元",[self.buybackNumF.text integerValue]*0.0048,([self.buybackNumF.text integerValue]-[self.buybackNumF.text integerValue]*0.0048 - 5)];
+                contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗米子n代扣税为%.2f(颗)米子\n可兑换金额为%.2f元",[self.buybackNumF.text integerValue]*0.0048,([self.buybackNumF.text integerValue]-[self.buybackNumF.text integerValue]*0.0048 - 5)];
    
             }
             
@@ -371,7 +371,7 @@
     //开户行地址  ???
     dict[@"address"] = self.cardStyleLabel.text;
 
-    if ([self.beanStyleLabel.text isEqualToString:@"普通志愿豆"]) {
+    if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
         dict[@"withdrawtype"] = @"1";
     }else{
         dict[@"withdrawtype"] = @"0";
@@ -390,7 +390,7 @@
             [self updateData];
              [MBProgressHUD showSuccess:@"回购申请成功"];
         }else{
-            [MBProgressHUD showError:responseObject[@"msg"]];
+            [MBProgressHUD showError:responseObject[@"message"]];
         }
         
     } enError:^(NSError *error) {
@@ -459,13 +459,13 @@
 - (void)chooseValue:(UIButton *)sender {
     
     if (sender== _directV.normalBtn) {
-        self.beanStyleLabel.text = @"普通志愿豆";
+        self.beanStyleLabel.text = @"米子";
         self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
         self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
         
     }else{
 //        if([[UserModel defaultUser].userLogin integerValue] == 1){
-            self.beanStyleLabel.text = @"代缴税志愿豆";
+            self.beanStyleLabel.text = @"代缴税米子";
 //
 //        }else{
 //            
@@ -483,6 +483,8 @@
     
     [super viewWillAppear:animated];
 
+    [self updateData];
+    
 //    if ([[UserModel defaultUser].cardNumber isEqualToString:@""]){
 //        
 //        self.bankStyleImageV.hidden = YES;
