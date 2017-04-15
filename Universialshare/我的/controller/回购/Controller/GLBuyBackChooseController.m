@@ -56,11 +56,11 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
 #pragma UITableviewDelegate UITableViewDataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.models.count;
+    return self.cardModels.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     GLBankCardCellTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ID];
-    cell.model = self.models[indexPath.row];
+    cell.model = self.cardModels[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -68,7 +68,7 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
     self.returnBlock = block;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.returnBlock(self.models[indexPath.row]);
+    self.returnBlock(self.cardModels[indexPath.row]);
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -89,10 +89,8 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
  */
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
- 
-    
     UITableViewRowAction *action1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-        [self.models removeObjectAtIndex:indexPath.row];
+        [self.cardModels removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         
         [self deleteCard];
