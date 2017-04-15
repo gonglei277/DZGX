@@ -128,7 +128,7 @@
 //        return;
 //    }
 //
-    self.block(self.cardTextF.text);
+//    self.block(self.cardTextF.text);
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;

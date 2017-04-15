@@ -46,6 +46,7 @@
              
             self.dataDic = responseObject[@"data"];
 //            NSLog(@"content = %@",self.dataDic[@"content"]);
+            
             [self.tableview reloadData];
             
         }else{
@@ -83,7 +84,15 @@
     LBUserKonwViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBUserKonwViewTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (self.dataDic.count > 0) {
-        cell.contentLb.text = [NSString stringWithFormat:@"     %@",self.dataDic[@"content"]];
+//        cell.contentLb.text;
+        NSString *str = [NSString stringWithFormat:@"     %@",self.dataDic[@"content"]];
+//        cell.contentLb.attributedText = [self strToAttriWithStr:str];
+
+        cell.contentLb.text = [self filterHTML:str];
+      
+        //            NSLog(@"%@",NSStringFromCGRect(sizecontent));
+        
+        
     }else{
       cell.contentLb.text = @"";
     }
@@ -93,6 +102,33 @@
     return cell;
     
     
+}
+-(NSString *)filterHTML:(NSString *)html
+{
+    NSScanner * scanner = [NSScanner scannerWithString:html];
+    NSString * text = nil;
+    while([scanner isAtEnd]==NO)
+    {
+        [scanner scanUpToString:@"<" intoString:nil];
+        [scanner scanUpToString:@">" intoString:&text];
+        html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>",text] withString:@""];
+    }
+    return html;
+}
+
+/**
+ *  字符串转富文本
+ */
+- (NSMutableAttributedString *)strToAttriWithStr:(NSString *)htmlStr{
+    
+    NSMutableAttributedString *AttributedString=[[NSMutableAttributedString alloc] initWithData:[htmlStr dataUsingEncoding:NSUnicodeStringEncoding]
+                                                                                        options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}
+                                                                             documentAttributes:nil
+                                                                                          error:nil];
+    
+    [AttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0, [AttributedString length])];//设置字体大小
+    
+    return AttributedString;
 }
 
 -(NSDictionary*)dataDic{

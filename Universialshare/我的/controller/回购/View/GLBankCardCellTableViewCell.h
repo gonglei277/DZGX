@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLBankCardModel.h"
 
 @interface GLBankCardCellTableViewCell : UITableViewCell
+@property (nonatomic, strong)GLBankCardModel *model;
 
 @end
