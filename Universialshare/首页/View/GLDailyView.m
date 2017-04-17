@@ -11,6 +11,7 @@
 
 @interface GLDailyView()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 
 @end
 
@@ -19,6 +20,8 @@ static NSString *ID = @"GLFirstHeartCell";
 
 - (void)awakeFromNib{
     [super awakeFromNib];
+    
+    self.tableViewHeight.constant = 180 *autoSizeScaleY;
     [self.tableView registerNib:[UINib nibWithNibName:@"GLFirstHeartCell" bundle:nil] forCellReuseIdentifier:ID];
 }
 
@@ -45,7 +48,7 @@ static NSString *ID = @"GLFirstHeartCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return ADAPT(100);
+    return 90 * autoSizeScaleY;
 }
 
 @end

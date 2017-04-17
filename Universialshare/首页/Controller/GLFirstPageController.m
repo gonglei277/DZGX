@@ -86,8 +86,15 @@ static NSString *followID = @"GLFirstFollowCell";
 
 //    [self initInterDataSorceinfomessage];
     [self setupUI];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFunction) name:UIApplicationWillEnterForegroundNotification object:[UIApplication sharedApplication]];
 }
-
+//重新进入程序  刷新界面
+- (void)updateFunction {
+    [self.dailyModels removeAllObjects];
+    [self.rankingModels removeAllObjects];
+    [self setupUI];
+    
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -573,7 +580,7 @@ static NSString *followID = @"GLFirstFollowCell";
     }
     return _rewardContentView;
 }
-
+//- (void)
 
 #pragma mark ------------------self.view的滑动手势
 #pragma mark 添加手势
