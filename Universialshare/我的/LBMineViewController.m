@@ -384,9 +384,9 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 
     if (!_titlearr) {
         if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
-            _titlearr=[NSArray arrayWithObjects:@"米劵",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"营业额",@"我的返利",@"我的积分", nil];
+            _titlearr=[NSArray arrayWithObjects:@"让利",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
         }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]) {
-           _titlearr=[NSArray arrayWithObjects:@"让利",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"我的余额",@"我的返利",@"我的积分", nil];
+           _titlearr=[NSArray arrayWithObjects:@"米粒",@"米仓",@"米袋",@"米券",@"转赠",@"我要推荐",@"余额",@"我的返利",@"我的积分", nil];
         }
     }
     return _titlearr;
@@ -396,7 +396,12 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 -(NSArray*)imageArr{
 
     if (!_imageArr) {
-        _imageArr=[NSArray arrayWithObjects:@"圆角矩形-2（合并）",@"直捐",@"我的信使豆",@"回购",@"转赠",@"我要推荐",@"余额",@"我的返利",@"我的积分", nil];
+        
+        if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
+            _imageArr=[NSArray arrayWithObjects:@"让利",@"直捐-1",@"我的米子",@"回购-1",@"转赠",@"我要推荐",@"余额",@"我的信使豆",@"我的积分", nil];
+        }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]) {
+            _imageArr=[NSArray arrayWithObjects:@"圆角矩形-2（合并）",@"直捐",@"米袋",@"回购",@"转赠",@"我要推荐",@"余额",@"我的返利",@"我的积分", nil];
+        }
     }
     return _imageArr;
 
