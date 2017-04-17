@@ -92,10 +92,7 @@ static NSString *ID = @"GLMine_InfoCell";
         _titlesArr = @[@"头像",@"用户名",@"ID",@"身份证号",@"推荐人ID",@"推荐人姓名"];
     }
     
-    self.sprovince = @"";
-    self.scity = @"";
-    self.saera = @"";
-    self.adress = @"";
+    
     self.ID = [UserModel defaultUser].name;
     self.imagehead =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
     self.username = [UserModel defaultUser].truename;
@@ -130,12 +127,35 @@ static NSString *ID = @"GLMine_InfoCell";
             
         }
         
-        if (![predicateModel validateIdentityCard:self.shenfCode]) {
-            [MBProgressHUD showError:@"身份证格式不对"];
-            return;
+        if (self.shenfCode.length > 0) {
+            if (![predicateModel validateIdentityCard:self.shenfCode]) {
+                [MBProgressHUD showError:@"身份证格式不对"];
+                return;
+            }
         }
         
-        
+        if (self.sprovince == nil) {
+            self.sprovince = @"";
+        }
+        if (self.scity == nil) {
+            self.scity = @"";
+        }
+        if (self.saera == nil) {
+            self.saera = @"";
+        }
+        if (self.adress == nil) {
+            self.adress = @"";
+        }
+        if (self.username == nil) {
+            self.username = @"";
+        }
+        if (self.shenfCode == nil) {
+            self.shenfCode = @"";
+        }
+        if (self.storeType == nil) {
+            self.storeType = @"";
+        }
+       
         dic=@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].uid , @"sprovince":self.sprovince , @"scity":self.scity,@"saera":self.saera,@"saddress":self.adress,@"truename":self.username,@"idcard":self.shenfCode,@"shop_type":self.storeType};
         
         
@@ -145,12 +165,17 @@ static NSString *ID = @"GLMine_InfoCell";
         manager.requestSerializer.timeoutInterval = 10;
         [manager POST:[NSString stringWithFormat:@"%@%@",URL_Base,@"user/userAndShopInfoBq"] parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             //将图片以表单形式上传
-            NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
-            formatter.dateFormat=@"yyyyMMddHHmmss";
-            NSString *str=[formatter stringFromDate:[NSDate date]];
-            NSString *fileName=[NSString stringWithFormat:@"%@.png",str];
             
-            [formData appendPartWithFileData:UIImagePNGRepresentation(self.imagehead) name:[NSString stringWithFormat:@"pic"] fileName:fileName mimeType:@"image/png"];
+            if (self.imagehead) {
+                
+                NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+                formatter.dateFormat=@"yyyyMMddHHmmss";
+                NSString *str=[formatter stringFromDate:[NSDate date]];
+                NSString *fileName=[NSString stringWithFormat:@"%@.png",str];
+                NSData *data = UIImagePNGRepresentation(self.imagehead);
+                [formData appendPartWithFileData:data name:[NSString stringWithFormat:@"pic"] fileName:fileName mimeType:@"image/png"];
+            }
+            
             
         }progress:^(NSProgress *uploadProgress){
             
@@ -265,6 +290,7 @@ static NSString *ID = @"GLMine_InfoCell";
             cell.headimage.hidden = NO;
             cell.imageW.constant = 30;
             cell.textTf.enabled = NO;
+            cell.textTf.hidden = YES;
             cell.headimage.image = self.imagehead;
             if (!cell.headimage.image) {
                 cell.headimage.image = [UIImage imageNamed:@"mine_head"];
@@ -363,6 +389,7 @@ static NSString *ID = @"GLMine_InfoCell";
             cell.headimage.hidden = NO;
             cell.imageW.constant = 30;
             cell.textTf.enabled = NO;
+            cell.textTf.hidden = YES;
             cell.headimage.image = self.imagehead;
             if (!cell.headimage.image) {
                 cell.headimage.image = [UIImage imageNamed:@"mine_head"];

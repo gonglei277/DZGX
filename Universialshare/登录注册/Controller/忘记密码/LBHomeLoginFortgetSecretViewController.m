@@ -164,6 +164,18 @@
          [self.view endEditing:YES];
         return NO;
     }
+    //判断是不是中文
+    if (textField == self.phoneTf || textField == self.yabzTf ||self.sureSecretTf || self.secretTf) {
+        
+        for(int i=0; i< [string length];i++){
+            
+            int a = [string characterAtIndex:i];
+            
+            if( a > 0x4e00 && a < 0x9fff)
+                
+                return NO;
+        }
+    }
     
     return YES;
     
@@ -205,7 +217,7 @@
 //志愿者
 -(void)shangbuttonE{
     _usertype=7;
-    self.usertypeTf.text=@"普通用户";
+    self.usertypeTf.text=@"米家";
     [UIView animateWithDuration:0.3 animations:^{
         self.selectUserTypeView.transform=CGAffineTransformMakeScale(1.0, 0.00001);
         
@@ -219,7 +231,7 @@
 //商家
 -(void)lingbuttonE{
     _usertype=7;
-    self.usertypeTf.text=@"零商家";
+    self.usertypeTf.text=@"米商";
     [UIView animateWithDuration:0.3 animations:^{
         self.selectUserTypeView.transform=CGAffineTransformMakeScale(1.0, 0.00001);
         
