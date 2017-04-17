@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgViewH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgViewW;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @end
 
@@ -43,14 +44,15 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    self.navigationController.navigationBar.hidden = YES;
     [self updateData];
 }
 - (void)setupUI{
     self.title = @"我要直捐";
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.navigationBar.hidden = NO;
     self.ensureBtn.layer.cornerRadius = 5.f;
-    //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"直捐记录" style:UIBarButtonItemStylePlain target:self action:@selector(pushToRecordVC)];
+    [self.backBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 0, 5, 20)];
     self.scrollView.delegate = self;
     //自定义导航栏右按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -83,11 +85,7 @@
 }
 - (void)dismiss {
     
-//    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
-//    CGRect rect=[self.chooseBtn convertRect: self.chooseBtn.bounds toView:window];
-//    
-//    _directV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 4 * self.chooseBtn.yy_height);
-    
+
     [UIView animateWithDuration:0.3 animations:^{
         
         _maskV.alpha = 0;
@@ -107,10 +105,16 @@
     }
     return YES;
 }
-- (void)pushToRecordVC{
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)DirectDonationRecord:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
     GLDirectDnationRecordController *recordVC = [[GLDirectDnationRecordController alloc] init];
     [self.navigationController pushViewController:recordVC animated:YES];
+}
+- (void)pushToRecordVC{
+    
 }
 - (IBAction)chooseStyle:(id)sender {
 

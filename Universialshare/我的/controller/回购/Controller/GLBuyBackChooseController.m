@@ -11,6 +11,9 @@
 #import "GLBuyBackChooseCardController.h"
 
 @interface GLBuyBackChooseController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    LoadWaitView *_loadV;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *cardModels;
 @end
@@ -33,9 +36,12 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
 
     self.navigationItem.title = @"我的银行卡";
 //    self.tableView.editing = YES;
+    
+    self.navigationController.navigationBar.hidden = NO;
     [self.tableView registerNib:[UINib nibWithNibName:@"GLBankCardCellTableViewCell" bundle:nil] forCellReuseIdentifier:ID];
     
 }
+
 - (void)pushToAddVC {
     GLBuyBackChooseCardController * vc = [[GLBuyBackChooseCardController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
@@ -43,6 +49,55 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
 - (NSMutableArray *)cardModels{
     if (!_cardModels) {
         _cardModels = [NSMutableArray array];
+        
+//        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//        dict[@"token"] = [UserModel defaultUser].token;
+//        dict[@"uid"] = [UserModel defaultUser].uid;
+//        
+//            _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+//        [NetworkManager requestPOSTWithURLStr:@"user/refresh" paramDic:dict finish:^(id responseObject) {
+//            
+//            [_loadV removeloadview];
+//            NSLog(@"responseObject = %@",responseObject);
+//            if ([responseObject[@"code"] integerValue] == 1){
+//                
+//                if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]] rangeOfString:@"null"].location != NSNotFound) {
+//                    [UserModel defaultUser].banknumber = @"";
+//                }else{
+//                    [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]];
+//                }
+//                if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]] rangeOfString:@"null"].location != NSNotFound) {
+//                    [UserModel defaultUser].defaultBankname = @"";
+//                }else{
+//                    
+//                    [UserModel defaultUser].defaultBankname = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]];
+//                }
+//                [UserModel defaultUser].ketiBean = [NSString stringWithFormat:@"%@元",responseObject[@"data"][@"common"]];
+//                [UserModel defaultUser].djs_bean = [NSString stringWithFormat:@"%@元",responseObject[@"data"][@"taxes"]];
+//                [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]];
+//                [UserModel defaultUser].defaultBankname = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]];
+//                
+//                [usermodelachivar achive];
+//                
+//                if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
+//                    
+//                    self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
+//                }else{
+//                    
+//                    self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
+//                }
+//            }else{
+//                [UserModel defaultUser].banknumber = @"";
+//                [UserModel defaultUser].defaultBankname = @"";
+//                //            [UserModel defaultUser].bankIcon = @"";
+//            }
+//         
+//        } enError:^(NSError *error) {
+//            [_loadV removeloadview];
+//            
+//        }];
+
+        
         for (int i = 0; i <5; i ++) {
             GLBankCardModel *model = [[GLBankCardModel alloc] init];
             model.bankName = @"中国工商银行";
