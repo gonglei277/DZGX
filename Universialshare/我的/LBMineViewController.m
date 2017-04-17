@@ -584,8 +584,8 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 -(void)refreshDataSource{
 
    
-    [NetworkManager requestPOSTWithURLStr:@"user/rec_list" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid} finish:^(id responseObject) {
-      
+    [NetworkManager requestPOSTWithURLStr:@"user/refresh" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid} finish:^(id responseObject) {
+        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
            

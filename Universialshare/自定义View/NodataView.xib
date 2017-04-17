@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,35 +15,32 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_nodata" translatesAutoresizingMaskIntoConstraints="NO" id="fhH-rB-ERI">
-                    <rect key="frame" x="158" y="283.5" width="60" height="60"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_nodata" translatesAutoresizingMaskIntoConstraints="NO" id="fhH-rB-ERI">
+                    <rect key="frame" x="113" y="238.5" width="150" height="110"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="MVE-yp-ON3"/>
-                        <constraint firstAttribute="width" constant="60" id="pDe-7H-Hdc"/>
+                        <constraint firstAttribute="height" constant="110" id="MVE-yp-ON3"/>
+                        <constraint firstAttribute="width" constant="150" id="pDe-7H-Hdc"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(T _ T)这已经是我能给的全部了" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSt-Ce-cvU">
-                    <rect key="frame" x="10" y="348.5" width="355" height="20"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="风萧萧兮易水寒，木有数据怎么办！" translatesAutoresizingMaskIntoConstraints="NO" id="A6s-Hk-0f1">
+                    <rect key="frame" x="106" y="353.5" width="164" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="6Sp-Bf-eey"/>
+                        <constraint firstAttribute="height" constant="30" id="XkD-JX-vMy"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="fhH-rB-ERI" firstAttribute="centerY" secondItem="E61-Sq-55L" secondAttribute="centerY" constant="-20" id="NT1-RQ-BUj"/>
+                <constraint firstItem="A6s-Hk-0f1" firstAttribute="top" secondItem="fhH-rB-ERI" secondAttribute="bottom" constant="5" id="3FE-D7-CrB"/>
+                <constraint firstItem="A6s-Hk-0f1" firstAttribute="centerX" secondItem="E61-Sq-55L" secondAttribute="centerX" id="L3k-RN-get"/>
+                <constraint firstItem="fhH-rB-ERI" firstAttribute="centerY" secondItem="E61-Sq-55L" secondAttribute="centerY" constant="-40" id="NT1-RQ-BUj"/>
                 <constraint firstItem="fhH-rB-ERI" firstAttribute="centerX" secondItem="E61-Sq-55L" secondAttribute="centerX" id="Nsy-Eh-uoE"/>
-                <constraint firstItem="iSt-Ce-cvU" firstAttribute="top" secondItem="fhH-rB-ERI" secondAttribute="bottom" constant="5" id="Xw6-ag-NMh"/>
-                <constraint firstItem="iSt-Ce-cvU" firstAttribute="leading" secondItem="E61-Sq-55L" secondAttribute="leading" constant="10" id="urH-OV-JgC"/>
-                <constraint firstAttribute="trailing" secondItem="iSt-Ce-cvU" secondAttribute="trailing" constant="10" id="xS5-Sb-CgT"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="pic_nodata" width="116" height="116"/>
+        <image name="pic_nodata" width="170" height="105"/>
+        <image name="风萧萧兮易水寒，木有数据怎么办！" width="164" height="10"/>
     </resources>
 </document>
