@@ -25,6 +25,7 @@
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewWidth;
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @property (weak, nonatomic) IBOutlet UILabel *noticeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *beanStyleLabel;
@@ -35,7 +36,7 @@
 
 //二级密码
 @property (weak, nonatomic) IBOutlet UITextField *secondPwdF;
-@property (weak, nonatomic) IBOutlet UILabel *convertibleMoneyLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *remainBeanLabel;
 //修改银行卡
 @property (weak, nonatomic) IBOutlet UIImageView *bankStyleImageV;
@@ -62,34 +63,34 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationController.navigationBar.hidden = NO;
+    
     self.title = @"回购";
     self.view.backgroundColor = [UIColor whiteColor];
     self.ensureBtn.layer.cornerRadius = 5.f;
-    
+    [self.backBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 0, 5, 20)];
+
     self.scrollView.delegate = self;
 //    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, 450);
     
-    //自定义导航栏右按钮
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(SCREEN_WIDTH - 60, 14, 60, 30);
-    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
-    [button setTitle:@"回购记录" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont systemFontOfSize:13];
-    [button addTarget:self action:@selector(pushToBuyBackVC) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+//    //自定义导航栏右按钮
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = CGRectMake(SCREEN_WIDTH - 60, 14, 60, 30);
+//    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
+//    [button setTitle:@"回购记录" forState:UIControlStateNormal];
+//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    button.titleLabel.font = [UIFont systemFontOfSize:13];
+//    [button addTarget:self action:@selector(pushToBuyBackVC) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
 
 //    if([[UserModel defaultUser].userLogin integerValue] == 1){
 //        
-        self.noticeLabel.text = @" 1. 回购建议优先选择工商银行\n 2. 单笔最多回购50000颗米子\n 3. 单笔米子扣除回购金额5%的手续费\n 4. 单笔待交税米子回购扣除手续费5(颗)米子手续费,以及回购金额4.8‰的代缴税\n 5. 待缴税米子任意时间允许回购\n ";
+        self.noticeLabel.text = @" 1. 回购建议优先选择工商银行\n 2. 单笔最多回购50000颗米子\n 3. 单笔米子扣除回购金额5%的手续费 ";
 //    }else{
 //        self.noticeLabel.text = @" 1. 回购建议优先选择工商银行\n 2. 单笔普通志愿豆扣除回购金额5%的手续费\n 3. 单笔待提供发票志愿豆回购扣除手续费5(颗)志愿豆手续费,以及回购金额4.8‰的代缴税\n 4. 待提供发票志愿豆任意时间允许回购\n";
 //    }
 //    
 //    [UILabel changeLineSpaceForLabel:self.noticeLabel WithSpace:5.0];
-//
-    self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].ketiBean floatValue]];
+
     self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].ketiBean floatValue]];
     
     
@@ -99,7 +100,7 @@
     self.secondPwdF.delegate = self;
     
     self.contentViewWidth.constant = SCREEN_WIDTH;
-    self.contentViewHeight.constant = 250;
+    self.contentViewHeight.constant = SCREEN_HEIGHT - 100;
     
     [self updateData];
     
@@ -138,11 +139,10 @@
             [usermodelachivar achive];
             
             if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
-                
-                self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].ketiBean floatValue]];
+
                 self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].ketiBean floatValue]];
             }else{
-                self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].djs_bean floatValue]];
+
                 self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].djs_bean floatValue]];
             }
         }else{
@@ -240,7 +240,7 @@
     }else if(![self isPureNumandCharacters:self.buybackNumF.text]){
         [MBProgressHUD showError:@"回购数量只能为正整数"];
         return;
-    }else if([self.buybackNumF.text integerValue] > [self.convertibleMoneyLabel.text integerValue]){
+    }else if([self.buybackNumF.text integerValue] > [self.remainBeanLabel.text integerValue]){
         [MBProgressHUD showError:@"余额不足!"];
         return;
     }
@@ -400,14 +400,18 @@
     }];
 
 }
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 //跳转回购记录
-- (void)pushToBuyBackVC{
+- (IBAction)buyBackRecord:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
     GLBuyBackRecordController *recordVC = [[GLBuyBackRecordController alloc] init];
     
     [self.navigationController pushViewController:recordVC animated:YES];
-    
 }
+
 - (IBAction)chooseBank:(id)sender {
     if (self.addImageV.hidden) {
         self.hidesBottomBarWhenPushed = YES;
@@ -462,7 +466,6 @@
     if (sender== _directV.normalBtn) {
         self.beanStyleLabel.text = @"米子";
         self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
-        self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
         
     }else{
 //        if([[UserModel defaultUser].userLogin integerValue] == 1){
@@ -473,9 +476,7 @@
 //            self.beanStyleLabel.text = @"待提供发票志愿豆";
 //        }
         self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
-        
-        self.convertibleMoneyLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
-      
+
     }
     [self dismiss];
 }
@@ -483,7 +484,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-
+    self.navigationController.navigationBar.hidden = YES;
     [self updateData];
     
 //    if ([[UserModel defaultUser].cardNumber isEqualToString:@""]){

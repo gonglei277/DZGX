@@ -27,6 +27,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *secondPwdF;
 @property (weak, nonatomic) IBOutlet UILabel *useableBeanLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noticeLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeight;
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @end
 
@@ -35,12 +38,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"转赠";
-    self.navigationController.navigationBar.hidden = NO;
+//    self.navigationController.navigationBar.hidden = NO;
     self.getCodeBtn.layer.cornerRadius = 5.f;
     self.ensureBtn.layer.cornerRadius = 5.f;
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     //可转赠善行豆
-    self.useableBeanLabel.text = [NSString stringWithFormat:@"%@颗",[UserModel defaultUser].ketiBean];
+    self.useableBeanLabel.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].ketiBean];
     NSString *userType;
     if ([[UserModel defaultUser].groupId isEqualToString:OrdinaryUser]) {
         userType = @"米家";
@@ -48,16 +51,10 @@
         userType = @"商家";
     }
     self.noticeLabel.text = [NSString stringWithFormat:@"*您可以将您的米子转赠给您的%@朋友,或者需要帮助的%@.",userType,userType];
-    
-    //自定义导航栏右按钮
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(SCREEN_WIDTH - 60, 14, 60, 30);
-    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
-    [button setTitle:@"转赠记录" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont systemFontOfSize:13];
-    [button addTarget:self action:@selector(pushToRecordVC) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+
+    self.contentViewWidth.constant = SCREEN_WIDTH;
+    self.contentViewHeight.constant = SCREEN_HEIGHT - 50;
+    [self.backBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 0, 5, 20)];
     
     //设置键盘return键
     self.donationIDF.returnKeyType = UIReturnKeyNext;
@@ -69,7 +66,12 @@
     self.idCodeF.delegate = self;
     self.secondPwdF.delegate = self;
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+    
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (textField == self.donationIDF){
@@ -327,9 +329,15 @@
         
     }];
 }
-- (void)pushToRecordVC {
+- (IBAction)back:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+//转赠记录
+- (IBAction)donationRecord:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
     GLDonationRecordController *recordVC = [[GLDonationRecordController alloc] init];
     [self.navigationController pushViewController:recordVC animated:YES];
 }
+
 @end

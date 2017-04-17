@@ -571,6 +571,18 @@ static NSString *followID = @"GLFirstFollowCell";
         [_loadV removeloadview];
         if ([responseObject[@"code"] intValue] == 1) {
             
+            if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"money"]]rangeOfString:@"null"].location != NSNotFound) {
+                _rewardContentView.label4.text = @"";
+            }else{
+                if ([responseObject[@"data"][@"head3"][@"money"] floatValue] > 10000) {
+                    
+                    _rewardContentView.label4.text = [NSString stringWithFormat:@"%.2f万",[responseObject[@"data"][@"head3"][@"money"] floatValue]/10000];
+                }else{
+                    _rewardContentView.label4.text = responseObject[@"data"][@"head3"][@"money"];
+                }
+            }
+            
+            
             _rewardContentView.label3.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"ltime"]];
             _rewardContentView.label5.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"sh_sum"]];
             _rewardContentView.label6.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"people"]];
@@ -591,12 +603,7 @@ static NSString *followID = @"GLFirstFollowCell";
                 _rewardContentView.label2.text = responseObject[@"data"][@"head3"][@"zjz"];
             }
             
-            if ([responseObject[@"data"][@"head3"][@"money"] floatValue] > 10000) {
-                
-                _rewardContentView.label4.text = [NSString stringWithFormat:@"%.2f万",[responseObject[@"data"][@"head3"][@"money"] floatValue]/10000];
-            }else{
-                _rewardContentView.label4.text = responseObject[@"data"][@"head3"][@"money"];
-            }
+           
         }
         
     } enError:^(NSError *error) {

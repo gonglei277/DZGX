@@ -2421,12 +2421,12 @@
 		4A4609A61E9CB78E0045824F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4A4609A71E9CB78E0045824F /* GLDirectDnationRecordController.h */,
-				4A4609A81E9CB78E0045824F /* GLDirectDnationRecordController.m */,
-				4A4609A91E9CB78E0045824F /* GLDirectDnationRecordController.xib */,
 				4A4609AA1E9CB78E0045824F /* GLDirectDonationController.h */,
 				4A4609AB1E9CB78E0045824F /* GLDirectDonationController.m */,
 				4A4609AC1E9CB78E0045824F /* GLDirectDonationController.xib */,
+				4A4609A71E9CB78E0045824F /* GLDirectDnationRecordController.h */,
+				4A4609A81E9CB78E0045824F /* GLDirectDnationRecordController.m */,
+				4A4609A91E9CB78E0045824F /* GLDirectDnationRecordController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
