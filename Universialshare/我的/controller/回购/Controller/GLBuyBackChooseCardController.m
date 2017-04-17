@@ -36,7 +36,7 @@
     self.ensureBtn.layer.cornerRadius = 5.f;
     self.title = @"修改银行卡";
     self.nameLabel.text =[NSString stringWithFormat:@"%@",[UserModel defaultUser].name];
-    
+    self.navigationController.navigationBar.hidden = NO;
     //注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"maskView_dismiss" object:nil];
     
@@ -139,7 +139,7 @@
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/add_bank_num" paramDic:dict finish:^(id responseObject) {
-
+        [_loadV removeloadview];
         NSLog(@"dict = %@",dict);
         NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {

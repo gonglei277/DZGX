@@ -58,7 +58,7 @@
                     <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国工商银行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ot-Nu-Xn6">
-                    <rect key="frame" x="258" y="124" width="80" height="20"/>
+                    <rect key="frame" x="91" y="124" width="80" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="rAQ-M7-RXz"/>
                     </constraints>
@@ -68,7 +68,7 @@
                     <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入银行卡号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J0o-KL-bFq">
-                    <rect key="frame" x="91" y="174" width="247" height="20"/>
+                    <rect key="frame" x="91" y="174" width="292" height="20"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits"/>
@@ -85,7 +85,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6a-8L-zB9">
                     <rect key="frame" x="10" y="325" width="373" height="40"/>
-                    <color key="backgroundColor" red="0.033305738119999997" green="0.53065627810000005" blue="0.085619680579999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.1551630795" green="0.58942979569999998" blue="0.2282119095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="9KU-Zh-bPo"/>
                     </constraints>
@@ -150,7 +150,7 @@
                 <constraint firstItem="q0i-IT-wsZ" firstAttribute="height" secondItem="y9s-Ec-KgB" secondAttribute="height" id="CwZ-Xh-SnR"/>
                 <constraint firstItem="pLG-wq-rwo" firstAttribute="leading" secondItem="PFI-Jh-GBH" secondAttribute="leading" id="ImM-Lw-mrm"/>
                 <constraint firstAttribute="trailing" secondItem="Qcn-Oj-fcj" secondAttribute="trailing" constant="10" id="JCU-i4-tOn"/>
-                <constraint firstItem="Hte-eg-lHU" firstAttribute="leading" secondItem="6ot-Nu-Xn6" secondAttribute="trailing" constant="30" id="K3U-wn-8ld"/>
+                <constraint firstAttribute="trailing" secondItem="J0o-KL-bFq" secondAttribute="trailing" constant="10" id="JZK-pN-oAt"/>
                 <constraint firstItem="Zec-Lq-FSc" firstAttribute="leading" secondItem="ggQ-OS-gLp" secondAttribute="leading" id="Ky7-F9-TpA"/>
                 <constraint firstItem="PFI-Jh-GBH" firstAttribute="top" secondItem="ngz-jm-sec" secondAttribute="bottom" constant="30" id="Q8N-Ul-hYP"/>
                 <constraint firstItem="Hte-eg-lHU" firstAttribute="trailing" secondItem="Zec-Lq-FSc" secondAttribute="trailing" id="Rrs-B7-mQW"/>
@@ -168,12 +168,12 @@
                 <constraint firstItem="ngz-jm-sec" firstAttribute="leading" secondItem="ggQ-OS-gLp" secondAttribute="leading" id="k2D-ip-5RB"/>
                 <constraint firstItem="J0o-KL-bFq" firstAttribute="leading" secondItem="Qcn-Oj-fcj" secondAttribute="leading" id="ly3-Oq-9LU"/>
                 <constraint firstItem="ggQ-OS-gLp" firstAttribute="height" secondItem="y9s-Ec-KgB" secondAttribute="height" id="lz7-f7-KAs"/>
-                <constraint firstItem="J0o-KL-bFq" firstAttribute="trailing" secondItem="6ot-Nu-Xn6" secondAttribute="trailing" id="oUe-i2-odW"/>
                 <constraint firstItem="mxI-Cw-TlK" firstAttribute="centerY" secondItem="pLG-wq-rwo" secondAttribute="centerY" id="pYL-pI-cnr"/>
                 <constraint firstItem="ggQ-OS-gLp" firstAttribute="top" secondItem="y9s-Ec-KgB" secondAttribute="bottom" constant="30" id="soc-y3-U8u"/>
                 <constraint firstItem="y9s-Ec-KgB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="uLk-z1-Iot"/>
                 <constraint firstItem="J0o-KL-bFq" firstAttribute="centerY" secondItem="ngz-jm-sec" secondAttribute="centerY" id="vYT-WU-1m4"/>
                 <constraint firstItem="ggQ-OS-gLp" firstAttribute="leading" secondItem="y9s-Ec-KgB" secondAttribute="leading" id="wbp-NB-aPp"/>
+                <constraint firstItem="6ot-Nu-Xn6" firstAttribute="leading" secondItem="J0o-KL-bFq" secondAttribute="leading" id="wdb-wt-OpT"/>
                 <constraint firstItem="Zec-Lq-FSc" firstAttribute="top" secondItem="ggQ-OS-gLp" secondAttribute="top" id="x0g-dN-jzh"/>
                 <constraint firstItem="Qcn-Oj-fcj" firstAttribute="centerY" secondItem="PFI-Jh-GBH" secondAttribute="centerY" id="x3m-VU-qCy"/>
                 <constraint firstItem="ngz-jm-sec" firstAttribute="height" secondItem="ggQ-OS-gLp" secondAttribute="height" id="yaz-c8-M9k"/>
