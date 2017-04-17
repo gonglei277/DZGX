@@ -48,7 +48,7 @@ static NSString *ID = @"GLBuyBackRecordCell";
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
-    [self.view addSubview:self.nodataV];
+    [self.tableView addSubview:self.nodataV];
     self.nodataV.hidden = YES;
 //    self.tableView.backgroundColor = [UIColor redColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -116,11 +116,7 @@ static NSString *ID = @"GLBuyBackRecordCell";
                 [MBProgressHUD showError:@"已经没有更多数据了!"];
             }
         }
-        if (_models.count <= 0 ) {
-            self.nodataV.hidden = NO;
-        }else{
-            self.nodataV.hidden = YES;
-        }
+      
         [self.tableView reloadData];
         
     } enError:^(NSError *error) {
@@ -146,6 +142,11 @@ static NSString *ID = @"GLBuyBackRecordCell";
 #pragma  UITableviewDatasource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (_models.count <= 0 ) {
+        self.nodataV.hidden = NO;
+    }else{
+        self.nodataV.hidden = YES;
+    }
     return self.models.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

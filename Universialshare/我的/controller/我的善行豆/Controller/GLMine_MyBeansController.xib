@@ -59,7 +59,7 @@
                             <state key="normal" title="推荐米子">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <state key="highlighted" title="推荐志愿豆">
+                            <state key="highlighted">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -74,7 +74,7 @@
                             <state key="normal" title="获赠米子">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <state key="highlighted" title="获赠志愿豆">
+                            <state key="highlighted">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>

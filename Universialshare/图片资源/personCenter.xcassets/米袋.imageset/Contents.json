@@ -7,7 +7,11 @@
     },
     {
       "idiom" : "universal",
+<<<<<<< HEAD:Universialshare/图片资源/personCenter.xcassets/米袋.imageset/Contents.json
       "filename" : "米袋@2x.png",
+=======
+      "filename" : "mine_rljz.png",
+>>>>>>> 7393144416fc07e0e47733be4c5e20754723fa1b:Universialshare/图片资源/Mine_sixPart.xcassets/4回购.imageset/Contents.json
       "scale" : "2x"
     },
     {

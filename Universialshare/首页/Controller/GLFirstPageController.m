@@ -37,6 +37,8 @@
     
     LoadWaitView *_loadV;
     
+    int _currentPage;
+    
 }
 @property (weak, nonatomic) IBOutlet UIButton *head_iconBtn;
 @property (weak, nonatomic) IBOutlet UILabel *totalSumLabel;
@@ -82,17 +84,26 @@ static NSString *followID = @"GLFirstFollowCell";
     [super viewDidLoad];
     
     [self addMySelfPanGesture];
-    
 
 //    [self initInterDataSorceinfomessage];
+    
     [self setupUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFunction) name:UIApplicationWillEnterForegroundNotification object:[UIApplication sharedApplication]];
 }
 //重新进入程序  刷新界面
 - (void)updateFunction {
-    [self.dailyModels removeAllObjects];
-    [self.rankingModels removeAllObjects];
-    [self setupUI];
+    if (_currentPage == 1) {
+        _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+        [self dailyRequest];
+        [_dailyContentView.tableView reloadData];
+    }else if (_currentPage == 2){
+        _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+        [self rankingRequest];
+        [_rankingContentView.tableView reloadData];
+    }else{
+        _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+        [self rewardRequest];
+    }
     
 }
 
@@ -199,12 +210,13 @@ static NSString *followID = @"GLFirstFollowCell";
 - (void)changeView:(UITapGestureRecognizer *)tap {
     
     if (tap.view == self.dailyView) {
+        _currentPage = 1;
+       
         if (self.dailyContentView.alpha == 0) {
             
             self.dailyContentView.alpha = 1;
             self.rankingContentView.alpha = 0;
             self.rewardContentView.alpha = 0;
-            
             
             CATransition *animation = [CATransition animation];
             animation.duration = 0.6;
@@ -217,6 +229,8 @@ static NSString *followID = @"GLFirstFollowCell";
         }
         
     }else if(tap.view == self.rankingView){
+        _currentPage = 2;
+      
         if (self.rankingContentView.alpha == 0) {
             
             self.dailyContentView.alpha = 0;
@@ -234,6 +248,8 @@ static NSString *followID = @"GLFirstFollowCell";
         }
 
     }else{
+        _currentPage = 3;
+       
         if (self.rewardContentView.alpha == 0) {
             
             self.dailyContentView.alpha = 0;
@@ -247,15 +263,13 @@ static NSString *followID = @"GLFirstFollowCell";
             self.rewardContentView.frame = CGRectMake(0, 0, self.contentView.yy_width, self.contentView.yy_height);
             
             [self.rewardContentView.layer addAnimation:animation forKey:nil];
-
         }
-
     }
 }
 -(void)initInterDataSorceinfomessage{
     
     [NetworkManager requestPOSTWithURLStr:@"index/notice" paramDic:nil finish:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
 //        [_loadV removeFromSuperview];
         if ([responseObject[@"code"] integerValue] == 1) {
             
@@ -458,64 +472,73 @@ static NSString *followID = @"GLFirstFollowCell";
 - (NSMutableArray *)dailyModels{
     if (!_dailyModels) {
         _dailyModels = [NSMutableArray array];
-        
-        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-        dic[@"type"] = @"1";
-        
-         _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
-            [_loadV removeFromSuperview];
-            if ([responseObject[@"code"] intValue] == 1) {
-                
-                NSArray *dicArr = responseObject[@"data"][@"head"];
-                for (int i = 0; i < dicArr.count; i ++) {
-                    GLFirstPageDailyModel *model = [[GLFirstPageDailyModel alloc] init];
-                    model = [GLFirstPageDailyModel mj_objectWithKeyValues:dicArr[i]];
-                    [_dailyModels addObject:model];
-                    
-                }
-                CGFloat sum = [responseObject[@"zjz"] floatValue];
-                NSString *sumStr = [NSString stringWithFormat:@"%.2f万",sum/10000];
-                _totalSumLabel.text = [NSString stringWithFormat:@"全联盟昨日消费:%@元",sumStr];
-            }
-            
-            [_dailyContentView.tableView reloadData];
-        } enError:^(NSError *error) {
-            [_loadV removeFromSuperview];
-            NSLog(@"%@",error);
-            
-        }];
+        _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+        [self dailyRequest];
     }
     return _dailyModels;
+}
+- (void)dailyRequest {
+    [_dailyModels removeAllObjects];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[@"type"] = @"1";
+
+    [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
+        [_loadV removeloadview];
+        if ([responseObject[@"code"] intValue] == 1) {
+            
+            NSArray *dicArr = responseObject[@"data"][@"head"];
+            for (int i = 0; i < dicArr.count; i ++) {
+                GLFirstPageDailyModel *model = [[GLFirstPageDailyModel alloc] init];
+                model = [GLFirstPageDailyModel mj_objectWithKeyValues:dicArr[i]];
+                [_dailyModels addObject:model];
+                
+            }
+            CGFloat sum = [responseObject[@"zjz"] floatValue];
+            NSString *sumStr = [NSString stringWithFormat:@"%.2f万",sum/10000];
+            _totalSumLabel.text = [NSString stringWithFormat:@"全联盟昨日消费:%@元",sumStr];
+        }
+        
+        [_dailyContentView.tableView reloadData];
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        NSLog(@"%@",error);
+        
+    }];
 }
 - (NSMutableArray *)rankingModels{
     
     if (!_rankingModels) {
         
         _rankingModels = [NSMutableArray array];
-        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-        dic[@"type"] = @"2";
-//         _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
-            [_loadV removeFromSuperview];
-             if ([responseObject[@"code"] intValue] == 1) {
+        
+        [self rankingRequest];
+        }
+    return _rankingModels;
+}
+- (void)rankingRequest {
+    [_rankingModels removeAllObjects];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[@"type"] = @"2";
+    //         _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
+        [_loadV removeloadview];
+        if ([responseObject[@"code"] intValue] == 1) {
             NSArray *dicArr = responseObject[@"data"][@"head2"];
             for (int i = 0; i < dicArr.count; i ++) {
                 
                 GLFirstPageRankingModel *model = [GLFirstPageRankingModel mj_objectWithKeyValues:dicArr[i]];
                 [_rankingModels addObject:model];
                 
-                }
-             }
-            
-            [_rankingContentView.tableView reloadData];
-        } enError:^(NSError *error) {
-            [_loadV removeFromSuperview];
-            NSLog(@"%@",error);
-            
-        }];
-    }
-    return _rankingModels;
+            }
+        }
+        
+        [_rankingContentView.tableView reloadData];
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        NSLog(@"%@",error);
+        
+    }];
+
 }
 - (GLDailyView *)dailyContentView{
     if (!_dailyContentView) {
@@ -535,52 +558,53 @@ static NSString *followID = @"GLFirstFollowCell";
 - (GLRewardView *)rewardContentView{
     if (!_rewardContentView) {
         _rewardContentView =  [[NSBundle mainBundle] loadNibNamed:@"GLRewardView" owner:nil options:nil].lastObject;
-        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-        dic[@"type"] = @"3";
-//         _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-        [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
-//                        NSLog(@"%@",responseObject);
-            [_loadV removeFromSuperview];
-            if ([responseObject[@"code"] intValue] == 1) {
-                
-                _rewardContentView.label3.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"ltime"]];
-                _rewardContentView.label5.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"sh_sum"]];
-                _rewardContentView.label6.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"people"]];
-                
-                _rewardContentView.timeLabel.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"time"]];
-                
-                if([responseObject[@"data"][@"head3"][@"djz"] floatValue] > 10000){
-                    
-                    _rewardContentView.label.text =[NSString stringWithFormat:@"%.2f万",[responseObject[@"data"][@"head3"][@"djz"] floatValue]/10000];
-                }else{
-                    _rewardContentView.label.text = responseObject[@"data"][@"head3"][@"djz"];
-                }
-                
-                if ([responseObject[@"data"][@"head3"][@"zjz"] floatValue] > 10000) {
-                    
-                    _rewardContentView.label2.text = [NSString stringWithFormat:@"%.2f万",[responseObject[@"data"][@"head3"][@"zjz"] floatValue]/10000];
-                }else{
-                    _rewardContentView.label2.text = responseObject[@"data"][@"head3"][@"zjz"];
-                }
-               
-                if ([responseObject[@"data"][@"head3"][@"money"] floatValue] > 10000) {
-                    
-                    _rewardContentView.label4.text = [NSString stringWithFormat:@"%.2f万",[responseObject[@"data"][@"head3"][@"money"] floatValue]/10000];
-                }else{
-                    _rewardContentView.label4.text = responseObject[@"data"][@"head3"][@"money"];
-                }
-            }
-            
-        } enError:^(NSError *error) {
-            [_loadV removeFromSuperview];
-            NSLog(@"%@",error);
-            
-        }];
-        
+        [self rewardRequest];
     }
     return _rewardContentView;
 }
-//- (void)
+- (void)rewardRequest {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[@"type"] = @"3";
+    //         _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"index/index" paramDic:dic finish:^(id responseObject) {
+        //                        NSLog(@"%@",responseObject);
+        [_loadV removeloadview];
+        if ([responseObject[@"code"] intValue] == 1) {
+            
+            _rewardContentView.label3.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"ltime"]];
+            _rewardContentView.label5.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"sh_sum"]];
+            _rewardContentView.label6.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"people"]];
+            
+            _rewardContentView.timeLabel.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"time"]];
+            
+            if([responseObject[@"data"][@"head3"][@"djz"] floatValue] > 10000){
+                
+                _rewardContentView.label.text =[NSString stringWithFormat:@"%.2f万",[responseObject[@"data"][@"head3"][@"djz"] floatValue]/10000];
+            }else{
+                _rewardContentView.label.text = responseObject[@"data"][@"head3"][@"djz"];
+            }
+            
+            if ([responseObject[@"data"][@"head3"][@"zjz"] floatValue] > 10000) {
+                
+                _rewardContentView.label2.text = [NSString stringWithFormat:@"%.2f万",[responseObject[@"data"][@"head3"][@"zjz"] floatValue]/10000];
+            }else{
+                _rewardContentView.label2.text = responseObject[@"data"][@"head3"][@"zjz"];
+            }
+            
+            if ([responseObject[@"data"][@"head3"][@"money"] floatValue] > 10000) {
+                
+                _rewardContentView.label4.text = [NSString stringWithFormat:@"%.2f万",[responseObject[@"data"][@"head3"][@"money"] floatValue]/10000];
+            }else{
+                _rewardContentView.label4.text = responseObject[@"data"][@"head3"][@"money"];
+            }
+        }
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        NSLog(@"%@",error);
+        
+    }];
+}
 
 #pragma mark ------------------self.view的滑动手势
 #pragma mark 添加手势
