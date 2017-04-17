@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,7 +72,7 @@
                                     <rect key="frame" x="5" y="0.0" width="270" height="40"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="dhQ-IV-3wL"/>
                                     </connections>
@@ -108,7 +107,7 @@
                                     <rect key="frame" x="5" y="0.0" width="340" height="40"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="pei-nN-GAd"/>
                                     </connections>
@@ -144,7 +143,7 @@
                                     <rect key="frame" x="5" y="0.0" width="270" height="40"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="C4i-gW-Li3"/>
                                     </connections>
