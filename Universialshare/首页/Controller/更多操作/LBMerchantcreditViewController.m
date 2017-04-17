@@ -20,6 +20,7 @@
 @property (assign, nonatomic)BOOL refreshType;//判断刷新状态 默认为no
 
 @property (assign, nonatomic)NSUInteger allCount;//总条数
+
 @end
 
 @implementation LBMerchantcreditViewController
@@ -164,4 +165,5 @@
     return _dataArr;
 
 }
+
 @end

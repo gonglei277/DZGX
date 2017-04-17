@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "umeng_socialize_fav.png",
+      "filename" : "米袋.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "米袋@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "米袋@3x.png",
       "scale" : "3x"
     }
   ],
