@@ -57,7 +57,7 @@ static NSString *ID = @"GLEncourageBeansCell";
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:self.tableView];
-    [self.view addSubview:self.nodataV];
+    [self.tableView addSubview:self.nodataV];
     self.nodataV.hidden = YES;
     //    self.tableView.backgroundColor = [UIColor redColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -127,11 +127,7 @@ static NSString *ID = @"GLEncourageBeansCell";
             [MBProgressHUD showError:responseObject[@"message"]];
         }
         
-        if (self.models.count <= 0 ) {
-            self.nodataV.hidden = NO;
-        }else{
-            self.nodataV.hidden = YES;
-        }
+     
         
         //赋值
         if (self.retureValue) {
@@ -161,7 +157,11 @@ static NSString *ID = @"GLEncourageBeansCell";
 //    return 1;
 //}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
+    if (self.models.count <= 0 ) {
+        self.nodataV.hidden = NO;
+    }else{
+        self.nodataV.hidden = YES;
+    }
     return self.models.count;
     
 }

@@ -58,7 +58,7 @@ static NSString *ID = @"GLRecommendCell";
 
     
     [self.view addSubview:self.tableView];
-    [self.view addSubview:self.nodataV];
+    [self.tableView addSubview:self.nodataV];
     self.nodataV.hidden = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.delegate = self;
@@ -104,7 +104,7 @@ static NSString *ID = @"GLRecommendCell";
         
         [_loadV removeloadview];
         [self endRefresh];
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
             for (NSDictionary *dict in responseObject[@"data"]) {
@@ -119,11 +119,7 @@ static NSString *ID = @"GLRecommendCell";
             [MBProgressHUD showError:responseObject[@"message"]];
         }
         
-        if (self.models.count <= 0 ) {
-            self.nodataV.hidden = NO;
-        }else{
-            self.nodataV.hidden = YES;
-        }
+       
         
         //赋值
         if (self.retureValue) {
@@ -153,7 +149,11 @@ static NSString *ID = @"GLRecommendCell";
 //    return 1;
 //}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
+    if (self.models.count <= 0 ) {
+        self.nodataV.hidden = NO;
+    }else{
+        self.nodataV.hidden = YES;
+    }
     return self.models.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
