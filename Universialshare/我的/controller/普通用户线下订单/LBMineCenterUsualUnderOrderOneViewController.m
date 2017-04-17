@@ -7,7 +7,7 @@
 //
 
 #import "LBMineCenterUsualUnderOrderOneViewController.h"
-#import "LBMyOrderListTableViewCell.h"
+#import "LBMineCenterUsualUnderOrderTableViewCell.h"
 
 @interface LBMineCenterUsualUnderOrderOneViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -28,7 +28,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.tableview.tableFooterView = [UIView new];
-    [self.tableview registerNib:[UINib nibWithNibName:@"LBMyOrderListTableViewCell" bundle:nil] forCellReuseIdentifier:@"LBMyOrderListTableViewCell"];
+    [self.tableview registerNib:[UINib nibWithNibName:@"LBMineCenterUsualUnderOrderTableViewCell" bundle:nil] forCellReuseIdentifier:@"LBMineCenterUsualUnderOrderTableViewCell"];
     
     __weak __typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -76,12 +76,50 @@
 }
 
 -(void)initdatasource{
+    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"user/order_line" paramDic:@{@"page":[NSNumber numberWithInteger:_page] , @"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token ,@"type":[NSNumber numberWithInteger:0],@"typeID":OrdinaryUser} finish:^(id responseObject) {
+        [_loadV removeloadview];
+        [self.tableview.mj_header endRefreshing];
+        [self.tableview.mj_footer endRefreshing];
+        if ([responseObject[@"code"] integerValue]==1) {
+            
+            if ([responseObject[@"data"] isEqual:[NSArray array]]) {
+                if (_refreshType == NO) {
+                    [self.dataarr removeAllObjects];
+                    
+                    [self.dataarr addObjectsFromArray:responseObject[@"data"]];
+                    
+                    [self.tableview reloadData];
+                }else{
+                    
+                    [self.dataarr addObjectsFromArray:responseObject[@"data"]];
+                    
+                    [self.tableview reloadData];
+                    
+                }
+            }
+            
+        }else{
+            
+            [MBProgressHUD showError:responseObject[@"message"]];
+            [self.tableview reloadData];
+        }
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        [self.tableview.mj_header endRefreshing];
+        [self.tableview.mj_footer endRefreshing];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
+    
+    
 
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 1;
+    return self.dataarr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -96,12 +134,14 @@
     
     
     
-    LBMyOrderListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMyOrderListTableViewCell" forIndexPath:indexPath];
+    LBMineCenterUsualUnderOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMineCenterUsualUnderOrderTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.baseview1.hidden = YES;
-    cell.baseView1H.constant = 0;
-    cell.payBt.hidden = YES;
+    cell.orderCode.text = [NSString stringWithFormat:@"订单号:%@",self.dataarr[indexPath.row][@"order_num"]];
+    cell.orderCode.text = [NSString stringWithFormat:@"名称:%@",self.dataarr[indexPath.row][@"goods_name"]];
+    cell.orderCode.text = [NSString stringWithFormat:@"订单金额:%@元",self.dataarr[indexPath.row][@"line_money"]];
+    cell.orderCode.text = [NSString stringWithFormat:@"模式:%@",self.dataarr[indexPath.row][@"bili"]];
+    cell.orderCode.text = [NSString stringWithFormat:@"下单时间:%@",self.dataarr[indexPath.row][@"addtime"]];
     
     return cell;
     

@@ -147,7 +147,7 @@
             
             int a = [string characterAtIndex:i];
             
-            if( a > 0x4e00 && a < 0x9fff)
+            if( a >= 0x4e00 && a <= 0x9fff)
                 
                 return NO;
         }
