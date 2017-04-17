@@ -168,6 +168,7 @@
             
             [UserModel defaultUser].loginstatus = YES;
             [UserModel defaultUser].usrtype = self.usertype;
+            [UserModel defaultUser].AudiThrough = @"0";
             
             if ([[UserModel defaultUser].banknumber rangeOfString:@"null"].location != NSNotFound) {
                 

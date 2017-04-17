@@ -38,6 +38,7 @@
 @property (nonatomic ,copy)NSString  *truename;//真实姓名
 @property (nonatomic ,copy)NSString  *tjr;//推荐人
 @property (nonatomic ,copy)NSString  *tjrname;//推荐人姓名
+@property (nonatomic ,copy)NSString  *AudiThrough;//判断商家是否通过审核
 
 @property (nonatomic ,copy)NSString  *shop_name;//商家
 @property (nonatomic ,copy)NSString  *shop_address;//商家地址

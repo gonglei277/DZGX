@@ -281,7 +281,7 @@ static NSString *ID = @"GLMine_InfoCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.index = indexPath.row;
     
-    if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {//零售商
+    if ([[UserModel defaultUser].usrtype isEqualToString:Retailer] && [[UserModel defaultUser].AudiThrough isEqualToString:@"1"]) {//零售商
         
         if (indexPath.row == 0) {
             cell.headimage.hidden = NO;
@@ -380,7 +380,7 @@ static NSString *ID = @"GLMine_InfoCell";
             
         }
         
-    }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]) {//普通用户
+    }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser] || [[UserModel defaultUser].usrtype isEqualToString:Retailer]) {//普通用户
         
         if (indexPath.row == 0) {
             cell.headimage.hidden = NO;

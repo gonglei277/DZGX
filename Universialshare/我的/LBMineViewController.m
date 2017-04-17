@@ -73,21 +73,11 @@
     [super viewWillAppear:animated];
     
      self.navigationController.navigationBar.hidden = YES;
-    
-    UIImage *imaage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
-    
-    if (!imaage) {
 
-        self.headview.headimage.image = [UIImage imageNamed:@"mine_head"];
-    }else{
-        
-        self.headview.headimage.image = imaage;
-    }
-
-    [self refreshDataSource];
 
 }
 -(void)pushToInfoVC{
+    
     self.hidesBottomBarWhenPushed=YES;
     GLMine_InfoController *infoVC = [[GLMine_InfoController alloc] init];
     [self.navigationController pushViewController:infoVC animated:YES];
@@ -585,9 +575,51 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 
    
     [NetworkManager requestPOSTWithURLStr:@"user/refresh" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid} finish:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+        
         if ([responseObject[@"code"] integerValue] == 1) {
             
+            [UserModel defaultUser].mark = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"mark"]];
+            [UserModel defaultUser].loveNum = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"lovenum"]];
+            [UserModel defaultUser].ketiBean = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"common"]];
+            [UserModel defaultUser].djs_bean = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"taxes"]];
+            [UserModel defaultUser].giveMeMark = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"give_me_bean"]];
+            [UserModel defaultUser].lastFanLiTime = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"lasttime"]];
+            [UserModel defaultUser].recommendMark = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"tjtc"]];
+            [UserModel defaultUser].truename = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"truename"]];
+            [UserModel defaultUser].shop_address = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"shop_address"]];
+            [UserModel defaultUser].shop_type = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"shop_type"]];
+            [UserModel defaultUser].idcard = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]];
+            [UserModel defaultUser].headPic = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"pic"]];
+            [UserModel defaultUser].AudiThrough = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"status"]];
+            
+            if ([[UserModel defaultUser].idcard rangeOfString:@"null"].location != NSNotFound) {
+                
+                [UserModel defaultUser].idcard = @"";
+            }
+            if ([[UserModel defaultUser].shop_type rangeOfString:@"null"].location != NSNotFound) {
+                
+                [UserModel defaultUser].shop_type = @"";
+            }
+            if ([[UserModel defaultUser].shop_address rangeOfString:@"null"].location != NSNotFound) {
+                
+                [UserModel defaultUser].shop_address = @"";
+            }
+            if ([[UserModel defaultUser].truename rangeOfString:@"null"].location != NSNotFound) {
+                
+                [UserModel defaultUser].banknumber = @"";
+            }
+  
+            UIImage *imaage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
+            
+            if (!imaage) {
+                
+                self.headview.headimage.image = [UIImage imageNamed:@"mine_head"];
+            }else{
+                
+                self.headview.headimage.image = imaage;
+            }
+            
+            [self.headview.tableview reloadData];
            
         }else{
             
