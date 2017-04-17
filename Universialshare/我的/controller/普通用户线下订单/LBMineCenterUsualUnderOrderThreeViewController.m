@@ -15,6 +15,7 @@
 @property (strong, nonatomic)LoadWaitView *loadV;
 @property (assign, nonatomic)NSInteger page;//页数默认为0
 @property (assign, nonatomic)BOOL refreshType;//判断刷新状态 默认为no
+@property (strong, nonatomic)NodataView *nodataV;
 
 @end
 
@@ -115,6 +116,12 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
+    
+    if (self.dataarr.count > 0) {
+        self.nodataV.hidden = YES;
+    }else{
+        self.nodataV.hidden = NO;
+    }
     return self.dataarr.count;
 }
 
@@ -154,6 +161,14 @@
     
 }
 
-
+-(NodataView*)nodataV{
+    
+    if (!_nodataV) {
+        _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
+        _nodataV.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-114);
+    }
+    return _nodataV;
+    
+}
 
 @end

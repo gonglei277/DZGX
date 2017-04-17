@@ -157,13 +157,13 @@ static NSString *ID = @"GLMine_InfoCell";
         }
        
         dic=@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].uid , @"sprovince":self.sprovince , @"scity":self.scity,@"saera":self.saera,@"saddress":self.adress,@"truename":self.username,@"idcard":self.shenfCode,@"shop_type":self.storeType};
-        
+
         
         _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
         manager.requestSerializer.timeoutInterval = 10;
-        [manager POST:[NSString stringWithFormat:@"%@%@",URL_Base,@"user/userAndShopInfoBq"] parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [manager POST:[NSString stringWithFormat:@"%@user/userAndShopInfoBq",URL_Base] parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             //将图片以表单形式上传
             
             if (self.imagehead) {
@@ -173,7 +173,7 @@ static NSString *ID = @"GLMine_InfoCell";
                 NSString *str=[formatter stringFromDate:[NSDate date]];
                 NSString *fileName=[NSString stringWithFormat:@"%@.png",str];
                 NSData *data = UIImagePNGRepresentation(self.imagehead);
-                [formData appendPartWithFileData:data name:[NSString stringWithFormat:@"pic"] fileName:fileName mimeType:@"image/png"];
+                [formData appendPartWithFileData:data name:@"pic" fileName:fileName mimeType:@"image/png"];
             }
             
             
@@ -181,12 +181,9 @@ static NSString *ID = @"GLMine_InfoCell";
             
         }success:^(NSURLSessionDataTask *task, id responseObject) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-   
             if ([dic[@"code"]integerValue]==1) {
                 
                 [MBProgressHUD showError:dic[@"message"]];
-                
-                
                 
             }else{
                 [MBProgressHUD showError:dic[@"message"]];

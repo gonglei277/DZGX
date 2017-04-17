@@ -15,6 +15,7 @@
 @property (strong, nonatomic)LoadWaitView *loadV;
 @property (assign, nonatomic)NSInteger page;//页数默认为0
 @property (assign, nonatomic)BOOL refreshType;//判断刷新状态 默认为no
+@property (strong, nonatomic)NodataView *nodataV;
 
 @end
 
@@ -22,8 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-
+    [self.tableview addSubview:self.nodataV];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor=[UIColor whiteColor];
     self.tableview.tableFooterView = [UIView new];
@@ -37,6 +37,7 @@
     }];
     
     MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        
         [weakSelf footerrefresh];
         // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
     }];
@@ -65,7 +66,6 @@
         [self.tableview.mj_header endRefreshing];
         [self.tableview.mj_footer endRefreshing];
         if ([responseObject[@"code"] integerValue]==1) {
-            
             if ([responseObject[@"data"] isEqual:[NSArray array]]) {
                 if (_refreshType == NO) {
                     [self.dataarr removeAllObjects];
@@ -115,6 +115,11 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
+    if (self.dataarr.count > 0) {
+        self.nodataV.hidden = YES;
+    }else{
+        self.nodataV.hidden = NO;
+    }
     return self.dataarr.count;
 }
 
@@ -153,6 +158,16 @@
     }
     
     return _dataarr;
+    
+}
+
+-(NodataView*)nodataV{
+    
+    if (!_nodataV) {
+        _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
+        _nodataV.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-114);
+    }
+    return _nodataV;
     
 }
 

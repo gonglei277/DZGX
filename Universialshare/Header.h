@@ -23,8 +23,8 @@
 
 #define ADAPT(x) SCREEN_WIDTH / 375 *(x)
 
-//#define URL_Base @"http://192.168.0.111/api/"
-#define URL_Base @"http://dzgx.joshuaweb.cn/api/"
+#define URL_Base @"http://192.168.0.111/DZGX/api/"
+//#define URL_Base @"http://dzgx.joshuaweb.cn/api/"
 
 
 #define DOWNLOAD_URL @""
