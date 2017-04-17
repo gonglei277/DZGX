@@ -112,10 +112,11 @@
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
     
-    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+//    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/refresh" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
+        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
             
             if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]] rangeOfString:@"null"].location != NSNotFound) {
