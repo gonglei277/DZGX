@@ -658,6 +658,8 @@
 		F961AA421E9CE37600275F52 /* LBMerchantcreditTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F961AA401E9CE37600275F52 /* LBMerchantcreditTableViewCell.m */; };
 		F961AA431E9CE37600275F52 /* LBMerchantcreditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F961AA411E9CE37600275F52 /* LBMerchantcreditTableViewCell.xib */; };
 		F97644D91EA5BAEA00AFA22B /* RSAEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = F97644D81EA5BAEA00AFA22B /* RSAEncryptor.m */; };
+		F97644DE1EA608EC00AFA22B /* LBImprovePersonalDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F97644DC1EA608EC00AFA22B /* LBImprovePersonalDataViewController.m */; };
+		F97644DF1EA608EC00AFA22B /* LBImprovePersonalDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F97644DD1EA608EC00AFA22B /* LBImprovePersonalDataViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1828,6 +1830,9 @@
 		F961AA411E9CE37600275F52 /* LBMerchantcreditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMerchantcreditTableViewCell.xib; sourceTree = "<group>"; };
 		F97644D71EA5BAEA00AFA22B /* RSAEncryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAEncryptor.h; sourceTree = "<group>"; };
 		F97644D81EA5BAEA00AFA22B /* RSAEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAEncryptor.m; sourceTree = "<group>"; };
+		F97644DB1EA608EC00AFA22B /* LBImprovePersonalDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBImprovePersonalDataViewController.h; sourceTree = "<group>"; };
+		F97644DC1EA608EC00AFA22B /* LBImprovePersonalDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBImprovePersonalDataViewController.m; sourceTree = "<group>"; };
+		F97644DD1EA608EC00AFA22B /* LBImprovePersonalDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBImprovePersonalDataViewController.xib; sourceTree = "<group>"; };
 		FC2B7A4A425FAC91F43C98C0 /* Pods-Universialshare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Universialshare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Universialshare/Pods-Universialshare.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3700,6 +3705,7 @@
 		F92308331E9B8BFE00ECDC94 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F97644DA1EA6083700AFA22B /* 完善个人资料 */,
 				F951EB0D1EA1EF1200D6708E /* 普通用户线下订单 */,
 				F91274931EA0E58400B7A539 /* 商家订单 */,
 				F9126EE01EA0599B004785EA /* 地图 */,
@@ -4362,6 +4368,16 @@
 			path = "RSA密钥";
 			sourceTree = "<group>";
 		};
+		F97644DA1EA6083700AFA22B /* 完善个人资料 */ = {
+			isa = PBXGroup;
+			children = (
+				F97644DB1EA608EC00AFA22B /* LBImprovePersonalDataViewController.h */,
+				F97644DC1EA608EC00AFA22B /* LBImprovePersonalDataViewController.m */,
+				F97644DD1EA608EC00AFA22B /* LBImprovePersonalDataViewController.xib */,
+			);
+			path = "完善个人资料";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -4512,6 +4528,7 @@
 				F961AA391E9CE33200275F52 /* LBConsumptionSeriesViewTableViewCell.xib in Resources */,
 				F9061FD81E83C4730080E9D9 /* Assets.xcassets in Resources */,
 				F92309391E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeDetailOneTableViewCell.xib in Resources */,
+				F97644DF1EA608EC00AFA22B /* LBImprovePersonalDataViewController.xib in Resources */,
 				F92309231E9B8BFF00ECDC94 /* LBMineCenterRechargeBankCardTableViewCell.xib in Resources */,
 				F94D6E241E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.xib in Resources */,
 				4A4610361E9CC6360045824F /* ios-social-sdk-like.html in Resources */,
@@ -4811,6 +4828,7 @@
 				4A4610A41E9CC6360045824F /* ZXDataMatrixTextEncoder.m in Sources */,
 				F91274971EA0E5E300B7A539 /* LBMineStoreOrderingViewController.m in Sources */,
 				4A4609E11E9CB78E0045824F /* GLMyheartModel.m in Sources */,
+				F97644DE1EA608EC00AFA22B /* LBImprovePersonalDataViewController.m in Sources */,
 				F92309531E9B8BFF00ECDC94 /* LBMyOrderPendingEvaluationViewController.m in Sources */,
 				4A07A88C1EA0BBF1005A9B67 /* GLNoneOfDonationCell.m in Sources */,
 				4A4610951E9CC6360045824F /* ZXDataMatrixDataBlock.m in Sources */,

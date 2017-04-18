@@ -146,11 +146,12 @@
         return;
     }
     
-    if (self.bseTsecret.text.length < 6 || self.bseTsecret.text.length > 20) {
+    if (self.bseTsecret.text.length != 6 ) {
         
-        [MBProgressHUD showError:@"请输入6-20位密码"];
+        [MBProgressHUD showError:@"请输入6位密码"];
         return;
     }
+
     
    
     if (![self.bseTsecret.text isEqualToString:self.basTRepSecTf.text]) {
