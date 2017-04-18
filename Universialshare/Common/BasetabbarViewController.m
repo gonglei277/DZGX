@@ -16,6 +16,8 @@
 #import "GLFirstPageController.h"
 #import "GLLoginController.h"
 
+#import "LBImprovePersonalDataViewController.h"
+
 @interface BasetabbarViewController ()<UITabBarControllerDelegate>
 
 @end
@@ -60,7 +62,7 @@
     minevc.title=@"我的";
 
     firstVC.tabBarItem = [self barTitle:@"首页" image:@"home_page_normal"  selectImage:@"home_page_select"];
-    Homevc.tabBarItem = [self barTitle:@"消费商城" image:@"home_page_normal" selectImage:@"home_page_select"];
+    Homevc.tabBarItem = [self barTitle:@"消费商城" image:@"消费商城未选中状态" selectImage:@"消费商城"];
     IntegralMallvc.tabBarItem = [self barTitle:@"积分商城" image:@"public_welfare_consumption_normal" selectImage:@"public_welfare_consumption_select"];
     minevc.tabBarItem = [self barTitle:@"我的" image:@"mine_normal" selectImage:@"mine_select"];
     
@@ -99,6 +101,15 @@
     if (viewController == [tabBarController.viewControllers objectAtIndex:3]) {
        
         if ([UserModel defaultUser].loginstatus == YES) {
+            
+            if ([[UserModel defaultUser].idcard isEqualToString:@""]) {
+                
+                LBImprovePersonalDataViewController *infoVC = [[LBImprovePersonalDataViewController alloc] init];
+                infoVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                [self presentViewController:infoVC animated:YES completion:nil];
+                return NO;
+            }
+            
             return YES;
         }
         GLLoginController *loginVC = [[GLLoginController alloc] init];
