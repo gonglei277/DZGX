@@ -40,4 +40,25 @@
 
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+
+    if ([[UserModel defaultUser].usrtype isEqualToString:Retailer] && [[UserModel defaultUser].AudiThrough isEqualToString:@"1"]) {
+        
+        if (self.index == 5) {
+            for(int i=0; i< [string length];i++){
+                
+                int a = [string characterAtIndex:i];
+                
+                if( a >= 0x4e00 && a <= 0x9fff)
+                    
+                    return NO;
+            }
+        }
+    
+    }
+
+    return YES;
+
+}
+
 @end
