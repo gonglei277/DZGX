@@ -96,10 +96,8 @@
         return;
     }
     
-    
     [self.view addSubview:self.maskView];
     [self.view addSubview:self.loginView];
-    
     
 }
 //隐藏或显示图片
@@ -114,7 +112,6 @@
     }else{
         [self.scretTf setSecureTextEntry:YES];
         [sender setImage:[UIImage imageNamed:@"显示"] forState:UIControlStateNormal];
-    
     }
 }
 //退出

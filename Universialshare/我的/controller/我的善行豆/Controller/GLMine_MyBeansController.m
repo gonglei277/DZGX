@@ -38,8 +38,9 @@
 @implementation GLMine_MyBeansController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
-    self.title = @"我的志愿豆";
+    self.title = @"我的米子";
     
     self.navigationController.navigationBar.hidden = NO;
     _encourageVC = [[GLEncourageBeansController alloc]init];

@@ -66,6 +66,11 @@ static NSString *ID = @"GLDirectDnationRecordCell";
     self.tableView.mj_footer = footer;
     [self updateData:YES];
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+    
+}
 - (void)updateData:(BOOL)status {
     
     if (status) {
@@ -84,12 +89,11 @@ static NSString *ID = @"GLDirectDnationRecordCell";
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/donation_list" paramDic:dict  finish:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         [_loadV removeloadview];
         [self endRefresh];
 
         if ([responseObject[@"code"] integerValue] == 1) {
-            
             
             for (NSDictionary *dict in responseObject[@"data"]) {
              
@@ -98,16 +102,16 @@ static NSString *ID = @"GLDirectDnationRecordCell";
                 
                 [_models addObject:model];
             }
-        }else{
-            if (_models.count != 0){
-                [MBProgressHUD showError:@"已经没有更多数据了!"];
-            }
+        }else if([responseObject[@"code"] intValue] == 3){
+            
+            [MBProgressHUD showError:@"已经没有更多数据了!"];
+            
         }
     
         _totalNum = [responseObject[@"total"] integerValue];
              self.beanSumLabel.text = [NSString stringWithFormat:@"%lu", _totalNum];
       
-               [self.tableView reloadData];
+        [self.tableView reloadData];
         
     } enError:^(NSError *error) {
         self.beanSumLabel.text = @"0";
@@ -124,7 +128,7 @@ static NSString *ID = @"GLDirectDnationRecordCell";
     
     if (!_nodataV) {
         _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
-        _nodataV.frame = CGRectMake(0, 142, SCREEN_WIDTH, SCREEN_HEIGHT-114-49);
+        _nodataV.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-144);
     }
     return _nodataV;
     

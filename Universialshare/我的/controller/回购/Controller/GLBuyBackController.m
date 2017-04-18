@@ -48,7 +48,6 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-
 @end
 
 @implementation GLBuyBackController
@@ -91,7 +90,7 @@
 //    
 //    [UILabel changeLineSpaceForLabel:self.noticeLabel WithSpace:5.0];
 
-    self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].ketiBean floatValue]];
+    self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
     
     
     self.buybackNumF.returnKeyType = UIReturnKeyNext;
@@ -140,10 +139,10 @@
             
             if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
 
-                self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].ketiBean floatValue]];
+                self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
             }else{
 
-                self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f元",[[UserModel defaultUser].djs_bean floatValue]];
+                self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
             }
         }else{
             [UserModel defaultUser].banknumber = @"";
@@ -418,8 +417,8 @@
         GLBuyBackChooseController *chooseVC = [[GLBuyBackChooseController alloc] init];
 //        chooseVC.models = self.cardModels;
         [chooseVC returnModel:^(GLBankCardModel *model) {
-            self.cardNumLabel.text = model.bankNum;
-            self.cardStyleLabel.text = model.bankName;
+            self.cardNumLabel.text = model.number;
+            self.cardStyleLabel.text = model.name;
             self.bankStyleImageV.image = [UIImage imageNamed:model.iconName];
         }];
         [self.navigationController pushViewController:chooseVC animated:YES];

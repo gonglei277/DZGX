@@ -24,8 +24,8 @@
 }
 - (void)setModel:(GLBankCardModel *)model {
     _model = model;
-    _banknameLabel.text = model.bankName;
-    _bankNumLabel.text = model.bankNum;
-    _iconImageV.image = [UIImage imageNamed:model.iconName];
+    _banknameLabel.text = model.name;
+    _bankNumLabel.text = model.number;
+    _iconImageV.image = [UIImage imageNamed:@"mine_icbc"];
 }
 @end

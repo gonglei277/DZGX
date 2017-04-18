@@ -11,6 +11,9 @@
 #import "GLBuyBackChooseCardController.h"
 
 @interface GLBuyBackChooseController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    LoadWaitView *_loadV;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *cardModels;
 @end
@@ -33,8 +36,41 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
 
     self.navigationItem.title = @"我的银行卡";
 //    self.tableView.editing = YES;
+    
+    self.navigationController.navigationBar.hidden = NO;
     [self.tableView registerNib:[UINib nibWithNibName:@"GLBankCardCellTableViewCell" bundle:nil] forCellReuseIdentifier:ID];
     
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.cardModels removeAllObjects];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"user/getbank" paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        NSLog(@"responseObject = %@",responseObject);
+        
+        if ([responseObject[@"code"] integerValue] == 1){
+            
+            for (NSDictionary *dic in responseObject[@"data"]) {
+                GLBankCardModel *model = [GLBankCardModel mj_objectWithKeyValues:dic];
+                [self.cardModels addObject:model];
+            }
+        }else{
+            [UserModel defaultUser].banknumber = @"";
+            [UserModel defaultUser].defaultBankname = @"";
+        }
+        
+        [self.tableView reloadData];
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        
+    }];
+
 }
 - (void)pushToAddVC {
     GLBuyBackChooseCardController * vc = [[GLBuyBackChooseCardController alloc] init];
@@ -43,13 +79,7 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
 - (NSMutableArray *)cardModels{
     if (!_cardModels) {
         _cardModels = [NSMutableArray array];
-        for (int i = 0; i <5; i ++) {
-            GLBankCardModel *model = [[GLBankCardModel alloc] init];
-            model.bankName = @"中国工商银行";
-            model.bankNum = [NSString stringWithFormat:@"**** **** **** 000%d",i];
-            model.iconName = @"mine_icbc";
-            [_cardModels addObject:model];
-        }
+        
     }
     return _cardModels;
 }

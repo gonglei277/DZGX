@@ -10,8 +10,10 @@
 
 @interface GLBankCardModel : NSObject
 
+@property (nonatomic, copy)NSString *status;
+@property (nonatomic, copy)NSString *name;
+@property (nonatomic, copy)NSString *number;
+
 @property (nonatomic, copy)NSString *iconName;
-@property (nonatomic, copy)NSString *bankName;
-@property (nonatomic, copy)NSString *bankNum;
 
 @end
