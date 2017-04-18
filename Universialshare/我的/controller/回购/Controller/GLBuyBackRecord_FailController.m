@@ -111,10 +111,10 @@ static NSString *ID = @"GLBuyBackRecordCell";
                 GLBuyBackRecordModel *model = [GLBuyBackRecordModel mj_objectWithKeyValues:dict];
                 [_models addObject:model];
             }
-        }else{
-            if (_models.count != 0){
-                [MBProgressHUD showError:@"已经没有更多数据了!"];
-            }
+        }else if([responseObject[@"code"] intValue] == 3){
+            
+            [MBProgressHUD showError:@"已经没有更多数据了!"];
+            
         }
       
         [self.tableView reloadData];

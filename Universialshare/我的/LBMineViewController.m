@@ -376,7 +376,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
         if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
             _titlearr=[NSArray arrayWithObjects:@"让利",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
         }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]) {
-           _titlearr=[NSArray arrayWithObjects:@"米袋"@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
+           _titlearr=[NSArray arrayWithObjects:@"米袋",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
         }
     }
     return _titlearr;

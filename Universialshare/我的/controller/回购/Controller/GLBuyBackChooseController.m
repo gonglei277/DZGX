@@ -98,7 +98,9 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
     self.returnBlock = block;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.returnBlock(self.cardModels[indexPath.row]);
+    GLBankCardModel *model = self.cardModels[indexPath.row];
+    self.returnBlock(model);
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -120,15 +122,39 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewRowAction *action1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+        GLBankCardModel *model = self.cardModels[indexPath.row];
+        [self deleteCard:model.number];
+        
         [self.cardModels removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        
-        [self deleteCard];
     }];
     
     return @[action1];
 }
-- (void)deleteCard {
+- (void)deleteCard:(NSString *)banknumber {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    dict[@"banknumber"] = banknumber;
     
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"user/del_bank" paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        NSLog(@"responseObject = %@",responseObject);
+        
+        if ([responseObject[@"code"] integerValue] == 1){
+            
+            [MBProgressHUD showSuccess:@"删除银行卡成功!"];
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+        
+        [self.tableView reloadData];
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        
+    }];
+
 }
 @end

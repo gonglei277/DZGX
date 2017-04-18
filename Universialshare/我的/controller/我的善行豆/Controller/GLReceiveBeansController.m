@@ -73,6 +73,11 @@ static NSString *ID = @"GLReceiveBeansCell";
         [weakSelf updateData:YES];
         
     }];
+    
+    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf updateData:NO];
+    }];
+    
     // 设置文字
     [header setTitle:@"快扯我，快点" forState:MJRefreshStateIdle];
     
@@ -82,8 +87,12 @@ static NSString *ID = @"GLReceiveBeansCell";
     
     
     self.tableView.mj_header = header;
-    
+    self.tableView.mj_footer = footer;
     [self updateData:YES];
+}
+- (void)endRefresh {
+    [self.tableView.mj_footer endRefreshing];
+    [self.tableView.mj_header endRefreshing];
     
 }
 
@@ -144,10 +153,6 @@ static NSString *ID = @"GLReceiveBeansCell";
         [self endRefresh];
         self.nodataV.hidden = NO;
     }];
-}
-- (void)endRefresh {
-    [self.tableView.mj_header endRefreshing];
-    
 }
 
 #pragma  UITableviewDatasource

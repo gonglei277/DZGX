@@ -120,14 +120,13 @@ static NSString *ID = @"GLBuyBackRecordCell";
                 GLBuyBackRecordModel *model = [GLBuyBackRecordModel mj_objectWithKeyValues:dict];
                 [_models addObject:model];
             }
-        }else{
+        }else if([responseObject[@"code"] intValue] == 3){
             
-            if (_models.count != 0){
-                [MBProgressHUD showError:@"已经没有更多数据了!"];
-            }
+            [MBProgressHUD showError:@"已经没有更多数据了!"];
+            
         }
         
-               [self.tableView reloadData];
+        [self.tableView reloadData];
         
     } enError:^(NSError *error) {
         [_loadV removeloadview];
@@ -149,9 +148,7 @@ static NSString *ID = @"GLBuyBackRecordCell";
     
 }
 #pragma  UITableviewDatasource
-//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//    return 1;
-//}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (_models.count <= 0 ) {
         self.nodataV.hidden = NO;
