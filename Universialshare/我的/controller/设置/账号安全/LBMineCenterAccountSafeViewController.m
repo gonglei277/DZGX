@@ -33,7 +33,7 @@
     self.navigationItem.title = @"账号安全";
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.nameTF.text = [UserModel defaultUser].name;
+    self.nameTF.text = [UserModel defaultUser].truename;
     self.userId.text = [UserModel defaultUser].name;
     
     

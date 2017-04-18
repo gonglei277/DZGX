@@ -23,6 +23,7 @@
 @property (strong, nonatomic)UIButton *buttonedt;
 @property (strong, nonatomic)UIPickerView *pickerView;
 @property (strong, nonatomic)UIView *pickerViewMask;
+@property (strong, nonatomic)NodataView *nodataV;
 
 
 @end
@@ -43,6 +44,7 @@
     [self.tableview registerNib:[UINib nibWithNibName:@"LBMineSystemMessageTableViewCell" bundle:nil] forCellReuseIdentifier:@"LBMineSystemMessageTableViewCell"];
     //获取数据
     [self initdatasource];
+    [self.tableview addSubview:self.nodataV];
     
     _buttonedt=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 60)];
     [_buttonedt setTitle:@"筛选" forState:UIControlStateNormal];
@@ -103,10 +105,14 @@
                 
             }
             
-        }else{
+        }else if ([responseObject[@"code"] integerValue]==3){
             
             [MBProgressHUD showError:responseObject[@"message"]];
              [self.tableview reloadData];
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+            [self.tableview reloadData];
+        
         }
     } enError:^(NSError *error) {
         [_loadV removeloadview];
@@ -181,6 +187,11 @@
 // pickerView 每列个数
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     
+    if (self.dataarr.count > 0) {
+        self.nodataV.hidden = YES;
+    }else{
+        self.nodataV.hidden = NO;
+    }
     return self.messageArr.count;
 }
 
@@ -274,5 +285,13 @@
     return _pickerViewMask;
 }
 
-
+-(NodataView*)nodataV{
+    
+    if (!_nodataV) {
+        _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
+        _nodataV.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-114);
+    }
+    return _nodataV;
+    
+}
 @end

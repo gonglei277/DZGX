@@ -10,6 +10,7 @@
 #import "LBMineCenterUsualUnderOrderTableViewCell.h"
 
 @interface LBMineCenterUsualUnderOrderThreeViewController ()<UITableViewDelegate,UITableViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic)NSMutableArray *dataarr;
 @property (strong, nonatomic)LoadWaitView *loadV;
@@ -69,6 +70,7 @@
 }
 //上啦刷新
 -(void)footerrefresh{
+    
     _refreshType = YES;
     _page++;
     
@@ -87,21 +89,21 @@
             if ([responseObject[@"data"] isEqual:[NSArray array]]) {
                 if (_refreshType == NO) {
                     [self.dataarr removeAllObjects];
-                    
                     [self.dataarr addObjectsFromArray:responseObject[@"data"]];
-                    
                     [self.tableview reloadData];
                 }else{
                     
                     [self.dataarr addObjectsFromArray:responseObject[@"data"]];
-                    
                     [self.tableview reloadData];
                     
                 }
             }
             
-        }else{
+        }else if ([responseObject[@"code"] integerValue]==3){
             
+            [MBProgressHUD showError:responseObject[@"message"]];
+            [self.tableview reloadData];
+        }else{
             [MBProgressHUD showError:responseObject[@"message"]];
             [self.tableview reloadData];
         }
@@ -134,8 +136,6 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
     
     LBMineCenterUsualUnderOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMineCenterUsualUnderOrderTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

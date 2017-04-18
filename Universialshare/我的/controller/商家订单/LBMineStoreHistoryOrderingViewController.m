@@ -84,10 +84,14 @@
                 }
             }
             
-        }else{
+        }else if ([responseObject[@"code"] integerValue]==3){
             
             [MBProgressHUD showError:responseObject[@"message"]];
             [self.taleview reloadData];
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+            [self.taleview reloadData];
+            
         }
     } enError:^(NSError *error) {
         [_loadV removeloadview];

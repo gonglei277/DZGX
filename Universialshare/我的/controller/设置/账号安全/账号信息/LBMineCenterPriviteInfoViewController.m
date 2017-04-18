@@ -17,8 +17,6 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentVH;
 
-
-
 @end
 
 @implementation LBMineCenterPriviteInfoViewController
@@ -30,8 +28,10 @@
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.title = @"账号信息";
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-   
+    if ([[UserModel defaultUser].idcard length]>=15) {
+        self.namelb.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].truename];
+        self.codelb.text = [NSString stringWithFormat:@"%@******%@",[[UserModel defaultUser].idcard substringToIndex:6],[[UserModel defaultUser].idcard substringFromIndex:[[UserModel defaultUser].idcard length] - 4]];
+    }
 }
 
 -(void)updateViewConstraints{
