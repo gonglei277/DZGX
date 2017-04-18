@@ -417,8 +417,8 @@
         GLBuyBackChooseController *chooseVC = [[GLBuyBackChooseController alloc] init];
 //        chooseVC.models = self.cardModels;
         [chooseVC returnModel:^(GLBankCardModel *model) {
-            self.cardNumLabel.text = model.bankNum;
-            self.cardStyleLabel.text = model.bankName;
+            self.cardNumLabel.text = model.number;
+            self.cardStyleLabel.text = model.name;
             self.bankStyleImageV.image = [UIImage imageNamed:model.iconName];
         }];
         [self.navigationController pushViewController:chooseVC animated:YES];

@@ -582,7 +582,6 @@ static NSString *followID = @"GLFirstFollowCell";
                 }
             }
             
-            
             _rewardContentView.label3.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"ltime"]];
             _rewardContentView.label5.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"sh_sum"]];
             _rewardContentView.label6.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"head3"][@"people"]];
@@ -602,7 +601,6 @@ static NSString *followID = @"GLFirstFollowCell";
             }else{
                 _rewardContentView.label2.text = responseObject[@"data"][@"head3"][@"zjz"];
             }
-            
            
         }
         

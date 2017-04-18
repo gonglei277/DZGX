@@ -41,7 +41,37 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"GLBankCardCellTableViewCell" bundle:nil] forCellReuseIdentifier:ID];
     
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.cardModels removeAllObjects];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"user/getbank" paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        NSLog(@"responseObject = %@",responseObject);
+        
+        if ([responseObject[@"code"] integerValue] == 1){
+            
+            for (NSDictionary *dic in responseObject[@"data"]) {
+                GLBankCardModel *model = [GLBankCardModel mj_objectWithKeyValues:dic];
+                [self.cardModels addObject:model];
+            }
+        }else{
+            [UserModel defaultUser].banknumber = @"";
+            [UserModel defaultUser].defaultBankname = @"";
+        }
+        
+        [self.tableView reloadData];
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        
+    }];
 
+}
 - (void)pushToAddVC {
     GLBuyBackChooseCardController * vc = [[GLBuyBackChooseCardController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
@@ -50,61 +80,6 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
     if (!_cardModels) {
         _cardModels = [NSMutableArray array];
         
-//        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//        dict[@"token"] = [UserModel defaultUser].token;
-//        dict[@"uid"] = [UserModel defaultUser].uid;
-//        
-//            _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-//        [NetworkManager requestPOSTWithURLStr:@"user/refresh" paramDic:dict finish:^(id responseObject) {
-//            
-//            [_loadV removeloadview];
-//            NSLog(@"responseObject = %@",responseObject);
-//            if ([responseObject[@"code"] integerValue] == 1){
-//                
-//                if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]] rangeOfString:@"null"].location != NSNotFound) {
-//                    [UserModel defaultUser].banknumber = @"";
-//                }else{
-//                    [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]];
-//                }
-//                if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]] rangeOfString:@"null"].location != NSNotFound) {
-//                    [UserModel defaultUser].defaultBankname = @"";
-//                }else{
-//                    
-//                    [UserModel defaultUser].defaultBankname = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]];
-//                }
-//                [UserModel defaultUser].ketiBean = [NSString stringWithFormat:@"%@元",responseObject[@"data"][@"common"]];
-//                [UserModel defaultUser].djs_bean = [NSString stringWithFormat:@"%@元",responseObject[@"data"][@"taxes"]];
-//                [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]];
-//                [UserModel defaultUser].defaultBankname = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]];
-//                
-//                [usermodelachivar achive];
-//                
-//                if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
-//                    
-//                    self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
-//                }else{
-//                    
-//                    self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
-//                }
-//            }else{
-//                [UserModel defaultUser].banknumber = @"";
-//                [UserModel defaultUser].defaultBankname = @"";
-//                //            [UserModel defaultUser].bankIcon = @"";
-//            }
-//         
-//        } enError:^(NSError *error) {
-//            [_loadV removeloadview];
-//            
-//        }];
-
-        
-        for (int i = 0; i <5; i ++) {
-            GLBankCardModel *model = [[GLBankCardModel alloc] init];
-            model.bankName = @"中国工商银行";
-            model.bankNum = [NSString stringWithFormat:@"**** **** **** 000%d",i];
-            model.iconName = @"mine_icbc";
-            [_cardModels addObject:model];
-        }
     }
     return _cardModels;
 }

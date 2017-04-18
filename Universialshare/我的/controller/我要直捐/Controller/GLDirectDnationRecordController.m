@@ -95,7 +95,6 @@ static NSString *ID = @"GLDirectDnationRecordCell";
 
         if ([responseObject[@"code"] integerValue] == 1) {
             
-            
             for (NSDictionary *dict in responseObject[@"data"]) {
              
                 GLDirectDonationModel *model = [GLDirectDonationModel mj_objectWithKeyValues:dict];
@@ -103,16 +102,16 @@ static NSString *ID = @"GLDirectDnationRecordCell";
                 
                 [_models addObject:model];
             }
-        }else{
-            if (_models.count != 0){
-                [MBProgressHUD showError:@"已经没有更多数据了!"];
-            }
+        }else if([responseObject[@"code"] intValue] == 3){
+            
+            [MBProgressHUD showError:@"已经没有更多数据了!"];
+            
         }
     
         _totalNum = [responseObject[@"total"] integerValue];
              self.beanSumLabel.text = [NSString stringWithFormat:@"%lu", _totalNum];
       
-               [self.tableView reloadData];
+        [self.tableView reloadData];
         
     } enError:^(NSError *error) {
         self.beanSumLabel.text = @"0";
