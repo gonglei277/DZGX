@@ -86,7 +86,7 @@ static NSString *followID = @"GLFirstFollowCell";
     
     [self addMySelfPanGesture];
 
-//    [self initInterDataSorceinfomessage];
+    //[self initInterDataSorceinfomessage];
     
     [self setupUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFunction) name:UIApplicationWillEnterForegroundNotification object:[UIApplication sharedApplication]];
@@ -120,8 +120,6 @@ static NSString *followID = @"GLFirstFollowCell";
     }else{
         self.head_iconBtn.image = imaage;
     }
-   
-    
 }
 
 -(void)updateViewConstraints{
@@ -130,8 +128,13 @@ static NSString *followID = @"GLFirstFollowCell";
     self.contentViewHeight.constant = 220 *autoSizeScaleY;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.sidebarView.layer.cornerRadius = 5.f;
-    self.sidebarView.layer.masksToBounds = YES;
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.sidebarView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerBottomLeft cornerRadii:CGSizeMake(5, 5)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.sidebarView.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.sidebarView.layer.mask = maskLayer;
+    
+    
     
     self.contentView.layer.cornerRadius = 5.f;
     self.contentView.layer.masksToBounds = YES;

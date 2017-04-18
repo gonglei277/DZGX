@@ -55,12 +55,12 @@
    
    
     firstVC.title = @"首页";
-    Homevc.title=@"商城首页";
+    Homevc.title=@"消费商城";
     IntegralMallvc.title=@"积分商城";
     minevc.title=@"我的";
 
     firstVC.tabBarItem = [self barTitle:@"首页" image:@"home_page_normal"  selectImage:@"home_page_select"];
-    Homevc.tabBarItem = [self barTitle:@"首页" image:@"home_page_normal" selectImage:@"home_page_select"];
+    Homevc.tabBarItem = [self barTitle:@"消费商城" image:@"home_page_normal" selectImage:@"home_page_select"];
     IntegralMallvc.tabBarItem = [self barTitle:@"积分商城" image:@"public_welfare_consumption_normal" selectImage:@"public_welfare_consumption_select"];
     minevc.tabBarItem = [self barTitle:@"我的" image:@"mine_normal" selectImage:@"mine_select"];
     
