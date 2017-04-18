@@ -73,7 +73,7 @@
     [super viewWillAppear:animated];
     
      self.navigationController.navigationBar.hidden = YES;
-
+    [self refreshDataSource];
 
 }
 -(void)pushToInfoVC{
@@ -608,6 +608,8 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
                 
                 [UserModel defaultUser].banknumber = @"";
             }
+            
+            [usermodelachivar achive];
   
             UIImage *imaage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
             

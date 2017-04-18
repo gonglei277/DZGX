@@ -40,7 +40,8 @@
     int _currentPage;
     
 }
-@property (weak, nonatomic) IBOutlet UIButton *head_iconBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *head_iconBtn;
+
 @property (weak, nonatomic) IBOutlet UILabel *totalSumLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *sidebarView;
@@ -115,14 +116,16 @@ static NSString *followID = @"GLFirstFollowCell";
     UIImage *imaage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
     
     if (!imaage) {
-        [self.head_iconBtn setImage:[UIImage imageNamed:@"mine_head"] forState:UIControlStateNormal];
+        self.head_iconBtn.image = [UIImage imageNamed:@"mine_head"];
     }else{
-        [self.head_iconBtn setImage:imaage forState:UIControlStateNormal];
+        self.head_iconBtn.image = imaage;
     }
    
     
 }
-- (void)setupUI{
+
+-(void)updateViewConstraints{
+    [super updateViewConstraints];
 
     self.contentViewHeight.constant = 220 *autoSizeScaleY;
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -133,12 +136,15 @@ static NSString *followID = @"GLFirstFollowCell";
     self.contentView.layer.cornerRadius = 5.f;
     self.contentView.layer.masksToBounds = YES;
     
-    self.head_iconBtn.layer.cornerRadius = 20.f;
+    self.head_iconBtn.layer.cornerRadius = 15;
     self.head_iconBtn.layer.masksToBounds = YES;
     
     self.dailyLabel.text = @"善心\n日值";
     self.rankingLabel.text = @"善心\n排行";
     self.rewardLabel.text = @"注册\n奖励";
+
+}
+- (void)setupUI{
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeView:)];
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeView:)];
@@ -173,21 +179,11 @@ static NSString *followID = @"GLFirstFollowCell";
     //点击消费系列
     [self.moreOperateView.consumptionBt addTarget:self action:@selector(consumptionbutton) forControlEvents:UIControlEventTouchUpInside];
     
-    // 判断是否登录
-    if ([UserModel defaultUser].loginstatus == YES) {
-        NSString *imageName = [UserModel defaultUser].headPic;
-        [self.head_iconBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-        if (self.head_iconBtn.imageView.image == nil) {
-            [self.head_iconBtn setImage:[UIImage imageNamed:@"mine_head"] forState:UIControlStateNormal];
-        }
-    }else{
-//        [self.head_iconBtn setImage:[UIImage imageNamed:@"mine_head"] forState:UIControlStateNormal];
-        [self.head_iconBtn setTitle:@"登录" forState:UIControlStateNormal];
-    }
+    
 
 }
 
-- (IBAction)head_iconClick:(id)sender {
+- (IBAction)tapgestureHeadimage:(UITapGestureRecognizer *)sender {
     
     if ([UserModel defaultUser].loginstatus == YES) {
         self.hidesBottomBarWhenPushed = YES;
@@ -196,14 +192,13 @@ static NSString *followID = @"GLFirstFollowCell";
         self.hidesBottomBarWhenPushed = NO;
         
     }else{
-    
+        
         GLLoginController *loginVC = [[GLLoginController alloc] init];
         BaseNavigationViewController *nav = [[BaseNavigationViewController alloc]initWithRootViewController:loginVC];
         nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:nav animated:YES completion:nil];
-    
+        
     }
-    
 }
 
 
@@ -336,7 +331,7 @@ static NSString *followID = @"GLFirstFollowCell";
         }
 
     } enError:^(NSError *error) {
-        NSLog(@"%@",error);
+        
     }];
    
 }
@@ -501,7 +496,7 @@ static NSString *followID = @"GLFirstFollowCell";
         [_dailyContentView.tableView reloadData];
     } enError:^(NSError *error) {
         [_loadV removeloadview];
-        NSLog(@"%@",error);
+     
         
     }];
 }
@@ -535,7 +530,7 @@ static NSString *followID = @"GLFirstFollowCell";
         [_rankingContentView.tableView reloadData];
     } enError:^(NSError *error) {
         [_loadV removeloadview];
-        NSLog(@"%@",error);
+       
         
     }];
 
@@ -608,7 +603,7 @@ static NSString *followID = @"GLFirstFollowCell";
         
     } enError:^(NSError *error) {
         [_loadV removeloadview];
-        NSLog(@"%@",error);
+      
         
     }];
 }
