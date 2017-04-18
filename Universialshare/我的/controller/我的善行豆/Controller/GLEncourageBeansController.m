@@ -111,7 +111,7 @@ static NSString *ID = @"GLEncourageBeansCell";
  
         [_loadV removeloadview];
         [self endRefresh];
-        NSLog(@"%@",responseObject);
+        
         if ([responseObject[@"code"] integerValue] == 1) {
             
             for (NSDictionary *dict in responseObject[@"data"]) {
@@ -122,8 +122,8 @@ static NSString *ID = @"GLEncourageBeansCell";
                 [_models addObject:model];
             }
             _beanSum = [responseObject[@"count"] floatValue];
-        }else{
-            [MBProgressHUD showError:responseObject[@"message"]];
+        }else if([responseObject[@"code"] integerValue] == 3){
+            [MBProgressHUD showError:@"已经没有更多数据了"];
         }
         
         //赋值

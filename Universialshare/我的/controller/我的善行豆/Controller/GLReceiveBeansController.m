@@ -121,8 +121,8 @@ static NSString *ID = @"GLReceiveBeansCell";
             }
             
             _beanSum = [responseObject[@"sum"] floatValue];
-        }else{
-            [MBProgressHUD showError:responseObject[@"message"]];
+        }else if([responseObject[@"code"] integerValue] == 3){
+            [MBProgressHUD showError:@"已经没有更多数据了"];
         }
         
      

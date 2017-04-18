@@ -86,7 +86,7 @@ static NSString *followID = @"GLFirstFollowCell";
     
     [self addMySelfPanGesture];
 
-    [self initInterDataSorceinfomessage];
+//    [self initInterDataSorceinfomessage];
     
     [self setupUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFunction) name:UIApplicationWillEnterForegroundNotification object:[UIApplication sharedApplication]];
