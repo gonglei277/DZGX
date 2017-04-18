@@ -134,8 +134,6 @@ static NSString *followID = @"GLFirstFollowCell";
     maskLayer.path = maskPath.CGPath;
     self.sidebarView.layer.mask = maskLayer;
     
-    
-    
     self.contentView.layer.cornerRadius = 5.f;
     self.contentView.layer.masksToBounds = YES;
     

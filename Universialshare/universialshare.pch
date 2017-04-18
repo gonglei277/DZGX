@@ -22,6 +22,8 @@
 #import "LoadWaitView.h"
 #import "NodataView.h"
 
+#import "RSAEncryptor.h"
+
 
 
 #endif /* universialshare_pch */
