@@ -120,8 +120,6 @@ static NSString *followID = @"GLFirstFollowCell";
     }else{
         self.head_iconBtn.image = imaage;
     }
-   
-    
 }
 
 -(void)updateViewConstraints{
