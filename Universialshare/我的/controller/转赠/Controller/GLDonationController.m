@@ -294,7 +294,7 @@
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/give_to" paramDic:dict finish:^(id responseObject) {
         [_loadV removeloadview];
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
             [UIView animateWithDuration:0.2 animations:^{

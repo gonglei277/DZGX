@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的米粒";
+    self.title = @"我的米袋";
     
     self.navigationController.navigationBar.hidden = NO;
     self.view.backgroundColor=[UIColor whiteColor];
@@ -49,7 +49,6 @@
     [self addChildViewController:_sixPersentVC];
     [self addChildViewController:_twelvePercentVC];
     [self addChildViewController:_twentyfourPercentVC];
-    
     
     self.currentViewController = _sixPersentVC;
     [self fitFrameForChildViewController:_sixPersentVC];

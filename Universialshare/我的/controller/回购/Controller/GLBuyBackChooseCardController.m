@@ -48,12 +48,7 @@
     
 }
 - (void)dismiss {
-    
-    //    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
-    //    CGRect rect=[self.chooseBtn convertRect: self.chooseBtn.bounds toView:window];
-    //
-    //    _directV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 4 * self.chooseBtn.yy_height);
-    
+
     [UIView animateWithDuration:0.3 animations:^{
         
         _maskV.alpha = 0;
@@ -141,7 +136,7 @@
     [NetworkManager requestPOSTWithURLStr:@"user/add_bank_num" paramDic:dict finish:^(id responseObject) {
         [_loadV removeloadview];
 
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
             self.cardTextF.text = nil;
