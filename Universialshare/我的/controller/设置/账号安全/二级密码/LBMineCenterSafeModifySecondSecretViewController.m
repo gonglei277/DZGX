@@ -152,12 +152,7 @@
         return;
     }
     
-    if ([predicateModel checkIsHaveNumAndLetter:self.bseTsecret.text] != 3) {
-        
-        [MBProgressHUD showError:@"密码只能包含数字和字母"];
-        return;
-    }
-    
+   
     if (![self.bseTsecret.text isEqualToString:self.basTRepSecTf.text]) {
         [MBProgressHUD showError:@"两次输入的密码不一致"];
         return;

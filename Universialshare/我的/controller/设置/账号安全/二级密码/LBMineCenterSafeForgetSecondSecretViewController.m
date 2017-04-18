@@ -91,12 +91,6 @@
         return;
     }
     
-    if ([predicateModel checkIsHaveNumAndLetter:self.secrectTF.text] != 3) {
-        
-        [MBProgressHUD showError:@"密码只能包含数字和字母"];
-        return;
-    }
-    
     if (![self.secrectTF.text isEqualToString:self.RepeatTf.text]) {
         [MBProgressHUD showError:@"两次输入的密码不一致"];
         return;
