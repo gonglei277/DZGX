@@ -69,13 +69,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCq-uL-ZSv">
-                                            <rect key="frame" x="320" y="30" width="45" height="30"/>
+                                            <rect key="frame" x="311" y="30" width="54" height="30"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="Rxp-vC-EvZ"/>
                                                 <constraint firstAttribute="height" constant="30" id="TnC-fE-QrD"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <state key="normal" title="直捐记录"/>
                                             <connections>
                                                 <action selector="DirectDonationRecord:" destination="-1" eventType="touchUpInside" id="igD-Ox-9rl"/>

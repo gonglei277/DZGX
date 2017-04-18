@@ -255,7 +255,7 @@
             contentView.contentLabel.text = [NSString stringWithFormat:@"您是否要将米子转赠给%@",responseObject[@"data"][@"count"]];
             [_maskView showViewWithContentView:contentView];
         }else{
-            [MBProgressHUD showError:@"获赠人ID输入有误"];
+            [MBProgressHUD showError:responseObject[@"message"]];
         }
         
     } enError:^(NSError *error) {

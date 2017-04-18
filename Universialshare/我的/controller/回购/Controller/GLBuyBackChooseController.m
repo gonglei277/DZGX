@@ -27,10 +27,11 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
     //自定义导航栏右按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(SCREEN_WIDTH - 60, 14, 30, 30);
-    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
+//    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
     
-    [button setImage:[UIImage imageNamed:@"mine_add"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"增加符号"] forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:13];
+    [button setImageEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
     [button addTarget:self action:@selector(pushToAddVC) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
 
