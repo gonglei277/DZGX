@@ -76,6 +76,11 @@ static NSString *ID = @"GLEncourageBeansCell";
         [weakSelf updateData:YES];
         
     }];
+    
+    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf updateData:NO];
+    }];
+    
     // 设置文字
     [header setTitle:@"快扯我，快点" forState:MJRefreshStateIdle];
     
@@ -85,10 +90,14 @@ static NSString *ID = @"GLEncourageBeansCell";
     
     
     self.tableView.mj_header = header;
-    
+    self.tableView.mj_footer = footer;
     [self updateData:YES];
 }
-
+- (void)endRefresh {
+    [self.tableView.mj_footer endRefreshing];
+    [self.tableView.mj_header endRefreshing];
+    
+}
 - (void)updateData:(BOOL)status {
     
     if (status) {
@@ -111,7 +120,7 @@ static NSString *ID = @"GLEncourageBeansCell";
  
         [_loadV removeloadview];
         [self endRefresh];
-        NSLog(@"%@",responseObject);
+        
         if ([responseObject[@"code"] integerValue] == 1) {
             
             for (NSDictionary *dict in responseObject[@"data"]) {
@@ -122,8 +131,8 @@ static NSString *ID = @"GLEncourageBeansCell";
                 [_models addObject:model];
             }
             _beanSum = [responseObject[@"count"] floatValue];
-        }else{
-            [MBProgressHUD showError:responseObject[@"message"]];
+        }else if([responseObject[@"code"] integerValue] == 3){
+            [MBProgressHUD showError:@"已经没有更多数据了"];
         }
         
         //赋值
@@ -145,10 +154,7 @@ static NSString *ID = @"GLEncourageBeansCell";
         self.nodataV.hidden = NO;
     }];
 }
-- (void)endRefresh {
-    [self.tableView.mj_header endRefreshing];
-    
-}
+
 #pragma  UITableviewDatasource
 //-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 //    return 1;

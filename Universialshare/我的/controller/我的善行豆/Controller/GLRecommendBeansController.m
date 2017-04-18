@@ -65,12 +65,18 @@ static NSString *ID = @"GLRecommendCell";
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     [self.tableView registerNib:[UINib nibWithNibName:@"GLRecommendCell" bundle:nil] forCellReuseIdentifier:ID];
+    
     __weak __typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [weakSelf updateData:YES];
         
     }];
+    
+    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf updateData:NO];
+    }];
+    
     // 设置文字
     [header setTitle:@"快扯我，快点" forState:MJRefreshStateIdle];
     
@@ -78,9 +84,15 @@ static NSString *ID = @"GLRecommendCell";
     
     [header setTitle:@"服务器正在狂奔 ..." forState:MJRefreshStateRefreshing];
     
+    
     self.tableView.mj_header = header;
-
+    self.tableView.mj_footer = footer;
     [self updateData:YES];
+}
+- (void)endRefresh {
+    [self.tableView.mj_footer endRefreshing];
+    [self.tableView.mj_header endRefreshing];
+    
 }
 - (void)updateData:(BOOL)status {
     
@@ -101,7 +113,7 @@ static NSString *ID = @"GLRecommendCell";
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/rec_list" paramDic:dict finish:^(id responseObject) {
-        
+       
         [_loadV removeloadview];
         [self endRefresh];
 //        NSLog(@"%@",responseObject);
@@ -115,8 +127,9 @@ static NSString *ID = @"GLRecommendCell";
             }
             
             _beanSum = [responseObject[@"sum"] floatValue];
-        }else{
-            [MBProgressHUD showError:responseObject[@"message"]];
+            
+        }else if([responseObject[@"code"] integerValue] == 3){
+            [MBProgressHUD showError:@"已经没有更多数据了"];
         }
         
        
@@ -140,10 +153,7 @@ static NSString *ID = @"GLRecommendCell";
         self.nodataV.hidden = NO;
     }];
 }
-- (void)endRefresh {
-    [self.tableView.mj_header endRefreshing];
 
-}
 #pragma  UITableviewDatasource
 //-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 //    return 1;

@@ -59,14 +59,24 @@ static NSString *ID = @"GLNoneOfDonationCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"GLNoneOfDonationCell" bundle:nil] forCellReuseIdentifier:ID];
     _page = 1;
     
-    [self.view addSubview:self.nodataV];
+    _rangliLabel.text =[NSString stringWithFormat:@"应让利合计:0"];
+    _yirangliLabel.text = [NSString stringWithFormat:@"已让利合计:0"];
+
+    
+    [self.tableView addSubview:self.nodataV];
     self.nodataV.hidden = YES;
+    
     __weak __typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [weakSelf updateData:YES];
         
     }];
+    
+    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf updateData:NO];
+    }];
+    
     // 设置文字
     [header setTitle:@"快扯我，快点" forState:MJRefreshStateIdle];
     
@@ -76,8 +86,13 @@ static NSString *ID = @"GLNoneOfDonationCell";
     
     
     self.tableView.mj_header = header;
-    
+    self.tableView.mj_footer = footer;
     [self updateData:YES];
+}
+- (void)endRefresh {
+    [self.tableView.mj_footer endRefreshing];
+    [self.tableView.mj_header endRefreshing];
+    
 }
 
 - (void)updateData:(BOOL)status {
@@ -111,21 +126,11 @@ static NSString *ID = @"GLNoneOfDonationCell";
             _rangliLabel.text =[NSString stringWithFormat:@"应让利合计:%@",responseObject[@"surrendersun"]];
             _yirangliLabel.text = [NSString stringWithFormat:@"已让利合计:%@",responseObject[@"surrender"]];
             
-        }else{
-            _rangliLabel.text = @"0";
-            _yirangliLabel.text = @"0";
+        }else if([responseObject[@"code"] integerValue] == 3){
             
-            if (_models.count != 0){
-                [MBProgressHUD showError:@"已经没有更多数据了!"];
-            }
+            [MBProgressHUD showError:@"已经没有更多数据了"];
         }
-        if (_models.count <= 0 ) {
-            self.nodataV.hidden = NO;
-            
-        }else{
-            self.nodataV.hidden = YES;
-           
-        }
+
         
         [self.tableView reloadData];
     } enError:^(NSError *error) {
@@ -135,10 +140,7 @@ static NSString *ID = @"GLNoneOfDonationCell";
         [MBProgressHUD showError:error.localizedDescription];
     }];
 }
-- (void)endRefresh {
-    [self.tableView.mj_header endRefreshing];
-    
-}
+
 - (void)viewWillAppear:(BOOL)animated{
    
 
@@ -147,6 +149,13 @@ static NSString *ID = @"GLNoneOfDonationCell";
 #pragma  UITableviewDatasource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (_models.count <= 0 ) {
+        self.nodataV.hidden = NO;
+        
+    }else{
+        self.nodataV.hidden = YES;
+        
+    }
     return self.models.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

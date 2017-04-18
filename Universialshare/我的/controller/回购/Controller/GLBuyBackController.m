@@ -92,6 +92,7 @@
 
     self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
     
+    self.buybackNumF.placeholder = @"请输入100的整数倍";
     
     self.buybackNumF.returnKeyType = UIReturnKeyNext;
     self.secondPwdF.returnKeyType = UIReturnKeyDone;
@@ -100,9 +101,7 @@
     
     self.contentViewWidth.constant = SCREEN_WIDTH;
     self.contentViewHeight.constant = SCREEN_HEIGHT - 100;
-    
-    [self updateData];
-    
+
     //注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"maskView_dismiss" object:nil];
     
@@ -119,20 +118,22 @@
         NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
             
-            if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]] rangeOfString:@"null"].location != NSNotFound) {
+            if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"banknumber"]] rangeOfString:@"null"].location != NSNotFound) {
                 [UserModel defaultUser].banknumber = @"";
             }else{
-                [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]];
+                [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"banknumber"]];
             }
+            
             if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]] rangeOfString:@"null"].location != NSNotFound) {
                 [UserModel defaultUser].defaultBankname = @"";
             }else{
                 
                 [UserModel defaultUser].defaultBankname = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]];
             }
+            
             [UserModel defaultUser].ketiBean = [NSString stringWithFormat:@"%@元",responseObject[@"data"][@"common"]];
             [UserModel defaultUser].djs_bean = [NSString stringWithFormat:@"%@元",responseObject[@"data"][@"taxes"]];
-            [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]];
+            [UserModel defaultUser].banknumber = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"banknumber"]];
             [UserModel defaultUser].defaultBankname = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"bankname"]];
             
             [usermodelachivar achive];
@@ -144,12 +145,10 @@
 
                 self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
             }
-        }else{
-            [UserModel defaultUser].banknumber = @"";
-            [UserModel defaultUser].defaultBankname = @"";
-//            [UserModel defaultUser].bankIcon = @"";
+            
         }
-        [self updateBankInfo];
+        
+//        [self updateBankInfo];
     } enError:^(NSError *error) {
         [_loadV removeloadview];
         
@@ -171,40 +170,87 @@
     }];
 }
 - (void)updateBankInfo {
-//    
-    if ([[UserModel defaultUser].banknumber isEqualToString:@""] || [[UserModel defaultUser].banknumber rangeOfString:@"null"].location != NSNotFound){
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"user/getbank" paramDic:dict finish:^(id responseObject) {
         
-        self.bankStyleImageV.hidden = YES;
-        self.cardNumLabel.hidden = YES;
-        self.cardStyleLabel.hidden = YES;
-        self.detailImageV.hidden = YES;
+        [_loadV removeloadview];
+        NSLog(@"responseObject = %@",responseObject);
         
-        self.addImageV.hidden = NO;
-        self.addLabel.hidden = NO;
-        
-    }else{
-        
-        self.bankStyleImageV.hidden = NO;
-        self.cardNumLabel.hidden = NO;
-        self.cardStyleLabel.hidden = NO;
-        self.detailImageV.hidden = NO;
-        
-        self.addImageV.hidden = YES;
-        self.addLabel.hidden = YES;
-        
-        self.cardNumLabel.text = [UserModel defaultUser].banknumber;
-        self.cardStyleLabel.text = [UserModel defaultUser].defaultBankname;
-        [self.bankStyleImageV sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].defaultBankIcon]];
-        if (!self.bankStyleImageV.image) {
+        if ([responseObject[@"code"] integerValue] == 1){
+            self.bankStyleImageV.hidden = NO;
+            self.cardNumLabel.hidden = NO;
+            self.cardStyleLabel.hidden = NO;
+            self.detailImageV.hidden = NO;
+            
+            self.addImageV.hidden = YES;
+            self.addLabel.hidden = YES;
+
+            self.cardNumLabel.text = responseObject[@"data"][0][@"number"];
+            self.cardStyleLabel.text = responseObject[@"data"][0][@"name"];
             self.bankStyleImageV.image = [UIImage imageNamed:@"mine_icbc"];
+            
+            for (NSDictionary *dic in responseObject[@"data"]) {
+                
+                self.cardNumLabel.text = dic[@"number"];
+                self.cardStyleLabel.text = dic[@"name"];
+            
+            }
+            
+        }else{
+            self.bankStyleImageV.hidden = YES;
+            self.cardNumLabel.hidden = YES;
+            self.cardStyleLabel.hidden = YES;
+            self.detailImageV.hidden = YES;
+            
+            self.addImageV.hidden = NO;
+            self.addLabel.hidden = NO;
+
         }
-    }
-//    if ([[UserModel defaultUser].groupId integerValue] == [OrdinaryUser integerValue]) {
-        self.buybackNumF.placeholder = @"请输入100的整数倍";
-//    }else{
-//        self.buybackNumF.placeholder = @"请输入500的整数倍";
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        
+    }];
+
+    
+//    if ([[UserModel defaultUser].banknumber isEqualToString:@""] || [[UserModel defaultUser].banknumber rangeOfString:@"null"].location != NSNotFound){
 //        
+//        self.bankStyleImageV.hidden = YES;
+//        self.cardNumLabel.hidden = YES;
+//        self.cardStyleLabel.hidden = YES;
+//        self.detailImageV.hidden = YES;
+//        
+//        self.addImageV.hidden = NO;
+//        self.addLabel.hidden = NO;
+//        
+//    }else{
+//        
+//        self.bankStyleImageV.hidden = NO;
+//        self.cardNumLabel.hidden = NO;
+//        self.cardStyleLabel.hidden = NO;
+//        self.detailImageV.hidden = NO;
+//        
+//        self.addImageV.hidden = YES;
+//        self.addLabel.hidden = YES;
+//        
+//        self.cardNumLabel.text = [UserModel defaultUser].banknumber;
+//        self.cardStyleLabel.text = [UserModel defaultUser].defaultBankname;
+//        [self.bankStyleImageV sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].defaultBankIcon]];
+//        if (!self.bankStyleImageV.image) {
+//            self.bankStyleImageV.image = [UIImage imageNamed:@"mine_icbc"];
+//        }
 //    }
+////    if ([[UserModel defaultUser].groupId integerValue] == [OrdinaryUser integerValue]) {
+//        self.buybackNumF.placeholder = @"请输入100的整数倍";
+////    }else{
+////        self.buybackNumF.placeholder = @"请输入500的整数倍";
+////        
+////    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -485,7 +531,7 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     [self updateData];
-    
+    [self updateBankInfo];
 //    if ([[UserModel defaultUser].cardNumber isEqualToString:@""]){
 //        
 //        self.bankStyleImageV.hidden = YES;
