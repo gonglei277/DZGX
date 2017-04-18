@@ -86,7 +86,7 @@ static NSString *followID = @"GLFirstFollowCell";
     
     [self addMySelfPanGesture];
 
-//    [self initInterDataSorceinfomessage];
+    [self initInterDataSorceinfomessage];
     
     [self setupUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFunction) name:UIApplicationWillEnterForegroundNotification object:[UIApplication sharedApplication]];
@@ -278,12 +278,16 @@ static NSString *followID = @"GLFirstFollowCell";
                 self.homepopinfoView.titlename.text = @"";
             }
             if ([strcontent rangeOfString:@"null"].location == NSNotFound) {
-                 self.homepopinfoView.infoLb.attributedText = [self strToAttriWithStr:strcontent];
                 
-//                self.homepopinfoView.infoLb.attributedText
+                NSAttributedString *attributetext = [self strToAttriWithStr:strcontent];
                 
-//                NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:strcontent];
-//                NSLog(@"attributedText = %@",attributedText);
+                NSString *string = [NSString stringWithFormat:@"%@",attributetext];
+                NSRange startRange = [string rangeOfString:@"p>"];
+                NSRange endRange = [string rangeOfString:@"</"];
+                NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
+                NSString *result = [string substringWithRange:range];
+                
+                self.homepopinfoView.infoLb.text = result;
                 
             }else{
                 self.homepopinfoView.infoLb.text = @"";
@@ -295,9 +299,10 @@ static NSString *followID = @"GLFirstFollowCell";
                 self.homepopinfoView.timeLb.text = @"";
             }
 
-//            if (self.homepopinfoView.infoLb.text.length<=1) {
-//                return ;
-//            }
+            if (self.homepopinfoView.infoLb.text.length<=1) {
+                return ;
+            }
+         
             
             CGRect sizetitle=[self.homepopinfoView.titlename.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil];
             
@@ -335,6 +340,33 @@ static NSString *followID = @"GLFirstFollowCell";
     }];
    
 }
+-(NSString *)filterHTML:(NSString *)html
+{
+    NSScanner * scanner = [NSScanner scannerWithString:html];
+    NSString * text = nil;
+    while([scanner isAtEnd]==NO)
+    {
+        [scanner scanUpToString:@"<" intoString:nil];
+        [scanner scanUpToString:@">" intoString:&text];
+        html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>",text] withString:@""];
+    }
+    return html;
+}
+
+/**
+ *  字符串转富文本
+ */
+- (NSMutableAttributedString *)strToAttriWithStr:(NSString *)htmlStr{
+    
+    NSMutableAttributedString *AttributedString=[[NSMutableAttributedString alloc] initWithData:[htmlStr dataUsingEncoding:NSUTF8StringEncoding]
+                                                                                        options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}
+                                                                             documentAttributes:nil
+                                                                                          error:nil];
+    
+    [AttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0, [AttributedString length])];//设置字体大小
+    
+    return AttributedString;
+}
 //关闭
 -(void)closeinfobutton{
     //
@@ -371,21 +403,6 @@ static NSString *followID = @"GLFirstFollowCell";
         
     }
     return _homepopinfoView;
-}
-
-/**
- *  字符串转富文本
- */
-- (NSMutableAttributedString *)strToAttriWithStr:(NSString *)htmlStr{
-    
-    NSMutableAttributedString *AttributedString=[[NSMutableAttributedString alloc] initWithData:[htmlStr dataUsingEncoding:NSUnicodeStringEncoding]
-                                                                                        options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}
-                                                                             documentAttributes:nil
-                                                                                          error:nil];
-    
-    [AttributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0, [AttributedString length])];//设置字体大小
-    
-    return AttributedString;
 }
 
 - (IBAction)showMoreButton:(UIButton *)sender {
