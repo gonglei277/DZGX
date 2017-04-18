@@ -52,7 +52,7 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
     [NetworkManager requestPOSTWithURLStr:@"user/getbank" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         
         if ([responseObject[@"code"] integerValue] == 1){
             
@@ -141,7 +141,7 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
     [NetworkManager requestPOSTWithURLStr:@"user/del_bank" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         
         if ([responseObject[@"code"] integerValue] == 1){
             

@@ -27,19 +27,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
-//    self.navigationController.navigationBar.hidden = NO;
-//    self.navigationItem.title = @"我要推荐";
-//    //自定义导航栏右按钮
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    button.frame = CGRectMake(SCREEN_WIDTH - 60, 14, 60, 30);
-//    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
-//    [button setTitle:@"推荐记录" forState:UIControlStateNormal];
-//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    button.titleLabel.font = [UIFont systemFontOfSize:13];
-//    [button addTarget:self action:@selector(pushToRecordVC) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+
     self.noticeLabel.text = @"扫面此二维码,注册\n 长按此二维码分享到您的社交圈";
     [self.backBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 0, 5, 20)];
     [self logoQrCode];

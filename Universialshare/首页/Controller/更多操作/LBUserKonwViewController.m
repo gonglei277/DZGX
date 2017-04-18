@@ -41,11 +41,9 @@
     [NetworkManager requestPOSTWithURLStr:@"index/index_alert" paramDic:@{@"type":self.indexType} finish:^(id responseObject) {
         [_loadV removeloadview];
 
-//        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
              
             self.dataDic = responseObject[@"data"];
-//            NSLog(@"content = %@",self.dataDic[@"content"]);
             
             [self.tableview reloadData];
             

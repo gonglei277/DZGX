@@ -54,15 +54,6 @@
     self.ensureBtn.layer.cornerRadius = 5.f;
     [self.backBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 0, 5, 20)];
     self.scrollView.delegate = self;
-    //自定义导航栏右按钮
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(SCREEN_WIDTH - 60, 14, 60, 30);
-    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
-    [button setTitle:@"直捐记录" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont systemFontOfSize:13];
-    [button addTarget:self action:@selector(pushToRecordVC) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
     
     self.donationNumT.returnKeyType = UIReturnKeyNext;
     self.secondPwdT.returnKeyType = UIReturnKeyDone;

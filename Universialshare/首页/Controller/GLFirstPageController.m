@@ -86,7 +86,7 @@ static NSString *followID = @"GLFirstFollowCell";
     
     [self addMySelfPanGesture];
 
-    //[self initInterDataSorceinfomessage];
+    [self initInterDataSorceinfomessage];
     
     [self setupUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFunction) name:UIApplicationWillEnterForegroundNotification object:[UIApplication sharedApplication]];
@@ -133,9 +133,7 @@ static NSString *followID = @"GLFirstFollowCell";
     maskLayer.frame = self.sidebarView.bounds;
     maskLayer.path = maskPath.CGPath;
     self.sidebarView.layer.mask = maskLayer;
-    
-    
-    
+ 
     self.contentView.layer.cornerRadius = 5.f;
     self.contentView.layer.masksToBounds = YES;
     
@@ -156,7 +154,6 @@ static NSString *followID = @"GLFirstFollowCell";
     [self.rankingView addGestureRecognizer:tap1];
     [self.rewardView addGestureRecognizer:tap2];
     
-//    self.dailyContentView.frame = CGRectMake(0, 0, self.contentView.yy_width, self.contentView.yy_height);
     [self.contentView addSubview:self.dailyContentView];
     [self.contentView addSubview:self.rankingContentView];
     [self.contentView addSubview:self.rewardContentView];
@@ -267,13 +264,12 @@ static NSString *followID = @"GLFirstFollowCell";
 -(void)initInterDataSorceinfomessage{
     
     [NetworkManager requestPOSTWithURLStr:@"index/notice" paramDic:nil finish:^(id responseObject) {
-//        NSLog(@"%@",responseObject);
 //        [_loadV removeFromSuperview];
         if ([responseObject[@"code"] integerValue] == 1) {
             
-            NSString *strtitle=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"title"]];
-            NSString *strcontent=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"content"]];
-            NSString *strtime=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"release_time"]];
+            NSString *strtitle=[NSString stringWithFormat:@"%@",responseObject[@"data"][0][@"title"]];
+            NSString *strcontent=[NSString stringWithFormat:@"%@",responseObject[@"data"][0][@"content"]];
+            NSString *strtime=[NSString stringWithFormat:@"%@",responseObject[@"data"][0][@"release_time"]];
             
             if ([strtitle rangeOfString:@"null"].location == NSNotFound) {
                 self.homepopinfoView.titlename.text = strtitle;
@@ -311,7 +307,6 @@ static NSString *followID = @"GLFirstFollowCell";
             
             CGRect sizecontent=[self.homepopinfoView.infoLb.attributedText  boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
             
-//            NSLog(@"%@",NSStringFromCGRect(sizecontent));
             
             if ((110 + sizetitle.size.height + sizecontent.size.height) >= ((SCREEN_HEIGHT/2) - 30)) {
                 

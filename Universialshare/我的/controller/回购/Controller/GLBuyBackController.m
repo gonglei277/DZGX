@@ -83,7 +83,7 @@
 
 //    if([[UserModel defaultUser].userLogin integerValue] == 1){
 //        
-        self.noticeLabel.text = @" 1. 回购建议优先选择工商银行\n 2. 单笔最多回购50000颗米子\n 3. 单笔米子扣除回购金额5%的手续费 ";
+        self.noticeLabel.text = @" 1. 回购建议优先选择工商银行\n 2. 单笔最多回购50000颗米子\n 3. 单笔米子扣除回购金额10%的手续费 ";
 //    }else{
 //        self.noticeLabel.text = @" 1. 回购建议优先选择工商银行\n 2. 单笔普通志愿豆扣除回购金额5%的手续费\n 3. 单笔待提供发票志愿豆回购扣除手续费5(颗)志愿豆手续费,以及回购金额4.8‰的代缴税\n 4. 待提供发票志愿豆任意时间允许回购\n";
 //    }
@@ -217,40 +217,6 @@
         
     }];
 
-    
-//    if ([[UserModel defaultUser].banknumber isEqualToString:@""] || [[UserModel defaultUser].banknumber rangeOfString:@"null"].location != NSNotFound){
-//        
-//        self.bankStyleImageV.hidden = YES;
-//        self.cardNumLabel.hidden = YES;
-//        self.cardStyleLabel.hidden = YES;
-//        self.detailImageV.hidden = YES;
-//        
-//        self.addImageV.hidden = NO;
-//        self.addLabel.hidden = NO;
-//        
-//    }else{
-//        
-//        self.bankStyleImageV.hidden = NO;
-//        self.cardNumLabel.hidden = NO;
-//        self.cardStyleLabel.hidden = NO;
-//        self.detailImageV.hidden = NO;
-//        
-//        self.addImageV.hidden = YES;
-//        self.addLabel.hidden = YES;
-//        
-//        self.cardNumLabel.text = [UserModel defaultUser].banknumber;
-//        self.cardStyleLabel.text = [UserModel defaultUser].defaultBankname;
-//        [self.bankStyleImageV sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].defaultBankIcon]];
-//        if (!self.bankStyleImageV.image) {
-//            self.bankStyleImageV.image = [UIImage imageNamed:@"mine_icbc"];
-//        }
-//    }
-////    if ([[UserModel defaultUser].groupId integerValue] == [OrdinaryUser integerValue]) {
-//        self.buybackNumF.placeholder = @"请输入100的整数倍";
-////    }else{
-////        self.buybackNumF.placeholder = @"请输入500的整数倍";
-////        
-////    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -323,14 +289,14 @@
     contentView.layer.masksToBounds = YES;
     [contentView.cancelBtn addTarget:self action:@selector(cancelBuyback) forControlEvents:UIControlEventTouchUpInside];
     [contentView.ensureBtn addTarget:self action:@selector(ensureBuyback) forControlEvents:UIControlEventTouchUpInside];
-    if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
+//    if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
+    
+        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为回购数量的10%%"];
+//    }else{
         
-        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为%.1f(颗)米子\n可兑换金额%.1f元",[self.buybackNumF.text integerValue] * 0.05,[self.buybackNumF.text integerValue] * 0.95];
-    }else{
+//        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗米子\n代扣税为%.2f(颗)米子\n可兑换金额为%.2f元",[self.buybackNumF.text integerValue]*0.0048,([self.buybackNumF.text integerValue]-[self.buybackNumF.text integerValue]*0.0048 - 5)];
         
-        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗米子\n代扣税为%.2f(颗)米子\n可兑换金额为%.2f元",[self.buybackNumF.text integerValue]*0.0048,([self.buybackNumF.text integerValue]-[self.buybackNumF.text integerValue]*0.0048 - 5)];
-        
-    }
+//    }
     
     [_maskV showViewWithContentView:contentView];
 
@@ -369,14 +335,14 @@
             contentView.layer.masksToBounds = YES;
             [contentView.cancelBtn addTarget:self action:@selector(cancelBuyback) forControlEvents:UIControlEventTouchUpInside];
             [contentView.ensureBtn addTarget:self action:@selector(ensureBuyback) forControlEvents:UIControlEventTouchUpInside];
-            if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
+//            if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
         
-                contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为%.1f(颗)米子\n可兑换金额%.1f元",[self.buybackNumF.text integerValue] * 0.05,[self.buybackNumF.text integerValue] * 0.95];
-            }else{
-        
-                contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗米子n代扣税为%.2f(颗)米子\n可兑换金额为%.2f元",[self.buybackNumF.text integerValue]*0.0048,([self.buybackNumF.text integerValue]-[self.buybackNumF.text integerValue]*0.0048 - 5)];
-   
-            }
+                contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为回购数量的10%%"];
+//            }else{
+//        
+//                contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗米子n代扣税为%.2f(颗)米子\n可兑换金额为%.2f元",[self.buybackNumF.text integerValue]*0.0048,([self.buybackNumF.text integerValue]-[self.buybackNumF.text integerValue]*0.0048 - 5)];
+//   
+//            }
             
             [_maskV showViewWithContentView:contentView];
         
@@ -460,8 +426,9 @@
 - (IBAction)chooseBank:(id)sender {
     if (self.addImageV.hidden) {
         self.hidesBottomBarWhenPushed = YES;
+        
         GLBuyBackChooseController *chooseVC = [[GLBuyBackChooseController alloc] init];
-//        chooseVC.models = self.cardModels;
+        
         [chooseVC returnModel:^(GLBankCardModel *model) {
             self.cardNumLabel.text = model.number;
             self.cardStyleLabel.text = model.name;
@@ -532,23 +499,7 @@
     self.navigationController.navigationBar.hidden = YES;
     [self updateData];
     [self updateBankInfo];
-//    if ([[UserModel defaultUser].cardNumber isEqualToString:@""]){
-//        
-//        self.bankStyleImageV.hidden = YES;
-//        self.cardNumLabel.hidden = YES;
-//        self.cardStyleLabel.hidden = YES;
-//        self.addImageV.hidden = NO;
-//        self.addLabel.hidden = NO;
-//        
-//    }else{
-//        
-//        self.bankStyleImageV.hidden = NO;
-//        self.cardNumLabel.hidden = NO;
-//        self.cardStyleLabel.hidden = NO;
-//        self.addImageV.hidden = YES;
-//        self.addLabel.hidden = YES;
-//    }
-//    
+   
 }
 
 @end
