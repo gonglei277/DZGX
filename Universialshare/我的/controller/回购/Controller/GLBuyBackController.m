@@ -102,11 +102,16 @@
     self.contentViewWidth.constant = SCREEN_WIDTH;
     self.contentViewHeight.constant = SCREEN_HEIGHT - 100;
 
+    
+    [self updateBankInfo];
     //注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"maskView_dismiss" object:nil];
     
 }
 - (void)updateData {
+    
+    self.bankStyleImageV.image = [UIImage imageNamed:@"mine_icbc"];
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
@@ -115,7 +120,7 @@
     [NetworkManager requestPOSTWithURLStr:@"user/refresh" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
             
             if ([[NSString stringWithFormat:@"%@",responseObject[@"data"][@"banknumber"]] rangeOfString:@"null"].location != NSNotFound) {
@@ -179,7 +184,7 @@
     [NetworkManager requestPOSTWithURLStr:@"user/getbank" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         
         if ([responseObject[@"code"] integerValue] == 1){
             self.bankStyleImageV.hidden = NO;
@@ -384,11 +389,11 @@
     dict[@"address"] = self.cardStyleLabel.text;
 
     if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
-        dict[@"withdrawtype"] = @"1";
+        dict[@"donatetype"] = @"1";
     }else{
-        dict[@"withdrawtype"] = @"0";
+        dict[@"donatetype"] = @"0";
     }
-//    NSLog(@"%@",dict);
+    NSLog(@"dict  = %@",dict);
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/back" paramDic:dict finish:^(id responseObject) {
         
@@ -498,7 +503,7 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     [self updateData];
-    [self updateBankInfo];
+
    
 }
 

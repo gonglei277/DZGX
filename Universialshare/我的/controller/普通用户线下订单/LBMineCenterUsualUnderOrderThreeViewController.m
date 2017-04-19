@@ -27,7 +27,7 @@
    
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    [self.tableview addSubview:self.nodataV];
     self.tableview.tableFooterView = [UIView new];
     [self.tableview registerNib:[UINib nibWithNibName:@"LBMineCenterUsualUnderOrderTableViewCell" bundle:nil] forCellReuseIdentifier:@"LBMineCenterUsualUnderOrderTableViewCell"];
     

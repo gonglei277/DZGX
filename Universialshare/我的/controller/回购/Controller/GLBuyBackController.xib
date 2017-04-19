@@ -179,8 +179,8 @@
                                                 <constraint firstAttribute="height" constant="1" id="gKg-3C-g6L"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92X-ag-GbP">
-                                            <rect key="frame" x="0.0" y="43" width="375" height="40"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92X-ag-GbP">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="ILT-UE-GSv"/>
                                             </constraints>
