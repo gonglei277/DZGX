@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="adressTf" destination="zqr-fm-RlP" id="cus-qi-ueQ"/>
                 <outlet property="codeTf" destination="nRq-Ca-fig" id="HVC-xv-bdW"/>
+                <outlet property="exitbt" destination="jYV-3D-hcT" id="Ndq-eR-QGc"/>
                 <outlet property="manImage" destination="2WT-VQ-ibH" id="AlX-36-ERI"/>
                 <outlet property="nameTf" destination="bcZ-vO-ivW" id="s7h-vb-XJh"/>
                 <outlet property="sixSecretTf" destination="La4-Bf-qcy" id="HWj-MB-0OR"/>
