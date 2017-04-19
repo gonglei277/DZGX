@@ -9,12 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface GLBuyBackChooseCardController : UIViewController
-
+//typedef void (^ReturnBlock)(GLBankCardModel *model);
 // 一会要传的值为NSString类型
-typedef void (^newBlock)(NSString *);
+typedef void (^newBlock)(NSString *cardNumber);
 // 声明block属性
-@property (nonatomic, copy) newBlock block;
-// 声明block方法
-- (void)text:(newBlock)block;
+@property (nonatomic, copy) newBlock returnBlock;
+
 
 @end

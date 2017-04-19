@@ -57,9 +57,7 @@
         
     }];
 }
-- (void)text:(newBlock)block{
-    self.block = block;
-}
+
 
 - (IBAction)chooseBank:(id)sender {
     _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
@@ -111,7 +109,7 @@
 }
 - (IBAction)ensureClick:(id)sender {
     
-    
+    self.returnBlock(@"ninamhhj");
     if (self.cardTextF.text == nil||self.cardTextF.text.length == 0) {
         [MBProgressHUD showError:@"请输入银行卡号"];
         return;
@@ -140,10 +138,10 @@
 //        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
-            self.block(self.cardTextF.text);
+//            self.block(_cardTextF.text);
   
             self.cardTextF.text = nil;
-
+            
             [MBProgressHUD showSuccess:@"添加银行卡成功"];
             [self.navigationController popViewControllerAnimated:YES];
         }else{

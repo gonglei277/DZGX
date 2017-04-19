@@ -286,11 +286,12 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
-    dict[@"password"] = self.secondPwdF.text;
     dict[@"number"] = self.beanNumF.text;
     dict[@"DonationID"] = self.donationIDF.text;
     dict[@"yzm"] = self.idCodeF.text;
     
+    NSString *encryptsecret = [RSAEncryptor encryptString:self.secondPwdF.text publicKey:public_RSA];
+    dict[@"password"] = encryptsecret;
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/give_to" paramDic:dict finish:^(id responseObject) {

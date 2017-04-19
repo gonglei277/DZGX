@@ -4,28 +4,18 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            scope = "0"
-            stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Universialshare/&#x6211;&#x7684;/controller/&#x6211;&#x8981;&#x76f4;&#x6350;/Model/GLDirectDonationModel.m"
-            timestampString = "513760419.187831"
+            filePath = "Universialshare/&#x6211;&#x7684;/controller/&#x56de;&#x8d2d;/Controller/GLBuyBackController.m"
+            timestampString = "514289635.310345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "-setValue:forUndefinedKey:"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
+            landmarkName = "-chooseBank:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

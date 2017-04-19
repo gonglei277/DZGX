@@ -375,12 +375,12 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
-    dict[@"password"] = self.secondPwdF.text;
     dict[@"num"] = self.buybackNumF.text;
     dict[@"IDcar"] = self.cardNumLabel.text;
     //开户行地址  ???
     dict[@"address"] = self.cardStyleLabel.text;
-
+    NSString *encryptsecret = [RSAEncryptor encryptString:self.secondPwdF.text publicKey:public_RSA];
+    dict[@"password"] = encryptsecret;
     if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
         dict[@"donatetype"] = @"1";
     }else{
@@ -441,10 +441,9 @@
 //        chooseVC.block = ^(NSString *cardNum){
 //            [self updateBankInfo];
 //        };
-        [chooseVC text:^(NSString *cardNum) {
+        chooseVC.returnBlock = ^(NSString *str){
             [self updateBankInfo];
-
-        }];
+        };
         [self.navigationController pushViewController:chooseVC animated:YES];
     }
     
