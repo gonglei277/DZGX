@@ -321,6 +321,19 @@
                         <action selector="surebutton:" destination="-1" eventType="touchUpInside" id="NBZ-lW-JrH"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYV-3D-hcT">
+                    <rect key="frame" x="10" y="510" width="355" height="40"/>
+                    <color key="backgroundColor" red="0.77709561589999998" green="0.19865089650000001" blue="0.056773729619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="xqi-GX-ioh"/>
+                    </constraints>
+                    <state key="normal" title="退出">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="exitButton:" destination="-1" eventType="touchUpInside" id="6cp-RH-KpB"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -332,16 +345,19 @@
                 <constraint firstItem="USW-GR-t1u" firstAttribute="top" secondItem="btz-Yv-xfy" secondAttribute="bottom" constant="5" id="Chn-tA-p4e"/>
                 <constraint firstItem="fG9-pV-lRS" firstAttribute="top" secondItem="eSp-uP-sss" secondAttribute="bottom" constant="1" id="GdU-rd-nBn"/>
                 <constraint firstAttribute="trailing" secondItem="eSp-uP-sss" secondAttribute="trailing" id="H7X-fz-YTf"/>
+                <constraint firstItem="jYV-3D-hcT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="IIw-ia-Djv"/>
                 <constraint firstAttribute="trailing" secondItem="USW-GR-t1u" secondAttribute="trailing" id="Idm-7f-1Hm"/>
                 <constraint firstItem="fG9-pV-lRS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LRd-ZR-vDS"/>
                 <constraint firstItem="USW-GR-t1u" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UnG-vr-D1C"/>
                 <constraint firstAttribute="trailing" secondItem="btz-Yv-xfy" secondAttribute="trailing" id="VUh-qD-zwm"/>
+                <constraint firstItem="jYV-3D-hcT" firstAttribute="top" secondItem="Hxr-6y-JsA" secondAttribute="bottom" constant="20" id="W8M-gE-qQt"/>
                 <constraint firstAttribute="trailing" secondItem="blJ-8s-hNu" secondAttribute="trailing" id="YLk-nh-TKu"/>
                 <constraint firstItem="RNW-W9-kIT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="b2y-0d-aFJ"/>
                 <constraint firstItem="Hxr-6y-JsA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="cQv-Gm-z91"/>
                 <constraint firstItem="blJ-8s-hNu" firstAttribute="top" secondItem="RNW-W9-kIT" secondAttribute="bottom" constant="5" id="cUk-TK-fEI"/>
                 <constraint firstItem="aav-U0-pAm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="inH-rl-AWb"/>
                 <constraint firstItem="eSp-uP-sss" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jOV-zp-aL1"/>
+                <constraint firstAttribute="trailing" secondItem="jYV-3D-hcT" secondAttribute="trailing" constant="10" id="kPc-m8-Wfa"/>
                 <constraint firstAttribute="trailing" secondItem="Hxr-6y-JsA" secondAttribute="trailing" constant="10" id="nuC-Mf-JYM"/>
                 <constraint firstItem="blJ-8s-hNu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="owz-3F-mz8"/>
                 <constraint firstAttribute="trailing" secondItem="fG9-pV-lRS" secondAttribute="trailing" id="qQ8-mw-P1D"/>

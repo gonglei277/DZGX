@@ -35,6 +35,12 @@
     
 }
 
+- (IBAction)exitButton:(UIButton *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 - (IBAction)surebutton:(UIButton *)sender {
     
     if (self.nameTf.text.length <= 0) {
