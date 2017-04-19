@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,7 +67,7 @@
                             <rect key="frame" x="60" y="100" width="255" height="20"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                            <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="Gg9-yG-htm"/>
                             </connections>

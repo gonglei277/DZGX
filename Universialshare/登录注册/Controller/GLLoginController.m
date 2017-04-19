@@ -54,6 +54,7 @@
     [self.loginView.lingView addGestureRecognizer:lingVgesture];
     
     
+   
     
 }
 
@@ -77,13 +78,8 @@
     
     
     if (self.phone.text.length <=0 ) {
-        [MBProgressHUD showError:@"请输入手机号码"];
+        [MBProgressHUD showError:@"请输入手机号码或ID"];
         return;
-    }else{
-        if (![predicateModel valiMobile:self.phone.text]) {
-            [MBProgressHUD showError:@"手机号格式不对"];
-            return;
-        }
     }
     
     if (self.scretTf.text.length <= 0) {
@@ -131,7 +127,12 @@
 -(void)surebuttonEvent{
 
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"user/login" paramDic:@{@"userphone":self.phone.text,@"password":self.scretTf.text,@"groupID":self.usertype} finish:^(id responseObject) {
+    
+ 
+     NSString *encryptsecret = [RSAEncryptor encryptString:self.scretTf.text publicKey:public_RSA];
+
+    
+    [NetworkManager requestPOSTWithURLStr:@"user/login" paramDic:@{@"userphone":self.phone.text,@"password":encryptsecret,@"groupID":self.usertype} finish:^(id responseObject) {
         [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
 
@@ -254,6 +255,18 @@
         
         [self.view endEditing:YES];
         return NO;
+    }
+    
+    if (textField == self.phone ) {
+        
+        for(int i=0; i< [string length];i++){
+            
+            int a = [string characterAtIndex:i];
+            
+            if( a >= 0x4e00 && a <= 0x9fff)
+                
+                return NO;
+        }
     }
     
     return YES;

@@ -95,13 +95,18 @@
         return;
     }
     
-    
     if (self.verificationTf.text.length <= 0) {
         [MBProgressHUD showError:@"请输入验证码"];
         return;
     }
+//    NSString *encryptphone = [RSAEncryptor encryptString:self.phoneTf.text publicKey:public_RSA];
+      NSString *encryptsecret = [RSAEncryptor encryptString:self.secretTf.text publicKey:public_RSA];
+//    NSString *encryptrecoemd = [RSAEncryptor encryptString:self.recomendId.text publicKey:public_RSA];
+//    NSString *encrypteyzm = [RSAEncryptor encryptString:self.verificationTf.text publicKey:public_RSA];
+
+ 
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"user/register" paramDic:@{@"userphone":self.phoneTf.text , @"password":self.secretTf.text , @"uid":self.recomendId.text , @"yzm":self.verificationTf.text} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/register" paramDic:@{@"userphone":self.phoneTf.text , @"password":encryptsecret , @"uid":self.recomendId.text , @"yzm":self.verificationTf.text} finish:^(id responseObject) {
         [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
              [MBProgressHUD showError:responseObject[@"message"]];

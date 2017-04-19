@@ -573,7 +573,6 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 //刷新数据
 -(void)refreshDataSource{
 
-   
     [NetworkManager requestPOSTWithURLStr:@"user/refresh" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid} finish:^(id responseObject) {
         
         if ([responseObject[@"code"] integerValue] == 1) {
