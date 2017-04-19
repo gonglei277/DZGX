@@ -75,16 +75,11 @@ static NSString *ID = @"GLMine_MyHeartCell";
 }
 
 #pragma  UITableviewDatasource
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.models.count;
-}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (self.models.count == 0) {
-        return 1;
-    }else{
-        
-        return 1;
-    }
+
+    return 1;
+    
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     GLMine_MyHeartCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
@@ -96,31 +91,5 @@ static NSString *ID = @"GLMine_MyHeartCell";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 180;
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 300.0, 30)];
-    
-    UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.opaque = NO;
-    headerLabel.textColor = [UIColor darkGrayColor];
-    headerLabel.highlightedTextColor = [UIColor whiteColor];
-    headerLabel.shadowColor = [UIColor lightGrayColor];
-    headerLabel.font = [UIFont systemFontOfSize:14];
-    headerLabel.frame = CGRectMake(10.0, 0.0, 300.0, 30);
-    
-    if (section == 0) {
-        headerLabel.text =  @"本月";
-    }else {
-        headerLabel.text = @"";
-    }
-    
-    [customView addSubview:headerLabel];
-    
-    return customView;
-}
-//别忘了设置高度
-- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 30;
-}
+
 @end

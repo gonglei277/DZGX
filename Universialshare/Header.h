@@ -33,8 +33,10 @@
 //零售商
 #define Retailer @"6"
 
+
+//http://dzgx.joshuaweb.cn/index.php/Home/Regist/index.html
 //分享
-#define SHARE_URL @"http://www.0dfp.com/index.php?mod=member&act=register&username="
+#define SHARE_URL @"http://dzgx.joshuaweb.cn/index.php/Home/Regist/index.html?mod=member&act=register&username="
 #define UMSHARE_APPKEY @"58cf31dcf29d982906001f63"
 //微信分享
 #define WEIXI_APPKEY @"wx313142c8c6334365"
@@ -42,6 +44,10 @@
 //微博分享
 #define WEIBO_APPKEY @"688497271"
 #define WEIBO_SECRET @"5d4df0f912e9af331adaf718a357176f"
+
+//虚拟货币名称
+#define NormalMoney @"米子"
+#define SpecialMoney @"代缴税米子"
 
 
 #endif /* Header_h */
