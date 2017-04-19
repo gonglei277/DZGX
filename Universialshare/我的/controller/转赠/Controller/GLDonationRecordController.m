@@ -109,7 +109,7 @@ static NSString *ID = @"GLDonationRecordCell";
         [_loadV removeloadview];
         [self endRefresh];
         if ([responseObject[@"code"] integerValue] == 1) {
-            NSLog(@"%@",responseObject);
+//            NSLog(@"%@",responseObject);
             for (NSDictionary *dic in responseObject[@"data"]) {
                 GLDonationRecordModel *model = [GLDonationRecordModel mj_objectWithKeyValues:dic];
                 

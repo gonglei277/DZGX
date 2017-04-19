@@ -48,9 +48,9 @@
     if ([[UserModel defaultUser].groupId isEqualToString:OrdinaryUser]) {
         userType = @"米家";
     }else{
-        userType = @"商家";
+        userType = @"米商";
     }
-    self.noticeLabel.text = [NSString stringWithFormat:@"*您可以将您的米子转赠给您的%@朋友,或者需要帮助的%@.",userType,userType];
+    self.noticeLabel.text = [NSString stringWithFormat:@"*您可以将您的%@转赠给您的%@朋友,或者需要帮助的%@.",NormalMoney,userType,userType];
 
     self.contentViewWidth.constant = SCREEN_WIDTH;
     self.contentViewHeight.constant = SCREEN_HEIGHT - 50;
@@ -252,7 +252,7 @@
             contentView.layer.masksToBounds = YES;
             [contentView.cancelBtn addTarget:self action:@selector(cancelDonation) forControlEvents:UIControlEventTouchUpInside];
             [contentView.ensureBtn addTarget:self action:@selector(ensureDonation) forControlEvents:UIControlEventTouchUpInside];
-            contentView.contentLabel.text = [NSString stringWithFormat:@"您是否要将米子转赠给%@",responseObject[@"data"][@"count"]];
+            contentView.contentLabel.text = [NSString stringWithFormat:@"您是否要将%@转赠给%@",NormalMoney,responseObject[@"data"][@"count"]];
             [_maskView showViewWithContentView:contentView];
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];

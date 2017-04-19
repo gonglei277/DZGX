@@ -133,8 +133,8 @@
     [qrImageFilter setDefaults];
     
     //将字符串转换成 NSdata (虽然二维码本质上是 字符串,但是这里需要转换,不转换就崩溃)
-//    NSString *contentStr = [NSString stringWithFormat:@"%@%@",SHARE_URL,[UserModel defaultUser].name];
-    NSString *contentStr = @"";
+    NSString *contentStr = [NSString stringWithFormat:@"%@%@",SHARE_URL,[UserModel defaultUser].name];
+//    NSString *contentStr = @"";
     NSData *qrImageData = [contentStr dataUsingEncoding:NSUTF8StringEncoding];
     
     //设置过滤器的 输入值  ,KVC赋值

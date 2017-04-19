@@ -74,6 +74,7 @@
 @property (strong, nonatomic)UIView *homepopinfoViewmask;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *slideViewHeight;
 @end
 
 static NSString *ID = @"GLFirstHeartCell";
@@ -126,14 +127,18 @@ static NSString *followID = @"GLFirstFollowCell";
     [super updateViewConstraints];
 
     self.contentViewHeight.constant = 220 *autoSizeScaleY;
+    self.slideViewHeight.constant = 220 *autoSizeScaleY;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.sidebarView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerBottomLeft cornerRadii:CGSizeMake(5, 5)];
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = self.sidebarView.bounds;
-    maskLayer.path = maskPath.CGPath;
-    self.sidebarView.layer.mask = maskLayer;
- 
+    //绘制圆角(左上角,左下角)
+//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(self.sidebarView.yy_x, self.sidebarView.yy_y, self.sidebarView.yy_width, self.slideViewHeight.constant) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerBottomLeft cornerRadii:CGSizeMake(5, 5)];
+//    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+//    maskLayer.frame = CGRectMake(self.sidebarView.yy_x, self.sidebarView.yy_y, self.sidebarView.yy_width, self.slideViewHeight.constant);
+//    maskLayer.path = maskPath.CGPath;
+//    self.sidebarView.layer.mask = maskLayer;
+    self.sidebarView.layer.cornerRadius = 5.f;
+    self.sidebarView.layer.masksToBounds = YES;
+    
     self.contentView.layer.cornerRadius = 5.f;
     self.contentView.layer.masksToBounds = YES;
     
@@ -146,6 +151,7 @@ static NSString *followID = @"GLFirstFollowCell";
 
 }
 - (void)setupUI{
+    
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeView:)];
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeView:)];

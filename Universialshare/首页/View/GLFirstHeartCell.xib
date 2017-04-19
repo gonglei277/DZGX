@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -22,7 +23,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全联盟" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7q-tF-lKM">
                         <rect key="frame" x="5" y="56" width="40" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="ANO-4Y-ave"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="ANO-4Y-ave"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="D8u-Wq-G2Q"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
