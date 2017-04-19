@@ -148,8 +148,11 @@
         [MBProgressHUD showError:@"两次输入的密码不一致"];
         return;
     }
+    
+     NSString *encryptsecret = [RSAEncryptor encryptString:self.baseTwoSecret.text publicKey:public_RSA];
+    
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"user/setPass" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid,@"psd":self.baseTwoSecret.text} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/setPass" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid,@"psd":encryptsecret} finish:^(id responseObject) {
         [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
             

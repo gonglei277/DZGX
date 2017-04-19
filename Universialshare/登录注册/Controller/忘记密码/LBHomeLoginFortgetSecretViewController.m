@@ -97,8 +97,14 @@
         [MBProgressHUD showError:@"两次输入的密码不一致"];
         return;
     }
+    
+//    NSString *encryptphone = [RSAEncryptor encryptString:self.phoneTf.text publicKey:public_RSA];
+    NSString *encryptsecret = [RSAEncryptor encryptString:self.secretTf.text publicKey:public_RSA];
+//    NSString *encryptUsertype = [RSAEncryptor encryptString:[NSString stringWithFormat:@"%ld",(long)self.usertype] publicKey:public_RSA];
+//    NSString *encrypYzm = [RSAEncryptor encryptString:self.yabzTf.text publicKey:public_RSA];
+    
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"user/forget_pwd" paramDic:@{@"userphone":self.phoneTf.text , @"password":self.secretTf.text , @"groupID":[NSNumber numberWithInteger:self.usertype] , @"yzm":self.yabzTf.text} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/forget_pwd" paramDic:@{@"userphone":self.phoneTf.text , @"password":encryptsecret , @"groupID":[NSNumber numberWithInteger:self.usertype] , @"yzm":self.yabzTf.text} finish:^(id responseObject) {
         [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
             [MBProgressHUD showError:responseObject[@"message"]];

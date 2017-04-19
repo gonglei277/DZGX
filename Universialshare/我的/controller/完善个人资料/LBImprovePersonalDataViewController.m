@@ -99,8 +99,10 @@
         return;
     }
     
+     NSString *encryptsecret = [RSAEncryptor encryptString:self.sixSecretTf.text publicKey:public_RSA];
+    
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"user/userInfoBq" paramDic:@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].uid , @"truename":self.nameTf.text , @"idcard":self.codeTf.text, @"sexer":self.sexstr ,@"twopwd":self.sixSecretTf.text , @"address":self.adressTf.text} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/userInfoBq" paramDic:@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].uid , @"truename":self.nameTf.text , @"idcard":self.codeTf.text, @"sexer":self.sexstr ,@"twopwd":encryptsecret , @"address":self.adressTf.text} finish:^(id responseObject) {
         [_loadV removeloadview];
         
         if ([responseObject[@"status"] integerValue]==1) {
