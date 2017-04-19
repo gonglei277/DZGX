@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "2积分商城.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "public_welfare_consumption_normal.png",
+      "filename" : "2积分商城@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "2积分商城@3x.png",
       "scale" : "3x"
     }
   ],
