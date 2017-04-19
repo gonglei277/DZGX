@@ -77,12 +77,10 @@ static NSString *ID = @"GLMine_MyHeartCell";
 #pragma  UITableviewDatasource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (self.models.count == 0) {
-        return 1;
-    }else{
+ 
         
-        return self.models.count;
-    }
+    return self.models.count;
+   
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     GLMine_MyHeartCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
