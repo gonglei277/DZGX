@@ -231,6 +231,7 @@
     
     [NetworkManager requestPOSTWithURLStr:@"user/donation" paramDic:dict finish:^(id responseObject) {
 //        NSLog(@"%@",responseObject);
+        [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue] == 1) {
             
             [self cancelDonation];
@@ -240,7 +241,7 @@
             [self updateData];
             [MBProgressHUD showSuccess:@"直捐成功!"];
         }else{
-            [_loadV removeloadview];
+            
             [MBProgressHUD showError:responseObject[@"message"]];
         }
     } enError:^(NSError *error) {

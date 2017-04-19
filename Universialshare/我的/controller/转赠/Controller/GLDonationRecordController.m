@@ -119,6 +119,8 @@ static NSString *ID = @"GLDonationRecordCell";
             
             [MBProgressHUD showError:@"已经没有更多数据了!"];
             
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
         }
         
         

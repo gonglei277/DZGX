@@ -62,8 +62,11 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
                 [self.cardModels addObject:model];
             }
         }else{
+            
             [UserModel defaultUser].banknumber = @"";
             [UserModel defaultUser].defaultBankname = @"";
+            [MBProgressHUD showError:responseObject[@"message"]];
+            
         }
         
         [self.tableView reloadData];

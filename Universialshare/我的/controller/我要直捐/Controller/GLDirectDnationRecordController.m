@@ -106,6 +106,8 @@ static NSString *ID = @"GLDirectDnationRecordCell";
             
             [MBProgressHUD showError:@"已经没有更多数据了!"];
             
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
         }
     
         _totalNum = [responseObject[@"total"] integerValue];

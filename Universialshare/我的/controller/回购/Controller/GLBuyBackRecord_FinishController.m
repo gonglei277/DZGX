@@ -112,9 +112,12 @@ static NSString *ID = @"GLBuyBackRecordCell";
                 [_models addObject:model];
             }
         }else if([responseObject[@"code"] intValue] == 3){
-            
-            [MBProgressHUD showError:@"已经没有更多数据了!"];
-            
+            if (_models.count != 0) {
+                
+                [MBProgressHUD showError:@"已经没有更多数据了"];
+            }
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
         }
        
         [self.tableView reloadData];
