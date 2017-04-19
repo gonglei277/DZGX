@@ -26,6 +26,22 @@
     _model = model;
     _banknameLabel.text = model.name;
     _bankNumLabel.text = model.number;
-    _iconImageV.image = [UIImage imageNamed:@"mine_icbc"];
+
+    if ([model.name isEqualToString:@"中国银行"]) {
+        
+        _iconImageV.image = [UIImage imageNamed:@"BOC"];
+        
+    }else if ([model.name isEqualToString:@"中国工商银行"]){
+        
+        _iconImageV.image = [UIImage imageNamed:@"ICBC"];
+        
+    }else if ([model.name isEqualToString:@"中国建设银行"]){
+        
+        _iconImageV.image = [UIImage imageNamed:@"CCB"];
+        
+    }else {
+        _iconImageV.image = [UIImage imageNamed:@"ABC"];
+    }
+
 }
 @end

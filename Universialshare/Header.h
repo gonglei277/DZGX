@@ -27,7 +27,7 @@
 //#define URL_Base @"http://dzgx.joshuaweb.cn/api/"
 
 
-#define DOWNLOAD_URL @""
+#define DOWNLOAD_URL @"www.baidu.com"
 //普通用户
 #define OrdinaryUser @"7"
 //零售商
@@ -42,9 +42,10 @@
 #define WEIXI_APPKEY @"wx313142c8c6334365"
 #define WEIXI_SECRET @"c8b9f2b283c9f50bd61aebed1f04b442"
 //微博分享
+//#define WEIBO_APPKEY @"2203958313"
+//#define WEIBO_SECRET @"9a911777f4b18555cd2b42a9bc186389"
 #define WEIBO_APPKEY @"688497271"
 #define WEIBO_SECRET @"5d4df0f912e9af331adaf718a357176f"
-
 //虚拟货币名称
 #define NormalMoney @"米子"
 #define SpecialMoney @"代缴税米子"

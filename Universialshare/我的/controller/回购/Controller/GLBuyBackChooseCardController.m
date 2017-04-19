@@ -60,6 +60,7 @@
 - (void)text:(newBlock)block{
     self.block = block;
 }
+
 - (IBAction)chooseBank:(id)sender {
     _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     _maskV.bgView.alpha = 0.1;
@@ -139,8 +140,10 @@
 //        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
-            self.cardTextF.text = nil;
+            self.block(self.cardTextF.text);
   
+            self.cardTextF.text = nil;
+
             [MBProgressHUD showSuccess:@"添加银行卡成功"];
             [self.navigationController popViewControllerAnimated:YES];
         }else{

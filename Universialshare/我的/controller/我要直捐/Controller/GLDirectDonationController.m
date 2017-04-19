@@ -119,7 +119,7 @@
     UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
     CGRect rect=[self.chooseBtn convertRect: self.chooseBtn.bounds toView:window];
     
-    _directV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 4 * self.chooseBtn.yy_height);
+    _directV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 3 * self.chooseBtn.yy_height);
 //    if([[UserModel defaultUser].userLogin integerValue] == 1){
 //        [_directV.taxBtn setTitle:@"待缴税志愿豆" forState:UIControlStateNormal];
 //        

@@ -106,6 +106,7 @@
     [self updateBankInfo];
     //注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"maskView_dismiss" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(changeBankNum:) name:@"deleteBankCardNotification" object:nil];
     
 }
 - (void)updateData {
@@ -176,6 +177,29 @@
 }
 - (void)updateBankInfo {
     
+    if ([[NSString stringWithFormat:@"%@",[UserModel defaultUser].banknumber] rangeOfString:@"null"].location != NSNotFound){
+
+        self.bankStyleImageV.hidden = YES;
+        self.cardNumLabel.hidden = YES;
+        self.cardStyleLabel.hidden = YES;
+        self.detailImageV.hidden = YES;
+        
+        self.addImageV.hidden = NO;
+        self.addLabel.hidden = NO;
+        
+    }else{
+        
+        self.bankStyleImageV.hidden = NO;
+        self.cardNumLabel.hidden = NO;
+        self.cardStyleLabel.hidden = NO;
+        self.detailImageV.hidden = NO;
+        
+        self.addImageV.hidden = YES;
+        self.addLabel.hidden = YES;
+        
+    }
+
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
@@ -194,16 +218,41 @@
             
             self.addImageV.hidden = YES;
             self.addLabel.hidden = YES;
-
-            self.cardNumLabel.text = responseObject[@"data"][0][@"number"];
-            self.cardStyleLabel.text = responseObject[@"data"][0][@"name"];
-            self.bankStyleImageV.image = [UIImage imageNamed:@"mine_icbc"];
-            
-            for (NSDictionary *dic in responseObject[@"data"]) {
+            NSArray *arr = responseObject[@"data"];
+            if (arr.count != 0) {
                 
-                self.cardNumLabel.text = dic[@"number"];
-                self.cardStyleLabel.text = dic[@"name"];
-            
+                self.cardNumLabel.text = responseObject[@"data"][0][@"number"];
+                self.cardStyleLabel.text = responseObject[@"data"][0][@"name"];
+                if ([self.cardStyleLabel.text isEqualToString:@"中国银行"]) {
+                    self.bankStyleImageV.image = [UIImage imageNamed:@"BOC"];
+                    
+                }else if ([self.cardStyleLabel.text isEqualToString:@"中国工商银行"]){
+                    self.bankStyleImageV.image = [UIImage imageNamed:@"ICBC"];
+                    
+                }else if ([self.cardStyleLabel.text isEqualToString:@"中国建设银行"]){
+                    self.bankStyleImageV.image = [UIImage imageNamed:@"CCB"];
+                    
+                }else {
+                    self.bankStyleImageV.image = [UIImage imageNamed:@"ABC"];
+                }
+                
+                for (NSDictionary *dic in responseObject[@"data"]) {
+                    
+                    if([dic[@"status"] intValue] == 1){
+                        
+                        self.cardNumLabel.text = dic[@"number"];
+                        self.cardStyleLabel.text = dic[@"name"];
+                    }
+                    
+                }
+            }else{
+                self.bankStyleImageV.hidden = YES;
+                self.cardNumLabel.hidden = YES;
+                self.cardStyleLabel.hidden = YES;
+                self.detailImageV.hidden = YES;
+                
+                self.addImageV.hidden = NO;
+                self.addLabel.hidden = NO;
             }
             
         }else{
@@ -308,63 +357,7 @@
 //    [self showOkayCancelAlert];
 
 }
-- (void)showOkayCancelAlert {
-    NSString *title = NSLocalizedString(@"请选择类型", nil);
-    NSString *message = NSLocalizedString(@"", nil);
-    NSString *cancelButtonTitle = NSLocalizedString(@"取消", nil);
-    NSString *T1ButtonTitle = NSLocalizedString(@"T + 1 (收取10%的手续费)", nil);
-    NSString *T3ButtonTitle = NSLocalizedString(@"T + 3 (收取5%的手续费)", nil);
-    NSString *T7ButtonTitle = NSLocalizedString(@"T + 7 (收取0%的手续费)", nil);
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    
-    // Create the actions.
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
 
-    }];
-    
-    UIAlertAction *T1Action = [UIAlertAction actionWithTitle:T1ButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-    
-        [MBProgressHUD showError:@"该类型暂不可使用!"];
-    }];
-    UIAlertAction *T3Action = [UIAlertAction actionWithTitle:T3ButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            CGFloat contentViewH = 200;
-            CGFloat contentViewW = SCREEN_WIDTH - 40;
-            _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        
-            _maskV.bgView.alpha = 0.4;
-        
-            GLNoticeView *contentView = [[NSBundle mainBundle] loadNibNamed:@"GLNoticeView" owner:nil options:nil].lastObject;
-            contentView.frame = CGRectMake(20, (SCREEN_HEIGHT - contentViewH)/2, contentViewW, contentViewH);
-            contentView.layer.cornerRadius = 4;
-            contentView.layer.masksToBounds = YES;
-            [contentView.cancelBtn addTarget:self action:@selector(cancelBuyback) forControlEvents:UIControlEventTouchUpInside];
-            [contentView.ensureBtn addTarget:self action:@selector(ensureBuyback) forControlEvents:UIControlEventTouchUpInside];
-//            if ([self.beanStyleLabel.text isEqualToString:@"米子"]) {
-        
-                contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为回购数量的10%%"];
-//            }else{
-//        
-//                contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗米子n代扣税为%.2f(颗)米子\n可兑换金额为%.2f元",[self.buybackNumF.text integerValue]*0.0048,([self.buybackNumF.text integerValue]-[self.buybackNumF.text integerValue]*0.0048 - 5)];
-//   
-//            }
-            
-            [_maskV showViewWithContentView:contentView];
-        
-    }];
-    UIAlertAction *T7Action = [UIAlertAction actionWithTitle:T7ButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
-        [MBProgressHUD showError:@"该类型暂不可使用!"];
-    }];
-    
-    // Add the actions.
-    [alertController addAction:cancelAction];
-    [alertController addAction:T1Action];
-    [alertController addAction:T3Action];
-    [alertController addAction:T7Action];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
-}
 - (void)cancelBuyback {
     [UIView animateWithDuration:0.2 animations:^{
         
@@ -440,17 +433,28 @@
             self.bankStyleImageV.image = [UIImage imageNamed:model.iconName];
         }];
         [self.navigationController pushViewController:chooseVC animated:YES];
+        
     }else{
         
         self.hidesBottomBarWhenPushed = YES;
         GLBuyBackChooseCardController *chooseVC = [[GLBuyBackChooseCardController alloc] init];
-        chooseVC.block = ^(NSString *cardNum){
-            self.cardNumLabel.text = cardNum;
-        };
+//        chooseVC.block = ^(NSString *cardNum){
+//            [self updateBankInfo];
+//        };
+        [chooseVC text:^(NSString *cardNum) {
+            [self updateBankInfo];
+
+        }];
         [self.navigationController pushViewController:chooseVC animated:YES];
     }
     
 }
+- (void)changeBankNum:(NSNotification *)notification {
+    if ([self.cardNumLabel.text isEqualToString:notification.userInfo[@"banknumber"]]) {
+        [self updateBankInfo];
+    }
+}
+
 - (IBAction)chooseStyle:(id)sender {
     
     _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];

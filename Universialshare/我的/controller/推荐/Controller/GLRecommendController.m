@@ -102,11 +102,7 @@
     }];
 }
 //跳转到推荐记录
-- (IBAction)pushToRecordVC:(id)sender {
-    self.hidesBottomBarWhenPushed = YES;
-    GLRecommendRecordController *recordVC = [[GLRecommendRecordController alloc] init];
-    [self.navigationController pushViewController:recordVC animated:YES];
-}
+
 - (void) pushToRecordVC{
     self.hidesBottomBarWhenPushed = YES;
     GLRecommendRecordController *recordVC = [[GLRecommendRecordController alloc] init];

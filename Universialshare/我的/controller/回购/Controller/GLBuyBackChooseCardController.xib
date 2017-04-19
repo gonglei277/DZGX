@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -38,7 +39,7 @@
                     <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0i-IT-wsZ">
-                    <rect key="frame" x="91" y="74" width="80" height="20"/>
+                    <rect key="frame" x="156.5" y="74" width="80" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="dPD-MR-96u"/>
                     </constraints>
@@ -58,7 +59,7 @@
                     <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国工商银行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ot-Nu-Xn6">
-                    <rect key="frame" x="91" y="124" width="80" height="20"/>
+                    <rect key="frame" x="156.5" y="124" width="80" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="rAQ-M7-RXz"/>
                     </constraints>
@@ -159,6 +160,7 @@
                 <constraint firstAttribute="trailing" secondItem="u6a-8L-zB9" secondAttribute="trailing" constant="10" id="VPt-ip-cfg"/>
                 <constraint firstItem="q0i-IT-wsZ" firstAttribute="baseline" secondItem="y9s-Ec-KgB" secondAttribute="baseline" id="Vbb-aF-Tpk"/>
                 <constraint firstItem="u6a-8L-zB9" firstAttribute="top" secondItem="mxI-Cw-TlK" secondAttribute="bottom" constant="30" id="Zzd-0j-ZKd"/>
+                <constraint firstItem="6ot-Nu-Xn6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bLi-RP-u1d"/>
                 <constraint firstItem="Qcn-Oj-fcj" firstAttribute="leading" secondItem="PFI-Jh-GBH" secondAttribute="trailing" constant="10" id="cae-wx-1rc"/>
                 <constraint firstItem="Hte-eg-lHU" firstAttribute="centerY" secondItem="6ot-Nu-Xn6" secondAttribute="centerY" id="e3I-sz-uA0"/>
                 <constraint firstItem="6ot-Nu-Xn6" firstAttribute="height" secondItem="ggQ-OS-gLp" secondAttribute="height" id="eoS-pE-Jij"/>
@@ -172,12 +174,11 @@
                 <constraint firstItem="ggQ-OS-gLp" firstAttribute="top" secondItem="y9s-Ec-KgB" secondAttribute="bottom" constant="30" id="soc-y3-U8u"/>
                 <constraint firstItem="y9s-Ec-KgB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="uLk-z1-Iot"/>
                 <constraint firstItem="J0o-KL-bFq" firstAttribute="centerY" secondItem="ngz-jm-sec" secondAttribute="centerY" id="vYT-WU-1m4"/>
+                <constraint firstItem="q0i-IT-wsZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="waS-Pb-9zC"/>
                 <constraint firstItem="ggQ-OS-gLp" firstAttribute="leading" secondItem="y9s-Ec-KgB" secondAttribute="leading" id="wbp-NB-aPp"/>
-                <constraint firstItem="6ot-Nu-Xn6" firstAttribute="leading" secondItem="J0o-KL-bFq" secondAttribute="leading" id="wdb-wt-OpT"/>
                 <constraint firstItem="Zec-Lq-FSc" firstAttribute="top" secondItem="ggQ-OS-gLp" secondAttribute="top" id="x0g-dN-jzh"/>
                 <constraint firstItem="Qcn-Oj-fcj" firstAttribute="centerY" secondItem="PFI-Jh-GBH" secondAttribute="centerY" id="x3m-VU-qCy"/>
                 <constraint firstItem="ngz-jm-sec" firstAttribute="height" secondItem="ggQ-OS-gLp" secondAttribute="height" id="yaz-c8-M9k"/>
-                <constraint firstItem="q0i-IT-wsZ" firstAttribute="leading" secondItem="Qcn-Oj-fcj" secondAttribute="leading" id="zlH-A0-MaP"/>
                 <constraint firstItem="J0o-KL-bFq" firstAttribute="height" secondItem="ngz-jm-sec" secondAttribute="height" id="zly-2y-hAU"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

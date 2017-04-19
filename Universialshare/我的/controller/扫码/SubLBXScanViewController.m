@@ -33,7 +33,7 @@
     
     //设置扫码后需要扫码图像
     self.isNeedScanImage = YES;
-    
+    self.navigationController.navigationBar.hidden = NO;
     self.title=@"扫码";
 }
 

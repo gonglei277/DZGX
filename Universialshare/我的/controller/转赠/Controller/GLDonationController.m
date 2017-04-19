@@ -186,6 +186,7 @@
 {
     SubLBXScanViewController *vc = [SubLBXScanViewController new];
     vc.style = style;
+
     //vc.isOpenInterestRect = YES;
     vc.retureCode = ^(NSString *codeStr){
         

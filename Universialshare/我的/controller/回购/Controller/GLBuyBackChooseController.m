@@ -103,6 +103,7 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     GLBankCardModel *model = self.cardModels[indexPath.row];
+    
     self.returnBlock(model);
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -148,6 +149,9 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
 //        NSLog(@"responseObject = %@",responseObject);
         
         if ([responseObject[@"code"] integerValue] == 1){
+            
+            //发送通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteBankCardNotification" object:nil userInfo:@{@"banknumber":banknumber}];
             
             [MBProgressHUD showSuccess:@"删除银行卡成功!"];
         }else{
