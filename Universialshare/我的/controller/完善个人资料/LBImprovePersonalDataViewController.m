@@ -7,6 +7,8 @@
 //
 
 #import "LBImprovePersonalDataViewController.h"
+#import "GLLoginController.h"
+#import "BaseNavigationViewController.h"
 
 @interface LBImprovePersonalDataViewController ()<UITextFieldDelegate>
 
@@ -21,8 +23,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *adressTf;
 @property (weak, nonatomic) IBOutlet UIButton *surebutton;
 @property (strong, nonatomic)LoadWaitView *loadV;
+@property (weak, nonatomic) IBOutlet UIButton *exitbt;
 
 @property (strong, nonatomic)NSString *sexstr;
+@property (strong, nonatomic)NSString *status;//判断登录是否过期
 
 @end
 
@@ -33,11 +37,25 @@
     self.sexstr=[NSString string];
     self.sexstr = @"男";
     
+    self.status = @"0";
+    
 }
 
 - (IBAction)exitButton:(UIButton *)sender {
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if ([self.status isEqualToString:@"1"]) {
+        
+        GLLoginController *loginVC = [[GLLoginController alloc] init];
+        BaseNavigationViewController *nav = [[BaseNavigationViewController alloc]initWithRootViewController:loginVC];
+        nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:nav animated:YES completion:nil];
+        
+    }else{
+    
+     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    }
 }
 
 
@@ -84,6 +102,11 @@
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/userInfoBq" paramDic:@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].uid , @"truename":self.nameTf.text , @"idcard":self.codeTf.text, @"sexer":self.sexstr ,@"twopwd":self.sixSecretTf.text , @"address":self.adressTf.text} finish:^(id responseObject) {
         [_loadV removeloadview];
+        
+        if ([responseObject[@"status"] integerValue]==1) {
+            self.status = @"1";
+            [self.exitbt setTitle:@"重新登录" forState:UIControlStateNormal];
+        }
         if ([responseObject[@"code"] integerValue]==1) {
             [MBProgressHUD showError:responseObject[@"message"]];
             [self dismissViewControllerAnimated:YES completion:nil];
