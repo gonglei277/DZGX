@@ -104,7 +104,7 @@
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/userInfoBq" paramDic:@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].uid , @"truename":self.nameTf.text , @"idcard":self.codeTf.text, @"sexer":self.sexstr ,@"twopwd":encryptsecret , @"address":self.adressTf.text} finish:^(id responseObject) {
         [_loadV removeloadview];
-        
+     
         if ([responseObject[@"status"] integerValue]==1) {
             self.status = @"1";
             [self.exitbt setTitle:@"重新登录" forState:UIControlStateNormal];
@@ -183,6 +183,19 @@
                 return NO;
         }
     }
+    
+    if (textField == self.nameTf) {
+        //只能输入英文或中文
+        NSCharacterSet * charact;
+        charact = [[NSCharacterSet characterSetWithCharactersInString:NMUBERS]invertedSet];
+        NSString * filtered = [[string componentsSeparatedByCharactersInSet:charact]componentsJoinedByString:@""];
+        BOOL canChange = [string isEqualToString:filtered];
+        if(canChange) {
+            [MBProgressHUD showError:@"只能输入英文或中文"];
+            return NO;
+        }
+    }
+    
     
     return YES;
     
