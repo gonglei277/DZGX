@@ -38,6 +38,7 @@
     LoadWaitView *_loadV;
     
     int _currentPage;
+    NSString *_htmlString;
     
 }
 @property (weak, nonatomic) IBOutlet UIImageView *head_iconBtn;
@@ -284,15 +285,20 @@ static NSString *followID = @"GLFirstFollowCell";
             }
             if ([strcontent rangeOfString:@"null"].location == NSNotFound) {
                 
-                NSAttributedString *attributetext = [self strToAttriWithStr:strcontent];
+//                NSAttributedString *attributetext = [self strToAttriWithStr:strcontent];
+//                
+//                NSString *string = [NSString stringWithFormat:@"%@",attributetext];
+//                NSRange startRange = [string rangeOfString:@"p>"];
+//                NSRange endRange = [string rangeOfString:@"</"];
+//                NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
+//                NSString *result = [string substringWithRange:range];
                 
-                NSString *string = [NSString stringWithFormat:@"%@",attributetext];
-                NSRange startRange = [string rangeOfString:@"p>"];
-                NSRange endRange = [string rangeOfString:@"</"];
-                NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
-                NSString *result = [string substringWithRange:range];
-                
-                self.homepopinfoView.infoLb.text = result;
+//                self.homepopinfoView.infoLb.text = result;
+                _htmlString = [NSString stringWithFormat:@"<!DOCTYPE html><html>%@</html>",strcontent];
+                _htmlString = [_htmlString stringByReplacingOccurrencesOfString:@"\\\"" withString:strcontent];
+                NSLog(@"%@",_htmlString);
+                [self.homepopinfoView.webView loadHTMLString:_htmlString baseURL:nil];
+
                 
             }else{
                 self.homepopinfoView.infoLb.text = @"";
@@ -311,8 +317,8 @@ static NSString *followID = @"GLFirstFollowCell";
             
             CGRect sizetitle=[self.homepopinfoView.titlename.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil];
             
-            CGRect sizecontent=[self.homepopinfoView.infoLb.attributedText  boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
-            
+//            CGRect sizecontent=[self.homepopinfoView.infoLb.attributedText  boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+            CGRect sizecontent =[_htmlString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil];
             
             if ((110 + sizetitle.size.height + sizecontent.size.height) >= ((SCREEN_HEIGHT/2) - 30)) {
                 

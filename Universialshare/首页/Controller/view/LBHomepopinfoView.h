@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentW;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentH;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 
 @end
