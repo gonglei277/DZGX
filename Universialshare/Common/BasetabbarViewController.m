@@ -91,12 +91,12 @@
 
     }
     if (viewController == [tabBarController.viewControllers objectAtIndex:1]) {
-        [MBProgressHUD showError:@"此功能暂未开放"];
-        return NO;
+//        [MBProgressHUD showError:@"此功能暂未开放"];
+//        return NO;
     }
     if (viewController == [tabBarController.viewControllers objectAtIndex:2]) {
-        [MBProgressHUD showError:@"此功能暂未开放"];
-        return NO;
+//        [MBProgressHUD showError:@"此功能暂未开放"];
+//        return NO;
     }
     if (viewController == [tabBarController.viewControllers objectAtIndex:3]) {
        
