@@ -150,6 +150,13 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
+    if (self.dataarr.count > 0 ) {
+        
+        self.nodataV.hidden = YES;
+    }else{
+        self.nodataV.hidden = NO;
+    
+    }
     return self.dataarr.count;
 }
 

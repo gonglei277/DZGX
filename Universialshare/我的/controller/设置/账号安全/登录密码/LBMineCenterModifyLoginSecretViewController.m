@@ -68,14 +68,14 @@
         [MBProgressHUD showError:@"验证手机号为空"];
         return;
     }else{
-        if (![predicateModel valiMobile:self.base1phone.text]) {
+        if (![predicateModel valiMobile:[UserModel defaultUser].phone]) {
             [MBProgressHUD showError:@"验证手机号格式不对"];
             return;
         }
     }
     
     [self startTime];//获取倒计时
-    [NetworkManager requestPOSTWithURLStr:@"user/get_yzm" paramDic:@{@"phone":self.base1phone.text} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/get_yzm" paramDic:@{@"phone":[UserModel defaultUser].phone} finish:^(id responseObject) {
         if ([responseObject[@"code"] integerValue]==1) {
             
         }else{

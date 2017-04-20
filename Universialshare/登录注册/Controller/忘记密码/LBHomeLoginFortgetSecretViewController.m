@@ -85,7 +85,7 @@
     
     if ([predicateModel checkIsHaveNumAndLetter:self.secretTf.text] != 3) {
         
-        [MBProgressHUD showError:@"密码只能包含数字和字母"];
+        [MBProgressHUD showError:@"密码须包含数字和字母"];
         return;
     }
     if (self.sureSecretTf.text.length <= 0) {
@@ -303,7 +303,7 @@
     
     if (!_selectUserTypeView) {
         _selectUserTypeView=[[NSBundle mainBundle]loadNibNamed:@"SelectUserTypeView" owner:self options:nil].firstObject;
-        _selectUserTypeView.frame=CGRectMake(10, 10, SCREEN_WIDTH-20, 220);
+        _selectUserTypeView.frame=CGRectMake(10, 65, SCREEN_WIDTH-20, 100);
         [_selectUserTypeView.shanBt addTarget:self action:@selector(shangbuttonE) forControlEvents:UIControlEventTouchUpInside];
         [_selectUserTypeView.lingBt addTarget:self action:@selector(lingbuttonE) forControlEvents:UIControlEventTouchUpInside];
         //        [_selectUserTypeView.ServiceBt addTarget:self action:@selector(ServiceBtE) forControlEvents:UIControlEventTouchUpInside];
