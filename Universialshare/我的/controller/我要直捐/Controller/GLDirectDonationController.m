@@ -28,6 +28,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *secondPwdT;
 @property (weak, nonatomic) IBOutlet UILabel *useableBeanNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userableBeanStyleLabel;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgViewH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgViewW;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -60,8 +62,13 @@
     self.donationNumT.delegate = self;
     self.secondPwdT.delegate = self;
     
-    self.useableBeanNumLabel.text = [UserModel defaultUser].ketiBean;
-    
+    self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].ketiBean];
+    if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
+        
+        self.userableBeanStyleLabel.text = @"可直捐米子:";
+    }else{
+        self.userableBeanStyleLabel.text = @"可直捐待交税米子:";
+    }
     self.bgViewH.constant = SCREEN_HEIGHT - 64;
     self.bgViewW.constant = SCREEN_WIDTH;
     //注册通知
@@ -142,10 +149,14 @@
         self.beanStyleLabel.text = NormalMoney;
         self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%ld",(long)[[UserModel defaultUser].ketiBean integerValue]];
         
+        self.userableBeanStyleLabel.text = @"可直捐米子:";
+        
+        
     }else{
         self.beanStyleLabel.text = SpecialMoney;
         
         self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%ld",[[UserModel defaultUser].djs_bean integerValue]];
+        self.userableBeanStyleLabel.text = @"可直捐待交税米子:";
     }
     [self dismiss];
 }
@@ -270,9 +281,13 @@
             
             if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
                 
-                self.useableBeanNumLabel.text = [UserModel defaultUser].ketiBean;
+                self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].ketiBean];
+                
+                self.userableBeanStyleLabel.text = @"可直捐米子:";
+                
             }else{
-                self.useableBeanNumLabel.text = [UserModel defaultUser].djs_bean;
+                self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].djs_bean];
+                 self.userableBeanStyleLabel.text = @"可直捐待交税米子:";
             }
 //            [MBProgressHUD showSuccess:@"直捐成功!"];
         }else{

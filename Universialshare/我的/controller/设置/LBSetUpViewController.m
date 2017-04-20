@@ -58,6 +58,7 @@
         if (alertView.tag == 10) {
             
             [UserModel defaultUser].loginstatus = NO;
+            [UserModel defaultUser].headPic = @"";
             [usermodelachivar achive];
             [[NSNotificationCenter defaultCenter]postNotificationName:@"notification_push" object:nil];
             [self.navigationController popViewControllerAnimated:YES];

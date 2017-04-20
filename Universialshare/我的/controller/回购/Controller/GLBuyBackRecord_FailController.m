@@ -117,6 +117,7 @@ static NSString *ID = @"GLBuyBackRecordCell";
                 
                 [MBProgressHUD showError:@"已经没有更多数据了"];
             }
+            [MBProgressHUD showError:responseObject[@"message"]];
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
         }

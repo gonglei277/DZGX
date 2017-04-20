@@ -33,9 +33,9 @@ static NSString *ID = @"GLMine_MyHeartCell";
         
         _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
         [NetworkManager requestPOSTWithURLStr:@"user/mylove" paramDic:dict finish:^(id responseObject) {
-//            NSLog(@"%@",responseObject);
+            NSLog(@"%@",responseObject);
             [_loadV removeloadview];
-           if ([responseObject[@"code"] integerValue]== 1) {
+           if ([responseObject[@"code"] integerValue] == 1) {
             
                 GLMyheartModel *model = [GLMyheartModel mj_objectWithKeyValues:responseObject[@"data"]];
                 [self.models addObject:model];

@@ -434,6 +434,7 @@
 		4A46111A1E9CC6370045824F /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4A4610011E9CC6360045824F /* README.md */; };
 		4A46111B1E9CC6370045824F /* UIImageView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4610051E9CC6360045824F /* UIImageView+CornerRadius.m */; };
 		4A46111D1E9CCC010045824F /* Mine_sixPart.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A46111C1E9CCC010045824F /* Mine_sixPart.xcassets */; };
+		4A78C2161EA8918500771047 /* GLDonationRecordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A78C2151EA8918500771047 /* GLDonationRecordController.xib */; };
 		4A8572EC1E977E7200A7A51E /* GLHourseOptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8572EB1E977E7200A7A51E /* GLHourseOptionModel.m */; };
 		4A8572EF1E977E8500A7A51E /* GLHourseOptionFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8572EE1E977E8500A7A51E /* GLHourseOptionFrameModel.m */; };
 		4F9D6A29F2E5B95EBA14BE59 /* Pods_Universialshare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */; };
@@ -1483,6 +1484,7 @@
 		4A4610041E9CC6360045824F /* UIImageView+CornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+CornerRadius.h"; sourceTree = "<group>"; };
 		4A4610051E9CC6360045824F /* UIImageView+CornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+CornerRadius.m"; sourceTree = "<group>"; };
 		4A46111C1E9CCC010045824F /* Mine_sixPart.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Mine_sixPart.xcassets; sourceTree = "<group>"; };
+		4A78C2151EA8918500771047 /* GLDonationRecordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLDonationRecordController.xib; sourceTree = "<group>"; };
 		4A8572EA1E977E7200A7A51E /* GLHourseOptionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHourseOptionModel.h; sourceTree = "<group>"; };
 		4A8572EB1E977E7200A7A51E /* GLHourseOptionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHourseOptionModel.m; sourceTree = "<group>"; };
 		4A8572ED1E977E8500A7A51E /* GLHourseOptionFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHourseOptionFrameModel.h; sourceTree = "<group>"; };
@@ -2479,6 +2481,7 @@
 				4A4609BE1E9CB78E0045824F /* GLDonationController.xib */,
 				4A4609BF1E9CB78E0045824F /* GLDonationRecordController.h */,
 				4A4609C01E9CB78E0045824F /* GLDonationRecordController.m */,
+				4A78C2151EA8918500771047 /* GLDonationRecordController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4577,6 +4580,7 @@
 				F923096F1E9B8BFF00ECDC94 /* LBMineCentermodifyAdressTableViewCell.xib in Resources */,
 				F906201C1E83C8770080E9D9 /* tabbarimage.xcassets in Resources */,
 				F923098A1E9B8BFF00ECDC94 /* LBMineViewController.xib in Resources */,
+				4A78C2161EA8918500771047 /* GLDonationRecordController.xib in Resources */,
 				F923082F1E9B8B6B00ECDC94 /* Address.plist in Resources */,
 				F923094C1E9B8BFF00ECDC94 /* LBMineCenterReceivingGoodsTableViewCell.xib in Resources */,
 				F9061FD61E83C4730080E9D9 /* Main.storyboard in Resources */,

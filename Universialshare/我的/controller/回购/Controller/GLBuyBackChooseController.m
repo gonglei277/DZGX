@@ -103,6 +103,15 @@ static NSString *ID = @"GLBankCardCellTableViewCell";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     GLBankCardModel *model = self.cardModels[indexPath.row];
+    if ([model.name isEqualToString:@"中国银行"]) {
+        model.iconName = @"BOC";
+    }else if([model.name isEqualToString:@"中国工商银行"]){
+        model.iconName = @"ICBC";
+    }else if([model.name isEqualToString:@"中国农业银行"]){
+        model.iconName = @"ABC";
+    }else{
+        model.iconName = @"CCB";
+    }
     
     self.returnBlock(model);
     

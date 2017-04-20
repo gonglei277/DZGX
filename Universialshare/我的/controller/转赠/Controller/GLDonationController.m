@@ -25,7 +25,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *beanNumF;
 @property (weak, nonatomic) IBOutlet UITextField *idCodeF;
 @property (weak, nonatomic) IBOutlet UITextField *secondPwdF;
+
 @property (weak, nonatomic) IBOutlet UILabel *useableBeanLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userableBeanStyleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *noticeLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeight;
@@ -44,6 +47,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     //可转赠善行豆
     self.useableBeanLabel.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].ketiBean];
+    self.userableBeanStyleLabel.text = @"可转赠米子:";
     NSString *userType;
     if ([[UserModel defaultUser].groupId isEqualToString:OrdinaryUser]) {
         userType = @"米家";
@@ -316,6 +320,7 @@
             NSString *useableNum = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue] - [self.beanNumF.text floatValue]];
             
             self.useableBeanLabel.text = useableNum;
+            self.userableBeanStyleLabel.text = @"可转赠米子:";
             [MBProgressHUD showSuccess:@"转赠成功"];
 
         }else{
