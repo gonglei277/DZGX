@@ -71,6 +71,15 @@ static NSString *recommendID = @"GLHomeRecommendCell";
     
  
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+}
+
 - (void)setNavView{
     
     self.titleView.layer.cornerRadius = 17.f;

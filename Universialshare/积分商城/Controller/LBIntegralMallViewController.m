@@ -46,13 +46,20 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
     _cycleScrollView.autoScrollTimeInterval = 2;// 自动滚动时间间隔
     _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;// 翻页 右下角
     _cycleScrollView.titleLabelBackgroundColor = [UIColor clearColor];// 图片对应的标题的 背景色。（因为没有设标题）
-    
     _cycleScrollView.pageControlDotSize = CGSizeMake(10, 10);
     self.tableView.tableHeaderView = _cycleScrollView;
 
     [self.tableView registerNib:[UINib nibWithNibName:@"GLIntegralMallTopCell" bundle:nil] forCellReuseIdentifier:topCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"GLIntegralGoodsCell" bundle:nil] forCellReuseIdentifier:goodsCellID];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
+
 }
 
 /** 点击图片回调 */
