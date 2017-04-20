@@ -441,8 +441,9 @@
 //        chooseVC.block = ^(NSString *cardNum){
 //            [self updateBankInfo];
 //        };
+        __weak typeof(self) weakself = self;
         chooseVC.returnBlock = ^(NSString *str){
-            [self updateBankInfo];
+            [weakself updateBankInfo];
         };
         [self.navigationController pushViewController:chooseVC animated:YES];
     }

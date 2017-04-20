@@ -109,7 +109,7 @@
 }
 - (IBAction)ensureClick:(id)sender {
     
-    self.returnBlock(@"ninamhhj");
+    
     if (self.cardTextF.text == nil||self.cardTextF.text.length == 0) {
         [MBProgressHUD showError:@"请输入银行卡号"];
         return;
@@ -135,10 +135,13 @@
     [NetworkManager requestPOSTWithURLStr:@"user/add_bank_num" paramDic:dict finish:^(id responseObject) {
         [_loadV removeloadview];
 
-//        NSLog(@"responseObject = %@",responseObject);
+
         if ([responseObject[@"code"] integerValue] == 1) {
             
-//            self.block(_cardTextF.text);
+            if (self.returnBlock) {
+                self.returnBlock(@"ninamhhj");
+            }
+
   
             self.cardTextF.text = nil;
             

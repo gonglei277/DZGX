@@ -170,9 +170,9 @@ static NSString *followID = @"GLFirstFollowCell";
     
     [self changeView:tap];
     
-    self.bgView.backgroundColor = YYSRGBColor(179, 179, 179, 0.3);
-    self.bgView2.backgroundColor = YYSRGBColor(179, 179, 179, 0.3);
-    self.bgView3.backgroundColor = YYSRGBColor(179, 179, 179, 0.3);
+    self.bgView.backgroundColor = YYSRGBColor(179, 179, 179, 0.4);
+    self.bgView2.backgroundColor = YYSRGBColor(179, 179, 179, 0.4);
+    self.bgView3.backgroundColor = YYSRGBColor(179, 179, 179, 0.4);
     
     
     UITapGestureRecognizer *tapgesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapgestrueMsakView)];
