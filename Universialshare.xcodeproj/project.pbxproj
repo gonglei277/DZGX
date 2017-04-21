@@ -615,6 +615,10 @@
 		F92309921E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F92309181E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m */; };
 		F92309931E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F92309191E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.xib */; };
 		F93F84D21E9F02C500F76E0B /* loadWait.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F93F84D11E9F02C500F76E0B /* loadWait.xcassets */; };
+		F94A33F31EAA01A600222A86 /* LBMineCenterPayPagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A33F11EAA01A600222A86 /* LBMineCenterPayPagesViewController.m */; };
+		F94A33F41EAA01A600222A86 /* LBMineCenterPayPagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94A33F21EAA01A600222A86 /* LBMineCenterPayPagesViewController.xib */; };
+		F94A33F91EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A33F71EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.m */; };
+		F94A33FA1EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94A33F81EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.xib */; };
 		F94D6E1E1E9DC15300412E64 /* loginRegister.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94D6E1D1E9DC15300412E64 /* loginRegister.xcassets */; };
 		F94D6E231E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94D6E211E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m */; };
 		F94D6E241E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94D6E221E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.xib */; };
@@ -1766,6 +1770,12 @@
 		F92309181E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineCenterMessageTableViewCell.m; sourceTree = "<group>"; };
 		F92309191E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineCenterMessageTableViewCell.xib; sourceTree = "<group>"; };
 		F93F84D11E9F02C500F76E0B /* loadWait.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = loadWait.xcassets; sourceTree = "<group>"; };
+		F94A33F01EAA01A600222A86 /* LBMineCenterPayPagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineCenterPayPagesViewController.h; sourceTree = "<group>"; };
+		F94A33F11EAA01A600222A86 /* LBMineCenterPayPagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineCenterPayPagesViewController.m; sourceTree = "<group>"; };
+		F94A33F21EAA01A600222A86 /* LBMineCenterPayPagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineCenterPayPagesViewController.xib; sourceTree = "<group>"; };
+		F94A33F61EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineCenterPayPagesTableViewCell.h; sourceTree = "<group>"; };
+		F94A33F71EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineCenterPayPagesTableViewCell.m; sourceTree = "<group>"; };
+		F94A33F81EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineCenterPayPagesTableViewCell.xib; sourceTree = "<group>"; };
 		F94D6E1D1E9DC15300412E64 /* loginRegister.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = loginRegister.xcassets; sourceTree = "<group>"; };
 		F94D6E201E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeLoginFortgetSecretViewController.h; sourceTree = "<group>"; };
 		F94D6E211E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeLoginFortgetSecretViewController.m; sourceTree = "<group>"; };
@@ -3724,6 +3734,7 @@
 		F92308331E9B8BFE00ECDC94 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F94A33EF1EAA015200222A86 /* 支付页面 */,
 				F97644DA1EA6083700AFA22B /* 完善个人资料 */,
 				F951EB0D1EA1EF1200D6708E /* 普通用户线下订单 */,
 				F91274931EA0E58400B7A539 /* 商家订单 */,
@@ -4256,6 +4267,27 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		F94A33EF1EAA015200222A86 /* 支付页面 */ = {
+			isa = PBXGroup;
+			children = (
+				F94A33F01EAA01A600222A86 /* LBMineCenterPayPagesViewController.h */,
+				F94A33F11EAA01A600222A86 /* LBMineCenterPayPagesViewController.m */,
+				F94A33F21EAA01A600222A86 /* LBMineCenterPayPagesViewController.xib */,
+				F94A33F51EAA080700222A86 /* view */,
+			);
+			path = "支付页面";
+			sourceTree = "<group>";
+		};
+		F94A33F51EAA080700222A86 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F94A33F61EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.h */,
+				F94A33F71EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.m */,
+				F94A33F81EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		F94D6E1F1E9DFB0300412E64 /* 忘记密码 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4602,6 +4634,7 @@
 				F923094C1E9B8BFF00ECDC94 /* LBMineCenterReceivingGoodsTableViewCell.xib in Resources */,
 				F9061FD61E83C4730080E9D9 /* Main.storyboard in Resources */,
 				4A0D976F1E9729C100A26B84 /* GLEvaluateCell.xib in Resources */,
+				F94A33FA1EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.xib in Resources */,
 				4A0D976D1E9729C100A26B84 /* GLBottomCell.xib in Resources */,
 				4A46103B1E9CC6360045824F /* ios-social-sdk-share-quick.html in Resources */,
 				4A460A0A1E9CB8050045824F /* NodataView.xib in Resources */,
@@ -4686,6 +4719,7 @@
 				F92309841E9B8BFF00ECDC94 /* LBMineCenterSafeBindPhoneViewController.xib in Resources */,
 				4A4610391E9CC6360045824F /* ios-social-sdk-shake.html in Resources */,
 				4A4610271E9CC6360045824F /* UMSShareListController.xib in Resources */,
+				F94A33F41EAA01A600222A86 /* LBMineCenterPayPagesViewController.xib in Resources */,
 				4A0D97791E9729C100A26B84 /* GLHourseDetailThirdCell.xib in Resources */,
 				F92309691E9B8BFF00ECDC94 /* LBMyOrderEvaluationSucessViewController.xib in Resources */,
 				F961AA1E1E9CDD3400275F52 /* LoginIdentityView.xib in Resources */,
@@ -4967,6 +5001,7 @@
 				4A4610A51E9CC6360045824F /* ZXDataMatrixX12Encoder.m in Sources */,
 				4A0D97851E9729C100A26B84 /* GLOrderPayView.m in Sources */,
 				F92309301E9B8BFF00ECDC94 /* LBMineCenterserviceNoticeViewController.m in Sources */,
+				F94A33F91EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.m in Sources */,
 				F961AA291E9CE17800275F52 /* LBConsumptionSeriesViewController.m in Sources */,
 				F923091E1E9B8BFF00ECDC94 /* LBMineCenterDetailedView.m in Sources */,
 				4A46106A1E9CC6360045824F /* ZXVINParsedResult.m in Sources */,
@@ -5038,6 +5073,7 @@
 				4A4610B51E9CC6370045824F /* ZXAI01AndOtherAIs.m in Sources */,
 				F923093A1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeDetailTableViewCell.m in Sources */,
 				4A4611031E9CC6370045824F /* ZXQRCodeDecoderMetaData.m in Sources */,
+				F94A33F31EAA01A600222A86 /* LBMineCenterPayPagesViewController.m in Sources */,
 				4A4610901E9CC6360045824F /* ZXPlanarYUVLuminanceSource.m in Sources */,
 				4A4610B91E9CC6370045824F /* ZXRSSExpandedBlockParsedResult.m in Sources */,
 				4A4610CB1E9CC6370045824F /* ZXCodaBarReader.m in Sources */,
