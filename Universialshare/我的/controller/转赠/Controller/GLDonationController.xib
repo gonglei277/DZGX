@@ -32,8 +32,8 @@
             <rect key="frame" x="0.0" y="0.0" width="370" height="643"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nox-dB-Rhj">
-                    <rect key="frame" x="0.0" y="0.0" width="370" height="520"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nox-dB-Rhj">
+                    <rect key="frame" x="0.0" y="0.0" width="370" height="643"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1RV-Ll-Dsa">
                             <rect key="frame" x="0.0" y="0.0" width="370" height="500"/>
@@ -317,7 +317,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Nox-dB-Rhj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5Ll-xH-w5f"/>
-                <constraint firstAttribute="bottom" secondItem="Nox-dB-Rhj" secondAttribute="bottom" constant="123" id="Y0J-77-SlH"/>
+                <constraint firstAttribute="bottom" secondItem="Nox-dB-Rhj" secondAttribute="bottom" id="Y0J-77-SlH"/>
                 <constraint firstItem="Nox-dB-Rhj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="d4q-tg-e5O"/>
                 <constraint firstAttribute="trailing" secondItem="Nox-dB-Rhj" secondAttribute="trailing" id="wc6-4q-n1G"/>
             </constraints>

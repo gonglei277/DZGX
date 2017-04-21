@@ -53,10 +53,10 @@
 
 @implementation GLBuyBackController
 //用 bounces 属性
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    scrollView.bounces = (scrollView.contentOffset.y <= 0) ? NO : YES;
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    scrollView.bounces = (scrollView.contentOffset.y <= 0) ? NO : YES;
+//}
 
 
 - (void)viewDidLoad {
@@ -101,8 +101,12 @@
     self.secondPwdF.delegate = self;
     
     self.contentViewWidth.constant = SCREEN_WIDTH;
-    self.contentViewHeight.constant = SCREEN_HEIGHT - 100;
-
+    self.contentViewHeight.constant = SCREEN_HEIGHT + 100;
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+//    }else{
+//        self.contentViewHeight.constant = SCREEN_HEIGHT + 100;
+//        
+//    }
     
     [self updateBankInfo];
     //注册通知

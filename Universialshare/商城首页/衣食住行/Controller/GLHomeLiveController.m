@@ -114,8 +114,8 @@
     _contentView.layer.cornerRadius = 4;
     _contentView.layer.masksToBounds = YES;
     
-    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, SCREEN_HEIGHT)];
-    _maskV.contentView = _contentView;
+    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(rect) +64, SCREEN_WIDTH, SCREEN_HEIGHT)];
+//    _maskV.contentView = _contentView;
     _maskV.bgView.alpha = 0.1;
     
    [_maskV showViewWithContentView:_contentView];

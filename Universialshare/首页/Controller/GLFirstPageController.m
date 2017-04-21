@@ -127,8 +127,8 @@ static NSString *followID = @"GLFirstFollowCell";
 -(void)updateViewConstraints{
     [super updateViewConstraints];
 
-    self.contentViewHeight.constant = 220 *autoSizeScaleY;
-    self.slideViewHeight.constant = 220 *autoSizeScaleY;
+    self.contentViewHeight.constant = 230 *autoSizeScaleY;
+    self.slideViewHeight.constant = 230 *autoSizeScaleY;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     //绘制圆角(左上角,左下角)
