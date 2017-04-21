@@ -357,7 +357,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
         
          UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
          [flowLayout setSectionInset:UIEdgeInsetsMake(0, 0, 10, 0)];
-        [flowLayout setHeaderReferenceSize:CGSizeMake(SCREEN_WIDTH, (SCREEN_HEIGHT - 64) * 0.4)];
+        [flowLayout setHeaderReferenceSize:CGSizeMake(SCREEN_WIDTH, (SCREEN_HEIGHT - 64) * 0.4 + 10)];
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
         [flowLayout setMinimumInteritemSpacing:0.0];
         [flowLayout setMinimumLineSpacing:0.0];

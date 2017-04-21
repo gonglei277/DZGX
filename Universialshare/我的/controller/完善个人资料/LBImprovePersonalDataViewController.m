@@ -28,6 +28,10 @@
 @property (strong, nonatomic)NSString *sexstr;
 @property (strong, nonatomic)NSString *status;//判断登录是否过期
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentW;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentH;
+
 @end
 
 @implementation LBImprovePersonalDataViewController
@@ -199,6 +203,13 @@
     
     return YES;
     
+}
+
+-(void)updateViewConstraints{
+    [super updateViewConstraints];
+    self.contentW.constant =SCREEN_WIDTH;
+    self.contentH.constant =SCREEN_HEIGHT - 64;
+
 }
 
 @end
