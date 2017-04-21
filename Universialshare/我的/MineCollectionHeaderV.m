@@ -210,7 +210,7 @@
 -(UIView*)baseview{
     
     if (!_baseview) {
-        _baseview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_HEIGHT - 64)  * 0.4 * 0.65 )];
+        _baseview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, ((SCREEN_HEIGHT - 64)  * 0.4 + 10) * 0.65 )];
         _baseview.backgroundColor=[UIColor whiteColor];
         
     }
@@ -221,7 +221,7 @@
 -(UIView*)baseview1{
     
     if (!_baseview1) {
-        _baseview1=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.baseview.frame) + 2, SCREEN_WIDTH, (SCREEN_HEIGHT - 64)  * 0.4 *0.3 )];
+        _baseview1=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.baseview.frame) + 2, SCREEN_WIDTH, ((SCREEN_HEIGHT - 64)  * 0.4 + 10) *0.3 )];
         _baseview1.backgroundColor=[UIColor whiteColor];
         
     }
