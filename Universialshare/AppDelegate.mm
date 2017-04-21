@@ -55,7 +55,13 @@
 
     return YES;
 }
+-(BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    
+    NSLog(@"method is called");
 
+    return YES;
+}
 #pragma mark - 键盘高度处理
 - (void)iqKeyboardShowOrHide {
     IQKeyboardManager *manager = [IQKeyboardManager sharedManager];

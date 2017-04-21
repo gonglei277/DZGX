@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,11 +29,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iZJ-FR-rTF">
-                    <rect key="frame" x="0.0" y="48" width="334" height="200"/>
+                    <rect key="frame" x="0.0" y="49" width="334" height="199"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="jzO-Jh-Wf6"/>
-                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="iN0-l3-epB" id="462-K9-47p"/>
                         <outlet property="delegate" destination="iN0-l3-epB" id="fag-SW-Q2W"/>
@@ -42,6 +40,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="5yF-5h-6Oi" firstAttribute="centerX" secondItem="Jh7-Oa-bb2" secondAttribute="centerX" id="8Xc-5e-Mtn"/>
+                <constraint firstItem="iZJ-FR-rTF" firstAttribute="top" secondItem="5yF-5h-6Oi" secondAttribute="bottom" constant="10" id="GOy-P0-lvt"/>
                 <constraint firstItem="Jh7-Oa-bb2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="LD4-bk-VqS"/>
                 <constraint firstAttribute="trailing" secondItem="iZJ-FR-rTF" secondAttribute="trailing" id="Lns-Me-OHI"/>
                 <constraint firstItem="Jh7-Oa-bb2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yul-CP-946"/>
@@ -53,7 +52,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="tableView" destination="iZJ-FR-rTF" id="j7N-eo-3Ve"/>
-                <outlet property="tableViewHeight" destination="jzO-Jh-Wf6" id="BIN-G6-cXE"/>
             </connections>
             <point key="canvasLocation" x="29" y="-151"/>
         </view>
