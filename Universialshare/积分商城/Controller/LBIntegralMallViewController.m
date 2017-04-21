@@ -12,6 +12,9 @@
 #import "GLIntegralMallTopCell.h"
 #import "GLIntegralGoodsCell.h"
 
+#import "GLHourseDetailController.h"
+#import "GLIntegraClassifyController.h"
+
 @interface LBIntegralMallViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 {
     UIImageView *_imageviewLeft;
@@ -61,7 +64,10 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
 
 }
-
+- (void)classifyClick:(UITapGestureRecognizer *)tap {
+    GLIntegraClassifyController *classifyVC = [[GLIntegraClassifyController alloc] init];
+    [self.navigationController pushViewController:classifyVC animated:YES];
+}
 /** 点击图片回调 */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     
@@ -103,6 +109,12 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
     if (indexPath.section== 0) {
         GLIntegralMallTopCell *cell = [tableView dequeueReusableCellWithIdentifier:topCellID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
+        UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
+        UITapGestureRecognizer *tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
+        [cell.firstView addGestureRecognizer:tap];
+        [cell.secondView addGestureRecognizer:tap2];
+        [cell.thirdView addGestureRecognizer:tap3];
         return cell;
     }else{
         GLIntegralGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:goodsCellID];
@@ -118,6 +130,15 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
         
         return 120;
     }
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+     self.hidesBottomBarWhenPushed = YES;
+    GLHourseDetailController *detailVC = [[GLHourseDetailController alloc] init];
+    detailVC.navigationItem.title = @"积分兑换详情";
+    detailVC.type = 1;
+
+    [self.navigationController pushViewController:detailVC animated:YES];
+     self.hidesBottomBarWhenPushed = NO;
 }
 
 #pragma mark ------------------self.view的滑动手势

@@ -20,6 +20,7 @@
 #import "GLConfirmOrderController.h"
 
 #import "GLHourseOptionModel.h"
+#import "GLShoppingCartController.h"
 
 @interface GLHourseDetailController ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,GLTwoButtonCellDelegate,GLHourseChangeNumCellDelegate>
 {
@@ -58,7 +59,7 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
     [super viewDidLoad];
     _status = 1;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationItem.title = @"房子详情";
+//    self.navigationItem.title = @"房子详情";
     _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 160)
                                                           delegate:self
                                                   placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
@@ -90,6 +91,22 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
 
     _visableCells = [NSMutableArray array];
     
+    //1:积分详情  2:商品详情
+    if (self.type == 1) {
+        self.addToCartBtn.hidden = YES;
+        self.settleBtn.hidden = YES;
+        self.exchangeBtn.hidden = NO;
+    }else{
+        self.addToCartBtn.hidden = NO;
+        self.settleBtn.hidden = NO;
+        self.exchangeBtn.hidden = YES;
+
+    }
+    
+}
+- (IBAction)addToCart:(id)sender {
+    GLShoppingCartController *cartVC = [[GLShoppingCartController alloc] init];
+    [self.navigationController pushViewController:cartVC animated:YES];
 }
 - (IBAction)confirmOrder:(id)sender {
     GLConfirmOrderController *confirmVC = [[GLConfirmOrderController alloc] init];

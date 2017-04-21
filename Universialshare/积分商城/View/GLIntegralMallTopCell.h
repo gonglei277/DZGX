@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface GLIntegralMallTopCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIView *firstView;
+@property (weak, nonatomic) IBOutlet UIView *secondView;
+@property (weak, nonatomic) IBOutlet UIView *thirdView;
 
 @end

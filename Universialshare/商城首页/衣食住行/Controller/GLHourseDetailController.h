@@ -10,4 +10,10 @@
 
 @interface GLHourseDetailController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *exchangeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *settleBtn;
+@property (weak, nonatomic) IBOutlet UIButton *addToCartBtn;
+
+@property (nonatomic, assign)int type;
+
 @end

@@ -114,7 +114,7 @@
     _contentView.layer.cornerRadius = 4;
     _contentView.layer.masksToBounds = YES;
     
-    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(rect) +64, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, SCREEN_HEIGHT)];
 //    _maskV.contentView = _contentView;
     _maskV.bgView.alpha = 0.1;
     
@@ -126,37 +126,14 @@
 }
 - (IBAction)sortClick:(UIButton *)sender {
     sender.titleLabel.layer.cornerRadius = 5;
-//    if (_tmpBtn == nil){
-//        sender.selected = YES;
-//        _tmpBtn = sender;
-//    }
-//    else if (_tmpBtn !=nil && _tmpBtn == sender){
-//        sender.selected = YES;
-//        
-//        sender.titleLabel.backgroundColor = [UIColor redColor];
-//        sender.titleLabel.textColor = [UIColor whiteColor];
-//        
-//    }
-//    else if (_tmpBtn!= sender && _tmpBtn!=nil){
-//        _tmpBtn.selected = NO;
-//        _tmpBtn.titleLabel.backgroundColor = [UIColor whiteColor];
-//        _tmpBtn.titleLabel.textColor = [UIColor darkGrayColor];
-//        sender.selected = YES;
-//        sender.titleLabel.backgroundColor = [UIColor redColor];
-//        sender.titleLabel.textColor = [UIColor whiteColor];
-//        _tmpBtn = sender;
-//    }
-//
-    
+
     _tmpBtn.selected = NO;
     _tmpBtn.titleLabel.backgroundColor = [UIColor whiteColor];
-//    _tmpBtn.titleLabel.textColor = [UIColor darkGrayColor];
-    
+
     sender.selected = YES;
     sender.titleLabel.backgroundColor = YYSRGBColor(194, 50, 25, 1);
-//    [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+
     _tmpBtn = sender;
-    
 
     
 }
@@ -173,7 +150,7 @@
     
     if (sender == self.areaBtn) {
         [self.areaBtn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-        _chooseVC.dataSource = @[@"1",@"2",@"2",@"2",@"2",@"2",@"2",@"2"];
+        _chooseVC.dataSource = @[@"1",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2",@"2"];
         self.areaBtn.selected = !self.areaBtn.selected;
         
         self.unitPriceBtn.selected = NO;
@@ -267,6 +244,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.hidesBottomBarWhenPushed = YES;
     GLHourseDetailController *detailVC = [[GLHourseDetailController alloc] init];
+    detailVC.navigationItem.title = @"商品详情";
+    detailVC.type = 2;
     [self.navigationController pushViewController:detailVC animated:YES];
     
 }
