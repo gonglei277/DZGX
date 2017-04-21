@@ -8,10 +8,10 @@
 
 #import "LBMyOrderPendingPaymentViewController.h"
 #import "LBMyOrderListTableViewCell.h"
+#import "LBMineCenterPayPagesViewController.h"
 
 @interface LBMyOrderPendingPaymentViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-
 
 @end
 
@@ -50,7 +50,9 @@
     __weak typeof(self)  weakself = self;
     
     cell.retunpaybutton = ^(NSInteger index){
-        
+        weakself.hidesBottomBarWhenPushed=YES;
+        LBMineCenterPayPagesViewController *vc=[[LBMineCenterPayPagesViewController alloc]init];
+        [weakself.navigationController pushViewController:vc animated:YES];
         
         
     };
