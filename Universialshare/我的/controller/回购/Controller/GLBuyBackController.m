@@ -38,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *secondPwdF;
 
 @property (weak, nonatomic) IBOutlet UILabel *remainBeanLabel;
+@property (weak, nonatomic) IBOutlet UILabel *remainBeanStyleLabel;
 //修改银行卡
 @property (weak, nonatomic) IBOutlet UIImageView *bankStyleImageV;
 @property (weak, nonatomic) IBOutlet UILabel *cardNumLabel;
@@ -91,7 +92,7 @@
 //    [UILabel changeLineSpaceForLabel:self.noticeLabel WithSpace:5.0];
 
     self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
-    
+    self.remainBeanStyleLabel.text = @"可回购米子:";
     self.buybackNumF.placeholder = @"请输入100的整数倍";
     
     self.buybackNumF.returnKeyType = UIReturnKeyNext;
@@ -110,8 +111,6 @@
     
 }
 - (void)updateData {
-    
-    self.bankStyleImageV.image = [UIImage imageNamed:@"mine_icbc"];
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
@@ -147,9 +146,11 @@
             if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
 
                 self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
+                self.remainBeanStyleLabel.text = @"可回购米子:";
             }else{
 
                 self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
+                self.remainBeanStyleLabel.text = @"可回购待交税米子:";
             }
             
         }
@@ -175,30 +176,35 @@
         
     }];
 }
+- (void)showBankInfo{
+    self.bankStyleImageV.hidden = NO;
+    self.cardNumLabel.hidden = NO;
+    self.cardStyleLabel.hidden = NO;
+    self.detailImageV.hidden = NO;
+    
+    self.addImageV.hidden = YES;
+    self.addLabel.hidden = YES;
+}
+- (void)hideBankInfo {
+    self.bankStyleImageV.hidden = YES;
+    self.cardNumLabel.hidden = YES;
+    self.cardStyleLabel.hidden = YES;
+    self.detailImageV.hidden = YES;
+    
+    self.addImageV.hidden = NO;
+    self.addLabel.hidden = NO;
+
+}
 - (void)updateBankInfo {
     
     if ([[NSString stringWithFormat:@"%@",[UserModel defaultUser].banknumber] rangeOfString:@"null"].location != NSNotFound){
 
-        self.bankStyleImageV.hidden = YES;
-        self.cardNumLabel.hidden = YES;
-        self.cardStyleLabel.hidden = YES;
-        self.detailImageV.hidden = YES;
-        
-        self.addImageV.hidden = NO;
-        self.addLabel.hidden = NO;
-        
+        [self showBankInfo];
     }else{
         
-        self.bankStyleImageV.hidden = NO;
-        self.cardNumLabel.hidden = NO;
-        self.cardStyleLabel.hidden = NO;
-        self.detailImageV.hidden = NO;
-        
-        self.addImageV.hidden = YES;
-        self.addLabel.hidden = YES;
+        [self hideBankInfo];
         
     }
-
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
@@ -211,18 +217,22 @@
 //        NSLog(@"responseObject = %@",responseObject);
         
         if ([responseObject[@"code"] integerValue] == 1){
-            self.bankStyleImageV.hidden = NO;
-            self.cardNumLabel.hidden = NO;
-            self.cardStyleLabel.hidden = NO;
-            self.detailImageV.hidden = NO;
-            
-            self.addImageV.hidden = YES;
-            self.addLabel.hidden = YES;
+            [self showBankInfo];
             NSArray *arr = responseObject[@"data"];
             if (arr.count != 0) {
                 
                 self.cardNumLabel.text = responseObject[@"data"][0][@"number"];
                 self.cardStyleLabel.text = responseObject[@"data"][0][@"name"];
+               
+                for (NSDictionary *dic in responseObject[@"data"]) {
+                    
+                    if([dic[@"status"] intValue] == 1){
+                        
+                        self.cardNumLabel.text = dic[@"number"];
+                        self.cardStyleLabel.text = dic[@"name"];
+                    }
+                    
+                }
                 if ([self.cardStyleLabel.text isEqualToString:@"中国银行"]) {
                     self.bankStyleImageV.image = [UIImage imageNamed:@"BOC"];
                     
@@ -235,34 +245,12 @@
                 }else {
                     self.bankStyleImageV.image = [UIImage imageNamed:@"ABC"];
                 }
-                
-                for (NSDictionary *dic in responseObject[@"data"]) {
-                    
-                    if([dic[@"status"] intValue] == 1){
-                        
-                        self.cardNumLabel.text = dic[@"number"];
-                        self.cardStyleLabel.text = dic[@"name"];
-                    }
-                    
-                }
             }else{
-                self.bankStyleImageV.hidden = YES;
-                self.cardNumLabel.hidden = YES;
-                self.cardStyleLabel.hidden = YES;
-                self.detailImageV.hidden = YES;
-                
-                self.addImageV.hidden = NO;
-                self.addLabel.hidden = NO;
+                [self hideBankInfo];
             }
             
         }else{
-            self.bankStyleImageV.hidden = YES;
-            self.cardNumLabel.hidden = YES;
-            self.cardStyleLabel.hidden = YES;
-            self.detailImageV.hidden = YES;
-            
-            self.addImageV.hidden = NO;
-            self.addLabel.hidden = NO;
+            [self hideBankInfo];
 
         }
         
@@ -375,7 +363,8 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
-    dict[@"num"] = self.buybackNumF.text;
+    NSString *num = [NSString stringWithFormat:@"%d",[self.buybackNumF.text intValue]];
+    dict[@"num"] = num;
     dict[@"IDcar"] = self.cardNumLabel.text;
     //开户行地址  ???
     dict[@"address"] = self.cardStyleLabel.text;
@@ -422,6 +411,8 @@
 }
 
 - (IBAction)chooseBank:(id)sender {
+    [self.buybackNumF resignFirstResponder];
+    [self.secondPwdF resignFirstResponder];
     if (self.addImageV.hidden) {
         self.hidesBottomBarWhenPushed = YES;
         
@@ -487,7 +478,7 @@
     if (sender== _directV.normalBtn) {
         self.beanStyleLabel.text = NormalMoney;
         self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
-        
+        self.remainBeanStyleLabel.text = @"可回购米子:";
     }else{
 //        if([[UserModel defaultUser].userLogin integerValue] == 1){
             self.beanStyleLabel.text = SpecialMoney;
@@ -497,7 +488,7 @@
 //            self.beanStyleLabel.text = @"待提供发票志愿豆";
 //        }
         self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
-
+        self.remainBeanStyleLabel.text = @"可回购待交税米子:";
     }
     [self dismiss];
 }

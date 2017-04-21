@@ -24,6 +24,7 @@
                 <outlet property="scrollView" destination="ZeL-9w-ggQ" id="9Te-4U-vHb"/>
                 <outlet property="secondPwdT" destination="QEv-Kr-wGm" id="dDa-kk-hlf"/>
                 <outlet property="useableBeanNumLabel" destination="aPI-2X-eMF" id="YRC-Gw-lBz"/>
+                <outlet property="userableBeanStyleLabel" destination="wKc-g4-JTr" id="o4P-oN-MAQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -42,8 +43,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="298899" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPI-2X-eMF">
-                                            <rect key="frame" x="133.5" y="104" width="109" height="36"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                            <rect key="frame" x="151.5" y="116" width="73.5" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -81,12 +82,23 @@
                                                 <action selector="DirectDonationRecord:" destination="-1" eventType="touchUpInside" id="igD-Ox-9rl"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余米子:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKc-g4-JTr">
+                                            <rect key="frame" x="10" y="94" width="355" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="SGp-Gf-UrF"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" red="0.1551630795" green="0.58942979569999998" blue="0.2282119095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="hCq-uL-ZSv" firstAttribute="centerY" secondItem="BCC-vI-Xk5" secondAttribute="centerY" id="1ub-vR-7bl"/>
                                         <constraint firstAttribute="height" constant="170" id="4oz-iQ-TBu"/>
+                                        <constraint firstItem="aPI-2X-eMF" firstAttribute="top" secondItem="wKc-g4-JTr" secondAttribute="bottom" constant="5" id="6WO-MZ-0uz"/>
                                         <constraint firstItem="BCC-vI-Xk5" firstAttribute="height" secondItem="bph-DJ-cID" secondAttribute="height" id="Axm-Ef-OYz"/>
+                                        <constraint firstAttribute="trailing" secondItem="wKc-g4-JTr" secondAttribute="trailing" constant="10" id="J8Z-E2-dgF"/>
                                         <constraint firstItem="aPI-2X-eMF" firstAttribute="centerX" secondItem="l05-9V-BfE" secondAttribute="centerX" id="Jxx-0N-7Fo"/>
                                         <constraint firstItem="bph-DJ-cID" firstAttribute="leading" secondItem="l05-9V-BfE" secondAttribute="leading" constant="10" id="PK2-Uo-lSG"/>
                                         <constraint firstAttribute="bottom" secondItem="aPI-2X-eMF" secondAttribute="bottom" constant="30" id="ReP-ec-hWo"/>
@@ -95,6 +107,7 @@
                                         <constraint firstItem="bph-DJ-cID" firstAttribute="top" secondItem="l05-9V-BfE" secondAttribute="top" constant="30" id="dXZ-Bu-F9U"/>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="170" id="e4t-ft-yIg"/>
                                         <constraint firstItem="BCC-vI-Xk5" firstAttribute="centerX" secondItem="l05-9V-BfE" secondAttribute="centerX" id="gOW-TZ-Azf"/>
+                                        <constraint firstItem="wKc-g4-JTr" firstAttribute="leading" secondItem="l05-9V-BfE" secondAttribute="leading" constant="10" id="qOo-Wp-cEt"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUt-lC-d0z" userLabel="bottomView">

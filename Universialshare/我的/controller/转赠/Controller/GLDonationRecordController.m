@@ -20,8 +20,9 @@
 }
 
 @property (strong, nonatomic)NodataView *nodataV;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic,strong)UITableView *tableView;
+//@property (nonatomic,strong)UITableView *tableView;
 
 @property (nonatomic,strong)NSMutableArray *models;
 
@@ -32,17 +33,17 @@
 static NSString *ID = @"GLDonationRecordCell";
 @implementation GLDonationRecordController
 
--(UITableView*)tableView {
-    if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
-        self.tableView.showsVerticalScrollIndicator = NO;
-    }
-    return _tableView;
-}
+//-(UITableView*)tableView {
+//    if (_tableView == nil) {
+//        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+//        
+//        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//        self.tableView.delegate = self;
+//        self.tableView.dataSource = self;
+//        self.tableView.showsVerticalScrollIndicator = NO;
+//    }
+//    return _tableView;
+//}
 - (NSMutableArray *)models{
     if (_models == nil) {
         _models = [NSMutableArray array];
@@ -116,8 +117,11 @@ static NSString *ID = @"GLDonationRecordCell";
                 [_models addObject:model];
             }
         }else if([responseObject[@"code"] intValue] == 3){
-            
-            [MBProgressHUD showError:@"已经没有更多数据了!"];
+            if (_models.count != 0) {
+                
+                [MBProgressHUD showError:@"已经没有更多数据了!"];
+            }
+            [MBProgressHUD showError:responseObject[@"message"]];
             
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
@@ -153,7 +157,7 @@ static NSString *ID = @"GLDonationRecordCell";
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return ADAPT(60);
+    return 40 * autoSizeScaleY;
 }
 
 -(NodataView*)nodataV{

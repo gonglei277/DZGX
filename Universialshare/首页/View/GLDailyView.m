@@ -40,9 +40,9 @@ static NSString *ID = @"GLFirstHeartCell";
         cell.model = self.models[indexPath.row];
     }
     if (indexPath.row == 0) {
-        cell.typeLabel.text = @"全联盟";
+        cell.typeLabel.text = @"米家";
     }else{
-        cell.typeLabel.text = @"零售商";
+        cell.typeLabel.text = @"米商";
     }
     return cell;
 }

@@ -116,12 +116,12 @@
     }else if(![self isPureNumandCharacters:self.cardTextF.text]){
         [MBProgressHUD showError:@"银行卡号只能为数字"];
         return;
+        
+    }else if(![predicateModel IsBankCard:self.cardTextF.text]){
+        [MBProgressHUD showError:@"输入的银行卡不合法"];
+        return;
     }
-//    }else if(![predicateModel IsBankCard:self.cardTextF.text]){
-//        [MBProgressHUD showError:@"输入的银行卡不合法"];
-//        return;
-//    }
-//
+
 //    self.block(self.cardTextF.text);
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;

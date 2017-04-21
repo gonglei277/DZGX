@@ -46,10 +46,10 @@
         model.end_love = @"0";
     }
     if([model.end_bean rangeOfString:@"null"].location != NSNotFound){
-        model.end_bean = @"";
+        model.end_bean = @"0";
     }
     if([model.bean rangeOfString:@"null"].location != NSNotFound){
-        model.bean = @"";
+        model.bean = @"0";
     }
     
     self.consumeLabel.text = model.money;
@@ -57,8 +57,8 @@
     self.heartSumLabel.text = model.love;
     self.encouragingLabel.text = model.jl_love;
     self.jiliCompleteLabel.text = model.end_love;
-    self.daijiliLabel.text = model.end_bean;
-    self.finishedNumLabel.text = model.bean;
+    self.daijiliLabel.text = model.bean;
+    self.finishedNumLabel.text = model.end_bean;
 
 }
 

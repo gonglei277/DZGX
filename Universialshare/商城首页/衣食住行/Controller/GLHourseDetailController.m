@@ -235,7 +235,7 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
         
     }else if (indexPath.row ==2 ){
 
-        NSArray *arr = [[NSArray alloc] initWithObjects:@"蓝色",@"红色",@"湖蓝色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",nil];
+        NSArray *arr = [[NSArray alloc] initWithObjects:@"蓝色",@"红色",@"湖蓝色",@"咖啡色",nil];
         return [self jisuanjincou:arr];
         
     }else if (indexPath.row ==3 ){

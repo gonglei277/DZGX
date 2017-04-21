@@ -297,12 +297,12 @@ static NSString *followID = @"GLFirstFollowCell";
                 NSString *str = [strcontent stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
                 NSString *str2 = [str stringByReplacingOccurrencesOfString:@"&gt;" withString:@">"];
 
-                NSLog(@"%@",str2);
-                _htmlString = [NSString stringWithFormat:@"<!DOCTYPE html><html>%@</html>",str2];
+                NSString *str3 = [str2 stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+                NSLog(@"%@",str3);
+                _htmlString = [NSString stringWithFormat:@"<!DOCTYPE html><html>%@</html>",str3];
                 _htmlString = [_htmlString stringByReplacingOccurrencesOfString:@"\\\"" withString:strcontent];
                 NSLog(@"%@",_htmlString);
                 [self.homepopinfoView.webView loadHTMLString:_htmlString baseURL:nil];
-
                 
             }else{
                 self.homepopinfoView.infoLb.text = @"";

@@ -103,8 +103,11 @@ static NSString *ID = @"GLDirectDnationRecordCell";
                 [_models addObject:model];
             }
         }else if([responseObject[@"code"] intValue] == 3){
-            
-            [MBProgressHUD showError:@"已经没有更多数据了!"];
+            if (_models.count != 0) {
+                
+                [MBProgressHUD showError:@"已经没有更多数据了!"];
+            }
+            [MBProgressHUD showError:responseObject[@"message"]];
             
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
@@ -154,7 +157,7 @@ static NSString *ID = @"GLDirectDnationRecordCell";
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+    return 40 * autoSizeScaleY;
 }
 
 @end
