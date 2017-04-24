@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIView *middleView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewWidth;
 
 @end
 
@@ -35,11 +37,19 @@
     self.bottomView.layer.cornerRadius = 5.f;
     self.bottomView.clipsToBounds = YES;
     
+    self.contentViewWidth.constant = SCREEN_WIDTH;
+    self.contentViewHeight.constant = SCREEN_HEIGHT;
+    
+    self.nextBtn.layer.cornerRadius = 5.f;
+    self.nextBtn.clipsToBounds = YES;
 }
 
 - (IBAction)nextClick:(id)sender {
+    self.hidesBottomBarWhenPushed = YES;
+
     GLSubmitSecondController *secondVC = [[GLSubmitSecondController alloc] init];
     [self.navigationController pushViewController:secondVC animated:YES];
+//    self.hidesBottomBarWhenPushed = NO;
 }
 
 

@@ -126,7 +126,7 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 160 *autoSizeScaleY;
+        return 180 *autoSizeScaleY;
     }else{
         
         return 120 *autoSizeScaleY;

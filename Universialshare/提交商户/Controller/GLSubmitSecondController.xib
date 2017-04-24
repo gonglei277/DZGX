@@ -12,31 +12,24 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLSubmitSecondController">
             <connections>
                 <outlet property="bottomView" destination="Lno-Py-fFH" id="5Nz-YL-ysy"/>
+                <outlet property="contentViewHeight" destination="KAp-zP-MND" id="b6S-d9-uQy"/>
+                <outlet property="contentViewWidth" destination="aOE-Bh-eWD" id="U38-db-eog"/>
                 <outlet property="middleView" destination="HWZ-gU-iTc" id="o8F-AZ-X6n"/>
+                <outlet property="nextBtn" destination="6Q8-IY-6dl" id="fhG-Yb-sM9"/>
                 <outlet property="topView" destination="iov-fo-Ace" id="Dlf-Zl-kND"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="365" height="532"/>
+            <rect key="frame" x="0.0" y="0.0" width="385" height="612"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Q8-IY-6dl">
-                    <rect key="frame" x="10" y="482" width="345" height="40"/>
-                    <color key="backgroundColor" red="0.1551630795" green="0.58942979569999998" blue="0.2282119095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="wNv-O2-inF"/>
-                    </constraints>
-                    <state key="normal" title="下一步">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FyJ-XF-cuP">
-                    <rect key="frame" x="0.0" y="0.0" width="365" height="482"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FyJ-XF-cuP">
+                    <rect key="frame" x="0.0" y="0.0" width="385" height="612"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="td9-Zv-l3u">
-                            <rect key="frame" x="0.0" y="0.0" width="365" height="482"/>
+                            <rect key="frame" x="0.0" y="64" width="365" height="482"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iov-fo-Ace">
                                     <rect key="frame" x="10" y="10" width="345" height="120"/>
@@ -284,7 +277,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lno-Py-fFH">
-                                    <rect key="frame" x="10" y="212" width="345" height="120"/>
+                                    <rect key="frame" x="10" y="212" width="345" height="80"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地图选点:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCP-KL-Dik">
                                             <rect key="frame" x="10" y="10" width="61.5" height="17"/>
@@ -335,19 +328,31 @@
                                         <constraint firstItem="DQq-ij-TR7" firstAttribute="centerY" secondItem="hCP-KL-Dik" secondAttribute="centerY" id="YnK-1x-agD"/>
                                         <constraint firstItem="hCP-KL-Dik" firstAttribute="top" secondItem="Lno-Py-fFH" secondAttribute="top" constant="10" id="aMb-Ba-s36"/>
                                         <constraint firstItem="hCP-KL-Dik" firstAttribute="leading" secondItem="Lno-Py-fFH" secondAttribute="leading" constant="10" id="cY1-aB-Zwb"/>
-                                        <constraint firstAttribute="height" constant="120" id="d8b-a5-UGN"/>
+                                        <constraint firstAttribute="height" constant="80" id="d8b-a5-UGN"/>
                                         <constraint firstAttribute="trailing" secondItem="8l3-78-BI7" secondAttribute="trailing" id="fCn-15-5f7"/>
                                         <constraint firstItem="8l3-78-BI7" firstAttribute="top" secondItem="Lno-Py-fFH" secondAttribute="top" id="ome-tf-UGn"/>
                                         <constraint firstItem="8l3-78-BI7" firstAttribute="leading" secondItem="Lno-Py-fFH" secondAttribute="leading" id="pt1-7d-JHh"/>
                                         <constraint firstAttribute="trailing" secondItem="DQq-ij-TR7" secondAttribute="trailing" constant="10" id="xWR-Gc-wKY"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Q8-IY-6dl">
+                                    <rect key="frame" x="10" y="312" width="345" height="30"/>
+                                    <color key="backgroundColor" red="0.1551630795" green="0.58942979569999998" blue="0.2282119095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="sfd-DU-JyG"/>
+                                    </constraints>
+                                    <state key="normal" title="下一步">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.92146831750869751" green="0.92162626981735229" blue="0.92145836353302002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
+                                <constraint firstItem="6Q8-IY-6dl" firstAttribute="leading" secondItem="td9-Zv-l3u" secondAttribute="leading" constant="10" id="0MB-uP-GQc"/>
                                 <constraint firstItem="HWZ-gU-iTc" firstAttribute="leading" secondItem="iov-fo-Ace" secondAttribute="leading" id="8WL-xr-FqZ"/>
                                 <constraint firstItem="Lno-Py-fFH" firstAttribute="leading" secondItem="HWZ-gU-iTc" secondAttribute="leading" id="A7g-ex-gcR"/>
                                 <constraint firstAttribute="height" constant="482" id="KAp-zP-MND"/>
+                                <constraint firstItem="6Q8-IY-6dl" firstAttribute="top" secondItem="Lno-Py-fFH" secondAttribute="bottom" constant="20" id="LOW-rX-3xk"/>
                                 <constraint firstAttribute="trailing" secondItem="iov-fo-Ace" secondAttribute="trailing" constant="10" id="POT-mq-wOz"/>
                                 <constraint firstItem="Lno-Py-fFH" firstAttribute="trailing" secondItem="HWZ-gU-iTc" secondAttribute="trailing" id="Wxa-Ll-Vfv"/>
                                 <constraint firstItem="iov-fo-Ace" firstAttribute="top" secondItem="td9-Zv-l3u" secondAttribute="top" constant="10" id="YHY-Vm-aiI"/>
@@ -355,6 +360,7 @@
                                 <constraint firstItem="iov-fo-Ace" firstAttribute="leading" secondItem="td9-Zv-l3u" secondAttribute="leading" constant="10" id="i51-Qa-CNS"/>
                                 <constraint firstItem="HWZ-gU-iTc" firstAttribute="top" secondItem="iov-fo-Ace" secondAttribute="bottom" constant="1" id="jIu-95-t8a"/>
                                 <constraint firstItem="HWZ-gU-iTc" firstAttribute="trailing" secondItem="iov-fo-Ace" secondAttribute="trailing" id="phj-5t-RWv"/>
+                                <constraint firstAttribute="trailing" secondItem="6Q8-IY-6dl" secondAttribute="trailing" constant="10" id="ppf-nf-V6L"/>
                                 <constraint firstItem="Lno-Py-fFH" firstAttribute="top" secondItem="HWZ-gU-iTc" secondAttribute="bottom" constant="1" id="zNG-n0-DdJ"/>
                             </constraints>
                         </view>
@@ -362,24 +368,21 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="td9-Zv-l3u" secondAttribute="trailing" id="4T8-LB-b46"/>
                         <constraint firstAttribute="bottom" secondItem="td9-Zv-l3u" secondAttribute="bottom" id="KcI-e5-egN"/>
-                        <constraint firstItem="td9-Zv-l3u" firstAttribute="top" secondItem="FyJ-XF-cuP" secondAttribute="top" id="s7w-1H-MlE"/>
+                        <constraint firstItem="td9-Zv-l3u" firstAttribute="top" secondItem="FyJ-XF-cuP" secondAttribute="top" constant="64" id="s7w-1H-MlE"/>
                         <constraint firstItem="td9-Zv-l3u" firstAttribute="leading" secondItem="FyJ-XF-cuP" secondAttribute="leading" id="xOg-Oi-aY2"/>
                     </constraints>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="0.92146831750869751" green="0.92162626981735229" blue="0.92145836353302002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="6Q8-IY-6dl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="83A-Ae-JOM"/>
-                <constraint firstItem="6Q8-IY-6dl" firstAttribute="top" secondItem="FyJ-XF-cuP" secondAttribute="bottom" id="MGG-fq-3CO"/>
                 <constraint firstAttribute="trailing" secondItem="FyJ-XF-cuP" secondAttribute="trailing" id="Z0v-5D-6vd"/>
-                <constraint firstAttribute="trailing" secondItem="6Q8-IY-6dl" secondAttribute="trailing" constant="10" id="nDv-U3-tsP"/>
-                <constraint firstAttribute="bottom" secondItem="6Q8-IY-6dl" secondAttribute="bottom" constant="10" id="oGL-3j-J6C"/>
+                <constraint firstAttribute="bottom" secondItem="FyJ-XF-cuP" secondAttribute="bottom" id="pc1-kv-yZb"/>
                 <constraint firstItem="FyJ-XF-cuP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qiN-RS-EB0"/>
                 <constraint firstItem="FyJ-XF-cuP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uza-t2-Omr"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="28.5" y="-13"/>
+            <point key="canvasLocation" x="38.5" y="27"/>
         </view>
     </objects>
 </document>

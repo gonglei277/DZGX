@@ -8,12 +8,14 @@
 
 #import "GLSubmitSecondController.h"
 
-@interface GLSubmitSecondController ()
+@interface GLSubmitSecondController ()<UIPickerViewDelegate,UIPickerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *middleView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewWidth;
 
 @property (strong, nonatomic)NSMutableArray *dataarr;
 @property (strong, nonatomic)LoadWaitView *loadV;
@@ -25,6 +27,7 @@
 
 @property (assign, nonatomic)NSInteger messageType;//消息类型 默认为1
 @property (strong, nonatomic)NSMutableArray *messageArr;
+@property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 
 @end
 
@@ -34,7 +37,7 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    self.navigationController.navigationBar.hidden = NO;
     self.topView.layer.cornerRadius = 5.f;
     self.topView.layer.masksToBounds = YES;
     
@@ -44,8 +47,23 @@
     self.bottomView.layer.cornerRadius = 5.f;
     self.bottomView.layer.masksToBounds = YES;
     
+    self.contentViewHeight.constant = SCREEN_HEIGHT;
+    self.contentViewWidth.constant = SCREEN_WIDTH;
+    
+    self.nextBtn.layer.cornerRadius = 5.f;
+    self.nextBtn.clipsToBounds = YES;
+    
 }
+
 - (IBAction)chooseInfo:(id)sender {
+    [self edtingInfo];
+}
+
+//筛选
+-(void)edtingInfo{
+    
+    [self.view addSubview:self.pickerViewMask];
+    [self.pickerViewMask addSubview:self.pickerView];
     
 }
 -(void)initdatasource{
@@ -93,7 +111,7 @@
 #pragma Mark -- UIPickerViewDataSource
 // pickerView 列数
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
+    return 3;
 }
 
 // pickerView 每列个数
@@ -106,6 +124,7 @@
     }
     return self.messageArr.count;
 }
+
 
 #pragma Mark -- UIPickerViewDelegate
 // 每列宽度
