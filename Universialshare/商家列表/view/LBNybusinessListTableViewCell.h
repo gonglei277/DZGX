@@ -18,4 +18,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *GoBt;
 
+@property (assign, nonatomic)NSInteger index;
+
+@property (copy , nonatomic)void(^returnGowhere)(NSInteger index);
+
 @end

@@ -12,6 +12,8 @@
 
 @property (copy , nonatomic)void(^returnpushvc)();
 
+@property (copy , nonatomic)void(^returnpushinfovc)(NSInteger index);
+
 @property (assign , nonatomic)BOOL HideNavB;//是否隐藏导航栏
 
 @end

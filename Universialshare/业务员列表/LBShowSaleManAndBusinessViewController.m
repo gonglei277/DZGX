@@ -12,6 +12,7 @@
 #import "LBMySalesmanListDeatilViewController.h"
 #import "LBMyBusinessListDetailViewController.h"
 #import "LBSaleManPersonInfoViewController.h"
+#import "LBViewProtocolViewController.h"
 
 @interface LBShowSaleManAndBusinessViewController ()
 @property (weak, nonatomic) IBOutlet UIView *navigationV;
@@ -74,6 +75,12 @@
         [weakself.navigationController pushViewController:vc animated:YES];
         weakself.hidesBottomBarWhenPushed = NO;
     
+    };
+    
+    _businessListVc.returnpushinfovc = ^(NSInteger index){
+        
+       
+        
     };
     
 }

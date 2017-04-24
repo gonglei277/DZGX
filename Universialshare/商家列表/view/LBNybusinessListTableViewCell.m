@@ -28,7 +28,9 @@
 
 - (IBAction)GoPayEvent:(UIButton *)sender {
     
-    
+    if (self.returnGowhere) {
+        self.returnGowhere(self.index);
+    }
 }
 
 @end

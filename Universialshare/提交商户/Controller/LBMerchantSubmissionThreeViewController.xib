@@ -14,6 +14,8 @@
                 <outlet property="bankCode" destination="omt-eu-Gwg" id="pVI-zU-Ifb"/>
                 <outlet property="banktf" destination="E9k-Rl-qzZ" id="l2v-yi-ZGE"/>
                 <outlet property="baseView" destination="6Nb-bN-cgC" id="6qb-34-yIF"/>
+                <outlet property="contentH" destination="rGI-JO-PzK" id="Y9E-DC-eBh"/>
+                <outlet property="contentW" destination="ukQ-Q0-eWl" id="3da-7m-uR8"/>
                 <outlet property="nametf" destination="MhK-BG-d5k" id="ek0-6K-m1f"/>
                 <outlet property="nextbt" destination="7UO-Sy-mkf" id="mmR-l2-bdY"/>
                 <outlet property="phonetf" destination="WpS-uS-Wbq" id="o8X-MR-8Va"/>
@@ -297,7 +299,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7UO-Sy-mkf">
-                                    <rect key="frame" x="10" y="265" width="355" height="45"/>
+                                    <rect key="frame" x="10" y="275" width="355" height="45"/>
                                     <color key="backgroundColor" red="0.14404621719999999" green="0.60565376280000005" blue="0.14635491370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="SkJ-a6-QLH"/>
@@ -314,8 +316,8 @@
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="7UO-Sy-mkf" firstAttribute="leading" secondItem="NYm-bi-fJ0" secondAttribute="leading" constant="10" id="32x-GX-Mhp"/>
-                                <constraint firstItem="7UO-Sy-mkf" firstAttribute="top" secondItem="6Nb-bN-cgC" secondAttribute="bottom" constant="10" id="BJn-Kj-W2y"/>
                                 <constraint firstAttribute="trailing" secondItem="7UO-Sy-mkf" secondAttribute="trailing" constant="10" id="Iaw-QB-kzb"/>
+                                <constraint firstItem="7UO-Sy-mkf" firstAttribute="top" secondItem="6Nb-bN-cgC" secondAttribute="bottom" constant="20" id="SEu-qg-ymM"/>
                                 <constraint firstAttribute="trailing" secondItem="6Nb-bN-cgC" secondAttribute="trailing" constant="10" id="p2Z-ht-Ft5"/>
                                 <constraint firstAttribute="height" constant="650" id="rGI-JO-PzK"/>
                                 <constraint firstAttribute="width" constant="375" id="ukQ-Q0-eWl"/>

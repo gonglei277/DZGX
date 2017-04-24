@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIView *baseView;
 @property (weak, nonatomic) IBOutlet UIButton *nextbt;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentW;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentH;
+
 @end
 
 @implementation LBMerchantSubmissionThreeViewController
@@ -52,6 +55,18 @@
         return NO;
     }
     
+    if (textField == self.nametf) {
+        //只能输入英文或中文
+        NSCharacterSet * charact;
+        charact = [[NSCharacterSet characterSetWithCharactersInString:NMUBERS]invertedSet];
+        NSString * filtered = [[string componentsSeparatedByCharactersInSet:charact]componentsJoinedByString:@""];
+        BOOL canChange = [string isEqualToString:filtered];
+        if(canChange) {
+            [MBProgressHUD showError:@"只能输入英文或中文"];
+            return NO;
+        }
+    }
+    
     return YES;
 
 }
@@ -65,7 +80,8 @@
     self.nextbt.layer.cornerRadius = 3;
     self.nextbt.clipsToBounds = YES;
 
-
+    self.contentW.constant = SCREEN_WIDTH;
+    self.contentH.constant = SCREEN_HEIGHT - 64;
 
 }
 
