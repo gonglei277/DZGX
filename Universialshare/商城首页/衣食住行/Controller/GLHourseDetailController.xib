@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLHourseDetailController">
             <connections>
+                <outlet property="addToCartBtn" destination="rU1-Ga-P4K" id="fsb-QI-cp1"/>
+                <outlet property="exchangeBtn" destination="wVf-vH-5vG" id="kLb-8e-ib9"/>
+                <outlet property="settleBtn" destination="gbO-vn-ITa" id="lqX-Vm-2aI"/>
                 <outlet property="tableView" destination="Io3-27-tPH" id="BqF-ks-Lpv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,45 +31,72 @@
                         <outlet property="delegate" destination="-1" id="3ky-Jp-gLj"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbO-vn-ITa">
-                    <rect key="frame" x="295" y="617" width="80" height="50"/>
-                    <color key="backgroundColor" red="0.80893534420000002" green="0.158609271" blue="0.18252518770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6tM-Hj-Haa">
+                    <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbO-vn-ITa">
+                            <rect key="frame" x="295" y="0.0" width="80" height="40"/>
+                            <color key="backgroundColor" red="0.80893534420000002" green="0.158609271" blue="0.18252518770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="6uq-QR-jRM"/>
+                            </constraints>
+                            <state key="normal" title="去结算">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="confirmOrder:" destination="-1" eventType="touchUpInside" id="9hd-bp-FCU"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVf-vH-5vG">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                            <color key="backgroundColor" red="0.1551630795" green="0.58942979569999998" blue="0.2282119095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="我要兑换"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rU1-Ga-P4K">
+                            <rect key="frame" x="185" y="0.0" width="100" height="40"/>
+                            <color key="backgroundColor" red="0.80893534420000002" green="0.158609271" blue="0.18252518770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="T1H-fx-fzr"/>
+                                <constraint firstAttribute="width" constant="100" id="gOb-8k-i2q"/>
+                            </constraints>
+                            <state key="normal" title="加入购物车">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="addToCart:" destination="-1" eventType="touchUpInside" id="NSa-6H-6MN"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="80" id="6uq-QR-jRM"/>
+                        <constraint firstItem="wVf-vH-5vG" firstAttribute="top" secondItem="6tM-Hj-Haa" secondAttribute="top" id="4Cg-Ou-74k"/>
+                        <constraint firstAttribute="trailing" secondItem="gbO-vn-ITa" secondAttribute="trailing" id="67M-HX-R2o"/>
+                        <constraint firstItem="gbO-vn-ITa" firstAttribute="top" secondItem="6tM-Hj-Haa" secondAttribute="top" id="Bhw-CT-aMe"/>
+                        <constraint firstAttribute="trailing" secondItem="wVf-vH-5vG" secondAttribute="trailing" id="EBZ-k5-AIu"/>
+                        <constraint firstItem="rU1-Ga-P4K" firstAttribute="top" secondItem="6tM-Hj-Haa" secondAttribute="top" id="OUX-Oc-Eox"/>
+                        <constraint firstAttribute="height" constant="40" id="XBh-Xx-VFQ"/>
+                        <constraint firstAttribute="bottom" secondItem="wVf-vH-5vG" secondAttribute="bottom" id="aso-7I-byr"/>
+                        <constraint firstItem="wVf-vH-5vG" firstAttribute="leading" secondItem="6tM-Hj-Haa" secondAttribute="leading" id="hfk-hp-D99"/>
+                        <constraint firstAttribute="bottom" secondItem="rU1-Ga-P4K" secondAttribute="bottom" id="qGJ-Zd-yvd"/>
+                        <constraint firstItem="gbO-vn-ITa" firstAttribute="leading" secondItem="rU1-Ga-P4K" secondAttribute="trailing" constant="10" id="t0M-mD-uMd"/>
+                        <constraint firstAttribute="bottom" secondItem="gbO-vn-ITa" secondAttribute="bottom" id="xDy-HI-2bj"/>
                     </constraints>
-                    <state key="normal" title="去结算">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="confirmOrder:" destination="-1" eventType="touchUpInside" id="9hd-bp-FCU"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rU1-Ga-P4K">
-                    <rect key="frame" x="185" y="617" width="100" height="50"/>
-                    <color key="backgroundColor" red="0.80893534420000002" green="0.158609271" blue="0.18252518770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="gOb-8k-i2q"/>
-                    </constraints>
-                    <state key="normal" title="加入购物车">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="gbO-vn-ITa" firstAttribute="leading" secondItem="rU1-Ga-P4K" secondAttribute="trailing" constant="10" id="6VJ-zd-r7F"/>
-                <constraint firstItem="rU1-Ga-P4K" firstAttribute="height" secondItem="gbO-vn-ITa" secondAttribute="height" id="Hwy-f5-cfZ"/>
                 <constraint firstItem="Io3-27-tPH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="M6a-rl-hYs"/>
+                <constraint firstItem="6tM-Hj-Haa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Oz3-Qz-lKB"/>
                 <constraint firstAttribute="bottom" secondItem="Io3-27-tPH" secondAttribute="bottom" constant="50" id="QTm-8N-WxS"/>
-                <constraint firstAttribute="bottom" secondItem="gbO-vn-ITa" secondAttribute="bottom" id="Tgi-0G-MaI"/>
-                <constraint firstAttribute="trailing" secondItem="gbO-vn-ITa" secondAttribute="trailing" id="bky-9b-SU2"/>
+                <constraint firstAttribute="trailing" secondItem="6tM-Hj-Haa" secondAttribute="trailing" id="X6e-fd-Now"/>
                 <constraint firstItem="Io3-27-tPH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fF9-GR-Iah"/>
                 <constraint firstAttribute="trailing" secondItem="Io3-27-tPH" secondAttribute="trailing" id="lap-db-dpq"/>
-                <constraint firstItem="rU1-Ga-P4K" firstAttribute="centerY" secondItem="gbO-vn-ITa" secondAttribute="centerY" id="u7L-H0-lhA"/>
-                <constraint firstItem="gbO-vn-ITa" firstAttribute="top" secondItem="Io3-27-tPH" secondAttribute="bottom" id="ySe-3B-Ah0"/>
+                <constraint firstAttribute="bottom" secondItem="6tM-Hj-Haa" secondAttribute="bottom" id="oQJ-pM-dqE"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
 </document>

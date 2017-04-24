@@ -26,7 +26,6 @@
 #define URL_Base @"http://192.168.0.111/DZGX/api/"
 //#define URL_Base @"http://dzgx.joshuaweb.cn/api/"
 
-
 #define DOWNLOAD_URL @"www.baidu.com"
 //米家
 #define OrdinaryUser @"7"

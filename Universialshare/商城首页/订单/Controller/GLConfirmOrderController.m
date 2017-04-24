@@ -11,6 +11,7 @@
 #import "GLOrderPayView.h"
 #import "GLSet_MaskVeiw.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "LBMineCentermodifyAdressViewController.h"
 
 @interface GLConfirmOrderController ()
 {
@@ -26,6 +27,7 @@
 @property (nonatomic, strong)GLOrderPayView *payV;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewW;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewH;
+@property (weak, nonatomic) IBOutlet UIView *addressView;
 
 @end
 
@@ -46,10 +48,18 @@
     self.contentViewW.constant = SCREEN_WIDTH;
     self.contentViewH.constant = SCREEN_HEIGHT + 49;
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeAddress)];
+    [self.addressView addGestureRecognizer:tap];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(dismiss) name:@"maskView_dismiss" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(ensurePassword:) name:@"input_PasswordNotification" object:nil];
     
+}
+- (void)changeAddress{
+    LBMineCentermodifyAdressViewController *modifyAD = [[LBMineCentermodifyAdressViewController alloc] init];
+    
+    [self.navigationController pushViewController:modifyAD animated:YES];
 }
 - (void)dismiss {
     [_payV.passwordF resignFirstResponder];
@@ -74,19 +84,19 @@
 }
 - (IBAction)submitOrder:(UIButton *)sender {
 
-    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    _maskV.bgView.alpha = 0.1;
-    
-    _payV = [[NSBundle mainBundle] loadNibNamed:@"GLOrderPayView" owner:nil options:nil].lastObject;
-    [_payV.backBtn addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-    _maskV.alpha = 1;
-        _payV.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
-    [_maskV showViewWithContentView:_payV];
- 
-    [UIView animateWithDuration:0.3 animations:^{
-        _payV.frame = CGRectMake(0, SCREEN_HEIGHT *0.5 , SCREEN_WIDTH, SCREEN_HEIGHT *0.5);
-        [_payV.passwordF becomeFirstResponder];
-    }];
+//    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+//    _maskV.bgView.alpha = 0.1;
+//    
+//    _payV = [[NSBundle mainBundle] loadNibNamed:@"GLOrderPayView" owner:nil options:nil].lastObject;
+//    [_payV.backBtn addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+//    _maskV.alpha = 1;
+//        _payV.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
+//    [_maskV showViewWithContentView:_payV];
+// 
+//    [UIView animateWithDuration:0.3 animations:^{
+//        _payV.frame = CGRectMake(0, SCREEN_HEIGHT *0.5 , SCREEN_WIDTH, SCREEN_HEIGHT *0.5);
+//        [_payV.passwordF becomeFirstResponder];
+//    }];
 
 }
 

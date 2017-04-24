@@ -48,15 +48,15 @@
     [self addChildViewController:_secondVC];
     [self addChildViewController:_thirdVC];
     
-    
     self.currentViewController = _firstVC;
     [self fitFrameForChildViewController:_firstVC];
     [self.contentView addSubview:_firstVC.view];
-    
-    self.currentButton = self.firstBtn;
-    self.firstBtn.selected = YES;
-    self.secondBtn.selected = NO;
-    self.thirdBtn.selected = NO;
+    [self buttonEvent:_firstBtn];
+//
+//    self.currentButton = self.firstBtn;
+//    self.firstBtn.selected = YES;
+//    self.secondBtn.selected = NO;
+//    self.thirdBtn.selected = NO;
     
    
     
@@ -74,34 +74,40 @@
 //百分之六激励
 - (IBAction)buttonEvent:(UIButton *)sender {
     
-    sender.selected = !sender.selected;
-    if (sender.selected == NO) {
-        sender.selected = YES;
-        return;
-    }else{
-        [UIView animateWithDuration:0.2 animations:^{
-            [sender setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
- 
-        } completion:^(BOOL finished) {
-            self.currentButton = sender;
-            sender.selected = !sender.selected;
+//    sender.selected = !sender.selected;
+//    if (sender.selected == NO) {
+//        sender.selected = YES;
+//        return;
+//    }else{
+//        [UIView animateWithDuration:0.2 animations:^{
+//            [sender setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+// 
+//        } completion:^(BOOL finished) {
+//            self.currentButton = sender;
+//            sender.selected = !sender.selected;
+//
+//            
+//        }];
+//    }
+    [self.firstBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [self.secondBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [self.thirdBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    
+    [sender setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 
-            
-        }];
-    }
     if (sender == self.firstBtn) {
-        self.secondBtn.selected = NO;
-        self.thirdBtn.selected = NO;
+//        self.secondBtn.selected = NO;
+//        self.thirdBtn.selected = NO;
         [self transitionFromVC:self.currentViewController toviewController:_firstVC];
         [self fitFrameForChildViewController:_firstVC];
     }else if (sender == self.secondBtn){
-        self.firstBtn.selected = NO;
-        self.thirdBtn.selected = NO;
+//        self.firstBtn.selected = NO;
+//        self.thirdBtn.selected = NO;
         [self transitionFromVC:self.currentViewController toviewController:_secondVC];
         [self fitFrameForChildViewController:_secondVC];
     }else{
-        self.firstBtn.selected = NO;
-        self.secondBtn.selected = NO;
+//        self.firstBtn.selected = NO;
+//        self.secondBtn.selected = NO;
         [self transitionFromVC:self.currentViewController toviewController:_thirdVC];
         [self fitFrameForChildViewController:_thirdVC];
     }
