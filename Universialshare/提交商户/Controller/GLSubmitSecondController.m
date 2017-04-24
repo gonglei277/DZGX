@@ -10,6 +10,12 @@
 #import "GLCityModel.h"
 
 @interface GLSubmitSecondController ()<UIPickerViewDelegate,UIPickerViewDataSource>
+{
+    int _index;
+    NSInteger _provinceIndex;
+    NSInteger _cityIndex;
+    NSInteger _countryIndex;
+}
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *middleView;
@@ -31,8 +37,24 @@
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 
 
+@property (weak, nonatomic) IBOutlet UIButton *provinceBtn;
+@property (weak, nonatomic) IBOutlet UIButton *cityBtn;
+@property (weak, nonatomic) IBOutlet UIButton *countryBtn;
+@property (weak, nonatomic) IBOutlet UIButton *classifyOneBtn;
+@property (weak, nonatomic) IBOutlet UIButton *classifyTwoBtn;
+
+@property (weak, nonatomic) IBOutlet UILabel *provinceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countryLabel;
+
 //模型
 @property (nonatomic, strong)GLCityModel *model;
+
+@property (nonatomic, strong)NSMutableArray *dataArr;
+
+@property (nonatomic, strong)NSMutableArray *provinceArr;
+@property (nonatomic, strong)NSMutableArray *cityArr;
+@property (nonatomic, strong)NSMutableArray *countryArr;
 
 @end
 
@@ -58,12 +80,47 @@
     self.nextBtn.layer.cornerRadius = 5.f;
     self.nextBtn.clipsToBounds = YES;
     
+    self.provinceArr = [NSMutableArray array];
+    self.cityArr = [NSMutableArray array];
+    self.countryArr = [NSMutableArray array];
+    
     [self initdatasource];
     
 }
 
 - (IBAction)chooseInfo:(id)sender {
     [self edtingInfo];
+    if (sender == self.provinceBtn) {
+        self.cityLabel.text = @"请选择城市";
+        self.countryLabel.text = @"请选择区域";
+        _index = 0;
+        _provinceIndex = 0;
+        _cityIndex = 0;
+    }else if (sender == self.cityBtn){
+        if (_provinceIndex == 0) {
+            return;
+        }
+        self.countryLabel.text = @"请选择区域";
+        _cityIndex = 0;
+        _index = 1;
+        
+    }else if (sender == self.countryBtn){
+        if (_provinceIndex == 0) {
+            return;
+        }
+        if (_cityIndex == 0) {
+            return;
+        }
+        _index = 2;
+
+    }else if (sender == self.classifyOneBtn){
+        _index = 3;
+
+    }else {
+        _index = 4;
+    }
+    [self currentDataArr];
+    [self.pickerView reloadAllComponents];
 }
 
 //筛选
@@ -78,9 +135,27 @@
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/getCityList" paramDic:@{} finish:^(id responseObject) {
         [_loadV removeloadview];
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue]==1) {
-            for (NSDictionary *dic in responseObject[@"data"]) {
+            GLCityModel * model = [GLCityModel mj_objectWithKeyValues:responseObject];
+            for (Data *data in model.data) {
+                [self.provinceArr addObject:data.province_name];
+                
+                NSMutableArray *cityA = [NSMutableArray array];
+                NSMutableArray *countryB = [NSMutableArray array];
+                for (City *city in data.city) {
+
+                    [cityA addObject:city.city_name];
+                    
+                    NSMutableArray *countryA = [NSMutableArray array];
+                    for (Country *country in city.country) {
+                        
+                        [countryA addObject:country.country_name];
+                    }
+                    [countryB addObject:countryA];
+                }
+                [self.countryArr addObject:countryB];
+                [self.cityArr addObject:cityA];
                 
             }
             
@@ -96,6 +171,18 @@
     
     
 }
+- (id)currentDataArr {
+    if (_index == 0) {
+        self.dataArr = self.provinceArr;
+        
+    }else if (_index == 1){
+        self.dataArr = self.cityArr[_provinceIndex - 1];
+    }else if (_index == 2){
+        self.dataArr = self.countryArr[_provinceIndex - 1][_cityIndex - 1];
+    }
+
+    return self.dataArr;
+}
 #pragma Mark -- UIPickerViewDataSource
 // pickerView 列数
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -110,7 +197,8 @@
     }else{
         self.nodataV.hidden = NO;
     }
-    return 10;
+ 
+    return self.dataArr.count;
 }
 
 
@@ -129,27 +217,45 @@
 // 返回选中的行
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    
-    self.messageType = row + 1;
+    if (_index == 0) {
+        _provinceIndex = row + 1;
+        self.provinceLabel.text = self.provinceArr[row];
+    }else if(_index == 1){
+        _cityIndex = row + 1;
+        self.cityLabel.text = self.cityArr[_provinceIndex - 1][row];
+        
+    }else if (_index == 2){
+        _countryIndex = row + 1;
+        self.countryLabel.text = self.countryArr[_provinceIndex - 1][_cityIndex - 1][row];
+    }else if (_index == 3){
+        
+    }else{
+        
+    }
+//    self.messageType = row + 1;
     
 }
 
 //返回当前行的内容,此处是将数组中数值添加到滚动的那个显示栏上
 -(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    
-    return self.messageArr[row];
+//    NSString *content;
+//    if (_index == 0) {
+//        content = self.dataArr[row];
+//    }else if (_index == 1){
+//    }
+    return self.dataArr[row];
 }
--(NSMutableArray *)messageArr{
-    
-    if (!_messageArr) {
-        _messageArr=[NSMutableArray array];
-        _messageArr = [NSMutableArray arrayWithObjects:@"nidaye",@"nidaye1",@"niday2e",@"nidaye3",@"nidaye4",@"nidaye5",@"nidaye6",@"nidaye7",@"nidaye8",@"nidaye9", nil];
-    }
-    
-    return _messageArr;
-    
-}
+//-(NSMutableArray *)messageArr{
+//    
+//    if (!_messageArr) {
+//        _messageArr=[NSMutableArray array];
+//        _messageArr = [NSMutableArray arrayWithObjects:@"nidaye",@"nidaye1",@"niday2e",@"nidaye3",@"nidaye4",@"nidaye5",@"nidaye6",@"nidaye7",@"nidaye8",@"nidaye9", nil];
+//    }
+//    
+//    return _messageArr;
+//    
+//}
 ////重写方法
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
     UILabel* pickerLabel = (UILabel*)view;
@@ -165,13 +271,13 @@
 }
 
 
--(NSMutableArray *)dataarr{
+-(NSMutableArray *)dataArr{
     
-    if (!_dataarr) {
-        _dataarr=[NSMutableArray array];
+    if (!_dataArr) {
+        _dataArr = [NSMutableArray array];
     }
     
-    return _dataarr;
+    return _dataArr;
     
 }
 

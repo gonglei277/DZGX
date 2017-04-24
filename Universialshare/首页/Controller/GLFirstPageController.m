@@ -272,81 +272,82 @@ static NSString *followID = @"GLFirstFollowCell";
     
     [NetworkManager requestPOSTWithURLStr:@"index/notice" paramDic:nil finish:^(id responseObject) {
 //        [_loadV removeFromSuperview];
+        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
-            NSString *strtitle=[NSString stringWithFormat:@"%@",responseObject[@"data"][0][@"title"]];
-            NSString *strcontent=[NSString stringWithFormat:@"%@",responseObject[@"data"][0][@"content"]];
-            NSString *strtime=[NSString stringWithFormat:@"%@",responseObject[@"data"][0][@"release_time"]];
-            
-            if ([strtitle rangeOfString:@"null"].location == NSNotFound) {
-                self.homepopinfoView.titlename.text = strtitle;
-            }else{
-                self.homepopinfoView.titlename.text = @"";
-            }
-            if ([strcontent rangeOfString:@"null"].location == NSNotFound) {
-                
-//                NSAttributedString *attributetext = [self strToAttriWithStr:strcontent];
+//            NSString *strtitle=[NSString stringWithFormat:@"%@",responseObject[@"data"][0][@"title"]];
+//            NSString *strcontent=[NSString stringWithFormat:@"%@",responseObject[@"data"][0][@"content"]];
+//            NSString *strtime=[NSString stringWithFormat:@"%@",responseObject[@"data"][0][@"release_time"]];
+//            
+//            if ([strtitle rangeOfString:@"null"].location == NSNotFound) {
+//                self.homepopinfoView.titlename.text = strtitle;
+//            }else{
+//                self.homepopinfoView.titlename.text = @"";
+//            }
+//            if ([strcontent rangeOfString:@"null"].location == NSNotFound) {
 //                
-//                NSString *string = [NSString stringWithFormat:@"%@",attributetext];
-//                NSRange startRange = [string rangeOfString:@"p>"];
-//                NSRange endRange = [string rangeOfString:@"</"];
-//                NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
-//                NSString *result = [string substringWithRange:range];
-                
-//                self.homepopinfoView.infoLb.text = result;
-                NSString *str = [strcontent stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
-                NSString *str2 = [str stringByReplacingOccurrencesOfString:@"&gt;" withString:@">"];
-
-                NSString *str3 = [str2 stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
-                NSLog(@"%@",str3);
-                _htmlString = [NSString stringWithFormat:@"<!DOCTYPE html><html>%@</html>",str3];
-                _htmlString = [_htmlString stringByReplacingOccurrencesOfString:@"\\\"" withString:strcontent];
-                NSLog(@"%@",_htmlString);
-                [self.homepopinfoView.webView loadHTMLString:_htmlString baseURL:nil];
-                
-            }else{
-                self.homepopinfoView.infoLb.text = @"";
-            }
-            if ([strtime rangeOfString:@"null"].location == NSNotFound) {
-                self.homepopinfoView.timeLb.text = strtime;
-            }else{
-                
-                self.homepopinfoView.timeLb.text = @"";
-            }
-
-            if (self.homepopinfoView.infoLb.text.length<=1) {
-                return ;
-            }
-         
-            
-            CGRect sizetitle=[self.homepopinfoView.titlename.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil];
-            
-//            CGRect sizecontent=[self.homepopinfoView.infoLb.attributedText  boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
-            CGRect sizecontent =[_htmlString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil];
-            
-            if ((110 + sizetitle.size.height + sizecontent.size.height) >= ((SCREEN_HEIGHT/2) - 30)) {
-                
-                self.homepopinfoView.frame = CGRectMake(20, (SCREEN_HEIGHT - ((SCREEN_HEIGHT/2) - 30)) / 2, SCREEN_WIDTH - 40, ((SCREEN_HEIGHT/2) - 30));
-                
-                self.homepopinfoView.scrollViewH.constant = (SCREEN_HEIGHT/2) - 105;
-                self.homepopinfoView.contentW.constant = SCREEN_WIDTH - 80;
-                self.homepopinfoView.contentH.constant = sizetitle.size.height + sizecontent.size.height + 20;
-                
-            }else{
-                
-                self.homepopinfoView.frame = CGRectMake(20, (SCREEN_HEIGHT - (110 + sizetitle.size.height + sizecontent.size.height)) / 2, SCREEN_WIDTH - 40, 110 + sizetitle.size.height + sizecontent.size.height);
-                
-                self.homepopinfoView.scrollViewH.constant = 110 + sizetitle.size.height + sizecontent.size.height - 80;
-                self.homepopinfoView.scrollView.scrollEnabled = NO;
-                self.homepopinfoView.contentW.constant = SCREEN_WIDTH - 80;
-                self.homepopinfoView.contentH.constant = 110 + sizetitle.size.height + sizecontent.size.height - 80;
-                
-            }
-            
-            
-            [self.view addSubview:self.homepopinfoViewmask];
-            [self.homepopinfoViewmask addSubview:self.homepopinfoView];
-            
+////                NSAttributedString *attributetext = [self strToAttriWithStr:strcontent];
+////                
+////                NSString *string = [NSString stringWithFormat:@"%@",attributetext];
+////                NSRange startRange = [string rangeOfString:@"p>"];
+////                NSRange endRange = [string rangeOfString:@"</"];
+////                NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
+////                NSString *result = [string substringWithRange:range];
+//                
+////                self.homepopinfoView.infoLb.text = result;
+//                NSString *str = [strcontent stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
+//                NSString *str2 = [str stringByReplacingOccurrencesOfString:@"&gt;" withString:@">"];
+//
+//                NSString *str3 = [str2 stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+//                NSLog(@"%@",str3);
+//                _htmlString = [NSString stringWithFormat:@"<!DOCTYPE html><html>%@</html>",str3];
+//                _htmlString = [_htmlString stringByReplacingOccurrencesOfString:@"\\\"" withString:strcontent];
+//                NSLog(@"%@",_htmlString);
+//                [self.homepopinfoView.webView loadHTMLString:_htmlString baseURL:nil];
+//                
+//            }else{
+//                self.homepopinfoView.infoLb.text = @"";
+//            }
+//            if ([strtime rangeOfString:@"null"].location == NSNotFound) {
+//                self.homepopinfoView.timeLb.text = strtime;
+//            }else{
+//                
+//                self.homepopinfoView.timeLb.text = @"";
+//            }
+//
+//            if (self.homepopinfoView.infoLb.text.length<=1) {
+//                return ;
+//            }
+//         
+//            
+//            CGRect sizetitle=[self.homepopinfoView.titlename.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil];
+//            
+////            CGRect sizecontent=[self.homepopinfoView.infoLb.attributedText  boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+//            CGRect sizecontent =[_htmlString boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil];
+//            
+//            if ((110 + sizetitle.size.height + sizecontent.size.height) >= ((SCREEN_HEIGHT/2) - 30)) {
+//                
+//                self.homepopinfoView.frame = CGRectMake(20, (SCREEN_HEIGHT - ((SCREEN_HEIGHT/2) - 30)) / 2, SCREEN_WIDTH - 40, ((SCREEN_HEIGHT/2) - 30));
+//                
+//                self.homepopinfoView.scrollViewH.constant = (SCREEN_HEIGHT/2) - 105;
+//                self.homepopinfoView.contentW.constant = SCREEN_WIDTH - 80;
+//                self.homepopinfoView.contentH.constant = sizetitle.size.height + sizecontent.size.height + 20;
+//                
+//            }else{
+//                
+//                self.homepopinfoView.frame = CGRectMake(20, (SCREEN_HEIGHT - (110 + sizetitle.size.height + sizecontent.size.height)) / 2, SCREEN_WIDTH - 40, 110 + sizetitle.size.height + sizecontent.size.height);
+//                
+//                self.homepopinfoView.scrollViewH.constant = 110 + sizetitle.size.height + sizecontent.size.height - 80;
+//                self.homepopinfoView.scrollView.scrollEnabled = NO;
+//                self.homepopinfoView.contentW.constant = SCREEN_WIDTH - 80;
+//                self.homepopinfoView.contentH.constant = 110 + sizetitle.size.height + sizecontent.size.height - 80;
+//                
+//            }
+//            
+//            
+//            [self.view addSubview:self.homepopinfoViewmask];
+//            [self.homepopinfoViewmask addSubview:self.homepopinfoView];
+//            
         }
 
     } enError:^(NSError *error) {

@@ -12,10 +12,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLSubmitSecondController">
             <connections>
                 <outlet property="bottomView" destination="Lno-Py-fFH" id="5Nz-YL-ysy"/>
+                <outlet property="cityBtn" destination="8WN-Ja-H4N" id="rXk-xf-0mF"/>
+                <outlet property="cityLabel" destination="wdu-nh-BPg" id="hqt-It-zL7"/>
+                <outlet property="classifyOneBtn" destination="dyI-ds-Rp6" id="R73-l3-Jzx"/>
+                <outlet property="classifyTwoBtn" destination="vOD-VE-xLu" id="I6D-zq-Nhe"/>
                 <outlet property="contentViewHeight" destination="KAp-zP-MND" id="b6S-d9-uQy"/>
                 <outlet property="contentViewWidth" destination="aOE-Bh-eWD" id="U38-db-eog"/>
+                <outlet property="countryBtn" destination="Xla-C6-Iys" id="ytj-ck-NDf"/>
+                <outlet property="countryLabel" destination="ZyG-o4-t3j" id="jZN-wH-qR3"/>
                 <outlet property="middleView" destination="HWZ-gU-iTc" id="o8F-AZ-X6n"/>
                 <outlet property="nextBtn" destination="6Q8-IY-6dl" id="fhG-Yb-sM9"/>
+                <outlet property="provinceBtn" destination="rT3-EB-wX5" id="jnW-hm-jWJ"/>
+                <outlet property="provinceLabel" destination="MCn-HH-XaG" id="lmO-Mo-Htv"/>
                 <outlet property="topView" destination="iov-fo-Ace" id="Dlf-Zl-kND"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
