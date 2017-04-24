@@ -13,8 +13,20 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.checkbutton.layer.borderWidth = 1;
+    self.checkbutton.layer.borderColor = YYSRGBColor(181, 180, 180, 1).CGColor;
+    
+    self.checkbutton.layer.cornerRadius =3;
+    self.checkbutton.clipsToBounds=YES;
 }
 
+- (IBAction)chechbutton:(UIButton *)sender {
+    
+    if (self.returncheckbutton) {
+        self.returncheckbutton(self.index);
+    }
+    
+}
 
 
 @end

@@ -10,4 +10,6 @@
 
 @interface LBMineStoreHistoryOrderingViewController : UIViewController
 
+@property (copy , nonatomic)void(^returncheckbutton)(NSInteger index);
+
 @end

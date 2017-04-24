@@ -10,10 +10,18 @@
 
 @interface LBMineStoreOrderingTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *timelb;
+@property (weak, nonatomic) IBOutlet UILabel *title;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imagev;
+@property (weak, nonatomic) IBOutlet UILabel *productname;
+@property (weak, nonatomic) IBOutlet UILabel *productDescreb;
+@property (weak, nonatomic) IBOutlet UILabel *moneylb;
 @property (weak, nonatomic) IBOutlet UILabel *numlb;
-@property (weak, nonatomic) IBOutlet UILabel *productLb;
 
+@property (weak, nonatomic) IBOutlet UILabel *paylb;
+@property (weak, nonatomic) IBOutlet UIButton *checkbutton;
+
+@property (assign , nonatomic)NSInteger index;
+@property (copy , nonatomic)void(^returncheckbutton)(NSInteger index);
 
 @end
