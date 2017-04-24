@@ -86,6 +86,8 @@
 		4A203DDF1E9F8D8300DF22F7 /* GLReceiveBeansModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203DDE1E9F8D8300DF22F7 /* GLReceiveBeansModel.m */; };
 		4A203DE31E9F8E0D00DF22F7 /* GLReceiveBeansCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203DE11E9F8E0D00DF22F7 /* GLReceiveBeansCell.m */; };
 		4A203DE41E9F8E0D00DF22F7 /* GLReceiveBeansCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203DE21E9F8E0D00DF22F7 /* GLReceiveBeansCell.xib */; };
+		4A3E607F1EAD8B7A000E2E17 /* GLSubmitFirstController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3E607D1EAD8B7A000E2E17 /* GLSubmitFirstController.m */; };
+		4A3E60801EAD8B7A000E2E17 /* GLSubmitFirstController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3E607E1EAD8B7A000E2E17 /* GLSubmitFirstController.xib */; };
 		4A4608E71E9C9E6D0045824F /* GLFirstPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4608D21E9C9E6D0045824F /* GLFirstPageController.m */; };
 		4A4608E81E9C9E6D0045824F /* GLFirstPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4608D31E9C9E6D0045824F /* GLFirstPageController.xib */; };
 		4A4608E91E9C9E6D0045824F /* GLDailyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4608D61E9C9E6D0045824F /* GLDailyView.m */; };
@@ -852,6 +854,9 @@
 		4A203DE01E9F8E0D00DF22F7 /* GLReceiveBeansCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLReceiveBeansCell.h; sourceTree = "<group>"; };
 		4A203DE11E9F8E0D00DF22F7 /* GLReceiveBeansCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLReceiveBeansCell.m; sourceTree = "<group>"; };
 		4A203DE21E9F8E0D00DF22F7 /* GLReceiveBeansCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLReceiveBeansCell.xib; sourceTree = "<group>"; };
+		4A3E607C1EAD8B7A000E2E17 /* GLSubmitFirstController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSubmitFirstController.h; sourceTree = "<group>"; };
+		4A3E607D1EAD8B7A000E2E17 /* GLSubmitFirstController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSubmitFirstController.m; sourceTree = "<group>"; };
+		4A3E607E1EAD8B7A000E2E17 /* GLSubmitFirstController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLSubmitFirstController.xib; sourceTree = "<group>"; };
 		4A4608D11E9C9E6D0045824F /* GLFirstPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFirstPageController.h; sourceTree = "<group>"; };
 		4A4608D21E9C9E6D0045824F /* GLFirstPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFirstPageController.m; sourceTree = "<group>"; };
 		4A4608D31E9C9E6D0045824F /* GLFirstPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLFirstPageController.xib; sourceTree = "<group>"; };
@@ -2258,6 +2263,9 @@
 		4A3E60791EAD8AD1000E2E17 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4A3E607C1EAD8B7A000E2E17 /* GLSubmitFirstController.h */,
+				4A3E607D1EAD8B7A000E2E17 /* GLSubmitFirstController.m */,
+				4A3E607E1EAD8B7A000E2E17 /* GLSubmitFirstController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4880,6 +4888,7 @@
 				4A4608EE1E9C9E6D0045824F /* GLFirstHeartCell.xib in Resources */,
 				F923094A1E9B8BFF00ECDC94 /* LBMineCenterReceivingGoodsViewController.xib in Resources */,
 				4A460A171E9CBBE20045824F /* GLNoticeView.xib in Resources */,
+				4A3E60801EAD8B7A000E2E17 /* GLSubmitFirstController.xib in Resources */,
 				F961AA2E1E9CE17800275F52 /* LBUserKonwViewController.xib in Resources */,
 				F923097E1E9B8BFF00ECDC94 /* LBMineCenterSafeModifySecondSecretViewController.xib in Resources */,
 				F923092D1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeDetailViewController.xib in Resources */,
@@ -5176,6 +5185,7 @@
 				4A4610631E9CC6360045824F /* ZXTelResultParser.m in Sources */,
 				4A4611061E9CC6370045824F /* ZXQRCodeMode.m in Sources */,
 				F92309641E9B8BFF00ECDC94 /* XBTagTitleCell.m in Sources */,
+				4A3E607F1EAD8B7A000E2E17 /* GLSubmitFirstController.m in Sources */,
 				4A07A86D1EA0571E005A9B67 /* GLBuyBackChooseBankView.m in Sources */,
 				F9126EF61EA0B086004785EA /* LBMineSystemMessageTableViewCell.m in Sources */,
 				4A4610BE1E9CC6370045824F /* ZXRSSExpandedDecodedObject.m in Sources */,
