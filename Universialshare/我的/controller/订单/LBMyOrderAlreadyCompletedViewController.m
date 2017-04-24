@@ -8,6 +8,7 @@
 
 #import "LBMyOrderAlreadyCompletedViewController.h"
 #import "LBMyOrderListTableViewCell.h"
+#import "LBMineCenterOrderDetailViewController.h"
 
 @interface LBMyOrderAlreadyCompletedViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 
@@ -68,6 +69,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    LBMineCenterOrderDetailViewController *vc=[[LBMineCenterOrderDetailViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
     
     
 }

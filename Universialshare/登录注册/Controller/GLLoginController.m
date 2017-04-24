@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *scretTf;
 
 @property (strong, nonatomic)LoginIdentityView *loginView;
+@property (strong, nonatomic)UIImageView *currentloginViewimage;//当前选择身份的选中图
+
 @property (strong, nonatomic)UIView *maskView;
 @property (strong, nonatomic)NSString *usertype;//用户类型 默认为善行者
 @property (strong, nonatomic)LoadWaitView *loadV;
@@ -44,17 +46,24 @@
     
     UITapGestureRecognizer *maskvgesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(maskviewgesture)];
     [self.maskView addGestureRecognizer:maskvgesture];
-    //
+    //选择米家
     UITapGestureRecognizer *shanVgesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(shangViewgesture)];
-    
     [self.loginView.shangView addGestureRecognizer:shanVgesture];
-    //
+    //选择米商
     UITapGestureRecognizer *lingVgesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(lingViewgesture)];
-    //
     [self.loginView.lingView addGestureRecognizer:lingVgesture];
+    //选择一级业务员
+    UITapGestureRecognizer *OneVgesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(oneSalerViewgesture)];
+    [self.loginView.oneView addGestureRecognizer:OneVgesture];
+    //选择二级业务员
+    UITapGestureRecognizer *TwoVgesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(twoSalerViewgesture)];
+    [self.loginView.twoView addGestureRecognizer:TwoVgesture];
+    //选择三级业务员
+    UITapGestureRecognizer *ThreeVgesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(threeSalerViewgesture)];
+    [self.loginView.threeView addGestureRecognizer:ThreeVgesture];
     
     
-   
+    self.currentloginViewimage = self.loginView.shangImage;
     
 }
 
@@ -131,8 +140,6 @@
  
      NSString *encryptsecret = [RSAEncryptor encryptString:self.scretTf.text publicKey:public_RSA];
 
-    NSLog(@"encryptsecret = %@",encryptsecret);
-    
     [NetworkManager requestPOSTWithURLStr:@"user/login" paramDic:@{@"userphone":self.phone.text,@"password":encryptsecret,@"groupID":self.usertype} finish:^(id responseObject) {
         [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
@@ -233,16 +240,59 @@
 -(void)shangViewgesture{
     
     self.usertype = OrdinaryUser;
+    if (self.currentloginViewimage == self.loginView.shangImage) {
+        return;
+    }
     self.loginView.shangImage.image=[UIImage imageNamed:@"location_on"];
-    self.loginView.lingimage.image=[UIImage imageNamed:@"location_off"];
-    
+    self.currentloginViewimage.image=[UIImage imageNamed:@"location_off"];
+    self.currentloginViewimage = self.loginView.shangImage;
 }
 //零售商
 -(void)lingViewgesture{
     
     self.usertype = Retailer;
-    self.loginView.shangImage.image=[UIImage imageNamed:@"location_off"];
+    if (self.currentloginViewimage == self.loginView.lingimage) {
+        return;
+    }
     self.loginView.lingimage.image=[UIImage imageNamed:@"location_on"];
+    self.currentloginViewimage.image=[UIImage imageNamed:@"location_off"];
+    self.currentloginViewimage = self.loginView.lingimage;
+    
+}
+//一级业务员
+-(void)oneSalerViewgesture{
+
+    self.usertype = ONESALER;
+    if (self.currentloginViewimage == self.loginView.oneImage) {
+        return;
+    }
+    self.loginView.oneImage.image=[UIImage imageNamed:@"location_on"];
+    self.currentloginViewimage.image=[UIImage imageNamed:@"location_off"];
+    self.currentloginViewimage = self.loginView.oneImage;
+
+}
+//二级业务员
+-(void)twoSalerViewgesture{
+    
+    self.usertype = TWOSALER;
+    if (self.currentloginViewimage == self.loginView.twoImage) {
+        return;
+    }
+    self.loginView.twoImage.image=[UIImage imageNamed:@"location_on"];
+    self.currentloginViewimage.image=[UIImage imageNamed:@"location_off"];
+    self.currentloginViewimage = self.loginView.twoImage;
+    
+}
+//三级业务员
+-(void)threeSalerViewgesture{
+    
+    self.usertype = THREESALER;
+    if (self.currentloginViewimage == self.loginView.threeImage) {
+        return;
+    }
+    self.loginView.threeImage.image=[UIImage imageNamed:@"location_on"];
+    self.currentloginViewimage.image=[UIImage imageNamed:@"location_off"];
+    self.currentloginViewimage = self.loginView.threeImage;
     
 }
 
@@ -293,7 +343,7 @@
     
     if (!_loginView) {
         _loginView=[[NSBundle mainBundle]loadNibNamed:@"LoginIdentityView" owner:self options:nil].firstObject;
-        _loginView.frame=CGRectMake(20, (SCREEN_HEIGHT - 160)/2, SCREEN_WIDTH-40, 160);
+        _loginView.frame=CGRectMake(20, (SCREEN_HEIGHT - 240)/2, SCREEN_WIDTH-40, 240);
         _loginView.alpha=1;
         
     }

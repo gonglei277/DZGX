@@ -13,10 +13,17 @@
 @property (weak, nonatomic) IBOutlet UIView *shangView;
 
 @property (weak, nonatomic) IBOutlet UIView *lingView;
+@property (weak, nonatomic) IBOutlet UIView *oneView;
+@property (weak, nonatomic) IBOutlet UIView *twoView;
+@property (weak, nonatomic) IBOutlet UIView *threeView;
+
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *shangImage;
-
 @property (weak, nonatomic) IBOutlet UIImageView *lingimage;
+@property (weak, nonatomic) IBOutlet UIImageView *oneImage;
+@property (weak, nonatomic) IBOutlet UIImageView *twoImage;
+@property (weak, nonatomic) IBOutlet UIImageView *threeImage;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *sureBt;
