@@ -80,9 +80,9 @@
         [_loadV removeloadview];
         NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue]==1) {
-            
-            NSDictionary *dic = [NSDictionary dictionaryWithDictionary:[GLCityModel mj_objectClassInArray]];
-            NSLog(@"dic = %@",dic);
+            for (NSDictionary *dic in responseObject[@"data"]) {
+                
+            }
             
         }
         
