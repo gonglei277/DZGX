@@ -163,14 +163,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="468" height="40"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDX-P7-PES">
-                                <rect key="frame" x="10" y="5" width="2" height="30"/>
+                                <rect key="frame" x="10" y="10" width="2" height="20"/>
                                 <color key="backgroundColor" red="0.1551630795" green="0.58942979569999998" blue="0.2282119095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="2" id="rIC-kQ-GFl"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="积分优惠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vno-Ij-bye">
-                                <rect key="frame" x="14" y="5" width="58" height="30"/>
+                                <rect key="frame" x="14" y="10" width="58" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -192,10 +192,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vno-Ij-bye" firstAttribute="leading" secondItem="IDX-P7-PES" secondAttribute="trailing" constant="2" id="2VK-Jh-Caf"/>
-                            <constraint firstItem="IDX-P7-PES" firstAttribute="top" secondItem="Rvs-Dv-90n" secondAttribute="top" constant="5" id="A7i-4Q-Xd1"/>
+                            <constraint firstItem="IDX-P7-PES" firstAttribute="top" secondItem="Rvs-Dv-90n" secondAttribute="top" constant="10" id="A7i-4Q-Xd1"/>
                             <constraint firstItem="rgQ-6s-Y5O" firstAttribute="leading" secondItem="I9V-nS-ebT" secondAttribute="trailing" constant="10" id="Avx-2h-Gqr"/>
                             <constraint firstItem="rgQ-6s-Y5O" firstAttribute="centerY" secondItem="Rvs-Dv-90n" secondAttribute="centerY" id="CDr-wd-Kr4"/>
-                            <constraint firstAttribute="bottom" secondItem="IDX-P7-PES" secondAttribute="bottom" constant="5" id="F53-ty-hce"/>
+                            <constraint firstAttribute="bottom" secondItem="IDX-P7-PES" secondAttribute="bottom" constant="10" id="F53-ty-hce"/>
                             <constraint firstItem="I9V-nS-ebT" firstAttribute="centerY" secondItem="Rvs-Dv-90n" secondAttribute="centerY" id="Ix7-uV-vu4"/>
                             <constraint firstItem="vno-Ij-bye" firstAttribute="height" secondItem="IDX-P7-PES" secondAttribute="height" id="ZDe-ts-1AP"/>
                             <constraint firstAttribute="trailing" secondItem="rgQ-6s-Y5O" secondAttribute="trailing" constant="10" id="cDh-zj-ZLW"/>
