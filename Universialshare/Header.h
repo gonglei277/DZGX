@@ -28,10 +28,16 @@
 
 
 #define DOWNLOAD_URL @"www.baidu.com"
-//普通用户
+//米家
 #define OrdinaryUser @"7"
-//零售商
+//米商
 #define Retailer @"6"
+//一级销售员
+#define ONESALER @"3"
+//二级销售员
+#define TWOSALER @"4"
+//三级销售员
+#define THREESALER @"5"
 
 
 //http://dzgx.joshuaweb.cn/index.php/Home/Regist/index.html

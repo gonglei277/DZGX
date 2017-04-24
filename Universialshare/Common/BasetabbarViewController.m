@@ -17,6 +17,7 @@
 #import "GLLoginController.h"
 
 #import "LBImprovePersonalDataViewController.h"
+#import "LBShowSaleManAndBusinessViewController.h"
 
 @interface BasetabbarViewController ()<UITabBarControllerDelegate>
 
@@ -44,16 +45,19 @@
     
     GLFirstPageController *firstVC = [[GLFirstPageController alloc] init];
     GLHomePageController *Homevc = [[GLHomePageController alloc] init];
-    
 //    GLLoginController *Homevc = [[GLLoginController alloc] init];
     LBIntegralMallViewController *IntegralMallvc = [[LBIntegralMallViewController alloc] init];
     LBMineViewController *minevc = [[LBMineViewController alloc] init];
+    
+    LBShowSaleManAndBusinessViewController *ManAndBusinessVc = [[LBShowSaleManAndBusinessViewController alloc] init];
     
    
      BaseNavigationViewController *firstNav = [[BaseNavigationViewController alloc] initWithRootViewController:firstVC];
     BaseNavigationViewController *Homenav = [[BaseNavigationViewController alloc] initWithRootViewController:Homevc];
     BaseNavigationViewController *IntegralMallnav = [[BaseNavigationViewController alloc] initWithRootViewController:IntegralMallvc];
     BaseNavigationViewController *minenav = [[BaseNavigationViewController alloc] initWithRootViewController:minevc];
+    
+    BaseNavigationViewController *ManAndBusinessNav = [[BaseNavigationViewController alloc] initWithRootViewController:ManAndBusinessVc];
    
    
     firstVC.title = @"首页";
@@ -65,9 +69,12 @@
     Homevc.tabBarItem = [self barTitle:@"消费商城" image:@"消费商城未选中状态" selectImage:@"消费商城"];
     IntegralMallvc.tabBarItem = [self barTitle:@"积分商城" image:@"public_welfare_consumption_normal" selectImage:@"public_welfare_consumption_select"];
     minevc.tabBarItem = [self barTitle:@"我的" image:@"mine_normal" selectImage:@"mine_select"];
+    ManAndBusinessVc.tabBarItem = [self barTitle:@"业务员" image:@"mine_normal" selectImage:@"mine_select"];
     
     
-    self.viewControllers = @[firstNav, Homenav, IntegralMallnav, minenav,];
+    //self.viewControllers = @[firstNav, Homenav, IntegralMallnav, minenav,];
+    
+     self.viewControllers = @[firstNav, ManAndBusinessNav, IntegralMallnav, minenav,];
     
 }
 
