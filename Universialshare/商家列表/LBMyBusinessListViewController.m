@@ -72,6 +72,16 @@
         LBNybusinessListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBNybusinessListTableViewCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    cell.index = indexPath.row;
+    
+    __weak typeof(self) weakself =self;
+    cell.returnGowhere = ^(NSInteger index){
+        if (weakself.returnpushinfovc) {
+            weakself.returnpushinfovc(index);
+        }
+        
+    };
+    
     return cell;
     
 }
