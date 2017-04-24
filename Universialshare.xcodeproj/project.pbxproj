@@ -88,6 +88,8 @@
 		4A203DE41E9F8E0D00DF22F7 /* GLReceiveBeansCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203DE21E9F8E0D00DF22F7 /* GLReceiveBeansCell.xib */; };
 		4A3E60881EAD8CC8000E2E17 /* GLSubmitFirstController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3E60841EAD8CC8000E2E17 /* GLSubmitFirstController.m */; };
 		4A3E60891EAD8CC8000E2E17 /* GLSubmitFirstController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3E60851EAD8CC8000E2E17 /* GLSubmitFirstController.xib */; };
+		4A3E608D1EAD97E6000E2E17 /* GLSubmitSecondController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3E608B1EAD97E6000E2E17 /* GLSubmitSecondController.m */; };
+		4A3E608E1EAD97E6000E2E17 /* GLSubmitSecondController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3E608C1EAD97E6000E2E17 /* GLSubmitSecondController.xib */; };
 		4A4608E71E9C9E6D0045824F /* GLFirstPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4608D21E9C9E6D0045824F /* GLFirstPageController.m */; };
 		4A4608E81E9C9E6D0045824F /* GLFirstPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4608D31E9C9E6D0045824F /* GLFirstPageController.xib */; };
 		4A4608E91E9C9E6D0045824F /* GLDailyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4608D61E9C9E6D0045824F /* GLDailyView.m */; };
@@ -636,10 +638,6 @@
 		F951EB1C1EA1EFD700D6708E /* LBMineCenterUsualUnderOrderTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F951EB1A1EA1EFD700D6708E /* LBMineCenterUsualUnderOrderTwoViewController.xib */; };
 		F951EB201EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F951EB1E1EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.m */; };
 		F951EB211EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F951EB1F1EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.xib */; };
-		F9520A011EAD8DA600B4D665 /* LBMerchantSubmissionThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95209FF1EAD8DA600B4D665 /* LBMerchantSubmissionThreeViewController.m */; };
-		F9520A021EAD8DA600B4D665 /* LBMerchantSubmissionThreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9520A001EAD8DA600B4D665 /* LBMerchantSubmissionThreeViewController.xib */; };
-		F9520A061EAD8E2800B4D665 /* LBMerchantSubmissionFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9520A041EAD8E2800B4D665 /* LBMerchantSubmissionFourViewController.m */; };
-		F9520A071EAD8E2800B4D665 /* LBMerchantSubmissionFourViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9520A051EAD8E2800B4D665 /* LBMerchantSubmissionFourViewController.xib */; };
 		F958C07F1EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F958C07D1EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.m */; };
 		F958C0801EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F958C07E1EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.xib */; };
 		F958C0821EA4A3F9003C9CFB /* personCenter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F958C0811EA4A3F9003C9CFB /* personCenter.xcassets */; };
@@ -861,6 +859,9 @@
 		4A3E60831EAD8CC8000E2E17 /* GLSubmitFirstController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSubmitFirstController.h; sourceTree = "<group>"; };
 		4A3E60841EAD8CC8000E2E17 /* GLSubmitFirstController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSubmitFirstController.m; sourceTree = "<group>"; };
 		4A3E60851EAD8CC8000E2E17 /* GLSubmitFirstController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLSubmitFirstController.xib; sourceTree = "<group>"; };
+		4A3E608A1EAD97E6000E2E17 /* GLSubmitSecondController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSubmitSecondController.h; sourceTree = "<group>"; };
+		4A3E608B1EAD97E6000E2E17 /* GLSubmitSecondController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSubmitSecondController.m; sourceTree = "<group>"; };
+		4A3E608C1EAD97E6000E2E17 /* GLSubmitSecondController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLSubmitSecondController.xib; sourceTree = "<group>"; };
 		4A4608D11E9C9E6D0045824F /* GLFirstPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFirstPageController.h; sourceTree = "<group>"; };
 		4A4608D21E9C9E6D0045824F /* GLFirstPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFirstPageController.m; sourceTree = "<group>"; };
 		4A4608D31E9C9E6D0045824F /* GLFirstPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLFirstPageController.xib; sourceTree = "<group>"; };
@@ -1845,12 +1846,6 @@
 		F951EB1D1EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineCenterUsualUnderOrderThreeViewController.h; sourceTree = "<group>"; };
 		F951EB1E1EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineCenterUsualUnderOrderThreeViewController.m; sourceTree = "<group>"; };
 		F951EB1F1EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineCenterUsualUnderOrderThreeViewController.xib; sourceTree = "<group>"; };
-		F95209FE1EAD8DA600B4D665 /* LBMerchantSubmissionThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMerchantSubmissionThreeViewController.h; sourceTree = "<group>"; };
-		F95209FF1EAD8DA600B4D665 /* LBMerchantSubmissionThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMerchantSubmissionThreeViewController.m; sourceTree = "<group>"; };
-		F9520A001EAD8DA600B4D665 /* LBMerchantSubmissionThreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMerchantSubmissionThreeViewController.xib; sourceTree = "<group>"; };
-		F9520A031EAD8E2800B4D665 /* LBMerchantSubmissionFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMerchantSubmissionFourViewController.h; sourceTree = "<group>"; };
-		F9520A041EAD8E2800B4D665 /* LBMerchantSubmissionFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMerchantSubmissionFourViewController.m; sourceTree = "<group>"; };
-		F9520A051EAD8E2800B4D665 /* LBMerchantSubmissionFourViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMerchantSubmissionFourViewController.xib; sourceTree = "<group>"; };
 		F958C07C1EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineCenterUsualUnderOrderTableViewCell.h; sourceTree = "<group>"; };
 		F958C07D1EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineCenterUsualUnderOrderTableViewCell.m; sourceTree = "<group>"; };
 		F958C07E1EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineCenterUsualUnderOrderTableViewCell.xib; sourceTree = "<group>"; };
@@ -2276,12 +2271,9 @@
 				4A3E60831EAD8CC8000E2E17 /* GLSubmitFirstController.h */,
 				4A3E60841EAD8CC8000E2E17 /* GLSubmitFirstController.m */,
 				4A3E60851EAD8CC8000E2E17 /* GLSubmitFirstController.xib */,
-				F95209FE1EAD8DA600B4D665 /* LBMerchantSubmissionThreeViewController.h */,
-				F95209FF1EAD8DA600B4D665 /* LBMerchantSubmissionThreeViewController.m */,
-				F9520A001EAD8DA600B4D665 /* LBMerchantSubmissionThreeViewController.xib */,
-				F9520A031EAD8E2800B4D665 /* LBMerchantSubmissionFourViewController.h */,
-				F9520A041EAD8E2800B4D665 /* LBMerchantSubmissionFourViewController.m */,
-				F9520A051EAD8E2800B4D665 /* LBMerchantSubmissionFourViewController.xib */,
+				4A3E608A1EAD97E6000E2E17 /* GLSubmitSecondController.h */,
+				4A3E608B1EAD97E6000E2E17 /* GLSubmitSecondController.m */,
+				4A3E608C1EAD97E6000E2E17 /* GLSubmitSecondController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5009,6 +5001,7 @@
 				4A07A88D1EA0BBF1005A9B67 /* GLNoneOfDonationCell.xib in Resources */,
 				F923096B1E9B8BFF00ECDC94 /* LBMyOrderCheckUnsubscribeRecordViewController.xib in Resources */,
 				4A4609F81E9CB78E0045824F /* GLDonationController.xib in Resources */,
+				4A3E608E1EAD97E6000E2E17 /* GLSubmitSecondController.xib in Resources */,
 				4A0023FA1E84AEFF00B2A9FE /* HomePage.xcassets in Resources */,
 				4A4610351E9CC6360045824F /* ios-social-sdk-comment-quick.html in Resources */,
 				F912749D1EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.xib in Resources */,
@@ -5020,7 +5013,6 @@
 				4A4608F41E9C9E6D0045824F /* GLRewardView.xib in Resources */,
 				F961AA431E9CE37600275F52 /* LBMerchantcreditTableViewCell.xib in Resources */,
 				F94D6E2B1E9E2A6D00412E64 /* setUp.xcassets in Resources */,
-				F9520A021EAD8DA600B4D665 /* LBMerchantSubmissionThreeViewController.xib in Resources */,
 				4A4608EC1E9C9E6D0045824F /* GLFirstFollowCell.xib in Resources */,
 				F923095C1E9B8BFF00ECDC94 /* LBMyOrderEveluationSucessOneCollectionViewCell.xib in Resources */,
 				F91274981EA0E5E300B7A539 /* LBMineStoreOrderingViewController.xib in Resources */,
@@ -5052,7 +5044,6 @@
 				F966B3DE1EAC7E0C007260FC /* LBMyBusinessListViewController.xib in Resources */,
 				4A4610371E9CC6360045824F /* ios-social-sdk-login-detail.html in Resources */,
 				F951EB171EA1EFC100D6708E /* LBMineCenterUsualUnderOrderOneViewController.xib in Resources */,
-				F9520A071EAD8E2800B4D665 /* LBMerchantSubmissionFourViewController.xib in Resources */,
 				F923093D1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5290,6 +5281,7 @@
 				F966B3B61EAC3BB8007260FC /* LBMineCenterOrderDetailOneTableViewCell.m in Sources */,
 				F961A9D51E9C75AF00275F52 /* GetLabelBounds.m in Sources */,
 				F923094F1E9B8BFF00ECDC94 /* UIView+XBExtension.m in Sources */,
+				4A3E608D1EAD97E6000E2E17 /* GLSubmitSecondController.m in Sources */,
 				4A4609EE1E9CB78E0045824F /* GLDirectDonationController.m in Sources */,
 				4A4610CA1E9CC6370045824F /* ZXRSSUtils.m in Sources */,
 				4A4611091E9CC6370045824F /* ZXQRCodeAlignmentPatternFinder.m in Sources */,
@@ -5405,7 +5397,6 @@
 				F961AA321E9CE1D200275F52 /* LBMoreOperateView.m in Sources */,
 				4A4610D21E9CC6370045824F /* ZXEAN13Reader.m in Sources */,
 				4A46107D1E9CC6360045824F /* ZXCharacterSetECI.m in Sources */,
-				F9520A011EAD8DA600B4D665 /* LBMerchantSubmissionThreeViewController.m in Sources */,
 				4A46100E1E9CC6360045824F /* UIAlertView+LBXAlertAction.m in Sources */,
 				4A4610D51E9CC6370045824F /* ZXEAN8Writer.m in Sources */,
 				F966B3EC1EAC7E97007260FC /* LBMySalesmanListDeatilViewController.m in Sources */,
@@ -5457,7 +5448,6 @@
 				4A4610BA1E9CC6370045824F /* ZXRSSExpandedCurrentParsingState.m in Sources */,
 				F9061FD31E83C4730080E9D9 /* ViewController.m in Sources */,
 				4A0D978A1E9729C100A26B84 /* GLShoppingCell.m in Sources */,
-				F9520A061EAD8E2800B4D665 /* LBMerchantSubmissionFourViewController.m in Sources */,
 				4A4610931E9CC6360045824F /* ZXRGBLuminanceSource.m in Sources */,
 				F92309791E9B8BFF00ECDC94 /* LBMineCenterAccountSafeViewController.m in Sources */,
 				F92309681E9B8BFF00ECDC94 /* LBMyOrderEvaluationSucessViewController.m in Sources */,
