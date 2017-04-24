@@ -7,6 +7,7 @@
 //
 
 #import "GLSubmitSecondController.h"
+#import "GLCityModel.h"
 
 @interface GLSubmitSecondController ()<UIPickerViewDelegate,UIPickerViewDataSource>
 
@@ -28,6 +29,10 @@
 @property (assign, nonatomic)NSInteger messageType;//消息类型 默认为1
 @property (strong, nonatomic)NSMutableArray *messageArr;
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;
+
+
+//模型
+@property (nonatomic, strong)GLCityModel *model;
 
 @end
 
@@ -53,6 +58,8 @@
     self.nextBtn.layer.cornerRadius = 5.f;
     self.nextBtn.clipsToBounds = YES;
     
+    [self initdatasource];
+    
 }
 
 - (IBAction)chooseInfo:(id)sender {
@@ -68,50 +75,31 @@
 }
 -(void)initdatasource{
     
-//    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-//    [NetworkManager requestPOSTWithURLStr:@"user/msg_list" paramDic:@{@"page":[NSNumber numberWithInteger:_page] , @"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token ,@"type":[NSNumber numberWithInteger:self.messageType]} finish:^(id responseObject) {
-//        [_loadV removeloadview];
-//        [self.tableview.mj_header endRefreshing];
-//        [self.tableview.mj_footer endRefreshing];
-//        if ([responseObject[@"code"] integerValue]==1) {
-//            
-//            if (_refreshType == NO) {
-//                [self.dataarr removeAllObjects];
-//                
-//                [self.dataarr addObjectsFromArray:responseObject[@"data"]];
-//                
-//                [self.tableview reloadData];
-//            }else{
-//                
-//                [self.dataarr addObjectsFromArray:responseObject[@"data"]];
-//                
-//                [self.tableview reloadData];
-//                
-//            }
-//            
-//        }else if ([responseObject[@"code"] integerValue]==3){
-//            
-//            [MBProgressHUD showError:responseObject[@"message"]];
-//            [self.tableview reloadData];
-//        }else{
-//            [MBProgressHUD showError:responseObject[@"message"]];
-//            [self.tableview reloadData];
-//            
-//        }
-//    } enError:^(NSError *error) {
-//        [_loadV removeloadview];
-//        [self.tableview.mj_header endRefreshing];
-//        [self.tableview.mj_footer endRefreshing];
-//        [MBProgressHUD showError:error.localizedDescription];
-//        
-//    }];
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"user/getCityList" paramDic:@{} finish:^(id responseObject) {
+        [_loadV removeloadview];
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"code"] integerValue]==1) {
+            
+            NSDictionary *dic = [NSDictionary dictionaryWithDictionary:[GLCityModel mj_objectClassInArray]];
+            NSLog(@"dic = %@",dic);
+            
+        }
+        
+        
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
     
     
 }
 #pragma Mark -- UIPickerViewDataSource
 // pickerView 列数
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 3;
+    return 1;
 }
 
 // pickerView 每列个数
@@ -122,7 +110,7 @@
     }else{
         self.nodataV.hidden = NO;
     }
-    return self.messageArr.count;
+    return 10;
 }
 
 
@@ -152,7 +140,16 @@
     
     return self.messageArr[row];
 }
-
+-(NSMutableArray *)messageArr{
+    
+    if (!_messageArr) {
+        _messageArr=[NSMutableArray array];
+        _messageArr = [NSMutableArray arrayWithObjects:@"nidaye",@"nidaye1",@"niday2e",@"nidaye3",@"nidaye4",@"nidaye5",@"nidaye6",@"nidaye7",@"nidaye8",@"nidaye9", nil];
+    }
+    
+    return _messageArr;
+    
+}
 ////重写方法
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
     UILabel* pickerLabel = (UILabel*)view;
@@ -188,7 +185,7 @@
     _page=1;
     [self.dataarr removeAllObjects];
     
-    [self initdatasource];
+//    [self initdatasource];
     
 }
 

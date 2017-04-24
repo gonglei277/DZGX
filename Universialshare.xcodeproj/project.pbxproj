@@ -77,6 +77,7 @@
 		4A1718E31EAA00FB00314368 /* GLIntegraClassifyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1718E11EAA00FB00314368 /* GLIntegraClassifyController.xib */; };
 		4A1718EA1EAA06BB00314368 /* GLClassifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1718E81EAA06BB00314368 /* GLClassifyCell.m */; };
 		4A1718EB1EAA06BB00314368 /* GLClassifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1718E91EAA06BB00314368 /* GLClassifyCell.xib */; };
+		4A1D78ED1EADF81900374386 /* GLCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1D78EC1EADF81900374386 /* GLCityModel.m */; };
 		4A203DCF1E9F82A700DF22F7 /* GLEncourageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203DCE1E9F82A700DF22F7 /* GLEncourageModel.m */; };
 		4A203DD31E9F842F00DF22F7 /* GLEncourageBeansCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A203DD11E9F842F00DF22F7 /* GLEncourageBeansCell.m */; };
 		4A203DD41E9F842F00DF22F7 /* GLEncourageBeansCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203DD21E9F842F00DF22F7 /* GLEncourageBeansCell.xib */; };
@@ -844,6 +845,8 @@
 		4A1718E71EAA06BB00314368 /* GLClassifyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLClassifyCell.h; sourceTree = "<group>"; };
 		4A1718E81EAA06BB00314368 /* GLClassifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLClassifyCell.m; sourceTree = "<group>"; };
 		4A1718E91EAA06BB00314368 /* GLClassifyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLClassifyCell.xib; sourceTree = "<group>"; };
+		4A1D78EB1EADF81900374386 /* GLCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCityModel.h; sourceTree = "<group>"; };
+		4A1D78EC1EADF81900374386 /* GLCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCityModel.m; sourceTree = "<group>"; };
 		4A203DA81E9F646500DF22F7 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		4A203DCD1E9F82A700DF22F7 /* GLEncourageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLEncourageModel.h; sourceTree = "<group>"; };
 		4A203DCE1E9F82A700DF22F7 /* GLEncourageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLEncourageModel.m; sourceTree = "<group>"; };
@@ -2297,6 +2300,8 @@
 		4A3E60861EAD8CC8000E2E17 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4A1D78EB1EADF81900374386 /* GLCityModel.h */,
+				4A1D78EC1EADF81900374386 /* GLCityModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5281,6 +5286,7 @@
 				F92309921E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m in Sources */,
 				F923097F1E9B8BFF00ECDC94 /* LBMineCenterSafeSecondSecretViewController.m in Sources */,
 				4A4610B41E9CC6370045824F /* ZXAI013x0xDecoder.m in Sources */,
+				4A1D78ED1EADF81900374386 /* GLCityModel.m in Sources */,
 				4A46101B1E9CC6360045824F /* LBXZXCapture.m in Sources */,
 				4A46110D1E9CC6370045824F /* ZXQRCodeFinderPatternInfo.m in Sources */,
 				4A4610FC1E9CC6370045824F /* ZXPDF417ResultMetadata.m in Sources */,
@@ -5712,7 +5718,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -5753,7 +5759,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
