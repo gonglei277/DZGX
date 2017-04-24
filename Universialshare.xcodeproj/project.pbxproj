@@ -2245,37 +2245,6 @@
 			path = "首页";
 			sourceTree = "<group>";
 		};
-		4A3E60781EAD8AD1000E2E17 /* 提交商户 */ = {
-			isa = PBXGroup;
-			children = (
-				4A3E60791EAD8AD1000E2E17 /* Controller */,
-				4A3E607A1EAD8AD1000E2E17 /* Model */,
-				4A3E607B1EAD8AD1000E2E17 /* View */,
-			);
-			path = "提交商户";
-			sourceTree = "<group>";
-		};
-		4A3E60791EAD8AD1000E2E17 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		4A3E607A1EAD8AD1000E2E17 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		4A3E607B1EAD8AD1000E2E17 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		4A4608CF1E9C9E6D0045824F /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3706,7 +3675,6 @@
 				F966B3D81EAC7D46007260FC /* 业务员列表详情 */,
 				F966B3D91EAC7D46007260FC /* 业务员列表 */,
 				F966B40B1EACB048007260FC /* 推销员个人资料 */,
-				4A3E60781EAD8AD1000E2E17 /* 提交商户 */,
 				F9061FFE1E83C5D00080E9D9 /* Common */,
 				4A460A001E9CB7F50045824F /* 自定义View */,
 				F906201A1E83C85D0080E9D9 /* 图片资源 */,
