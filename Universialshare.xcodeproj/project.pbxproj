@@ -88,6 +88,8 @@
 		4A203DE41E9F8E0D00DF22F7 /* GLReceiveBeansCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A203DE21E9F8E0D00DF22F7 /* GLReceiveBeansCell.xib */; };
 		4A3E60881EAD8CC8000E2E17 /* GLSubmitFirstController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3E60841EAD8CC8000E2E17 /* GLSubmitFirstController.m */; };
 		4A3E60891EAD8CC8000E2E17 /* GLSubmitFirstController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3E60851EAD8CC8000E2E17 /* GLSubmitFirstController.xib */; };
+		4A3E608D1EAD97E6000E2E17 /* GLSubmitSecondController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3E608B1EAD97E6000E2E17 /* GLSubmitSecondController.m */; };
+		4A3E608E1EAD97E6000E2E17 /* GLSubmitSecondController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3E608C1EAD97E6000E2E17 /* GLSubmitSecondController.xib */; };
 		4A4608E71E9C9E6D0045824F /* GLFirstPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4608D21E9C9E6D0045824F /* GLFirstPageController.m */; };
 		4A4608E81E9C9E6D0045824F /* GLFirstPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4608D31E9C9E6D0045824F /* GLFirstPageController.xib */; };
 		4A4608E91E9C9E6D0045824F /* GLDailyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4608D61E9C9E6D0045824F /* GLDailyView.m */; };
@@ -857,6 +859,9 @@
 		4A3E60831EAD8CC8000E2E17 /* GLSubmitFirstController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSubmitFirstController.h; sourceTree = "<group>"; };
 		4A3E60841EAD8CC8000E2E17 /* GLSubmitFirstController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSubmitFirstController.m; sourceTree = "<group>"; };
 		4A3E60851EAD8CC8000E2E17 /* GLSubmitFirstController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLSubmitFirstController.xib; sourceTree = "<group>"; };
+		4A3E608A1EAD97E6000E2E17 /* GLSubmitSecondController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSubmitSecondController.h; sourceTree = "<group>"; };
+		4A3E608B1EAD97E6000E2E17 /* GLSubmitSecondController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSubmitSecondController.m; sourceTree = "<group>"; };
+		4A3E608C1EAD97E6000E2E17 /* GLSubmitSecondController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLSubmitSecondController.xib; sourceTree = "<group>"; };
 		4A4608D11E9C9E6D0045824F /* GLFirstPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFirstPageController.h; sourceTree = "<group>"; };
 		4A4608D21E9C9E6D0045824F /* GLFirstPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFirstPageController.m; sourceTree = "<group>"; };
 		4A4608D31E9C9E6D0045824F /* GLFirstPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLFirstPageController.xib; sourceTree = "<group>"; };
@@ -2266,6 +2271,9 @@
 				4A3E60831EAD8CC8000E2E17 /* GLSubmitFirstController.h */,
 				4A3E60841EAD8CC8000E2E17 /* GLSubmitFirstController.m */,
 				4A3E60851EAD8CC8000E2E17 /* GLSubmitFirstController.xib */,
+				4A3E608A1EAD97E6000E2E17 /* GLSubmitSecondController.h */,
+				4A3E608B1EAD97E6000E2E17 /* GLSubmitSecondController.m */,
+				4A3E608C1EAD97E6000E2E17 /* GLSubmitSecondController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4993,6 +5001,7 @@
 				4A07A88D1EA0BBF1005A9B67 /* GLNoneOfDonationCell.xib in Resources */,
 				F923096B1E9B8BFF00ECDC94 /* LBMyOrderCheckUnsubscribeRecordViewController.xib in Resources */,
 				4A4609F81E9CB78E0045824F /* GLDonationController.xib in Resources */,
+				4A3E608E1EAD97E6000E2E17 /* GLSubmitSecondController.xib in Resources */,
 				4A0023FA1E84AEFF00B2A9FE /* HomePage.xcassets in Resources */,
 				4A4610351E9CC6360045824F /* ios-social-sdk-comment-quick.html in Resources */,
 				F912749D1EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.xib in Resources */,
@@ -5272,6 +5281,7 @@
 				F966B3B61EAC3BB8007260FC /* LBMineCenterOrderDetailOneTableViewCell.m in Sources */,
 				F961A9D51E9C75AF00275F52 /* GetLabelBounds.m in Sources */,
 				F923094F1E9B8BFF00ECDC94 /* UIView+XBExtension.m in Sources */,
+				4A3E608D1EAD97E6000E2E17 /* GLSubmitSecondController.m in Sources */,
 				4A4609EE1E9CB78E0045824F /* GLDirectDonationController.m in Sources */,
 				4A4610CA1E9CC6370045824F /* ZXRSSUtils.m in Sources */,
 				4A4611091E9CC6370045824F /* ZXQRCodeAlignmentPatternFinder.m in Sources */,
