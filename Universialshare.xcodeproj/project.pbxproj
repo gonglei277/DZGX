@@ -638,6 +638,10 @@
 		F951EB1C1EA1EFD700D6708E /* LBMineCenterUsualUnderOrderTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F951EB1A1EA1EFD700D6708E /* LBMineCenterUsualUnderOrderTwoViewController.xib */; };
 		F951EB201EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F951EB1E1EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.m */; };
 		F951EB211EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F951EB1F1EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.xib */; };
+		F9520A0E1EAD9EE300B4D665 /* LBMerchantSubmissionFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9520A091EAD9EE300B4D665 /* LBMerchantSubmissionFourViewController.m */; };
+		F9520A0F1EAD9EE300B4D665 /* LBMerchantSubmissionFourViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9520A0A1EAD9EE300B4D665 /* LBMerchantSubmissionFourViewController.xib */; };
+		F9520A101EAD9EE300B4D665 /* LBMerchantSubmissionThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9520A0C1EAD9EE300B4D665 /* LBMerchantSubmissionThreeViewController.m */; };
+		F9520A111EAD9EE300B4D665 /* LBMerchantSubmissionThreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9520A0D1EAD9EE300B4D665 /* LBMerchantSubmissionThreeViewController.xib */; };
 		F958C07F1EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F958C07D1EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.m */; };
 		F958C0801EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F958C07E1EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.xib */; };
 		F958C0821EA4A3F9003C9CFB /* personCenter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F958C0811EA4A3F9003C9CFB /* personCenter.xcassets */; };
@@ -1846,6 +1850,12 @@
 		F951EB1D1EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineCenterUsualUnderOrderThreeViewController.h; sourceTree = "<group>"; };
 		F951EB1E1EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineCenterUsualUnderOrderThreeViewController.m; sourceTree = "<group>"; };
 		F951EB1F1EA1EFED00D6708E /* LBMineCenterUsualUnderOrderThreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineCenterUsualUnderOrderThreeViewController.xib; sourceTree = "<group>"; };
+		F9520A081EAD9EE300B4D665 /* LBMerchantSubmissionFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMerchantSubmissionFourViewController.h; sourceTree = "<group>"; };
+		F9520A091EAD9EE300B4D665 /* LBMerchantSubmissionFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMerchantSubmissionFourViewController.m; sourceTree = "<group>"; };
+		F9520A0A1EAD9EE300B4D665 /* LBMerchantSubmissionFourViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMerchantSubmissionFourViewController.xib; sourceTree = "<group>"; };
+		F9520A0B1EAD9EE300B4D665 /* LBMerchantSubmissionThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMerchantSubmissionThreeViewController.h; sourceTree = "<group>"; };
+		F9520A0C1EAD9EE300B4D665 /* LBMerchantSubmissionThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMerchantSubmissionThreeViewController.m; sourceTree = "<group>"; };
+		F9520A0D1EAD9EE300B4D665 /* LBMerchantSubmissionThreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMerchantSubmissionThreeViewController.xib; sourceTree = "<group>"; };
 		F958C07C1EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineCenterUsualUnderOrderTableViewCell.h; sourceTree = "<group>"; };
 		F958C07D1EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineCenterUsualUnderOrderTableViewCell.m; sourceTree = "<group>"; };
 		F958C07E1EA4615A003C9CFB /* LBMineCenterUsualUnderOrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineCenterUsualUnderOrderTableViewCell.xib; sourceTree = "<group>"; };
@@ -2268,6 +2278,12 @@
 		4A3E60821EAD8CC8000E2E17 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F9520A081EAD9EE300B4D665 /* LBMerchantSubmissionFourViewController.h */,
+				F9520A091EAD9EE300B4D665 /* LBMerchantSubmissionFourViewController.m */,
+				F9520A0A1EAD9EE300B4D665 /* LBMerchantSubmissionFourViewController.xib */,
+				F9520A0B1EAD9EE300B4D665 /* LBMerchantSubmissionThreeViewController.h */,
+				F9520A0C1EAD9EE300B4D665 /* LBMerchantSubmissionThreeViewController.m */,
+				F9520A0D1EAD9EE300B4D665 /* LBMerchantSubmissionThreeViewController.xib */,
 				4A3E60831EAD8CC8000E2E17 /* GLSubmitFirstController.h */,
 				4A3E60841EAD8CC8000E2E17 /* GLSubmitFirstController.m */,
 				4A3E60851EAD8CC8000E2E17 /* GLSubmitFirstController.xib */,
@@ -4944,6 +4960,7 @@
 				4A460A0A1E9CB8050045824F /* NodataView.xib in Resources */,
 				4A46103A1E9CC6360045824F /* ios-social-sdk-share-detail.html in Resources */,
 				4A0D97861E9729C100A26B84 /* GLOrderPayView.xib in Resources */,
+				F9520A111EAD9EE300B4D665 /* LBMerchantSubmissionThreeViewController.xib in Resources */,
 				4A4610201E9CC6360045824F /* UMSCommentDetailController.xib in Resources */,
 				4A0D978F1E9729C100A26B84 /* GLHomeRecommendCell.xib in Resources */,
 				4A4609051E9CA0880045824F /* LBIntegralMallViewController.xib in Resources */,
@@ -5044,6 +5061,7 @@
 				F966B3DE1EAC7E0C007260FC /* LBMyBusinessListViewController.xib in Resources */,
 				4A4610371E9CC6360045824F /* ios-social-sdk-login-detail.html in Resources */,
 				F951EB171EA1EFC100D6708E /* LBMineCenterUsualUnderOrderOneViewController.xib in Resources */,
+				F9520A0F1EAD9EE300B4D665 /* LBMerchantSubmissionFourViewController.xib in Resources */,
 				F923093D1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5448,6 +5466,7 @@
 				4A4610BA1E9CC6370045824F /* ZXRSSExpandedCurrentParsingState.m in Sources */,
 				F9061FD31E83C4730080E9D9 /* ViewController.m in Sources */,
 				4A0D978A1E9729C100A26B84 /* GLShoppingCell.m in Sources */,
+				F9520A0E1EAD9EE300B4D665 /* LBMerchantSubmissionFourViewController.m in Sources */,
 				4A4610931E9CC6360045824F /* ZXRGBLuminanceSource.m in Sources */,
 				F92309791E9B8BFF00ECDC94 /* LBMineCenterAccountSafeViewController.m in Sources */,
 				F92309681E9B8BFF00ECDC94 /* LBMyOrderEvaluationSucessViewController.m in Sources */,
@@ -5569,6 +5588,7 @@
 				4A4610E71E9CC6370045824F /* ZXPDF417ECErrorCorrection.m in Sources */,
 				4A4610D91E9CC6370045824F /* ZXMultiFormatOneDReader.m in Sources */,
 				4A4610761E9CC6360045824F /* ZXReedSolomonDecoder.m in Sources */,
+				F9520A101EAD9EE300B4D665 /* LBMerchantSubmissionThreeViewController.m in Sources */,
 				4A460A0E1E9CBB2F0045824F /* GLBuyBackRecordCell.m in Sources */,
 				4A4610741E9CC6360045824F /* ZXGenericGF.m in Sources */,
 				4A46106B1E9CC6360045824F /* ZXVINResultParser.m in Sources */,
