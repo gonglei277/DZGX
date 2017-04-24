@@ -15,6 +15,7 @@
 #import "GLHourseDetailController.h"
 #import "GLIntegraClassifyController.h"
 
+#import "GLSubmitFirstController.h"
 @interface LBIntegralMallViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 {
     UIImageView *_imageviewLeft;
@@ -133,11 +134,13 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
      self.hidesBottomBarWhenPushed = YES;
-    GLHourseDetailController *detailVC = [[GLHourseDetailController alloc] init];
-    detailVC.navigationItem.title = @"积分兑换详情";
-    detailVC.type = 1;
+//    GLHourseDetailController *detailVC = [[GLHourseDetailController alloc] init];
+//    detailVC.navigationItem.title = @"积分兑换详情";
+    
+    GLSubmitFirstController *submitVC = [[GLSubmitFirstController alloc] init];
+//    detailVC.type = 1;
 
-    [self.navigationController pushViewController:detailVC animated:YES];
+    [self.navigationController pushViewController:submitVC animated:YES];
      self.hidesBottomBarWhenPushed = NO;
 }
 
