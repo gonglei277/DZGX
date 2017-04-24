@@ -10,4 +10,5 @@
 
 @interface LBMineStoreOrderingViewController : UIViewController
 
+@property(assign,nonatomic)BOOL hideNavB;//是否隐藏导航栏或做其他操作
 @end

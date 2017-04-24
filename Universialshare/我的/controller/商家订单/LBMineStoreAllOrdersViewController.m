@@ -1,34 +1,37 @@
 //
-//  LBMineStoreHistoryOrderingViewController.m
+//  LBMineStoreAllOrdersViewController.m
 //  Universialshare
 //
-//  Created by 四川三君科技有限公司 on 2017/4/14.
+//  Created by 四川三君科技有限公司 on 2017/4/24.
 //  Copyright © 2017年 四川三君科技有限公司. All rights reserved.
 //
 
-#import "LBMineStoreHistoryOrderingViewController.h"
+#import "LBMineStoreAllOrdersViewController.h"
 #import "LBMineStoreOrderingTableViewCell.h"
 
-@interface LBMineStoreHistoryOrderingViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface LBMineStoreAllOrdersViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UITableView *taleview;
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic)NSMutableArray *dataarr;
 @property (strong, nonatomic)LoadWaitView *loadV;
 @property (assign, nonatomic)NSInteger page;//页数默认为0
 @property (assign, nonatomic)BOOL refreshType;//判断刷新状态 默认为no
 @property (strong, nonatomic)NodataView *nodataV;
+
+
 @end
 
-@implementation LBMineStoreHistoryOrderingViewController
+@implementation LBMineStoreAllOrdersViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
     
-   [self.taleview addSubview:self.nodataV];
+    [self.tableview addSubview:self.nodataV];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor=[UIColor whiteColor];
-    self.taleview.tableFooterView = [UIView new];
-    [self.taleview registerNib:[UINib nibWithNibName:@"LBMineStoreOrderingTableViewCell" bundle:nil] forCellReuseIdentifier:@"LBMineStoreOrderingTableViewCell"];
+    self.tableview.tableFooterView = [UIView new];
+    [self.tableview registerNib:[UINib nibWithNibName:@"LBMineStoreOrderingTableViewCell" bundle:nil] forCellReuseIdentifier:@"LBMineStoreOrderingTableViewCell"];
     
     __weak __typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -52,8 +55,8 @@
     [header setTitle:@"服务器正在狂奔 ..." forState:MJRefreshStateRefreshing];
     
     
-    self.taleview.mj_header = header;
-    self.taleview.mj_footer = footer;
+    self.tableview.mj_header = header;
+    self.tableview.mj_footer = footer;
     
     [self initdatasource];
 }
@@ -63,8 +66,8 @@
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/order_list" paramDic:@{@"page":[NSNumber numberWithInteger:_page] , @"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token ,@"tatus":[NSNumber numberWithInteger:0]} finish:^(id responseObject) {
         [_loadV removeloadview];
-        [self.taleview.mj_header endRefreshing];
-        [self.taleview.mj_footer endRefreshing];
+        [self.tableview.mj_header endRefreshing];
+        [self.tableview.mj_footer endRefreshing];
         if ([responseObject[@"code"] integerValue]==1) {
             
             if ([responseObject[@"data"] isEqual:[NSArray array]]) {
@@ -74,12 +77,12 @@
                     
                     [self.dataarr addObjectsFromArray:responseObject[@"data"]];
                     
-                    [self.taleview reloadData];
+                    [self.tableview reloadData];
                 }else{
                     
                     [self.dataarr addObjectsFromArray:responseObject[@"data"]];
                     
-                    [self.taleview reloadData];
+                    [self.tableview reloadData];
                     
                 }
             }
@@ -87,16 +90,16 @@
         }else if ([responseObject[@"code"] integerValue]==3){
             
             [MBProgressHUD showError:responseObject[@"message"]];
-            [self.taleview reloadData];
+            [self.tableview reloadData];
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
-            [self.taleview reloadData];
+            [self.tableview reloadData];
             
         }
     } enError:^(NSError *error) {
         [_loadV removeloadview];
-        [self.taleview.mj_header endRefreshing];
-        [self.taleview.mj_footer endRefreshing];
+        [self.tableview.mj_header endRefreshing];
+        [self.tableview.mj_footer endRefreshing];
         [MBProgressHUD showError:error.localizedDescription];
         
     }];
@@ -144,7 +147,6 @@
     
     LBMineStoreOrderingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMineStoreOrderingTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     cell.index = indexPath.row;
     __weak typeof(self) weakself = self;
     cell.returncheckbutton = ^(NSInteger index){
@@ -154,6 +156,7 @@
         }
         
     };
+    
     return cell;
     
     
@@ -178,5 +181,6 @@
     return _nodataV;
     
 }
+
 
 @end

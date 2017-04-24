@@ -130,7 +130,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    return 50;
+    return 200;
     
 }
 
@@ -141,14 +141,16 @@
     
     LBMineStoreOrderingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMineStoreOrderingTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.index = indexPath.row;
+    __weak typeof(self) weakself = self;
+    cell.returncheckbutton = ^(NSInteger index){
     
-    NSString *timestr=[NSString stringWithFormat:@"%@",self.dataarr[indexPath.row][@"time"]];
+        if (weakself.returncheckbutton) {
+            weakself.returncheckbutton(index);
+        }
     
-    NSArray *array = [timestr componentsSeparatedByString:@" "]; //从字符A中分隔成2个元素的数组
-    
-    cell.timelb.text = [NSString stringWithFormat:@"%@",array[1]];
-    cell.productLb.text = [NSString stringWithFormat:@"%@",self.dataarr[indexPath.row][@"goods_name"]];
-    cell.numlb.text = [NSString stringWithFormat:@"%@",self.dataarr[indexPath.row][@"line_money"]];
+    };
+   
     
     return cell;
     

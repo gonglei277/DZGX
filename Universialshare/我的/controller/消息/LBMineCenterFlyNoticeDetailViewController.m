@@ -24,7 +24,7 @@
     
     self.navigationItem.title = @"物流详情";
     self.view.backgroundColor=[UIColor whiteColor];
-    
+    self.navigationController.navigationBar.hidden = NO;
     self.tableview.tableFooterView = [UIView new];
     self.automaticallyAdjustsScrollViewInsets = NO;
     

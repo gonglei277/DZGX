@@ -269,6 +269,7 @@
                 
                 weakself.hidesBottomBarWhenPushed=YES;
                 LBMineStoreOrderingViewController *vc=[[LBMineStoreOrderingViewController alloc]init];
+                vc.hideNavB = YES;
                 [weakself.navigationController pushViewController:vc animated:YES];
                 weakself.hidesBottomBarWhenPushed=NO;
             
