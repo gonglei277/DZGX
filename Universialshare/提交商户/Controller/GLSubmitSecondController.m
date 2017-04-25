@@ -8,6 +8,7 @@
 
 #import "GLSubmitSecondController.h"
 #import "GLCityModel.h"
+#import "LBMerchantSubmissionThreeViewController.h"
 
 @interface GLSubmitSecondController ()<UIPickerViewDelegate,UIPickerViewDataSource>
 {
@@ -62,7 +63,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationItem.title = @"提交商户";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.navigationBar.hidden = NO;
     self.topView.layer.cornerRadius = 5.f;
@@ -269,6 +270,15 @@
     pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
     return pickerLabel;
 }
+//点击下一步
+- (IBAction)nextbuttonevent:(UIButton *)sender {
+    self.hidesBottomBarWhenPushed = YES;
+    LBMerchantSubmissionThreeViewController *vc=[[LBMerchantSubmissionThreeViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+
 
 
 -(NSMutableArray *)dataArr{

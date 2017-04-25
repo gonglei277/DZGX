@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SDCycleScrollView.h"
 
 
 @interface MineCollectionHeaderV : UICollectionReusableView
@@ -28,5 +29,5 @@
 @property(nonatomic , copy)void(^returnShoppingCartBt)();
 @property(nonatomic , copy)void(^returnOrderBt)();
 
-
+@property (nonatomic, strong)SDCycleScrollView *cycleScrollView;
 @end

@@ -11,8 +11,9 @@
 #import "LBMineCenterinfoTableViewCell.h"
 #import "UIButton+SetEdgeInsets.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "SDCycleScrollView.h"
 
-@interface MineCollectionHeaderV ()<UITableViewDelegate,UITableViewDataSource>
+@interface MineCollectionHeaderV ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 
 
 
@@ -43,7 +44,7 @@
     [self.baseview1 addSubview:self.CollectinGoodsBt];
     [self.baseview1 addSubview:self.ShoppingCartBt];
     [self.baseview1 addSubview:self.OrderBt];
-    
+    [self addSubview:self.cycleScrollView];
     [self.headimage mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.trailing.equalTo(self.headview).offset(-2);
@@ -111,6 +112,14 @@
     if (self.namelebel.text.length <= 0) {
         
         self.namelebel.text = @"用户名";
+    }
+    
+    if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]) {
+        self.baseview1.hidden = NO;
+        self.cycleScrollView.hidden = YES;
+    }else{
+        self.baseview1.hidden = YES;
+        self.cycleScrollView.hidden = NO;
     }
     
 
@@ -210,8 +219,9 @@
 -(UIView*)baseview{
     
     if (!_baseview) {
-        _baseview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, ((SCREEN_HEIGHT - 64)  * 0.4 + 10) * 0.65 )];
-        _baseview.backgroundColor=[UIColor whiteColor];
+        
+    _baseview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, ((SCREEN_HEIGHT - 64)  * 0.4 + 10) * 0.65 )];
+    _baseview.backgroundColor=[UIColor whiteColor];
         
     }
     
@@ -351,5 +361,27 @@ return _titleArr;
     
     return _OrderBt;
     
+}
+
+-(SDCycleScrollView*)cycleScrollView
+{
+    if (!_cycleScrollView) {
+        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, CGRectGetMaxY(self.baseview.frame) + 1, SCREEN_WIDTH, self.frame.size.height - CGRectGetHeight(self.baseview.frame) )
+                                                              delegate:self
+                                                      placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
+        
+        _cycleScrollView.localizationImageNamesGroup = @[@"XRPlaceholder",
+                                                         @"XRPlaceholder",
+                                                         @"XRPlaceholder"];
+        
+        _cycleScrollView.autoScrollTimeInterval = 2;// 自动滚动时间间隔
+        _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;// 翻页 右下角
+        _cycleScrollView.titleLabelBackgroundColor = [UIColor clearColor];// 图片对应的标题的 背景色。（因为没有设标题）
+        
+        _cycleScrollView.pageControlDotSize = CGSizeMake(10, 10);
+    }
+
+    return _cycleScrollView;
+
 }
 @end

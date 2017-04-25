@@ -7,6 +7,7 @@
 //
 
 #import "LBMerchantSubmissionThreeViewController.h"
+#import "LBMerchantSubmissionFourViewController.h"
 
 @interface LBMerchantSubmissionThreeViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *banktf;
@@ -27,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationItem.title = @"提交商户";
     
 }
 
@@ -39,7 +40,9 @@
 }
 //点击下一步
 - (IBAction)nextbutton:(UIButton *)sender {
-    
+    self.hidesBottomBarWhenPushed = YES;
+    LBMerchantSubmissionFourViewController *vc=[[LBMerchantSubmissionFourViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

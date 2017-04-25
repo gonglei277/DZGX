@@ -28,6 +28,7 @@
 #import "LBMineStoreOrderingViewController.h"
 #import "LBMineSelectCustomerTypeView.h"
 #import "LBMineCenterUsualUnderOrderViewController.h"
+#import "GLSubmitFirstController.h"
 
 @interface LBMineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
     UIImageView *_imageviewLeft;
@@ -119,115 +120,179 @@
 
 //选择cell时
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    switch (indexPath.row) {
-        case 0:
-        {
-            
-            if ([[UserModel defaultUser].groupId isEqualToString:OrdinaryUser]) {
+    if ([[UserModel defaultUser].usrtype isEqualToString:ONESALER] || [[UserModel defaultUser].usrtype isEqualToString:TWOSALER] || [[UserModel defaultUser].usrtype isEqualToString:TWOSALER]) {
+        switch (indexPath.row) {
+            case 0:
+            {
                 
                 self.hidesBottomBarWhenPushed=YES;
-                GLMyHeartController *vc=[[GLMyHeartController alloc]init];
+                GLSubmitFirstController *vc=[[GLSubmitFirstController alloc]init];
                 [self.navigationController pushViewController:vc animated:YES];
-                 self.hidesBottomBarWhenPushed=NO;
-            }else{
+                self.hidesBottomBarWhenPushed=NO;
+                
+                
+            }
+                
+                break;
+            case 1:
+            {
                 self.hidesBottomBarWhenPushed=YES;
-                GLNoneOfDonationController *vc = [[GLNoneOfDonationController alloc] init];
+                GLDirectDonationController *vc=[[GLDirectDonationController alloc]init];
                 [self.navigationController pushViewController:vc animated:YES];
                 self.hidesBottomBarWhenPushed=NO;
             }
-            
-           
+                
+                break;
+            case 2:
+            {
+                self.hidesBottomBarWhenPushed=YES;
+                GLMine_MyBeansController *vc=[[GLMine_MyBeansController alloc]init];
+                [self.navigationController pushViewController:vc animated:YES];
+                self.hidesBottomBarWhenPushed=NO;
+                
+            }
+                break;
+            case 3:
+            {
+                self.hidesBottomBarWhenPushed=YES;
+                GLBuyBackController *vc=[[GLBuyBackController alloc]init];
+                [self.navigationController pushViewController:vc animated:YES];
+                self.hidesBottomBarWhenPushed=NO;
+            }
+                break;
+            case 4:
+            {
+                self.hidesBottomBarWhenPushed=YES;
+                GLDonationController *vc=[[GLDonationController alloc]init];
+                [self.navigationController pushViewController:vc animated:YES];
+                self.hidesBottomBarWhenPushed=NO;
+            }
+                break;
+            case 5:
+            {
+                self.hidesBottomBarWhenPushed=YES;
+                GLRecommendController *vc=[[GLRecommendController alloc]init];
+                [self.navigationController pushViewController:vc animated:YES];
+                self.hidesBottomBarWhenPushed=NO;
+            }
+                break;
+                
+            default:
+                break;
         }
-        
-            break;
-        case 1:
-        {
-            self.hidesBottomBarWhenPushed=YES;
-            GLDirectDonationController *vc=[[GLDirectDonationController alloc]init];
-            
-            [self.navigationController pushViewController:vc animated:YES];
-            self.hidesBottomBarWhenPushed=NO;
-        }
-            
-            break;
-        case 2:
-        {
-            self.hidesBottomBarWhenPushed=YES;
-            GLMine_MyBeansController *vc=[[GLMine_MyBeansController alloc]init];
-            
-            [self.navigationController pushViewController:vc animated:YES];
-            self.hidesBottomBarWhenPushed=NO;
-            
-        }
-            break;
-        case 3:
-        {
-            self.hidesBottomBarWhenPushed=YES;
-            GLBuyBackController *vc=[[GLBuyBackController alloc]init];
-            
-            [self.navigationController pushViewController:vc animated:YES];
-            self.hidesBottomBarWhenPushed=NO;
-        }
-            break;
-        case 4:
-        {
-            self.hidesBottomBarWhenPushed=YES;
-            GLDonationController *vc=[[GLDonationController alloc]init];
-            
-            [self.navigationController pushViewController:vc animated:YES];
-            self.hidesBottomBarWhenPushed=NO;
-        }
-            break;
-        case 5:
-        {
-            self.hidesBottomBarWhenPushed=YES;
-            GLRecommendController *vc=[[GLRecommendController alloc]init];
-            
-            [self.navigationController pushViewController:vc animated:YES];
-            self.hidesBottomBarWhenPushed=NO;
-        }
-            break;
-        case 6:
-            
-        {
-            self.hidesBottomBarWhenPushed=YES;
-            LBMineCenterMyBalanceViewController *vc=[[LBMineCenterMyBalanceViewController alloc]init];
-            vc.vcIndex = 1;
-            [self.navigationController pushViewController:vc animated:YES];
-            self.hidesBottomBarWhenPushed=NO;
-            
-        }
-            
-            break;
-        case 7:
-        {
+    
+    }else{
+    
+        switch (indexPath.row) {
+            case 0:
+            {
+                
+                if ([[UserModel defaultUser].groupId isEqualToString:OrdinaryUser]) {
+                    
+                    self.hidesBottomBarWhenPushed=YES;
+                    GLMyHeartController *vc=[[GLMyHeartController alloc]init];
+                    [self.navigationController pushViewController:vc animated:YES];
+                    self.hidesBottomBarWhenPushed=NO;
+                }else{
+                    self.hidesBottomBarWhenPushed=YES;
+                    GLNoneOfDonationController *vc = [[GLNoneOfDonationController alloc] init];
+                    [self.navigationController pushViewController:vc animated:YES];
+                    self.hidesBottomBarWhenPushed=NO;
+                }
+                
+            }
+                
+                break;
+            case 1:
+            {
+                self.hidesBottomBarWhenPushed=YES;
+                GLDirectDonationController *vc=[[GLDirectDonationController alloc]init];
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                self.hidesBottomBarWhenPushed=NO;
+            }
+                
+                break;
+            case 2:
+            {
+                self.hidesBottomBarWhenPushed=YES;
+                GLMine_MyBeansController *vc=[[GLMine_MyBeansController alloc]init];
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                self.hidesBottomBarWhenPushed=NO;
+                
+            }
+                break;
+            case 3:
+            {
+                self.hidesBottomBarWhenPushed=YES;
+                GLBuyBackController *vc=[[GLBuyBackController alloc]init];
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                self.hidesBottomBarWhenPushed=NO;
+            }
+                break;
+            case 4:
+            {
+                self.hidesBottomBarWhenPushed=YES;
+                GLDonationController *vc=[[GLDonationController alloc]init];
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                self.hidesBottomBarWhenPushed=NO;
+            }
+                break;
+            case 5:
+            {
+                self.hidesBottomBarWhenPushed=YES;
+                GLRecommendController *vc=[[GLRecommendController alloc]init];
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                self.hidesBottomBarWhenPushed=NO;
+            }
+                break;
+            case 6:
+                
             {
                 self.hidesBottomBarWhenPushed=YES;
                 LBMineCenterMyBalanceViewController *vc=[[LBMineCenterMyBalanceViewController alloc]init];
-                vc.vcIndex = 2;
+                vc.vcIndex = 1;
                 [self.navigationController pushViewController:vc animated:YES];
                 self.hidesBottomBarWhenPushed=NO;
                 
             }
-        
+                
+                break;
+            case 7:
+            {
+                {
+                    self.hidesBottomBarWhenPushed=YES;
+                    LBMineCenterMyBalanceViewController *vc=[[LBMineCenterMyBalanceViewController alloc]init];
+                    vc.vcIndex = 2;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    self.hidesBottomBarWhenPushed=NO;
+                    
+                }
+                
+            }
+                break;
+            case 8:
+            {
+                self.hidesBottomBarWhenPushed=YES;
+                LBMineCenterMyBalanceViewController *vc=[[LBMineCenterMyBalanceViewController alloc]init];
+                vc.vcIndex = 3;
+                [self.navigationController pushViewController:vc animated:YES];
+                self.hidesBottomBarWhenPushed=NO;
+                
+            }
+                break;
+                
+                
+            default:
+                break;
         }
-            break;
-        case 8:
-        {
-            self.hidesBottomBarWhenPushed=YES;
-            LBMineCenterMyBalanceViewController *vc=[[LBMineCenterMyBalanceViewController alloc]init];
-            vc.vcIndex = 3;
-            [self.navigationController pushViewController:vc animated:YES];
-            self.hidesBottomBarWhenPushed=NO;
-            
-        }
-            break;
-       
-            
-        default:
-            break;
+    
     }
+    
 }
 -(BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -358,7 +423,11 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
         
          UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
          [flowLayout setSectionInset:UIEdgeInsetsMake(0, 0, 10, 0)];
-        [flowLayout setHeaderReferenceSize:CGSizeMake(SCREEN_WIDTH, (SCREEN_HEIGHT - 64) * 0.4 + 10)];
+        if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]) {
+           [flowLayout setHeaderReferenceSize:CGSizeMake(SCREEN_WIDTH, (SCREEN_HEIGHT - 64) * 0.4 + 10)];
+        }else{
+            [flowLayout setHeaderReferenceSize:CGSizeMake(SCREEN_WIDTH, (SCREEN_HEIGHT - 64) * 0.45)];
+        }
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
         [flowLayout setMinimumInteritemSpacing:0.0];
         [flowLayout setMinimumLineSpacing:0.0];
@@ -383,10 +452,10 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
            _titlearr=[NSArray arrayWithObjects:@"米袋",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
         }
         else if ([[UserModel defaultUser].usrtype isEqualToString:ONESALER] || [[UserModel defaultUser].usrtype isEqualToString:TWOSALER]) {
-            _titlearr=[NSArray arrayWithObjects:@"米袋",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
+            _titlearr=[NSArray arrayWithObjects:@"推荐商家",@"直捐",@"推荐业务员",@"兑换",@"转赠",@"我要推荐", nil];
         }
         else if ([[UserModel defaultUser].usrtype isEqualToString:THREESALER]) {
-            _titlearr=[NSArray arrayWithObjects:@"米袋",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
+           _titlearr=[NSArray arrayWithObjects:@"推荐商家",@"直捐",@"推荐业务员",@"兑换",@"转赠",@"我要推荐", nil];
         }
     }
     return _titlearr;
@@ -403,10 +472,10 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
             _imageArr=[NSArray arrayWithObjects:@"米袋",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"余额",@"我的返利",@"我的积分", nil];
         }
         else if ([[UserModel defaultUser].usrtype isEqualToString:ONESALER] || [[UserModel defaultUser].usrtype isEqualToString:TWOSALER]) {
-           _imageArr=[NSArray arrayWithObjects:@"米袋",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"余额",@"我的返利",@"我的积分", nil];
+           _imageArr=[NSArray arrayWithObjects:@"米袋",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐", nil];
         }
         else if ([[UserModel defaultUser].usrtype isEqualToString:THREESALER]) {
-            _imageArr=[NSArray arrayWithObjects:@"米袋",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"余额",@"我的返利",@"我的积分", nil];
+            _imageArr=[NSArray arrayWithObjects:@"米袋",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐", nil];
         }
     }
     return _imageArr;
