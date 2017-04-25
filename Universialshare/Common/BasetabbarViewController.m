@@ -38,7 +38,8 @@
     
     self.selectedIndex=0;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(pushToHome) name:@"notification_push" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(refreshInterface) name:@"refreshInterface" object:nil];
+    
 }
 
 - (void)addViewControllers {
@@ -75,12 +76,19 @@
     ManAndBusinessVc.tabBarItem = [self barTitle:@"业务员" image:@"消费商城未选中状态" selectImage:@"消费商城"];
     myodresvc.tabBarItem = [self barTitle:@"订单" image:@"消费商城未选中状态" selectImage:@"消费商城"];
     
-    
-    //self.viewControllers = @[firstNav, Homenav, IntegralMallnav, minenav,];
-    
-    // self.viewControllers = @[firstNav, ManAndBusinessNav, IntegralMallnav, minenav,];
-    
-    self.viewControllers = @[firstNav, myordersNav, IntegralMallnav, minenav,];
+    if ([UserModel defaultUser].loginstatus == YES) {//登录状态
+        if ([[UserModel defaultUser].usrtype isEqualToString:ONESALER] || [[UserModel defaultUser].usrtype isEqualToString:TWOSALER]) {//一级业务员和二级业务员
+            self.viewControllers = @[firstNav, ManAndBusinessNav, IntegralMallnav, minenav];
+        }else if ([[UserModel defaultUser].usrtype isEqualToString:THREESALER]){//三级业务员
+            self.viewControllers = @[firstNav, ManAndBusinessNav, IntegralMallnav, minenav];
+        }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]){//普通用户
+            self.viewControllers = @[firstNav, Homenav, IntegralMallnav, minenav];
+        }else if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]){//商家
+            self.viewControllers = @[firstNav, myordersNav, IntegralMallnav, minenav];
+        }
+    }else{//退出状态
+        self.viewControllers = @[firstNav, Homenav, IntegralMallnav, minenav];
+    }
     
 }
 
@@ -136,6 +144,15 @@
     }
     
     return YES;
+}
+//刷新界面
+-(void)refreshInterface{
+    
+    [self.viewControllers reverseObjectEnumerator];
+    
+    [self addViewControllers];
+
+
 }
 
 - (void)pushToHome{

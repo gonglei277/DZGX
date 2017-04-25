@@ -60,7 +60,7 @@
             [UserModel defaultUser].loginstatus = NO;
             [UserModel defaultUser].headPic = @"";
             [usermodelachivar achive];
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"notification_push" object:nil];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshInterface" object:nil];
             [self.navigationController popViewControllerAnimated:YES];
             
         }else if (alertView.tag == 11){
