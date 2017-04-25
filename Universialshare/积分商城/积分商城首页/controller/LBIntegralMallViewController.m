@@ -66,8 +66,10 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 
 }
 - (void)classifyClick:(UITapGestureRecognizer *)tap {
+    self.hidesBottomBarWhenPushed = YES;
     GLIntegraClassifyController *classifyVC = [[GLIntegraClassifyController alloc] init];
     [self.navigationController pushViewController:classifyVC animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
 }
 /** 点击图片回调 */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
@@ -134,13 +136,13 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
      self.hidesBottomBarWhenPushed = YES;
-//    GLHourseDetailController *detailVC = [[GLHourseDetailController alloc] init];
-//    detailVC.navigationItem.title = @"积分兑换详情";
+    GLHourseDetailController *detailVC = [[GLHourseDetailController alloc] init];
+    detailVC.navigationItem.title = @"积分兑换详情";
     
-    GLSubmitFirstController *submitVC = [[GLSubmitFirstController alloc] init];
-//    detailVC.type = 1;
+//    GLSubmitFirstController *submitVC = [[GLSubmitFirstController alloc] init];
+    detailVC.type = 1;
 
-    [self.navigationController pushViewController:submitVC animated:YES];
+    [self.navigationController pushViewController:detailVC animated:YES];
      self.hidesBottomBarWhenPushed = NO;
 }
 
