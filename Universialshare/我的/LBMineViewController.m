@@ -29,6 +29,7 @@
 #import "LBMineSelectCustomerTypeView.h"
 #import "LBMineCenterUsualUnderOrderViewController.h"
 #import "GLSubmitFirstController.h"
+#import "LBSaleManPersonInfoViewController.h"
 
 @interface LBMineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
     UIImageView *_imageviewLeft;
@@ -49,7 +50,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self addMySelfPanGesture];
+    //[self addMySelfPanGesture];
     
     // 注册表头
     [self.collectionV registerClass:[MineCollectionHeaderV class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"MineCollectionHeaderV"];
@@ -82,10 +83,17 @@
 }
 -(void)pushToInfoVC{
     
-    self.hidesBottomBarWhenPushed=YES;
-    GLMine_InfoController *infoVC = [[GLMine_InfoController alloc] init];
-    [self.navigationController pushViewController:infoVC animated:YES];
-    self.hidesBottomBarWhenPushed=NO;
+    if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser] || [[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
+        self.hidesBottomBarWhenPushed=YES;
+        GLMine_InfoController *infoVC = [[GLMine_InfoController alloc] init];
+        [self.navigationController pushViewController:infoVC animated:YES];
+        self.hidesBottomBarWhenPushed=NO;
+    }else{
+        self.hidesBottomBarWhenPushed=YES;
+        LBSaleManPersonInfoViewController *infoVC = [[LBSaleManPersonInfoViewController alloc] init];
+        [self.navigationController pushViewController:infoVC animated:YES];
+        self.hidesBottomBarWhenPushed=NO;
+    }
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

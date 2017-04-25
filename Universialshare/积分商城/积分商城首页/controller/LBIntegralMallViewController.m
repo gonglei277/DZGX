@@ -42,9 +42,9 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if ([UserModel defaultUser].loginstatus == YES) {
-         [self addMySelfPanGesture];
-    }
+//    if ([UserModel defaultUser].loginstatus == YES) {
+//         [self addMySelfPanGesture];
+//    }
     self.view.backgroundColor=[UIColor purpleColor];
     
     _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 160)
