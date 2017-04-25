@@ -450,6 +450,9 @@
 		4AA0D5C51EAEF4CB00CB8F77 /* GLClassifyRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA0D5C31EAEF4CB00CB8F77 /* GLClassifyRecommendCell.xib */; };
 		4AA0D5C81EAEF6C900CB8F77 /* GLClassifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5C71EAEF6C900CB8F77 /* GLClassifyCell.m */; };
 		4AA0D5CA1EAEF9DB00CB8F77 /* GLClassifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA0D5C91EAEF9DB00CB8F77 /* GLClassifyCell.xib */; };
+		4AA0D5CD1EAF17A900CB8F77 /* GLClassifyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5CC1EAF17A900CB8F77 /* GLClassifyHeaderView.m */; };
+		4AA0D5D11EAF1EF700CB8F77 /* GLMallHotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5D01EAF1EF700CB8F77 /* GLMallHotModel.m */; };
+		4AA0D5D41EAF1F6600CB8F77 /* GLMall_InterestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5D31EAF1F6600CB8F77 /* GLMall_InterestModel.m */; };
 		4F9D6A29F2E5B95EBA14BE59 /* Pods_Universialshare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */; };
 		F9061FCD1E83C4720080E9D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCC1E83C4720080E9D9 /* main.m */; };
 		F9061FD01E83C4720080E9D9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCF1E83C4720080E9D9 /* AppDelegate.mm */; };
@@ -1573,6 +1576,12 @@
 		4AA0D5C61EAEF6C900CB8F77 /* GLClassifyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLClassifyCell.h; sourceTree = "<group>"; };
 		4AA0D5C71EAEF6C900CB8F77 /* GLClassifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLClassifyCell.m; sourceTree = "<group>"; };
 		4AA0D5C91EAEF9DB00CB8F77 /* GLClassifyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLClassifyCell.xib; sourceTree = "<group>"; };
+		4AA0D5CB1EAF17A900CB8F77 /* GLClassifyHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLClassifyHeaderView.h; sourceTree = "<group>"; };
+		4AA0D5CC1EAF17A900CB8F77 /* GLClassifyHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLClassifyHeaderView.m; sourceTree = "<group>"; };
+		4AA0D5CF1EAF1EF700CB8F77 /* GLMallHotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMallHotModel.h; sourceTree = "<group>"; };
+		4AA0D5D01EAF1EF700CB8F77 /* GLMallHotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMallHotModel.m; sourceTree = "<group>"; };
+		4AA0D5D21EAF1F6600CB8F77 /* GLMall_InterestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMall_InterestModel.h; sourceTree = "<group>"; };
+		4AA0D5D31EAF1F6600CB8F77 /* GLMall_InterestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMall_InterestModel.m; sourceTree = "<group>"; };
 		5F26EB2407F06AA6E9CA0664 /* Pods-Universialshare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Universialshare.release.xcconfig"; path = "Pods/Target Support Files/Pods-Universialshare/Pods-Universialshare.release.xcconfig"; sourceTree = "<group>"; };
 		C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Universialshare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9061FC81E83C4720080E9D9 /* Universialshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Universialshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3677,6 +3686,8 @@
 				4AA0D5B71EAEF00F00CB8F77 /* GLClassifyView.h */,
 				4AA0D5B81EAEF00F00CB8F77 /* GLClassifyView.m */,
 				4AA0D5BA1EAEF01D00CB8F77 /* GLClassifyView.xib */,
+				4AA0D5CB1EAF17A900CB8F77 /* GLClassifyHeaderView.h */,
+				4AA0D5CC1EAF17A900CB8F77 /* GLClassifyHeaderView.m */,
 				4AA0D5C11EAEF4CB00CB8F77 /* GLClassifyRecommendCell.h */,
 				4AA0D5C21EAEF4CB00CB8F77 /* GLClassifyRecommendCell.m */,
 				4AA0D5C31EAEF4CB00CB8F77 /* GLClassifyRecommendCell.xib */,
@@ -3688,6 +3699,7 @@
 			isa = PBXGroup;
 			children = (
 				4AA0D5A81EAEEC8400CB8F77 /* controller */,
+				4AA0D5CE1EAF1ED200CB8F77 /* Model */,
 				4AA0D5921EAEEC0600CB8F77 /* view */,
 			);
 			path = "积分商城首页";
@@ -3727,6 +3739,17 @@
 				4AA0D5B11EAEEC8E00CB8F77 /* GLIntegraClassifyController.xib */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		4AA0D5CE1EAF1ED200CB8F77 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4AA0D5CF1EAF1EF700CB8F77 /* GLMallHotModel.h */,
+				4AA0D5D01EAF1EF700CB8F77 /* GLMallHotModel.m */,
+				4AA0D5D21EAF1F6600CB8F77 /* GLMall_InterestModel.h */,
+				4AA0D5D31EAF1F6600CB8F77 /* GLMall_InterestModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4AEE9EC41E94FEBA004FFDB9 /* 登录注册 */ = {
@@ -5296,6 +5319,7 @@
 				4A4610F51E9CC6370045824F /* ZXPDF417BarcodeMatrix.m in Sources */,
 				4A4610631E9CC6360045824F /* ZXTelResultParser.m in Sources */,
 				4A4611061E9CC6370045824F /* ZXQRCodeMode.m in Sources */,
+				4AA0D5D41EAF1F6600CB8F77 /* GLMall_InterestModel.m in Sources */,
 				F92309641E9B8BFF00ECDC94 /* XBTagTitleCell.m in Sources */,
 				4A3E60881EAD8CC8000E2E17 /* GLSubmitFirstController.m in Sources */,
 				4A07A86D1EA0571E005A9B67 /* GLBuyBackChooseBankView.m in Sources */,
@@ -5351,6 +5375,7 @@
 				4A4610831E9CC6360045824F /* ZXHybridBinarizer.m in Sources */,
 				4A4610C21E9CC6370045824F /* ZXRSSExpandedPair.m in Sources */,
 				4A0D97651E9729C100A26B84 /* GLHomeLiveController.m in Sources */,
+				4AA0D5D11EAF1EF700CB8F77 /* GLMallHotModel.m in Sources */,
 				F961A9D81E9C75AF00275F52 /* UIView+SFrame.m in Sources */,
 				4A46101C1E9CC6360045824F /* ZXingWrapper.m in Sources */,
 				4A46108A1E9CC6360045824F /* ZXDecodeHints.m in Sources */,
@@ -5546,6 +5571,7 @@
 				F923091A1E9B8BFF00ECDC94 /* HWCalendar.m in Sources */,
 				F92309751E9B8BFF00ECDC94 /* LBMineCenterEditAdressViewController.m in Sources */,
 				4AA0D5A41EAEEC0600CB8F77 /* GLIntegralHeaderView.m in Sources */,
+				4AA0D5CD1EAF17A900CB8F77 /* GLClassifyHeaderView.m in Sources */,
 				4A4610AB1E9CC6360045824F /* ZXMaxiCodeReader.m in Sources */,
 				F90620061E83C5D00080E9D9 /* BasetabbarViewController.m in Sources */,
 				4A4609F31E9CB78E0045824F /* GLDirectDnationView.m in Sources */,

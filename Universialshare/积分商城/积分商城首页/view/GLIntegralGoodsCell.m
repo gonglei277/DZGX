@@ -7,10 +7,14 @@
 //
 
 #import "GLIntegralGoodsCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface GLIntegralGoodsCell()
 @property (weak, nonatomic) IBOutlet UIButton *panicBuyingBtn;
 @property (weak, nonatomic) IBOutlet UILabel *jifenLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageV;
 
 @end
 
@@ -36,5 +40,12 @@
     [label setAttributedText:textColor];
 }
 
+- (void)setModel:(GLMall_InterestModel *)model{
+    _model = model;
+    [self changeColor:_jifenLabel rangeNumber:[model.goods_price integerValue]];
+    _nameLabel.text = model.goods_name;
+    [_imageV sd_setImageWithURL:[NSURL URLWithString:model.thumb] placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
+    
+}
 
 @end

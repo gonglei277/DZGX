@@ -16,13 +16,20 @@
 #import "GLIntegraClassifyController.h"
 
 #import "GLSubmitFirstController.h"
+
+#import "GLMallHotModel.h"
+#import "GLMall_InterestModel.h"
 @interface LBIntegralMallViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 {
     UIImageView *_imageviewLeft;
     UIImageView *_imageviewRight;
+    LoadWaitView * _loadV;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)SDCycleScrollView *cycleScrollView;
+
+@property (nonatomic, strong)NSMutableArray *hotModels;
+@property (nonatomic, strong)NSMutableArray *interestModels;
 
 @end
 
@@ -56,8 +63,36 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"GLIntegralMallTopCell" bundle:nil] forCellReuseIdentifier:topCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"GLIntegralGoodsCell" bundle:nil] forCellReuseIdentifier:goodsCellID];
     
+    [self postRequest];
 }
+- (void)postRequest{
 
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"shop/main" paramDic:@{} finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        //        NSLog(@"responseObject = %@",responseObject);
+        if ([responseObject[@"code"] integerValue] == 1){
+            for (NSDictionary *dict in responseObject[@"data"][@"mall_tabe"]) {
+                
+                GLMallHotModel *model = [GLMallHotModel mj_objectWithKeyValues:dict];
+                [_hotModels addObject:model];
+            }
+            for (NSDictionary *dic in responseObject[@"data"][@"inte_list"]) {
+                GLMall_InterestModel *model = [GLMall_InterestModel mj_objectWithKeyValues:dic];
+                [_interestModels addObject:model];
+            }
+            
+        }
+        
+        [self.tableView reloadData];
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        
+    }];
+
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
@@ -111,6 +146,8 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section== 0) {
         GLIntegralMallTopCell *cell = [tableView dequeueReusableCellWithIdentifier:topCellID];
+        cell.models = self.hotModels;
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
         UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
@@ -121,6 +158,7 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
         return cell;
     }else{
         GLIntegralGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:goodsCellID];
+        cell.model = self.interestModels[indexPath.row];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
 
@@ -235,5 +273,16 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
     }
 }
 
-
+- (NSMutableArray *)hotModels{
+    if (!_hotModels) {
+        _hotModels = [NSMutableArray array];
+    }
+    return _hotModels;
+}
+- (NSMutableArray *)interestModels{
+    if (!_interestModels) {
+        _interestModels = [NSMutableArray array];
+    }
+    return _interestModels;
+}
 @end
