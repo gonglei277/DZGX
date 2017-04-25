@@ -59,4 +59,7 @@
 
 #define NMUBERS @"0123456789./*-+~!@#$%^&()_+-=,./;'[]{}:<>?`"
 
+
+#define KCURRENTCITYINFODEFAULTS [NSUserDefaults standardUserDefaults]
+
 #endif /* Header_h */

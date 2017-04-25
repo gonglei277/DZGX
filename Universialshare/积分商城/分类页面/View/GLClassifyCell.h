@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLintegralGoodsModel.h"
+
 
 @interface GLClassifyCell : UICollectionViewCell
+
+@property (nonatomic, strong)GLintegralGoodsModel *model;
 
 @end

@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageV2;
 @property (weak, nonatomic) IBOutlet UIImageView *imageV3;
 
+
 @end
 
 @implementation GLIntegralMallTopCell
