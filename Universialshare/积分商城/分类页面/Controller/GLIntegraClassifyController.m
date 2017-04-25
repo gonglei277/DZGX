@@ -75,10 +75,14 @@ static NSString *ID = @"GLClassifyCell";
     _maskV.bgView.alpha = 0.3;
     
     _contentV = [[NSBundle mainBundle] loadNibNamed:@"GLClassifyView" owner:nil options:nil].lastObject;
+    _contentV.block = ^(NSArray *arr){
+        NSLog(@"arr =  == = = =  = ===%@",arr);
+    };
 //    [_contentV.ensureBtn addTarget:self action:@selector(ensureClassify) forControlEvents:UIControlEventTouchUpInside];
     
     _contentV.frame = CGRectMake(SCREEN_WIDTH, 64, 0, SCREEN_HEIGHT - 64);
     [_maskV showViewWithContentView:_contentV];
+    
     
     [UIView animateWithDuration:0.3 animations:^{
         _contentV.frame = CGRectMake(64, 64 , SCREEN_WIDTH - 64, SCREEN_HEIGHT - 64);

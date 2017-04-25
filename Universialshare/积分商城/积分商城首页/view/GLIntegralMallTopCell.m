@@ -49,23 +49,26 @@
 
 - (void)setModels:(NSArray *)models{
     _models = models;
-    GLMallHotModel *model = models[0];
-    [_imageV sd_setImageWithURL:[NSURL URLWithString:model.mall_url] placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
-    _titleLabel.text = model.mall_name;
-    
-    [_jifenLabel setAttributedText:[self changeColor:_jifenLabel rangeNumber:[model.mall_inte integerValue]]];
-    
-     GLMallHotModel *model2 = models[1];
-    [_imageV2 sd_setImageWithURL:[NSURL URLWithString:model2.mall_url] placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
-    _titleLabel2.text = model2.mall_name;
-    
-    [_jifenLabel2 setAttributedText:[self changeColor:_jifenLabel rangeNumber:[model2.mall_inte integerValue]]];
-    
-     GLMallHotModel *model3 = models[2];
-    [_imageV3 sd_setImageWithURL:[NSURL URLWithString:model3.mall_url] placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
-    _titleLabel3.text = model3.mall_name;
-    
-    [_jifenLabel3 setAttributedText:[self changeColor:_jifenLabel rangeNumber:[model3.mall_inte integerValue]]];
+    if (models.count != 0) {
+        
+        GLMallHotModel *model = models[0];
+        [_imageV sd_setImageWithURL:[NSURL URLWithString:model.mall_url] placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
+        _titleLabel.text = model.mall_name;
+        
+        [_jifenLabel setAttributedText:[self changeColor:_jifenLabel rangeNumber:[model.mall_inte integerValue]]];
+        
+        GLMallHotModel *model2 = models[1];
+        [_imageV2 sd_setImageWithURL:[NSURL URLWithString:model2.mall_url] placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
+        _titleLabel2.text = model2.mall_name;
+        
+        [_jifenLabel2 setAttributedText:[self changeColor:_jifenLabel rangeNumber:[model2.mall_inte integerValue]]];
+        
+        GLMallHotModel *model3 = models[2];
+        [_imageV3 sd_setImageWithURL:[NSURL URLWithString:model3.mall_url] placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
+        _titleLabel3.text = model3.mall_name;
+        
+        [_jifenLabel3 setAttributedText:[self changeColor:_jifenLabel rangeNumber:[model3.mall_inte integerValue]]];
+    }
 
 }
 @end

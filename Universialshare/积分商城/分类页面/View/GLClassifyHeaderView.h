@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GLClassifyHeaderView : UIView
+@interface GLClassifyHeaderView : UICollectionReusableView
 
 @end
