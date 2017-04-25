@@ -13,6 +13,7 @@
 #import "LBMyBusinessListDetailViewController.h"
 #import "LBSaleManPersonInfoViewController.h"
 #import "LBViewProtocolViewController.h"
+#import <MapKit/MapKit.h>
 
 @interface LBShowSaleManAndBusinessViewController ()
 @property (weak, nonatomic) IBOutlet UIView *navigationV;
@@ -76,10 +77,28 @@
         weakself.hidesBottomBarWhenPushed = NO;
     
     };
-    
+    //去这里
     _businessListVc.returnpushinfovc = ^(NSInteger index){
         
-       
+        double lat = 100.0;double lng = 100.0;
+        
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"baidumap://"]])// -- 使用 canOpenURL 判断需要在info.plist 的 LSApplicationQueriesSchemes 添加 baidumap 。
+        {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"baidumap://map/geocoder?location=%f,%f&coord_type=bd09ll&src=webapp.rgeo.yourCompanyName.yourAppName",lat,lng]]];
+        }else{
+            //使用自带地图导航
+            
+            CLLocationCoordinate2D destCoordinate;
+            // 将数据传到反地址编码模型
+            destCoordinate = CLLocationCoordinate2DMake(lat,lng);
+            
+            MKMapItem *currentLocation =[MKMapItem mapItemForCurrentLocation];
+            
+            MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:destCoordinate addressDictionary:nil]];
+            
+            [MKMapItem openMapsWithItems:@[currentLocation,toLocation] launchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving,
+                                                                                       MKLaunchOptionsShowsTrafficKey:[NSNumber numberWithBool:YES]}];
+        }
         
     };
     
