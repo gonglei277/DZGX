@@ -14,6 +14,9 @@
             <connections>
                 <outlet property="backBtn" destination="6Bg-ye-3YE" id="Fqe-HB-Opl"/>
                 <outlet property="collectionView" destination="799-fu-slj" id="d1U-uz-9uh"/>
+                <outlet property="defaultSortBtn" destination="mCp-6d-0al" id="de7-EF-KdH"/>
+                <outlet property="integralBtn" destination="vhY-1P-vQe" id="lCi-YJ-2wc"/>
+                <outlet property="searchView" destination="8uC-OW-K74" id="Iup-rK-uAd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -92,6 +95,9 @@
                             <state key="normal" title="默认排序">
                                 <color key="titleColor" red="0.93559116129999997" green="0.2449045181" blue="0.0002224964264" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="sortClick:" destination="-1" eventType="touchUpInside" id="WhT-gJ-Aaa"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhY-1P-vQe">
                             <rect key="frame" x="84" y="11" width="50" height="28"/>
@@ -103,6 +109,9 @@
                             <state key="normal" title="积分">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="sortClick:" destination="-1" eventType="touchUpInside" id="Axs-s7-luR"/>
+                            </connections>
                         </button>
                         <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pJk-pR-Nsr">
                             <rect key="frame" x="0.0" y="49" width="375" height="1"/>
@@ -121,6 +130,9 @@
                             <state key="normal" title="筛选">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="filterBtn:" destination="-1" eventType="touchUpInside" id="6Ks-Kr-CH8"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

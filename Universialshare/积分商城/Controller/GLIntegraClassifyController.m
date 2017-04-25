@@ -12,6 +12,11 @@
 @interface GLIntegraClassifyController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIView *searchView;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *defaultSortBtn;
+@property (weak, nonatomic) IBOutlet UIButton *integralBtn;
 
 @end
 
@@ -30,9 +35,25 @@ static NSString *ID = @"GLClassifyCell";
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"GLClassifyCell" bundle:nil] forCellWithReuseIdentifier:ID];
     
+    self.searchView.layer.cornerRadius = 5.f;
+    self.searchView.clipsToBounds = YES;
+    
 }
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+//排序
+- (IBAction)sortClick:(id)sender {
+    [self.defaultSortBtn setTintColor:[UIColor redColor]];
+    [self.integralBtn setTintColor:[UIColor redColor]];
+    
+    [sender setTintColor:[UIColor redColor]];
+}
+
+//筛选
+- (IBAction)filterBtn:(id)sender {
+    
 }
 
 #pragma UICollectionDelegate UICollectionDataSource

@@ -95,16 +95,16 @@ static NSString *ID = @"GLShoppingCell";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"GLShoppingCell" bundle:nil] forCellReuseIdentifier:ID];
     self.tableView.tableHeaderView = self.headerView;
-    //自定义导航栏右按钮
-    _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _rightBtn.frame = CGRectMake(0, 0, 80, 44);
-    // 让按钮内部的所有内容左对齐
-    _rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [_rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
-    [_rightBtn addTarget:self action:@selector(edit) forControlEvents:UIControlEventTouchUpInside];
-    _rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    _isSelectedRightBtn = NO;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_rightBtn];
+////    自定义导航栏右按钮
+//    _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    _rightBtn.frame = CGRectMake(0, 0, 80, 44);
+//    // 让按钮内部的所有内容左对齐
+//    _rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+//    [_rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
+//    [_rightBtn addTarget:self action:@selector(edit) forControlEvents:UIControlEventTouchUpInside];
+//    _rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+//    _isSelectedRightBtn = NO;
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_rightBtn];
     
      [self.clearingBtn addTarget:self action:@selector(clearingMore:) forControlEvents:UIControlEventTouchUpInside];
 //    self.selectedNumLabel.text = [NSString stringWithFormat:@"已选中%ld件商品",_totalNum];

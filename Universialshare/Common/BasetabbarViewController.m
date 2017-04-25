@@ -76,7 +76,7 @@
     myodresvc.tabBarItem = [self barTitle:@"订单" image:@"消费商城未选中状态" selectImage:@"消费商城"];
     
     
-    //self.viewControllers = @[firstNav, Homenav, IntegralMallnav, minenav,];
+//    self.viewControllers = @[firstNav, Homenav, IntegralMallnav, minenav,];
     
     // self.viewControllers = @[firstNav, ManAndBusinessNav, IntegralMallnav, minenav,];
     
