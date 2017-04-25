@@ -44,11 +44,11 @@ static NSString *ID = @"GLClassifyCell";
 }
 
 //排序
-- (IBAction)sortClick:(id)sender {
-    [self.defaultSortBtn setTintColor:[UIColor redColor]];
-    [self.integralBtn setTintColor:[UIColor redColor]];
+- (IBAction)sortClick:(UIButton *)sender {
+    [self.defaultSortBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [self.integralBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     
-    [sender setTintColor:[UIColor redColor]];
+    [sender setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 }
 
 //筛选

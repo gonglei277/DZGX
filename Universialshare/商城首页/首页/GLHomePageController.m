@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *searchF;
 @property (weak, nonatomic) IBOutlet UIView *titleView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *cityBtn;
 
 @end
 
@@ -70,6 +71,9 @@ static NSString *recommendID = @"GLHomeRecommendCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"GLHomeRecommendCell" bundle:nil] forCellReuseIdentifier:recommendID];
     
  
+}
+- (IBAction)cityChoose:(id)sender {
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
