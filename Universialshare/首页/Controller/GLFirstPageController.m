@@ -28,6 +28,7 @@
 
 //公告弹出框
 #import "LBHomepopinfoView.h"
+#import "LBSaleManPersonInfoViewController.h"
 
 
 @interface GLFirstPageController ()
@@ -86,7 +87,7 @@ static NSString *followID = @"GLFirstFollowCell";
     
     [super viewDidLoad];
     
-    [self addMySelfPanGesture];
+    //[self addMySelfPanGesture];
 
     [self initInterDataSorceinfomessage];
     
@@ -193,10 +194,18 @@ static NSString *followID = @"GLFirstFollowCell";
 - (IBAction)tapgestureHeadimage:(UITapGestureRecognizer *)sender {
     
     if ([UserModel defaultUser].loginstatus == YES) {
-        self.hidesBottomBarWhenPushed = YES;
-        GLMine_InfoController *VC = [[GLMine_InfoController alloc] init];
-        [self.navigationController pushViewController:VC animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
+        
+        if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser] || [[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
+            self.hidesBottomBarWhenPushed=YES;
+            GLMine_InfoController *infoVC = [[GLMine_InfoController alloc] init];
+            [self.navigationController pushViewController:infoVC animated:YES];
+            self.hidesBottomBarWhenPushed=NO;
+        }else{
+            self.hidesBottomBarWhenPushed=YES;
+            LBSaleManPersonInfoViewController *infoVC = [[LBSaleManPersonInfoViewController alloc] init];
+            [self.navigationController pushViewController:infoVC animated:YES];
+            self.hidesBottomBarWhenPushed=NO;
+        }
         
     }else{
         

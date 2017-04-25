@@ -44,6 +44,9 @@
                                 <constraint firstAttribute="width" constant="90" id="Ju0-2w-KIH"/>
                                 <constraint firstAttribute="height" constant="90" id="Rg2-kS-jj5"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="BUR-rV-409" appends="YES" id="PfJ-1y-lGT"/>
+                            </connections>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5R-BZ-zba">
                             <rect key="frame" x="10" y="170" width="355" height="20"/>
@@ -79,9 +82,6 @@
                         <constraint firstAttribute="trailing" secondItem="r5R-BZ-zba" secondAttribute="trailing" constant="10" id="h1V-WX-O0N"/>
                         <constraint firstAttribute="height" constant="200" id="nWa-jl-wel"/>
                     </constraints>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="BUR-rV-409" appends="YES" id="3Pi-XY-RoH"/>
-                    </connections>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hBV-X8-Gdv">
                     <rect key="frame" x="0.0" y="200" width="375" height="467"/>

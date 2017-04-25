@@ -64,7 +64,7 @@ static NSString *recommendID = @"GLHomeRecommendCell";
     self.tableView.tableFooterView = footerV;
     
     [self setNavView];
-    [self addMySelfPanGesture];
+    //[self addMySelfPanGesture];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"GLTopCell" bundle:nil] forCellReuseIdentifier:topID];
     [self.tableView registerNib:[UINib nibWithNibName:@"GLHotCell" bundle:nil] forCellReuseIdentifier:hotID];

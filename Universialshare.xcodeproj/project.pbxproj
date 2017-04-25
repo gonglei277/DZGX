@@ -628,6 +628,16 @@
 		F94A33F41EAA01A600222A86 /* LBMineCenterPayPagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94A33F21EAA01A600222A86 /* LBMineCenterPayPagesViewController.xib */; };
 		F94A33F91EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F94A33F71EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.m */; };
 		F94A33FA1EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94A33F81EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.xib */; };
+		F94D317D1EAF1A2300309029 /* LBRecommendedSalesmanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94D317B1EAF1A2300309029 /* LBRecommendedSalesmanViewController.m */; };
+		F94D317E1EAF1A2300309029 /* LBRecommendedSalesmanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94D317C1EAF1A2300309029 /* LBRecommendedSalesmanViewController.xib */; };
+		F94D31821EAF2EB300309029 /* LBRecommendedBusinessAuditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94D31801EAF2EB300309029 /* LBRecommendedBusinessAuditViewController.m */; };
+		F94D31831EAF2EB300309029 /* LBRecommendedBusinessAuditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94D31811EAF2EB300309029 /* LBRecommendedBusinessAuditViewController.xib */; };
+		F94D31871EAF2EE800309029 /* LBRecommendedSalesmanTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94D31851EAF2EE800309029 /* LBRecommendedSalesmanTwoViewController.m */; };
+		F94D31881EAF2EE800309029 /* LBRecommendedSalesmanTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94D31861EAF2EE800309029 /* LBRecommendedSalesmanTwoViewController.xib */; };
+		F94D318C1EAF2EFF00309029 /* LBRecommendedSalesmanThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94D318A1EAF2EFF00309029 /* LBRecommendedSalesmanThreeViewController.m */; };
+		F94D318D1EAF2EFF00309029 /* LBRecommendedSalesmanThreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94D318B1EAF2EFF00309029 /* LBRecommendedSalesmanThreeViewController.xib */; };
+		F94D31911EAF2F2400309029 /* LBRecommendedSalesmanAllListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94D318F1EAF2F2400309029 /* LBRecommendedSalesmanAllListViewController.m */; };
+		F94D31921EAF2F2400309029 /* LBRecommendedSalesmanAllListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94D31901EAF2F2400309029 /* LBRecommendedSalesmanAllListViewController.xib */; };
 		F94D6E1E1E9DC15300412E64 /* loginRegister.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94D6E1D1E9DC15300412E64 /* loginRegister.xcassets */; };
 		F94D6E231E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94D6E211E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m */; };
 		F94D6E241E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94D6E221E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.xib */; };
@@ -1846,6 +1856,21 @@
 		F94A33F61EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineCenterPayPagesTableViewCell.h; sourceTree = "<group>"; };
 		F94A33F71EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineCenterPayPagesTableViewCell.m; sourceTree = "<group>"; };
 		F94A33F81EAA082100222A86 /* LBMineCenterPayPagesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineCenterPayPagesTableViewCell.xib; sourceTree = "<group>"; };
+		F94D317A1EAF1A2300309029 /* LBRecommendedSalesmanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRecommendedSalesmanViewController.h; sourceTree = "<group>"; };
+		F94D317B1EAF1A2300309029 /* LBRecommendedSalesmanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRecommendedSalesmanViewController.m; sourceTree = "<group>"; };
+		F94D317C1EAF1A2300309029 /* LBRecommendedSalesmanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBRecommendedSalesmanViewController.xib; sourceTree = "<group>"; };
+		F94D317F1EAF2EB300309029 /* LBRecommendedBusinessAuditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRecommendedBusinessAuditViewController.h; sourceTree = "<group>"; };
+		F94D31801EAF2EB300309029 /* LBRecommendedBusinessAuditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRecommendedBusinessAuditViewController.m; sourceTree = "<group>"; };
+		F94D31811EAF2EB300309029 /* LBRecommendedBusinessAuditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBRecommendedBusinessAuditViewController.xib; sourceTree = "<group>"; };
+		F94D31841EAF2EE800309029 /* LBRecommendedSalesmanTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRecommendedSalesmanTwoViewController.h; sourceTree = "<group>"; };
+		F94D31851EAF2EE800309029 /* LBRecommendedSalesmanTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRecommendedSalesmanTwoViewController.m; sourceTree = "<group>"; };
+		F94D31861EAF2EE800309029 /* LBRecommendedSalesmanTwoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBRecommendedSalesmanTwoViewController.xib; sourceTree = "<group>"; };
+		F94D31891EAF2EFF00309029 /* LBRecommendedSalesmanThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRecommendedSalesmanThreeViewController.h; sourceTree = "<group>"; };
+		F94D318A1EAF2EFF00309029 /* LBRecommendedSalesmanThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRecommendedSalesmanThreeViewController.m; sourceTree = "<group>"; };
+		F94D318B1EAF2EFF00309029 /* LBRecommendedSalesmanThreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBRecommendedSalesmanThreeViewController.xib; sourceTree = "<group>"; };
+		F94D318E1EAF2F2400309029 /* LBRecommendedSalesmanAllListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRecommendedSalesmanAllListViewController.h; sourceTree = "<group>"; };
+		F94D318F1EAF2F2400309029 /* LBRecommendedSalesmanAllListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRecommendedSalesmanAllListViewController.m; sourceTree = "<group>"; };
+		F94D31901EAF2F2400309029 /* LBRecommendedSalesmanAllListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBRecommendedSalesmanAllListViewController.xib; sourceTree = "<group>"; };
 		F94D6E1D1E9DC15300412E64 /* loginRegister.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = loginRegister.xcassets; sourceTree = "<group>"; };
 		F94D6E201E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeLoginFortgetSecretViewController.h; sourceTree = "<group>"; };
 		F94D6E211E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeLoginFortgetSecretViewController.m; sourceTree = "<group>"; };
@@ -3805,6 +3830,7 @@
 				F966B3D91EAC7D46007260FC /* 业务员列表 */,
 				F966B40B1EACB048007260FC /* 推销员个人资料 */,
 				4A3E60811EAD8CC8000E2E17 /* 提交商户 */,
+				F94D31791EAF19E500309029 /* 推荐业务员 */,
 				F9061FFE1E83C5D00080E9D9 /* Common */,
 				4A460A001E9CB7F50045824F /* 自定义View */,
 				F906201A1E83C85D0080E9D9 /* 图片资源 */,
@@ -4524,6 +4550,28 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		F94D31791EAF19E500309029 /* 推荐业务员 */ = {
+			isa = PBXGroup;
+			children = (
+				F94D317A1EAF1A2300309029 /* LBRecommendedSalesmanViewController.h */,
+				F94D317B1EAF1A2300309029 /* LBRecommendedSalesmanViewController.m */,
+				F94D317C1EAF1A2300309029 /* LBRecommendedSalesmanViewController.xib */,
+				F94D317F1EAF2EB300309029 /* LBRecommendedBusinessAuditViewController.h */,
+				F94D31801EAF2EB300309029 /* LBRecommendedBusinessAuditViewController.m */,
+				F94D31811EAF2EB300309029 /* LBRecommendedBusinessAuditViewController.xib */,
+				F94D31841EAF2EE800309029 /* LBRecommendedSalesmanTwoViewController.h */,
+				F94D31851EAF2EE800309029 /* LBRecommendedSalesmanTwoViewController.m */,
+				F94D31861EAF2EE800309029 /* LBRecommendedSalesmanTwoViewController.xib */,
+				F94D31891EAF2EFF00309029 /* LBRecommendedSalesmanThreeViewController.h */,
+				F94D318A1EAF2EFF00309029 /* LBRecommendedSalesmanThreeViewController.m */,
+				F94D318B1EAF2EFF00309029 /* LBRecommendedSalesmanThreeViewController.xib */,
+				F94D318E1EAF2F2400309029 /* LBRecommendedSalesmanAllListViewController.h */,
+				F94D318F1EAF2F2400309029 /* LBRecommendedSalesmanAllListViewController.m */,
+				F94D31901EAF2F2400309029 /* LBRecommendedSalesmanAllListViewController.xib */,
+			);
+			path = "推荐业务员";
+			sourceTree = "<group>";
+		};
 		F94D6E1F1E9DFB0300412E64 /* 忘记密码 */ = {
 			isa = PBXGroup;
 			children = (
@@ -5001,6 +5049,7 @@
 				F9520A1F1EADF40600B4D665 /* LBViewProtocolViewController.xib in Resources */,
 				F923092D1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeDetailViewController.xib in Resources */,
 				4A4608EA1E9C9E6D0045824F /* GLDailyView.xib in Resources */,
+				F94D31921EAF2F2400309029 /* LBRecommendedSalesmanAllListViewController.xib in Resources */,
 				F966B3E81EAC7E7B007260FC /* LBMySalesmanListViewController.xib in Resources */,
 				4A4609FF1E9CB78E0045824F /* GLDonationRecordCell.xib in Resources */,
 				4A4609ED1E9CB78E0045824F /* GLDirectDnationRecordController.xib in Resources */,
@@ -5053,6 +5102,7 @@
 				4A0D97841E9729C100A26B84 /* GLOrderDetailController.xib in Resources */,
 				F966B3F81EAC8C8A007260FC /* LBShowSaleManAndBusinessViewController.xib in Resources */,
 				F91274A81EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.xib in Resources */,
+				F94D318D1EAF2EFF00309029 /* LBRecommendedSalesmanThreeViewController.xib in Resources */,
 				4A4609DD1E9CB78E0045824F /* GLMyHeartController.xib in Resources */,
 				F966B4041EAC9BC4007260FC /* LBMySalesmanListDeatilTableViewCell.xib in Resources */,
 				F923092F1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeViewController.xib in Resources */,
@@ -5083,6 +5133,7 @@
 				F92309311E9B8BFF00ECDC94 /* LBMineCenterserviceNoticeViewController.xib in Resources */,
 				4AA0D5A31EAEEC0600CB8F77 /* GLIntegralGoodsCell.xib in Resources */,
 				4A203DDC1E9F8A9200DF22F7 /* GLRecommendCell.xib in Resources */,
+				F94D31831EAF2EB300309029 /* LBRecommendedBusinessAuditViewController.xib in Resources */,
 				F92309931E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.xib in Resources */,
 				F966B4101EACB0C0007260FC /* LBSaleManPersonInfoViewController.xib in Resources */,
 				4A0D97661E9729C100A26B84 /* GLHomeLiveController.xib in Resources */,
@@ -5107,6 +5158,7 @@
 				4A4610351E9CC6360045824F /* ios-social-sdk-comment-quick.html in Resources */,
 				F912749D1EA0E64B00B7A539 /* LBMineStoreTodayOrderingViewController.xib in Resources */,
 				F9126EF71EA0B086004785EA /* LBMineSystemMessageTableViewCell.xib in Resources */,
+				F94D31881EAF2EE800309029 /* LBRecommendedSalesmanTwoViewController.xib in Resources */,
 				F966B3B71EAC3BB8007260FC /* LBMineCenterOrderDetailOneTableViewCell.xib in Resources */,
 				4A4609E61E9CB78E0045824F /* GLMine_MyBeansController.xib in Resources */,
 				4A4610211E9CC6360045824F /* UMSCommentInputController.xib in Resources */,
@@ -5137,6 +5189,7 @@
 				4A4610271E9CC6360045824F /* UMSShareListController.xib in Resources */,
 				F94A33F41EAA01A600222A86 /* LBMineCenterPayPagesViewController.xib in Resources */,
 				4A0D97791E9729C100A26B84 /* GLHourseDetailThirdCell.xib in Resources */,
+				F94D317E1EAF1A2300309029 /* LBRecommendedSalesmanViewController.xib in Resources */,
 				F92309691E9B8BFF00ECDC94 /* LBMyOrderEvaluationSucessViewController.xib in Resources */,
 				F966B3B11EAC3B4C007260FC /* LBMineCenterOrderDetailViewController.xib in Resources */,
 				4AA0D5A71EAEEC0600CB8F77 /* GLIntegralMallTopCell.xib in Resources */,
@@ -5335,6 +5388,7 @@
 				4A203DD71E9F8A0B00DF22F7 /* GLRecommendModel.m in Sources */,
 				4A4610DC1E9CC6370045824F /* ZXOneDReader.m in Sources */,
 				4A4610EF1E9CC6370045824F /* ZXPDF417DetectionResultColumn.m in Sources */,
+				F94D31871EAF2EE800309029 /* LBRecommendedSalesmanTwoViewController.m in Sources */,
 				F9126EBE1EA05692004785EA /* GLMine_InfoCell.m in Sources */,
 				4A07A8731EA07009005A9B67 /* GLBuyBackChooseController.m in Sources */,
 				4A4608ED1E9C9E6D0045824F /* GLFirstHeartCell.m in Sources */,
@@ -5364,6 +5418,7 @@
 				4A4610971E9CC6360045824F /* ZXDataMatrixDecoder.m in Sources */,
 				F92309891E9B8BFF00ECDC94 /* LBMineViewController.m in Sources */,
 				F92309921E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m in Sources */,
+				F94D318C1EAF2EFF00309029 /* LBRecommendedSalesmanThreeViewController.m in Sources */,
 				F923097F1E9B8BFF00ECDC94 /* LBMineCenterSafeSecondSecretViewController.m in Sources */,
 				4A4610B41E9CC6370045824F /* ZXAI013x0xDecoder.m in Sources */,
 				4A1D78ED1EADF81900374386 /* GLCityModel.m in Sources */,
@@ -5416,6 +5471,7 @@
 				4A4610D11E9CC6370045824F /* ZXCode93Reader.m in Sources */,
 				4A4610CE1E9CC6370045824F /* ZXCode128Writer.m in Sources */,
 				4A46109B1E9CC6360045824F /* ZXDataMatrixBase256Encoder.m in Sources */,
+				F94D317D1EAF1A2300309029 /* LBRecommendedSalesmanViewController.m in Sources */,
 				4A4610F61E9CC6370045824F /* ZXPDF417BarcodeRow.m in Sources */,
 				4A203DD31E9F842F00DF22F7 /* GLEncourageBeansCell.m in Sources */,
 				4A460A071E9CB8050045824F /* LoadWaitView.m in Sources */,
@@ -5425,6 +5481,7 @@
 				4A4610611E9CC6360045824F /* ZXSMTPResultParser.m in Sources */,
 				F92309411E9B8BFF00ECDC94 /* LBMineCenterseverceNoticeTableViewCell.m in Sources */,
 				4A07A87B1EA0715D005A9B67 /* GLBankCardCellTableViewCell.m in Sources */,
+				F94D31911EAF2F2400309029 /* LBRecommendedSalesmanAllListViewController.m in Sources */,
 				F951EB111EA1EF8700D6708E /* LBMineCenterUsualUnderOrderViewController.m in Sources */,
 				4A4610D61E9CC6370045824F /* ZXEANManufacturerOrgSupport.m in Sources */,
 				4A4611001E9CC6370045824F /* ZXQRCodeDataMask.m in Sources */,
@@ -5573,6 +5630,7 @@
 				4A4610C11E9CC6370045824F /* ZXBitArrayBuilder.m in Sources */,
 				4A46106D1E9CC6360045824F /* ZXWifiResultParser.m in Sources */,
 				4A460A5B1E9CC0310045824F /* ScanResultViewController.m in Sources */,
+				F94D31821EAF2EB300309029 /* LBRecommendedBusinessAuditViewController.m in Sources */,
 				4A46104D1E9CC6360045824F /* ZXAddressBookParsedResult.m in Sources */,
 				4A4610661E9CC6360045824F /* ZXURIResultParser.m in Sources */,
 				4A4610B81E9CC6370045824F /* ZXAnyAIDecoder.m in Sources */,
