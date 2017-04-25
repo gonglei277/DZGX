@@ -15,8 +15,6 @@
 #import "GLHourseDetailController.h"
 #import "GLIntegraClassifyController.h"
 
-#import "GLSubmitFirstController.h"
-
 #import "GLMallHotModel.h"
 #import "GLMall_InterestModel.h"
 @interface LBIntegralMallViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
@@ -66,7 +64,7 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
     self.searchView.layer.cornerRadius = self.searchView.yy_height / 2;
     self.searchView.clipsToBounds = YES;
     
-    [self postRequest];
+//    [self postRequest];
 }
 - (void)postRequest{
 

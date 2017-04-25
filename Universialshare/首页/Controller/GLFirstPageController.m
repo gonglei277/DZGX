@@ -281,7 +281,7 @@ static NSString *followID = @"GLFirstFollowCell";
     
     [NetworkManager requestPOSTWithURLStr:@"index/notice" paramDic:nil finish:^(id responseObject) {
 //        [_loadV removeFromSuperview];
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
 //            NSString *strtitle=[NSString stringWithFormat:@"%@",responseObject[@"data"][0][@"title"]];
