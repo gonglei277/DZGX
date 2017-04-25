@@ -524,8 +524,7 @@ static NSString *followID = @"GLFirstFollowCell";
             
             NSArray *dicArr = responseObject[@"data"][@"head"];
             for (int i = 0; i < dicArr.count; i ++) {
-                GLFirstPageDailyModel *model = [[GLFirstPageDailyModel alloc] init];
-                model = [GLFirstPageDailyModel mj_objectWithKeyValues:dicArr[i]];
+                GLFirstPageDailyModel *model = [GLFirstPageDailyModel mj_objectWithKeyValues:dicArr[i]];
                 [_dailyModels addObject:model];
                 
             }
@@ -658,6 +657,7 @@ static NSString *followID = @"GLFirstFollowCell";
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     /********用于创建pan********/    //将左右的tab页面绘制出来，并把UIView添加到当前的self.view中
     NSUInteger selectedIndex = [self.tabBarController selectedIndex];
     
@@ -670,6 +670,7 @@ static NSString *followID = @"GLFirstFollowCell";
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
     /********用于移除pan时的左右两边的view********/
     [_imageviewRight removeFromSuperview];
     /********用于移除pan时的左右两边的view********/

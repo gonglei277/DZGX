@@ -10,6 +10,7 @@
 #import <MJRefresh/MJRefresh.h>
 #import "LBRecommendedBusinessAuditTableViewCell.h"
 #import "LBRecommendedBusinessAuditOneTableViewCell.h"
+#import "LBRecommendedSalesmanViewController.h"
 
 @interface LBRecommendedBusinessAuditViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDataSource,UIPickerViewDelegate>
 
@@ -34,8 +35,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.title = @"系统消息";
+    self.navigationItem.title = @"推荐业务员";
     self.view.backgroundColor=[UIColor whiteColor];
+    self.navigationController.navigationBar.hidden = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.messageType = 1;
     self.messageArr = [NSMutableArray arrayWithObjects:@"审核中",@"未通过审核", nil];
@@ -160,7 +162,7 @@
         self.nodataV.hidden = NO;
         
     }
-    return 10;
+    return self.dataarr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -174,13 +176,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (self.messageType == 1) {
-        LBRecommendedBusinessAuditTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBRecommendedBusinessAuditTableViewCell" forIndexPath:indexPath];
+        LBRecommendedBusinessAuditOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBRecommendedBusinessAuditOneTableViewCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
 
     }else{
-        LBRecommendedBusinessAuditOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBRecommendedBusinessAuditOneTableViewCell" forIndexPath:indexPath];
+        LBRecommendedBusinessAuditTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBRecommendedBusinessAuditTableViewCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
@@ -246,7 +248,9 @@
 
 #pragma mark ---添加业务员
 - (IBAction)addSalesManEvent:(UIButton *)sender {
-    
+    self.hidesBottomBarWhenPushed = YES;
+    LBRecommendedSalesmanViewController *vc=[[ LBRecommendedSalesmanViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
     
     
 }

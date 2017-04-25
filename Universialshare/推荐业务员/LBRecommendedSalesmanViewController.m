@@ -31,7 +31,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    self.navigationItem.title = @"添加业务员";
+    self.view.backgroundColor=[UIColor whiteColor];
+    self.navigationController.navigationBar.hidden = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
 }
 
@@ -114,7 +117,8 @@
     self.contentH.constant = 550;
     
     
-
+    self.baseView.layer.cornerRadius = 4;
+    self.baseView.clipsToBounds = YES;
 
 
 }

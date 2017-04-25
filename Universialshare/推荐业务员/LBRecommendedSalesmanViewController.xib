@@ -34,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIv-px-5u2">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYt-67-gRP">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -580,7 +580,7 @@
                 <constraint firstAttribute="bottom" secondItem="WIv-px-5u2" secondAttribute="bottom" id="LvX-tA-0rO"/>
                 <constraint firstItem="WIv-px-5u2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PcF-dN-9bd"/>
                 <constraint firstAttribute="trailing" secondItem="WIv-px-5u2" secondAttribute="trailing" id="Uyc-T7-vor"/>
-                <constraint firstItem="WIv-px-5u2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ekh-2c-1RC"/>
+                <constraint firstItem="WIv-px-5u2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="ekh-2c-1RC"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
