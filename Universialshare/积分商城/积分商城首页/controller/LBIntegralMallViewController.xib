@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LBIntegralMallViewController">
             <connections>
+                <outlet property="searchView" destination="nvE-Dv-9XJ" id="tf2-lv-xQJ"/>
                 <outlet property="tableView" destination="68p-6h-T6T" id="ueT-zN-lfN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

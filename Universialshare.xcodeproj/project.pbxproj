@@ -453,6 +453,7 @@
 		4AA0D5CD1EAF17A900CB8F77 /* GLClassifyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5CC1EAF17A900CB8F77 /* GLClassifyHeaderView.m */; };
 		4AA0D5D11EAF1EF700CB8F77 /* GLMallHotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5D01EAF1EF700CB8F77 /* GLMallHotModel.m */; };
 		4AA0D5D41EAF1F6600CB8F77 /* GLMall_InterestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5D31EAF1F6600CB8F77 /* GLMall_InterestModel.m */; };
+		4AA0D5D61EAF3B3E00CB8F77 /* GLClassifyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA0D5D51EAF3B3E00CB8F77 /* GLClassifyHeaderView.xib */; };
 		4F9D6A29F2E5B95EBA14BE59 /* Pods_Universialshare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */; };
 		F9061FCD1E83C4720080E9D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCC1E83C4720080E9D9 /* main.m */; };
 		F9061FD01E83C4720080E9D9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCF1E83C4720080E9D9 /* AppDelegate.mm */; };
@@ -1590,6 +1591,7 @@
 		4AA0D5D01EAF1EF700CB8F77 /* GLMallHotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMallHotModel.m; sourceTree = "<group>"; };
 		4AA0D5D21EAF1F6600CB8F77 /* GLMall_InterestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMall_InterestModel.h; sourceTree = "<group>"; };
 		4AA0D5D31EAF1F6600CB8F77 /* GLMall_InterestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMall_InterestModel.m; sourceTree = "<group>"; };
+		4AA0D5D51EAF3B3E00CB8F77 /* GLClassifyHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLClassifyHeaderView.xib; sourceTree = "<group>"; };
 		5F26EB2407F06AA6E9CA0664 /* Pods-Universialshare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Universialshare.release.xcconfig"; path = "Pods/Target Support Files/Pods-Universialshare/Pods-Universialshare.release.xcconfig"; sourceTree = "<group>"; };
 		C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Universialshare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9061FC81E83C4720080E9D9 /* Universialshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Universialshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3708,6 +3710,7 @@
 				4AA0D5BA1EAEF01D00CB8F77 /* GLClassifyView.xib */,
 				4AA0D5CB1EAF17A900CB8F77 /* GLClassifyHeaderView.h */,
 				4AA0D5CC1EAF17A900CB8F77 /* GLClassifyHeaderView.m */,
+				4AA0D5D51EAF3B3E00CB8F77 /* GLClassifyHeaderView.xib */,
 				4AA0D5C11EAEF4CB00CB8F77 /* GLClassifyRecommendCell.h */,
 				4AA0D5C21EAEF4CB00CB8F77 /* GLClassifyRecommendCell.m */,
 				4AA0D5C31EAEF4CB00CB8F77 /* GLClassifyRecommendCell.xib */,
@@ -5148,6 +5151,7 @@
 				F92309441E9B8BFF00ECDC94 /* LBMineMesageServiceTableViewCell.xib in Resources */,
 				4AA0D5A51EAEEC0600CB8F77 /* GLIntegralHeaderView.xib in Resources */,
 				F966B3F31EAC7FBA007260FC /* LBNybusinessListTableViewCell.xib in Resources */,
+				4AA0D5D61EAF3B3E00CB8F77 /* GLClassifyHeaderView.xib in Resources */,
 				F92309481E9B8BFF00ECDC94 /* LBMineMessageHotPickTableViewCell.xib in Resources */,
 				F92309251E9B8BFF00ECDC94 /* LBMineCenterRechargeBankCardView.xib in Resources */,
 				F92309331E9B8BFF00ECDC94 /* LBMineMessageHotPickViewController.xib in Resources */,

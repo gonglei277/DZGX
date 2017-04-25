@@ -30,6 +30,7 @@
 
 @property (nonatomic, strong)NSMutableArray *hotModels;
 @property (nonatomic, strong)NSMutableArray *interestModels;
+@property (weak, nonatomic) IBOutlet UIView *searchView;
 
 @end
 
@@ -62,6 +63,8 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 
     [self.tableView registerNib:[UINib nibWithNibName:@"GLIntegralMallTopCell" bundle:nil] forCellReuseIdentifier:topCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"GLIntegralGoodsCell" bundle:nil] forCellReuseIdentifier:goodsCellID];
+    self.searchView.layer.cornerRadius = self.searchView.yy_height / 2;
+    self.searchView.clipsToBounds = YES;
     
     [self postRequest];
 }
@@ -71,7 +74,7 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
     [NetworkManager requestPOSTWithURLStr:@"shop/main" paramDic:@{} finish:^(id responseObject) {
         
         [_loadV removeloadview];
-        //        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
             for (NSDictionary *dict in responseObject[@"data"][@"mall_tabe"]) {
                 
@@ -124,7 +127,7 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
         return 1;
     }else{
         
-        return 6;
+        return self.interestModels.count;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
