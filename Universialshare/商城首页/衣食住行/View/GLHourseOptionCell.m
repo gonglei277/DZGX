@@ -29,7 +29,6 @@
         _btnArr = [NSMutableArray array];
      
     }
-    NSLog(@"_btnArr = %@",_btnArr);
     return self;
 }
 - (void)setModel:(GLHourseOptionModel *)model{

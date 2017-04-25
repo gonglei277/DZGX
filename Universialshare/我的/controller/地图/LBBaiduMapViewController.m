@@ -44,6 +44,7 @@
     [self.view addSubview:self.mapView];
 }
 -(void)viewWillAppear:(BOOL)animated {
+    
     [self.mapView viewWillAppear];
      self.mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     self.locService.delegate = self;
