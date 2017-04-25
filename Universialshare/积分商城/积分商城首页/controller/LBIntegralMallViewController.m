@@ -64,7 +64,7 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
     self.searchView.layer.cornerRadius = self.searchView.yy_height / 2;
     self.searchView.clipsToBounds = YES;
     
-//    [self postRequest];
+    [self postRequest];
 }
 - (void)postRequest{
 

@@ -9,11 +9,11 @@
 #import "GLFirstPageController.h"
 #import "GLFirstHeartCell.h"
 #import "GLFirstFollowCell.h"
-
+//中间三个模块view
 #import "GLDailyView.h"
 #import "GLRankingView.h"
 #import "GLRewardView.h"
-
+//模型
 #import "GLFirstPageDailyModel.h"
 #import "GLFirstPageRankingModel.h"
 
@@ -24,7 +24,7 @@
 #import "GLLoginController.h"
 #import "BaseNavigationViewController.h"
 #import "GLMine_InfoController.h"
-#import <SDWebImage/UIButton+WebCache.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 //公告弹出框
 #import "LBHomepopinfoView.h"
@@ -116,12 +116,12 @@ static NSString *followID = @"GLFirstFollowCell";
     self.navigationController.navigationBar.hidden = YES;
      [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    UIImage *imaage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
+//    UIImage *imaage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
     
-    if (!imaage) {
+    [self.head_iconBtn sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].headPic]];
+    
+    if (!self.head_iconBtn.image) {
         self.head_iconBtn.image = [UIImage imageNamed:@"mine_head"];
-    }else{
-        self.head_iconBtn.image = imaage;
     }
 }
 
