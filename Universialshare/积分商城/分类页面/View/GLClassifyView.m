@@ -45,8 +45,9 @@ static NSString *ID = @"GLClassifyRecommendCell";
     _dataSource = @[@"全部",@"房子",@"车",@"穿",@"吃",@"装修"];
 }
 - (IBAction)ensureClick:(id)sender {
-    NSArray *arr = @[@"dd",@"nidaye"];
-    self.block(arr);
+    
+    self.block(_chooseArr);
+    
 }
 - (IBAction)resetClick:(id)sender {
     
@@ -68,21 +69,20 @@ static NSString *ID = @"GLClassifyRecommendCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     GLClassifyRecommendCell *cell = (GLClassifyRecommendCell *)[collectionView cellForItemAtIndexPath:indexPath];
     
-    if (cell.selected) {
+    if (cell.status) {
         
+        cell.backgroundColor = YYSRGBColor(235, 235, 235, 1);
+        [cell.titleLabel setTextColor:[UIColor darkGrayColor]];
+        cell.layer.borderWidth = 0;
+        [self.chooseArr removeObject:cell.titleLabel.text];
+    }else{
         cell.backgroundColor = [UIColor whiteColor];
         [cell.titleLabel setTextColor:[UIColor redColor]];
         cell.layer.borderWidth = 1;
         cell.layer.borderColor = [UIColor redColor].CGColor;
-    }else{
-        cell.backgroundColor = [UIColor lightGrayColor];
-        [cell.titleLabel setTextColor:[UIColor darkGrayColor]];
-        cell.layer.borderWidth = 0;
-       
-
+        [self.chooseArr addObject:cell.titleLabel.text];
     }
-    cell.selected = !cell.selected;
-    
+    cell.status = !cell.status;
 }
 //创建头视图
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView

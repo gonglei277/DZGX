@@ -12,4 +12,5 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
+@property (nonatomic, assign)BOOL status;
 @end

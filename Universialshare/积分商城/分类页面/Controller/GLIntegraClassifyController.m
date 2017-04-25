@@ -75,8 +75,10 @@ static NSString *ID = @"GLClassifyCell";
     _maskV.bgView.alpha = 0.3;
     
     _contentV = [[NSBundle mainBundle] loadNibNamed:@"GLClassifyView" owner:nil options:nil].lastObject;
+    __weak typeof(self)weakSelf = self;
     _contentV.block = ^(NSArray *arr){
         NSLog(@"arr =  == = = =  = ===%@",arr);
+        [weakSelf dismiss];
     };
 //    [_contentV.ensureBtn addTarget:self action:@selector(ensureClassify) forControlEvents:UIControlEventTouchUpInside];
     
