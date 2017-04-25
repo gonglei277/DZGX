@@ -30,6 +30,7 @@
 #import "LBMineCenterUsualUnderOrderViewController.h"
 #import "GLSubmitFirstController.h"
 #import "LBSaleManPersonInfoViewController.h"
+#import "LBRecommendedBusinessAuditViewController.h"
 
 @interface LBMineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
     UIImageView *_imageviewLeft;
@@ -154,7 +155,7 @@
             case 2:
             {
                 self.hidesBottomBarWhenPushed=YES;
-                GLMine_MyBeansController *vc=[[GLMine_MyBeansController alloc]init];
+                LBRecommendedBusinessAuditViewController *vc=[[LBRecommendedBusinessAuditViewController alloc]init];
                 [self.navigationController pushViewController:vc animated:YES];
                 self.hidesBottomBarWhenPushed=NO;
                 
