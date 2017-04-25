@@ -144,8 +144,6 @@
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         return;
     }
-   
-    
 
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     

@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tapH;
 
+@property (weak, nonatomic) IBOutlet UIView *navgationView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationH;
 
 @end
 
@@ -50,6 +52,15 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
         self.bottomH.constant = 49;
         self.tapH.constant = 0;
+    }
+    
+    if ([[UserModel defaultUser].usrtype isEqualToString:THREESALER]) {
+        
+        self.navgationView.hidden = NO;
+        self.navigationH.constant = 64;
+    }else{
+        self.navgationView.hidden = YES;
+        self.navigationH.constant = 0;
     }
 }
 
