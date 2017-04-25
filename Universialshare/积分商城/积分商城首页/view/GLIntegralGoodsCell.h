@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLMall_InterestModel.h"
 
 @interface GLIntegralGoodsCell : UITableViewCell
+
+@property (nonatomic, strong)GLMall_InterestModel *model;
 
 @end

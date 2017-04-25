@@ -217,13 +217,19 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="firstView" destination="S06-4u-ZPx" id="xK1-YN-vwG"/>
+                <outlet property="imageV" destination="VMm-hc-La2" id="0ne-rp-z9b"/>
+                <outlet property="imageV2" destination="R3G-8m-rTf" id="ejC-kQ-S4u"/>
+                <outlet property="imageV3" destination="VK3-JT-8Fl" id="Ghg-EB-1An"/>
                 <outlet property="jifenLabel" destination="rOZ-Vb-7k1" id="eIz-SO-r7E"/>
                 <outlet property="jifenLabel2" destination="45h-Yb-PCA" id="2To-Cn-DAV"/>
                 <outlet property="jifenLabel3" destination="HlR-Ig-inD" id="fJN-uZ-EM6"/>
                 <outlet property="secondView" destination="HHW-c9-yKl" id="R1N-M5-WHp"/>
                 <outlet property="thirdView" destination="BPh-TH-rp3" id="p0R-Rw-Tq6"/>
+                <outlet property="titleLabel" destination="uxL-5R-mJg" id="TvL-6m-bpE"/>
+                <outlet property="titleLabel2" destination="u9d-8y-eJV" id="8sU-G6-9CU"/>
+                <outlet property="titleLabel3" destination="Dso-sH-vPA" id="Hnn-Gl-TuK"/>
             </connections>
-            <point key="canvasLocation" x="-9" y="-112"/>
+            <point key="canvasLocation" x="89" y="-365"/>
         </tableViewCell>
     </objects>
     <resources>
