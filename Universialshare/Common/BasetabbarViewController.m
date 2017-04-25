@@ -91,6 +91,7 @@
         self.viewControllers = @[firstNav, Homenav, IntegralMallnav, minenav];
     }
     
+    
     self.selectedIndex=0;
     
 }

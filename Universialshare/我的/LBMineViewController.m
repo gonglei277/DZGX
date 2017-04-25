@@ -706,14 +706,12 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
             
             [usermodelachivar achive];
   
-            UIImage *imaage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
+
+            [self.headview.headimage sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].headPic]];
             
-            if (!imaage) {
+            if (!self.headview.headimage.image) {
                 
                 self.headview.headimage.image = [UIImage imageNamed:@"mine_head"];
-            }else{
-                
-                self.headview.headimage.image = imaage;
             }
             
             [self.headview.tableview reloadData];
