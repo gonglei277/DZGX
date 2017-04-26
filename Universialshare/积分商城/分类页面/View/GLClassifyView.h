@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^ReturnStringBlock)(NSArray *arr);
+typedef void (^ReturnStringBlock)(NSString *str);
 
 @interface GLClassifyView : UIView
 
 @property (weak, nonatomic) IBOutlet UIButton *ensureBtn;
 @property (weak, nonatomic) IBOutlet UIButton *resetBtn;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, copy) ReturnStringBlock block;
+
+@property (nonatomic, strong)NSArray *dataSource;
 
 @end

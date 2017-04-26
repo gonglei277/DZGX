@@ -16,6 +16,7 @@
     GLSet_MaskVeiw *_maskV;
     GLClassifyView *_contentV;
     LoadWaitView * _loadV;
+    
 }
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -30,6 +31,8 @@
 @property (nonatomic,assign)NSInteger page;
 
 @property (nonatomic,strong)NodataView *nodataV;
+
+@property (nonatomic,strong)NSMutableArray *typeArr;
 
 @end
 
@@ -167,8 +170,8 @@ static NSString *ID = @"GLClassifyCell";
     
     _contentV = [[NSBundle mainBundle] loadNibNamed:@"GLClassifyView" owner:nil options:nil].lastObject;
     __weak typeof(self)weakSelf = self;
-    _contentV.block = ^(NSArray *arr){
-        NSLog(@"arr =  == = = =  = ===%@",arr);
+    _contentV.block = ^(NSString * str){
+        NSLog(@"arr =  == = = =  = ===%@",str);
         [weakSelf dismiss];
     };
     
@@ -180,6 +183,37 @@ static NSString *ID = @"GLClassifyCell";
         _contentV.frame = CGRectMake(64, 64 , SCREEN_WIDTH - 64, SCREEN_HEIGHT - 64);
         
     }];
+    
+//请求数据
+    _loadV = [LoadWaitView addloadview:_contentV.bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"shop/getMarkGoodsType" paramDic:@{} finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        [self endRefresh];
+        NSLog(@"responseObject = %@",responseObject);
+        
+        if ([responseObject[@"code"] integerValue] == 1){
+            if ([[NSString stringWithFormat:@"%@",responseObject[@"data"]] rangeOfString:@"null"].location == NSNotFound ) {
+                for (NSDictionary *dic in responseObject[@"data"]) {
+                    [self.typeArr addObject:dic[@"catename"]];
+                }
+                _contentV.dataSource = self.typeArr;
+            }else{
+                _contentV.dataSource = @[];
+            }
+            [_contentV.collectionView reloadData];
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+        
+        [self.collectionView reloadData];
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        [self endRefresh];
+        self.nodataV.hidden = NO;
+    }];
+
     
 }
 
@@ -199,5 +233,11 @@ static NSString *ID = @"GLClassifyCell";
         _models = [NSMutableArray array];
     }
     return _models;
+}
+- (NSMutableArray *)typeArr{
+    if (!_typeArr) {
+        _typeArr = [NSMutableArray array];
+    }
+    return _typeArr;
 }
 @end

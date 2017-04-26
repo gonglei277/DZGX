@@ -28,6 +28,8 @@
     self.bottomView.layer.borderWidth = 1;
  
     self.goodsNamelabel.font = [UIFont systemFontOfSize:ADAPT(15)];
+    UIGestureRecognizer *tap = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(changeStatus)];
+    [self addGestureRecognizer:tap];
 }
 
 - (IBAction)changeClick:(id)sender {
@@ -35,6 +37,11 @@
         [_delegate changeStatus:self.index];
     }
    
+}
+- (void)changeStatus {
+    if ([_delegate respondsToSelector:@selector(changeStatus:)]) {
+        [_delegate changeStatus:self.index];
+    }
 }
 - (IBAction)changeSum:(id)sender {
     if (sender == self.addBtn) {

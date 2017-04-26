@@ -16,12 +16,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="猜你喜欢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNl-Rc-Kkk">
-                    <rect key="frame" x="14" y="11" width="54" height="20"/>
+                    <rect key="frame" x="14" y="11" width="57.5" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="kAO-vq-cnL"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53.5" id="sU2-Ch-0FA"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ydd-88-nt2">

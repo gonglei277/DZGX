@@ -66,7 +66,7 @@
             [_labelArr addObject:lab];
             [self addSubview:lab];
             lab.tag = 100+i;
-            upX+= SCREEN_WIDTH * 0.5;
+            upX+= SCREEN_WIDTH * 0.4;
         }
         
         upY +=30;
