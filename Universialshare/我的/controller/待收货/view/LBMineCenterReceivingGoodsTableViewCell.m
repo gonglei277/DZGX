@@ -24,21 +24,15 @@
 
 - (IBAction)buyevent:(UIButton *)sender {
     
-     [self.subject sendNext:sender];
+    [self.delegete BuyAgain:self.index];
 }
 
 - (IBAction)SeeEvent:(UIButton *)sender {
     
-     [self.subject sendNext:sender];
-}
-
-
-// 懒加载
-- (RACSubject *)subject {
-    if (_subject == nil) {
-        _subject = [RACSubject subject];
-    }
+    [self.delegete checklogistics:self.index];
     
-    return _subject;
 }
+
+
+
 @end
