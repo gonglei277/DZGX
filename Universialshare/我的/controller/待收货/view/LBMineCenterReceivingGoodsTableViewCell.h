@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+
+@protocol  LBMineCenterReceivingGoodsDelegete <NSObject>
+
+-(void)checklogistics:(NSInteger)index;
+-(void)BuyAgain:(NSInteger)index;
+
+@end
 
 @interface LBMineCenterReceivingGoodsTableViewCell : UITableViewCell
 
@@ -22,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *buyBt;
 @property (weak, nonatomic) IBOutlet UIButton *SeeBt;
 
-@property (strong, nonatomic) RACSubject *subject;
+@property (assign,nonatomic)id<LBMineCenterReceivingGoodsDelegete> delegete;
+
+@property(assign,nonatomic)NSInteger index;
 
 @end
