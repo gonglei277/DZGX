@@ -31,6 +31,7 @@
 #import "GLSubmitFirstController.h"
 #import "LBSaleManPersonInfoViewController.h"
 #import "LBRecommendedBusinessAuditViewController.h"
+#import "LBBelowTheLineViewController.h"
 
 @interface LBMineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
     UIImageView *_imageviewLeft;
@@ -214,11 +215,19 @@
                 break;
             case 1:
             {
-                self.hidesBottomBarWhenPushed=YES;
-                GLDirectDonationController *vc=[[GLDirectDonationController alloc]init];
-                
-                [self.navigationController pushViewController:vc animated:YES];
-                self.hidesBottomBarWhenPushed=NO;
+                if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
+                    self.hidesBottomBarWhenPushed=YES;
+                    LBBelowTheLineViewController *vc=[[LBBelowTheLineViewController alloc]init];
+                    
+                    [self.navigationController pushViewController:vc animated:YES];
+                    self.hidesBottomBarWhenPushed=NO;
+                }else{
+                    self.hidesBottomBarWhenPushed=YES;
+                    GLDirectDonationController *vc=[[GLDirectDonationController alloc]init];
+                    
+                    [self.navigationController pushViewController:vc animated:YES];
+                    self.hidesBottomBarWhenPushed=NO;
+                }
             }
                 
                 break;
@@ -456,7 +465,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 
     if (!_titlearr) {
         if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
-            _titlearr=[NSArray arrayWithObjects:@"让利",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
+            _titlearr=[NSArray arrayWithObjects:@"让利",@"线下下单",@"我的米子",@"回购",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
         }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]) {
            _titlearr=[NSArray arrayWithObjects:@"米袋",@"直捐",@"我的米子",@"回购",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
         }
