@@ -17,30 +17,40 @@
 
 - (IBAction)setupevent:(UIButton *)sender {
     
-    [self.subject sendNext:self.setupBt];
+    //[self.subject sendNext:self.setupBt];
+    
+    if (self.returnSetUpbt) {
+        self.returnSetUpbt(self.index);
+    }
     
 }
 
 - (IBAction)deleteEvent:(UIButton *)sender {
     
-    [self.subject sendNext:self.deleteBt];
+   // [self.subject sendNext:self.deleteBt];
+    if (self.returnDeletebt) {
+        self.returnDeletebt(self.index);
+    }
     
 }
 
 - (IBAction)editEvent:(UIButton *)sender {
     
-    [self.subject sendNext:self.editbt];
+    //[self.subject sendNext:self.editbt];
+    if (self.returnEditbt) {
+        self.returnEditbt(self.index);
+    }
     
     
 }
 
 // 懒加载
-- (RACSubject *)subject {
-    if (_subject == nil) {
-        _subject = [RACSubject subject];
-    }
-    
-    return _subject;
-}
+//- (RACSubject *)subject {
+//    if (_subject == nil) {
+//        _subject = [RACSubject subject];
+//    }
+//    
+//    return _subject;
+//}
 
 @end

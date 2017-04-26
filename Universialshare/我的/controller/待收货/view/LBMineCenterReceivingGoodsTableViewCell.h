@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LBWaitOrdersListModel.h"
 
 @protocol  LBMineCenterReceivingGoodsDelegete <NSObject>
 
@@ -31,5 +32,7 @@
 @property (assign,nonatomic)id<LBMineCenterReceivingGoodsDelegete> delegete;
 
 @property(assign,nonatomic)NSInteger index;
+
+@property (strong, nonatomic)LBWaitOrdersListModel *WaitOrdersModel;
 
 @end

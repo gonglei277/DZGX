@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+//#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface LBMineCentermodifyAdressTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLb;
@@ -20,6 +20,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *deleteBt;
 @property (weak, nonatomic) IBOutlet UIButton *editbt;
 
-@property (strong, nonatomic) RACSubject *subject;
+@property (assign, nonatomic)NSInteger index;
+
+//@property (strong, nonatomic) RACSubject *subject;
+
+@property (nonatomic, copy)void(^returnSetUpbt)(NSInteger index);
+@property (nonatomic, copy)void(^returnEditbt)(NSInteger index);
+@property (nonatomic, copy)void(^returnDeletebt)(NSInteger index);
 
 @end
