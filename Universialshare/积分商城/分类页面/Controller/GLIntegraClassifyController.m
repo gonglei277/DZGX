@@ -15,7 +15,7 @@
 {
     GLSet_MaskVeiw *_maskV;
     GLClassifyView *_contentV;
-    
+    LoadWaitView * _loadV;
 }
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -24,6 +24,12 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *defaultSortBtn;
 @property (weak, nonatomic) IBOutlet UIButton *integralBtn;
+
+@property (nonatomic,strong)NSMutableArray *models;
+
+@property (nonatomic,assign)NSInteger page;
+
+@property (nonatomic,strong)NodataView *nodataV;
 
 @end
 
@@ -47,10 +53,95 @@ static NSString *ID = @"GLClassifyCell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"GLClassifyCell" bundle:nil] forCellWithReuseIdentifier:ID];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"maskView_dismiss" object:nil];
     
+    __weak __typeof(self) weakSelf = self;
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [weakSelf updateData:YES];
+        
+    }];
+    
+    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf updateData:NO];
+        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
+    }];
+    
+    // 设置文字
+    [header setTitle:@"快扯我，快点" forState:MJRefreshStateIdle];
+    
+    [header setTitle:@"数据要来啦" forState:MJRefreshStatePulling];
+    
+    [header setTitle:@"服务器正在狂奔 ..." forState:MJRefreshStateRefreshing];
+    
+    
+    self.collectionView.mj_header = header;
+    self.collectionView.mj_footer = footer;
+    [self updateData:YES];
+    
 }
+//发送请求
+- (void)updateData:(BOOL)status {
+    if (status) {
+        
+        self.page = 1;
+        [self.models removeAllObjects];
+        
+    }else{
+        _page ++;
+        
+    }
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"sel_rank"] = @"1";
+    dict[@"sel_type"] = @"1";
+    dict[@"page"] = [NSString stringWithFormat:@"%ld",_page];
+
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"shop/getMarkGoods" paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        [self endRefresh];
+        NSLog(@"responseObject = %@",responseObject);
+        
+        if ([responseObject[@"code"] integerValue] == 1){
+            if ([[NSString stringWithFormat:@"%@",responseObject[@"data"]] rangeOfString:@"null"].location == NSNotFound ) {
+                
+                for (NSDictionary *dict in responseObject[@"data"]) {
+                    
+                    GLintegralGoodsModel *model = [GLintegralGoodsModel mj_objectWithKeyValues:dict];
+                    
+                    [self.models addObject:model];
+                }
+            }
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+        
+        [self.collectionView reloadData];
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        [self endRefresh];
+        self.nodataV.hidden = NO;
+    }];
+    
+}
+- (void)endRefresh {
+    [self.collectionView.mj_header endRefreshing];
+    [self.collectionView.mj_footer endRefreshing];
+}
+-(NodataView*)nodataV{
+    
+    if (!_nodataV) {
+        _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
+        _nodataV.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-114-49);
+    }
+    return _nodataV;
+    
+}
+//返回
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 - (void)dismiss {
     [UIView animateWithDuration:0.3 animations:^{
         _contentV.frame = CGRectMake(SCREEN_WIDTH, 64, 0, SCREEN_HEIGHT - 64);
@@ -80,7 +171,6 @@ static NSString *ID = @"GLClassifyCell";
         NSLog(@"arr =  == = = =  = ===%@",arr);
         [weakSelf dismiss];
     };
-//    [_contentV.ensureBtn addTarget:self action:@selector(ensureClassify) forControlEvents:UIControlEventTouchUpInside];
     
     _contentV.frame = CGRectMake(SCREEN_WIDTH, 64, 0, SCREEN_HEIGHT - 64);
     [_maskV showViewWithContentView:_contentV];
@@ -95,11 +185,19 @@ static NSString *ID = @"GLClassifyCell";
 
 #pragma UICollectionDelegate UICollectionDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 6;
+    return self.models.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     GLClassifyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
+    cell.model = self.models[indexPath.row];
     return cell;
+}
+
+- (NSMutableArray *)models{
+    if (!_models) {
+        _models = [NSMutableArray array];
+    }
+    return _models;
 }
 @end

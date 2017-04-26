@@ -454,6 +454,18 @@
 		4AA0D5D11EAF1EF700CB8F77 /* GLMallHotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5D01EAF1EF700CB8F77 /* GLMallHotModel.m */; };
 		4AA0D5D41EAF1F6600CB8F77 /* GLMall_InterestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5D31EAF1F6600CB8F77 /* GLMall_InterestModel.m */; };
 		4AA0D5D61EAF3B3E00CB8F77 /* GLClassifyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA0D5D51EAF3B3E00CB8F77 /* GLClassifyHeaderView.xib */; };
+		4AA0D5EF1EAF587D00CB8F77 /* shop_area.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4AA0D5DC1EAF587D00CB8F77 /* shop_area.sqlite */; };
+		4AA0D5F01EAF587D00CB8F77 /* JFButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5DE1EAF587D00CB8F77 /* JFButton.m */; };
+		4AA0D5F11EAF587D00CB8F77 /* JFCityCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5E01EAF587D00CB8F77 /* JFCityCollectionFlowLayout.m */; };
+		4AA0D5F21EAF587D00CB8F77 /* JFCityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5E21EAF587D00CB8F77 /* JFCityCollectionViewCell.m */; };
+		4AA0D5F31EAF587D00CB8F77 /* JFCityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5E41EAF587D00CB8F77 /* JFCityHeaderView.m */; };
+		4AA0D5F41EAF587D00CB8F77 /* JFCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5E61EAF587D00CB8F77 /* JFCityTableViewCell.m */; };
+		4AA0D5F51EAF587D00CB8F77 /* JFCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5E81EAF587D00CB8F77 /* JFCityViewController.m */; };
+		4AA0D5F61EAF587D00CB8F77 /* JFSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5EA1EAF587D00CB8F77 /* JFSearchView.m */; };
+		4AA0D5F71EAF587D00CB8F77 /* JFLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5ED1EAF587D00CB8F77 /* JFLocation.m */; };
+		4AA0D5FB1EAF5AF400CB8F77 /* JFAreaDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D5FA1EAF5AF400CB8F77 /* JFAreaDataManager.m */; };
+		4AA0D5FD1EAF675300CB8F77 /* Integral_Mall.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AA0D5FC1EAF675300CB8F77 /* Integral_Mall.xcassets */; };
+		4AA0D6011EAF693D00CB8F77 /* GLintegralGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D6001EAF693D00CB8F77 /* GLintegralGoodsModel.m */; };
 		4F9D6A29F2E5B95EBA14BE59 /* Pods_Universialshare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */; };
 		F9061FCD1E83C4720080E9D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCC1E83C4720080E9D9 /* main.m */; };
 		F9061FD01E83C4720080E9D9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCF1E83C4720080E9D9 /* AppDelegate.mm */; };
@@ -1593,6 +1605,28 @@
 		4AA0D5D21EAF1F6600CB8F77 /* GLMall_InterestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMall_InterestModel.h; sourceTree = "<group>"; };
 		4AA0D5D31EAF1F6600CB8F77 /* GLMall_InterestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMall_InterestModel.m; sourceTree = "<group>"; };
 		4AA0D5D51EAF3B3E00CB8F77 /* GLClassifyHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLClassifyHeaderView.xib; sourceTree = "<group>"; };
+		4AA0D5DC1EAF587D00CB8F77 /* shop_area.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = shop_area.sqlite; sourceTree = "<group>"; };
+		4AA0D5DD1EAF587D00CB8F77 /* JFButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFButton.h; sourceTree = "<group>"; };
+		4AA0D5DE1EAF587D00CB8F77 /* JFButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFButton.m; sourceTree = "<group>"; };
+		4AA0D5DF1EAF587D00CB8F77 /* JFCityCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionFlowLayout.h; sourceTree = "<group>"; };
+		4AA0D5E01EAF587D00CB8F77 /* JFCityCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityCollectionFlowLayout.m; sourceTree = "<group>"; };
+		4AA0D5E11EAF587D00CB8F77 /* JFCityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionViewCell.h; sourceTree = "<group>"; };
+		4AA0D5E21EAF587D00CB8F77 /* JFCityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityCollectionViewCell.m; sourceTree = "<group>"; };
+		4AA0D5E31EAF587D00CB8F77 /* JFCityHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityHeaderView.h; sourceTree = "<group>"; };
+		4AA0D5E41EAF587D00CB8F77 /* JFCityHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityHeaderView.m; sourceTree = "<group>"; };
+		4AA0D5E51EAF587D00CB8F77 /* JFCityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityTableViewCell.h; sourceTree = "<group>"; };
+		4AA0D5E61EAF587D00CB8F77 /* JFCityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityTableViewCell.m; sourceTree = "<group>"; };
+		4AA0D5E71EAF587D00CB8F77 /* JFCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityViewController.h; sourceTree = "<group>"; };
+		4AA0D5E81EAF587D00CB8F77 /* JFCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityViewController.m; sourceTree = "<group>"; };
+		4AA0D5E91EAF587D00CB8F77 /* JFSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSearchView.h; sourceTree = "<group>"; };
+		4AA0D5EA1EAF587D00CB8F77 /* JFSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSearchView.m; sourceTree = "<group>"; };
+		4AA0D5EC1EAF587D00CB8F77 /* JFLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLocation.h; sourceTree = "<group>"; };
+		4AA0D5ED1EAF587D00CB8F77 /* JFLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLocation.m; sourceTree = "<group>"; };
+		4AA0D5F91EAF5AF400CB8F77 /* JFAreaDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAreaDataManager.h; sourceTree = "<group>"; };
+		4AA0D5FA1EAF5AF400CB8F77 /* JFAreaDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAreaDataManager.m; sourceTree = "<group>"; };
+		4AA0D5FC1EAF675300CB8F77 /* Integral_Mall.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Integral_Mall.xcassets; sourceTree = "<group>"; };
+		4AA0D5FF1EAF693D00CB8F77 /* GLintegralGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLintegralGoodsModel.h; sourceTree = "<group>"; };
+		4AA0D6001EAF693D00CB8F77 /* GLintegralGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLintegralGoodsModel.m; sourceTree = "<group>"; };
 		5F26EB2407F06AA6E9CA0664 /* Pods-Universialshare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Universialshare.release.xcconfig"; path = "Pods/Target Support Files/Pods-Universialshare/Pods-Universialshare.release.xcconfig"; sourceTree = "<group>"; };
 		C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Universialshare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9061FC81E83C4720080E9D9 /* Universialshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Universialshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2754,6 +2788,7 @@
 		4A460D9B1E9CC6350045824F /* 三方库 */ = {
 			isa = PBXGroup;
 			children = (
+				4AA0D5D71EAF587D00CB8F77 /* JFCityViewController */,
 				F9126EEC1EA059A9004785EA /* mapapi.bundle */,
 				4A460D9C1E9CC6350045824F /* CodeScan.bundle */,
 				4A460DA91E9CC6350045824F /* LBXAlertAction */,
@@ -3697,6 +3732,7 @@
 			isa = PBXGroup;
 			children = (
 				4AA0D5AE1EAEEC8E00CB8F77 /* Controller */,
+				4AA0D5FE1EAF691500CB8F77 /* Model */,
 				4AA0D5891EAEEC0600CB8F77 /* View */,
 			);
 			path = "分类页面";
@@ -3774,6 +3810,65 @@
 				4AA0D5D01EAF1EF700CB8F77 /* GLMallHotModel.m */,
 				4AA0D5D21EAF1F6600CB8F77 /* GLMall_InterestModel.h */,
 				4AA0D5D31EAF1F6600CB8F77 /* GLMall_InterestModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4AA0D5D71EAF587D00CB8F77 /* JFCityViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4AA0D5F81EAF5AF400CB8F77 /* AreaDataManager */,
+				4AA0D5DB1EAF587D00CB8F77 /* AreaDB */,
+				4AA0D5DD1EAF587D00CB8F77 /* JFButton.h */,
+				4AA0D5DE1EAF587D00CB8F77 /* JFButton.m */,
+				4AA0D5DF1EAF587D00CB8F77 /* JFCityCollectionFlowLayout.h */,
+				4AA0D5E01EAF587D00CB8F77 /* JFCityCollectionFlowLayout.m */,
+				4AA0D5E11EAF587D00CB8F77 /* JFCityCollectionViewCell.h */,
+				4AA0D5E21EAF587D00CB8F77 /* JFCityCollectionViewCell.m */,
+				4AA0D5E31EAF587D00CB8F77 /* JFCityHeaderView.h */,
+				4AA0D5E41EAF587D00CB8F77 /* JFCityHeaderView.m */,
+				4AA0D5E51EAF587D00CB8F77 /* JFCityTableViewCell.h */,
+				4AA0D5E61EAF587D00CB8F77 /* JFCityTableViewCell.m */,
+				4AA0D5E71EAF587D00CB8F77 /* JFCityViewController.h */,
+				4AA0D5E81EAF587D00CB8F77 /* JFCityViewController.m */,
+				4AA0D5E91EAF587D00CB8F77 /* JFSearchView.h */,
+				4AA0D5EA1EAF587D00CB8F77 /* JFSearchView.m */,
+				4AA0D5EB1EAF587D00CB8F77 /* Location */,
+			);
+			path = JFCityViewController;
+			sourceTree = "<group>";
+		};
+		4AA0D5DB1EAF587D00CB8F77 /* AreaDB */ = {
+			isa = PBXGroup;
+			children = (
+				4AA0D5DC1EAF587D00CB8F77 /* shop_area.sqlite */,
+			);
+			path = AreaDB;
+			sourceTree = "<group>";
+		};
+		4AA0D5EB1EAF587D00CB8F77 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				4AA0D5EC1EAF587D00CB8F77 /* JFLocation.h */,
+				4AA0D5ED1EAF587D00CB8F77 /* JFLocation.m */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		4AA0D5F81EAF5AF400CB8F77 /* AreaDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				4AA0D5F91EAF5AF400CB8F77 /* JFAreaDataManager.h */,
+				4AA0D5FA1EAF5AF400CB8F77 /* JFAreaDataManager.m */,
+			);
+			path = AreaDataManager;
+			sourceTree = "<group>";
+		};
+		4AA0D5FE1EAF691500CB8F77 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4AA0D5FF1EAF693D00CB8F77 /* GLintegralGoodsModel.h */,
+				4AA0D6001EAF693D00CB8F77 /* GLintegralGoodsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3923,6 +4018,7 @@
 				F93F84D11E9F02C500F76E0B /* loadWait.xcassets */,
 				F958C0811EA4A3F9003C9CFB /* personCenter.xcassets */,
 				F9520A121EADD74D00B4D665 /* MerchantSubmission.xcassets */,
+				4AA0D5FC1EAF675300CB8F77 /* Integral_Mall.xcassets */,
 			);
 			path = "图片资源";
 			sourceTree = "<group>";
@@ -5050,6 +5146,7 @@
 				F9061FD81E83C4730080E9D9 /* Assets.xcassets in Resources */,
 				F92309391E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeDetailOneTableViewCell.xib in Resources */,
 				4AA0D5CA1EAEF9DB00CB8F77 /* GLClassifyCell.xib in Resources */,
+				4AA0D5EF1EAF587D00CB8F77 /* shop_area.sqlite in Resources */,
 				F97644DF1EA608EC00AFA22B /* LBImprovePersonalDataViewController.xib in Resources */,
 				F92309231E9B8BFF00ECDC94 /* LBMineCenterRechargeBankCardTableViewCell.xib in Resources */,
 				F94D6E241E9DFB2700412E64 /* LBHomeLoginFortgetSecretViewController.xib in Resources */,
@@ -5198,6 +5295,7 @@
 				F94D31E51EAF716D00309029 /* LBMineCenterReceivingGoodsTableViewCell.xib in Resources */,
 				4A4610331E9CC6360045824F /* iOS-social-releasenote.html in Resources */,
 				F94D6E1E1E9DC15300412E64 /* loginRegister.xcassets in Resources */,
+				4AA0D5FD1EAF675300CB8F77 /* Integral_Mall.xcassets in Resources */,
 				F923095E1E9B8BFF00ECDC94 /* LBMyOrderListTableViewCell.xib in Resources */,
 				4A4608F21E9C9E6D0045824F /* GLRankingView.xib in Resources */,
 				F961AA1C1E9CDD3400275F52 /* GLRegisterController.xib in Resources */,
@@ -5383,6 +5481,7 @@
 				4A4610BE1E9CC6370045824F /* ZXRSSExpandedDecodedObject.m in Sources */,
 				4A46105E1E9CC6360045824F /* ZXSMSMMSResultParser.m in Sources */,
 				4A8572EC1E977E7200A7A51E /* GLHourseOptionModel.m in Sources */,
+				4AA0D5FB1EAF5AF400CB8F77 /* JFAreaDataManager.m in Sources */,
 				4A4610621E9CC6360045824F /* ZXTelParsedResult.m in Sources */,
 				4A4610481E9CC6360045824F /* ZXAztecReader.m in Sources */,
 				4A0023F71E84AD6700B2A9FE /* UIButton+SetEdgeInsets.m in Sources */,
@@ -5427,6 +5526,7 @@
 				4A4609DA1E9CB78E0045824F /* GLRecommendRcordCell.m in Sources */,
 				4A4610451E9CC6360045824F /* ZXAztecState.m in Sources */,
 				F92309771E9B8BFF00ECDC94 /* LBMineCentermodifyAdressViewController.m in Sources */,
+				4AA0D5F71EAF587D00CB8F77 /* JFLocation.m in Sources */,
 				4AA0D5A61EAEEC0600CB8F77 /* GLIntegralMallTopCell.m in Sources */,
 				4A4610831E9CC6360045824F /* ZXHybridBinarizer.m in Sources */,
 				4A4610C21E9CC6370045824F /* ZXRSSExpandedPair.m in Sources */,
@@ -5443,7 +5543,9 @@
 				4A4610EB1E9CC6370045824F /* ZXPDF417Codeword.m in Sources */,
 				F92309611E9B8BFF00ECDC94 /* XBScrollPageController.m in Sources */,
 				4A4610971E9CC6360045824F /* ZXDataMatrixDecoder.m in Sources */,
+				4AA0D5F31EAF587D00CB8F77 /* JFCityHeaderView.m in Sources */,
 				F92309891E9B8BFF00ECDC94 /* LBMineViewController.m in Sources */,
+				4AA0D5F51EAF587D00CB8F77 /* JFCityViewController.m in Sources */,
 				F92309921E9B8BFF00ECDC94 /* LBMineCenterMessageTableViewCell.m in Sources */,
 				F923097F1E9B8BFF00ECDC94 /* LBMineCenterSafeSecondSecretViewController.m in Sources */,
 				4A4610B41E9CC6370045824F /* ZXAI013x0xDecoder.m in Sources */,
@@ -5474,6 +5576,7 @@
 				4A4610511E9CC6360045824F /* ZXEmailAddressParsedResult.m in Sources */,
 				4A46104A1E9CC6360045824F /* ZXAbstractDoCoMoResultParser.m in Sources */,
 				4A4610B61E9CC6370045824F /* ZXAI01decoder.m in Sources */,
+				4AA0D5F01EAF587D00CB8F77 /* JFButton.m in Sources */,
 				4A4609E81E9CB78E0045824F /* GLRecommendBeansController.m in Sources */,
 				4A4611151E9CC6370045824F /* ZXQRCodeMultiReader.m in Sources */,
 				F923091B1E9B8BFF00ECDC94 /* HWOptionButton.m in Sources */,
@@ -5589,6 +5692,7 @@
 				F961AA321E9CE1D200275F52 /* LBMoreOperateView.m in Sources */,
 				4A4610D21E9CC6370045824F /* ZXEAN13Reader.m in Sources */,
 				4A46107D1E9CC6360045824F /* ZXCharacterSetECI.m in Sources */,
+				4AA0D6011EAF693D00CB8F77 /* GLintegralGoodsModel.m in Sources */,
 				4A46100E1E9CC6360045824F /* UIAlertView+LBXAlertAction.m in Sources */,
 				4A4610D51E9CC6370045824F /* ZXEAN8Writer.m in Sources */,
 				F966B3EC1EAC7E97007260FC /* LBMySalesmanListDeatilViewController.m in Sources */,
@@ -5596,6 +5700,7 @@
 				F923098C1E9B8BFF00ECDC94 /* LBMineCenterHotPickModel.m in Sources */,
 				4A4610B51E9CC6370045824F /* ZXAI01AndOtherAIs.m in Sources */,
 				F923093A1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeDetailTableViewCell.m in Sources */,
+				4AA0D5F41EAF587D00CB8F77 /* JFCityTableViewCell.m in Sources */,
 				4A4611031E9CC6370045824F /* ZXQRCodeDecoderMetaData.m in Sources */,
 				F94A33F31EAA01A600222A86 /* LBMineCenterPayPagesViewController.m in Sources */,
 				4A4610901E9CC6360045824F /* ZXPlanarYUVLuminanceSource.m in Sources */,
@@ -5702,8 +5807,10 @@
 				4A460A5A1E9CC0310045824F /* MyQRViewController.m in Sources */,
 				F923096A1E9B8BFF00ECDC94 /* LBMyOrderCheckUnsubscribeRecordViewController.m in Sources */,
 				4A0D97921E9729C100A26B84 /* GLHotCell.m in Sources */,
+				4AA0D5F21EAF587D00CB8F77 /* JFCityCollectionViewCell.m in Sources */,
 				4A4610491E9CC6360045824F /* ZXAztecWriter.m in Sources */,
 				F961A9D61E9C75AF00275F52 /* predicateModel.m in Sources */,
+				4AA0D5F11EAF587D00CB8F77 /* JFCityCollectionFlowLayout.m in Sources */,
 				F923092C1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeDetailViewController.m in Sources */,
 				4A46104C1E9CC6360045824F /* ZXAddressBookDoCoMoResultParser.m in Sources */,
 				F92309651E9B8BFF00ECDC94 /* XBConst.m in Sources */,
@@ -5754,6 +5861,7 @@
 				4A0D97831E9729C100A26B84 /* GLOrderDetailController.m in Sources */,
 				F966B3F71EAC8C8A007260FC /* LBShowSaleManAndBusinessViewController.m in Sources */,
 				F923092A1E9B8BFF00ECDC94 /* LBMineCenterBalanceRechargeViewController.m in Sources */,
+				4AA0D5F61EAF587D00CB8F77 /* JFSearchView.m in Sources */,
 				F966B3E21EAC7E38007260FC /* LBMyBusinessListDetailViewController.m in Sources */,
 				4A4610BF1E9CC6370045824F /* ZXRSSExpandedFieldParser.m in Sources */,
 				4A46108C1E9CC6360045824F /* ZXEncodeHints.m in Sources */,

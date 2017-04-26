@@ -149,7 +149,7 @@
                         <constraint firstItem="gLO-NB-3hz" firstAttribute="centerY" secondItem="txo-Cb-zT0" secondAttribute="centerY" id="tqG-fT-XRe"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="799-fu-slj">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="799-fu-slj">
                     <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="0.51149867957746475" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rCD-8s-aNx">

@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic, strong)NSMutableArray *chooseArr;
+@property (nonatomic, strong)NSMutableArray *cellArr;
 
 @end
 
@@ -50,7 +51,15 @@ static NSString *ID = @"GLClassifyRecommendCell";
     
 }
 - (IBAction)resetClick:(id)sender {
-    
+    [self.chooseArr removeAllObjects];
+    for (GLClassifyRecommendCell *cell in self.cellArr) {
+        
+        cell.status = NO;
+        
+        cell.backgroundColor = YYSRGBColor(235, 235, 235, 1);
+        [cell.titleLabel setTextColor:[UIColor darkGrayColor]];
+        cell.layer.borderWidth = 0;
+    }
 }
 
 #pragma  UICollectionDelegate UICollectionDataSource
@@ -64,6 +73,7 @@ static NSString *ID = @"GLClassifyRecommendCell";
     
     GLClassifyRecommendCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     cell.titleLabel.text = _dataSource[indexPath.row];
+    [self.cellArr addObject:cell];
     return  cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,5 +122,11 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         _chooseArr = [NSMutableArray array];
     }
     return _chooseArr;
+}
+- (NSMutableArray *)cellArr{
+    if (!_cellArr) {
+        _cellArr = [NSMutableArray array];
+    }
+    return _cellArr;
 }
 @end

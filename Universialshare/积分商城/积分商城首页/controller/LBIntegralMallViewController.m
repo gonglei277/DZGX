@@ -17,7 +17,13 @@
 
 #import "GLMallHotModel.h"
 #import "GLMall_InterestModel.h"
-@interface LBIntegralMallViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
+
+//城市定位 选择
+#import "JFCityViewController.h"
+#import "JFLocation.h"
+#import "JFAreaDataManager.h"
+
+@interface LBIntegralMallViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,JFLocationDelegate>
 {
     UIImageView *_imageviewLeft;
     UIImageView *_imageviewRight;
@@ -25,10 +31,17 @@
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)SDCycleScrollView *cycleScrollView;
+@property (weak, nonatomic) IBOutlet UIButton *cityBtn;
 
 @property (nonatomic, strong)NSMutableArray *hotModels;
 @property (nonatomic, strong)NSMutableArray *interestModels;
 @property (weak, nonatomic) IBOutlet UIView *searchView;
+
+//城市定位
+/** 城市定位管理器*/
+@property (nonatomic, strong) JFLocation *locationManager;
+/** 城市数据管理器*/
+@property (nonatomic, strong) JFAreaDataManager *manager;
 
 @end
 
@@ -49,9 +62,9 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
                                                           delegate:self
                                                   placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
     
-    _cycleScrollView.localizationImageNamesGroup = @[@"XRPlaceholder",
-                                                     @"XRPlaceholder",
-                                                     @"XRPlaceholder"];
+    _cycleScrollView.localizationImageNamesGroup = @[@"banner01",
+                                                     @"banner02",
+                                                     @"banner03"];
     
     _cycleScrollView.autoScrollTimeInterval = 2;// 自动滚动时间间隔
     _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;// 翻页 右下角
@@ -65,6 +78,9 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
     self.searchView.clipsToBounds = YES;
     
     [self postRequest];
+    
+    self.locationManager = [[JFLocation alloc] init];
+    _locationManager.delegate = self;
 }
 - (void)postRequest{
 
@@ -102,11 +118,73 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 
 }
 - (void)classifyClick:(UITapGestureRecognizer *)tap {
+   
     self.hidesBottomBarWhenPushed = YES;
     GLIntegraClassifyController *classifyVC = [[GLIntegraClassifyController alloc] init];
     [self.navigationController pushViewController:classifyVC animated:YES];
     self.hidesBottomBarWhenPushed = NO;
 }
+
+//城市选择
+- (IBAction)cityChoose:(id)sender {
+    
+    JFCityViewController *cityViewController = [[JFCityViewController alloc] init];
+    cityViewController.title = @"城市";
+    __weak typeof(self) weakSelf = self;
+    [cityViewController choseCityBlock:^(NSString *cityName) {
+        [weakSelf.cityBtn setTitle:cityName forState:UIControlStateNormal];
+    }];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:cityViewController animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cityViewController];
+//    [self presentViewController:navigationController animated:YES completion:nil];
+
+}
+//- (JFAreaDataManager *)manager {
+//    if (!_manager) {
+//        _manager = [JFAreaDataManager shareManager];
+//        [_manager areaSqliteDBData];
+//    }
+//    return _manager;
+//}
+//#pragma mark --- JFLocationDelegate
+//
+////定位中...
+//- (void)locating {
+////    NSLog(@"定位中...");
+//}
+//
+////定位成功
+//- (void)currentLocation:(NSDictionary *)locationDictionary {
+//    NSString *city = [locationDictionary valueForKey:@"City"];
+//    NSLog(@"locationDictionary = %@",locationDictionary);
+//    if (![_cityBtn.titleLabel.text isEqualToString:city]) {
+//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"您定位到%@，确定切换城市吗？",city] preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+//        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            [_cityBtn setTitle:city forState:UIControlStateNormal];
+//            [KCURRENTCITYINFODEFAULTS setObject:city forKey:@"locationCity"];
+//            [KCURRENTCITYINFODEFAULTS setObject:city forKey:@"currentCity"];
+//            [self.manager cityNumberWithCity:city cityNumber:^(NSString *cityNumber) {
+//                [KCURRENTCITYINFODEFAULTS setObject:cityNumber forKey:@"cityNumber"];
+//            }];
+//        }];
+//        [alertController addAction:cancelAction];
+//        [alertController addAction:okAction];
+//        [self presentViewController:alertController animated:YES completion:nil];
+//    }
+//}
+//
+///// 拒绝定位
+//- (void)refuseToUsePositioningSystem:(NSString *)message {
+////    NSLog(@"%@",message);
+//}
+//
+///// 定位失败
+//- (void)locateFailure:(NSString *)message {
+////    NSLog(@"%@",message);
+//}
 /** 点击图片回调 */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     
@@ -150,12 +228,15 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
         cell.models = self.hotModels;
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
-        UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
-        UITapGestureRecognizer *tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
-        [cell.firstView addGestureRecognizer:tap];
-        [cell.secondView addGestureRecognizer:tap2];
-        [cell.thirdView addGestureRecognizer:tap3];
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
+//        UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
+//        UITapGestureRecognizer *tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
+//        [cell.firstView addGestureRecognizer:tap];
+//        [cell.secondView addGestureRecognizer:tap2];
+//        [cell.thirdView addGestureRecognizer:tap3];
+        
+        UITapGestureRecognizer *tap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
+        [cell.moreView addGestureRecognizer:tap4];
         return cell;
     }else{
         GLIntegralGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:goodsCellID];

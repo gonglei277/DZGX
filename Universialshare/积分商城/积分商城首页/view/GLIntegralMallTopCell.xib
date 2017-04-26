@@ -223,6 +223,7 @@
                 <outlet property="jifenLabel" destination="rOZ-Vb-7k1" id="eIz-SO-r7E"/>
                 <outlet property="jifenLabel2" destination="45h-Yb-PCA" id="2To-Cn-DAV"/>
                 <outlet property="jifenLabel3" destination="HlR-Ig-inD" id="fJN-uZ-EM6"/>
+                <outlet property="moreView" destination="Rvs-Dv-90n" id="H5h-om-x7O"/>
                 <outlet property="secondView" destination="HHW-c9-yKl" id="R1N-M5-WHp"/>
                 <outlet property="thirdView" destination="BPh-TH-rp3" id="p0R-Rw-Tq6"/>
                 <outlet property="titleLabel" destination="uxL-5R-mJg" id="TvL-6m-bpE"/>

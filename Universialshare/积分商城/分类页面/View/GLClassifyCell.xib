@@ -55,6 +55,11 @@
                 <constraint firstItem="Yll-ig-TFb" firstAttribute="top" secondItem="cGC-GI-VmR" secondAttribute="bottom" constant="10" id="vG0-G7-Sen"/>
             </constraints>
             <size key="customSize" width="155" height="241"/>
+            <connections>
+                <outlet property="imageV" destination="OSw-Sz-rWm" id="J55-dN-3Oh"/>
+                <outlet property="nameLabel" destination="cGC-GI-VmR" id="qGq-Qi-dgV"/>
+                <outlet property="priceLabel" destination="Yll-ig-TFb" id="Afp-EF-rMy"/>
+            </connections>
             <point key="canvasLocation" x="-63.5" y="1.5"/>
         </collectionViewCell>
     </objects>

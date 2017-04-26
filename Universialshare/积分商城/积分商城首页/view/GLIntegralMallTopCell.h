@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIView *secondView;
 @property (weak, nonatomic) IBOutlet UIView *thirdView;
 
-
+@property (weak, nonatomic) IBOutlet UIView *moreView;
 @property (nonatomic, strong)NSArray *models;
 
 @end
