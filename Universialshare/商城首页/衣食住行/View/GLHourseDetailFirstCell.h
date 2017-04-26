@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLGoodsDetailModel.h"
 
 @interface GLHourseDetailFirstCell : UITableViewCell
+
+@property (nonatomic, strong)GLGoodsDetailModel *model;
 
 @end

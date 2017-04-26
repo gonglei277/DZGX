@@ -22,10 +22,13 @@
 #import "GLHourseOptionModel.h"
 #import "GLShoppingCartController.h"
 
+#import "GLGoodsDetailModel.h"
+
 @interface GLHourseDetailController ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,GLTwoButtonCellDelegate,GLHourseChangeNumCellDelegate>
 {
     NSMutableArray *_visableCells;
     int _status;
+    LoadWaitView * _loadV;
 }
 
 @property (nonatomic, strong)SDCycleScrollView *cycleScrollView;
@@ -35,6 +38,8 @@
 @property (nonatomic, strong)NSMutableArray *cellArr;
 
 @property (nonatomic, strong)NSMutableArray *optionModels;
+
+@property (nonatomic, strong)GLGoodsDetailModel *model;
 
 @end
 static NSString *firstCell = @"GLHourseDetailFirstCell";
@@ -103,6 +108,28 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
 
     }
     
+    [self postRequest];
+    
+}
+- (void)postRequest{
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"shop/goodsDetail" paramDic:@{@"goods_id":@"1"} finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+//        NSLog(@"responseObject = %@",responseObject);
+        if ([responseObject[@"code"] integerValue] == 1){
+           self.model = [GLGoodsDetailModel mj_objectWithKeyValues:responseObject[@"data"]];
+            
+        }
+        
+        [self.tableView reloadData];
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        
+    }];
+    
 }
 - (IBAction)addToCart:(id)sender {
     GLShoppingCartController *cartVC = [[GLShoppingCartController alloc] init];
@@ -141,9 +168,11 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (_status == 1) {
         
-        return self.dataSource.count + 2;
+//        return self.dataSource.count + 2;
+        return 2;
     }else{
-        return self.dataSource.count;
+//        return self.dataSource.count;
+        return 2;
     }
 }
 - (NSMutableArray *)optionModels{
@@ -175,66 +204,69 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
     if (indexPath.row == 0) {
        
         GLHourseDetailFirstCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"GLHourseDetailFirstCell"];
+        cell.model = self.model;
         GLcell = cell;
         
-    }else if(indexPath.row == 1){
-
+//    }else if(indexPath.row == 1){
+//
+//        
+//        GLHourseOptionCell *cell = [tableView dequeueReusableCellWithIdentifier:optionCell];
+//        
+//        cell.model= self.optionModels[0];
+//        
+//       GLcell = cell;
+//        
+//    }else if(indexPath.row == 2){
+//      
+//        GLHourseOptionCell *cell = [tableView dequeueReusableCellWithIdentifier:optionCell];
+//        
+//        cell.model = self.optionModels[1];
+//        
+//        GLcell = cell;
+//        
+//    }else if(indexPath.row == 3){
+//        
+//        GLHourseChangeNumCell *cell = [self.tableView dequeueReusableCellWithIdentifier:changeNumCell];
+//        cell.delegate = self;
+//        GLcell = cell;
         
-        GLHourseOptionCell *cell = [tableView dequeueReusableCellWithIdentifier:optionCell];
-        
-        cell.model= self.optionModels[0];
-        
-       GLcell = cell;
-        
-    }else if(indexPath.row == 2){
-      
-        GLHourseOptionCell *cell = [tableView dequeueReusableCellWithIdentifier:optionCell];
-        
-        cell.model = self.optionModels[1];
-        
-        GLcell = cell;
-        
-    }else if(indexPath.row == 3){
-        
-        GLHourseChangeNumCell *cell = [self.tableView dequeueReusableCellWithIdentifier:changeNumCell];
-        cell.delegate = self;
-        GLcell = cell;
-        
-    }else if(indexPath.row == 4){
-        NSArray * arr = @[@"厂商:",@"级别:",@"级别:",@"级别",@"级别",@"级别",@"级别",@"级别",@"级别"];
+//    }else if(indexPath.row == 4){
+    }else{
+//        NSArray * arr = @[@"厂商:",@"级别:",@"级别:",@"级别",@"级别",@"级别",@"级别",@"级别",@"级别"];
+        NSArray *arr = self.model.attr;
         GLHourseDetailThirdCell *cell = [[GLHourseDetailThirdCell alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0) andDatasource:arr :@"商品参数" ];
         GLcell = cell;
         
-    }else if(indexPath.row == 5){
-        
-        NSArray * arr = @[@"厂商:",@"级别:",@"级别:",@"级别"];
-        GLHourseDetailThirdCell *cell = [[GLHourseDetailThirdCell alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0) andDatasource:arr :@"安全参数" ];
-        GLcell = cell;
-        
-    }else if(indexPath.row == 6){
-
-        GLTwoButtonCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"GLTwoButtonCell"];
-        cell.delegate = self;
-       GLcell = cell;
-        
-    }else if(indexPath.row == 7 ||indexPath.row == 8||indexPath.row == 9){
-        
-        if (self.dataSource[indexPath.row] == nil) {
-            return nil;
-        }
-        
-        if (_status == 0) {
-            
-            GLcell = [self.tableView dequeueReusableCellWithIdentifier:@"GLEvaluateCell"];
-        }else{
-            
-            GLcell = [self.tableView dequeueReusableCellWithIdentifier:@"GLImage_textDetailCell"];
-        }
-
-    }else{
-        GLImage_textDetailCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"GLImage_textDetailCell"];
-        
-       GLcell = cell;
+//    }else if(indexPath.row == 5){
+//        
+//        NSArray * arr = @[@"厂商:",@"级别:",@"级别:",@"级别"];
+//        GLHourseDetailThirdCell *cell = [[GLHourseDetailThirdCell alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0) andDatasource:arr :@"安全参数" ];
+//        GLcell = cell;
+//        
+//    }else if(indexPath.row == 6){
+//
+//        GLTwoButtonCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"GLTwoButtonCell"];
+//        cell.delegate = self;
+//       GLcell = cell;
+//        
+//    }else if(indexPath.row == 7 ||indexPath.row == 8||indexPath.row == 9){
+//        
+//        if (self.dataSource[indexPath.row] == nil) {
+//            return nil;
+//        }
+//        
+//        if (_status == 0) {
+//            
+//            GLcell = [self.tableView dequeueReusableCellWithIdentifier:@"GLEvaluateCell"];
+//        }else{
+//            
+//            GLcell = [self.tableView dequeueReusableCellWithIdentifier:@"GLImage_textDetailCell"];
+//        }
+//
+//    }else{
+//        GLImage_textDetailCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"GLImage_textDetailCell"];
+//        
+//       GLcell = cell;
     }
     
     [self.cellArr addObject:GLcell];
@@ -247,8 +279,10 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
         
     }else if (indexPath.row ==1 ){
    
-        NSArray *arr = [[NSArray alloc] initWithObjects:@"蓝色",@"红色",@"湖蓝色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",nil];
-         return [self jisuanjincou:arr];
+//        NSArray *arr = [[NSArray alloc] initWithObjects:@"蓝色",@"红色",@"湖蓝色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",nil];
+        NSArray *arr = self.model.attr;
+         return [self jisuangaodu:arr];
+//        return 300;
         
     }else if (indexPath.row ==2 ){
 
@@ -293,7 +327,8 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
             upY += 30;
         }
         
-        upX+= SCREEN_WIDTH * 0.5;
+        upX+= SCREEN_WIDTH * 0.4;
+    
     }
     return upY + 30;
 }

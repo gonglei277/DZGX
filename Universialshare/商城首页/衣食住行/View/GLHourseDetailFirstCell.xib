@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="327" height="145"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="327" height="145"/>
+                <rect key="frame" x="0.0" y="0.0" width="327" height="144"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 46万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQE-JS-5vZ">
@@ -104,6 +104,12 @@
                     <constraint firstItem="ulE-7C-Eie" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="wpo-w9-qGG"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="fanliLabel" destination="qpr-ck-eQA" id="gjL-11-kex"/>
+                <outlet property="monthSellLabel" destination="IlG-CU-RpX" id="n58-aY-f01"/>
+                <outlet property="priceLabel" destination="AQE-JS-5vZ" id="Jlh-md-Kny"/>
+                <outlet property="yunfeiLabel" destination="o4U-cF-sRj" id="j3D-Yb-5cB"/>
+            </connections>
             <point key="canvasLocation" x="37.5" y="104.5"/>
         </tableViewCell>
     </objects>

@@ -39,6 +39,9 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="titleLabel" destination="8ku-b4-UoB" id="Uap-Fu-W68"/>
+            </connections>
             <point key="canvasLocation" x="9" y="-185"/>
         </view>
     </objects>

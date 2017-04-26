@@ -19,11 +19,10 @@
 #import "GLMall_InterestModel.h"
 
 //城市定位 选择
-#import "JFCityViewController.h"
-#import "JFLocation.h"
-#import "JFAreaDataManager.h"
 
-@interface LBIntegralMallViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,JFLocationDelegate>
+#import "GLCityChooseController.h"
+
+@interface LBIntegralMallViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 {
     UIImageView *_imageviewLeft;
     UIImageView *_imageviewRight;
@@ -38,10 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIView *searchView;
 
 //城市定位
-/** 城市定位管理器*/
-@property (nonatomic, strong) JFLocation *locationManager;
-/** 城市数据管理器*/
-@property (nonatomic, strong) JFAreaDataManager *manager;
+
 
 @end
 
@@ -58,7 +54,7 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 //    }
     self.view.backgroundColor=[UIColor purpleColor];
     
-    _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 160)
+    _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 160*autoSizeScaleY)
                                                           delegate:self
                                                   placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
     
@@ -78,9 +74,7 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
     self.searchView.clipsToBounds = YES;
     
     [self postRequest];
-    
-    self.locationManager = [[JFLocation alloc] init];
-    _locationManager.delegate = self;
+
 }
 - (void)postRequest{
 
@@ -128,63 +122,19 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 //城市选择
 - (IBAction)cityChoose:(id)sender {
     
-    JFCityViewController *cityViewController = [[JFCityViewController alloc] init];
-    cityViewController.title = @"城市";
+//    JFCityViewController *cityViewController = [[JFCityViewController alloc] init];
+//    cityViewController.title = @"城市";
+    GLCityChooseController *cityVC = [[GLCityChooseController alloc] init];
     __weak typeof(self) weakSelf = self;
-    [cityViewController choseCityBlock:^(NSString *cityName) {
-        [weakSelf.cityBtn setTitle:cityName forState:UIControlStateNormal];
-    }];
+    cityVC.block = ^(NSString *city){
+        [weakSelf.cityBtn setTitle:city forState:UIControlStateNormal];
+    };
     self.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:cityViewController animated:YES];
+    [self.navigationController pushViewController:cityVC animated:YES];
     self.hidesBottomBarWhenPushed = NO;
-//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cityViewController];
-//    [self presentViewController:navigationController animated:YES completion:nil];
 
 }
-//- (JFAreaDataManager *)manager {
-//    if (!_manager) {
-//        _manager = [JFAreaDataManager shareManager];
-//        [_manager areaSqliteDBData];
-//    }
-//    return _manager;
-//}
-//#pragma mark --- JFLocationDelegate
-//
-////定位中...
-//- (void)locating {
-////    NSLog(@"定位中...");
-//}
-//
-////定位成功
-//- (void)currentLocation:(NSDictionary *)locationDictionary {
-//    NSString *city = [locationDictionary valueForKey:@"City"];
-//    NSLog(@"locationDictionary = %@",locationDictionary);
-//    if (![_cityBtn.titleLabel.text isEqualToString:city]) {
-//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"您定位到%@，确定切换城市吗？",city] preferredStyle:UIAlertControllerStyleAlert];
-//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-//        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//            [_cityBtn setTitle:city forState:UIControlStateNormal];
-//            [KCURRENTCITYINFODEFAULTS setObject:city forKey:@"locationCity"];
-//            [KCURRENTCITYINFODEFAULTS setObject:city forKey:@"currentCity"];
-//            [self.manager cityNumberWithCity:city cityNumber:^(NSString *cityNumber) {
-//                [KCURRENTCITYINFODEFAULTS setObject:cityNumber forKey:@"cityNumber"];
-//            }];
-//        }];
-//        [alertController addAction:cancelAction];
-//        [alertController addAction:okAction];
-//        [self presentViewController:alertController animated:YES completion:nil];
-//    }
-//}
-//
-///// 拒绝定位
-//- (void)refuseToUsePositioningSystem:(NSString *)message {
-////    NSLog(@"%@",message);
-//}
-//
-///// 定位失败
-//- (void)locateFailure:(NSString *)message {
-////    NSLog(@"%@",message);
-//}
+
 /** 点击图片回调 */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     
@@ -208,7 +158,7 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 1) {
-        return 40;
+        return 40*autoSizeScaleY;
     }else{
         return 0;
     }

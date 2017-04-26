@@ -13,10 +13,15 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "LBMineCentermodifyAdressViewController.h"
 
-@interface GLConfirmOrderController ()
+#import "LBMineCenterPayPagesViewController.h"
+#import "GLOrderGoodsCell.h"
+#import "GLConfirmOrderModel.h"
+
+@interface GLConfirmOrderController ()<UITableViewDelegate,UITableViewDataSource>
 {
     int _sumNum;
 //    GLSet_MaskVeiw *_maskV;
+    LoadWaitView * _loadV;
 }
 @property (weak, nonatomic) IBOutlet UILabel *fanliLabel;
 @property (weak, nonatomic) IBOutlet UIButton *reduceBtn;
@@ -27,10 +32,20 @@
 @property (nonatomic, strong)GLOrderPayView *payV;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewW;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewH;
+
 @property (weak, nonatomic) IBOutlet UIView *addressView;
+
+@property (weak, nonatomic) IBOutlet UILabel *yunfeiLabel;//运费Label
+@property (weak, nonatomic) IBOutlet UILabel *totalSumLabel;//实付总价
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong)NSMutableArray  *models;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 
 @end
 
+static NSString *ID = @"GLOrderGoodsCell";
 @implementation GLConfirmOrderController
 
 - (void)viewDidLoad {
@@ -55,7 +70,45 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(ensurePassword:) name:@"input_PasswordNotification" object:nil];
     
+    [self.tableView registerNib:[UINib nibWithNibName:@"GLOrderGoodsCell" bundle:nil] forCellReuseIdentifier:ID];
+     [self postRequest];
+    
 }
+- (void)postRequest {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    dict[@"goods_id"] = @1;
+    dict[@"goods_count"] = @1;
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"shop/placeOrderBefore" paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        NSLog(@"dict = %@",dict);
+        NSLog(@"responseObject = %@",responseObject);
+        if ([responseObject[@"code"] integerValue] == 1){
+            
+            self.totalSumLabel.text = [NSString stringWithFormat:@"合计:¥%@",responseObject[@"data"][@"all_realy_price"]];
+            self.yunfeiLabel.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"all_delivery"]];
+            
+            for (NSDictionary *dic in responseObject[@"data"][@"goods_list"]) {
+                GLConfirmOrderModel *model = [GLConfirmOrderModel mj_objectWithKeyValues:dic];
+                [_models addObject:model];
+            }
+            self.tableViewHeight.constant = _models.count * 150 * autoSizeScaleY;
+            [self.tableView reloadData];
+//            self.hidesBottomBarWhenPushed = YES;
+//            LBMineCenterPayPagesViewController *payVC = [[LBMineCenterPayPagesViewController alloc] init];
+//            [self.navigationController pushViewController:payVC animated:YES];
+        }
+        
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+    }];
+}
+
 - (void)changeAddress{
     LBMineCentermodifyAdressViewController *modifyAD = [[LBMineCentermodifyAdressViewController alloc] init];
     
@@ -84,22 +137,8 @@
 }
 - (IBAction)submitOrder:(UIButton *)sender {
 
-//    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-//    _maskV.bgView.alpha = 0.1;
-//    
-//    _payV = [[NSBundle mainBundle] loadNibNamed:@"GLOrderPayView" owner:nil options:nil].lastObject;
-//    [_payV.backBtn addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-//    _maskV.alpha = 1;
-//        _payV.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
-//    [_maskV showViewWithContentView:_payV];
-// 
-//    [UIView animateWithDuration:0.3 animations:^{
-//        _payV.frame = CGRectMake(0, SCREEN_HEIGHT *0.5 , SCREEN_WIDTH, SCREEN_HEIGHT *0.5);
-//        [_payV.passwordF becomeFirstResponder];
-//    }];
-
+    
 }
-
 - (IBAction)changeNum:(id)sender {
     
     if (sender == self.reduceBtn) {
@@ -114,4 +153,25 @@
     
 }
 
+#pragma  UITableveiwdelegate UITableviewdatasource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.models.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    GLOrderGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    cell.model = self.models[indexPath.row];
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 150 *autoSizeScaleY;
+}
+
+#pragma 懒加载
+- (NSMutableArray *)models {
+    if (_models == nil) {
+        _models = [NSMutableArray array];
+        
+    }
+    return _models;
+}
 @end

@@ -40,7 +40,8 @@ static NSString *ID = @"GLShoppingCell";
     if(_headerView == nil){
         _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
         _seleteAllBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 20, 30, 30)];
-        _seleteAllBtn.backgroundColor = [UIColor lightGrayColor];
+//        _seleteAllBtn.backgroundColor = [UIColor lightGrayColor];
+        [_seleteAllBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
         [_seleteAllBtn addTarget:self action:@selector(selectAll) forControlEvents:UIControlEventTouchUpInside];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_seleteAllBtn.frame) + 10, _seleteAllBtn.yy_y, 80, _seleteAllBtn.yy_height)];
@@ -184,7 +185,8 @@ static NSString *ID = @"GLShoppingCell";
 
     if(self.seleteAllBtn.selected){
         
-        self.seleteAllBtn.backgroundColor = [UIColor orangeColor];
+//        self.seleteAllBtn.backgroundColor = [UIColor orangeColor];
+        [self.seleteAllBtn setImage:[UIImage imageNamed:@"选中"] forState:UIControlStateNormal];
         self.selectedNumLabel.text = [NSString stringWithFormat:@"已选中%lu件商品",_totalNum];
         self.totalPriceLabel.text = [NSString stringWithFormat:@"总金额¥ %ld元",_totalPrice];
         
@@ -193,7 +195,8 @@ static NSString *ID = @"GLShoppingCell";
         
         self.selectedNumLabel.text = [NSString stringWithFormat:@"已选中0件商品"];
         self.totalPriceLabel.text = @"总金额¥ 0元";
-        self.seleteAllBtn.backgroundColor = [UIColor lightGrayColor];
+//        self.seleteAllBtn.backgroundColor = [UIColor lightGrayColor];
+        [self.seleteAllBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
         _totalNum = 0;
         _totalPrice = 0;
         
@@ -294,10 +297,12 @@ static NSString *ID = @"GLShoppingCell";
     
     if ([self.selectArr[indexPath.row] boolValue] == NO) {
         
-        cell.selectedBtn.backgroundColor = [UIColor lightGrayColor];
+//        cell.selectedBtn.backgroundColor = [UIColor lightGrayColor];
+        [cell.selectedBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
         
     }else{
-        cell.selectedBtn.backgroundColor = [UIColor orangeColor];
+//        cell.selectedBtn.backgroundColor = [UIColor orangeColor];
+        [cell.selectedBtn setImage:[UIImage imageNamed:@"选中"] forState:UIControlStateNormal];
        
     }
     

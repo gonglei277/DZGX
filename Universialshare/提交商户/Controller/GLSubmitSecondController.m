@@ -49,7 +49,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *countryLabel;
 
 //模型
-@property (nonatomic, strong)GLCityModel *model;
+//@property (nonatomic, strong)GLCityModel *model;
 
 @property (nonatomic, strong)NSMutableArray *dataArr;
 
