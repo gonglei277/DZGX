@@ -203,7 +203,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    LBMineCentermodifyAdressTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
+    self.block(cell.nameLb.text,cell.phoneLb.text,cell.adressLn.text);
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 //添加地址

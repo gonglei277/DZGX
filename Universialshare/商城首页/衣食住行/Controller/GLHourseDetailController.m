@@ -132,8 +132,34 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
     
 }
 - (IBAction)addToCart:(id)sender {
-    GLShoppingCartController *cartVC = [[GLShoppingCartController alloc] init];
-    [self.navigationController pushViewController:cartVC animated:YES];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    dict[@"goods_id"] = @1;
+    dict[@"count"] = @1;
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"shop/addCart" paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        NSLog(@"responseObject = %@",responseObject);
+        if ([responseObject[@"code"] integerValue] == 1){
+        
+            GLShoppingCartController *cartVC = [[GLShoppingCartController alloc] init];
+            [self.navigationController pushViewController:cartVC animated:YES];
+            
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+        
+        [self.tableView reloadData];
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        
+    }];
+    
+    
+    
 }
 - (IBAction)confirmOrder:(id)sender {
     GLConfirmOrderController *confirmVC = [[GLConfirmOrderController alloc] init];

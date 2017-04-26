@@ -23,10 +23,6 @@
 //    GLSet_MaskVeiw *_maskV;
     LoadWaitView * _loadV;
 }
-@property (weak, nonatomic) IBOutlet UILabel *fanliLabel;
-@property (weak, nonatomic) IBOutlet UIButton *reduceBtn;
-@property (weak, nonatomic) IBOutlet UIButton *addBtn;
-@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 
 @property (nonatomic, strong)GLSet_MaskVeiw *maskV;
 @property (nonatomic, strong)GLOrderPayView *payV;
@@ -43,6 +39,12 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 
+//收货人信息
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+
 @end
 
 static NSString *ID = @"GLOrderGoodsCell";
@@ -52,13 +54,6 @@ static NSString *ID = @"GLOrderGoodsCell";
     [super viewDidLoad];
     self.navigationItem.title = @"确认订单";
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.fanliLabel.layer.borderWidth = 2;
-    self.fanliLabel.layer.borderColor = YYSRGBColor(199, 78, 63, 1).CGColor;
-    self.fanliLabel.layer.cornerRadius = 3;
-    self.fanliLabel.clipsToBounds = YES;
-    
-    self.numberLabel.text = @"1";
-    _sumNum = [self.numberLabel.text intValue];
   
     self.contentViewW.constant = SCREEN_WIDTH;
     self.contentViewH.constant = SCREEN_HEIGHT + 49;
@@ -73,6 +68,10 @@ static NSString *ID = @"GLOrderGoodsCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"GLOrderGoodsCell" bundle:nil] forCellReuseIdentifier:ID];
      [self postRequest];
     
+}
+- (void)dealloc{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)postRequest {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -98,6 +97,7 @@ static NSString *ID = @"GLOrderGoodsCell";
             }
             self.tableViewHeight.constant = _models.count * 150 * autoSizeScaleY;
             [self.tableView reloadData];
+            
 //            self.hidesBottomBarWhenPushed = YES;
 //            LBMineCenterPayPagesViewController *payVC = [[LBMineCenterPayPagesViewController alloc] init];
 //            [self.navigationController pushViewController:payVC animated:YES];
@@ -111,6 +111,11 @@ static NSString *ID = @"GLOrderGoodsCell";
 
 - (void)changeAddress{
     LBMineCentermodifyAdressViewController *modifyAD = [[LBMineCentermodifyAdressViewController alloc] init];
+    modifyAD.block = ^(NSString *name,NSString *phone,NSString *address){
+        self.nameLabel.text = [NSString stringWithFormat:@"收货人:%@",name];
+        self.phoneLabel.text = [NSString stringWithFormat:@"电话号码:%@",phone];
+        self.addressLabel.text = [NSString stringWithFormat:@"收货地址:%@",address];
+    };
     
     [self.navigationController pushViewController:modifyAD animated:YES];
 }
@@ -139,19 +144,19 @@ static NSString *ID = @"GLOrderGoodsCell";
 
     
 }
-- (IBAction)changeNum:(id)sender {
-    
-    if (sender == self.reduceBtn) {
-        _sumNum -= 1;
-        if(_sumNum < 1){
-            _sumNum = 1;
-        }
-    }else{
-        _sumNum += 1;
-    }
-    self.numberLabel.text = [NSString stringWithFormat:@"%d",_sumNum];
-    
-}
+//- (IBAction)changeNum:(id)sender {
+//    
+//    if (sender == self.reduceBtn) {
+//        _sumNum -= 1;
+//        if(_sumNum < 1){
+//            _sumNum = 1;
+//        }
+//    }else{
+//        _sumNum += 1;
+//    }
+//    self.numberLabel.text = [NSString stringWithFormat:@"%d",_sumNum];
+//    
+//}
 
 #pragma  UITableveiwdelegate UITableviewdatasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -160,6 +165,7 @@ static NSString *ID = @"GLOrderGoodsCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     GLOrderGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     cell.model = self.models[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
