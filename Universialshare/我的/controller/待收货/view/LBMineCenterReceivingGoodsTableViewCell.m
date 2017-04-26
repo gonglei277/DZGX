@@ -7,6 +7,8 @@
 //
 
 #import "LBMineCenterReceivingGoodsTableViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "LBWaitOrdersListModel.h"
 
 @implementation LBMineCenterReceivingGoodsTableViewCell
 
@@ -19,6 +21,24 @@
     
     self.SeeBt.layer.borderWidth = 1;
     self.SeeBt.layer.borderColor = YYSRGBColor(191, 0, 0, 1).CGColor;
+}
+
+
+
+
+
+-(void)setWaitOrdersModel:(LBWaitOrdersListModel *)WaitOrdersModel{
+    if (_WaitOrdersModel != WaitOrdersModel) {
+        _WaitOrdersModel = WaitOrdersModel;
+    }
+    
+    [self.imagev sd_setImageWithURL:[NSURL URLWithString:_WaitOrdersModel.image_cover] placeholderImage:[UIImage imageNamed:@""]];
+    
+    self.cartype.text = [NSString stringWithFormat:@"%@",_WaitOrdersModel.goods_name];
+    self.numlb.text = [NSString stringWithFormat:@"数量:%@",_WaitOrdersModel.goods_num];
+    self.cartype.text = [NSString stringWithFormat:@"价格:%@",_WaitOrdersModel.goods_price];
+
+
 }
 
 

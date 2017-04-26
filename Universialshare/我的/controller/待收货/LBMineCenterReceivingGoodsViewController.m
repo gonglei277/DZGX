@@ -12,6 +12,8 @@
 #import "LBMineCenterFlyNoticeDetailViewController.h"
 #import <MJRefresh/MJRefresh.h>
 #import "LBWaitOrdersHeaderView.h"
+#import "LBWaitOrdersModel.h"
+#import "LBWaitOrdersListModel.h"
 
 @interface LBMineCenterReceivingGoodsViewController ()<UITableViewDelegate,UITableViewDataSource,LBMineCenterReceivingGoodsDelegete>
 
@@ -37,6 +39,8 @@
     self.tableview.tableFooterView = [UIView new];
     
     [self.tableview registerNib:[UINib nibWithNibName:@"LBMineCenterReceivingGoodsTableViewCell" bundle:nil] forCellReuseIdentifier:@"LBMineCenterReceivingGoodsTableViewCell"];
+    
+//    [self.tableview registerClass:[LBWaitOrdersHeaderView class] forHeaderFooterViewReuseIdentifier:@"LBWaitOrdersHeaderView"];
     
     [self.tableview addSubview:self.nodataV];
     
@@ -66,6 +70,7 @@
     self.tableview.mj_footer = footer;
     
     [self initdatasource];
+    
 }
 
 -(void)initdatasource{
@@ -79,20 +84,27 @@
             
             if (_refreshType == NO) {
                 [self.dataarr removeAllObjects];
-                
-                if (![responseObject[@"data"] isEqual:[NSNull null]]) {
-                    [self.dataarr addObjectsFromArray:responseObject[@"data"]];
-
-                }
-                
-                [self.tableview reloadData];
-            }else{
-                
-                [self.dataarr addObjectsFromArray:responseObject[@"data"]];
-                
-                [self.tableview reloadData];
-                
             }
+            
+            if (![responseObject[@"data"] isEqual:[NSNull null]]) {
+                for (int i = 0; i < [responseObject[@"data"] count]; i++) {
+                    
+                    LBWaitOrdersModel *orderMode = [[LBWaitOrdersModel alloc]init];
+                    orderMode.order_id = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"order_id"]];
+                    orderMode.order_number = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"order_number"]];
+                    orderMode.creat_time = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"creat_time"]];
+                    orderMode.logistics_sta = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"logistics_sta"]];
+                    orderMode.isExpanded = NO;
+                    
+                    orderMode.WaitOrdersListModel = [LBWaitOrdersListModel mj_keyValuesArrayWithObjectArray:responseObject[@"data"][@"order_glist"]];
+                    
+                    [self.dataarr addObject:orderMode];
+                    
+                    
+                }
+            }
+            
+            [self.tableview reloadData];
             
         }else if ([responseObject[@"code"] integerValue]==3){
             
@@ -138,19 +150,23 @@
         self.nodataV.hidden = NO;
         
     }
+
     return self.dataarr.count;
 
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return [self.dataarr[section][@"order_glist"]count];
+    LBWaitOrdersModel *model = self.dataarr[section];
+    
+    return model.isExpanded ? model.WaitOrdersListModel.count : 0;
 
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 210;
+    
+    return 165;
     
 }
 
@@ -161,26 +177,37 @@
     LBMineCenterReceivingGoodsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMineCenterReceivingGoodsTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegete = self;
+    cell.index = indexPath.row;
+    LBWaitOrdersModel *model = self.dataarr[indexPath.section];
+    cell.WaitOrdersModel = model.WaitOrdersListModel[indexPath.row];
    
     return cell;
     
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 
-    return 50;
+    return 60;
 
 }
 
+
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 
-    UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"headerView"];
+    LBWaitOrdersHeaderView *headerview = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"LBWaitOrdersHeaderView"];
 
-    if (!view) {
-        view = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:@"headerView"];
-        
+    if (!headerview) {
+        headerview = [[LBWaitOrdersHeaderView alloc] initWithReuseIdentifier:@"LBWaitOrdersHeaderView"];
+    
     }
-    return view;
+
+    LBWaitOrdersModel *sectionModel = self.dataarr[section];
+    headerview.sectionModel = sectionModel;
+    headerview.expandCallback = ^(BOOL isExpanded) {
+        
+    [tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
+    };
+    return headerview;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

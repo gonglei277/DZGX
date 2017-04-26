@@ -25,14 +25,20 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *provinceTf;
 
-@property (weak, nonatomic) IBOutlet UITextField *streetTf;
-
-@property (weak, nonatomic) IBOutlet UITextField *codeTf;
-
 @property (weak, nonatomic) IBOutlet UITextField *adressTf;
 
 @property (weak, nonatomic) IBOutlet UIButton *savebutoon;
 
+@property (weak, nonatomic) IBOutlet UIImageView *isDefaultImage;
+
+@property (weak, nonatomic) IBOutlet UIImageView *isdeualtImageOne;
+
+@property (assign, nonatomic)NSInteger  isdeualt;//默认为0 不设为默认
+@property (strong, nonatomic)LoadWaitView *loadV;
+@property (strong, nonatomic)NSString *adressID;
+@property (strong, nonatomic)NSString *provinceStrId;
+@property (strong, nonatomic)NSString *cityStrId;
+@property (strong, nonatomic)NSString *countryStrId;
 
 @end
 
@@ -44,8 +50,36 @@
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.title = @"新增收货地址";
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.isdeualt = 0;
+    self.adressID = @"";
+    self.provinceStrId = @"";
+    self.cityStrId = @"";
+    self.countryStrId = @"";
     
-    
+    [self initProvinceCityArea];
+}
+
+-(void)initProvinceCityArea{
+
+    if (self.isEdit == YES) {
+        self.navigationItem.title = @"修改收货地址";
+        self.nameTf.text = [NSString stringWithFormat:@"%@",self.dataDic[@"collect_name"]];
+        self.phoneTf.text = [NSString stringWithFormat:@"%@",self.dataDic[@"s_phone"]];
+        self.provinceTf.text = [NSString stringWithFormat:@"%@",self.dataDic[@"areas"]];
+        self.adressTf.text = [NSString stringWithFormat:@"%@",self.dataDic[@"s_address"]];
+        
+        if ([self.dataDic[@"is_default"] integerValue]==1) {
+            self.isDefaultImage.image = [UIImage imageNamed:@"支付未选中"];
+            self.isdeualtImageOne.image = [UIImage imageNamed:@"支付选中"];
+            self.isdeualt = 1;
+        }else{
+            self.isDefaultImage.image = [UIImage imageNamed:@"支付选中"];
+            self.isdeualtImageOne.image = [UIImage imageNamed:@"支付未选中"];
+            self.isdeualt = 0;
+        
+        }
+    }
+
 }
 
 
@@ -55,12 +89,6 @@
         [self.phoneTf becomeFirstResponder];
         return NO;
     }else if (textField == self.phoneTf && [string isEqualToString:@"\n"]) {
-        [self.streetTf becomeFirstResponder];
-        return NO;
-    }else if (textField == self.streetTf && [string isEqualToString:@"\n"]) {
-        [self.codeTf becomeFirstResponder];
-        return NO;
-    }else if (textField == self.codeTf && [string isEqualToString:@"\n"]) {
         [self.adressTf becomeFirstResponder];
         return NO;
     }else if (textField == self.adressTf && [string isEqualToString:@"\n"]) {
@@ -68,7 +96,34 @@
         return NO;
     }
     
+    if (textField == self.nameTf && ![string isEqualToString:@""]) {
+        //只能输入英文或中文
+        NSCharacterSet * charact;
+        charact = [[NSCharacterSet characterSetWithCharactersInString:NMUBERS]invertedSet];
+        NSString * filtered = [[string componentsSeparatedByCharactersInSet:charact]componentsJoinedByString:@""];
+        BOOL canChange = [string isEqualToString:filtered];
+        if(canChange) {
+            [MBProgressHUD showError:@"只能输入英文或中文"];
+            return NO;
+        }
+    }
+    
     return YES;
+    
+}
+//设置为否
+- (IBAction)setupEventNot:(UITapGestureRecognizer *)sender {
+    
+    self.isdeualt = 0;
+    self.isDefaultImage.image = [UIImage imageNamed:@"支付选中"];
+    self.isdeualtImageOne.image = [UIImage imageNamed:@"支付未选中"];
+}
+//设置为是
+- (IBAction)setupEventYes:(UITapGestureRecognizer *)sender {
+    
+    self.isdeualt =1;
+    self.isDefaultImage.image = [UIImage imageNamed:@"支付未选中"];
+    self.isdeualtImageOne.image = [UIImage imageNamed:@"支付选中"];
     
 }
 
@@ -78,20 +133,92 @@
     LBMineCenterChooseAreaViewController *vc=[[LBMineCenterChooseAreaViewController alloc]init];
     vc.transitioningDelegate=self;
     vc.modalPresentationStyle=UIModalPresentationCustom;
+    
     [self presentViewController:vc animated:YES completion:nil];
-    
     __weak typeof(self) weakself = self;
-    vc.returnreslut = ^(NSString *str){
-    
+    vc.returnreslut = ^(NSString *str,NSString *strid,NSString *provinceid,NSString *cityd,NSString *areaid){
+        weakself.adressID = strid;
         weakself.provinceTf.text = str;
+        weakself.provinceStrId = provinceid;
+        weakself.cityStrId = cityd;
+        weakself.countryStrId = areaid;
     };
    
     
 }
-
+//保存
 - (IBAction)saveBtevent:(UIButton *)sender {
     
+    if (self.nameTf.text.length <= 0) {
+        [MBProgressHUD showError:@"请输入收货人姓名"];
+        return;
+    }
+    if (self.phoneTf.text.length <= 0) {
+        [MBProgressHUD showError:@"请输入电话号码"];
+        return;
+    }
+    if (![predicateModel valiMobile:self.phoneTf.text]) {
+        [MBProgressHUD showError:@"请输入正确的电话号码"];
+        return;
+    }
+    if (self.provinceTf.text.length <= 0) {
+        [MBProgressHUD showError:@"请输入省市区"];
+        return;
+    }
+    if (self.adressTf.text.length <= 0) {
+        [MBProgressHUD showError:@"请输入详细地址"];
+        return;
+    }
     
+    if (self.isEdit == YES) {//编辑
+        _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+        [NetworkManager requestPOSTWithURLStr:@"shop/updateAddress" paramDic:@{@"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token , @"status" : [NSNumber numberWithInteger:self.isdeualt] , @"takegoodsname" : self.nameTf.text , @"takegoodsphone" : self.phoneTf.text , @"detail_address" : self.adressTf.text, @"s_province" : self.provinceStrId , @"s_city" : self.cityStrId , @"s_area" : self.countryStrId , @"address_id" : self.dataDic[@"address_id"]} finish:^(id responseObject) {
+            [_loadV removeloadview];
+            if ([responseObject[@"code"] integerValue]==1) {
+                
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshReceivingAddress" object:nil];
+                [MBProgressHUD showError:responseObject[@"message"]];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }else if ([responseObject[@"code"] integerValue]==3){
+                
+                [MBProgressHUD showError:responseObject[@"message"]];
+                
+            }else{
+                [MBProgressHUD showError:responseObject[@"message"]];
+                
+            }
+        } enError:^(NSError *error) {
+            [_loadV removeloadview];
+            [MBProgressHUD showError:error.localizedDescription];
+            
+        }];
+    }else{//添加
+        
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"shop/addAddress" paramDic:@{@"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token , @"status" : [NSNumber numberWithInteger:self.isdeualt] , @"takegoodsname" : self.nameTf.text , @"takegoodsphone" : self.phoneTf.text , @"alladdress" : self.adressID , @"detail_address" : self.adressTf.text} finish:^(id responseObject) {
+        [_loadV removeloadview];
+        if ([responseObject[@"code"] integerValue]==1) {
+            
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshReceivingAddress" object:nil];
+            [MBProgressHUD showError:responseObject[@"message"]];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }else if ([responseObject[@"code"] integerValue]==3){
+            
+            [MBProgressHUD showError:responseObject[@"message"]];
+
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+
+        }
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
+    
+    }
 }
 
 

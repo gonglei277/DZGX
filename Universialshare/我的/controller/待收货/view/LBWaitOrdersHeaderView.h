@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LBWaitOrdersModel.h"
+
+typedef void(^GWHeadViewExpandCallback)(BOOL isExpanded);
 
 @interface LBWaitOrdersHeaderView : UITableViewHeaderFooterView
 
+@property (nonatomic, copy)GWHeadViewExpandCallback expandCallback;
+@property (nonatomic, strong)LBWaitOrdersModel *sectionModel;
+
+@property(nonatomic , strong) UILabel *orderCode;//订单号
+@property(nonatomic , strong) UILabel *orderTime;//订单时间
+@property(nonatomic , strong) UIView *lineview;
 @end

@@ -188,7 +188,7 @@
         }
     }
     
-    if (textField == self.nameTf) {
+    if (textField == self.nameTf && ![string isEqualToString:@""]) {
         //只能输入英文或中文
         NSCharacterSet * charact;
         charact = [[NSCharacterSet characterSetWithCharactersInString:NMUBERS]invertedSet];
