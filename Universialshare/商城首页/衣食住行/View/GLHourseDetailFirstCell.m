@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *fanliLabel;
 @property (weak, nonatomic) IBOutlet UILabel *monthSellLabel;
 @property (weak, nonatomic) IBOutlet UILabel *yunfeiLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
 @end
 
@@ -45,7 +46,7 @@
     _priceLabel.text = [NSString stringWithFormat:@"¥%@元",_price];
     _monthSellLabel.text = [NSString stringWithFormat:@"月销%@笔",model.sell_count];
     _yunfeiLabel.text = [NSString stringWithFormat:@"运费:%@元",model.posttage];
-    
+    _nameLabel.text = model.goods_info;
 }
 
 @end

@@ -157,10 +157,11 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
         NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
             
-            self.hidesBottomBarWhenPushed = YES;
-            GLShoppingCartController *cartVC = [[GLShoppingCartController alloc] init];
-            [self.navigationController pushViewController:cartVC animated:YES];
-            
+//            self.hidesBottomBarWhenPushed = YES;
+//            GLShoppingCartController *cartVC = [[GLShoppingCartController alloc] init];
+//            [self.navigationController pushViewController:cartVC animated:YES];
+            [MBProgressHUD showSuccess:@"成功加入购物车"];
+            NSLog(@"message = %@",responseObject[@"message"]);
             
         }else{
             

@@ -61,18 +61,20 @@
 
 - (IBAction)chooseBank:(id)sender {
     _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    _maskV.bgView.alpha = 0.1;
+    _maskV.bgView.alpha = 0.3;
     
     _contentV = [[NSBundle mainBundle] loadNibNamed:@"GLBuyBackChooseBankView" owner:nil options:nil].lastObject;
-    [_contentV.chinaBankBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
-    [_contentV.icbcBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
-    [_contentV.abcBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
-    [_contentV.ccbBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
     
     UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
     CGRect rect=[self.chooseBankBtn convertRect: self.chooseBankBtn.bounds toView:window];
     
-    _contentV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 6 * self.chooseBankBtn.yy_height);
+    _contentV.frame = CGRectMake(20,CGRectGetMaxY(rect) + 10, SCREEN_WIDTH - 40, SCREEN_HEIGHT * 0.5);
+    
+    __weak __typeof(self)weakSelf = self;
+    _contentV.block = ^(NSString *str){
+        weakSelf.bankLabel.text = str;
+        [weakSelf dismiss];
+    };
     //    if([[UserModel defaultUser].userLogin integerValue] == 1){
     //        [_directV.taxBtn setTitle:@"待缴税志愿豆" forState:UIControlStateNormal];
     //
@@ -87,15 +89,7 @@
     [_maskV showViewWithContentView:_contentV];
 }
 - (void)chooseValue:(UIButton *)sender{
-    if (sender == _contentV.chinaBankBtn) {
-        self.bankLabel.text = @"中国银行";
-    }else if(sender == _contentV.icbcBtn){
-         self.bankLabel.text = @"中国工商银行";
-    }else if(sender == _contentV.abcBtn){
-        self.bankLabel.text = @"中国农业银行";
-    }else{
-        self.bankLabel.text = @"中国建设银行";
-    }
+   
     [self dismiss];
 }
 - (BOOL)isPureNumandCharacters:(NSString *)string

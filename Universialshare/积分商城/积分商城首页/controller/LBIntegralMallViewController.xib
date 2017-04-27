@@ -31,7 +31,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="hZG-ps-KlE"/>
                             </constraints>
-                            <state key="normal" title="成都">
+                            <state key="normal" title="城市">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -39,16 +39,17 @@
                             </connections>
                         </button>
                         <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nvE-Dv-9XJ">
-                            <rect key="frame" x="70" y="25" width="235" height="34"/>
+                            <rect key="frame" x="80" y="25" width="215" height="34"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kXl-7B-JdK">
-                                    <rect key="frame" x="5" y="5" width="24" height="24"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="搜索" translatesAutoresizingMaskIntoConstraints="NO" id="kXl-7B-JdK">
+                                    <rect key="frame" x="5" y="10" width="14" height="14"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="kXl-7B-JdK" secondAttribute="height" id="iF0-fv-Obe"/>
+                                        <constraint firstAttribute="width" secondItem="kXl-7B-JdK" secondAttribute="height" multiplier="1:1" id="c33-BW-UuD"/>
+                                        <constraint firstAttribute="width" constant="14" id="xjS-kf-p3c"/>
                                     </constraints>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入商品名或ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2QJ-6J-qo6">
-                                    <rect key="frame" x="34" y="0.0" width="201" height="34"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入商品名或ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2QJ-6J-qo6">
+                                    <rect key="frame" x="29" y="0.0" width="186" height="34"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -56,26 +57,28 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="kXl-7B-JdK" firstAttribute="leading" secondItem="nvE-Dv-9XJ" secondAttribute="leading" constant="5" id="0xM-4Q-dMr"/>
+                                <constraint firstAttribute="bottom" secondItem="2QJ-6J-qo6" secondAttribute="bottom" id="2vW-Sy-Vg3"/>
+                                <constraint firstItem="2QJ-6J-qo6" firstAttribute="leading" secondItem="kXl-7B-JdK" secondAttribute="trailing" constant="10" id="7ES-Id-sfk"/>
                                 <constraint firstAttribute="trailing" secondItem="2QJ-6J-qo6" secondAttribute="trailing" id="BBq-zk-4vE"/>
+                                <constraint firstItem="kXl-7B-JdK" firstAttribute="centerY" secondItem="nvE-Dv-9XJ" secondAttribute="centerY" id="Kfb-jj-LbJ"/>
                                 <constraint firstItem="2QJ-6J-qo6" firstAttribute="top" secondItem="nvE-Dv-9XJ" secondAttribute="top" id="Knt-1j-nWn"/>
-                                <constraint firstItem="kXl-7B-JdK" firstAttribute="centerY" secondItem="nvE-Dv-9XJ" secondAttribute="centerY" id="R0Y-2Z-5Pt"/>
-                                <constraint firstAttribute="bottom" secondItem="kXl-7B-JdK" secondAttribute="bottom" constant="5" id="Xud-h0-Jc4"/>
-                                <constraint firstItem="2QJ-6J-qo6" firstAttribute="leading" secondItem="kXl-7B-JdK" secondAttribute="trailing" constant="5" id="Ya1-hu-gzU"/>
-                                <constraint firstItem="kXl-7B-JdK" firstAttribute="top" secondItem="nvE-Dv-9XJ" secondAttribute="top" constant="5" id="os5-a2-aNo"/>
+                                <constraint firstItem="kXl-7B-JdK" firstAttribute="leading" secondItem="nvE-Dv-9XJ" secondAttribute="leading" constant="5" id="SfP-VL-BCG"/>
+                                <constraint firstAttribute="trailing" secondItem="2QJ-6J-qo6" secondAttribute="trailing" id="Vm1-9v-yFQ"/>
+                                <constraint firstItem="2QJ-6J-qo6" firstAttribute="top" secondItem="nvE-Dv-9XJ" secondAttribute="top" id="k5D-Uu-Y6s"/>
                                 <constraint firstAttribute="bottom" secondItem="2QJ-6J-qo6" secondAttribute="bottom" id="tEX-TG-YjP"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="0.1551630795" green="0.58942979569999998" blue="0.2282119095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="nvE-Dv-9XJ" secondAttribute="trailing" constant="80" id="2ZI-ug-TfN"/>
                         <constraint firstAttribute="height" constant="64" id="ENy-0f-fdT"/>
                         <constraint firstItem="nvE-Dv-9XJ" firstAttribute="centerY" secondItem="rJz-37-kmI" secondAttribute="centerY" id="PQa-WZ-233"/>
                         <constraint firstItem="rJz-37-kmI" firstAttribute="leading" secondItem="rCq-8t-XiF" secondAttribute="leading" id="WRc-2j-gCE"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="aCV-vd-Pa1"/>
+                        <constraint firstItem="nvE-Dv-9XJ" firstAttribute="leading" secondItem="rCq-8t-XiF" secondAttribute="leading" constant="80" id="e0n-c2-6oA"/>
                         <constraint firstItem="rJz-37-kmI" firstAttribute="top" secondItem="rCq-8t-XiF" secondAttribute="top" constant="20" id="fdk-DA-tvf"/>
                         <constraint firstAttribute="bottom" secondItem="rJz-37-kmI" secondAttribute="bottom" id="kQU-Zw-9h8"/>
-                        <constraint firstItem="nvE-Dv-9XJ" firstAttribute="width" secondItem="rCq-8t-XiF" secondAttribute="width" constant="-140" id="paR-sx-4Br"/>
                         <constraint firstItem="nvE-Dv-9XJ" firstAttribute="height" secondItem="rJz-37-kmI" secondAttribute="height" constant="-10" id="v23-3R-XIs"/>
                     </constraints>
                 </view>
@@ -104,4 +107,7 @@
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="搜索" width="15" height="14"/>
+    </resources>
 </document>
