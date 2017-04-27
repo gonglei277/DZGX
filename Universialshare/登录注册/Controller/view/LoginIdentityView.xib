@@ -30,7 +30,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfZ-9h-LNZ">
                     <rect key="frame" x="15" y="40" width="350" height="25"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="选中" translatesAutoresizingMaskIntoConstraints="NO" id="LXb-uR-c2N">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="登录选中" translatesAutoresizingMaskIntoConstraints="NO" id="LXb-uR-c2N">
                             <rect key="frame" x="0.0" y="3" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="erg-i0-NGb"/>
@@ -58,7 +58,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PW0-Av-QsM">
                     <rect key="frame" x="15" y="70" width="350" height="25"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="未选中" translatesAutoresizingMaskIntoConstraints="NO" id="nUx-bm-FuE">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="登录未选中" translatesAutoresizingMaskIntoConstraints="NO" id="nUx-bm-FuE">
                             <rect key="frame" x="0.0" y="3" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="HQh-1M-70I"/>
@@ -111,7 +111,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="05u-t6-vA0">
                     <rect key="frame" x="15" y="100" width="350" height="25"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="未选中" translatesAutoresizingMaskIntoConstraints="NO" id="YUO-f3-IX7">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="登录未选中" translatesAutoresizingMaskIntoConstraints="NO" id="YUO-f3-IX7">
                             <rect key="frame" x="0.0" y="3" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="6Zw-78-ho1"/>
@@ -140,7 +140,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swR-Pe-QXL">
                     <rect key="frame" x="15" y="130" width="350" height="25"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="未选中" translatesAutoresizingMaskIntoConstraints="NO" id="wVT-u0-dZ2">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="登录未选中" translatesAutoresizingMaskIntoConstraints="NO" id="wVT-u0-dZ2">
                             <rect key="frame" x="0.0" y="3" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="ZXn-FG-Dz2"/>
@@ -169,7 +169,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBL-y0-PjF">
                     <rect key="frame" x="15" y="160" width="350" height="25"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="未选中" translatesAutoresizingMaskIntoConstraints="NO" id="QkN-xE-Hdi">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="登录未选中" translatesAutoresizingMaskIntoConstraints="NO" id="QkN-xE-Hdi">
                             <rect key="frame" x="0.0" y="3" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="52v-V8-gDv"/>
@@ -245,7 +245,7 @@
     </objects>
     <resources>
         <image name="imcc_record_bg" width="17" height="16"/>
-        <image name="未选中" width="13" height="13"/>
-        <image name="选中" width="13" height="13"/>
+        <image name="登录未选中" width="16" height="17"/>
+        <image name="登录选中" width="16" height="16"/>
     </resources>
 </document>
