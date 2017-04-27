@@ -48,7 +48,6 @@
         [NetworkManager requestPOSTWithURLStr:@"user/getCityList" paramDic:@{} finish:^(id responseObject) {
             [_loadV removeloadview];
             if ([responseObject[@"code"] integerValue]==1) {
-                
                 self.dataArr = responseObject[@"data"];
                 self.cityArr = self.dataArr[0][@"city"];
                 self.countryArr = self.dataArr[0][@"city"][0][@"country"];

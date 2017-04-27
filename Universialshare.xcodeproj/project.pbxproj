@@ -484,6 +484,11 @@
 		F9121B191EB17CEC00DAB7A2 /* IncentiveModel.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9121B171EB17CEC00DAB7A2 /* IncentiveModel.xib */; };
 		F9121B1D1EB1DC4F00DAB7A2 /* LBMineStoreOrderingOneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9121B1B1EB1DC4F00DAB7A2 /* LBMineStoreOrderingOneTableViewCell.m */; };
 		F9121B1E1EB1DC4F00DAB7A2 /* LBMineStoreOrderingOneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9121B1C1EB1DC4F00DAB7A2 /* LBMineStoreOrderingOneTableViewCell.xib */; };
+		F9121B221EB2044300DAB7A2 /* LBMyOrderAlreadyPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9121B201EB2044300DAB7A2 /* LBMyOrderAlreadyPaymentViewController.m */; };
+		F9121B231EB2044300DAB7A2 /* LBMyOrderAlreadyPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9121B211EB2044300DAB7A2 /* LBMyOrderAlreadyPaymentViewController.xib */; };
+		F9121B271EB21A6500DAB7A2 /* LBMyOrdersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9121B261EB21A6500DAB7A2 /* LBMyOrdersModel.m */; };
+		F9121B2A1EB21A8900DAB7A2 /* LBMyOrdersListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9121B291EB21A8900DAB7A2 /* LBMyOrdersListModel.m */; };
+		F9121B2D1EB21BC500DAB7A2 /* LBMyOrdersHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9121B2C1EB21BC500DAB7A2 /* LBMyOrdersHeaderView.m */; };
 		F9126EBC1EA05692004785EA /* GLMine_InfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9126EB61EA05692004785EA /* GLMine_InfoController.m */; };
 		F9126EBD1EA05692004785EA /* GLMine_InfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9126EB71EA05692004785EA /* GLMine_InfoController.xib */; };
 		F9126EBE1EA05692004785EA /* GLMine_InfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9126EBA1EA05692004785EA /* GLMine_InfoCell.m */; };
@@ -1666,6 +1671,15 @@
 		F9121B1A1EB1DC4F00DAB7A2 /* LBMineStoreOrderingOneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineStoreOrderingOneTableViewCell.h; sourceTree = "<group>"; };
 		F9121B1B1EB1DC4F00DAB7A2 /* LBMineStoreOrderingOneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineStoreOrderingOneTableViewCell.m; sourceTree = "<group>"; };
 		F9121B1C1EB1DC4F00DAB7A2 /* LBMineStoreOrderingOneTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineStoreOrderingOneTableViewCell.xib; sourceTree = "<group>"; };
+		F9121B1F1EB2044300DAB7A2 /* LBMyOrderAlreadyPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMyOrderAlreadyPaymentViewController.h; sourceTree = "<group>"; };
+		F9121B201EB2044300DAB7A2 /* LBMyOrderAlreadyPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMyOrderAlreadyPaymentViewController.m; sourceTree = "<group>"; };
+		F9121B211EB2044300DAB7A2 /* LBMyOrderAlreadyPaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMyOrderAlreadyPaymentViewController.xib; sourceTree = "<group>"; };
+		F9121B251EB21A6500DAB7A2 /* LBMyOrdersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMyOrdersModel.h; sourceTree = "<group>"; };
+		F9121B261EB21A6500DAB7A2 /* LBMyOrdersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMyOrdersModel.m; sourceTree = "<group>"; };
+		F9121B281EB21A8900DAB7A2 /* LBMyOrdersListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMyOrdersListModel.h; sourceTree = "<group>"; };
+		F9121B291EB21A8900DAB7A2 /* LBMyOrdersListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMyOrdersListModel.m; sourceTree = "<group>"; };
+		F9121B2B1EB21BC500DAB7A2 /* LBMyOrdersHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMyOrdersHeaderView.h; sourceTree = "<group>"; };
+		F9121B2C1EB21BC500DAB7A2 /* LBMyOrdersHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMyOrdersHeaderView.m; sourceTree = "<group>"; };
 		F9126EB51EA05692004785EA /* GLMine_InfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMine_InfoController.h; sourceTree = "<group>"; };
 		F9126EB61EA05692004785EA /* GLMine_InfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMine_InfoController.m; sourceTree = "<group>"; };
 		F9126EB71EA05692004785EA /* GLMine_InfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMine_InfoController.xib; sourceTree = "<group>"; };
@@ -4016,6 +4030,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F9121B241EB219F900DAB7A2 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F9121B251EB21A6500DAB7A2 /* LBMyOrdersModel.h */,
+				F9121B261EB21A6500DAB7A2 /* LBMyOrdersModel.m */,
+				F9121B281EB21A8900DAB7A2 /* LBMyOrdersListModel.h */,
+				F9121B291EB21A8900DAB7A2 /* LBMyOrdersListModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		F9126EB31EA05692004785EA /* 个人信息 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4298,6 +4323,10 @@
 				F92308A01E9B8BFE00ECDC94 /* LBMyOrderPendingRefundViewController.h */,
 				F92308A11E9B8BFE00ECDC94 /* LBMyOrderPendingRefundViewController.m */,
 				F92308A21E9B8BFE00ECDC94 /* LBMyOrderPendingRefundViewController.xib */,
+				F9121B1F1EB2044300DAB7A2 /* LBMyOrderAlreadyPaymentViewController.h */,
+				F9121B201EB2044300DAB7A2 /* LBMyOrderAlreadyPaymentViewController.m */,
+				F9121B211EB2044300DAB7A2 /* LBMyOrderAlreadyPaymentViewController.xib */,
+				F9121B241EB219F900DAB7A2 /* model */,
 				F92308A31E9B8BFE00ECDC94 /* view */,
 				F92308B01E9B8BFF00ECDC94 /* XBScrollPageController */,
 				F92308BF1E9B8BFF00ECDC94 /* ZLNavigationController */,
@@ -4339,6 +4368,8 @@
 				F92308AD1E9B8BFE00ECDC94 /* LBMyOrderUnsubscribeRecordTableViewCell.h */,
 				F92308AE1E9B8BFE00ECDC94 /* LBMyOrderUnsubscribeRecordTableViewCell.m */,
 				F92308AF1E9B8BFF00ECDC94 /* LBMyOrderUnsubscribeRecordTableViewCell.xib */,
+				F9121B2B1EB21BC500DAB7A2 /* LBMyOrdersHeaderView.h */,
+				F9121B2C1EB21BC500DAB7A2 /* LBMyOrdersHeaderView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -5190,6 +5221,7 @@
 				F92309581E9B8BFF00ECDC94 /* LBMyOrderPendingRefundViewController.xib in Resources */,
 				F92309541E9B8BFF00ECDC94 /* LBMyOrderPendingEvaluationViewController.xib in Resources */,
 				F92309271E9B8BFF00ECDC94 /* LBMineCenterRechargeCashView.xib in Resources */,
+				F9121B231EB2044300DAB7A2 /* LBMyOrderAlreadyPaymentViewController.xib in Resources */,
 				4A203DE41E9F8E0D00DF22F7 /* GLReceiveBeansCell.xib in Resources */,
 				4A460A081E9CB8050045824F /* LoadWaitView.xib in Resources */,
 				F951EB0C1EA1E70900D6708E /* LBMineSelectCustomerTypeView.xib in Resources */,
@@ -5516,6 +5548,7 @@
 				F923098E1E9B8BFF00ECDC94 /* LBMineCenterCollectionViewCell.m in Sources */,
 				4A4609D21E9CB78E0045824F /* GLBuyBackRecord_FailController.m in Sources */,
 				4A4609E71E9CB78E0045824F /* GLReceiveBeansController.m in Sources */,
+				F9121B2A1EB21A8900DAB7A2 /* LBMyOrdersListModel.m in Sources */,
 				4A4610D41E9CC6370045824F /* ZXEAN8Reader.m in Sources */,
 				4A46110A1E9CC6370045824F /* ZXQRCodeDetector.m in Sources */,
 				4A46100C1E9CC6360045824F /* UIActionSheet+LBXAlertAction.m in Sources */,
@@ -5610,6 +5643,7 @@
 				4A4610121E9CC6360045824F /* LBXScanLineAnimation.m in Sources */,
 				4A4610701E9CC6360045824F /* ZXImage.m in Sources */,
 				4A4610D11E9CC6370045824F /* ZXCode93Reader.m in Sources */,
+				F9121B271EB21A6500DAB7A2 /* LBMyOrdersModel.m in Sources */,
 				4A4610CE1E9CC6370045824F /* ZXCode128Writer.m in Sources */,
 				4A46109B1E9CC6360045824F /* ZXDataMatrixBase256Encoder.m in Sources */,
 				F94D317D1EAF1A2300309029 /* LBRecommendedSalesmanViewController.m in Sources */,
@@ -5645,6 +5679,7 @@
 				4A4610421E9CC6360045824F /* ZXAztecEncoder.m in Sources */,
 				4A07A88B1EA0BBF1005A9B67 /* GLNoneOfDonationModel.m in Sources */,
 				4A4610C31E9CC6370045824F /* ZXRSSExpandedReader.m in Sources */,
+				F9121B221EB2044300DAB7A2 /* LBMyOrderAlreadyPaymentViewController.m in Sources */,
 				4A4609F01E9CB78E0045824F /* GLDirectDonationModel.m in Sources */,
 				4A0023F81E84AD6700B2A9FE /* UIView+YYExtension.m in Sources */,
 				4A4611041E9CC6370045824F /* ZXQRCodeErrorCorrectionLevel.m in Sources */,
@@ -5708,6 +5743,7 @@
 				4A4610D21E9CC6370045824F /* ZXEAN13Reader.m in Sources */,
 				4A46107D1E9CC6360045824F /* ZXCharacterSetECI.m in Sources */,
 				4AA0D6011EAF693D00CB8F77 /* GLintegralGoodsModel.m in Sources */,
+				F9121B2D1EB21BC500DAB7A2 /* LBMyOrdersHeaderView.m in Sources */,
 				4A46100E1E9CC6360045824F /* UIAlertView+LBXAlertAction.m in Sources */,
 				4A4610D51E9CC6370045824F /* ZXEAN8Writer.m in Sources */,
 				F966B3EC1EAC7E97007260FC /* LBMySalesmanListDeatilViewController.m in Sources */,

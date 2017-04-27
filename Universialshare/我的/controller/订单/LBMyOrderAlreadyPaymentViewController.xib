@@ -9,9 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LBMyOrderAlreadyCompletedViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LBMyOrderAlreadyPaymentViewController">
             <connections>
-                <outlet property="tableview" destination="9A3-94-IDO" id="A0T-lx-GYn"/>
+                <outlet property="tableview" destination="trd-eS-MSW" id="IOg-wI-g5r"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,21 +20,21 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9A3-94-IDO">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="trd-eS-MSW">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="3nB-us-0BD"/>
-                        <outlet property="delegate" destination="-1" id="hiw-zm-uAA"/>
+                        <outlet property="dataSource" destination="-1" id="Vpz-tn-uGk"/>
+                        <outlet property="delegate" destination="-1" id="fEa-Dv-kIx"/>
                     </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="9A3-94-IDO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JE9-52-xDn"/>
-                <constraint firstItem="9A3-94-IDO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NGQ-f8-ImO"/>
-                <constraint firstAttribute="trailing" secondItem="9A3-94-IDO" secondAttribute="trailing" id="WAp-hj-dKJ"/>
-                <constraint firstAttribute="bottom" secondItem="9A3-94-IDO" secondAttribute="bottom" id="inI-qd-rLZ"/>
+                <constraint firstAttribute="bottom" secondItem="trd-eS-MSW" secondAttribute="bottom" id="89y-RV-LSa"/>
+                <constraint firstItem="trd-eS-MSW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OdW-EV-adR"/>
+                <constraint firstAttribute="trailing" secondItem="trd-eS-MSW" secondAttribute="trailing" id="QIn-2y-gr0"/>
+                <constraint firstItem="trd-eS-MSW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yn9-Pr-vq9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>

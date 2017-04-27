@@ -7,6 +7,7 @@
 //
 
 #import "LBMyOrderListTableViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation LBMyOrderListTableViewCell
 
@@ -47,5 +48,17 @@
     
 }
 
+-(void)setMyorderlistModel:(LBMyOrdersListModel *)myorderlistModel{
+    _myorderlistModel = myorderlistModel;
+    
+    NSDictionary *dic = (NSDictionary*)_myorderlistModel;
+    
+    [self.imagev sd_setImageWithURL:[NSURL URLWithString:dic[@"thumb"]] placeholderImage:[UIImage imageNamed:@""]];
+    self.namelb.text = [NSString stringWithFormat:@"%@",dic[@"goods_name"]];
+    self.numlb.text = [NSString stringWithFormat:@"数量: %@",dic[@"goods_num"]];
+    self.priceLb.text = [NSString stringWithFormat:@"价格: %@",dic[@"goods_price"]];
+
+
+}
 
 @end
