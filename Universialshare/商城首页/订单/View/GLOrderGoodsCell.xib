@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="344" height="140"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="344" height="139.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="344" height="140"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某某汽车XX型号豪华版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2A-7H-UdF">
@@ -31,13 +31,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 56万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4a-Ea-lth">
-                        <rect key="frame" x="170" y="113.5" width="42" height="16"/>
+                        <rect key="frame" x="170" y="114" width="42" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.93559116129999997" green="0.2449045181" blue="0.0002224964264" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="返利200元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FI-AQ-WKW">
-                        <rect key="frame" x="170" y="83.5" width="59.5" height="20"/>
+                        <rect key="frame" x="170" y="84" width="60" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="XBX-Dc-NwH"/>
                         </constraints>
@@ -46,7 +46,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数量:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2R-k4-aV7">
-                        <rect key="frame" x="303" y="113.5" width="31" height="16"/>
+                        <rect key="frame" x="303" y="114" width="31" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="jFI-hr-cRI"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30.5" id="ttD-gF-Y3a"/>
@@ -56,14 +56,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LkW-LN-2zW">
-                        <rect key="frame" x="0.0" y="138.5" width="344" height="1"/>
+                        <rect key="frame" x="0.0" y="139" width="344" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="bti-Le-TSg"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="XRPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="eGI-Mm-tLh">
-                        <rect key="frame" x="10" y="10" width="150" height="119.5"/>
+                        <rect key="frame" x="10" y="10" width="150" height="120"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="150" id="EHL-gh-UYA"/>
                         </constraints>

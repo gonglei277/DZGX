@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol GLHourseChangeNumCellDelegate <NSObject>
 
-- (void)changeNum:(NSInteger )tag;
+- (void)changeNum:(NSInteger )tag indexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;
 @property (weak, nonatomic) IBOutlet UILabel *sumLabel;
 
+
+@property (nonatomic, strong)NSIndexPath *indexPath;
 @property (nonatomic, assign)id<GLHourseChangeNumCellDelegate> delegate;
 
 @end

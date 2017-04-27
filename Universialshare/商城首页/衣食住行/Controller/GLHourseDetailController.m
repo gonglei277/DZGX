@@ -29,6 +29,7 @@
     NSMutableArray *_visableCells;
     int _status;
     LoadWaitView * _loadV;
+    int _sum;
 }
 
 @property (nonatomic, strong)SDCycleScrollView *cycleScrollView;
@@ -97,16 +98,15 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
     _visableCells = [NSMutableArray array];
     
     //1:积分详情  2:商品详情
-    if (self.type == 1) {
-        self.addToCartBtn.hidden = YES;
-        self.settleBtn.hidden = YES;
-        self.exchangeBtn.hidden = NO;
-    }else{
-        self.addToCartBtn.hidden = NO;
-        self.settleBtn.hidden = NO;
-        self.exchangeBtn.hidden = YES;
-
-    }
+//    if (self.type == 1) {
+//        self.addToCartBtn.hidden = YES;
+//        self.settleBtn.hidden = YES;
+//        self.exchangeBtn.hidden = NO;
+//    }else{
+//        self.addToCartBtn.hidden = NO;
+//        self.settleBtn.hidden = NO;
+//        self.exchangeBtn.hidden = YES;
+//    }
     
     [self postRequest];
     
@@ -136,6 +136,8 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
 - (IBAction)exchange:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
     GLConfirmOrderController *confirmVC = [[GLConfirmOrderController alloc] init];
+    confirmVC.goods_count = _sum;
+    confirmVC.orderType = self.type;
     [self.navigationController pushViewController:confirmVC animated:YES];
 }
 
@@ -146,7 +148,7 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
     dict[@"goods_id"] = @1;
-    dict[@"count"] = @1;
+    dict[@"count"] = @(_sum);
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"shop/addCart" paramDic:dict finish:^(id responseObject) {
@@ -154,11 +156,14 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
         [_loadV removeloadview];
         NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
-        
+            
+            self.hidesBottomBarWhenPushed = YES;
             GLShoppingCartController *cartVC = [[GLShoppingCartController alloc] init];
             [self.navigationController pushViewController:cartVC animated:YES];
             
+            
         }else{
+            
             [MBProgressHUD showError:responseObject[@"message"]];
         }
         
@@ -175,6 +180,8 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
 - (IBAction)confirmOrder:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
     GLConfirmOrderController *confirmVC = [[GLConfirmOrderController alloc] init];
+    confirmVC.goods_count = _sum;
+    confirmVC.orderType = self.type;
     [self.navigationController pushViewController:confirmVC animated:YES];
 }
 - (NSMutableArray *)dataSource{
@@ -265,6 +272,7 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
     }else if(indexPath.row == 1){
         
         GLHourseChangeNumCell *cell = [self.tableView dequeueReusableCellWithIdentifier:changeNumCell];
+        cell.indexPath = indexPath;
         cell.delegate = self;
         GLcell = cell;
         
@@ -398,20 +406,21 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
 //- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 //    
 //}
-- (void)changeNum:(NSInteger )tag{
-    GLHourseChangeNumCell *cell = self.cellArr[3];
-    int sum = [cell.sumLabel.text intValue];
+- (void)changeNum:(NSInteger )tag indexPath:(NSIndexPath *)indexPath{
+    GLHourseChangeNumCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    _sum = [cell.sumLabel.text intValue];
     
     if (tag == 20) {
-        sum -= 1;
-        if (sum < 0) {
-            sum = 0;
+        _sum -= 1;
+        if (_sum < 0) {
+            _sum = 0;
         }
     }else{
-        sum += 1;
+        _sum += 1;
     }
-    cell.sumLabel.text = [NSString stringWithFormat:@"%d",sum];
+    cell.sumLabel.text = [NSString stringWithFormat:@"%d",_sum];
     [self.tableView reloadData];
+    
 }
 - (void)changeView:(NSInteger )tag{
 

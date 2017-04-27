@@ -8,6 +8,7 @@
 
 #import "GLShoppingCartController.h"
 #import "GLShoppingCell.h"
+#import "GLConfirmOrderController.h"
 
 @interface GLShoppingCartController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -26,14 +27,17 @@
 @property (nonatomic, strong)NSMutableArray *selectArr;
 
 @property (nonatomic, strong)UIButton *seleteAllBtn;
+
 @property (nonatomic, strong)UIButton *rightBtn;
 
 @property (nonatomic, strong)NSMutableArray *dataSource;
 
 @property (nonatomic, assign)NSInteger totalPrice;
+
 @property (nonatomic, assign)NSInteger totalNum;
 
 @property (nonatomic, strong)NSMutableArray *models;
+
 @end
 
 static NSString *ID = @"GLShoppingCell";
@@ -48,7 +52,6 @@ static NSString *ID = @"GLShoppingCell";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"GLShoppingCell" bundle:nil] forCellReuseIdentifier:ID];
     self.tableView.tableHeaderView = self.headerView;
-
     
      [self.clearingBtn addTarget:self action:@selector(clearingMore:) forControlEvents:UIControlEventTouchUpInside];
 //    self.selectedNumLabel.text = [NSString stringWithFormat:@"已选中%ld件商品",_totalNum];
@@ -62,13 +65,11 @@ static NSString *ID = @"GLShoppingCell";
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
-
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"shop/myCartList" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-//        NSLog(@"dict = %@",dict);
 //        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
             for (NSDictionary *dic in responseObject[@"data"]) {
@@ -77,49 +78,47 @@ static NSString *ID = @"GLShoppingCell";
                 [self.models addObject:model];
             }
             
-            
         [self.tableView reloadData];
             
-            //            self.hidesBottomBarWhenPushed = YES;
-            //            LBMineCenterPayPagesViewController *payVC = [[LBMineCenterPayPagesViewController alloc] init];
-            //            [self.navigationController pushViewController:payVC animated:YES];
         }
-        
         
     } enError:^(NSError *error) {
         [_loadV removeloadview];
     }];
 }
 
-
-//批量删除
+//去结算
 - (void)clearingMore:(UIButton *)sender{
     if ([sender.titleLabel.text isEqualToString:@"去结算"]) {
-         NSLog(@"结算%ld件商品",_totalNum);
+        
+        self.hidesBottomBarWhenPushed = YES;
+        GLConfirmOrderController *payVC = [[GLConfirmOrderController alloc] init];
+        
+        [self.navigationController pushViewController:payVC animated:YES];
     }else{
-        NSLog(@"删除%ld件商品",_totalNum);
-        
-        NSMutableIndexSet *indexs = [NSMutableIndexSet indexSet];
-        // 遍历选中的数据源的index并添加到set里面
-        for (int i = 0; i < self.selectArr.count; i ++) {
-            if ([self.selectArr[i] boolValue] == YES) {
-                [indexs addIndex:i];
-                _totalPrice -= [_dataSource[i] integerValue] * [_numArr[i] integerValue];
-            }
-        }
-        _totalNum = 0;
-        self.selectedNumLabel.text = [NSString stringWithFormat:@"已选中%ld件商品",_totalNum];
-        self.totalPriceLabel.text = [NSString stringWithFormat:@"总金额¥ %ld元",_totalPrice];
-        //  删除选中数据源 并更新tableView
-//        [dataSource removeObjectsAtIndexes:indexs];
-        [self.selectArr removeObjectsAtIndexes:indexs];
-        [self.dataSource removeObjectsAtIndexes:indexs];
-        [_numArr removeObjectsAtIndexes:indexs];
-        
-        [self updateTitleNum];
-        
-        [self.tableView reloadData];
-        
+//        NSLog(@"删除%ld件商品",_totalNum);
+//        
+//        NSMutableIndexSet *indexs = [NSMutableIndexSet indexSet];
+//        // 遍历选中的数据源的index并添加到set里面
+//        for (int i = 0; i < self.selectArr.count; i ++) {
+//            if ([self.selectArr[i] boolValue] == YES) {
+//                [indexs addIndex:i];
+//                _totalPrice -= [_dataSource[i] integerValue] * [_numArr[i] integerValue];
+//            }
+//        }
+//        _totalNum = 0;
+//        self.selectedNumLabel.text = [NSString stringWithFormat:@"已选中%ld件商品",_totalNum];
+//        self.totalPriceLabel.text = [NSString stringWithFormat:@"总金额¥ %ld元",_totalPrice];
+//        //  删除选中数据源 并更新tableView
+////        [dataSource removeObjectsAtIndexes:indexs];
+//        [self.selectArr removeObjectsAtIndexes:indexs];
+//        [self.dataSource removeObjectsAtIndexes:indexs];
+//        [_numArr removeObjectsAtIndexes:indexs];
+//        
+//        [self updateTitleNum];
+//        
+//        [self.tableView reloadData];
+//        
     }
 }
 //全选
