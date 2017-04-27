@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,13 +22,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                         <subviews>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已完成" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOm-fk-kKa">
-                                <rect key="frame" x="10" y="8" width="43" height="20"/>
+                                <rect key="frame" x="10" y="8" width="42" height="20"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="tls-uv-Aq9"/>
                                     <constraint firstAttribute="height" constant="20" id="xab-AB-C0E"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -58,47 +59,48 @@
                         <rect key="frame" x="0.0" y="36" width="320" height="111"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="XRPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="yEg-Jw-33U">
-                                <rect key="frame" x="10" y="11" width="120" height="90"/>
+                                <rect key="frame" x="10" y="11" width="110" height="90"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="HNa-2s-R2g"/>
-                                    <constraint firstAttribute="width" constant="120" id="WxA-II-c38"/>
+                                    <constraint firstAttribute="width" constant="110" id="WxA-II-c38"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某某装修" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnY-Vy-hhu">
-                                <rect key="frame" x="140" y="11" width="170" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某某装修" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnY-Vy-hhu">
+                                <rect key="frame" x="130" y="11" width="180" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="HL5-9o-IwZ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="HL5-9o-IwZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数量:0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIY-01-pdT">
-                                <rect key="frame" x="140" y="41" width="170" height="20"/>
+                                <rect key="frame" x="130" y="37" width="180" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Iwa-OM-JlL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格:5000元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6O-Bj-3ll">
-                                <rect key="frame" x="140" y="71" width="82" height="20"/>
+                                <rect key="frame" x="130" y="67" width="76" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="OBu-dG-rYQ"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="iox-gr-vrb"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRh-Eb-Wh5">
-                                <rect key="frame" x="240" y="71" width="70" height="30"/>
+                                <rect key="frame" x="240" y="76" width="70" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="SJr-BS-53I"/>
-                                    <constraint firstAttribute="height" constant="30" id="qCZ-kM-RwF"/>
+                                    <constraint firstAttribute="height" constant="25" id="qCZ-kM-RwF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="去支付">
                                     <color key="titleColor" red="0.7691993117" green="0.19067090749999999" blue="0.036488793790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>

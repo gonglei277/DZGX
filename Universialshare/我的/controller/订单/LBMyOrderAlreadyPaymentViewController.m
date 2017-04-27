@@ -1,12 +1,12 @@
 //
-//  LBMyOrderAlreadyCompletedViewController.m
+//  LBMyOrderAlreadyPaymentViewController.m
 //  Universialshare
 //
-//  Created by 四川三君科技有限公司 on 2017/4/1.
+//  Created by 四川三君科技有限公司 on 2017/4/27.
 //  Copyright © 2017年 四川三君科技有限公司. All rights reserved.
 //
 
-#import "LBMyOrderAlreadyCompletedViewController.h"
+#import "LBMyOrderAlreadyPaymentViewController.h"
 #import "LBMyOrderListTableViewCell.h"
 #import "LBMineCenterOrderDetailViewController.h"
 #import <MJRefresh/MJRefresh.h>
@@ -14,7 +14,7 @@
 #import "LBMyOrdersModel.h"
 #import "LBMyOrdersListModel.h"
 
-@interface LBMyOrderAlreadyCompletedViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
+@interface LBMyOrderAlreadyPaymentViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic)NSMutableArray *dataarr;
@@ -23,14 +23,13 @@
 @property (assign, nonatomic)BOOL refreshType;//判断刷新状态 默认为no
 @property (strong, nonatomic)NodataView *nodataV;
 
-
 @end
 
-@implementation LBMyOrderAlreadyCompletedViewController
+@implementation LBMyOrderAlreadyPaymentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.tableview.tableFooterView = [UIView new];
@@ -63,13 +62,12 @@
     
     self.tableview.mj_header = header;
     self.tableview.mj_footer = footer;
-    
 }
 
 -(void)initdatasource{
     
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"user/order_mark_list" paramDic:@{@"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token , @"page" :[NSNumber numberWithInteger:self.page] , @"type":@4} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/order_mark_list" paramDic:@{@"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token , @"page" :[NSNumber numberWithInteger:self.page] , @"type":@2} finish:^(id responseObject) {
         [_loadV removeloadview];
         [self.tableview.mj_header endRefreshing];
         [self.tableview.mj_footer endRefreshing];
@@ -85,12 +83,12 @@
                     LBMyOrdersModel *ordersMdel=[[LBMyOrdersModel alloc]init];
                     ordersMdel.addtime = responseObject[@"data"][i][@"addtime"];
                     ordersMdel.order_id = responseObject[@"data"][i][@"order_id"];
-                     ordersMdel.order_money = responseObject[@"data"][i][@"order_money"];
-                     ordersMdel.order_num = responseObject[@"data"][i][@"order_num"];
-                     ordersMdel.order_type = responseObject[@"data"][i][@"order_type"];
-                     ordersMdel.realy_price = responseObject[@"data"][i][@"realy_price"];
-                     ordersMdel.total = responseObject[@"data"][i][@"total"];
-                     ordersMdel.isExpanded = NO;
+                    ordersMdel.order_money = responseObject[@"data"][i][@"order_money"];
+                    ordersMdel.order_num = responseObject[@"data"][i][@"order_num"];
+                    ordersMdel.order_type = responseObject[@"data"][i][@"order_type"];
+                    ordersMdel.realy_price = responseObject[@"data"][i][@"realy_price"];
+                    ordersMdel.total = responseObject[@"data"][i][@"total"];
+                    ordersMdel.isExpanded = NO;
                     ordersMdel.MyOrdersListModel = responseObject[@"data"][i][@"goods"];
                     [self.dataarr addObject:ordersMdel];
                 }
@@ -101,10 +99,10 @@
         }else if ([responseObject[@"code"] integerValue]==3){
             
             [MBProgressHUD showError:responseObject[@"message"]];
-
+            
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
-
+            
             
         }
     } enError:^(NSError *error) {
@@ -152,6 +150,7 @@
     return model.isExpanded?model.MyOrdersListModel.count:0;
 }
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return 150;
@@ -164,7 +163,10 @@
     
     LBMyOrderListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMyOrderListTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell.payBt setTitle:@"再次购买" forState:UIControlStateNormal];
+    //[cell.payBt setTitle:@"申请退款" forState:UIControlStateNormal];
+    cell.payBt.hidden = YES;
+    cell.deleteBt.hidden = YES;
+    cell.stauesLb.text = @"已付款";
     __weak typeof(self)  weakself = self;
     cell.index = indexPath.row;
     
@@ -173,7 +175,7 @@
     cell.myorderlistModel = model.MyOrdersListModel[indexPath.row];
     
     cell.retunpaybutton = ^(NSInteger index){
-    
+        
         
     };
     
@@ -183,19 +185,10 @@
         [alert show];
         
     };
-
+    
     return cell;
     
 }
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    LBMineCenterOrderDetailViewController *vc=[[LBMineCenterOrderDetailViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-    
-    
-}
-
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
     return 60;
@@ -221,10 +214,17 @@
     return headerview;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    LBMineCenterOrderDetailViewController *vc=[[LBMineCenterOrderDetailViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+}
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex==1) {
-            
-       
+        
+        
         
     }
     
@@ -248,4 +248,5 @@
     return _nodataV;
     
 }
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LBMyOrdersListModel.h"
 
 @protocol LBMyOrderListTableViewdelegete <NSObject>
 
@@ -35,5 +36,6 @@
 @property (copy, nonatomic)void(^retundeletebutton)(NSInteger index);
 
 @property (assign, nonatomic)id<LBMyOrderListTableViewdelegete> delegete;
+@property (strong, nonatomic)LBMyOrdersListModel *myorderlistModel;
 
 @end

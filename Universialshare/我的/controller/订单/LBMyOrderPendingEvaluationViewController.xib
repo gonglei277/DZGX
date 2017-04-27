@@ -16,7 +16,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -36,6 +36,7 @@
                 <constraint firstItem="iun-7U-gc3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Gfx-At-uDB"/>
                 <constraint firstItem="iun-7U-gc3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UtB-tP-dg5"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
 </document>
