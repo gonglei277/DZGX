@@ -55,7 +55,7 @@
     self.tableview.mj_header = header;
     self.tableview.mj_footer = footer;
     
-    [self initdatasource];
+    //[self initdatasource];
 }
 
 -(void)initdatasource{
@@ -124,7 +124,7 @@
     }else{
         self.nodataV.hidden = NO;
     }
-    return 10;
+    return self.dataarr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -8,6 +8,7 @@
 
 #import "LBMineStoreAllOrdersViewController.h"
 #import "LBMineStoreOrderingTableViewCell.h"
+#import "LBMineStoreOrderingOneTableViewCell.h"
 
 @interface LBMineStoreAllOrdersViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -26,13 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    
+    _page = 1;
     [self.tableview addSubview:self.nodataV];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor=[UIColor whiteColor];
     self.tableview.tableFooterView = [UIView new];
-    [self.tableview registerNib:[UINib nibWithNibName:@"LBMineStoreOrderingTableViewCell" bundle:nil] forCellReuseIdentifier:@"LBMineStoreOrderingTableViewCell"];
-    
+    [self.tableview registerNib:[UINib nibWithNibName:@"LBMineStoreOrderingOneTableViewCell" bundle:nil] forCellReuseIdentifier:@"LBMineStoreOrderingOneTableViewCell"];
+    self.tableview.estimatedRowHeight = 95;
+    self.tableview.rowHeight = UITableViewAutomaticDimension;
+     [self initdatasource];
     __weak __typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
@@ -57,43 +60,38 @@
     
     self.tableview.mj_header = header;
     self.tableview.mj_footer = footer;
-    
-    [self initdatasource];
 }
 
 -(void)initdatasource{
     
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"user/order_list" paramDic:@{@"page":[NSNumber numberWithInteger:_page] , @"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token ,@"tatus":[NSNumber numberWithInteger:0]} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/order_list_shop" paramDic:@{@"page":[NSNumber numberWithInteger:_page] , @"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token } finish:^(id responseObject) {
         [_loadV removeloadview];
         [self.tableview.mj_header endRefreshing];
         [self.tableview.mj_footer endRefreshing];
         if ([responseObject[@"code"] integerValue]==1) {
-            
-            if ([responseObject[@"data"] isEqual:[NSArray array]]) {
+
                 if (_refreshType == NO) {
-                    
                     [self.dataarr removeAllObjects];
-                    
-                    [self.dataarr addObjectsFromArray:responseObject[@"data"]];
-                    
-                    [self.tableview reloadData];
+                    if (![responseObject[@"data"] isEqual:[NSNull null]]) {
+                        [self.dataarr addObjectsFromArray:responseObject[@"data"]];
+                        [self.tableview reloadData];
+                    }
                 }else{
                     
-                    [self.dataarr addObjectsFromArray:responseObject[@"data"]];
-                    
-                    [self.tableview reloadData];
-                    
-                }
+                    if (![responseObject[@"data"] isEqual:[NSNull null]]) {
+                        [self.dataarr addObjectsFromArray:responseObject[@"data"]];
+                        [self.tableview reloadData];
+                    }
             }
             
         }else if ([responseObject[@"code"] integerValue]==3){
             
             [MBProgressHUD showError:responseObject[@"message"]];
-            [self.tableview reloadData];
+
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
-            [self.tableview reloadData];
+
             
         }
     } enError:^(NSError *error) {
@@ -136,7 +134,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    return 200;
+    return UITableViewAutomaticDimension;
     
 }
 
@@ -145,17 +143,13 @@
     
     
     
-    LBMineStoreOrderingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMineStoreOrderingTableViewCell" forIndexPath:indexPath];
+    LBMineStoreOrderingOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMineStoreOrderingOneTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.index = indexPath.row;
-    __weak typeof(self) weakself = self;
-    cell.returncheckbutton = ^(NSInteger index){
-        
-        if (weakself.returncheckbutton) {
-            weakself.returncheckbutton(index);
-        }
-        
-    };
+    cell.namelb.text = [NSString stringWithFormat:@"%@",self.dataarr[indexPath.row][@"goods_name"]];
+    cell.numlb.text = [NSString stringWithFormat:@"数量:%@",self.dataarr[indexPath.row][@"goods_total"]];
+    cell.modelLb.text = [NSString stringWithFormat:@"激励模式:%@",self.dataarr[indexPath.row][@"rlmodel_type"]];
+    cell.moneyLb.text = [NSString stringWithFormat:@"实付款:%@",self.dataarr[indexPath.row][@"line_money"]];
+    cell.orderCode.text = [NSString stringWithFormat:@"订单号:%@",self.dataarr[indexPath.row][@"order_num"]];
     
     return cell;
     

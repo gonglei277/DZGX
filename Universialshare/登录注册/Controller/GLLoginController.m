@@ -136,21 +136,19 @@
 -(void)surebuttonEvent{
     
 
-    if (![self.usertype isEqualToString:OrdinaryUser]) {
-        [UserModel defaultUser].usrtype = self.usertype;
-        [UserModel defaultUser].loginstatus = YES;
-        [usermodelachivar achive];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshInterface" object:nil];
-        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-        return;
-    }
+//    if (![self.usertype isEqualToString:OrdinaryUser] || ![self.usertype isEqualToString:Retailer]) {
+//        [UserModel defaultUser].usrtype = self.usertype;
+//        [UserModel defaultUser].loginstatus = YES;
+//        [usermodelachivar achive];
+//        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshInterface" object:nil];
+//        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+//        return;
+//    }
 
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     
  
      NSString *encryptsecret = [RSAEncryptor encryptString:self.scretTf.text publicKey:public_RSA];
-
-//    NSLog(@"encryptsecret = %@",encryptsecret);
     [NetworkManager requestPOSTWithURLStr:@"user/login" paramDic:@{@"userphone":self.phone.text,@"password":encryptsecret,@"groupID":self.usertype} finish:^(id responseObject) {
         [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
@@ -232,7 +230,7 @@
             }
             
             [usermodelachivar achive];
-            
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshInterface" object:nil];
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
             
         }else{
@@ -254,8 +252,8 @@
     if (self.currentloginViewimage == self.loginView.shangImage) {
         return;
     }
-    self.loginView.shangImage.image=[UIImage imageNamed:@"选中"];
-    self.currentloginViewimage.image=[UIImage imageNamed:@"未选中"];
+    self.loginView.shangImage.image=[UIImage imageNamed:@"登录选中"];
+    self.currentloginViewimage.image=[UIImage imageNamed:@"登录未选中"];
     self.currentloginViewimage = self.loginView.shangImage;
 }
 //零售商
@@ -265,8 +263,8 @@
     if (self.currentloginViewimage == self.loginView.lingimage) {
         return;
     }
-    self.loginView.lingimage.image=[UIImage imageNamed:@"选中"];
-    self.currentloginViewimage.image=[UIImage imageNamed:@"未选中"];
+    self.loginView.lingimage.image=[UIImage imageNamed:@"登录选中"];
+    self.currentloginViewimage.image=[UIImage imageNamed:@"登录未选中"];
     self.currentloginViewimage = self.loginView.lingimage;
     
 }
@@ -277,8 +275,8 @@
     if (self.currentloginViewimage == self.loginView.oneImage) {
         return;
     }
-    self.loginView.oneImage.image=[UIImage imageNamed:@"选中"];
-    self.currentloginViewimage.image=[UIImage imageNamed:@"未选中"];
+    self.loginView.oneImage.image=[UIImage imageNamed:@"登录选中"];
+    self.currentloginViewimage.image=[UIImage imageNamed:@"登录未选中"];
     self.currentloginViewimage = self.loginView.oneImage;
 
 }
@@ -289,8 +287,8 @@
     if (self.currentloginViewimage == self.loginView.twoImage) {
         return;
     }
-    self.loginView.twoImage.image=[UIImage imageNamed:@"选中"];
-    self.currentloginViewimage.image=[UIImage imageNamed:@"未选中"];
+    self.loginView.twoImage.image=[UIImage imageNamed:@"登录选中"];
+    self.currentloginViewimage.image=[UIImage imageNamed:@"登录未选中"];
     self.currentloginViewimage = self.loginView.twoImage;
     
 }
@@ -301,8 +299,8 @@
     if (self.currentloginViewimage == self.loginView.threeImage) {
         return;
     }
-    self.loginView.threeImage.image=[UIImage imageNamed:@"选中"];
-    self.currentloginViewimage.image=[UIImage imageNamed:@"未选中"];
+    self.loginView.threeImage.image=[UIImage imageNamed:@"登录选中"];
+    self.currentloginViewimage.image=[UIImage imageNamed:@"登录未选中"];
     self.currentloginViewimage = self.loginView.threeImage;
     
 }
@@ -348,6 +346,21 @@
     [self.maskView removeFromSuperview];
     [self.loginView removeFromSuperview];
     
+}
+
+-(void)updateViewConstraints{
+    [super updateViewConstraints];
+    
+    self.loginBtn.layer.cornerRadius = 4;
+    self.loginBtn.clipsToBounds = YES;
+    self.registerBtn.layer.cornerRadius = 4;
+    self.registerBtn.clipsToBounds = YES;
+    
+    self.loginView.sureBt.layer.cornerRadius = 4;
+    self.loginView.sureBt.clipsToBounds = YES;
+    self.loginView.cancelBt.layer.cornerRadius = 4;
+    self.loginView.cancelBt.clipsToBounds = YES;
+
 }
 
 -(LoginIdentityView*)loginView{
