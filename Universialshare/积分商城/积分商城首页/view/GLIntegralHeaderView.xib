@@ -16,9 +16,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="猜你喜欢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNl-Rc-Kkk">
-                    <rect key="frame" x="14" y="11" width="57.5" height="20"/>
+                    <rect key="frame" x="17" y="12.5" width="57.5" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="kAO-vq-cnL"/>
+                        <constraint firstAttribute="height" constant="17" id="fFk-cM-eIX"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53.5" id="sU2-Ch-0FA"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -32,7 +32,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOE-Ze-56u">
-                    <rect key="frame" x="10" y="10" width="2" height="22"/>
+                    <rect key="frame" x="10" y="13.5" width="2" height="15"/>
                     <color key="backgroundColor" red="0.1551630795" green="0.58942979569999998" blue="0.2282119095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="2" id="ccn-sW-nG2"/>
@@ -41,14 +41,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="qOE-Ze-56u" secondAttribute="bottom" constant="10" id="8fa-Jg-F6Q"/>
                 <constraint firstAttribute="trailing" secondItem="Ydd-88-nt2" secondAttribute="trailing" constant="10" id="MHb-UZ-e0v"/>
+                <constraint firstItem="qOE-Ze-56u" firstAttribute="height" secondItem="XNl-Rc-Kkk" secondAttribute="height" constant="-2" id="S9K-lm-Xg1"/>
                 <constraint firstAttribute="bottom" secondItem="Ydd-88-nt2" secondAttribute="bottom" constant="5" id="TVe-ha-nfY"/>
                 <constraint firstItem="XNl-Rc-Kkk" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="YQ0-fe-vz2"/>
                 <constraint firstItem="Ydd-88-nt2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="a1p-Id-K7K"/>
                 <constraint firstItem="qOE-Ze-56u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="bIC-cg-eaZ"/>
-                <constraint firstItem="XNl-Rc-Kkk" firstAttribute="leading" secondItem="qOE-Ze-56u" secondAttribute="trailing" constant="2" id="ddx-q3-XYi"/>
-                <constraint firstItem="qOE-Ze-56u" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="pp7-RT-7dD"/>
+                <constraint firstItem="XNl-Rc-Kkk" firstAttribute="leading" secondItem="qOE-Ze-56u" secondAttribute="trailing" constant="5" id="ddx-q3-XYi"/>
+                <constraint firstItem="qOE-Ze-56u" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="yWU-G5-AYg"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

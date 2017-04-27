@@ -143,6 +143,7 @@ static NSString *ID = @"GLOrderGoodsCell";
 
     self.hidesBottomBarWhenPushed = YES;
     LBMineCenterPayPagesViewController *payVC = [[LBMineCenterPayPagesViewController alloc] init];
+    payVC.payType = 2;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

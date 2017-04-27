@@ -32,7 +32,7 @@
 - (void)changeColor:(UILabel*)label rangeNumber:(NSInteger )rangeNum
 {
     NSString *remainBeans = [NSString stringWithFormat:@"%lu",rangeNum];
-    NSString *totalStr = [NSString stringWithFormat:@"%@积分",remainBeans];
+    NSString *totalStr = [NSString stringWithFormat:@"%@ 积分",remainBeans];
     NSMutableAttributedString *textColor = [[NSMutableAttributedString alloc]initWithString:totalStr];
     NSRange rangel = [[textColor string] rangeOfString:remainBeans];
     [textColor addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:rangel];

@@ -107,6 +107,7 @@
             <connections>
                 <outlet property="fanliLabel" destination="qpr-ck-eQA" id="gjL-11-kex"/>
                 <outlet property="monthSellLabel" destination="IlG-CU-RpX" id="n58-aY-f01"/>
+                <outlet property="nameLabel" destination="mea-4s-Jw9" id="uyJ-iZ-g55"/>
                 <outlet property="priceLabel" destination="AQE-JS-5vZ" id="Jlh-md-Kny"/>
                 <outlet property="yunfeiLabel" destination="o4U-cF-sRj" id="j3D-Yb-5cB"/>
             </connections>

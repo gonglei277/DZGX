@@ -198,10 +198,10 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 180 *autoSizeScaleY;
+        return 185 *autoSizeScaleY;
     }else{
         
-        return 120 *autoSizeScaleY;
+        return 110 *autoSizeScaleY;
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

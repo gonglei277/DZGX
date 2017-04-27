@@ -163,13 +163,11 @@
         }
         
         
-        
     } enError:^(NSError *error) {
         [_loadV removeloadview];
         [MBProgressHUD showError:error.localizedDescription];
         
     }];
-    
     
 }
 - (id)currentDataArr {
@@ -234,7 +232,6 @@
         
     }
 //    self.messageType = row + 1;
-    
 }
 
 //返回当前行的内容,此处是将数组中数值添加到滚动的那个显示栏上
@@ -277,8 +274,6 @@
     [self.navigationController pushViewController:vc animated:YES];
     
 }
-
-
 
 
 -(NSMutableArray *)dataArr{
