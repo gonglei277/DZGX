@@ -18,6 +18,10 @@
 @property (strong, nonatomic)  NSArray *dataarr;
 @property (strong, nonatomic)  NSMutableArray *selectB;
 @property (assign, nonatomic)  NSInteger selectIndex;
+@property (weak, nonatomic) IBOutlet UILabel *orderType;
+@property (weak, nonatomic) IBOutlet UILabel *ordercode;
+@property (weak, nonatomic) IBOutlet UILabel *orderMoney;
+@property (weak, nonatomic) IBOutlet UILabel *orderMTitleLb;
 
 @end
 
@@ -34,6 +38,11 @@
     self.tableview.tableFooterView = [UIView new];
     [self.tableview registerNib:[UINib nibWithNibName:@"LBMineCenterPayPagesTableViewCell" bundle:nil] forCellReuseIdentifier:@"LBMineCenterPayPagesTableViewCell"];
     
+    if (self.payType == 1) {
+        self.orderMTitleLb.text = @"订单金额:";
+    }else if (self.payType == 2){
+        self.orderMTitleLb.text = @"订单积分:";
+    }
     for (int i=0; i<_dataarr.count; i++) {
         
         [self.selectB addObject:@NO];
@@ -57,8 +66,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    
+
     LBMineCenterPayPagesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMineCenterPayPagesTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.payimage.image = [UIImage imageNamed:_dataarr[indexPath.row][@"image"]];
@@ -73,7 +81,6 @@
     }
 
     return cell;
-
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -96,12 +103,9 @@
     }
     
     [self.tableview reloadData];
-    
-
 }
 
 - (IBAction)surebutton:(UIButton *)sender {
-    
     
     
 }
@@ -110,7 +114,13 @@
 -(NSArray*)dataarr{
 
     if (!_dataarr) {
-        _dataarr=[NSArray arrayWithObjects:@{@"image":@"余额",@"title":@"余额支付"},@{@"image":@"支付宝",@"title":@"支付宝支付"},@{@"image":@"微信",@"title":@"微信支付"}, nil];
+        
+        if (self.payType == 1) {
+            _dataarr=[NSArray arrayWithObjects:@{@"image":@"余额",@"title":@"余额支付"},@{@"image":@"支付宝",@"title":@"支付宝支付"},@{@"image":@"微信",@"title":@"微信支付"}, nil];
+        }else if (self.payType == 2){
+        
+           _dataarr=[NSArray arrayWithObjects:@{@"image":@"支付积分",@"title":@"积分支付"}, nil];
+        }
     }
 
     return _dataarr;

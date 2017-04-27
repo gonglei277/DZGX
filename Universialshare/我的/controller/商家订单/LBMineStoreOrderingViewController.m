@@ -108,7 +108,7 @@
 - (IBAction)todaybutton:(UIButton *)sender {
     
     [UIView animateWithDuration:0.3 animations:^{
-        self.lineView.frame = CGRectMake(SCREEN_WIDTH / 3, 49, SCREEN_WIDTH / 3, 2);
+        self.lineView.frame = CGRectMake(SCREEN_WIDTH / 2, 49, SCREEN_WIDTH / 2, 2);
          [self.todatbutton setTitleColor:YYSRGBColor(37, 154, 37, 1) forState:UIControlStateNormal];
         [self.historybutton setTitleColor:YYSRGBColor(0, 0, 0, 1) forState:UIControlStateNormal];
         [self.allButton setTitleColor:YYSRGBColor(0, 0, 0, 1) forState:UIControlStateNormal];
@@ -121,20 +121,20 @@
     
 }
 
-- (IBAction)historybutton:(UIButton *)sender {
-    
-    [UIView animateWithDuration:0.3 animations:^{
-          [self.historybutton setTitleColor:YYSRGBColor(37, 154, 37, 1) forState:UIControlStateNormal];
-         [self.todatbutton setTitleColor:YYSRGBColor(0, 0, 0, 1) forState:UIControlStateNormal];
-        [self.allButton setTitleColor:YYSRGBColor(0, 0, 0, 1) forState:UIControlStateNormal];
-         self.lineView.frame = CGRectMake(SCREEN_WIDTH / 3 * 2, 49, SCREEN_WIDTH / 3, 2);
-    } completion:^(BOOL finished) {
-        
-    }];
-    [self transitionFromVC:self.currentViewController toviewController:_historyVc];
-    [self fitFrameForChildViewController:_historyVc];
-
-}
+//- (IBAction)historybutton:(UIButton *)sender {
+//    
+//    [UIView animateWithDuration:0.3 animations:^{
+//          [self.historybutton setTitleColor:YYSRGBColor(37, 154, 37, 1) forState:UIControlStateNormal];
+//         [self.todatbutton setTitleColor:YYSRGBColor(0, 0, 0, 1) forState:UIControlStateNormal];
+//        [self.allButton setTitleColor:YYSRGBColor(0, 0, 0, 1) forState:UIControlStateNormal];
+//         self.lineView.frame = CGRectMake(SCREEN_WIDTH / 3 * 2, 49, SCREEN_WIDTH / 3, 2);
+//    } completion:^(BOOL finished) {
+//        
+//    }];
+//    [self transitionFromVC:self.currentViewController toviewController:_historyVc];
+//    [self fitFrameForChildViewController:_historyVc];
+//
+//}
 //点击全部
 - (IBAction)allbuttonEvent:(UIButton *)sender {
     
@@ -142,7 +142,7 @@
         [self.historybutton setTitleColor:YYSRGBColor(0, 0, 0, 1) forState:UIControlStateNormal];
         [self.todatbutton setTitleColor:YYSRGBColor(0, 0, 0, 1) forState:UIControlStateNormal];
         [self.allButton setTitleColor:YYSRGBColor(37, 154, 37, 1) forState:UIControlStateNormal];
-        self.lineView.frame = CGRectMake(0, 49, SCREEN_WIDTH / 3, 2);
+        self.lineView.frame = CGRectMake(0, 49, SCREEN_WIDTH / 2, 2);
     } completion:^(BOOL finished) {
         
     }];
@@ -155,7 +155,7 @@
 -(UIView*)lineView{
 
     if (!_lineView) {
-        _lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 49, SCREEN_WIDTH / 3, 2)];
+        _lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 49, SCREEN_WIDTH / 2, 2)];
         _lineView.backgroundColor = YYSRGBColor(37, 154, 37, 1);
     }
     
