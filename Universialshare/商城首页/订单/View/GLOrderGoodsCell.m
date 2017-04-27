@@ -12,7 +12,7 @@
 @interface GLOrderGoodsCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageV;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *fanliLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;

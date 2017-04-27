@@ -12,5 +12,6 @@
 @interface GLOrderGoodsCell : UITableViewCell
 
 @property (nonatomic, strong)GLConfirmOrderModel *model;
+@property (weak, nonatomic) IBOutlet UILabel *fanliLabel;
 
 @end

@@ -21,7 +21,10 @@
 }
 
 - (IBAction)changeNum:(UIButton *)sender {
-    [_delegate changeNum:sender.tag];
+    if ([_delegate respondsToSelector:@selector(changeNum:indexPath:)]) { // 如果协议响应
+       
+        [_delegate changeNum:sender.tag indexPath:self.indexPath];
+    }
 }
 
 

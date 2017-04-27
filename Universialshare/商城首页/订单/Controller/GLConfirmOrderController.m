@@ -78,14 +78,14 @@ static NSString *ID = @"GLOrderGoodsCell";
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
     dict[@"goods_id"] = @1;
-    dict[@"goods_count"] = @1;
+    dict[@"goods_count"] = @(self.goods_count);
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"shop/placeOrderBefore" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
 //        NSLog(@"dict = %@",dict);
-//        NSLog(@"responseObject = %@",responseObject);
+        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
             
             self.totalSumLabel.text = [NSString stringWithFormat:@"合计:¥%@",responseObject[@"data"][@"all_realy_price"]];
@@ -98,9 +98,7 @@ static NSString *ID = @"GLOrderGoodsCell";
             self.tableViewHeight.constant = _models.count * 150 * autoSizeScaleY;
             [self.tableView reloadData];
             
-//            self.hidesBottomBarWhenPushed = YES;
-//            LBMineCenterPayPagesViewController *payVC = [[LBMineCenterPayPagesViewController alloc] init];
-//            [self.navigationController pushViewController:payVC animated:YES];
+
         }
         
         
@@ -140,10 +138,14 @@ static NSString *ID = @"GLOrderGoodsCell";
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     
 }
+
 - (IBAction)submitOrder:(UIButton *)sender {
 
-    
+    self.hidesBottomBarWhenPushed = YES;
+    LBMineCenterPayPagesViewController *payVC = [[LBMineCenterPayPagesViewController alloc] init];
+    [self.navigationController pushViewController:payVC animated:YES];
 }
+
 //- (IBAction)changeNum:(id)sender {
 //    
 //    if (sender == self.reduceBtn) {
@@ -166,6 +168,11 @@ static NSString *ID = @"GLOrderGoodsCell";
     GLOrderGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     cell.model = self.models[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if(self.orderType == 1){
+        cell.fanliLabel.hidden = YES;
+    }else{
+        cell.fanliLabel.hidden = NO;
+    }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
