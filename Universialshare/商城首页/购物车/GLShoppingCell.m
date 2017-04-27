@@ -7,12 +7,15 @@
 //
 
 #import "GLShoppingCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GLShoppingCell ()
-@property (weak, nonatomic) IBOutlet UIButton *reduceBtn;
-@property (weak, nonatomic) IBOutlet UIButton *addBtn;
-@property (weak, nonatomic) IBOutlet UILabel *goodsNamelabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *goodsNamelabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageV;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 
 @end
 
@@ -21,40 +24,26 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.bottomView.layer.cornerRadius = 5.f;
-    self.bottomView.clipsToBounds = YES;
-//    self.bottomView.alpha = 0.3;
-    self.bottomView.layer.borderColor = YYSRGBColor(148, 148, 148, 0.3).CGColor;
-    self.bottomView.layer.borderWidth = 1;
  
     self.goodsNamelabel.font = [UIFont systemFontOfSize:ADAPT(15)];
-    UIGestureRecognizer *tap = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(changeStatus)];
-    [self addGestureRecognizer:tap];
+
+}
+- (void)setModel:(GLShoppingCartModel *)model {
+    _model = model;
+    [_imageV sd_setImageWithURL:[NSURL URLWithString:model.thumb] placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
+    _goodsNamelabel.text = model.goods_name;
+    _amountLabel.text =[NSString stringWithFormat:@"数量:%@",model.num];
+    _detailLabel.text = model.info;
+    if([model.goods_price integerValue] >10000){
+        
+        _priceLabel.text = [NSString stringWithFormat:@"¥ %.2f万元",[model.goods_price floatValue]/10000];
+    }else{
+        _priceLabel.text = [NSString stringWithFormat:@"¥ %@元",model.goods_price];
+    }
+    if (_imageV.image == nil) {
+        _imageV.image = [UIImage imageNamed:@"XRPlaceholder"];
+    }
 }
 
-- (IBAction)changeClick:(id)sender {
-    if ([_delegate respondsToSelector:@selector(changeStatus:)]) {
-        [_delegate changeStatus:self.index];
-    }
-   
-}
-- (void)changeStatus {
-    if ([_delegate respondsToSelector:@selector(changeStatus:)]) {
-        [_delegate changeStatus:self.index];
-    }
-}
-- (IBAction)changeSum:(id)sender {
-    if (sender == self.addBtn) {
-        
-        if ([_delegate respondsToSelector:@selector(addNum:)]) {
-            [_delegate addNum:self.index];
-        }
-    }else{
-        if ([_delegate respondsToSelector:@selector(reduceNum:)]) {
-            [_delegate reduceNum:self.index];
-        }
-    }
-    
-}
 
 @end

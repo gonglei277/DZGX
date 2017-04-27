@@ -11,9 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLConfirmOrderController">
             <connections>
+                <outlet property="addressLabel" destination="1x6-Ox-Yso" id="THR-Nr-05j"/>
                 <outlet property="addressView" destination="94k-2H-ogB" id="AEn-yi-cL6"/>
                 <outlet property="contentViewH" destination="p1J-9u-DYW" id="wZa-2z-0vx"/>
                 <outlet property="contentViewW" destination="aQJ-r8-DXs" id="9TZ-m3-xSY"/>
+                <outlet property="nameLabel" destination="yjU-Sb-MTo" id="bb3-Nc-Gte"/>
+                <outlet property="phoneLabel" destination="lFo-MM-KOA" id="QSU-Or-77l"/>
                 <outlet property="tableView" destination="03v-cY-ita" id="ddF-er-G9a"/>
                 <outlet property="tableViewHeight" destination="Ef0-mM-MRd" id="Dee-Xq-Bnx"/>
                 <outlet property="totalSumLabel" destination="SP9-Vi-EDZ" id="Ntv-Is-TTz"/>

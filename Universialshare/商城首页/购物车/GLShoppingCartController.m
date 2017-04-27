@@ -9,9 +9,11 @@
 #import "GLShoppingCartController.h"
 #import "GLShoppingCell.h"
 
-@interface GLShoppingCartController ()<UITableViewDelegate,UITableViewDataSource,GLShoppingCellDelegate>
+@interface GLShoppingCartController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSMutableArray *_numArr;
+    NSInteger _yesSum;
+    LoadWaitView *_loadV;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)UIView *headerView;
@@ -30,63 +32,13 @@
 
 @property (nonatomic, assign)NSInteger totalPrice;
 @property (nonatomic, assign)NSInteger totalNum;
+
+@property (nonatomic, strong)NSMutableArray *models;
 @end
 
 static NSString *ID = @"GLShoppingCell";
 @implementation GLShoppingCartController
 
-- (UIView *)headerView {
-    
-    if(_headerView == nil){
-        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
-        _seleteAllBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 20, 30, 30)];
-//        _seleteAllBtn.backgroundColor = [UIColor lightGrayColor];
-        [_seleteAllBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
-        [_seleteAllBtn addTarget:self action:@selector(selectAll) forControlEvents:UIControlEventTouchUpInside];
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_seleteAllBtn.frame) + 10, _seleteAllBtn.yy_y, 80, _seleteAllBtn.yy_height)];
-        label.text = @"全选";
-        
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_headerView.frame), SCREEN_WIDTH, 1)];
-        lineView.backgroundColor = [UIColor lightGrayColor];
-        lineView.alpha = 0.3;
-        
-        
-        [_headerView addSubview:_seleteAllBtn];
-        [_headerView addSubview:label];
-        [_headerView addSubview:lineView];
-    }
-    return  _headerView;
-    
-}
-
-- (NSMutableArray *)selectArr {
-    if (_selectArr == nil) {
-        _selectArr = [NSMutableArray array];
-        _numArr = [NSMutableArray array];
-        for (int  i = 0; i < 6; i ++) {
-            BOOL isSelected = NO;
-            [_selectArr addObject:@(isSelected)];
-        
-            NSInteger num = 1;
-            [_numArr addObject:@(num)];
-            
-            
-        }
-        
-    }
-    return _selectArr;
-}
-- (NSMutableArray *)dataSource{
-    if (!_dataSource) {
-        _dataSource = [NSMutableArray array];
-        for (int i = 0; i < self.selectArr.count; i ++) {
-            NSString *str = [NSString stringWithFormat:@"%d",i + 1];
-            [_dataSource addObject:str];
-        }
-    }
-    return _dataSource;
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -96,42 +48,50 @@ static NSString *ID = @"GLShoppingCell";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"GLShoppingCell" bundle:nil] forCellReuseIdentifier:ID];
     self.tableView.tableHeaderView = self.headerView;
-////    自定义导航栏右按钮
-//    _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    _rightBtn.frame = CGRectMake(0, 0, 80, 44);
-//    // 让按钮内部的所有内容左对齐
-//    _rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-//    [_rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
-//    [_rightBtn addTarget:self action:@selector(edit) forControlEvents:UIControlEventTouchUpInside];
-//    _rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-//    _isSelectedRightBtn = NO;
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_rightBtn];
+
     
      [self.clearingBtn addTarget:self action:@selector(clearingMore:) forControlEvents:UIControlEventTouchUpInside];
 //    self.selectedNumLabel.text = [NSString stringWithFormat:@"已选中%ld件商品",_totalNum];
     self.totalPriceLabel.text = [NSString stringWithFormat:@"总金额¥ %ld元",_totalPrice];
     [self updateTitleNum];
+    [self postRequest];
+    
 }
-//编辑
-- (void)edit {
-    self.rightBtn.selected = !self.rightBtn.selected;
-    if (self.rightBtn.selected) {
+
+- (void)postRequest {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"shop/myCartList" paramDic:dict finish:^(id responseObject) {
         
-        [_rightBtn setTitle:@"完成" forState:UIControlStateNormal];
-        self.totalPriceLabel.hidden = YES;
-        [self.clearingBtn setTitle:@"删除" forState:UIControlStateNormal];
-    
-    }else{
-        [_rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
-        self.totalPriceLabel.hidden = NO;
-        [self.clearingBtn setTitle:@"去结算" forState:UIControlStateNormal];
-      
-    }
-    self.totalPriceLabel.text = [NSString stringWithFormat:@"总金额¥ %ld元",_totalPrice];
-    self.selectedNumLabel.text = [NSString stringWithFormat:@"已选中%ld件商品",_totalNum];
-    
-    [self.tableView reloadData];
+        [_loadV removeloadview];
+//        NSLog(@"dict = %@",dict);
+//        NSLog(@"responseObject = %@",responseObject);
+        if ([responseObject[@"code"] integerValue] == 1){
+            for (NSDictionary *dic in responseObject[@"data"]) {
+                
+                GLShoppingCartModel *model = [GLShoppingCartModel mj_objectWithKeyValues:dic];
+                [self.models addObject:model];
+            }
+            
+            
+        [self.tableView reloadData];
+            
+            //            self.hidesBottomBarWhenPushed = YES;
+            //            LBMineCenterPayPagesViewController *payVC = [[LBMineCenterPayPagesViewController alloc] init];
+            //            [self.navigationController pushViewController:payVC animated:YES];
+        }
+        
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+    }];
 }
+
+
 //批量删除
 - (void)clearingMore:(UIButton *)sender{
     if ([sender.titleLabel.text isEqualToString:@"去结算"]) {
@@ -173,10 +133,12 @@ static NSString *ID = @"GLShoppingCell";
         
         if (self.seleteAllBtn.selected) {
             tempBool = YES;
+            _yesSum = self.selectArr.count;
             _totalPrice += [self.dataSource[i] integerValue] * [_numArr[i] integerValue];
             _totalNum += [_numArr[i] integerValue];
         }else{
             tempBool = NO;
+            _yesSum = 0;
         }
         
         [self.selectArr replaceObjectAtIndex:i withObject:@(tempBool)];
@@ -185,17 +147,14 @@ static NSString *ID = @"GLShoppingCell";
 
     if(self.seleteAllBtn.selected){
         
-//        self.seleteAllBtn.backgroundColor = [UIColor orangeColor];
         [self.seleteAllBtn setImage:[UIImage imageNamed:@"选中"] forState:UIControlStateNormal];
         self.selectedNumLabel.text = [NSString stringWithFormat:@"已选中%lu件商品",_totalNum];
         self.totalPriceLabel.text = [NSString stringWithFormat:@"总金额¥ %ld元",_totalPrice];
-        
         
     }else{
         
         self.selectedNumLabel.text = [NSString stringWithFormat:@"已选中0件商品"];
         self.totalPriceLabel.text = @"总金额¥ 0元";
-//        self.seleteAllBtn.backgroundColor = [UIColor lightGrayColor];
         [self.seleteAllBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
         _totalNum = 0;
         _totalPrice = 0;
@@ -212,17 +171,28 @@ static NSString *ID = @"GLShoppingCell";
     isSelected = !isSelected;
     
     if (isSelected) {
+         _yesSum += 1;
         _totalNum += [_numArr[index] integerValue];
         _totalPrice += [self.dataSource[index] integerValue] * [_numArr[index] integerValue];
     }else{
+        _yesSum -= 1;
         _totalNum -= [_numArr[index] integerValue];
         _totalPrice -= [self.dataSource[index] integerValue]* [_numArr[index] integerValue];
     }
-    NSLog(@"_totalNum = %ld",_totalNum);
-    NSLog(@"_totalPrice = %ld",_totalPrice);
+
     self.selectedNumLabel.text = [NSString stringWithFormat:@"已选中%ld件商品",_totalNum];
     self.totalPriceLabel.text = [NSString stringWithFormat:@"总金额%ld元",_totalPrice];
     [self.selectArr replaceObjectAtIndex:index withObject:@(isSelected)];
+
+    
+    if (_yesSum == self.selectArr.count) {
+        
+        [self.seleteAllBtn setImage:[UIImage imageNamed:@"选中"] forState:UIControlStateNormal];
+    }else{
+        [self.seleteAllBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+
+    }
+    
     [self updateTitleNum];
     [self.tableView reloadData];
 
@@ -231,39 +201,6 @@ static NSString *ID = @"GLShoppingCell";
 - (void)updateTitleNum {
     self.navigationItem.title = [NSString stringWithFormat:@"购物车(%ld)",_totalNum];
 }
-//加减数量
-- (void)addNum:(NSInteger)index {
-    
-    NSInteger num = [_numArr[index] integerValue];
-    num += 1;
-    [_numArr replaceObjectAtIndex:index withObject:@(num)];
-    
-    if ([self.selectArr[index] boolValue]) {
-        _totalNum += 1;
-        _totalPrice += [self.dataSource[index] integerValue];
-    }
-    [self updateTitleNum];
-    self.selectedNumLabel.text = [NSString stringWithFormat:@"已选中%ld件商品",_totalNum];
-    [self.tableView reloadData];
-}
-- (void)reduceNum:(NSInteger)index {
-    
-    NSInteger num = [_numArr[index] integerValue];
-    num -= 1;
-    
-    [_numArr replaceObjectAtIndex:index withObject:@(num)];
-    
-    if ([self.selectArr[index] boolValue]) {
-        _totalNum -= 1;
-        _totalPrice -= [self.dataSource[index] integerValue];
-    }
-    if (num <= 0) {
-        num = 0;
-    }
-    [self updateTitleNum];
-    self.selectedNumLabel.text = [NSString stringWithFormat:@"已选中%ld件商品",_totalNum];
-     [self.tableView reloadData];
-}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -271,37 +208,20 @@ static NSString *ID = @"GLShoppingCell";
 }
 #pragma  UITableViewDelegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.selectArr.count;
+    return self.models.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     GLShoppingCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.delegate = self;
     cell.index = indexPath.row;
-    cell.priceLabel.text = self.dataSource[indexPath.row];
-//    cell.numberLabel.text = [NSString stringWithFormat:@"%ld",[_numArr[indexPath.row] integerValue]];
-    
-    
-    
-    if (self.rightBtn.selected) {
-        cell.bottomView.hidden = NO;
-        cell.amountLabel.hidden = YES;
-        cell.numberLabel.text = [NSString stringWithFormat:@"%@",_numArr[indexPath.row]];
-    }else{
-        cell.bottomView.hidden = YES;
-        cell.amountLabel.hidden = NO;
-        cell.amountLabel.text = [NSString stringWithFormat:@"x %@",_numArr[indexPath.row]];
-
-    }
+    cell.model = self.models[indexPath.row];
     
     if ([self.selectArr[indexPath.row] boolValue] == NO) {
-        
-//        cell.selectedBtn.backgroundColor = [UIColor lightGrayColor];
+
         [cell.selectedBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
-        
     }else{
-//        cell.selectedBtn.backgroundColor = [UIColor orangeColor];
+
         [cell.selectedBtn setImage:[UIImage imageNamed:@"选中"] forState:UIControlStateNormal];
        
     }
@@ -310,7 +230,8 @@ static NSString *ID = @"GLShoppingCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
+    [self changeStatus:indexPath.row];
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -333,16 +254,26 @@ static NSString *ID = @"GLShoppingCell";
     [tableView setEditing:NO animated:YES];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"你确定删除该消息？" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"你确定删除该商品？" preferredStyle:UIAlertControllerStyleAlert];
         
         [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [alertController removeFromParentViewController];
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             
+            if ([self.selectArr[indexPath.row] boolValue] == YES) {
+                _yesSum -= 1;
+            }
             [self.selectArr removeObjectAtIndex:indexPath.row];
             [self.dataSource removeObjectAtIndex:indexPath.row];
+         
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            
+            if(_yesSum == self.selectArr.count){
+                [self.seleteAllBtn setImage:[UIImage imageNamed:@"选中"] forState:UIControlStateNormal];
+            }else{
+                [self.seleteAllBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+            }
  
         }]];
         
@@ -360,4 +291,63 @@ static NSString *ID = @"GLShoppingCell";
     return NO;
 }
 
+
+
+- (UIView *)headerView {
+    
+    if(_headerView == nil){
+        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectAll)];
+        [_headerView addGestureRecognizer:tap];
+        _seleteAllBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 20, 30, 30)];
+        //        _seleteAllBtn.backgroundColor = [UIColor lightGrayColor];
+        [_seleteAllBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+//        [_seleteAllBtn addTarget:self action:@selector(selectAll) forControlEvents:UIControlEventTouchUpInside];
+        _seleteAllBtn.userInteractionEnabled = NO;
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_seleteAllBtn.frame) + 10, _seleteAllBtn.yy_y, 80, _seleteAllBtn.yy_height)];
+        label.text = @"全选";
+        
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_headerView.frame), SCREEN_WIDTH, 1)];
+        lineView.backgroundColor = [UIColor lightGrayColor];
+        lineView.alpha = 0.3;
+        
+        
+        [_headerView addSubview:_seleteAllBtn];
+        [_headerView addSubview:label];
+        [_headerView addSubview:lineView];
+    }
+    return  _headerView;
+    
+}
+
+- (NSMutableArray *)selectArr {
+    if (_selectArr == nil) {
+        _selectArr = [NSMutableArray array];
+        _numArr = [NSMutableArray array];
+        for (int  i = 0; i < self.models.count; i ++) {
+            BOOL isSelected = NO;
+            [_selectArr addObject:@(isSelected)];
+            GLShoppingCartModel *model = self.models[i];
+            [_numArr addObject:model.num];;
+        }
+    }
+    return _selectArr;
+}
+- (NSMutableArray *)dataSource{
+    if (!_dataSource) {
+        _dataSource = [NSMutableArray array];
+        for (int i = 0; i < self.models.count; i ++) {
+            GLShoppingCartModel *model = self.models[i];
+            [_dataSource addObject:model.goods_price];
+        }
+    }
+    return _dataSource;
+}
+- (NSMutableArray *)models{
+    if (!_models) {
+        _models = [NSMutableArray array];
+    }
+    return _models;
+}
 @end

@@ -466,6 +466,7 @@
 		4AA0D5D61EAF3B3E00CB8F77 /* GLClassifyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA0D5D51EAF3B3E00CB8F77 /* GLClassifyHeaderView.xib */; };
 		4AA0D5FD1EAF675300CB8F77 /* Integral_Mall.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AA0D5FC1EAF675300CB8F77 /* Integral_Mall.xcassets */; };
 		4AA0D6011EAF693D00CB8F77 /* GLintegralGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D6001EAF693D00CB8F77 /* GLintegralGoodsModel.m */; };
+		4AB508CD1EB190A20057EB3B /* GLShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB508CC1EB190A20057EB3B /* GLShoppingCartModel.m */; };
 		4F9D6A29F2E5B95EBA14BE59 /* Pods_Universialshare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */; };
 		F9061FCD1E83C4720080E9D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCC1E83C4720080E9D9 /* main.m */; };
 		F9061FD01E83C4720080E9D9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCF1E83C4720080E9D9 /* AppDelegate.mm */; };
@@ -1628,6 +1629,8 @@
 		4AA0D5FC1EAF675300CB8F77 /* Integral_Mall.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Integral_Mall.xcassets; sourceTree = "<group>"; };
 		4AA0D5FF1EAF693D00CB8F77 /* GLintegralGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLintegralGoodsModel.h; sourceTree = "<group>"; };
 		4AA0D6001EAF693D00CB8F77 /* GLintegralGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLintegralGoodsModel.m; sourceTree = "<group>"; };
+		4AB508CB1EB190A20057EB3B /* GLShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShoppingCartModel.h; sourceTree = "<group>"; };
+		4AB508CC1EB190A20057EB3B /* GLShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLShoppingCartModel.m; sourceTree = "<group>"; };
 		5F26EB2407F06AA6E9CA0664 /* Pods-Universialshare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Universialshare.release.xcconfig"; path = "Pods/Target Support Files/Pods-Universialshare/Pods-Universialshare.release.xcconfig"; sourceTree = "<group>"; };
 		C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Universialshare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9061FC81E83C4720080E9D9 /* Universialshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Universialshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2345,6 +2348,8 @@
 				4A0D974A1E9729C100A26B84 /* GLShoppingCartController.h */,
 				4A0D974B1E9729C100A26B84 /* GLShoppingCartController.m */,
 				4A0D974C1E9729C100A26B84 /* GLShoppingCartController.xib */,
+				4AB508CB1EB190A20057EB3B /* GLShoppingCartModel.h */,
+				4AB508CC1EB190A20057EB3B /* GLShoppingCartModel.m */,
 				4A0D974D1E9729C100A26B84 /* GLShoppingCell.h */,
 				4A0D974E1E9729C100A26B84 /* GLShoppingCell.m */,
 				4A0D974F1E9729C100A26B84 /* GLShoppingCell.xib */,
@@ -5746,6 +5751,7 @@
 				F961A9E51E9C7B4700275F52 /* MBProgressHUD+LB.m in Sources */,
 				4A4610F41E9CC6370045824F /* ZXPDF417.m in Sources */,
 				4A4610BA1E9CC6370045824F /* ZXRSSExpandedCurrentParsingState.m in Sources */,
+				4AB508CD1EB190A20057EB3B /* GLShoppingCartModel.m in Sources */,
 				F9061FD31E83C4730080E9D9 /* ViewController.m in Sources */,
 				4A0D978A1E9729C100A26B84 /* GLShoppingCell.m in Sources */,
 				F9520A0E1EAD9EE300B4D665 /* LBMerchantSubmissionFourViewController.m in Sources */,

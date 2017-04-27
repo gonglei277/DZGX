@@ -24,16 +24,20 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.fanliLabel.layer.cornerRadius = 5.f;
+    self.fanliLabel.clipsToBounds = YES;
+    self.fanliLabel.layer.borderWidth = 1;
+    self.fanliLabel.layer.borderColor = [UIColor redColor].CGColor;
 }
 
 - (void)setModel:(GLConfirmOrderModel *)model{
     _model = model;
     [_imageV sd_setImageWithURL:[NSURL URLWithString:model.cart_url] placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
     _nameLabel.text = model.cart_name;
-    _fanliLabel.text = model.cart_discount;
-    _priceLabel.text = model.cart_price;
+    _fanliLabel.text = [NSString stringWithFormat:@"  优惠价格:%@  ",model.cart_discount];
+    _priceLabel.text = [NSString stringWithFormat:@"单价:%@",model.cart_price];
     _sumLabel.text = [NSString stringWithFormat:@"数量:%@",model.cart_number];
-    _detailLabel.text = model.cart_info;
+    _detailLabel.text = [NSString stringWithFormat:@"类型:%@",model.cart_type];
 }
 
 @end
