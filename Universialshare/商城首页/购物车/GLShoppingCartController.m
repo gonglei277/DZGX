@@ -71,20 +71,20 @@ static NSString *ID = @"GLShoppingCell";
         
         [_loadV removeloadview];
 //        NSLog(@"responseObject = %@",responseObject);
-        if ([[NSString stringWithFormat:@"%@",responseObject[@"data"]] rangeOfString:@"null"].location == NSNotFound) {
-            
-            if ([responseObject[@"code"] integerValue] == 1){
-                for (NSDictionary *dic in responseObject[@"data"]) {
-                    
-                    GLShoppingCartModel *model = [GLShoppingCartModel mj_objectWithKeyValues:dic];
-                    [self.models addObject:model];
-                }
-                
-                [self.tableView reloadData];
-                
-            }
-        }
         
+            if (![responseObject[@"data"] isEqual:[NSNull null]]) {
+                
+                if ([responseObject[@"code"] integerValue] == 1){
+                    for (NSDictionary *dic in responseObject[@"data"]) {
+                        
+                        GLShoppingCartModel *model = [GLShoppingCartModel mj_objectWithKeyValues:dic];
+                        [self.models addObject:model];
+                    }
+                    
+                    [self.tableView reloadData];
+                }
+            }
+     
     } enError:^(NSError *error) {
         [_loadV removeloadview];
     }];
