@@ -76,7 +76,7 @@
 -(void)initdatasource{
     
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"shop/gain_list" paramDic:@{@"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"shop/gain_list" paramDic:@{@"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token , @"page" :[NSNumber numberWithInteger:self.page]} finish:^(id responseObject) {
         [_loadV removeloadview];
         [self.tableview.mj_header endRefreshing];
         [self.tableview.mj_footer endRefreshing];
@@ -90,13 +90,13 @@
                 for (int i = 0; i < [responseObject[@"data"] count]; i++) {
                     
                     LBWaitOrdersModel *orderMode = [[LBWaitOrdersModel alloc]init];
-                    orderMode.order_id = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"order_id"]];
-                    orderMode.order_number = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"order_number"]];
-                    orderMode.creat_time = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"creat_time"]];
-                    orderMode.logistics_sta = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"logistics_sta"]];
+                    orderMode.order_id = [NSString stringWithFormat:@"%@",responseObject[@"data"][i][@"order_id"]];
+                    orderMode.order_number = [NSString stringWithFormat:@"%@",responseObject[@"data"][i][@"order_number"]];
+                    orderMode.creat_time = [NSString stringWithFormat:@"%@",responseObject[@"data"][i][@"creat_time"]];
+                    orderMode.logistics_sta = [NSString stringWithFormat:@"%@",responseObject[@"data"][i][@"logistics_sta"]];
                     orderMode.isExpanded = NO;
                     
-                    orderMode.WaitOrdersListModel = [LBWaitOrdersListModel mj_keyValuesArrayWithObjectArray:responseObject[@"data"][@"order_glist"]];
+                    orderMode.WaitOrdersListModel = [LBWaitOrdersListModel mj_keyValuesArrayWithObjectArray:responseObject[@"data"][i][@"order_glist"]];
                     
                     [self.dataarr addObject:orderMode];
                     
@@ -179,7 +179,7 @@
     cell.delegete = self;
     cell.index = indexPath.row;
     LBWaitOrdersModel *model = self.dataarr[indexPath.section];
-    cell.WaitOrdersModel = model.WaitOrdersListModel[indexPath.row];
+    cell.WaitOrdersListModel = model.WaitOrdersListModel[indexPath.row];
    
     return cell;
     

@@ -480,6 +480,8 @@
 		F90620061E83C5D00080E9D9 /* BasetabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90620021E83C5D00080E9D9 /* BasetabbarViewController.m */; };
 		F90620071E83C5D00080E9D9 /* LBLoginNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90620041E83C5D00080E9D9 /* LBLoginNavigationViewController.m */; };
 		F906201C1E83C8770080E9D9 /* tabbarimage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F906201B1E83C8770080E9D9 /* tabbarimage.xcassets */; };
+		F9121B181EB17CEC00DAB7A2 /* IncentiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9121B161EB17CEC00DAB7A2 /* IncentiveModel.m */; };
+		F9121B191EB17CEC00DAB7A2 /* IncentiveModel.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9121B171EB17CEC00DAB7A2 /* IncentiveModel.xib */; };
 		F9126EBC1EA05692004785EA /* GLMine_InfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9126EB61EA05692004785EA /* GLMine_InfoController.m */; };
 		F9126EBD1EA05692004785EA /* GLMine_InfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9126EB71EA05692004785EA /* GLMine_InfoController.xib */; };
 		F9126EBE1EA05692004785EA /* GLMine_InfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9126EBA1EA05692004785EA /* GLMine_InfoCell.m */; };
@@ -1656,6 +1658,9 @@
 		F906201B1E83C8770080E9D9 /* tabbarimage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = tabbarimage.xcassets; sourceTree = "<group>"; };
 		F906201D1E83CBAD0080E9D9 /* universialshare.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = universialshare.pch; sourceTree = "<group>"; };
 		F906201F1E83CC900080E9D9 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		F9121B151EB17CEC00DAB7A2 /* IncentiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncentiveModel.h; sourceTree = "<group>"; };
+		F9121B161EB17CEC00DAB7A2 /* IncentiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncentiveModel.m; sourceTree = "<group>"; };
+		F9121B171EB17CEC00DAB7A2 /* IncentiveModel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IncentiveModel.xib; sourceTree = "<group>"; };
 		F9126EB51EA05692004785EA /* GLMine_InfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMine_InfoController.h; sourceTree = "<group>"; };
 		F9126EB61EA05692004785EA /* GLMine_InfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMine_InfoController.m; sourceTree = "<group>"; };
 		F9126EB71EA05692004785EA /* GLMine_InfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMine_InfoController.xib; sourceTree = "<group>"; };
@@ -3996,6 +4001,16 @@
 			path = "图片资源";
 			sourceTree = "<group>";
 		};
+		F9121B141EB17CEC00DAB7A2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F9121B151EB17CEC00DAB7A2 /* IncentiveModel.h */,
+				F9121B161EB17CEC00DAB7A2 /* IncentiveModel.m */,
+				F9121B171EB17CEC00DAB7A2 /* IncentiveModel.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F9126EB31EA05692004785EA /* 个人信息 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4682,6 +4697,7 @@
 				F951C7711EB0C4AA0014A71D /* LBBelowTheLineViewController.h */,
 				F951C7721EB0C4AA0014A71D /* LBBelowTheLineViewController.m */,
 				F951C7731EB0C4AA0014A71D /* LBBelowTheLineViewController.xib */,
+				F9121B141EB17CEC00DAB7A2 /* View */,
 			);
 			path = "线下下单";
 			sourceTree = "<group>";
@@ -5150,6 +5166,7 @@
 				4A4608EE1E9C9E6D0045824F /* GLFirstHeartCell.xib in Resources */,
 				4A460A171E9CBBE20045824F /* GLNoticeView.xib in Resources */,
 				4A3E60891EAD8CC8000E2E17 /* GLSubmitFirstController.xib in Resources */,
+				F9121B191EB17CEC00DAB7A2 /* IncentiveModel.xib in Resources */,
 				F961AA2E1E9CE17800275F52 /* LBUserKonwViewController.xib in Resources */,
 				F923097E1E9B8BFF00ECDC94 /* LBMineCenterSafeModifySecondSecretViewController.xib in Resources */,
 				F9520A1F1EADF40600B4D665 /* LBViewProtocolViewController.xib in Resources */,
@@ -5660,6 +5677,7 @@
 				4A4610161E9CC6360045824F /* LBXScanVideoZoomView.m in Sources */,
 				F9520A1E1EADF40600B4D665 /* LBViewProtocolViewController.m in Sources */,
 				4A4611121E9CC6370045824F /* ZXQRCodeMatrixUtil.m in Sources */,
+				F9121B181EB17CEC00DAB7A2 /* IncentiveModel.m in Sources */,
 				4A46109A1E9CC6360045824F /* ZXDataMatrixASCIIEncoder.m in Sources */,
 				4A4610A71E9CC6360045824F /* ZXDataMatrixWriter.m in Sources */,
 				4A4610881E9CC6360045824F /* ZXBinaryBitmap.m in Sources */,

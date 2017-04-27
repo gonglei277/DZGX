@@ -10,4 +10,6 @@
 
 @interface LBMineCenterPayPagesViewController : UIViewController
 
+@property (nonatomic, assign) NSInteger payType; // 支付类型 1普通消费支付  2 积分支付
+
 @end

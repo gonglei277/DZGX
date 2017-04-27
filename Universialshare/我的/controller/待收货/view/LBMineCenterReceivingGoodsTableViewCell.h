@@ -33,6 +33,6 @@
 
 @property(assign,nonatomic)NSInteger index;
 
-@property (strong, nonatomic)LBWaitOrdersListModel *WaitOrdersModel;
+@property (strong, nonatomic)LBWaitOrdersListModel *WaitOrdersListModel;
 
 @end

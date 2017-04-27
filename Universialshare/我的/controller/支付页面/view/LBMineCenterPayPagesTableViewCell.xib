@@ -43,12 +43,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g1H-gD-iyc">
-                        <rect key="frame" x="280" y="7" width="30" height="30"/>
+                        <rect key="frame" x="290" y="12" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="4wE-VN-ZaG"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="BUV-de-Vsp"/>
-                            <constraint firstAttribute="width" constant="30" id="Ray-3G-9BL"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="cCa-Co-iBD"/>
+                            <constraint firstAttribute="height" constant="20" id="4wE-VN-ZaG"/>
+                            <constraint firstAttribute="width" constant="20" id="Ray-3G-9BL"/>
                         </constraints>
                     </imageView>
                 </subviews>

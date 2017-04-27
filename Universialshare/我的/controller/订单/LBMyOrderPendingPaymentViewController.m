@@ -52,6 +52,7 @@
     cell.retunpaybutton = ^(NSInteger index){
         weakself.hidesBottomBarWhenPushed=YES;
         LBMineCenterPayPagesViewController *vc=[[LBMineCenterPayPagesViewController alloc]init];
+        vc.payType = 1;
         [weakself.navigationController pushViewController:vc animated:YES];
         
         

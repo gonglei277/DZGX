@@ -27,17 +27,18 @@
 
 
 
--(void)setWaitOrdersModel:(LBWaitOrdersListModel *)WaitOrdersModel{
-    if (_WaitOrdersModel != WaitOrdersModel) {
-        _WaitOrdersModel = WaitOrdersModel;
+-(void)setWaitOrdersListModel:(LBWaitOrdersListModel *)WaitOrdersListModel{
+
+    if (_WaitOrdersListModel != WaitOrdersListModel) {
+        _WaitOrdersListModel = WaitOrdersListModel;
     }
     
-    [self.imagev sd_setImageWithURL:[NSURL URLWithString:_WaitOrdersModel.image_cover] placeholderImage:[UIImage imageNamed:@""]];
-    
-    self.cartype.text = [NSString stringWithFormat:@"%@",_WaitOrdersModel.goods_name];
-    self.numlb.text = [NSString stringWithFormat:@"数量:%@",_WaitOrdersModel.goods_num];
-    self.cartype.text = [NSString stringWithFormat:@"价格:%@",_WaitOrdersModel.goods_price];
+    NSDictionary *dic = (NSDictionary*)_WaitOrdersListModel;
 
+    [self.imagev sd_setImageWithURL:[NSURL URLWithString:dic[@"image_cover"]] placeholderImage:[UIImage imageNamed:@""]];
+    self.cartype.text = [NSString stringWithFormat:@"%@",dic[@"goods_name"]];
+    self.numlb.text = [NSString stringWithFormat:@"数量:%@",dic[@"goods_num"]];
+    self.pricelb.text = [NSString stringWithFormat:@"价格:%@",dic[@"goods_price"]];
 
 }
 

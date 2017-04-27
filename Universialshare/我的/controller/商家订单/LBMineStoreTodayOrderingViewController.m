@@ -124,7 +124,7 @@
     }else{
         self.nodataV.hidden = NO;
     }
-    return self.dataarr.count;
+    return 10;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
