@@ -33,6 +33,8 @@
 #import "LBRecommendedBusinessAuditViewController.h"
 #import "LBBelowTheLineViewController.h"
 
+#import "GLShoppingCartController.h"
+
 @interface LBMineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
     UIImageView *_imageviewLeft;
 }
@@ -342,8 +344,10 @@
         };
         //    购物车
         _headview.returnShoppingCartBt = ^(){
-            
-
+            weakself.hidesBottomBarWhenPushed = YES;
+            GLShoppingCartController *cartVC = [[GLShoppingCartController alloc] init];
+            [weakself.navigationController pushViewController:cartVC animated:YES];
+            weakself.hidesBottomBarWhenPushed = NO;
         };
         //    订单
         _headview.returnOrderBt = ^(){

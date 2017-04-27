@@ -7,24 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLShoppingCartModel.h"
 
-@protocol GLShoppingCellDelegate <NSObject>
+//@protocol GLShoppingCellDelegate <NSObject>
+//
+//- (void)changeStatus:(NSInteger)index;
+//
+//- (void)addNum:(NSInteger)index;
+//
+//- (void)reduceNum:(NSInteger)index;
 
-- (void)changeStatus:(NSInteger)index;
-
-- (void)addNum:(NSInteger)index;
-
-- (void)reduceNum:(NSInteger)index;
-
-@end
+//@end
 
 @interface GLShoppingCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UIView *bottomView;
-@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *selectedBtn;
-@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 
 @property (nonatomic, assign)NSInteger index;
-@property (nonatomic, assign)id <GLShoppingCellDelegate>delegate;
+//@property (nonatomic, assign)id <GLShoppingCellDelegate>delegate;
+
+@property (nonatomic, strong)GLShoppingCartModel *model;
 @end

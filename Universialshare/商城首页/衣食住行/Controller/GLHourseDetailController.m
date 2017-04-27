@@ -131,12 +131,23 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
     }];
     
 }
+
+//积分兑换
+- (IBAction)exchange:(id)sender {
+    self.hidesBottomBarWhenPushed = YES;
+    GLConfirmOrderController *confirmVC = [[GLConfirmOrderController alloc] init];
+    [self.navigationController pushViewController:confirmVC animated:YES];
+}
+
+//加入购物车
 - (IBAction)addToCart:(id)sender {
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
     dict[@"goods_id"] = @1;
     dict[@"count"] = @1;
+    
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"shop/addCart" paramDic:dict finish:^(id responseObject) {
         
@@ -157,11 +168,12 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
         [_loadV removeloadview];
         
     }];
-    
-    
-    
+ 
 }
+
+//去结算 订单确认
 - (IBAction)confirmOrder:(id)sender {
+    self.hidesBottomBarWhenPushed = YES;
     GLConfirmOrderController *confirmVC = [[GLConfirmOrderController alloc] init];
     [self.navigationController pushViewController:confirmVC animated:YES];
 }
@@ -195,10 +207,10 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
     if (_status == 1) {
         
 //        return self.dataSource.count + 2;
-        return 2;
+        return 3;
     }else{
 //        return self.dataSource.count;
-        return 2;
+        return 3;
     }
 }
 - (NSMutableArray *)optionModels{
@@ -250,11 +262,11 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
 //        
 //        GLcell = cell;
 //        
-//    }else if(indexPath.row == 3){
-//        
-//        GLHourseChangeNumCell *cell = [self.tableView dequeueReusableCellWithIdentifier:changeNumCell];
-//        cell.delegate = self;
-//        GLcell = cell;
+    }else if(indexPath.row == 1){
+        
+        GLHourseChangeNumCell *cell = [self.tableView dequeueReusableCellWithIdentifier:changeNumCell];
+        cell.delegate = self;
+        GLcell = cell;
         
 //    }else if(indexPath.row == 4){
     }else{
@@ -306,14 +318,15 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
     }else if (indexPath.row ==1 ){
    
 //        NSArray *arr = [[NSArray alloc] initWithObjects:@"蓝色",@"红色",@"湖蓝色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",@"咖啡色",nil];
-        NSArray *arr = self.model.attr;
-         return [self jisuangaodu:arr];
-//        return 300;
+//        NSArray *arr = self.model.attr;
+//         return [self jisuangaodu:arr];
+        return 90;
         
     }else if (indexPath.row ==2 ){
-
-        NSArray *arr = [[NSArray alloc] initWithObjects:@"蓝色",@"红色",@"湖蓝色",@"咖啡色",nil];
-        return [self jisuanjincou:arr];
+        NSArray *arr = self.model.attr;
+        return [self jisuangaodu:arr];
+//        NSArray *arr = [[NSArray alloc] initWithObjects:@"蓝色",@"红色",@"湖蓝色",@"咖啡色",nil];
+//        return [self jisuanjincou:arr];
         
     }else if (indexPath.row ==3 ){
         return 90;
