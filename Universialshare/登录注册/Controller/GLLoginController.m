@@ -136,21 +136,19 @@
 -(void)surebuttonEvent{
     
 
-    if (![self.usertype isEqualToString:OrdinaryUser]) {
-        [UserModel defaultUser].usrtype = self.usertype;
-        [UserModel defaultUser].loginstatus = YES;
-        [usermodelachivar achive];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshInterface" object:nil];
-        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-        return;
-    }
+//    if (![self.usertype isEqualToString:OrdinaryUser] || ![self.usertype isEqualToString:Retailer]) {
+//        [UserModel defaultUser].usrtype = self.usertype;
+//        [UserModel defaultUser].loginstatus = YES;
+//        [usermodelachivar achive];
+//        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshInterface" object:nil];
+//        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+//        return;
+//    }
 
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     
  
      NSString *encryptsecret = [RSAEncryptor encryptString:self.scretTf.text publicKey:public_RSA];
-
-//    NSLog(@"encryptsecret = %@",encryptsecret);
     [NetworkManager requestPOSTWithURLStr:@"user/login" paramDic:@{@"userphone":self.phone.text,@"password":encryptsecret,@"groupID":self.usertype} finish:^(id responseObject) {
         [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
@@ -232,7 +230,7 @@
             }
             
             [usermodelachivar achive];
-            
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshInterface" object:nil];
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
             
         }else{

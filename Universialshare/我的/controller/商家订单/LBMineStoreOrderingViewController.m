@@ -146,8 +146,8 @@
     } completion:^(BOOL finished) {
         
     }];
-    [self transitionFromVC:self.currentViewController toviewController:_historyVc];
-    [self fitFrameForChildViewController:_historyVc];
+    [self transitionFromVC:self.currentViewController toviewController:_AllOrdersVc];
+    [self fitFrameForChildViewController:_AllOrdersVc];
     
 }
 
