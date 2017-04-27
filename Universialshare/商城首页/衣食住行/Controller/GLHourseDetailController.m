@@ -27,9 +27,12 @@
 @interface GLHourseDetailController ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,GLTwoButtonCellDelegate,GLHourseChangeNumCellDelegate>
 {
     NSMutableArray *_visableCells;
+    
+    //status:??
     int _status;
     LoadWaitView * _loadV;
-    int _sum;
+    NSInteger _sum;
+    NSIndexPath *_indexPath;//加减cell的IndexPath
 }
 
 @property (nonatomic, strong)SDCycleScrollView *cycleScrollView;
@@ -114,7 +117,7 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
 - (void)postRequest{
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"shop/goodsDetail" paramDic:@{@"goods_id":@"1"} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"shop/goodsDetail" paramDic:@{@"goods_id":self.goods_id} finish:^(id responseObject) {
         
         [_loadV removeloadview];
 //        NSLog(@"responseObject = %@",responseObject);
@@ -147,21 +150,21 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
-    dict[@"goods_id"] = @1;
+    dict[@"goods_id"] = self.goods_id;
+    //取出 数量
+    GLHourseChangeNumCell *cell = [self.tableView cellForRowAtIndexPath:_indexPath];
+    _sum = [cell.sumLabel.text integerValue];
     dict[@"count"] = @(_sum);
-    
+  
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"shop/addCart" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
-            
-//            self.hidesBottomBarWhenPushed = YES;
-//            GLShoppingCartController *cartVC = [[GLShoppingCartController alloc] init];
-//            [self.navigationController pushViewController:cartVC animated:YES];
+
             [MBProgressHUD showSuccess:@"成功加入购物车"];
-            NSLog(@"message = %@",responseObject[@"message"]);
+//            NSLog(@"message = %@",responseObject[@"message"]);
             
         }else{
             
@@ -274,6 +277,7 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
         
         GLHourseChangeNumCell *cell = [self.tableView dequeueReusableCellWithIdentifier:changeNumCell];
         cell.indexPath = indexPath;
+        _indexPath = indexPath;
         cell.delegate = self;
         GLcell = cell;
         
@@ -419,7 +423,7 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
     }else{
         _sum += 1;
     }
-    cell.sumLabel.text = [NSString stringWithFormat:@"%d",_sum];
+    cell.sumLabel.text = [NSString stringWithFormat:@"%ld",_sum];
     [self.tableView reloadData];
     
 }

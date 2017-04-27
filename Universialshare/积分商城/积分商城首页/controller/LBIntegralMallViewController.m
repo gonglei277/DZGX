@@ -114,8 +114,28 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 - (void)classifyClick:(UITapGestureRecognizer *)tap {
    
     self.hidesBottomBarWhenPushed = YES;
-    GLIntegraClassifyController *classifyVC = [[GLIntegraClassifyController alloc] init];
-    [self.navigationController pushViewController:classifyVC animated:YES];
+    GLHourseDetailController *detailVC = [[GLHourseDetailController alloc] init];
+    detailVC.navigationItem.title = @"积分兑换详情";
+    if (tap.view.tag == 11) {
+        GLMallHotModel *model = self.hotModels[0];
+        detailVC.goods_id = model.mall_id;
+        [self.navigationController pushViewController:detailVC animated:YES];
+
+    }else if (tap.view.tag == 12){
+        GLMallHotModel *model = self.hotModels[1];
+        detailVC.goods_id = model.mall_id;
+        [self.navigationController pushViewController:detailVC animated:YES];
+
+    }else if (tap.view.tag == 13){
+        GLMallHotModel *model = self.hotModels[2];
+        detailVC.goods_id = model.mall_id;
+        [self.navigationController pushViewController:detailVC animated:YES];
+        
+    }else{
+        
+        GLIntegraClassifyController *classifyVC = [[GLIntegraClassifyController alloc] init];
+        [self.navigationController pushViewController:classifyVC animated:YES];
+    }
     self.hidesBottomBarWhenPushed = NO;
 }
 
@@ -175,19 +195,28 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section== 0) {
         GLIntegralMallTopCell *cell = [tableView dequeueReusableCellWithIdentifier:topCellID];
-        cell.models = self.hotModels;
         
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
-//        UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
-//        UITapGestureRecognizer *tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
-//        [cell.firstView addGestureRecognizer:tap];
-//        [cell.secondView addGestureRecognizer:tap2];
-//        [cell.thirdView addGestureRecognizer:tap3];
-        
-        UITapGestureRecognizer *tap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
-        [cell.moreView addGestureRecognizer:tap4];
+        if (self.hotModels.count == 3) {
+            
+            cell.models = self.hotModels;
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
+            UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
+            UITapGestureRecognizer *tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
+            cell.firstView.tag = 11;
+            cell.secondView.tag = 12;
+            cell.thirdView.tag = 13;
+            [cell.firstView addGestureRecognizer:tap];
+            [cell.secondView addGestureRecognizer:tap2];
+            [cell.thirdView addGestureRecognizer:tap3];
+            
+            UITapGestureRecognizer *tap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(classifyClick:)];
+            [cell.moreView addGestureRecognizer:tap4];
+
+        }
         return cell;
+        
     }else{
         GLIntegralGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:goodsCellID];
         cell.model = self.interestModels[indexPath.row];
@@ -208,7 +237,8 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
      self.hidesBottomBarWhenPushed = YES;
     GLHourseDetailController *detailVC = [[GLHourseDetailController alloc] init];
     detailVC.navigationItem.title = @"积分兑换详情";
-    
+    GLMall_InterestModel *model = self.interestModels[indexPath.row];
+    detailVC.goods_id = model.goods_id;
 //    GLSubmitFirstController *submitVC = [[GLSubmitFirstController alloc] init];
     detailVC.type = 1;
 

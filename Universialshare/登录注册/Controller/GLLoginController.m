@@ -140,7 +140,7 @@
 //        [UserModel defaultUser].usrtype = self.usertype;
 //        [UserModel defaultUser].loginstatus = YES;
 //        [usermodelachivar achive];
-//        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshInterface" object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshInterface" object:nil];
 //        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 //        return;
 //    }

@@ -70,7 +70,7 @@ static NSString *ID = @"GLShoppingCell";
     [NetworkManager requestPOSTWithURLStr:@"shop/myCartList" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-//        NSLog(@"responseObject = %@",responseObject);
+        NSLog(@"responseObject = %@",responseObject);
         
             if (![responseObject[@"data"] isEqual:[NSNull null]]) {
                 
@@ -265,29 +265,39 @@ static NSString *ID = @"GLShoppingCell";
             
             if ([self.selectArr[indexPath.row] boolValue] == YES) {
                 _yesSum -= 1;
+                if (_yesSum <= 0) {
+                    _yesSum = 0;
+                }
             }
+            
+            GLShoppingCartModel *model = self.models[indexPath.row];
+            
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
             dict[@"token"] = [UserModel defaultUser].token;
             dict[@"uid"] = [UserModel defaultUser].uid;
-            dict[@"goods_id"] = @"1";
+            dict[@"goods_id"] = model.goods_id;
             
             _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
             [NetworkManager requestPOSTWithURLStr:@"shop/delCart" paramDic:dict finish:^(id responseObject) {
                 
                 [_loadV removeloadview];
-                NSLog(@"responseObject = %@",responseObject);
+                NSLog(@"dict = %@",dict);
                 if ([responseObject[@"code"] integerValue] == 1){
                 
                     
                     [self.selectArr removeObjectAtIndex:indexPath.row];
                     [self.dataSource removeObjectAtIndex:indexPath.row];
+                    [_numArr removeObjectAtIndex:indexPath.row];
+                    [self.models removeObjectAtIndex:indexPath.row];
+                    NSLog(@"indexPath.row = %lu",indexPath.row);
                     
+                    NSLog(@"indexPath = %@",indexPath);
                     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                     
-                    if(_yesSum == self.selectArr.count){
-                        [self.seleteAllBtn setImage:[UIImage imageNamed:@"选中"] forState:UIControlStateNormal];
-                    }else{
+                    if(_yesSum != self.selectArr.count || _yesSum == 0){
                         [self.seleteAllBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+                    }else{
+                        [self.seleteAllBtn setImage:[UIImage imageNamed:@"选中"] forState:UIControlStateNormal];
                     }
                     
                 }else{
