@@ -235,7 +235,7 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
      self.hidesBottomBarWhenPushed = YES;
-    if(indexPath.row >=1 ){
+    if(indexPath.section != 0 ){
         
         GLHourseDetailController *detailVC = [[GLHourseDetailController alloc] init];
         detailVC.navigationItem.title = @"积分兑换详情";
@@ -263,18 +263,18 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     /********用于创建pan********/       //将左右的tab页面绘制出来，并把UIView添加到当前的self.view中
-    NSUInteger selectedIndex = [self.tabBarController selectedIndex];
-    UIViewController* v1 = [self.tabBarController.viewControllers objectAtIndex:selectedIndex-1];
-    UIImage* image1 = [self imageByCropping:v1.view toRect:v1.view.bounds];
-    _imageviewLeft = [[UIImageView alloc] initWithImage:image1];
-    _imageviewLeft.frame = CGRectMake(_imageviewLeft.frame.origin.x - [UIScreen mainScreen].bounds.size.width, _imageviewLeft.frame.origin.y , _imageviewLeft.frame.size.width, _imageviewLeft.frame.size.height);
-    [self.view addSubview:_imageviewLeft];
-    
-    UIViewController* v2 = [self.tabBarController.viewControllers objectAtIndex:selectedIndex+1];
-    UIImage* image2 = [self imageByCropping:v2.view toRect:v2.view.bounds];
-    _imageviewRight = [[UIImageView alloc] initWithImage:image2];
-    _imageviewRight.frame = CGRectMake(_imageviewRight.frame.origin.x + [UIScreen mainScreen].bounds.size.width, 0, _imageviewRight.frame.size.width, _imageviewRight.frame.size.height);
-    [self.view addSubview:_imageviewRight];
+//    NSUInteger selectedIndex = [self.tabBarController selectedIndex];
+//    UIViewController* v1 = [self.tabBarController.viewControllers objectAtIndex:selectedIndex-1];
+//    UIImage* image1 = [self imageByCropping:v1.view toRect:v1.view.bounds];
+//    _imageviewLeft = [[UIImageView alloc] initWithImage:image1];
+//    _imageviewLeft.frame = CGRectMake(_imageviewLeft.frame.origin.x - [UIScreen mainScreen].bounds.size.width, _imageviewLeft.frame.origin.y , _imageviewLeft.frame.size.width, _imageviewLeft.frame.size.height);
+//    [self.view addSubview:_imageviewLeft];
+//    
+//    UIViewController* v2 = [self.tabBarController.viewControllers objectAtIndex:selectedIndex+1];
+//    UIImage* image2 = [self imageByCropping:v2.view toRect:v2.view.bounds];
+//    _imageviewRight = [[UIImageView alloc] initWithImage:image2];
+//    _imageviewRight.frame = CGRectMake(_imageviewRight.frame.origin.x + [UIScreen mainScreen].bounds.size.width, 0, _imageviewRight.frame.size.width, _imageviewRight.frame.size.height);
+//    [self.view addSubview:_imageviewRight];
     /********用于创建pan********/
 }
 

@@ -86,7 +86,7 @@ static NSString *ID = @"GLOrderGoodsCell";
         
         [_loadV removeloadview];
 //        NSLog(@"dict = %@",dict);
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
             
             self.totalSumLabel.text = [NSString stringWithFormat:@"合计:¥%@",responseObject[@"data"][@"all_realy_price"]];
@@ -97,6 +97,7 @@ static NSString *ID = @"GLOrderGoodsCell";
                 [_models addObject:model];
             }
             self.tableViewHeight.constant = _models.count * 150 * autoSizeScaleY;
+            self.contentViewH.constant = _models.count * 150 * autoSizeScaleY + 220;
             [self.tableView reloadData];
             
         }
@@ -155,22 +156,24 @@ static NSString *ID = @"GLOrderGoodsCell";
     [NetworkManager requestPOSTWithURLStr:@"shop/placeOrderEnd" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
             
+            self.hidesBottomBarWhenPushed = YES;
+            LBMineCenterPayPagesViewController *payVC = [[LBMineCenterPayPagesViewController alloc] init];
+            payVC.payType = [responseObject[@"data"][@"order_type"] integerValue];;
+            payVC.orderNum =[NSString stringWithFormat:@"%@",responseObject[@"data"][@"order_id"]];
+            payVC.orderScore = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"total_price"]];
+            payVC.useableScore = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"user_integal"]];
+            [self.navigationController pushViewController:payVC animated:YES];
             
         }
-        
         
     } enError:^(NSError *error) {
         [_loadV removeloadview];
     }];
 
     
-    self.hidesBottomBarWhenPushed = YES;
-    LBMineCenterPayPagesViewController *payVC = [[LBMineCenterPayPagesViewController alloc] init];
-    payVC.payType = 2;
-    [self.navigationController pushViewController:payVC animated:YES];
 }
 
 //- (IBAction)changeNum:(id)sender {

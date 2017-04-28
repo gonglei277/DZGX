@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -49,13 +49,25 @@
                             <constraint firstAttribute="width" constant="20" id="Ray-3G-9BL"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="余额:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLc-dD-LuH">
+                        <rect key="frame" x="226.5" y="14" width="53.5" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53.5" id="CX2-GN-FVy"/>
+                            <constraint firstAttribute="height" constant="16" id="jGW-W2-SsR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Oih-0h-hMJ" secondAttribute="trailing" id="39b-sv-Z0q"/>
+                    <constraint firstItem="g1H-gD-iyc" firstAttribute="leading" secondItem="GLc-dD-LuH" secondAttribute="trailing" constant="10" id="CP5-bq-64Q"/>
                     <constraint firstItem="4JE-mk-Wt2" firstAttribute="leading" secondItem="PCs-mu-NdF" secondAttribute="trailing" constant="10" id="QBo-w8-x0I"/>
                     <constraint firstItem="PCs-mu-NdF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="UOA-dq-Ios"/>
                     <constraint firstItem="g1H-gD-iyc" firstAttribute="centerY" secondItem="PCs-mu-NdF" secondAttribute="centerY" id="XZQ-iX-cYD"/>
                     <constraint firstItem="Oih-0h-hMJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YU8-Lm-kFW"/>
+                    <constraint firstItem="GLc-dD-LuH" firstAttribute="centerY" secondItem="4JE-mk-Wt2" secondAttribute="centerY" id="hSM-h2-R25"/>
                     <constraint firstAttribute="bottom" secondItem="Oih-0h-hMJ" secondAttribute="bottom" id="iua-xh-sAr"/>
                     <constraint firstItem="4JE-mk-Wt2" firstAttribute="centerY" secondItem="PCs-mu-NdF" secondAttribute="centerY" id="mTy-ee-z1h"/>
                     <constraint firstItem="PCs-mu-NdF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="tWi-zT-lUe"/>
@@ -65,6 +77,7 @@
             <connections>
                 <outlet property="payimage" destination="PCs-mu-NdF" id="3HR-N2-gYJ"/>
                 <outlet property="paytitile" destination="4JE-mk-Wt2" id="xvr-h5-0jT"/>
+                <outlet property="reuseScoreLabel" destination="GLc-dD-LuH" id="Hzu-gK-vI6"/>
                 <outlet property="selectimage" destination="g1H-gD-iyc" id="mOM-MX-3Sc"/>
             </connections>
         </tableViewCell>

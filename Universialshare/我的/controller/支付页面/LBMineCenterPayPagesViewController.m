@@ -8,6 +8,7 @@
 
 #import "LBMineCenterPayPagesViewController.h"
 #import "LBMineCenterPayPagesTableViewCell.h"
+#import "LBIntegralMallViewController.h"
 
 @interface LBMineCenterPayPagesViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -41,10 +42,15 @@
     self.tableview.tableFooterView = [UIView new];
     [self.tableview registerNib:[UINib nibWithNibName:@"LBMineCenterPayPagesTableViewCell" bundle:nil] forCellReuseIdentifier:@"LBMineCenterPayPagesTableViewCell"];
     
+    self.ordercode.text = self.orderNum;
+    self.orderMoney.text = self.orderScore;
+    
     if (self.payType == 1) {
         self.orderMTitleLb.text = @"订单金额:";
-    }else if (self.payType == 2){
+        self.orderType.text = @"消费订单";
+    }else{
         self.orderMTitleLb.text = @"订单积分:";
+        self.orderType.text = @"积分订单";
     }
     for (int i=0; i<_dataarr.count; i++) {
         
@@ -74,6 +80,13 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.payimage.image = [UIImage imageNamed:_dataarr[indexPath.row][@"image"]];
     cell.paytitile.text = _dataarr[indexPath.row][@"title"];
+    
+    if([self.useableScore integerValue] > 10000){
+        
+        cell.reuseScoreLabel.text  = [NSString stringWithFormat:@"剩余积分:%.2f万分",[self.useableScore floatValue]/10000];
+    }else{
+         cell.reuseScoreLabel.text  = [NSString stringWithFormat:@"剩余积分:%@分",self.useableScore];
+    }
     
     if ([self.selectB[indexPath.row]boolValue] == NO) {
         
@@ -113,18 +126,29 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
     
-    NSString *orderID = [RSAEncryptor encryptString:self.ordercode.text publicKey:public_RSA];
-    NSString *uid = [RSAEncryptor encryptString:[UserModel defaultUser].uid publicKey:public_RSA];
-    dict[@"uid"] = uid;
-    dict[@"order_id"] = orderID;
+//    NSString *orderID = [RSAEncryptor encryptString:self.orderNum publicKey:public_RSA];
+//    NSString *uid = [RSAEncryptor encryptString:[UserModel defaultUser].uid publicKey:public_RSA];
+//    dict[@"uid"] = uid;
+//    dict[@"order_id"] = orderID;
     
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    dict[@"order_id"] = self.orderNum;
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"shop/markPay" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-        NSLog(@"responseObject = %@",responseObject);
+        
         if ([responseObject[@"code"] integerValue] == 1){
-           
+            
+            NSLog(@"message = %@",responseObject[@"message"]);
+            [MBProgressHUD showSuccess:@"付款成功"];
+            
+//            self.hidesBottomBarWhenPushed = YES;
+//            LBIntegralMallViewController *homeVC = [[LBIntegralMallViewController alloc] init];
+//            
+            [self.navigationController popViewControllerAnimated:YES];
+
+//            self.hidesBottomBarWhenPushed = NO;
         }
         
     } enError:^(NSError *error) {

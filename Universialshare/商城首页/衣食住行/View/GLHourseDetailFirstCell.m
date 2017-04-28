@@ -32,7 +32,7 @@
     _model = model;
     
     if ([model.money floatValue] > 10000) {
-        _price = [NSString stringWithFormat:@"%.2f万",[model.money floatValue]];
+        _price = [NSString stringWithFormat:@"%.2f万",[model.money floatValue]/10000];
     }else{
         _price = model.money;
     }

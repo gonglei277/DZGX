@@ -24,6 +24,8 @@
 
 @property (nonatomic, copy)NSString *thumb;
 
+@property (nonatomic, copy)NSString *cart_id;
+
 
 
 @end

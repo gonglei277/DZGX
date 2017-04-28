@@ -33,16 +33,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格: 35万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Yn-xX-O7L">
-                        <rect key="frame" x="160" y="55" width="68" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="17" id="6Cp-vO-Ud7"/>
-                            <constraint firstAttribute="width" constant="68" id="maf-Eb-JKp"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GG8-Fg-r5K">
                         <rect key="frame" x="230" y="96.5" width="72" height="25"/>
                         <color key="backgroundColor" red="0.80893534420000002" green="0.158609271" blue="0.18252518770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -56,7 +46,7 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2666积分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bZ-6h-WKC">
-                        <rect key="frame" x="160" y="99" width="59" height="20"/>
+                        <rect key="frame" x="160" y="53.5" width="59" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="El9-dJ-ege"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="59" id="SMY-Qc-I2R"/>
@@ -67,16 +57,14 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="lgg-2J-rlx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="1Gb-FF-1tD"/>
-                    <constraint firstItem="9bZ-6h-WKC" firstAttribute="leading" secondItem="7Yn-xX-O7L" secondAttribute="leading" id="8MU-4p-IaG"/>
                     <constraint firstItem="dBG-P4-mWz" firstAttribute="top" secondItem="lgg-2J-rlx" secondAttribute="top" constant="5" id="DH4-9l-Li1"/>
-                    <constraint firstItem="9bZ-6h-WKC" firstAttribute="centerY" secondItem="GG8-Fg-r5K" secondAttribute="centerY" id="MLW-xb-fMV"/>
+                    <constraint firstItem="9bZ-6h-WKC" firstAttribute="centerY" secondItem="lgg-2J-rlx" secondAttribute="centerY" id="NJi-0b-KGt"/>
                     <constraint firstItem="lgg-2J-rlx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Zs0-w4-9Nh"/>
                     <constraint firstAttribute="bottom" secondItem="lgg-2J-rlx" secondAttribute="bottom" constant="5" id="ZuE-Lm-hTI"/>
                     <constraint firstAttribute="trailing" secondItem="dBG-P4-mWz" secondAttribute="trailing" constant="10" id="bhQ-WB-bXD"/>
                     <constraint firstItem="dBG-P4-mWz" firstAttribute="leading" secondItem="lgg-2J-rlx" secondAttribute="trailing" constant="10" id="e0z-A1-tlK"/>
-                    <constraint firstItem="7Yn-xX-O7L" firstAttribute="centerY" secondItem="lgg-2J-rlx" secondAttribute="centerY" id="fLN-c6-u2m"/>
+                    <constraint firstItem="9bZ-6h-WKC" firstAttribute="leading" secondItem="lgg-2J-rlx" secondAttribute="trailing" constant="10" id="gm5-I4-jDU"/>
                     <constraint firstAttribute="trailing" secondItem="GG8-Fg-r5K" secondAttribute="trailing" constant="10" id="lbG-Gb-3cd"/>
-                    <constraint firstItem="7Yn-xX-O7L" firstAttribute="leading" secondItem="dBG-P4-mWz" secondAttribute="leading" id="xT7-6Z-A5R"/>
                     <constraint firstItem="GG8-Fg-r5K" firstAttribute="bottom" secondItem="lgg-2J-rlx" secondAttribute="bottom" id="zyb-kg-NNK"/>
                 </constraints>
             </tableViewCellContentView>
@@ -85,7 +73,6 @@
                 <outlet property="jifenLabel" destination="9bZ-6h-WKC" id="x0S-YF-TqG"/>
                 <outlet property="nameLabel" destination="dBG-P4-mWz" id="3ms-9A-eid"/>
                 <outlet property="panicBuyingBtn" destination="GG8-Fg-r5K" id="rxN-LB-d9o"/>
-                <outlet property="priceLabel" destination="7Yn-xX-O7L" id="brL-5f-sBY"/>
             </connections>
             <point key="canvasLocation" x="-18" y="12.5"/>
         </tableViewCell>
