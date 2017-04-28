@@ -33,7 +33,7 @@
 @property (strong, nonatomic)SelectUserTypeView *selectUserTypeView;
 @property (strong, nonatomic)LoadWaitView *loadV;
 
-@property (assign, nonatomic)NSInteger usertype;
+@property (strong, nonatomic)NSString *usertype;
 
 
 @end
@@ -104,7 +104,7 @@
 //    NSString *encrypYzm = [RSAEncryptor encryptString:self.yabzTf.text publicKey:public_RSA];
     
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"user/forget_pwd" paramDic:@{@"userphone":self.phoneTf.text , @"password":encryptsecret , @"groupID":[NSNumber numberWithInteger:self.usertype] , @"yzm":self.yabzTf.text} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/forget_pwd" paramDic:@{@"userphone":self.phoneTf.text , @"password":encryptsecret , @"groupID":self.usertype , @"yzm":self.yabzTf.text} finish:^(id responseObject) {
         [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue]==1) {
             [MBProgressHUD showError:responseObject[@"message"]];
@@ -220,10 +220,10 @@
 }
 
 #pragma mark - 选择用户类型
-//志愿者
+//会员
 -(void)shangbuttonE{
-    _usertype=7;
-    self.usertypeTf.text=@"米家";
+    _usertype=OrdinaryUser;
+    self.usertypeTf.text=@"会员";
     [UIView animateWithDuration:0.3 animations:^{
         self.selectUserTypeView.transform=CGAffineTransformMakeScale(1.0, 0.00001);
         
@@ -236,8 +236,8 @@
 }
 //商家
 -(void)lingbuttonE{
-    _usertype=7;
-    self.usertypeTf.text=@"米商";
+    _usertype=Retailer;
+    self.usertypeTf.text=@"商家";
     [UIView animateWithDuration:0.3 animations:^{
         self.selectUserTypeView.transform=CGAffineTransformMakeScale(1.0, 0.00001);
         
@@ -247,6 +247,48 @@
         [self.selectUserTypeView removeFromSuperview];
     }];
     
+}
+//副总
+-(void)ServiceBtE{
+    _usertype=Retailer;
+    self.usertypeTf.text=@"副总";
+    [UIView animateWithDuration:0.3 animations:^{
+        self.selectUserTypeView.transform=CGAffineTransformMakeScale(1.0, 0.00001);
+        
+    } completion:^(BOOL finished) {
+        
+        [self.maskView removeFromSuperview];
+        [self.selectUserTypeView removeFromSuperview];
+    }];
+
+}
+//高级推广员
+-(void)ManufacturerBtE{
+    _usertype=Retailer;
+    self.usertypeTf.text=@"高级推广员";
+    [UIView animateWithDuration:0.3 animations:^{
+        self.selectUserTypeView.transform=CGAffineTransformMakeScale(1.0, 0.00001);
+        
+    } completion:^(BOOL finished) {
+        
+        [self.maskView removeFromSuperview];
+        [self.selectUserTypeView removeFromSuperview];
+    }];
+    
+}
+//推广员
+-(void)TraderBtE{
+    
+    _usertype=Retailer;
+    self.usertypeTf.text=@"推广员";
+    [UIView animateWithDuration:0.3 animations:^{
+        self.selectUserTypeView.transform=CGAffineTransformMakeScale(1.0, 0.00001);
+        
+    } completion:^(BOOL finished) {
+        
+        [self.maskView removeFromSuperview];
+        [self.selectUserTypeView removeFromSuperview];
+    }];
 }
 
 -(void)updateViewConstraints{
@@ -303,12 +345,12 @@
     
     if (!_selectUserTypeView) {
         _selectUserTypeView=[[NSBundle mainBundle]loadNibNamed:@"SelectUserTypeView" owner:self options:nil].firstObject;
-        _selectUserTypeView.frame=CGRectMake(10, 65, SCREEN_WIDTH-20, 100);
+        _selectUserTypeView.frame=CGRectMake(10, 25, SCREEN_WIDTH-20, 180);
         [_selectUserTypeView.shanBt addTarget:self action:@selector(shangbuttonE) forControlEvents:UIControlEventTouchUpInside];
         [_selectUserTypeView.lingBt addTarget:self action:@selector(lingbuttonE) forControlEvents:UIControlEventTouchUpInside];
-        //        [_selectUserTypeView.ServiceBt addTarget:self action:@selector(ServiceBtE) forControlEvents:UIControlEventTouchUpInside];
-        //        [_selectUserTypeView.ManufacturerBt addTarget:self action:@selector(ManufacturerBtE) forControlEvents:UIControlEventTouchUpInside];
-        //        [_selectUserTypeView.TraderBt addTarget:self action:@selector(TraderBtE) forControlEvents:UIControlEventTouchUpInside];
+        [_selectUserTypeView.ServiceBt addTarget:self action:@selector(ServiceBtE) forControlEvents:UIControlEventTouchUpInside];
+        [_selectUserTypeView.ManufacturerBt addTarget:self action:@selector(ManufacturerBtE) forControlEvents:UIControlEventTouchUpInside];
+        [_selectUserTypeView.TraderBt addTarget:self action:@selector(TraderBtE) forControlEvents:UIControlEventTouchUpInside];
         //        [_selectUserTypeView.lingshouBt addTarget:self action:@selector(lingshouBtE) forControlEvents:UIControlEventTouchUpInside];
         
     }

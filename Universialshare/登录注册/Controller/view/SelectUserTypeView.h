@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface SelectUserTypeView : UIView
-//志愿者
+//会员
 @property (weak, nonatomic) IBOutlet UIButton *shanBt;
 //商家
 @property (weak, nonatomic) IBOutlet UIButton *lingBt;
-////服务商
-//@property (weak, nonatomic) IBOutlet UIButton *ServiceBt;
-////制造商
-//@property (weak, nonatomic) IBOutlet UIButton *ManufacturerBt;
-////贸易商
-//@property (weak, nonatomic) IBOutlet UIButton *TraderBt;
+//副总
+@property (weak, nonatomic) IBOutlet UIButton *ServiceBt;
+//高级推广员
+@property (weak, nonatomic) IBOutlet UIButton *ManufacturerBt;
+//推广员
+@property (weak, nonatomic) IBOutlet UIButton *TraderBt;
 ////零售
 //@property (weak, nonatomic) IBOutlet UIButton *lingshouBt;
 

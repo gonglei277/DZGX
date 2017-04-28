@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +26,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户注册" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3E-MS-1Sb">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会员注册" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3E-MS-1Sb">
                     <rect key="frame" x="159" y="30" width="58" height="22"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
@@ -134,10 +135,9 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKv-UJ-gdK">
-                    <rect key="frame" x="88" y="357" width="200" height="36"/>
+                    <rect key="frame" x="10" y="357" width="355" height="36"/>
                     <color key="backgroundColor" red="0.14404621719999999" green="0.60565376280000005" blue="0.14635491370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="200" id="8D8-9x-XJ7"/>
                         <constraint firstAttribute="height" constant="36" id="uQM-Yq-4LT"/>
                     </constraints>
                     <state key="normal" title="注  册">
@@ -172,11 +172,11 @@
                 <constraint firstItem="m9E-cg-Bp3" firstAttribute="leading" secondItem="K31-MW-KcV" secondAttribute="leading" id="AWI-rb-HxL"/>
                 <constraint firstItem="938-Pe-Vlq" firstAttribute="leading" secondItem="cdY-G6-IKH" secondAttribute="leading" id="BsA-TK-t0P"/>
                 <constraint firstAttribute="trailing" secondItem="d0b-yk-WtG" secondAttribute="trailing" constant="10" id="DOa-u2-j3f"/>
+                <constraint firstAttribute="trailing" secondItem="wKv-UJ-gdK" secondAttribute="trailing" constant="10" id="DxX-7Y-DHg"/>
                 <constraint firstItem="zqf-9t-jXB" firstAttribute="trailing" secondItem="m9E-cg-Bp3" secondAttribute="trailing" id="Fd2-mM-qWz"/>
                 <constraint firstItem="K31-MW-KcV" firstAttribute="height" secondItem="938-Pe-Vlq" secondAttribute="height" id="Ise-Ja-mey"/>
                 <constraint firstItem="938-Pe-Vlq" firstAttribute="height" secondItem="cdY-G6-IKH" secondAttribute="height" id="LVm-lP-WhC"/>
                 <constraint firstItem="K31-MW-KcV" firstAttribute="leading" secondItem="q4m-Rw-aQi" secondAttribute="leading" id="Lay-HK-wrc"/>
-                <constraint firstItem="wKv-UJ-gdK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="LdU-eX-ToR"/>
                 <constraint firstItem="P6t-3L-cMm" firstAttribute="top" secondItem="938-Pe-Vlq" secondAttribute="bottom" constant="20" id="NjF-PR-mpW"/>
                 <constraint firstItem="exc-r1-sn0" firstAttribute="height" secondItem="K5O-wd-F1o" secondAttribute="height" id="QLq-ZD-7Dy"/>
                 <constraint firstAttribute="trailing" secondItem="q4m-Rw-aQi" secondAttribute="trailing" constant="20" id="QPS-3S-QG0"/>
@@ -185,6 +185,7 @@
                 <constraint firstItem="m9E-cg-Bp3" firstAttribute="trailing" secondItem="K31-MW-KcV" secondAttribute="trailing" id="RLc-LZ-oeF"/>
                 <constraint firstItem="Q3E-MS-1Sb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="YVE-fX-0st"/>
                 <constraint firstItem="tCU-B5-5qR" firstAttribute="height" secondItem="exc-r1-sn0" secondAttribute="height" id="ZcQ-ZN-9pX"/>
+                <constraint firstItem="wKv-UJ-gdK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="aZx-dA-AA9"/>
                 <constraint firstItem="ciV-YP-4k3" firstAttribute="centerY" secondItem="Q3E-MS-1Sb" secondAttribute="centerY" id="asi-yk-FPw"/>
                 <constraint firstItem="m9E-cg-Bp3" firstAttribute="centerY" secondItem="P6t-3L-cMm" secondAttribute="centerY" id="b4r-Oz-OHZ"/>
                 <constraint firstItem="P6t-3L-cMm" firstAttribute="leading" secondItem="938-Pe-Vlq" secondAttribute="leading" id="b82-cd-TPB"/>
