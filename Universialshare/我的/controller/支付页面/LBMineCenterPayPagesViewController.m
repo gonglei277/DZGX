@@ -132,7 +132,7 @@
 //    dict[@"order_id"] = orderID;
     
     dict[@"uid"] = [UserModel defaultUser].uid;
-    dict[@"order_id"] = self.orderNum;
+    dict[@"order_id"] = self.order_id;
 
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"shop/markPay" paramDic:dict finish:^(id responseObject) {
