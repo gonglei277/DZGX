@@ -28,6 +28,8 @@
     [self addSubview:self.orderCode];
     [self addSubview:self.orderTime];
     [self addSubview:self.lineview];
+    [self addSubview:self.orderStaues];
+    [self addSubview:self.payBt];
     
     [self.orderCode mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.equalTo(self).offset(-10);
@@ -49,7 +51,20 @@
         make.height.equalTo(@1);
     }];
     
+    [self.orderStaues mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(self).offset(-10);
+        make.leading.equalTo(self).offset(10);
+        make.top.equalTo(self.orderTime.mas_bottom).offset(5);
+        make.height.equalTo(@20);
+    }];
     
+    [self.payBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(self).offset(-10);
+        //make.leading.equalTo(self).offset(10);
+        make.top.equalTo(self.orderStaues.mas_bottom).offset(5);
+        make.height.equalTo(@25);
+        make.width.equalTo(@80);
+    }];
     
     
 }
@@ -72,7 +87,15 @@
     if (self.expandCallback) {
         self.expandCallback(self.sectionModel.isExpanded);
     }
-    
+}
+//支付
+-(void)CollectinGoodsBtbttonOne{
+
+    if (self.returnPayBt) {
+        self.returnPayBt(self.section);
+    }
+
+
 }
 
 -(UILabel*)orderCode{
@@ -114,5 +137,35 @@
     return _lineview;
 }
 
-
+-(UILabel*)orderStaues{
+    
+    if (!_orderStaues) {
+        _orderStaues=[[UILabel alloc]init];
+        _orderStaues.backgroundColor=[UIColor clearColor];
+        _orderStaues.textColor=[UIColor blackColor];
+        _orderStaues.font=[UIFont systemFontOfSize:13];
+        _orderStaues.text = @"订单类型:积分订单";
+        
+    }
+    
+    return _orderStaues;
+    
+}
+-(UIButton*)payBt{
+    
+    if (!_payBt) {
+        _payBt=[[UIButton alloc]init];
+        _payBt.backgroundColor=TABBARTITLE_COLOR;
+        [_payBt setTitle:@"确认收货" forState:UIControlStateNormal];
+        _payBt.titleLabel.font=[UIFont systemFontOfSize:13];
+        [_payBt addTarget:self action:@selector(CollectinGoodsBtbttonOne) forControlEvents:UIControlEventTouchUpInside];
+        [_payBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _payBt.layer.cornerRadius =4;
+        _payBt.clipsToBounds =YES;
+        
+    }
+    
+    return _payBt;
+    
+}
 @end

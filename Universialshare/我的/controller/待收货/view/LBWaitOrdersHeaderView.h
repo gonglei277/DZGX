@@ -18,5 +18,13 @@ typedef void(^GWHeadViewExpandCallback)(BOOL isExpanded);
 
 @property(nonatomic , strong) UILabel *orderCode;//订单号
 @property(nonatomic , strong) UILabel *orderTime;//订单时间
+@property(nonatomic , strong) UILabel *orderStaues;//订单类型
+
+@property(nonatomic , strong) UIButton *wuliuBt;//查看物流
+@property(nonatomic , strong) UIButton *sureGetBt;//确认收货
 @property(nonatomic , strong) UIView *lineview;
+@property(nonatomic , assign) NSInteger section;
+
+@property(nonatomic , copy)void(^returnwuliuBt)(NSInteger section);
+@property(nonatomic , copy)void(^returnsureGetBt)(NSInteger section);
 @end

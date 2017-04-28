@@ -12,10 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LBMineCenterReceivingGoodsTableViewCell" id="KGk-i7-Jjw" customClass="LBMineCenterReceivingGoodsTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Les-sz-41B">
@@ -94,64 +94,18 @@
                             <constraint firstItem="co1-kZ-cyz" firstAttribute="leading" secondItem="kAB-tm-Q2j" secondAttribute="trailing" constant="10" id="sHt-Ja-v15"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="st2-ff-wgE">
-                        <rect key="frame" x="0.0" y="127" width="320" height="35"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOq-dy-ygm">
-                                <rect key="frame" x="230" y="5" width="80" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="r1s-2L-Eaf"/>
-                                    <constraint firstAttribute="height" constant="25" id="y5j-Oq-4gY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="确认收货">
-                                    <color key="titleColor" red="0.7691993117" green="0.19067090749999999" blue="0.036488793790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buyevent:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Z0y-Nf-CVF"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXK-gx-NjV">
-                                <rect key="frame" x="140" y="5" width="80" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="N9k-mC-sO2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="查看物流">
-                                    <color key="titleColor" red="0.7691993117" green="0.19067090749999999" blue="0.036488793790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="SeeEvent:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="f5h-5V-j8x"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="aOq-dy-ygm" secondAttribute="trailing" constant="10" id="7eb-y7-0Xh"/>
-                            <constraint firstAttribute="height" constant="35" id="8rk-Ym-drW"/>
-                            <constraint firstItem="aOq-dy-ygm" firstAttribute="top" secondItem="HXK-gx-NjV" secondAttribute="top" id="aqk-Ss-tyb"/>
-                            <constraint firstItem="aOq-dy-ygm" firstAttribute="leading" secondItem="HXK-gx-NjV" secondAttribute="trailing" constant="10" id="dRC-Di-LWF"/>
-                            <constraint firstItem="aOq-dy-ygm" firstAttribute="bottom" secondItem="HXK-gx-NjV" secondAttribute="bottom" id="u98-ga-GMC"/>
-                            <constraint firstItem="aOq-dy-ygm" firstAttribute="centerY" secondItem="st2-ff-wgE" secondAttribute="centerY" id="y89-CL-3wi"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="st2-ff-wgE" firstAttribute="top" secondItem="Zju-2f-lXL" secondAttribute="bottom" constant="1" id="DBJ-Yg-hiJ"/>
                     <constraint firstItem="Les-sz-41B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Dya-kR-djc"/>
                     <constraint firstAttribute="trailing" secondItem="Les-sz-41B" secondAttribute="trailing" id="Evy-vv-8a2"/>
                     <constraint firstItem="Zju-2f-lXL" firstAttribute="top" secondItem="Les-sz-41B" secondAttribute="bottom" constant="1" id="FCO-M9-dy2"/>
                     <constraint firstItem="Les-sz-41B" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Nxc-4l-a1a"/>
-                    <constraint firstItem="st2-ff-wgE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="e6R-mx-W3e"/>
                     <constraint firstAttribute="trailing" secondItem="Zju-2f-lXL" secondAttribute="trailing" id="eU0-bf-FFY"/>
-                    <constraint firstAttribute="trailing" secondItem="st2-ff-wgE" secondAttribute="trailing" id="p16-Gj-TEY"/>
                     <constraint firstItem="Zju-2f-lXL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="vkO-aP-Bgf"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <connections>
-                <outlet property="SeeBt" destination="HXK-gx-NjV" id="P8T-g0-Ay0"/>
-                <outlet property="buyBt" destination="aOq-dy-ygm" id="nyL-eV-yoF"/>
                 <outlet property="cartype" destination="QZb-PJ-dKQ" id="4TZ-xh-wLS"/>
                 <outlet property="imagev" destination="kAB-tm-Q2j" id="3RT-qG-TtN"/>
                 <outlet property="numlb" destination="QUU-7w-spH" id="tY4-lD-a4Q"/>

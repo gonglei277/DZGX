@@ -28,6 +28,9 @@
     [self addSubview:self.orderCode];
     [self addSubview:self.orderTime];
     [self addSubview:self.lineview];
+    [self addSubview:self.orderStaues];
+    [self addSubview:self.wuliuBt];
+    [self addSubview:self.sureGetBt];
     
     [self.orderCode mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.equalTo(self).offset(-10);
@@ -42,11 +45,33 @@
         make.top.equalTo(self.orderCode.mas_bottom).offset(5);
         make.height.equalTo(@20);
     }];
+    [self.orderStaues mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(self).offset(-10);
+        make.leading.equalTo(self).offset(10);
+        make.top.equalTo(self.orderTime.mas_bottom).offset(5);
+        make.height.equalTo(@20);
+    }];
     [self.lineview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.equalTo(self).offset(-10);
         make.leading.equalTo(self).offset(10);
         make.bottom.equalTo(self).offset(-1);
         make.height.equalTo(@1);
+    }];
+    
+    [self.sureGetBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(self).offset(-10);
+        //make.leading.equalTo(self).offset(10);
+        make.top.equalTo(self.orderStaues.mas_bottom).offset(5);
+        make.height.equalTo(@25);
+        make.width.equalTo(@80);
+    }];
+    
+    [self.wuliuBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(self.sureGetBt.mas_leading).offset(-10);
+        //make.leading.equalTo(self).offset(10);
+        make.top.equalTo(self.orderStaues.mas_bottom).offset(5);
+        make.height.equalTo(@25);
+        make.width.equalTo(@80);
     }];
 
 
@@ -73,6 +98,21 @@
         self.expandCallback(self.sectionModel.isExpanded);
     }
 
+}
+//查看物流
+-(void)CollectinGoodsBtbtton{
+
+    if (self.returnwuliuBt) {
+        self.returnwuliuBt(self.section);
+    };
+
+}
+//确认收货
+-(void)CollectinGoodsBtbttonOne{
+    if (self.returnsureGetBt) {
+        self.returnsureGetBt(self.section);
+    };
+    
 }
 
 -(UILabel*)orderCode{
@@ -102,6 +142,20 @@
     return _orderTime;
     
 }
+-(UILabel*)orderStaues{
+    
+    if (!_orderStaues) {
+        _orderStaues=[[UILabel alloc]init];
+        _orderStaues.backgroundColor=[UIColor clearColor];
+        _orderStaues.textColor=[UIColor blackColor];
+        _orderStaues.font=[UIFont systemFontOfSize:13];
+        _orderStaues.text = @"订单类型:积分订单";
+        
+    }
+    
+    return _orderStaues;
+    
+}
 -(UIView*)lineview{
     
     if (!_lineview) {
@@ -112,5 +166,40 @@
     }
     
     return _lineview;
+}
+
+-(UIButton*)wuliuBt{
+    
+    if (!_wuliuBt) {
+        _wuliuBt=[[UIButton alloc]init];
+        _wuliuBt.backgroundColor=TABBARTITLE_COLOR;
+        [_wuliuBt setTitle:@"查看物流" forState:UIControlStateNormal];
+        _wuliuBt.titleLabel.font=[UIFont systemFontOfSize:13];
+        [_wuliuBt addTarget:self action:@selector(CollectinGoodsBtbtton) forControlEvents:UIControlEventTouchUpInside];
+        [_wuliuBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _wuliuBt.layer.cornerRadius =4;
+        _wuliuBt.clipsToBounds =YES;
+    }
+    
+    return _wuliuBt;
+    
+}
+
+-(UIButton*)sureGetBt{
+    
+    if (!_sureGetBt) {
+        _sureGetBt=[[UIButton alloc]init];
+        _sureGetBt.backgroundColor=TABBARTITLE_COLOR;
+        [_sureGetBt setTitle:@"确认收货" forState:UIControlStateNormal];
+        _sureGetBt.titleLabel.font=[UIFont systemFontOfSize:13];
+        [_sureGetBt addTarget:self action:@selector(CollectinGoodsBtbttonOne) forControlEvents:UIControlEventTouchUpInside];
+        [_sureGetBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _sureGetBt.layer.cornerRadius =4;
+        _sureGetBt.clipsToBounds =YES;
+        
+    }
+    
+    return _sureGetBt;
+    
 }
 @end

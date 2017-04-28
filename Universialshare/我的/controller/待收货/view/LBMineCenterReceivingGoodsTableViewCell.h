@@ -12,7 +12,7 @@
 @protocol  LBMineCenterReceivingGoodsDelegete <NSObject>
 
 -(void)checklogistics:(NSInteger)index;
--(void)BuyAgain:(NSInteger)index;
+-(void)BuyAgain:(NSInteger)index section:(NSInteger)section;
 
 @end
 
@@ -26,12 +26,13 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *pricelb;
 
-@property (weak, nonatomic) IBOutlet UIButton *buyBt;
-@property (weak, nonatomic) IBOutlet UIButton *SeeBt;
+//@property (weak, nonatomic) IBOutlet UIButton *buyBt;
+//@property (weak, nonatomic) IBOutlet UIButton *SeeBt;
 
 @property (assign,nonatomic)id<LBMineCenterReceivingGoodsDelegete> delegete;
 
 @property(assign,nonatomic)NSInteger index;
+@property(assign,nonatomic)NSInteger section;
 
 @property (strong, nonatomic)LBWaitOrdersListModel *WaitOrdersListModel;
 
