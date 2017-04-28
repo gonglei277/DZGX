@@ -10,12 +10,14 @@
 #import "GLClassifyCell.h"
 #import "GLSet_MaskVeiw.h"
 #import "GLClassifyView.h"
+#import "GLHourseDetailController.h"
 
 @interface GLIntegraClassifyController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
     GLSet_MaskVeiw *_maskV;
     GLClassifyView *_contentV;
     LoadWaitView * _loadV;
+    NSInteger _sortType;//排序方式:1 默认正序  2 倒序
     
 }
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
@@ -78,9 +80,33 @@ static NSString *ID = @"GLClassifyCell";
     
     self.collectionView.mj_header = header;
     self.collectionView.mj_footer = footer;
-    [self updateData:YES];
+    [self sortClick:self.defaultSortBtn];
     
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationItem.title = @"全部";
+    self.navigationController.navigationBar.hidden = NO;
+}
+//排序
+- (IBAction)sortClick:(UIButton *)sender {
+    if(sender.titleLabel.textColor != [UIColor redColor]){
+        
+        [self.defaultSortBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [self.integralBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        
+        [sender setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        
+        if (sender == self.defaultSortBtn) {
+            _sortType = 1;
+        }else{
+            _sortType = 2;
+        }
+        [self updateData:YES];
+    }
+}
+
+
 //发送请求
 - (void)updateData:(BOOL)status {
     if (status) {
@@ -94,7 +120,7 @@ static NSString *ID = @"GLClassifyCell";
     }
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"sel_rank"] = @"1";
-    dict[@"sel_type"] = @"1";
+    dict[@"sel_type"] = @(_sortType);
     dict[@"page"] = [NSString stringWithFormat:@"%ld",_page];
 
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
@@ -102,7 +128,7 @@ static NSString *ID = @"GLClassifyCell";
         
         [_loadV removeloadview];
         [self endRefresh];
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         
         if ([responseObject[@"code"] integerValue] == 1){
             if ([[NSString stringWithFormat:@"%@",responseObject[@"data"]] rangeOfString:@"null"].location == NSNotFound ) {
@@ -155,13 +181,6 @@ static NSString *ID = @"GLClassifyCell";
     }];
 
 }
-//排序
-- (IBAction)sortClick:(UIButton *)sender {
-    [self.defaultSortBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [self.integralBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    
-    [sender setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-}
 
 //筛选
 - (IBAction)filterBtn:(id)sender {
@@ -190,7 +209,7 @@ static NSString *ID = @"GLClassifyCell";
         
         [_loadV removeloadview];
         [self endRefresh];
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         
         if ([responseObject[@"code"] integerValue] == 1){
             if ([[NSString stringWithFormat:@"%@",responseObject[@"data"]] rangeOfString:@"null"].location == NSNotFound ) {
@@ -228,6 +247,16 @@ static NSString *ID = @"GLClassifyCell";
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    self.hidesBottomBarWhenPushed = YES;
+    GLHourseDetailController *detailVC = [[GLHourseDetailController alloc] init];
+    GLintegralGoodsModel *model = self.models[indexPath.row];
+    detailVC.goods_id = model.goods_id;
+    detailVC.navigationItem.title = @"积分商品详情";
+    [self.navigationController pushViewController:detailVC animated:YES];
+    
+}
 - (NSMutableArray *)models{
     if (!_models) {
         _models = [NSMutableArray array];

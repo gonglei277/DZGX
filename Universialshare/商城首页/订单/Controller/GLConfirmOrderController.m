@@ -78,11 +78,39 @@ static NSString *ID = @"GLOrderGoodsCell";
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
-    dict[@"goods_id"] = self.goods_id;
-    dict[@"goods_count"] = self.goods_count;
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"shop/placeOrderBefore" paramDic:dict finish:^(id responseObject) {
+    //请求地址
+    [NetworkManager requestPOSTWithURLStr:@"shop/address_list" paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        
+        if ([responseObject[@"code"] integerValue] == 1){
+
+            for (NSDictionary *dic in responseObject[@"data"]) {
+                if ([dic[@"is_default"] intValue] == 1) {
+                    self.nameLabel.text = [NSString stringWithFormat:@"收货人:¥%@",dic[@"collect_name"]];
+                    self.phoneLabel.text = [NSString stringWithFormat:@"电话号码:%@",dic[@"s_phone"]];
+                    self.addressLabel.text = [NSString stringWithFormat:@"收货地址:%@",dic[@"s_address"]];
+
+                }
+            }
+                
+        }
+        
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+    }];
+    
+    
+    NSMutableDictionary *dict1 = [NSMutableDictionary dictionary];
+    dict1[@"token"] = [UserModel defaultUser].token;
+    dict1[@"uid"] = [UserModel defaultUser].uid;
+    dict1[@"goods_id"] = self.goods_id;
+    dict1[@"goods_count"] = self.goods_count;
+    //请求商品信息
+    [NetworkManager requestPOSTWithURLStr:@"shop/placeOrderBefore" paramDic:dict1 finish:^(id responseObject) {
         
         [_loadV removeloadview];
 //        NSLog(@"dict = %@",dict);
@@ -96,8 +124,8 @@ static NSString *ID = @"GLOrderGoodsCell";
                 GLConfirmOrderModel *model = [GLConfirmOrderModel mj_objectWithKeyValues:dic];
                 [_models addObject:model];
             }
-            self.tableViewHeight.constant = _models.count * 150 * autoSizeScaleY;
-            self.contentViewH.constant = _models.count * 150 * autoSizeScaleY + 220;
+            self.tableViewHeight.constant = _models.count * 140 * autoSizeScaleY;
+            self.contentViewH.constant = _models.count * 140 * autoSizeScaleY + 220;
             [self.tableView reloadData];
             
         }
@@ -106,6 +134,7 @@ static NSString *ID = @"GLOrderGoodsCell";
     } enError:^(NSError *error) {
         [_loadV removeloadview];
     }];
+    
 }
 
 - (void)changeAddress{
@@ -143,6 +172,10 @@ static NSString *ID = @"GLOrderGoodsCell";
 //订单提交
 - (IBAction)submitOrder:(UIButton *)sender {
 
+    if (self.nameLabel.text.length == 4) {
+        
+        return;
+    }
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
@@ -151,6 +184,7 @@ static NSString *ID = @"GLOrderGoodsCell";
     dict[@"goods_count"] = self.goods_count;
     dict[@"address_id"] = @1;
     dict[@"remark"] = self.remarkTextV.text;
+    dict[@"cart_id"] = self.cart_id;
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"shop/placeOrderEnd" paramDic:dict finish:^(id responseObject) {
@@ -206,7 +240,7 @@ static NSString *ID = @"GLOrderGoodsCell";
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 150 *autoSizeScaleY;
+    return 140 *autoSizeScaleY;
 }
 
 #pragma 懒加载

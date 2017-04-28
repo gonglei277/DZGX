@@ -12,6 +12,8 @@
 #import <ReactiveCocoa/NSObject+RACKVOWrapper.h>
 #import "LBMineCenterAddAdreassViewController.h"
 
+#import "GLConfirmOrderController.h"
+
 @interface LBMineCentermodifyAdressViewController ()<UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
@@ -90,6 +92,7 @@
         [_loadV removeloadview];
         [self.tableview.mj_header endRefreshing];
         [self.tableview.mj_footer endRefreshing];
+        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue]==1) {
             
             if (_refreshType == NO) {
@@ -205,7 +208,15 @@
     
     LBMineCentermodifyAdressTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    self.block(cell.nameLb.text,cell.phoneLb.text,cell.adressLn.text);
+    NSArray *vcsArray = [self.navigationController viewControllers];
+    NSInteger vcCount = vcsArray.count;
+    UIViewController *lastVC = vcsArray[vcCount-2];//最后一个vc是自己，倒数第二个是上一个控制器。
+
+    if([lastVC isKindOfClass:[GLConfirmOrderController class]]){
+    
+        self.block(cell.nameLb.text,cell.phoneLb.text,cell.adressLn.text);
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
     
 }

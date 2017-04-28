@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wsf-UE-UGh">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wsf-UE-UGh">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Bg-ye-3YE">
@@ -44,14 +44,15 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8uC-OW-K74">
                             <rect key="frame" x="50" y="27" width="275" height="30"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nwP-9I-ldS">
-                                    <rect key="frame" x="5" y="5" width="24" height="20"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="搜索" translatesAutoresizingMaskIntoConstraints="NO" id="nwP-9I-ldS">
+                                    <rect key="frame" x="10" y="8" width="14" height="14"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="24" id="ozW-wr-Prt"/>
+                                        <constraint firstAttribute="width" secondItem="nwP-9I-ldS" secondAttribute="height" multiplier="1:1" id="Pgc-jP-Syk"/>
+                                        <constraint firstAttribute="width" constant="14" id="ozW-wr-Prt"/>
                                     </constraints>
                                 </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入商品名或ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LdM-Yk-K2p">
-                                    <rect key="frame" x="34" y="0.0" width="231" height="30"/>
+                                    <rect key="frame" x="29" y="0.0" width="236" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -62,10 +63,9 @@
                                 <constraint firstAttribute="trailing" secondItem="LdM-Yk-K2p" secondAttribute="trailing" constant="10" id="0MH-Ho-9bF"/>
                                 <constraint firstItem="LdM-Yk-K2p" firstAttribute="leading" secondItem="nwP-9I-ldS" secondAttribute="trailing" constant="5" id="1uZ-xI-zB6"/>
                                 <constraint firstAttribute="bottom" secondItem="LdM-Yk-K2p" secondAttribute="bottom" id="1v7-fD-okS"/>
-                                <constraint firstAttribute="bottom" secondItem="nwP-9I-ldS" secondAttribute="bottom" constant="5" id="2YC-Me-uIC"/>
-                                <constraint firstItem="nwP-9I-ldS" firstAttribute="top" secondItem="8uC-OW-K74" secondAttribute="top" constant="5" id="IaW-eY-peY"/>
+                                <constraint firstItem="nwP-9I-ldS" firstAttribute="centerY" secondItem="8uC-OW-K74" secondAttribute="centerY" id="a6o-VA-MdH"/>
                                 <constraint firstItem="LdM-Yk-K2p" firstAttribute="top" secondItem="8uC-OW-K74" secondAttribute="top" id="jHR-th-oHA"/>
-                                <constraint firstItem="nwP-9I-ldS" firstAttribute="leading" secondItem="8uC-OW-K74" secondAttribute="leading" constant="5" id="wT2-qt-gVn"/>
+                                <constraint firstItem="nwP-9I-ldS" firstAttribute="leading" secondItem="8uC-OW-K74" secondAttribute="leading" constant="10" id="wT2-qt-gVn"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -184,5 +184,6 @@
     </objects>
     <resources>
         <image name="iv_back" width="27" height="51"/>
+        <image name="搜索" width="15" height="14"/>
     </resources>
 </document>

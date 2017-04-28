@@ -133,6 +133,7 @@
     
     dict[@"uid"] = [UserModel defaultUser].uid;
     dict[@"order_id"] = self.orderNum;
+
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"shop/markPay" paramDic:dict finish:^(id responseObject) {
         
@@ -146,7 +147,7 @@
 //            self.hidesBottomBarWhenPushed = YES;
 //            LBIntegralMallViewController *homeVC = [[LBIntegralMallViewController alloc] init];
 //            
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:YES];
 
 //            self.hidesBottomBarWhenPushed = NO;
         }

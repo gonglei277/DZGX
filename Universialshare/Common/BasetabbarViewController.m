@@ -161,7 +161,7 @@
 
 - (void)pushToHome{
     
-     self.selectedIndex=0;
+     self.selectedIndex = 0;
 }
 
 @end
