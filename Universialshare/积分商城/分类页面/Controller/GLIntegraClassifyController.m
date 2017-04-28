@@ -190,7 +190,7 @@ static NSString *ID = @"GLClassifyCell";
     _contentV = [[NSBundle mainBundle] loadNibNamed:@"GLClassifyView" owner:nil options:nil].lastObject;
     __weak typeof(self)weakSelf = self;
     _contentV.block = ^(NSString * str){
-        NSLog(@"arr =  == = = =  = ===%@",str);
+//        NSLog(@"arr =  == = = =  = ===%@",str);
         [weakSelf dismiss];
     };
     
@@ -210,8 +210,9 @@ static NSString *ID = @"GLClassifyCell";
         [_loadV removeloadview];
         [self endRefresh];
 //        NSLog(@"responseObject = %@",responseObject);
-        
+        [self.typeArr removeAllObjects];
         if ([responseObject[@"code"] integerValue] == 1){
+            
             if ([[NSString stringWithFormat:@"%@",responseObject[@"data"]] rangeOfString:@"null"].location == NSNotFound ) {
                 for (NSDictionary *dic in responseObject[@"data"]) {
                     [self.typeArr addObject:dic[@"catename"]];
@@ -221,6 +222,7 @@ static NSString *ID = @"GLClassifyCell";
                 _contentV.dataSource = @[];
             }
             [_contentV.collectionView reloadData];
+            
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
         }

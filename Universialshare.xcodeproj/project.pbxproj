@@ -469,6 +469,7 @@
 		4AB508CD1EB190A20057EB3B /* GLShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB508CC1EB190A20057EB3B /* GLShoppingCartModel.m */; };
 		4AD5514D1EB2E6B600C04062 /* GLSubmitChooseTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5514C1EB2E6B600C04062 /* GLSubmitChooseTimeView.m */; };
 		4AD5514F1EB2E6C900C04062 /* GLSubmitChooseTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AD5514E1EB2E6C900C04062 /* GLSubmitChooseTimeView.xib */; };
+		4AD551521EB36E4D00C04062 /* SYDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD551511EB36E4D00C04062 /* SYDatePicker.m */; };
 		4F9D6A29F2E5B95EBA14BE59 /* Pods_Universialshare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */; };
 		F9061FCD1E83C4720080E9D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCC1E83C4720080E9D9 /* main.m */; };
 		F9061FD01E83C4720080E9D9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCF1E83C4720080E9D9 /* AppDelegate.mm */; };
@@ -1647,6 +1648,8 @@
 		4AD5514B1EB2E6B600C04062 /* GLSubmitChooseTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSubmitChooseTimeView.h; sourceTree = "<group>"; };
 		4AD5514C1EB2E6B600C04062 /* GLSubmitChooseTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSubmitChooseTimeView.m; sourceTree = "<group>"; };
 		4AD5514E1EB2E6C900C04062 /* GLSubmitChooseTimeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLSubmitChooseTimeView.xib; sourceTree = "<group>"; };
+		4AD551501EB36E4D00C04062 /* SYDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDatePicker.h; sourceTree = "<group>"; };
+		4AD551511EB36E4D00C04062 /* SYDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDatePicker.m; sourceTree = "<group>"; };
 		5F26EB2407F06AA6E9CA0664 /* Pods-Universialshare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Universialshare.release.xcconfig"; path = "Pods/Target Support Files/Pods-Universialshare/Pods-Universialshare.release.xcconfig"; sourceTree = "<group>"; };
 		C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Universialshare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9061FC81E83C4720080E9D9 /* Universialshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Universialshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2457,6 +2460,8 @@
 				4AD5514B1EB2E6B600C04062 /* GLSubmitChooseTimeView.h */,
 				4AD5514C1EB2E6B600C04062 /* GLSubmitChooseTimeView.m */,
 				4AD5514E1EB2E6C900C04062 /* GLSubmitChooseTimeView.xib */,
+				4AD551501EB36E4D00C04062 /* SYDatePicker.h */,
+				4AD551511EB36E4D00C04062 /* SYDatePicker.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5662,6 +5667,7 @@
 				4A4609FB1E9CB78E0045824F /* GLDonationRecordModel.m in Sources */,
 				4A46108D1E9CC6360045824F /* ZXErrors.m in Sources */,
 				F9126EEB1EA0599B004785EA /* UIImage+Rotate.m in Sources */,
+				4AD551521EB36E4D00C04062 /* SYDatePicker.m in Sources */,
 				4A4610A11E9CC6360045824F /* ZXDataMatrixHighLevelEncoder.m in Sources */,
 				4A46109F1E9CC6360045824F /* ZXDataMatrixEncoderContext.m in Sources */,
 				4A013CA11E9DCE1500BB3764 /* GLFirstPageRankingModel.m in Sources */,

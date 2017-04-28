@@ -8,8 +8,15 @@
 
 #import "GLSubmitFirstController.h"
 #import "GLSubmitSecondController.h"
+#import "SYDatePicker.h"
+#import "GLSet_MaskVeiw.h"
 
-@interface GLSubmitFirstController ()
+@interface GLSubmitFirstController ()<SYDatePickerDelegate>
+{
+    SYDatePicker *_contentView;
+    GLSet_MaskVeiw * _maskV;
+    int _whichOne;//区分两个时间
+}
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *middleView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
@@ -25,8 +32,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *mianjiTextF;
 @property (weak, nonatomic) IBOutlet UIView *timeLabel;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextV;
-@property (weak, nonatomic) IBOutlet UITextField *startSellTextF;
-@property (weak, nonatomic) IBOutlet UITextField *endSellTextF;
+
+@property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
 
 @end
 
@@ -54,22 +62,73 @@
     self.nextBtn.layer.cornerRadius = 5.f;
     self.nextBtn.clipsToBounds = YES;
     
-    UIGestureRecognizer *tap = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(chooseTime:)];
-    [self.startSellTextF addGestureRecognizer:tap];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseTime:)];
+    [self.startTimeLabel addGestureRecognizer:tap];
     
-    UIGestureRecognizer *tap1 = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(chooseTime:)];
-    [self.endSellTextF addGestureRecognizer:tap1];
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseTime:)];
+    [self.endTimeLabel addGestureRecognizer:tap1];
+    
+    //注册通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"maskView_dismiss" object:nil];
 }
-
-- (void)chooseTime:(UIGestureRecognizer *)tap {
+//移除通知
+- (void)dealloc {
     
-    if (tap.view == self.startSellTextF) {
-        
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+}
+- (void)chooseTime:(UIGestureRecognizer *)tap {
+    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    _maskV.bgView.alpha = 0.1;
+    //
+    if (!_contentView) {
+        _contentView = [[SYDatePicker alloc] init];
+    }
+    
+    [_contentView showInView:self.view withFrame:CGRectMake(0, self.view.frame.size.height - 300, self.view.frame.size.width, 200) andDatePickerMode:UIDatePickerModeTime];
+    _contentView.delegate = self;
+    
+    
+    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
+    CGRect rect=[self.startTimeLabel convertRect: self.startTimeLabel.bounds toView:window];
+    
+    _contentView.frame = CGRectMake(10,CGRectGetMaxY(rect) + 10, SCREEN_WIDTH - 20, SCREEN_HEIGHT - (CGRectGetMaxY(rect) + 10));
+    _contentView.backgroundColor = [UIColor whiteColor];
+    _contentView.layer.cornerRadius = 4;
+    _contentView.layer.masksToBounds = YES;
+    
+    [_maskV showViewWithContentView:_contentView];
+    
+    if (tap.view == self.startTimeLabel) {
+        _whichOne = 1;
     }else{
-        
+        _whichOne = 2;
     }
 }
 
+- (void)dismiss {
+    [UIView animateWithDuration:0.3 animations:^{
+        _maskV.alpha = 0;
+    } completion:^(BOOL finished) {
+        [_maskV removeFromSuperview];
+        
+    }];
+}
+- (void)ensureBtnClick {
+    [self dismiss];
+}
+- (void)picker:(UIDatePicker *)picker ValueChanged:(NSDate *)date{
+    NSDateFormatter *fm = [[NSDateFormatter alloc] init];
+    fm.dateFormat = @"HH:mm";
+    if (_whichOne == 1) {
+        self.startTimeLabel.text = [fm stringFromDate:date];
+    }else{
+        self.endTimeLabel.text = [fm stringFromDate:date];
+    }
+
+    
+    
+}
 - (IBAction)nextClick:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
 
