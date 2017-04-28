@@ -23,6 +23,8 @@
 @property (assign, nonatomic)BOOL refreshType;//判断刷新状态 默认为no
 @property (strong, nonatomic)NodataView *nodataV;
 
+@property (assign, nonatomic)NSInteger deleteRow;//删除下标
+
 
 @end
 
@@ -167,24 +169,16 @@
     [cell.payBt setTitle:@"再次购买" forState:UIControlStateNormal];
     cell.payBt.hidden = YES;
     cell.deleteBt.hidden = YES;
-    __weak typeof(self)  weakself = self;
+   
     cell.index = indexPath.row;
     
     LBMyOrdersModel *model= (LBMyOrdersModel*)self.dataarr[indexPath.section];
     
     cell.myorderlistModel = model.MyOrdersListModel[indexPath.row];
     
-    cell.retunpaybutton = ^(NSInteger index){
+   
     
-        
-    };
     
-    cell.retundeletebutton = ^(NSInteger index){
-        
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您确定要删除吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alert show];
-        
-    };
 
     return cell;
     
@@ -220,14 +214,51 @@
         
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
     };
+    headerview.DeleteBt.hidden = NO;
     headerview.payBt.hidden = YES;
+    headerview.returnDeleteBt = ^(NSInteger section){
+        self.deleteRow =section;
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您确定要删除吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+
+        [alert show];
+
+    
+    };
+    
     return headerview;
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+   
     if (buttonIndex==1) {
+        
+        LBMyOrdersModel *model=(LBMyOrdersModel*)self.dataarr[self.deleteRow];
+        
+        _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[UIApplication sharedApplication].keyWindow];
+        [NetworkManager requestPOSTWithURLStr:@"user/order_mark_list" paramDic:@{@"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token , @"order_id" :model.order_id , @"type":@1} finish:^(id responseObject) {
+            [_loadV removeloadview];
+    
+            if ([responseObject[@"code"] integerValue]==1) {
+                
+               
+                 [MBProgressHUD showError:responseObject[@"message"]];
+                [self.dataarr removeObjectAtIndex:self.deleteRow];
+                [self.tableview reloadData];
+                
+            }else if ([responseObject[@"code"] integerValue]==3){
+                
+                [MBProgressHUD showError:responseObject[@"message"]];
+                
+            }else{
+                [MBProgressHUD showError:responseObject[@"message"]];
+                
+                
+            }
+        } enError:^(NSError *error) {
+            [_loadV removeloadview];
+            [MBProgressHUD showError:error.localizedDescription];
             
-       
+        }];
         
     }
     

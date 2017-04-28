@@ -161,8 +161,8 @@
         }
     }
     [self startTime];//获取倒计时
-    [NetworkManager requestPOSTWithURLStr:@"Index/play" paramDic:@{@"mobilenumber":self.phonetf.text} finish:^(id responseObject) {
-        if ([responseObject[@"code"] integerValue]==0) {
+    [NetworkManager requestPOSTWithURLStr:@"user/get_yzm" paramDic:@{@"phone":self.phonetf.text} finish:^(id responseObject) {
+        if ([responseObject[@"code"] integerValue]==1) {
             
         }else{
             
@@ -244,7 +244,7 @@
     
      NSString *encryptsecret = [RSAEncryptor encryptString:self.secrestTf.text publicKey:public_RSA];
     
-    NSDictionary *dic = @{@"uid":[UserModel defaultUser].uid,@"token":[UserModel defaultUser].token,@"phone":self.phonetf.text,@"yzm":self.yanzTf.text,@"truename":self.nameTf.text,@"Grade":self.levelStr,@"province":_provinceArr[_ischosePro][@"province_code"],@"city":_provinceArr[_ischosePro][@"city"][_ischoseCity][@"city_code"],@"country":_provinceArr[_ischosePro][@"city"][_ischoseCity][@"country"][_ischoseArea][@"country_code"],@"password":encryptsecret};
+    NSDictionary *dic = @{@"uid":[UserModel defaultUser].uid,@"token":[UserModel defaultUser].token,@"phone":self.phonetf.text,@"yzm":self.yanzTf.text,@"truename":self.nameTf.text,@"grade":self.levelStr,@"province":_provinceArr[_ischosePro][@"province_code"],@"city":_provinceArr[_ischosePro][@"city"][_ischoseCity][@"city_code"],@"country":_provinceArr[_ischosePro][@"city"][_ischoseCity][@"country"][_ischoseArea][@"country_code"],@"password":encryptsecret};
     
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[UIApplication sharedApplication].keyWindow];
     [NetworkManager requestPOSTWithURLStr:@"user/addSaler" paramDic:dic finish:^(id responseObject) {
@@ -384,13 +384,17 @@
                 //设置界面的按钮显示 根据自己需求设置
                 [self.yanzBt setTitle:@"重发验证码" forState:UIControlStateNormal];
                 self.yanzBt.userInteractionEnabled = YES;
+                self.yanzBt.backgroundColor = YYSRGBColor(44, 153, 46, 1);
+                self.yanzBt.titleLabel.font = [UIFont systemFontOfSize:13];
             });
         }else{
             int seconds = timeout % 61;
-            NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
+            NSString *strTime = [NSString stringWithFormat:@"%.2d秒后重新发送", seconds];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.yanzBt setTitle:[NSString stringWithFormat:@"%@",strTime] forState:UIControlStateNormal];
                 self.yanzBt.userInteractionEnabled = NO;
+                self.yanzBt.backgroundColor = YYSRGBColor(184, 184, 184, 1);
+                self.yanzBt.titleLabel.font = [UIFont systemFontOfSize:11];
             });
             timeout--;
         }
@@ -398,7 +402,6 @@
     dispatch_resume(_timer);
     
 }
-
 
 -(void)updateViewConstraints{
     [super updateViewConstraints];

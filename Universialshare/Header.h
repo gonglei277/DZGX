@@ -23,8 +23,8 @@
 
 #define ADAPT(x) SCREEN_WIDTH / 375 *(x)
 
-#define URL_Base @"http://192.168.0.138/DZGX/api/"
-//#define URL_Base @"http://dzgx.joshuaweb.cn/api/"
+//#define URL_Base @"http://192.168.0.138/DZGX/api/"
+#define URL_Base @"http://dzgx.joshuaweb.cn/api/"
 
 #define DOWNLOAD_URL @"www.baidu.com"
 //米家
