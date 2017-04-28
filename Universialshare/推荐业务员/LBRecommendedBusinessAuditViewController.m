@@ -87,6 +87,15 @@
     
 }
 
+-(void)updateViewConstraints{
+
+    [super updateViewConstraints];
+    
+    self.addButton.layer.cornerRadius = 4;
+    self.addButton.clipsToBounds = YES;
+
+}
+
 -(void)initdatasource{
     
 //    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
