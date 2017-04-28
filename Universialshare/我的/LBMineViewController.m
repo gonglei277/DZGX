@@ -157,10 +157,18 @@
                 break;
             case 2:
             {
-                self.hidesBottomBarWhenPushed=YES;
-                LBRecommendedBusinessAuditViewController *vc=[[LBRecommendedBusinessAuditViewController alloc]init];
-                [self.navigationController pushViewController:vc animated:YES];
-                self.hidesBottomBarWhenPushed=NO;
+                if ([[UserModel defaultUser].usrtype isEqualToString:THREESALER]) {
+                    self.hidesBottomBarWhenPushed=YES;
+                    LBRecommendedBusinessAuditViewController *vc=[[LBRecommendedBusinessAuditViewController alloc]init];
+                    [self.navigationController pushViewController:vc animated:YES];
+                    self.hidesBottomBarWhenPushed=NO;
+                }else{
+                
+                    self.hidesBottomBarWhenPushed=YES;
+                    LBRecommendedBusinessAuditViewController *vc=[[LBRecommendedBusinessAuditViewController alloc]init];
+                    [self.navigationController pushViewController:vc animated:YES];
+                    self.hidesBottomBarWhenPushed=NO;
+                }
                 
             }
                 break;
@@ -202,7 +210,7 @@
                 if ([[UserModel defaultUser].groupId isEqualToString:OrdinaryUser]) {
                     
                     self.hidesBottomBarWhenPushed=YES;
-                    GLMyHeartController *vc=[[GLMyHeartController alloc]init];
+                    GLMine_MyBeansController *vc=[[GLMine_MyBeansController alloc]init];
                     [self.navigationController pushViewController:vc animated:YES];
                     self.hidesBottomBarWhenPushed=NO;
                 }else{
@@ -237,7 +245,6 @@
             {
                 self.hidesBottomBarWhenPushed=YES;
                 GLMine_MyBeansController *vc=[[GLMine_MyBeansController alloc]init];
-                
                 [self.navigationController pushViewController:vc animated:YES];
                 self.hidesBottomBarWhenPushed=NO;
                 
