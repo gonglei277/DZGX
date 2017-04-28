@@ -526,6 +526,10 @@
 		F91274A21EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91274A01EA0E66000B7A539 /* LBMineStoreHistoryOrderingViewController.xib */; };
 		F91274A71EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F91274A51EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.m */; };
 		F91274A81EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91274A61EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.xib */; };
+		F91964E51EB2EAF0008A8616 /* SelectionOfSalesmanLevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = F91964E41EB2EAF0008A8616 /* SelectionOfSalesmanLevelView.m */; };
+		F91964E71EB2EB0E008A8616 /* SelectionOfSalesmanLevelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91964E61EB2EB0E008A8616 /* SelectionOfSalesmanLevelView.xib */; };
+		F91964EB1EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91964E91EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.m */; };
+		F91964EC1EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91964EA1EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.xib */; };
 		F923082F1E9B8B6B00ECDC94 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = F923082E1E9B8B6B00ECDC94 /* Address.plist */; };
 		F923091A1E9B8BFF00ECDC94 /* HWCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = F92308361E9B8BFE00ECDC94 /* HWCalendar.m */; };
 		F923091B1E9B8BFF00ECDC94 /* HWOptionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F92308381E9B8BFE00ECDC94 /* HWOptionButton.m */; };
@@ -1728,6 +1732,12 @@
 		F91274A41EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineStoreOrderingTableViewCell.h; sourceTree = "<group>"; };
 		F91274A51EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineStoreOrderingTableViewCell.m; sourceTree = "<group>"; };
 		F91274A61EA0E6BC00B7A539 /* LBMineStoreOrderingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineStoreOrderingTableViewCell.xib; sourceTree = "<group>"; };
+		F91964E31EB2EAF0008A8616 /* SelectionOfSalesmanLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionOfSalesmanLevelView.h; sourceTree = "<group>"; };
+		F91964E41EB2EAF0008A8616 /* SelectionOfSalesmanLevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionOfSalesmanLevelView.m; sourceTree = "<group>"; };
+		F91964E61EB2EB0E008A8616 /* SelectionOfSalesmanLevelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectionOfSalesmanLevelView.xib; sourceTree = "<group>"; };
+		F91964E81EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBAddrecomdManChooseAreaViewController.h; sourceTree = "<group>"; };
+		F91964E91EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBAddrecomdManChooseAreaViewController.m; sourceTree = "<group>"; };
+		F91964EA1EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBAddrecomdManChooseAreaViewController.xib; sourceTree = "<group>"; };
 		F923082E1E9B8B6B00ECDC94 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		F92308351E9B8BFE00ECDC94 /* HWCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWCalendar.h; sourceTree = "<group>"; };
 		F92308361E9B8BFE00ECDC94 /* HWCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWCalendar.m; sourceTree = "<group>"; };
@@ -4681,6 +4691,12 @@
 				F94D31991EAF3FC300309029 /* LBRecommendedBusinessAuditOneTableViewCell.h */,
 				F94D319A1EAF3FC300309029 /* LBRecommendedBusinessAuditOneTableViewCell.m */,
 				F94D319B1EAF3FC300309029 /* LBRecommendedBusinessAuditOneTableViewCell.xib */,
+				F91964E31EB2EAF0008A8616 /* SelectionOfSalesmanLevelView.h */,
+				F91964E41EB2EAF0008A8616 /* SelectionOfSalesmanLevelView.m */,
+				F91964E61EB2EB0E008A8616 /* SelectionOfSalesmanLevelView.xib */,
+				F91964E81EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.h */,
+				F91964E91EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.m */,
+				F91964EA1EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -5229,6 +5245,7 @@
 				4A0D97891E9729C100A26B84 /* GLShoppingCartController.xib in Resources */,
 				4A4610251E9CC6360045824F /* UMSLoginViewController.xib in Resources */,
 				4A0D97911E9729C100A26B84 /* GLHomeRecommendCollectionCell.xib in Resources */,
+				F91964EC1EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.xib in Resources */,
 				F9520A131EADD74D00B4D665 /* MerchantSubmission.xcassets in Resources */,
 				4A4609D71E9CB78E0045824F /* GLRecommendController.xib in Resources */,
 				F92309211E9B8BFF00ECDC94 /* LBMineCenterMyBalabceTableViewCell.xib in Resources */,
@@ -5278,6 +5295,7 @@
 				4A203DD41E9F842F00DF22F7 /* GLEncourageBeansCell.xib in Resources */,
 				F966B3C11EAC3D51007260FC /* LBMineCenterOrderDetailThreeTableViewCell.xib in Resources */,
 				4A0D977B1E9729C100A26B84 /* GLHourseOptionCell.xib in Resources */,
+				F91964E71EB2EB0E008A8616 /* SelectionOfSalesmanLevelView.xib in Resources */,
 				4A460A5C1E9CC0310045824F /* ScanResultViewController.xib in Resources */,
 				F92309601E9B8BFF00ECDC94 /* LBMyOrderUnsubscribeRecordTableViewCell.xib in Resources */,
 				F923093B1E9B8BFF00ECDC94 /* LBMineCenterFlyNoticeDetailTableViewCell.xib in Resources */,
@@ -5467,6 +5485,7 @@
 				4A4610B31E9CC6370045824F /* ZXAI013x0x1xDecoder.m in Sources */,
 				F951EB161EA1EFC100D6708E /* LBMineCenterUsualUnderOrderOneViewController.m in Sources */,
 				4A0D97671E9729C100A26B84 /* GLHourseDetailController.m in Sources */,
+				F91964EB1EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.m in Sources */,
 				4A4610CD1E9CC6370045824F /* ZXCode128Reader.m in Sources */,
 				F94D31971EAF3AED00309029 /* LBRecommendedBusinessAuditTableViewCell.m in Sources */,
 				F9126EBC1EA05692004785EA /* GLMine_InfoController.m in Sources */,
@@ -5523,6 +5542,7 @@
 				4A4611061E9CC6370045824F /* ZXQRCodeMode.m in Sources */,
 				4AA0D5D41EAF1F6600CB8F77 /* GLMall_InterestModel.m in Sources */,
 				F92309641E9B8BFF00ECDC94 /* XBTagTitleCell.m in Sources */,
+				F91964E51EB2EAF0008A8616 /* SelectionOfSalesmanLevelView.m in Sources */,
 				4A3E60881EAD8CC8000E2E17 /* GLSubmitFirstController.m in Sources */,
 				4A07A86D1EA0571E005A9B67 /* GLBuyBackChooseBankView.m in Sources */,
 				F9126EF61EA0B086004785EA /* LBMineSystemMessageTableViewCell.m in Sources */,

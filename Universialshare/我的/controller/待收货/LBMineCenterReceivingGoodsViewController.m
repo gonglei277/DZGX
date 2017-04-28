@@ -15,7 +15,7 @@
 #import "LBWaitOrdersModel.h"
 #import "LBWaitOrdersListModel.h"
 
-@interface LBMineCenterReceivingGoodsViewController ()<UITableViewDelegate,UITableViewDataSource,LBMineCenterReceivingGoodsDelegete>
+@interface LBMineCenterReceivingGoodsViewController ()<UITableViewDelegate,UITableViewDataSource,LBMineCenterReceivingGoodsDelegete,UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic)NSMutableArray *dataarr;
@@ -23,6 +23,7 @@
 @property (assign, nonatomic)NSInteger page;//页数默认为1
 @property (assign, nonatomic)BOOL refreshType;//判断刷新状态 默认为no
 @property (strong, nonatomic)NodataView *nodataV;
+@property (assign, nonatomic)NSInteger ConfirmReceipt;//页数默认为1
 
 @end
 
@@ -217,10 +218,33 @@
 }
 
 #pragma mark ---- LBMineCenterReceivingGoodsDelegete
-
+//确认收货
 -(void)BuyAgain:(NSInteger)index{
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您确定已收货吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
 
+}
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1) {
+        
+        _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+        [NetworkManager requestPOSTWithURLStr:@"shop/ConfirmReceipt" paramDic:@{@"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token , @"order_id":@"" } finish:^(id responseObject) {
+            [_loadV removeloadview];
+            if ([responseObject[@"code"] integerValue]==1) {
+                [MBProgressHUD showError:responseObject[@"message"]];
+               
+            }else{
+                [MBProgressHUD showError:responseObject[@"message"]];
+            }
+        } enError:^(NSError *error) {
+            [_loadV removeloadview];
+            [MBProgressHUD showError:error.localizedDescription];
+            
+        }];
+        
+    }
+    
 }
 
 -(void)checklogistics:(NSInteger)index{
