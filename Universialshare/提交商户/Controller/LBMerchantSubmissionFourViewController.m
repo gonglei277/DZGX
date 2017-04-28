@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentH;
 
 @property (assign, nonatomic)NSInteger tapIndex;//判断点击的是那个图片
+@property (strong, nonatomic)LoadWaitView *loadV;
 
 @end
 
@@ -119,8 +120,44 @@
 //提交
 - (IBAction)submitinfo:(UIButton *)sender {
     
+   NSDictionary *dic=@{};
     
     
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
+    manager.requestSerializer.timeoutInterval = 10;
+    [manager POST:[NSString stringWithFormat:@"%@user/userAndShopInfoBq",URL_Base] parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        //将图片以表单形式上传
+        
+            
+//            NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+//            formatter.dateFormat=@"yyyyMMddHHmmss";
+//            NSString *str=[formatter stringFromDate:[NSDate date]];
+//            NSString *fileName=[NSString stringWithFormat:@"%@.png",str];
+//            NSData *data = UIImagePNGRepresentation(self.imagehead);
+//            [formData appendPartWithFileData:data name:@"pic" fileName:fileName mimeType:@"image/png"];
+     
+        
+        
+    }progress:^(NSProgress *uploadProgress){
+        
+    }success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        if ([dic[@"code"]integerValue]==1) {
+            
+            [MBProgressHUD showError:dic[@"message"]];
+            
+        }else{
+            [MBProgressHUD showError:dic[@"message"]];
+        }
+        [_loadV removeloadview];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [_loadV removeloadview];
+        [MBProgressHUD showError:error.localizedDescription];
+    }];
+    
+
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
