@@ -124,14 +124,15 @@
                 [self.tableview reloadData];
                 
             }
+            [MBProgressHUD showError:responseObject[@"message"]];
             
         }else if ([responseObject[@"code"] integerValue]==3){
             
             [MBProgressHUD showError:responseObject[@"message"]];
-            [self.tableview reloadData];
+
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
-            [self.tableview reloadData];
+ 
             
         }
     } enError:^(NSError *error) {
@@ -190,21 +191,35 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if ([self.typeStr isEqualToString:@"0"]) {
+    //if ([self.typeStr isEqualToString:@"0"]) {
         LBRecommendedBusinessAuditOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBRecommendedBusinessAuditOneTableViewCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.namelb.text  = [NSString stringWithFormat:@"%@",self.dataarr[indexPath.row][@"saleman_name"]];
+        cell.phonelb.text  = [NSString stringWithFormat:@"%@",self.dataarr[indexPath.row][@"saleman_phone"]];
+        cell.adresslb.text  = [NSString stringWithFormat:@"%@",self.dataarr[indexPath.row][@"saleman_address"]];
+        
+        if ([cell.namelb.text rangeOfString:@"null"].location != NSNotFound) {
+            cell.namelb.text  = @"";
+            
+        }
+        if ([cell.phonelb.text rangeOfString:@"null"].location != NSNotFound) {
+            cell.phonelb.text  = @"";
+        }
+        if ([cell.adresslb.text rangeOfString:@"null"].location != NSNotFound) {
+            cell.adresslb.text  = @"";
+        }
         
         return cell;
 
-    }else if ([self.typeStr isEqualToString:@"2"]){
-        LBRecommendedBusinessAuditTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBRecommendedBusinessAuditTableViewCell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
-
-    }
-    
-    return [[UITableViewCell alloc]init];
+//    }else if ([self.typeStr isEqualToString:@"2"]){
+//        LBRecommendedBusinessAuditTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBRecommendedBusinessAuditTableViewCell" forIndexPath:indexPath];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        
+//        return cell;
+//
+//    }
+//    
+//    return [[UITableViewCell alloc]init];
     
 }
 

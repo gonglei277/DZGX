@@ -532,6 +532,7 @@
 		F91964E71EB2EB0E008A8616 /* SelectionOfSalesmanLevelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91964E61EB2EB0E008A8616 /* SelectionOfSalesmanLevelView.xib */; };
 		F91964EB1EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91964E91EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.m */; };
 		F91964EC1EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91964EA1EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.xib */; };
+		F91964EF1EB36C68008A8616 /* MerchantInformationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F91964EE1EB36C68008A8616 /* MerchantInformationModel.m */; };
 		F923082F1E9B8B6B00ECDC94 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = F923082E1E9B8B6B00ECDC94 /* Address.plist */; };
 		F923091A1E9B8BFF00ECDC94 /* HWCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = F92308361E9B8BFE00ECDC94 /* HWCalendar.m */; };
 		F923091B1E9B8BFF00ECDC94 /* HWOptionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F92308381E9B8BFE00ECDC94 /* HWOptionButton.m */; };
@@ -1743,6 +1744,8 @@
 		F91964E81EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBAddrecomdManChooseAreaViewController.h; sourceTree = "<group>"; };
 		F91964E91EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBAddrecomdManChooseAreaViewController.m; sourceTree = "<group>"; };
 		F91964EA1EB30847008A8616 /* LBAddrecomdManChooseAreaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBAddrecomdManChooseAreaViewController.xib; sourceTree = "<group>"; };
+		F91964ED1EB36C68008A8616 /* MerchantInformationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantInformationModel.h; sourceTree = "<group>"; };
+		F91964EE1EB36C68008A8616 /* MerchantInformationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantInformationModel.m; sourceTree = "<group>"; };
 		F923082E1E9B8B6B00ECDC94 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		F92308351E9B8BFE00ECDC94 /* HWCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWCalendar.h; sourceTree = "<group>"; };
 		F92308361E9B8BFE00ECDC94 /* HWCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWCalendar.m; sourceTree = "<group>"; };
@@ -4811,6 +4814,8 @@
 				F961A9C51E9C747700275F52 /* UserModel.m */,
 				F961A9C61E9C747700275F52 /* usermodelachivar.h */,
 				F961A9C71E9C747700275F52 /* usermodelachivar.m */,
+				F91964ED1EB36C68008A8616 /* MerchantInformationModel.h */,
+				F91964EE1EB36C68008A8616 /* MerchantInformationModel.m */,
 			);
 			path = "数据保存";
 			sourceTree = "<group>";
@@ -5900,6 +5905,7 @@
 				F92309321E9B8BFF00ECDC94 /* LBMineMessageHotPickViewController.m in Sources */,
 				4A4609D31E9CB78E0045824F /* GLBuyBackRecord_FinishController.m in Sources */,
 				4A4610691E9CC6360045824F /* ZXVEventResultParser.m in Sources */,
+				F91964EF1EB36C68008A8616 /* MerchantInformationModel.m in Sources */,
 				4A0D977A1E9729C100A26B84 /* GLHourseOptionCell.m in Sources */,
 				4A46107C1E9CC6360045824F /* ZXByteArray.m in Sources */,
 				4A4610401E9CC6360045824F /* ZXAztecBinaryShiftToken.m in Sources */,

@@ -60,7 +60,7 @@
 -(UIView*)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
     UILabel *displaylable;
     
-    displaylable=[[UILabel alloc]initWithFrame:CGRectMake(0, 1, (self.view.bounds.size.width - 20)/3, 48)];
+    displaylable=[[UILabel alloc]initWithFrame:CGRectMake(0, 1, (self.view.bounds.size.width - 20), 48)];
     displaylable.textAlignment=NSTextAlignmentCenter;
     displaylable.backgroundColor=[UIColor whiteColor];
     displaylable.textColor=[UIColor darkGrayColor];
@@ -73,9 +73,11 @@
         displaylable.text = [self.provinceArr objectAtIndex:row][@"city_name"];
     }else if ([self.titlestr isEqualToString:@"请选择区域"]){
         displaylable.text = [self.provinceArr objectAtIndex:row][@"country_name"];
+    }else if ([self.titlestr isEqualToString:@"请选择开户行"]){
+        displaylable.text = [self.provinceArr objectAtIndex:row][@"bank_name"];
     }
     
-    UIView *maskview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, (self.view.bounds.size.width - 20)/3, 50)];
+    UIView *maskview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, (self.view.bounds.size.width - 20), 50)];
     maskview.backgroundColor=[UIColor whiteColor];
     [maskview addSubview:displaylable];
     
@@ -93,7 +95,7 @@
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
     
-    return (self.view.bounds.size.width - 20)/3;/**< 宽度*/
+    return (self.view.bounds.size.width - 20);/**< 宽度*/
 }
 -(CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component{
     
