@@ -70,7 +70,7 @@ static NSString *ID = @"GLShoppingCell";
     [NetworkManager requestPOSTWithURLStr:@"shop/myCartList" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-//        NSLog(@"responseObject = %@",responseObject);
+        NSLog(@"responseObject = %@",responseObject);
         
             if (![responseObject[@"data"] isEqual:[NSNull null]]) {
                 
@@ -93,27 +93,34 @@ static NSString *ID = @"GLShoppingCell";
 //去结算
 - (void)clearingMore:(UIButton *)sender{
     if ([sender.titleLabel.text isEqualToString:@"去结算"]) {
-        
-        NSMutableString *goods_idStrM = [NSMutableString string];
-        NSMutableString *goods_numStrM = [NSMutableString string];
-        for (int i = 0; i < _models.count; i ++) {
-            if ([self.selectArr[i] boolValue]) {
-                GLShoppingCartModel *model = _models[i];
-                [goods_idStrM appendFormat:@"%@,",model.goods_id];
-                [goods_numStrM appendFormat:@"%@,",model.num];
+        if (_yesSum > 0) {
+            
+            NSMutableString *goods_idStrM = [NSMutableString string];
+            NSMutableString *goods_numStrM = [NSMutableString string];
+            NSMutableString *cart_idM = [NSMutableString string];
+            for (int i = 0; i < _models.count; i ++) {
+                if ([self.selectArr[i] boolValue]) {
+                    GLShoppingCartModel *model = _models[i];
+                    [goods_idStrM appendFormat:@"%@,",model.goods_id];
+                    [goods_numStrM appendFormat:@"%@,",model.num];
+                    [cart_idM appendFormat:@"%@,",model.cart_id];
+                }
             }
+            
+            [goods_idStrM deleteCharactersInRange:NSMakeRange([goods_idStrM length]-1, 1)];
+            [goods_numStrM deleteCharactersInRange:NSMakeRange([goods_numStrM length]-1, 1)];
+            [cart_idM deleteCharactersInRange:NSMakeRange([cart_idM length]-1, 1)];
+            self.hidesBottomBarWhenPushed = YES;
+            GLConfirmOrderController *payVC = [[GLConfirmOrderController alloc] init];
+            payVC.goods_id = goods_idStrM;
+            payVC.goods_count = goods_numStrM;
+            payVC.cart_id = cart_idM;
+            NSLog(@"goods_idStrM = %@,goods_numStrM = %@",goods_idStrM,goods_numStrM);
+            
+            [self.navigationController pushViewController:payVC animated:YES];
+        }else{
+            [MBProgressHUD showError:@"请选择商品"];
         }
-      
-        [goods_idStrM deleteCharactersInRange:NSMakeRange([goods_idStrM length]-1, 1)];
-        [goods_numStrM deleteCharactersInRange:NSMakeRange([goods_numStrM length]-1, 1)];
-        self.hidesBottomBarWhenPushed = YES;
-        GLConfirmOrderController *payVC = [[GLConfirmOrderController alloc] init];
-        payVC.goods_id = goods_idStrM;
-        payVC.goods_count = goods_numStrM;
-        
-        NSLog(@"goods_idStrM = %@,goods_numStrM = %@",goods_idStrM,goods_numStrM);
-        
-        [self.navigationController pushViewController:payVC animated:YES];
         
     }else{
         

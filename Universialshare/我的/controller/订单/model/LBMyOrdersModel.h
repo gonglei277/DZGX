@@ -17,6 +17,7 @@
 @property (copy, nonatomic)NSString *order_type;
 @property (copy, nonatomic)NSString *realy_price;
 @property (copy, nonatomic)NSString *total;
+@property (copy, nonatomic)NSString *mark;
 
 @property (copy, nonatomic)NSArray *MyOrdersListModel;
 

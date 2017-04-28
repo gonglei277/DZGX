@@ -22,6 +22,8 @@
 @property (assign, nonatomic)BOOL refreshType;//判断刷新状态 默认为no
 @property (strong, nonatomic)NodataView *nodataV;
 
+@property (nonatomic, copy)NSString *useableScore;//剩余积分
+
 @end
 
 @implementation LBMyOrderPendingPaymentViewController
@@ -70,6 +72,7 @@
         [_loadV removeloadview];
         [self.tableview.mj_header endRefreshing];
         [self.tableview.mj_footer endRefreshing];
+        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue]==1) {
             
             if (_refreshType == NO) {
@@ -91,6 +94,7 @@
                     ordersMdel.MyOrdersListModel = responseObject[@"data"][i][@"goods"];
                     [self.dataarr addObject:ordersMdel];
                 }
+                self.useableScore = responseObject[@"mark"];
             }
             
             [self.tableview reloadData];
@@ -181,9 +185,50 @@
     headerview.section = section;
     headerview.returnPayBt = ^(NSInteger index){//支付
         weakself.hidesBottomBarWhenPushed=YES;
+        
         LBMineCenterPayPagesViewController *vc=[[LBMineCenterPayPagesViewController alloc]init];
-        vc.payType = 2;
+        LBMyOrdersModel *model = self.dataarr[section];
+        vc.orderNum =  model.order_num;
+        vc.orderScore = model.order_money;
+        vc.order_id = model.order_id;
+        vc.payType = [model.order_type intValue];
+        vc.useableScore = self.useableScore;
         [weakself.navigationController pushViewController:vc animated:YES];
+        
+        
+//        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//        dict[@"token"] = [UserModel defaultUser].token;
+//        dict[@"uid"] = [UserModel defaultUser].uid;
+//        dict[@"goods_id"] = self.goods_id;
+//        dict[@"goods_count"] = self.goods_count;
+//        dict[@"address_id"] = @1;
+//        dict[@"remark"] = self.remarkTextV.text;
+//        dict[@"cart_id"] = self.cart_id;
+//        
+//        _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+//        [NetworkManager requestPOSTWithURLStr:@"shop/placeOrderEnd" paramDic:dict finish:^(id responseObject) {
+//            
+//            [_loadV removeloadview];
+//            NSLog(@"responseObject = %@",responseObject);
+//            if ([responseObject[@"code"] integerValue] == 1){
+//                
+//                self.hidesBottomBarWhenPushed = YES;
+//                LBMineCenterPayPagesViewController *payVC = [[LBMineCenterPayPagesViewController alloc] init];
+//                payVC.payType = [responseObject[@"data"][@"order_type"] integerValue];;
+//                payVC.orderNum =[NSString stringWithFormat:@"%@",responseObject[@"data"][@"order_num"]];
+//                payVC.orderScore = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"total_price"]];
+//                payVC.useableScore = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"user_integal"]];
+//                payVC.order_id = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"order_id"]];
+//                
+//                [self.navigationController pushViewController:payVC animated:YES];
+//                
+//            }
+//    
+//        } enError:^(NSError *error) {
+//            [_loadV removeloadview];
+//        }];
+        
+
     
     };
     return headerview;

@@ -29,9 +29,14 @@ static NSString *ID = @"GLCityChooseCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"城市";
-    self.navigationController.navigationBar.hidden = NO;
+//    self.navigationController.navigationBar.hidden = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.tableView registerNib:[UINib nibWithNibName:@"GLCityChooseCell" bundle:nil] forCellReuseIdentifier:ID];
     [self postRequest];
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
 }
 - (void)postRequest {
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];

@@ -42,14 +42,14 @@
                             <rect key="frame" x="80" y="25" width="215" height="34"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="搜索" translatesAutoresizingMaskIntoConstraints="NO" id="kXl-7B-JdK">
-                                    <rect key="frame" x="5" y="10" width="14" height="14"/>
+                                    <rect key="frame" x="10" y="10" width="14" height="14"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="kXl-7B-JdK" secondAttribute="height" multiplier="1:1" id="c33-BW-UuD"/>
                                         <constraint firstAttribute="width" constant="14" id="xjS-kf-p3c"/>
                                     </constraints>
                                 </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入商品名或ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2QJ-6J-qo6">
-                                    <rect key="frame" x="29" y="0.0" width="186" height="34"/>
+                                    <rect key="frame" x="34" y="0.0" width="181" height="34"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -62,7 +62,7 @@
                                 <constraint firstAttribute="trailing" secondItem="2QJ-6J-qo6" secondAttribute="trailing" id="BBq-zk-4vE"/>
                                 <constraint firstItem="kXl-7B-JdK" firstAttribute="centerY" secondItem="nvE-Dv-9XJ" secondAttribute="centerY" id="Kfb-jj-LbJ"/>
                                 <constraint firstItem="2QJ-6J-qo6" firstAttribute="top" secondItem="nvE-Dv-9XJ" secondAttribute="top" id="Knt-1j-nWn"/>
-                                <constraint firstItem="kXl-7B-JdK" firstAttribute="leading" secondItem="nvE-Dv-9XJ" secondAttribute="leading" constant="5" id="SfP-VL-BCG"/>
+                                <constraint firstItem="kXl-7B-JdK" firstAttribute="leading" secondItem="nvE-Dv-9XJ" secondAttribute="leading" constant="10" id="SfP-VL-BCG"/>
                                 <constraint firstAttribute="trailing" secondItem="2QJ-6J-qo6" secondAttribute="trailing" id="Vm1-9v-yFQ"/>
                                 <constraint firstItem="2QJ-6J-qo6" firstAttribute="top" secondItem="nvE-Dv-9XJ" secondAttribute="top" id="k5D-Uu-Y6s"/>
                                 <constraint firstAttribute="bottom" secondItem="2QJ-6J-qo6" secondAttribute="bottom" id="tEX-TG-YjP"/>
