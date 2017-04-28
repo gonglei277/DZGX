@@ -10,8 +10,10 @@
 
 @interface GLConfirmOrderController : ViewController
 
-@property (nonatomic, assign)NSInteger goods_count;
+@property (nonatomic, copy)NSString * goods_count;
 //订单类型  1:积分订单
 @property (nonatomic, assign)int orderType;
+
+@property (nonatomic, copy)NSString * goods_id;
 
 @end

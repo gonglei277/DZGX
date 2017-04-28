@@ -139,7 +139,7 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
 - (IBAction)exchange:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
     GLConfirmOrderController *confirmVC = [[GLConfirmOrderController alloc] init];
-    confirmVC.goods_count = _sum;
+    confirmVC.goods_count = [NSString stringWithFormat:@"%lu",_sum];
     confirmVC.orderType = self.type;
     [self.navigationController pushViewController:confirmVC animated:YES];
 }
@@ -184,8 +184,9 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
 - (IBAction)confirmOrder:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
     GLConfirmOrderController *confirmVC = [[GLConfirmOrderController alloc] init];
-    confirmVC.goods_count = _sum;
+    confirmVC.goods_count = [NSString stringWithFormat:@"%lu",_sum];
     confirmVC.orderType = self.type;
+    confirmVC.goods_id = self.goods_id;
     [self.navigationController pushViewController:confirmVC animated:YES];
 }
 - (NSMutableArray *)dataSource{

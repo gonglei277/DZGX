@@ -119,7 +119,7 @@
     dict[@"order_id"] = orderID;
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"shop/markPay" paramDic:@{} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"shop/markPay" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
         NSLog(@"responseObject = %@",responseObject);

@@ -44,6 +44,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UITextView *remarkTextV;
 
 @end
 
@@ -77,8 +78,8 @@ static NSString *ID = @"GLOrderGoodsCell";
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
-    dict[@"goods_id"] = @1;
-    dict[@"goods_count"] = @(self.goods_count);
+    dict[@"goods_id"] = self.goods_id;
+    dict[@"goods_count"] = self.goods_count;
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"shop/placeOrderBefore" paramDic:dict finish:^(id responseObject) {
@@ -98,7 +99,6 @@ static NSString *ID = @"GLOrderGoodsCell";
             self.tableViewHeight.constant = _models.count * 150 * autoSizeScaleY;
             [self.tableView reloadData];
             
-
         }
         
         
@@ -139,8 +139,34 @@ static NSString *ID = @"GLOrderGoodsCell";
     
 }
 
+//订单提交
 - (IBAction)submitOrder:(UIButton *)sender {
 
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    dict[@"goods_id"] = self.goods_id;
+    dict[@"goods_count"] = self.goods_count;
+    dict[@"address_id"] = @1;
+    dict[@"remark"] = self.remarkTextV.text;
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"shop/placeOrderEnd" paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        NSLog(@"responseObject = %@",responseObject);
+        if ([responseObject[@"code"] integerValue] == 1){
+            
+            
+        }
+        
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+    }];
+
+    
     self.hidesBottomBarWhenPushed = YES;
     LBMineCenterPayPagesViewController *payVC = [[LBMineCenterPayPagesViewController alloc] init];
     payVC.payType = 2;

@@ -195,7 +195,7 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section== 0) {
         GLIntegralMallTopCell *cell = [tableView dequeueReusableCellWithIdentifier:topCellID];
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (self.hotModels.count == 3) {
             
             cell.models = self.hotModels;
@@ -235,14 +235,17 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
      self.hidesBottomBarWhenPushed = YES;
-    GLHourseDetailController *detailVC = [[GLHourseDetailController alloc] init];
-    detailVC.navigationItem.title = @"积分兑换详情";
-    GLMall_InterestModel *model = self.interestModels[indexPath.row];
-    detailVC.goods_id = model.goods_id;
-//    GLSubmitFirstController *submitVC = [[GLSubmitFirstController alloc] init];
-    detailVC.type = 1;
+    if(indexPath.row >=1 ){
+        
+        GLHourseDetailController *detailVC = [[GLHourseDetailController alloc] init];
+        detailVC.navigationItem.title = @"积分兑换详情";
+        GLMall_InterestModel *model = self.interestModels[indexPath.row];
+        detailVC.goods_id = model.goods_id;
+        //    GLSubmitFirstController *submitVC = [[GLSubmitFirstController alloc] init];
+        detailVC.type = 1;
+        [self.navigationController pushViewController:detailVC animated:YES];
+    }
 
-    [self.navigationController pushViewController:detailVC animated:YES];
      self.hidesBottomBarWhenPushed = NO;
 }
 

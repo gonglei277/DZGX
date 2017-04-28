@@ -24,4 +24,6 @@
 
 @property (nonatomic, copy)NSString *thumb;
 
+
+
 @end

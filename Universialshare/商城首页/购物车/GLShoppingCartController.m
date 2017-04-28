@@ -94,11 +94,22 @@ static NSString *ID = @"GLShoppingCell";
 - (void)clearingMore:(UIButton *)sender{
     if ([sender.titleLabel.text isEqualToString:@"去结算"]) {
         
+        NSMutableString *goods_idStrM = [NSMutableString string];
+        NSMutableString *goods_numStrM = [NSMutableString string];
+        for (GLShoppingCartModel *model in _models) {
+            [goods_idStrM appendFormat:@"%@,",model.goods_id];
+            [goods_numStrM appendFormat:@"%@,",model.num];
+        }
+        [goods_idStrM deleteCharactersInRange:NSMakeRange([goods_idStrM length]-1, 1)];
+        [goods_numStrM deleteCharactersInRange:NSMakeRange([goods_numStrM length]-1, 1)];
         self.hidesBottomBarWhenPushed = YES;
         GLConfirmOrderController *payVC = [[GLConfirmOrderController alloc] init];
-        
+        payVC.goods_id = goods_idStrM;
+        payVC.goods_count = goods_numStrM;
         [self.navigationController pushViewController:payVC animated:YES];
+        
     }else{
+        
 //        NSLog(@"删除%ld件商品",_totalNum);
 //        
 //        NSMutableIndexSet *indexs = [NSMutableIndexSet indexSet];
