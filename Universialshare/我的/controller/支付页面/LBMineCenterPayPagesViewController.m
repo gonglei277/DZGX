@@ -10,6 +10,9 @@
 #import "LBMineCenterPayPagesTableViewCell.h"
 
 @interface LBMineCenterPayPagesViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    LoadWaitView *_loadV;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
@@ -107,6 +110,28 @@
 
 - (IBAction)surebutton:(UIButton *)sender {
     
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    
+    NSString *orderID = [RSAEncryptor encryptString:self.ordercode.text publicKey:public_RSA];
+    NSString *uid = [RSAEncryptor encryptString:[UserModel defaultUser].uid publicKey:public_RSA];
+    dict[@"uid"] = uid;
+    dict[@"order_id"] = orderID;
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"shop/markPay" paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        NSLog(@"responseObject = %@",responseObject);
+        if ([responseObject[@"code"] integerValue] == 1){
+           
+        }
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        
+    }];
+
     
 }
 

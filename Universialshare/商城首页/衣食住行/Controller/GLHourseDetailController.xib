@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLHourseDetailController">
             <connections>
                 <outlet property="addToCartBtn" destination="rU1-Ga-P4K" id="fsb-QI-cp1"/>
-                <outlet property="exchangeBtn" destination="wVf-vH-5vG" id="kLb-8e-ib9"/>
                 <outlet property="settleBtn" destination="gbO-vn-ITa" id="lqX-Vm-2aI"/>
                 <outlet property="tableView" destination="Io3-27-tPH" id="BqF-ks-Lpv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -20,11 +19,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="353" height="383"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Io3-27-tPH">
-                    <rect key="frame" x="0.0" y="64" width="375" height="553"/>
+                    <rect key="frame" x="0.0" y="64" width="353" height="269"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="a0R-Ch-XIV"/>
@@ -32,10 +31,10 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6tM-Hj-Haa">
-                    <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                    <rect key="frame" x="0.0" y="343" width="353" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbO-vn-ITa">
-                            <rect key="frame" x="295" y="0.0" width="80" height="40"/>
+                            <rect key="frame" x="273" y="0.0" width="80" height="40"/>
                             <color key="backgroundColor" red="0.1551630795" green="0.58942979569999998" blue="0.2282119095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="6uq-QR-jRM"/>
@@ -47,17 +46,8 @@
                                 <action selector="confirmOrder:" destination="-1" eventType="touchUpInside" id="9hd-bp-FCU"/>
                             </connections>
                         </button>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVf-vH-5vG">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                            <color key="backgroundColor" red="0.1551630795" green="0.58942979569999998" blue="0.2282119095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="我要兑换"/>
-                            <connections>
-                                <action selector="exchange:" destination="-1" eventType="touchUpInside" id="NIv-BC-lQM"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rU1-Ga-P4K">
-                            <rect key="frame" x="185" y="0.0" width="100" height="40"/>
+                            <rect key="frame" x="163" y="0.0" width="100" height="40"/>
                             <color key="backgroundColor" red="0.1551630795" green="0.58942979569999998" blue="0.2282119095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="T1H-fx-fzr"/>
@@ -73,14 +63,10 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="wVf-vH-5vG" firstAttribute="top" secondItem="6tM-Hj-Haa" secondAttribute="top" id="4Cg-Ou-74k"/>
                         <constraint firstAttribute="trailing" secondItem="gbO-vn-ITa" secondAttribute="trailing" id="67M-HX-R2o"/>
                         <constraint firstItem="gbO-vn-ITa" firstAttribute="top" secondItem="6tM-Hj-Haa" secondAttribute="top" id="Bhw-CT-aMe"/>
-                        <constraint firstAttribute="trailing" secondItem="wVf-vH-5vG" secondAttribute="trailing" id="EBZ-k5-AIu"/>
                         <constraint firstItem="rU1-Ga-P4K" firstAttribute="top" secondItem="6tM-Hj-Haa" secondAttribute="top" id="OUX-Oc-Eox"/>
                         <constraint firstAttribute="height" constant="40" id="XBh-Xx-VFQ"/>
-                        <constraint firstAttribute="bottom" secondItem="wVf-vH-5vG" secondAttribute="bottom" id="aso-7I-byr"/>
-                        <constraint firstItem="wVf-vH-5vG" firstAttribute="leading" secondItem="6tM-Hj-Haa" secondAttribute="leading" id="hfk-hp-D99"/>
                         <constraint firstAttribute="bottom" secondItem="rU1-Ga-P4K" secondAttribute="bottom" id="qGJ-Zd-yvd"/>
                         <constraint firstItem="gbO-vn-ITa" firstAttribute="leading" secondItem="rU1-Ga-P4K" secondAttribute="trailing" constant="10" id="t0M-mD-uMd"/>
                         <constraint firstAttribute="bottom" secondItem="gbO-vn-ITa" secondAttribute="bottom" id="xDy-HI-2bj"/>
@@ -99,7 +85,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
+            <point key="canvasLocation" x="33" y="-127"/>
         </view>
     </objects>
 </document>

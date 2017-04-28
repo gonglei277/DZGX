@@ -17,6 +17,7 @@
                 <outlet property="contentViewW" destination="aQJ-r8-DXs" id="9TZ-m3-xSY"/>
                 <outlet property="nameLabel" destination="yjU-Sb-MTo" id="bb3-Nc-Gte"/>
                 <outlet property="phoneLabel" destination="lFo-MM-KOA" id="QSU-Or-77l"/>
+                <outlet property="remarkTextV" destination="nJ5-pd-LmC" id="Gyd-Eh-sGq"/>
                 <outlet property="tableView" destination="03v-cY-ita" id="ddF-er-G9a"/>
                 <outlet property="tableViewHeight" destination="Ef0-mM-MRd" id="Dee-Xq-Bnx"/>
                 <outlet property="totalSumLabel" destination="SP9-Vi-EDZ" id="Ntv-Is-TTz"/>

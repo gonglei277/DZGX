@@ -12,6 +12,8 @@
 
 @property (nonatomic, copy)NSString *goods_name;
 
+@property (nonatomic, copy)NSString *goods_id;
+
 @property (nonatomic, copy)NSString *goods_price;
 
 @property (nonatomic, copy)NSString *info;
@@ -21,5 +23,7 @@
 @property (nonatomic, copy)NSString *send_price;
 
 @property (nonatomic, copy)NSString *thumb;
+
+
 
 @end

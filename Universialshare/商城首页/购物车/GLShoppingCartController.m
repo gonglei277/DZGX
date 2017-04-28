@@ -70,7 +70,7 @@ static NSString *ID = @"GLShoppingCell";
     [NetworkManager requestPOSTWithURLStr:@"shop/myCartList" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-//        NSLog(@"responseObject = %@",responseObject);
+        NSLog(@"responseObject = %@",responseObject);
         
             if (![responseObject[@"data"] isEqual:[NSNull null]]) {
                 
@@ -94,11 +94,22 @@ static NSString *ID = @"GLShoppingCell";
 - (void)clearingMore:(UIButton *)sender{
     if ([sender.titleLabel.text isEqualToString:@"去结算"]) {
         
+        NSMutableString *goods_idStrM = [NSMutableString string];
+        NSMutableString *goods_numStrM = [NSMutableString string];
+        for (GLShoppingCartModel *model in _models) {
+            [goods_idStrM appendFormat:@"%@,",model.goods_id];
+            [goods_numStrM appendFormat:@"%@,",model.num];
+        }
+        [goods_idStrM deleteCharactersInRange:NSMakeRange([goods_idStrM length]-1, 1)];
+        [goods_numStrM deleteCharactersInRange:NSMakeRange([goods_numStrM length]-1, 1)];
         self.hidesBottomBarWhenPushed = YES;
         GLConfirmOrderController *payVC = [[GLConfirmOrderController alloc] init];
-        
+        payVC.goods_id = goods_idStrM;
+        payVC.goods_count = goods_numStrM;
         [self.navigationController pushViewController:payVC animated:YES];
+        
     }else{
+        
 //        NSLog(@"删除%ld件商品",_totalNum);
 //        
 //        NSMutableIndexSet *indexs = [NSMutableIndexSet indexSet];
@@ -265,29 +276,39 @@ static NSString *ID = @"GLShoppingCell";
             
             if ([self.selectArr[indexPath.row] boolValue] == YES) {
                 _yesSum -= 1;
+                if (_yesSum <= 0) {
+                    _yesSum = 0;
+                }
             }
+            
+            GLShoppingCartModel *model = self.models[indexPath.row];
+            
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
             dict[@"token"] = [UserModel defaultUser].token;
             dict[@"uid"] = [UserModel defaultUser].uid;
-            dict[@"goods_id"] = @"1";
+            dict[@"goods_id"] = model.goods_id;
             
             _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
             [NetworkManager requestPOSTWithURLStr:@"shop/delCart" paramDic:dict finish:^(id responseObject) {
                 
                 [_loadV removeloadview];
-                NSLog(@"responseObject = %@",responseObject);
+                NSLog(@"dict = %@",dict);
                 if ([responseObject[@"code"] integerValue] == 1){
                 
                     
                     [self.selectArr removeObjectAtIndex:indexPath.row];
                     [self.dataSource removeObjectAtIndex:indexPath.row];
+                    [_numArr removeObjectAtIndex:indexPath.row];
+                    [self.models removeObjectAtIndex:indexPath.row];
+                    NSLog(@"indexPath.row = %lu",indexPath.row);
                     
+                    NSLog(@"indexPath = %@",indexPath);
                     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                     
-                    if(_yesSum == self.selectArr.count){
-                        [self.seleteAllBtn setImage:[UIImage imageNamed:@"选中"] forState:UIControlStateNormal];
-                    }else{
+                    if(_yesSum != self.selectArr.count || _yesSum == 0){
                         [self.seleteAllBtn setImage:[UIImage imageNamed:@"未选中"] forState:UIControlStateNormal];
+                    }else{
+                        [self.seleteAllBtn setImage:[UIImage imageNamed:@"选中"] forState:UIControlStateNormal];
                     }
                     
                 }else{
