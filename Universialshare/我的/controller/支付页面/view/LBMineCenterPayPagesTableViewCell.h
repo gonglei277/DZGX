@@ -14,4 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *paytitile;
 @property (weak, nonatomic) IBOutlet UIImageView *selectimage;
 
+@property (weak, nonatomic) IBOutlet UILabel *reuseScoreLabel;
 @end

@@ -467,6 +467,8 @@
 		4AA0D5FD1EAF675300CB8F77 /* Integral_Mall.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AA0D5FC1EAF675300CB8F77 /* Integral_Mall.xcassets */; };
 		4AA0D6011EAF693D00CB8F77 /* GLintegralGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0D6001EAF693D00CB8F77 /* GLintegralGoodsModel.m */; };
 		4AB508CD1EB190A20057EB3B /* GLShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB508CC1EB190A20057EB3B /* GLShoppingCartModel.m */; };
+		4AD5514D1EB2E6B600C04062 /* GLSubmitChooseTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD5514C1EB2E6B600C04062 /* GLSubmitChooseTimeView.m */; };
+		4AD5514F1EB2E6C900C04062 /* GLSubmitChooseTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AD5514E1EB2E6C900C04062 /* GLSubmitChooseTimeView.xib */; };
 		4F9D6A29F2E5B95EBA14BE59 /* Pods_Universialshare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */; };
 		F9061FCD1E83C4720080E9D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCC1E83C4720080E9D9 /* main.m */; };
 		F9061FD01E83C4720080E9D9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9061FCF1E83C4720080E9D9 /* AppDelegate.mm */; };
@@ -1642,6 +1644,9 @@
 		4AA0D6001EAF693D00CB8F77 /* GLintegralGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLintegralGoodsModel.m; sourceTree = "<group>"; };
 		4AB508CB1EB190A20057EB3B /* GLShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShoppingCartModel.h; sourceTree = "<group>"; };
 		4AB508CC1EB190A20057EB3B /* GLShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLShoppingCartModel.m; sourceTree = "<group>"; };
+		4AD5514B1EB2E6B600C04062 /* GLSubmitChooseTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSubmitChooseTimeView.h; sourceTree = "<group>"; };
+		4AD5514C1EB2E6B600C04062 /* GLSubmitChooseTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSubmitChooseTimeView.m; sourceTree = "<group>"; };
+		4AD5514E1EB2E6C900C04062 /* GLSubmitChooseTimeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLSubmitChooseTimeView.xib; sourceTree = "<group>"; };
 		5F26EB2407F06AA6E9CA0664 /* Pods-Universialshare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Universialshare.release.xcconfig"; path = "Pods/Target Support Files/Pods-Universialshare/Pods-Universialshare.release.xcconfig"; sourceTree = "<group>"; };
 		C83AB1B0045A3996493D9CF8 /* Pods_Universialshare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Universialshare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9061FC81E83C4720080E9D9 /* Universialshare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Universialshare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2449,6 +2454,9 @@
 		4A3E60871EAD8CC8000E2E17 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4AD5514B1EB2E6B600C04062 /* GLSubmitChooseTimeView.h */,
+				4AD5514C1EB2E6B600C04062 /* GLSubmitChooseTimeView.m */,
+				4AD5514E1EB2E6C900C04062 /* GLSubmitChooseTimeView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5167,6 +5175,7 @@
 				F92309881E9B8BFF00ECDC94 /* LBMineCenterPriviteInfoViewController.xib in Resources */,
 				4A0D977D1E9729C100A26B84 /* GLImage_textDetailCell.xib in Resources */,
 				4A4610221E9CC6360045824F /* UMSCommentInputControlleriPad.xib in Resources */,
+				4AD5514F1EB2E6C900C04062 /* GLSubmitChooseTimeView.xib in Resources */,
 				F9061FDB1E83C4730080E9D9 /* LaunchScreen.storyboard in Resources */,
 				4AA0D5AD1EAEEC8400CB8F77 /* LBIntegralMallViewController.xib in Resources */,
 				F94D319D1EAF3FC300309029 /* LBRecommendedBusinessAuditOneTableViewCell.xib in Resources */,
@@ -5593,6 +5602,7 @@
 				F923097D1E9B8BFF00ECDC94 /* LBMineCenterSafeModifySecondSecretViewController.m in Sources */,
 				4A46105C1E9CC6360045824F /* ZXProductResultParser.m in Sources */,
 				4A4609DA1E9CB78E0045824F /* GLRecommendRcordCell.m in Sources */,
+				4AD5514D1EB2E6B600C04062 /* GLSubmitChooseTimeView.m in Sources */,
 				4A4610451E9CC6360045824F /* ZXAztecState.m in Sources */,
 				F92309771E9B8BFF00ECDC94 /* LBMineCentermodifyAdressViewController.m in Sources */,
 				4AA0D5A61EAEEC0600CB8F77 /* GLIntegralMallTopCell.m in Sources */,

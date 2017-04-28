@@ -183,8 +183,11 @@ static NSString *changeNumCell = @"GLHourseChangeNumCell";
 //去结算 订单确认
 - (IBAction)confirmOrder:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
+    //取出 数量
+    GLHourseChangeNumCell *cell = [self.tableView cellForRowAtIndexPath:_indexPath];
+
     GLConfirmOrderController *confirmVC = [[GLConfirmOrderController alloc] init];
-    confirmVC.goods_count = [NSString stringWithFormat:@"%lu",_sum];
+    confirmVC.goods_count = cell.sumLabel.text;
     confirmVC.orderType = self.type;
     confirmVC.goods_id = self.goods_id;
     [self.navigationController pushViewController:confirmVC animated:YES];

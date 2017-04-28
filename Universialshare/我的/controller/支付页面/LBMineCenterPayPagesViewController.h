@@ -12,4 +12,13 @@
 
 @property (nonatomic, assign) NSInteger payType; // 支付类型 1普通消费支付  2 积分支付
 
+@property (nonatomic, copy) NSString *useableScore;
+
+@property (nonatomic, copy) NSString *orderNum;
+
+@property (nonatomic, copy) NSString *orderScore;
+
+
+
+
 @end
