@@ -23,7 +23,8 @@
 @property (assign, nonatomic)NSInteger page;//页数默认为1
 @property (assign, nonatomic)BOOL refreshType;//判断刷新状态 默认为no
 @property (strong, nonatomic)NodataView *nodataV;
-@property (assign, nonatomic)NSInteger ConfirmReceipt;//页数默认为1
+@property (assign, nonatomic)NSInteger ConfirmReceiptRow;//确认收货row
+@property (assign, nonatomic)NSInteger ConfirmReceiptSection;//确认收货section
 
 @end
 
@@ -167,7 +168,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    return 165;
+    return 130;
     
 }
 
@@ -177,7 +178,7 @@
     
     LBMineCenterReceivingGoodsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMineCenterReceivingGoodsTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.delegete = self;
+    //cell.delegete = self;
     cell.index = indexPath.row;
     LBWaitOrdersModel *model = self.dataarr[indexPath.section];
     cell.WaitOrdersListModel = model.WaitOrdersListModel[indexPath.row];
@@ -188,7 +189,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 
-    return 60;
+    return 118;
 
 }
 
@@ -201,13 +202,26 @@
         headerview = [[LBWaitOrdersHeaderView alloc] initWithReuseIdentifier:@"LBWaitOrdersHeaderView"];
     
     }
-
+    __weak typeof(self) weakself = self;
     LBWaitOrdersModel *sectionModel = self.dataarr[section];
     headerview.sectionModel = sectionModel;
     headerview.expandCallback = ^(BOOL isExpanded) {
         
     [tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
     };
+//    确认收货
+    headerview.returnsureGetBt = ^(NSInteger section){
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您确定已收货吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
+    };
+//    查看物流
+    headerview.returnwuliuBt = ^(NSInteger section){
+        self.ConfirmReceiptSection = section;
+        weakself.hidesBottomBarWhenPushed = YES;
+        LBMineCenterFlyNoticeDetailViewController *vc=[[LBMineCenterFlyNoticeDetailViewController alloc]init];
+        [weakself.navigationController pushViewController:vc animated:YES];
+    };
+    
     return headerview;
 }
 
@@ -218,21 +232,26 @@
 }
 
 #pragma mark ---- LBMineCenterReceivingGoodsDelegete
-//确认收货
--(void)BuyAgain:(NSInteger)index{
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您确定已收货吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-    [alert show];
-
-}
+////确认收货
+//-(void)BuyAgain:(NSInteger)index section:(NSInteger)section{
+//    self.ConfirmReceiptRow = index;
+//    self.ConfirmReceiptSection = section;
+//    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您确定已收货吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//    [alert show];
+//
+//}
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex==1) {
         
+        LBWaitOrdersModel *model = (LBWaitOrdersModel*)self.dataarr[self.ConfirmReceiptSection];
         _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-        [NetworkManager requestPOSTWithURLStr:@"shop/ConfirmReceipt" paramDic:@{@"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token , @"order_id":@"" } finish:^(id responseObject) {
+        [NetworkManager requestPOSTWithURLStr:@"shop/ConfirmReceipt" paramDic:@{@"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token , @"order_id":model.order_id } finish:^(id responseObject) {
             [_loadV removeloadview];
             if ([responseObject[@"code"] integerValue]==1) {
                 [MBProgressHUD showError:responseObject[@"message"]];
+                [self.dataarr removeObjectAtIndex:self.ConfirmReceiptSection];
+                [self.tableview reloadData];
                
             }else{
                 [MBProgressHUD showError:responseObject[@"message"]];

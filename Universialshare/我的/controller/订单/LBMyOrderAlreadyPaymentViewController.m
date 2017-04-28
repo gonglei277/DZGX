@@ -174,24 +174,14 @@
     
     cell.myorderlistModel = model.MyOrdersListModel[indexPath.row];
     
-    cell.retunpaybutton = ^(NSInteger index){
-        
-        
-    };
-    
-    cell.retundeletebutton = ^(NSInteger index){
-        
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您确定要删除吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alert show];
-        
-    };
+   
     
     return cell;
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 60;
+    return 85;
     
 }
 
@@ -211,6 +201,7 @@
         
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
     };
+    headerview.payBt.hidden = YES;
     return headerview;
 }
 

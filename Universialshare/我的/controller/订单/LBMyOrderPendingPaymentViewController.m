@@ -158,7 +158,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 60;
+    return 118;
     
 }
 
@@ -171,12 +171,20 @@
         headerview = [[LBMyOrdersHeaderView alloc] initWithReuseIdentifier:@"LBMyOrdersHeaderView"];
         
     }
-    
+    __weak typeof(self)  weakself = self;
     LBMyOrdersModel *sectionModel = self.dataarr[section];
     headerview.sectionModel = sectionModel;
     headerview.expandCallback = ^(BOOL isExpanded) {
         
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
+    };
+    headerview.section = section;
+    headerview.returnPayBt = ^(NSInteger index){//支付
+        weakself.hidesBottomBarWhenPushed=YES;
+        LBMineCenterPayPagesViewController *vc=[[LBMineCenterPayPagesViewController alloc]init];
+        vc.payType = 2;
+        [weakself.navigationController pushViewController:vc animated:YES];
+    
     };
     return headerview;
 }
@@ -189,22 +197,14 @@
     LBMyOrderListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMyOrderListTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell.payBt setTitle:@"去支付" forState:UIControlStateNormal];
+    cell.payBt.hidden = YES;
     cell.index = indexPath.row;
     cell.deleteBt.hidden = YES;
+    cell.stauesLb.text = @"待付款";
     
     LBMyOrdersModel *model= (LBMyOrdersModel*)self.dataarr[indexPath.section];
     
     cell.myorderlistModel = model.MyOrdersListModel[indexPath.row];
-    __weak typeof(self)  weakself = self;
-    
-    cell.retunpaybutton = ^(NSInteger index){
-        weakself.hidesBottomBarWhenPushed=YES;
-        LBMineCenterPayPagesViewController *vc=[[LBMineCenterPayPagesViewController alloc]init];
-        vc.payType = 1;
-        [weakself.navigationController pushViewController:vc animated:YES];
-        
-        
-    };
     
     return cell;
     

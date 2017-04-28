@@ -165,6 +165,8 @@
     LBMyOrderListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMyOrderListTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell.payBt setTitle:@"再次购买" forState:UIControlStateNormal];
+    cell.payBt.hidden = YES;
+    cell.deleteBt.hidden = YES;
     __weak typeof(self)  weakself = self;
     cell.index = indexPath.row;
     
@@ -198,7 +200,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 60;
+    return 85;
     
 }
 
@@ -218,6 +220,7 @@
         
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
     };
+    headerview.payBt.hidden = YES;
     return headerview;
 }
 
