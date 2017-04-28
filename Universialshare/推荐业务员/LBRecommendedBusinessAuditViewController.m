@@ -21,13 +21,13 @@
 @property (assign, nonatomic)NSInteger page;//页数默认为0
 @property (assign, nonatomic)BOOL refreshType;//判断刷新状态 默认为no
 
-@property (assign, nonatomic)NSInteger messageType;//消息类型 默认为1
 @property (strong, nonatomic)NSMutableArray *messageArr;
 @property (strong, nonatomic)UIButton *buttonedt;
 @property (strong, nonatomic)UIPickerView *pickerView;
 @property (strong, nonatomic)UIView *pickerViewMask;
 @property (strong, nonatomic)NodataView *nodataV;
 
+@property (strong, nonatomic)NSString *typeStr;//0 审核 1成功 2失败
 @end
 
 @implementation LBRecommendedBusinessAuditViewController
@@ -35,11 +35,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.typeStr = @"0";
+    _page = 1;
     self.navigationItem.title = @"推荐业务员";
     self.view.backgroundColor=[UIColor whiteColor];
     self.navigationController.navigationBar.hidden = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.messageType = 1;
     self.messageArr = [NSMutableArray arrayWithObjects:@"审核中",@"未通过审核", nil];
     self.tableview.tableFooterView = [UIView new];
     self.tableview.estimatedRowHeight = 90;
@@ -98,43 +99,49 @@
 
 -(void)initdatasource{
     
-//    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-//    [NetworkManager requestPOSTWithURLStr:@"user/msg_list" paramDic:@{@"page":[NSNumber numberWithInteger:_page] , @"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token ,@"type":[NSNumber numberWithInteger:self.messageType]} finish:^(id responseObject) {
-//        [_loadV removeloadview];
-//        [self.tableview.mj_header endRefreshing];
-//        [self.tableview.mj_footer endRefreshing];
-//        if ([responseObject[@"code"] integerValue]==1) {
-//            
-//            if (_refreshType == NO) {
-//                [self.dataarr removeAllObjects];
-//                
-//                [self.dataarr addObjectsFromArray:responseObject[@"data"]];
-//                
-//                [self.tableview reloadData];
-//            }else{
-//                
-//                [self.dataarr addObjectsFromArray:responseObject[@"data"]];
-//                
-//                [self.tableview reloadData];
-//                
-//            }
-//            
-//        }else if ([responseObject[@"code"] integerValue]==3){
-//            
-//            [MBProgressHUD showError:responseObject[@"message"]];
-//            [self.tableview reloadData];
-//        }else{
-//            [MBProgressHUD showError:responseObject[@"message"]];
-//            [self.tableview reloadData];
-//            
-//        }
-//    } enError:^(NSError *error) {
-//        [_loadV removeloadview];
-//        [self.tableview.mj_header endRefreshing];
-//        [self.tableview.mj_footer endRefreshing];
-//        [MBProgressHUD showError:error.localizedDescription];
-//        
-//    }];
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:@"user/salerList" paramDic:@{@"page":[NSNumber numberWithInteger:_page] , @"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token ,@"type":self.typeStr} finish:^(id responseObject)
+     {
+  
+        [_loadV removeloadview];
+        [self.tableview.mj_header endRefreshing];
+        [self.tableview.mj_footer endRefreshing];
+        if ([responseObject[@"code"] integerValue]==1) {
+            
+            if (_refreshType == NO) {
+                [self.dataarr removeAllObjects];
+                if (![responseObject[@"data"] isEqual:[NSNull null]]) {
+                    [self.dataarr addObjectsFromArray:responseObject[@"data"]];
+                }
+                
+                [self.tableview reloadData];
+            }else{
+                
+                if (![responseObject[@"data"] isEqual:[NSNull null]]) {
+                    [self.dataarr addObjectsFromArray:responseObject[@"data"]];
+                }
+                
+                [self.tableview reloadData];
+                
+            }
+            [MBProgressHUD showError:responseObject[@"message"]];
+            
+        }else if ([responseObject[@"code"] integerValue]==3){
+            
+            [MBProgressHUD showError:responseObject[@"message"]];
+
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+ 
+            
+        }
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        [self.tableview.mj_header endRefreshing];
+        [self.tableview.mj_footer endRefreshing];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
     
     
 }
@@ -184,19 +191,35 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (self.messageType == 1) {
+    //if ([self.typeStr isEqualToString:@"0"]) {
         LBRecommendedBusinessAuditOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBRecommendedBusinessAuditOneTableViewCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.namelb.text  = [NSString stringWithFormat:@"%@",self.dataarr[indexPath.row][@"saleman_name"]];
+        cell.phonelb.text  = [NSString stringWithFormat:@"%@",self.dataarr[indexPath.row][@"saleman_phone"]];
+        cell.adresslb.text  = [NSString stringWithFormat:@"%@",self.dataarr[indexPath.row][@"saleman_address"]];
+        
+        if ([cell.namelb.text rangeOfString:@"null"].location != NSNotFound) {
+            cell.namelb.text  = @"";
+            
+        }
+        if ([cell.phonelb.text rangeOfString:@"null"].location != NSNotFound) {
+            cell.phonelb.text  = @"";
+        }
+        if ([cell.adresslb.text rangeOfString:@"null"].location != NSNotFound) {
+            cell.adresslb.text  = @"";
+        }
         
         return cell;
 
-    }else{
-        LBRecommendedBusinessAuditTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBRecommendedBusinessAuditTableViewCell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
-
-    }
+//    }else if ([self.typeStr isEqualToString:@"2"]){
+//        LBRecommendedBusinessAuditTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBRecommendedBusinessAuditTableViewCell" forIndexPath:indexPath];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        
+//        return cell;
+//
+//    }
+//    
+//    return [[UITableViewCell alloc]init];
     
 }
 
@@ -228,7 +251,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     
-    self.messageType = row + 1;
+    self.typeStr = [NSString stringWithFormat:@"%ld",(long)row];
     
 }
 

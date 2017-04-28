@@ -30,6 +30,7 @@
     [self addSubview:self.lineview];
     [self addSubview:self.orderStaues];
     [self addSubview:self.payBt];
+    [self addSubview:self.DeleteBt];
     
     [self.orderCode mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.equalTo(self).offset(-10);
@@ -66,6 +67,14 @@
         make.width.equalTo(@80);
     }];
     
+    [self.DeleteBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(self).offset(-10);
+        //make.leading.equalTo(self).offset(10);
+        make.top.equalTo(self).offset(10);
+        make.height.equalTo(@25);
+        make.width.equalTo(@25);
+    }];
+    
     
 }
 
@@ -96,6 +105,13 @@
     }
 
 
+}
+//删除
+-(void)delegeteEvent{
+
+    if (self.returnDeleteBt) {
+        self.returnDeleteBt(self.section);
+    }
 }
 
 -(UILabel*)orderCode{
@@ -156,7 +172,7 @@
     if (!_payBt) {
         _payBt=[[UIButton alloc]init];
         _payBt.backgroundColor=TABBARTITLE_COLOR;
-        [_payBt setTitle:@"确认收货" forState:UIControlStateNormal];
+        [_payBt setTitle:@"去支付" forState:UIControlStateNormal];
         _payBt.titleLabel.font=[UIFont systemFontOfSize:13];
         [_payBt addTarget:self action:@selector(CollectinGoodsBtbttonOne) forControlEvents:UIControlEventTouchUpInside];
         [_payBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -166,6 +182,18 @@
     }
     
     return _payBt;
+    
+}
+-(UIButton*)DeleteBt{
+    
+    if (!_DeleteBt) {
+        _DeleteBt=[[UIButton alloc]init];
+        _DeleteBt.hidden = YES;
+        [_DeleteBt setImage:[UIImage imageNamed:@"address_dele"] forState:UIControlStateNormal];
+        [_DeleteBt addTarget:self action:@selector(delegeteEvent) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _DeleteBt;
     
 }
 @end
