@@ -17,6 +17,17 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewWidth;
 
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextF;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextF;
+@property (weak, nonatomic) IBOutlet UITextField *farenNameTextF;
+@property (weak, nonatomic) IBOutlet UITextField *farenIDTextF;
+@property (weak, nonatomic) IBOutlet UITextField *mailboxTextF;
+@property (weak, nonatomic) IBOutlet UITextField *mianjiTextF;
+@property (weak, nonatomic) IBOutlet UIView *timeLabel;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextV;
+@property (weak, nonatomic) IBOutlet UITextField *startSellTextF;
+@property (weak, nonatomic) IBOutlet UITextField *endSellTextF;
+
 @end
 
 @implementation GLSubmitFirstController
@@ -42,6 +53,21 @@
     
     self.nextBtn.layer.cornerRadius = 5.f;
     self.nextBtn.clipsToBounds = YES;
+    
+    UIGestureRecognizer *tap = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(chooseTime:)];
+    [self.startSellTextF addGestureRecognizer:tap];
+    
+    UIGestureRecognizer *tap1 = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(chooseTime:)];
+    [self.endSellTextF addGestureRecognizer:tap1];
+}
+
+- (void)chooseTime:(UIGestureRecognizer *)tap {
+    
+    if (tap.view == self.startSellTextF) {
+        
+    }else{
+        
+    }
 }
 
 - (IBAction)nextClick:(id)sender {
