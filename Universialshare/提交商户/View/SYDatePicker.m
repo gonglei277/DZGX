@@ -25,7 +25,7 @@
     UIButton *btnDone = [UIButton buttonWithType:UIButtonTypeSystem];
     btnDone.frame = CGRectMake(8, 8, 50, 30);
     [btnDone setTitle:@"完成" forState:UIControlStateNormal];
-    [btnDone addTarget:self action:@selector(pickDone) forControlEvents:UIControlEventTouchUpInside];
+    [btnDone addTarget:self action:@selector(pickDone:) forControlEvents:UIControlEventTouchUpInside];
  
     
     [self addSubview:btnDone];
@@ -38,9 +38,11 @@
     }];
 }
 
-- (void)pickDone{
+- (void)pickDone:(UIDatePicker *)picker{
     if (![self.picker respondsToSelector:@selector(ensureBtnClick)]) {
+        [self.delegate picker:picker ValueChanged:picker.date];
         [self.delegate ensureBtnClick];
+
     }
 //    [self dismiss];
 }

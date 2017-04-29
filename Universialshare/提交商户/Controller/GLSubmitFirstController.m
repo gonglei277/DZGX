@@ -10,12 +10,16 @@
 #import "GLSubmitSecondController.h"
 #import "SYDatePicker.h"
 #import "GLSet_MaskVeiw.h"
+#import "GLSubmitChooseTimeView.h"
+#import "MerchantInformationModel.h"
 
 @interface GLSubmitFirstController ()<SYDatePickerDelegate>
 {
-    SYDatePicker *_contentView;
+    GLSubmitChooseTimeView *_contentView;
     GLSet_MaskVeiw * _maskV;
     int _whichOne;//区分两个时间
+    
+    BOOL _isHaveDian;
 }
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *middleView;
@@ -68,6 +72,8 @@
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseTime:)];
     [self.endTimeLabel addGestureRecognizer:tap1];
     
+    [self setupPicker];
+    
     //注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"maskView_dismiss" object:nil];
 }
@@ -77,27 +83,30 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
 }
-- (void)chooseTime:(UIGestureRecognizer *)tap {
+- (void)setupPicker {
+    
     _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     _maskV.bgView.alpha = 0.1;
-    //
-    if (!_contentView) {
-        _contentView = [[SYDatePicker alloc] init];
-    }
     
-    [_contentView showInView:self.view withFrame:CGRectMake(0, self.view.frame.size.height - 300, self.view.frame.size.width, 200) andDatePickerMode:UIDatePickerModeTime];
-    _contentView.delegate = self;
+    _contentView = [[NSBundle mainBundle] loadNibNamed:@"GLSubmitChooseTimeView" owner:nil options:nil].lastObject;
     
+    _contentView.frame = CGRectMake(-SCREEN_WIDTH,0.3 * SCREEN_HEIGHT, SCREEN_WIDTH - 20, 0.4*SCREEN_HEIGHT);
     
-    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
-    CGRect rect=[self.startTimeLabel convertRect: self.startTimeLabel.bounds toView:window];
+    [_contentView.ensureBtn addTarget:self  action:@selector(ensureDate:) forControlEvents:UIControlEventTouchUpInside];
+    [_contentView.cancelBtn addTarget:self  action:@selector(ensureDate:) forControlEvents:UIControlEventTouchUpInside];
     
-    _contentView.frame = CGRectMake(10,CGRectGetMaxY(rect) + 10, SCREEN_WIDTH - 20, SCREEN_HEIGHT - (CGRectGetMaxY(rect) + 10));
-    _contentView.backgroundColor = [UIColor whiteColor];
-    _contentView.layer.cornerRadius = 4;
-    _contentView.layer.masksToBounds = YES;
-    
-    [_maskV showViewWithContentView:_contentView];
+    [_maskV addSubview:_contentView];
+    [_maskV show];
+    _maskV.alpha = 0;
+
+}
+- (void)chooseTime:(UIGestureRecognizer *)tap {
+
+    _maskV.alpha = 1;
+    _contentView.frame = CGRectMake(-SCREEN_WIDTH ,0.3 * SCREEN_HEIGHT, SCREEN_WIDTH - 20, 0.4*SCREEN_HEIGHT);
+    [UIView animateWithDuration:0.2 animations:^{
+        _contentView.frame = CGRectMake(10,0.3 * SCREEN_HEIGHT, SCREEN_WIDTH - 20, 0.4*SCREEN_HEIGHT);
+    }];
     
     if (tap.view == self.startTimeLabel) {
         _whichOne = 1;
@@ -106,28 +115,36 @@
     }
 }
 
+- (void)ensureDate:(UIButton *)btn {
+    NSDateFormatter *formatter = [[ NSDateFormatter alloc ] init ];
+    formatter.dateFormat = @"hh:mm a";
+
+    NSString *timeStr = [formatter stringFromDate:_contentView.datePicker.date];
+
+    NSString * newTime = [timeStr stringByReplacingOccurrencesOfString:@"上午" withString:@"am"];//替换
+    NSString * newTime1 = [newTime stringByReplacingOccurrencesOfString:@"下午" withString:@"pm"];//替换
+    
+    if (btn == _contentView.ensureBtn) {
+        if (_whichOne == 1) {
+            
+            self.startTimeLabel.text = newTime1;
+        }else{
+            
+            self.endTimeLabel.text = newTime1;
+        }
+    }
+    [self dismiss];
+}
 - (void)dismiss {
-    [UIView animateWithDuration:0.3 animations:^{
-        _maskV.alpha = 0;
+    [UIView animateWithDuration:0.2 animations:^{
+        _contentView.frame = CGRectMake(SCREEN_WIDTH,SCREEN_HEIGHT *0.3, SCREEN_WIDTH - 20, 0.4*SCREEN_HEIGHT);
     } completion:^(BOOL finished) {
-        [_maskV removeFromSuperview];
+        _maskV.alpha = 0;
         
     }];
 }
-- (void)ensureBtnClick {
-    [self dismiss];
-}
-- (void)picker:(UIDatePicker *)picker ValueChanged:(NSDate *)date{
-    NSDateFormatter *fm = [[NSDateFormatter alloc] init];
-    fm.dateFormat = @"HH:mm:a";
-    if (_whichOne == 1) {
-        self.startTimeLabel.text = [fm stringFromDate:date];
-    }else{
-        self.endTimeLabel.text = [fm stringFromDate:date];
-    }
 
-    
-}
+
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
     if (textField == self.phoneTextF && [string isEqualToString:@"\n"]) {
@@ -163,6 +180,8 @@
                 
                 return NO;
         }
+      
+        
     }
     
     if (textField == self.farenNameTextF && ![string isEqualToString:@""] ) {
@@ -177,9 +196,9 @@
         }
     }
     if(textField == self.mianjiTextF){
-        BOOL isHaveDian = false;
+        
         if ([textField.text rangeOfString:@"."].location == NSNotFound) {
-            isHaveDian = NO;
+            _isHaveDian = NO;
         }
         if ([string length] > 0) {
             
@@ -203,9 +222,9 @@
                 
                 //输入的字符是否是小数点
                 if (single == '.') {
-                    if(!isHaveDian)//text中还没有小数点
+                    if(!_isHaveDian)//text中还没有小数点
                     {
-                        isHaveDian = YES;
+                        _isHaveDian = YES;
                         return YES;
                         
                     }else{
@@ -214,7 +233,7 @@
                         return NO;
                     }
                 }else{
-                    if (isHaveDian) {//存在小数点
+                    if (_isHaveDian) {//存在小数点
                         
                         //判断小数点的位数
                         NSRange ran = [textField.text rangeOfString:@"."];
@@ -243,50 +262,76 @@
 
 - (IBAction)nextClick:(id)sender {
     
-    if (self.phoneTextF.text.length <=0 ) {
-        [MBProgressHUD showError:@"请输入手机号码"];
-        return;
-    }else{
-        if (![predicateModel valiMobile:self.phoneTextF.text]) {
-            [MBProgressHUD showError:@"手机号格式不对"];
-            return;
-        }
-    }
-    if (self.passwordTextF.text.length <= 6 || self.passwordTextF.text.length >=20) {
-        [MBProgressHUD showError:@"请输入6~20位的密码"];
-        return;
-    }else if(![predicateModel judgePassWordLegal:self.passwordTextF.text]){
-        [MBProgressHUD showError:@"密码必须由字母和数字组成"];
-        return;
-    }
-    if (self.farenNameTextF.text.length <=0 ) {
-        [MBProgressHUD showError:@"请输入法人姓名"];
-        return;
-    }
-    if (self.farenIDTextF.text.length <=0 ) {
-        [MBProgressHUD showError:@"请输入法人身份证号"];
-        return;
-    }
-    if (self.mailboxTextF.text.length <=0 ) {
-        [MBProgressHUD showError:@"请输入邮箱"];
-        return;
-    }
-    if (self.mianjiTextF.text.length <=0 ) {
-        [MBProgressHUD showError:@"请输入门店面积"];
-        return;
-    }
-    if ([self.startTimeLabel.text isEqualToString:@"开始时间"] ) {
-        [MBProgressHUD showError:@"请输入店铺开始时间"];
-        return;
-    }
-    if ([self.endTimeLabel.text isEqualToString:@"关门时间"]  ) {
-        [MBProgressHUD showError:@"请输入店铺关门时间"];
-        return;
-    }
-    if (self.contentTextV.text.length == 0) {
-        [MBProgressHUD showError:@"请输入经营内容"];
-        return;
-    }
+//    if (self.phoneTextF.text.length <=0 ) {
+//        [MBProgressHUD showError:@"请输入手机号码"];
+//        return;
+//    }else{
+//        if (![predicateModel valiMobile:self.phoneTextF.text]) {
+//            [MBProgressHUD showError:@"手机号格式不对"];
+//            return;
+//        }
+//    }
+//    if (self.passwordTextF.text.length < 6 || self.passwordTextF.text.length >20) {
+//        [MBProgressHUD showError:@"请输入6~20位的密码"];
+//        return;
+//    }else if([predicateModel checkIsHaveNumAndLetter:self.passwordTextF.text] != 3){
+//        [MBProgressHUD showError:@"密码必须由字母和数字组成"];
+//        return;
+//    }
+//    if (self.farenNameTextF.text.length <=0 ) {
+//        [MBProgressHUD showError:@"请输入法人姓名"];
+//        return;
+//    }
+//    if (self.farenIDTextF.text.length <=0 ) {
+//        [MBProgressHUD showError:@"请输入法人身份证号"];
+//        return;
+//    }else if (![predicateModel validateIdentityCard:self.farenIDTextF.text]){
+//        [MBProgressHUD showError:@"身份证号不合法"];
+//        return;
+//
+//    }
+//    if (self.mailboxTextF.text.length <=0 ) {
+//        [MBProgressHUD showError:@"请输入邮箱"];
+//        return;
+//    }else if(![predicateModel isValidateEmail:self.mailboxTextF.text]){
+//        [MBProgressHUD showError:@"邮箱不合法"];
+//    }
+//    if (self.mianjiTextF.text.length <=0 ) {
+//        [MBProgressHUD showError:@"请输入门店面积"];
+//        return;
+//    }
+//    if ([self.startTimeLabel.text isEqualToString:@"开始时间"] ) {
+//        [MBProgressHUD showError:@"请输入店铺开始时间"];
+//        return;
+//    }
+//    if ([self.endTimeLabel.text isEqualToString:@"关门时间"]  ) {
+//        [MBProgressHUD showError:@"请输入店铺关门时间"];
+//        return;
+//    }
+//    if (self.contentTextV.text.length == 0) {
+//        [MBProgressHUD showError:@"请输入经营内容"];
+//        return;
+//    }
+//    @property (nonatomic, copy)NSString  *loginPhone;//登录手机号
+//    @property (nonatomic, copy)NSString  *secret;//密码
+//    @property (nonatomic, copy)NSString  *legalPerson;//法人
+//    @property (nonatomic, copy)NSString  *legalPersonCode;//法人身份证
+//    @property (nonatomic, copy)NSString  *Email;//邮箱
+//    @property (nonatomic, copy)NSString  *measureRrea;//门店面积
+//    @property (nonatomic, copy)NSString  *BusinessBegin;//营业开始时间
+//    @property (nonatomic, copy)NSString  *BusinessEnd;//营业结束时间
+//    @property (nonatomic, copy)NSString  *BusinessContent;//经营内容
+
+
+    [MerchantInformationModel defaultUser].loginPhone = self.phoneTextF.text;
+    [MerchantInformationModel defaultUser].secret = self.passwordTextF.text;
+    [MerchantInformationModel defaultUser].legalPerson = self.farenNameTextF.text;
+    [MerchantInformationModel defaultUser].legalPersonCode = self.farenIDTextF.text;
+    [MerchantInformationModel defaultUser].Email = self.mailboxTextF.text;
+    [MerchantInformationModel defaultUser].measureRrea = self.mianjiTextF.text;
+    [MerchantInformationModel defaultUser].BusinessBegin = self.startTimeLabel.text;
+    [MerchantInformationModel defaultUser].BusinessEnd = self.endTimeLabel.text;
+    [MerchantInformationModel defaultUser].BusinessContent = self.contentTextV.text;
 
     self.hidesBottomBarWhenPushed = YES;
 

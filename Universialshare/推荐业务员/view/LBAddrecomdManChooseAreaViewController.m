@@ -75,6 +75,10 @@
         displaylable.text = [self.provinceArr objectAtIndex:row][@"country_name"];
     }else if ([self.titlestr isEqualToString:@"请选择开户行"]){
         displaylable.text = [self.provinceArr objectAtIndex:row][@"bank_name"];
+    }else if ([self.titlestr isEqualToString:@"请选择一级分类"]){
+        displaylable.text = [self.provinceArr objectAtIndex:row][@"trade_name"];
+    }else if ([self.titlestr isEqualToString:@"请选择二级分类"]){
+        displaylable.text = [self.provinceArr objectAtIndex:row][@"trade_name"];
     }
     
     UIView *maskview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, (self.view.bounds.size.width - 20), 50)];

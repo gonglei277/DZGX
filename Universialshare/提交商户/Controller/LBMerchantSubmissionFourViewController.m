@@ -7,6 +7,7 @@
 //
 
 #import "LBMerchantSubmissionFourViewController.h"
+#import "MerchantInformationModel.h"
 
 @interface LBMerchantSubmissionFourViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *submit;
@@ -157,18 +158,44 @@
         return;
     }
     
+
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    dict[@"openbank"] = [MerchantInformationModel defaultUser].openBankNameid;
+    dict[@"banknumber"] = [MerchantInformationModel defaultUser].bankNumbers;
+    dict[@"name"] = [MerchantInformationModel defaultUser].SettlementName;
+    dict[@"bank_adderss"] = [MerchantInformationModel defaultUser].SubBranch;
+    dict[@"phone"] = [MerchantInformationModel defaultUser].loginPhone;
+    dict[@"pwd"] = [MerchantInformationModel defaultUser].secret;
     
+    dict[@"truename"] = [MerchantInformationModel defaultUser].legalPerson;
+    dict[@"email"] = [MerchantInformationModel defaultUser].Email;
+    dict[@"shop_acreage"] = [MerchantInformationModel defaultUser].measureRrea;
+    dict[@"open_time"] = [MerchantInformationModel defaultUser].BusinessBegin;
+    dict[@"s_province"] =[MerchantInformationModel defaultUser].provinceId;
+    dict[@"s_city"] = [MerchantInformationModel defaultUser].cityId;
+    dict[@"s_area"] = [MerchantInformationModel defaultUser].countryId;
+    dict[@"s_address"] = [MerchantInformationModel defaultUser].detailAdress;
+    dict[@"trade_id"] = [MerchantInformationModel defaultUser].PrimaryClassification;
+    dict[@"lat"] = [MerchantInformationModel defaultUser].lat;
+    dict[@"lng"] = [MerchantInformationModel defaultUser].lng;
+    dict[@"two_trade_id"] = [MerchantInformationModel defaultUser].TwoClassification;
     
-   NSDictionary *dic=@{};
+    NSArray *imageViewArr = [NSArray arrayWithObjects:self.handImage,self.positiveImage,self.otherSideImage,self.licenseImage,self.undertakingOne,self.undertakingTwo,self.doorplateImage,self.DoorplateOneimage,self.InteriorImage,self.InteriorOneImage, nil];
+    
+    NSArray *titleArr = [NSArray arrayWithObjects:@"face_pic",@"con_pic",@"license_pic",@"promise_pic",@"store_pic",@"store_one",@"store_two",@"store_three", nil];
     
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
     manager.requestSerializer.timeoutInterval = 10;
-    [manager POST:[NSString stringWithFormat:@"%@user/userAndShopInfoBq",URL_Base] parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [manager POST:[NSString stringWithFormat:@"%@user/userAndShopInfoBq",URL_Base] parameters:dict  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         //将图片以表单形式上传
         
+        for (int i = 0; i < imageViewArr.count; i ++) {
             
+        }
 //            NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
 //            formatter.dateFormat=@"yyyyMMddHHmmss";
 //            NSString *str=[formatter stringFromDate:[NSDate date]];
@@ -179,8 +206,10 @@
         
         
     }progress:^(NSProgress *uploadProgress){
+        [SVProgressHUD showProgress:uploadProgress.fractionCompleted status:@"..."];
         
     }success:^(NSURLSessionDataTask *task, id responseObject) {
+        [SVProgressHUD dismiss];
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         if ([dic[@"code"]integerValue]==1) {
             
@@ -191,6 +220,7 @@
         }
         [_loadV removeloadview];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD dismiss];
         [_loadV removeloadview];
         [MBProgressHUD showError:error.localizedDescription];
     }];

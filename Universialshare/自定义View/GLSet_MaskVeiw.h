@@ -17,4 +17,6 @@
 
 -(void)showViewWithContentView:(UIView *)contentView;
 
+- (void)show;
+
 @end

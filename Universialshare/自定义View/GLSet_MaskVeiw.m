@@ -67,6 +67,11 @@
    
     [window addSubview:self];
 }
-
+- (void)show {
+    
+    UIWindow * window = [UIApplication sharedApplication].windows[0];
+    
+    [window addSubview:self];
+}
 
 @end

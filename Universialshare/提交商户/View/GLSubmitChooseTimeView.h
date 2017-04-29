@@ -10,4 +10,8 @@
 
 @interface GLSubmitChooseTimeView : UIView
 
+@property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
+@property (weak, nonatomic) IBOutlet UIButton *ensureBtn;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+
 @end

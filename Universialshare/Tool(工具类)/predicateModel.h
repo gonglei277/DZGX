@@ -26,4 +26,6 @@
 //判断字符串是否包含数字，字母，或混合
 +(int)checkIsHaveNumAndLetter:(NSString*)password;
 
+
+
 @end

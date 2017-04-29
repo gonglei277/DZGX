@@ -346,8 +346,65 @@
     
     [_maskV showViewWithContentView:contentView];
 
-//    [self showOkayCancelAlert];
+    [self showOkayCancelAlert];
 
+}
+- (void)showOkayCancelAlert {
+    NSString *title = NSLocalizedString(@"请选择类型", nil);
+    NSString *message = NSLocalizedString(@"", nil);
+    NSString *cancelButtonTitle = NSLocalizedString(@"取消", nil);
+    NSString *T1ButtonTitle = NSLocalizedString(@"T + 1 (收取10%的手续费)", nil);
+    NSString *T3ButtonTitle = NSLocalizedString(@"T + 3 (收取5%的手续费)", nil);
+    NSString *T7ButtonTitle = NSLocalizedString(@"T + 7 (收取0%的手续费)", nil);
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    // Create the actions.
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+    }];
+    
+    UIAlertAction *T1Action = [UIAlertAction actionWithTitle:T1ButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [MBProgressHUD showError:@"该类型暂不可使用!"];
+    }];
+    UIAlertAction *T3Action = [UIAlertAction actionWithTitle:T3ButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        CGFloat contentViewH = 200;
+        CGFloat contentViewW = SCREEN_WIDTH - 40;
+        _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        
+        _maskV.bgView.alpha = 0.4;
+        
+        GLNoticeView *contentView = [[NSBundle mainBundle] loadNibNamed:@"GLNoticeView" owner:nil options:nil].lastObject;
+        contentView.frame = CGRectMake(20, (SCREEN_HEIGHT - contentViewH)/2, contentViewW, contentViewH);
+        contentView.layer.cornerRadius = 4;
+        contentView.layer.masksToBounds = YES;
+        [contentView.cancelBtn addTarget:self action:@selector(cancelBuyback) forControlEvents:UIControlEventTouchUpInside];
+        [contentView.ensureBtn addTarget:self action:@selector(ensureBuyback) forControlEvents:UIControlEventTouchUpInside];
+        if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
+            
+            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为回购数量的10%%"];
+        }else{
+            
+            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为回购数量的10%%"];
+            
+        }
+        
+        [_maskV showViewWithContentView:contentView];
+        
+    }];
+    UIAlertAction *T7Action = [UIAlertAction actionWithTitle:T7ButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [MBProgressHUD showError:@"该类型暂不可使用!"];
+    }];
+    
+    // Add the actions.
+    [alertController addAction:cancelAction];
+    [alertController addAction:T1Action];
+    [alertController addAction:T3Action];
+    [alertController addAction:T7Action];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)cancelBuyback {

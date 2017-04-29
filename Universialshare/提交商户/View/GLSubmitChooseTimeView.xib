@@ -16,9 +16,6 @@
             <rect key="frame" x="0.0" y="0.0" width="287" height="264"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKn-cD-cCx">
-                    <rect key="frame" x="0.0" y="0.0" width="287" height="213"/>
-                </pickerView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZg-j5-kUg">
                     <rect key="frame" x="0.0" y="214" width="143.5" height="50"/>
                     <constraints>
@@ -54,31 +51,39 @@
                         <constraint firstAttribute="width" constant="1" id="h8o-9G-zip"/>
                     </constraints>
                 </view>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PTs-Uo-wy6">
+                    <rect key="frame" x="0.0" y="0.0" width="287" height="213"/>
+                    <date key="date" timeIntervalSinceReferenceDate="515127576.517021">
+                        <!--2017-04-29 02:59:36 +0000-->
+                    </date>
+                </datePicker>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="9IE-q5-2mV" firstAttribute="leading" secondItem="XFs-v1-yjb" secondAttribute="trailing" id="1It-pl-kt7"/>
-                <constraint firstItem="mDl-3C-cv6" firstAttribute="top" secondItem="SKn-cD-cCx" secondAttribute="bottom" id="Aup-sA-XBv"/>
-                <constraint firstAttribute="trailing" secondItem="SKn-cD-cCx" secondAttribute="trailing" id="ENK-Nh-oQI"/>
-                <constraint firstItem="SKn-cD-cCx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="EVJ-Ih-rKY"/>
+                <constraint firstAttribute="trailing" secondItem="PTs-Uo-wy6" secondAttribute="trailing" id="21t-XV-kTV"/>
                 <constraint firstItem="XFs-v1-yjb" firstAttribute="top" secondItem="mDl-3C-cv6" secondAttribute="bottom" id="Eal-SN-Sg8"/>
                 <constraint firstAttribute="trailing" secondItem="mDl-3C-cv6" secondAttribute="trailing" id="IyH-Lp-S8w"/>
                 <constraint firstAttribute="trailing" secondItem="9IE-q5-2mV" secondAttribute="trailing" id="POI-6M-ndD"/>
                 <constraint firstAttribute="bottom" secondItem="9IE-q5-2mV" secondAttribute="bottom" id="PfA-Qx-YbC"/>
+                <constraint firstItem="PTs-Uo-wy6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Xle-cW-oYc"/>
+                <constraint firstItem="mDl-3C-cv6" firstAttribute="top" secondItem="PTs-Uo-wy6" secondAttribute="bottom" id="Zo9-fY-leM"/>
                 <constraint firstItem="bZg-j5-kUg" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1/2" id="Zsl-T2-hul"/>
                 <constraint firstItem="XFs-v1-yjb" firstAttribute="leading" secondItem="bZg-j5-kUg" secondAttribute="trailing" id="bgQ-Lm-L63"/>
-                <constraint firstItem="SKn-cD-cCx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cdz-uc-CzC"/>
                 <constraint firstAttribute="bottom" secondItem="bZg-j5-kUg" secondAttribute="bottom" id="fsb-WG-shl"/>
                 <constraint firstItem="mDl-3C-cv6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kmY-dc-JYd"/>
                 <constraint firstItem="9IE-q5-2mV" firstAttribute="height" secondItem="bZg-j5-kUg" secondAttribute="height" id="koG-L1-Ara"/>
                 <constraint firstAttribute="bottom" secondItem="XFs-v1-yjb" secondAttribute="bottom" id="rRv-AD-svF"/>
+                <constraint firstItem="PTs-Uo-wy6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rzT-Xb-ZMY"/>
                 <constraint firstItem="bZg-j5-kUg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sQs-gU-lv7"/>
                 <constraint firstItem="9IE-q5-2mV" firstAttribute="top" secondItem="mDl-3C-cv6" secondAttribute="bottom" id="sWI-sU-7Kf"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="pickerView" destination="SKn-cD-cCx" id="kP7-fv-1ie"/>
+                <outlet property="cancelBtn" destination="bZg-j5-kUg" id="TOW-cV-UcX"/>
+                <outlet property="datePicker" destination="PTs-Uo-wy6" id="528-nT-lOO"/>
+                <outlet property="ensureBtn" destination="9IE-q5-2mV" id="8vx-Yi-5K0"/>
             </connections>
             <point key="canvasLocation" x="-10.5" y="-78"/>
         </view>

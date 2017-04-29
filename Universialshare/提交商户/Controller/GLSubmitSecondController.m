@@ -11,6 +11,8 @@
 #import "LBMerchantSubmissionThreeViewController.h"
 #import "LBAddrecomdManChooseAreaViewController.h"
 #import "editorMaskPresentationController.h"
+#import "LBBaiduMapViewController.h"
+#import "MerchantInformationModel.h"
 
 @interface GLSubmitSecondController ()<UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning>
 {
@@ -51,6 +53,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *provinceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstClassifyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondClassifyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UITextField *detailTextF;
 
 @property (strong, nonatomic)UIView *incentiveModelMaskV;
 
@@ -62,6 +68,14 @@
 @property (nonatomic, assign)NSInteger ischoseCity;//记录选择市的第几行
 @property (nonatomic, assign)NSInteger ischoseArea;//记录选择区的第几行
 
+//行业
+@property (nonatomic, strong)NSMutableArray *industryArr;
+@property (nonatomic, assign)NSInteger isChoseFirstClassify;//记录一级分类的第几行
+@property (nonatomic, assign)NSInteger isChoseSecondClassify;//记录二级分类的第几行
+
+//地图
+@property (nonatomic, copy)NSString *latStr;
+@property (nonatomic, copy)NSString *longStr;
 @end
 
 @implementation GLSubmitSecondController
@@ -98,10 +112,11 @@
 
 #pragma mark - get data
 - (void)getPickerData {
-    
+    //省市区列表
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[UIApplication sharedApplication].keyWindow];
     [NetworkManager requestPOSTWithURLStr:@"user/getCityList" paramDic:@{} finish:^(id responseObject) {
         [_loadV removeloadview];
+        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue]==1) {
             self.provinceArr = responseObject[@"data"];
         }
@@ -111,23 +126,27 @@
         [MBProgressHUD showError:error.localizedDescription];
         
     }];
-    
-}
 
-//选择等级
-//- (IBAction)chooseLevel:(UITapGestureRecognizer *)sender {
-//    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
-//    CGRect rect=[self.levelView convertRect: self.levelView.bounds toView:window];
-//    
-//    self.incentiveModelV.frame=CGRectMake(SCREEN_WIDTH-130, rect.origin.y+20, 120, 80);
-//    
-//    [self.view addSubview:self.incentiveModelMaskV];
-//    [self.incentiveModelMaskV addSubview:self.incentiveModelV];
-//    
-//    UITapGestureRecognizer *incentiveModelMaskVgesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(incentiveModelMaskVtapgestureLb)];
-//    [self.incentiveModelMaskV addGestureRecognizer:incentiveModelMaskVgesture];
-//    
-//}
+    //行业列表
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].uid;
+    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[UIApplication sharedApplication].keyWindow];
+    [NetworkManager requestPOSTWithURLStr:@"user/getHylist" paramDic:dict finish:^(id responseObject) {
+        [_loadV removeloadview];
+        NSLog(@"responseObject = %@",responseObject);
+        if ([responseObject[@"code"] integerValue]==1) {
+            self.industryArr = responseObject[@"data"];
+        }
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
+
+}
 
 //选择省份
 - (IBAction)choseProvince:(id)sender {
@@ -139,6 +158,8 @@
         _ischosePro = index;
         _provinceLabel.text = _provinceArr[index][@"province_name"];
         _provinceLabel.textColor = [UIColor blackColor];
+        _cityLabel.text = @"";
+        _countryLabel.text = @"";
     };
     vc.transitioningDelegate=self;
     vc.modalPresentationStyle=UIModalPresentationCustom;
@@ -160,7 +181,7 @@
         _ischoseCity = index;
         _cityLabel.text = _provinceArr[_ischosePro][@"city"][index][@"city_name"];
         _cityLabel.textColor = [UIColor blackColor];
-        
+        _countryLabel.text = @"";
     };
     vc.transitioningDelegate=self;
     vc.modalPresentationStyle=UIModalPresentationCustom;
@@ -193,9 +214,105 @@
 
 }
 
+- (IBAction)chooseFirstClassify:(id)sender {
+    
+    LBAddrecomdManChooseAreaViewController *vc=[[LBAddrecomdManChooseAreaViewController alloc]init];
+    vc.provinceArr = self.industryArr;
+    vc.titlestr = @"请选择一级分类";
+    vc.returnreslut = ^(NSInteger index){
+        _isChoseFirstClassify = index;
+        _firstClassifyLabel.text = _industryArr[index][@"trade_name"];
+        _firstClassifyLabel.textColor = [UIColor blackColor];
+        _secondClassifyLabel.text = @"";
+
+    };
+    vc.transitioningDelegate=self;
+    vc.modalPresentationStyle=UIModalPresentationCustom;
+    [self presentViewController:vc animated:YES completion:nil];
+
+}
+- (IBAction)chooseSecondClassify:(id)sender {
+    if ([self.cityLabel.text isEqualToString:@"请选择一级分类"]) {
+        [MBProgressHUD showError:@"请选择一级分类"];
+        return;
+    }
+    
+    LBAddrecomdManChooseAreaViewController *vc=[[LBAddrecomdManChooseAreaViewController alloc]init];
+    vc.provinceArr = self.industryArr[_isChoseFirstClassify][@"son"];
+    vc.titlestr = @"请选择二级分类";
+    vc.returnreslut = ^(NSInteger index){
+        _isChoseSecondClassify = index;
+        NSArray *son = _industryArr[_isChoseFirstClassify][@"son"];
+        if (son.count == 0) {
+            _secondClassifyLabel.text = @"";
+        }else{
+            
+            _secondClassifyLabel.text = _industryArr[_isChoseFirstClassify][@"son"][index][@"trade_name"];
+        }
+        _secondClassifyLabel.textColor = [UIColor blackColor];
+        
+    };
+
+    vc.transitioningDelegate=self;
+    vc.modalPresentationStyle=UIModalPresentationCustom;
+    [self presentViewController:vc animated:YES completion:nil];
+
+}
+- (IBAction)chooseAddress:(id)sender {
+    self.hidesBottomBarWhenPushed = YES;
+    LBBaiduMapViewController *mapVC = [[LBBaiduMapViewController alloc] init];
+    mapVC.returePositon = ^(NSString *strposition,NSString *pro,NSString *city,NSString *area,CLLocationCoordinate2D coors){
+//        self.adress = strposition;
+//        self.sprovince = pro;
+//        self.scity =city;
+//        self.saera = area;
+        self.latStr = [NSString stringWithFormat:@"%f",coors.latitude];
+        self.longStr = [NSString stringWithFormat:@"%f",coors.longitude];
+        self.addressLabel.text = [NSString stringWithFormat:@"%@",strposition];
+    };
+    [self.navigationController pushViewController:mapVC animated:YES];
+}
 
 //点击下一步
 - (IBAction)nextbuttonevent:(UIButton *)sender {
+
+    if ([self.provinceLabel.text isEqualToString:@"请选择省份"]) {
+        [MBProgressHUD showError:@"还没有选择省份"];
+        return;
+    }
+    if ([self.cityLabel.text isEqualToString:@"请选择城市"]) {
+        [MBProgressHUD showError:@"还没有选择城市"];
+        return;
+    }
+//    if ([self.countryLabel.text isEqualToString:@"请选择区域"]) {
+//        [MBProgressHUD showError:@"还没有选择区域"];
+//        return;
+//    }
+    if ([self.firstClassifyLabel.text isEqualToString:@"请选择分类"]) {
+        [MBProgressHUD showError:@"还没有选择分类"];
+        return;
+    }
+    if ([self.secondClassifyLabel.text isEqualToString:@"请选择分类"]) {
+        [MBProgressHUD showError:@"还没有选择分类"];
+        return;
+    }
+    if ([self.addressLabel.text isEqualToString:@"请选择地点"]) {
+        [MBProgressHUD showError:@"还没有选择地点"];
+        return;
+    }
+    if ([self.detailTextF.text isEqualToString:@"请填写具体地址"]) {
+        [MBProgressHUD showError:@"还没有填写具体地址"];
+        return;
+    }
+    [MerchantInformationModel defaultUser].provinceId = self.provinceArr[_provinceIndex][@"province_name"];
+    [MerchantInformationModel defaultUser].cityId = self.provinceArr[_provinceIndex][@"city"][_cityIndex];
+    [MerchantInformationModel defaultUser].countryId = self.provinceArr[_provinceIndex][@"city"][_cityIndex][@"country"][_countryIndex];
+    [MerchantInformationModel defaultUser].PrimaryClassification = self.firstClassifyLabel.text;
+    [MerchantInformationModel defaultUser].TwoClassification = self.industryArr[_isChoseFirstClassify][@"trade_name"];
+    [MerchantInformationModel defaultUser].mapAdress = self.industryArr[_isChoseFirstClassify][@"son"][_isChoseSecondClassify][@"trade_name"];
+    [MerchantInformationModel defaultUser].lat = self.latStr;
+    [MerchantInformationModel defaultUser].lng = self.longStr;
+    [MerchantInformationModel defaultUser].detailAdress = self.detailTextF.text;
     self.hidesBottomBarWhenPushed = YES;
     LBMerchantSubmissionThreeViewController *vc=[[LBMerchantSubmissionThreeViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
@@ -288,5 +405,10 @@
     return _nodataV;
     
 }
-
+- (NSMutableArray *)industryArr{
+    if (!_industryArr) {
+        _industryArr = [NSMutableArray array];
+    }
+    return _industryArr;
+}
 @end
