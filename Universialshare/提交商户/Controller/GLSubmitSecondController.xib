@@ -93,7 +93,7 @@
                                                 <constraint firstAttribute="height" constant="8" id="WJl-R4-ywy"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="pxJ-v8-pvU">
+                                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="pxJ-v8-pvU">
                                             <rect key="frame" x="320" y="111" width="15" height="8"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -212,7 +212,7 @@
                                                 <constraint firstAttribute="height" constant="1" id="orJ-HJ-Ka2"/>
                                             </constraints>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="PQW-5b-3x6">
+                                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="PQW-5b-3x6">
                                             <rect key="frame" x="320" y="19.5" width="15" height="8"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -220,7 +220,7 @@
                                                 <constraint firstAttribute="height" constant="8" id="Mfd-qs-fWp"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="sHD-3H-qcq">
+                                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="sHD-3H-qcq">
                                             <rect key="frame" x="320" y="67.5" width="15" height="8"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
