@@ -9,7 +9,7 @@
 #import "LBBelowTheLineViewController.h"
 #import "IncentiveModel.h"
 
-@interface LBBelowTheLineViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIActionSheetDelegate>
+@interface LBBelowTheLineViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentW;
 
@@ -161,61 +161,98 @@
         return;
     }
     
-   NSDictionary  * dic=@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].uid , @"username":self.phoneTf , @"yzm":self.codeTf.text,@"rlmodel_type":[NSNumber numberWithInteger:self.userytpe],@"money":self.moneyTf.text,@"shopname":self.nameTf.text,@"shopnum":self.numTf.text,@"code":self.yuliuTf.text ,@"version": @3};
-    
-    
-    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
-    manager.requestSerializer.timeoutInterval = 10;
-    [manager POST:[NSString stringWithFormat:@"%@user/placeOrderLine",URL_Base] parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        //将图片以表单形式上传
-        
-        if (self.imageOne.image) {
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[UIApplication sharedApplication].keyWindow];
+    [NetworkManager requestPOSTWithURLStr:@"user/getTrueName" paramDic:@{@"uid":[UserModel defaultUser].uid , @"token":[UserModel defaultUser].token , @"username" :self.phoneTf.text} finish:^(id responseObject) {
+        [_loadV removeloadview];
+        if ([responseObject[@"code"] integerValue]==1) {
             
-            NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
-            formatter.dateFormat=@"yyyyMMddHHmmss";
-            NSString *str=[formatter stringFromDate:[NSDate date]];
-            NSString *fileName=[NSString stringWithFormat:@"%@one.png",str];
-            NSData *data = UIImagePNGRepresentation(self.imageOne.image);
-            [formData appendPartWithFileData:data name:@"dkpz" fileName:fileName mimeType:@"image/png"];
-        }
-        if (self.imageTwo.image) {
+            if (![responseObject[@"data"] isEqual:[NSNull null]]) {
+                NSString *str=[NSString stringWithFormat:@"确定向%@下单吗?",responseObject[@"data"][@"truename"]];
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:str delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                [alert show];
+            }else{
+                [MBProgressHUD showError:responseObject[@"message"]];
+            }
             
-            NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
-            formatter.dateFormat=@"yyyyMMddHHmmss";
-            NSString *str=[formatter stringFromDate:[NSDate date]];
-            NSString *fileName=[NSString stringWithFormat:@"%@two.png",str];
-            NSData *data = UIImagePNGRepresentation(self.imageOne.image);
-            [formData appendPartWithFileData:data name:@"xfpz" fileName:fileName mimeType:@"image/png"];
-        }
-        
-        
-    }progress:^(NSProgress *uploadProgress){
-        
-        [SVProgressHUD showProgress:uploadProgress.fractionCompleted status:@"..."];
-        
-    }success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        [SVProgressHUD dismiss];
-        if ([dic[@"code"]integerValue]==1) {
             
-            [MBProgressHUD showError:dic[@"message"]];
-            [self.navigationController popViewControllerAnimated:YES];
+        }else if ([responseObject[@"code"] integerValue]==3){
+            
+            [MBProgressHUD showError:responseObject[@"message"]];
             
         }else{
-            [MBProgressHUD showError:dic[@"message"]];
+            [MBProgressHUD showError:responseObject[@"message"]];
+            
+            
         }
-        [_loadV removeloadview];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [SVProgressHUD dismiss];
+    } enError:^(NSError *error) {
         [_loadV removeloadview];
         [MBProgressHUD showError:error.localizedDescription];
+        
     }];
+    
+    
+   
     
 
 }
-
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex==1) {
+        NSDictionary  * dic=@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].uid , @"username":self.phoneTf , @"yzm":self.codeTf.text,@"rlmodel_type":[NSNumber numberWithInteger:self.userytpe],@"money":self.moneyTf.text,@"shopname":self.nameTf.text,@"shopnum":self.numTf.text,@"code":self.yuliuTf.text ,@"version": @3};
+        
+        
+        _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
+        manager.requestSerializer.timeoutInterval = 10;
+        [manager POST:[NSString stringWithFormat:@"%@user/placeOrderLine",URL_Base] parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            //将图片以表单形式上传
+            
+            if (self.imageOne.image) {
+                
+                NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+                formatter.dateFormat=@"yyyyMMddHHmmss";
+                NSString *str=[formatter stringFromDate:[NSDate date]];
+                NSString *fileName=[NSString stringWithFormat:@"%@one.png",str];
+                NSData *data = UIImagePNGRepresentation(self.imageOne.image);
+                [formData appendPartWithFileData:data name:@"dkpz" fileName:fileName mimeType:@"image/png"];
+            }
+            if (self.imageTwo.image) {
+                
+                NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+                formatter.dateFormat=@"yyyyMMddHHmmss";
+                NSString *str=[formatter stringFromDate:[NSDate date]];
+                NSString *fileName=[NSString stringWithFormat:@"%@two.png",str];
+                NSData *data = UIImagePNGRepresentation(self.imageOne.image);
+                [formData appendPartWithFileData:data name:@"xfpz" fileName:fileName mimeType:@"image/png"];
+            }
+            
+            
+        }progress:^(NSProgress *uploadProgress){
+            
+            [SVProgressHUD showProgress:uploadProgress.fractionCompleted status:@"..."];
+            
+        }success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            [SVProgressHUD dismiss];
+            if ([dic[@"code"]integerValue]==1) {
+                
+                [MBProgressHUD showError:dic[@"message"]];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }else{
+                [MBProgressHUD showError:dic[@"message"]];
+            }
+            [_loadV removeloadview];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [SVProgressHUD dismiss];
+            [_loadV removeloadview];
+            [MBProgressHUD showError:error.localizedDescription];
+        }];
+                
+    }
+    
+}
 //结束编辑
 - (IBAction)endeditEvent:(UITapGestureRecognizer *)sender {
     

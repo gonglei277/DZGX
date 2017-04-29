@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface LBMyBusinessListDetailViewController : UIViewController
+@property(nonatomic,strong)NSDictionary *dic;
 
 @end

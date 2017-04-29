@@ -10,7 +10,7 @@
 
 @interface LBMyBusinessListViewController : UIViewController
 
-@property (copy , nonatomic)void(^returnpushvc)();
+@property (copy , nonatomic)void(^returnpushvc)(NSDictionary *dic);
 
 @property (copy , nonatomic)void(^returnpushinfovc)(NSInteger index);
 

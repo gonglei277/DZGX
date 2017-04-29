@@ -21,6 +21,7 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="XRPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="2oQ-RD-WjY">
                         <rect key="frame" x="10" y="12.5" width="92" height="90"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="92" id="HHQ-BS-dWT"/>
                             <constraint firstAttribute="height" constant="90" id="y0k-fJ-K1z"/>

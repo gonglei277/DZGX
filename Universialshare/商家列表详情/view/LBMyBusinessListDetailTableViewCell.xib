@@ -58,6 +58,7 @@
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="XRPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="zgR-Te-d1q">
                                 <rect key="frame" x="10" y="12" width="80" height="80"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="dTJ-7H-GlD"/>
                                     <constraint firstAttribute="width" constant="80" id="uIi-d8-Rla"/>

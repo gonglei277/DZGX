@@ -27,6 +27,7 @@
                     </view>
                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="XRPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="cqo-ml-2uL">
                         <rect key="frame" x="10" y="10" width="70" height="70"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="KGw-gk-s8G"/>
@@ -61,23 +62,23 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推荐商家数量:100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pL7-vN-wkG">
-                        <rect key="frame" x="90" y="85" width="90" height="15"/>
+                        <rect key="frame" x="113" y="85" width="90" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="hNu-Bd-59Y"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="xZ1-2u-uQU"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" red="0.77709561589999998" green="0.19865089650000001" blue="0.056773729619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.14404621719999999" green="0.60565376280000005" blue="0.14635491370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推荐商家总额:1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziz-QF-y3I">
-                        <rect key="frame" x="190" y="85" width="97" height="15"/>
+                        <rect key="frame" x="213" y="85" width="97" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="DPH-7b-fBc"/>
                             <constraint firstAttribute="height" constant="15" id="TK6-SW-XPL"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" red="0.77709561589999998" green="0.19865089650000001" blue="0.056773729619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.14404621719999999" green="0.60565376280000005" blue="0.14635491370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -92,21 +93,23 @@
                     <constraint firstItem="pL7-vN-wkG" firstAttribute="top" secondItem="QIn-EF-Dz4" secondAttribute="bottom" constant="5" id="aNs-gO-vlc"/>
                     <constraint firstItem="BeT-ez-r3G" firstAttribute="leading" secondItem="cqo-ml-2uL" secondAttribute="trailing" constant="10" id="aQH-rR-heq"/>
                     <constraint firstAttribute="trailing" secondItem="YLi-aM-NZo" secondAttribute="trailing" constant="10" id="cUh-5r-Ub8"/>
-                    <constraint firstItem="pL7-vN-wkG" firstAttribute="leading" secondItem="QIn-EF-Dz4" secondAttribute="leading" id="gjS-ig-LKV"/>
                     <constraint firstItem="ke1-6u-mU6" firstAttribute="top" secondItem="BeT-ez-r3G" secondAttribute="bottom" constant="5" id="hTg-kw-HOZ"/>
                     <constraint firstItem="YLi-aM-NZo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="kfC-8F-Sgf"/>
                     <constraint firstItem="ziz-QF-y3I" firstAttribute="centerY" secondItem="pL7-vN-wkG" secondAttribute="centerY" id="nL2-kU-Frv"/>
                     <constraint firstAttribute="trailing" secondItem="ke1-6u-mU6" secondAttribute="trailing" constant="10" id="p9c-77-D4j"/>
                     <constraint firstItem="QIn-EF-Dz4" firstAttribute="leading" secondItem="cqo-ml-2uL" secondAttribute="trailing" constant="10" id="tY1-CL-opW"/>
                     <constraint firstItem="QIn-EF-Dz4" firstAttribute="top" secondItem="ke1-6u-mU6" secondAttribute="bottom" constant="5" id="vYb-Jc-BFi"/>
+                    <constraint firstAttribute="trailing" secondItem="ziz-QF-y3I" secondAttribute="trailing" constant="10" id="x0a-g4-fbK"/>
                     <constraint firstItem="cqo-ml-2uL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="xH8-wR-f41"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="EngLishLb" destination="ke1-6u-mU6" id="71I-8A-2DJ"/>
                 <outlet property="adressLb" destination="QIn-EF-Dz4" id="Ij6-6U-BCJ"/>
+                <outlet property="businessNum" destination="pL7-vN-wkG" id="bqI-29-Zcy"/>
                 <outlet property="imagev" destination="cqo-ml-2uL" id="b0q-C3-6b3"/>
                 <outlet property="namelb" destination="BeT-ez-r3G" id="aFn-qO-18Q"/>
+                <outlet property="shopnum" destination="ziz-QF-y3I" id="Lpy-sW-pvA"/>
             </connections>
         </tableViewCell>
     </objects>

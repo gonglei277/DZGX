@@ -54,17 +54,27 @@
     [self.contentView addSubview:_salesmanListVc.view];
     
     __weak typeof(self) weakself = self;
-    _salesmanListVc.returnpushvc = ^(){
+    _salesmanListVc.returnpushvc = ^(NSDictionary *dic){
     
-        weakself.hidesBottomBarWhenPushed = YES;
-        LBMySalesmanListDeatilViewController *vc=[[LBMySalesmanListDeatilViewController alloc]init];
-        [weakself.navigationController pushViewController:vc animated:YES];
-        weakself.hidesBottomBarWhenPushed = NO;
+        if ([dic[@"saleman_type"] integerValue] == 8) {
+//            weakself.hidesBottomBarWhenPushed = YES;
+//            LBMyBusinessListViewController *vc=[[LBMyBusinessListViewController alloc]init];
+//            vc.HideNavB = YES;
+//            [weakself.navigationController pushViewController:vc animated:YES];
+//            weakself.hidesBottomBarWhenPushed = NO;
+        }else {
+            weakself.hidesBottomBarWhenPushed = YES;
+            LBMySalesmanListDeatilViewController *vc=[[LBMySalesmanListDeatilViewController alloc]init];
+            vc.dic = dic;
+            [weakself.navigationController pushViewController:vc animated:YES];
+            weakself.hidesBottomBarWhenPushed = NO;
+        }
     };
-    _businessListVc.returnpushvc = ^(){
+    _businessListVc.returnpushvc = ^(NSDictionary *dic){
         
         weakself.hidesBottomBarWhenPushed = YES;
         LBMyBusinessListDetailViewController *vc=[[LBMyBusinessListDetailViewController alloc]init];
+        vc.dic = dic;
         [weakself.navigationController pushViewController:vc animated:YES];
         weakself.hidesBottomBarWhenPushed = NO;
     };
@@ -108,7 +118,7 @@
     
     [UIView animateWithDuration:0.3 animations:^{
         self.lineView.frame = CGRectMake(0, 48, SCREEN_WIDTH / 2, 1);
-        [self.saleBt setTitleColor:YYSRGBColor(196, 52, 28, 1) forState:UIControlStateNormal];
+        [self.saleBt setTitleColor:YYSRGBColor(44, 153, 46, 1) forState:UIControlStateNormal];
         [self.businessBt setTitleColor:YYSRGBColor(0, 0, 0, 1) forState:UIControlStateNormal];
     } completion:^(BOOL finished) {
         
@@ -123,7 +133,7 @@
     
     [UIView animateWithDuration:0.3 animations:^{
         self.lineView.frame = CGRectMake(SCREEN_WIDTH / 2, 48, SCREEN_WIDTH / 2, 1);
-        [self.businessBt setTitleColor:YYSRGBColor(196, 52, 28, 1) forState:UIControlStateNormal];
+        [self.businessBt setTitleColor:YYSRGBColor(44, 153, 46, 1) forState:UIControlStateNormal];
         [self.saleBt setTitleColor:YYSRGBColor(0, 0, 0, 1) forState:UIControlStateNormal];
     } completion:^(BOOL finished) {
         
@@ -159,7 +169,7 @@
     
     if (!_lineView) {
         _lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 48, SCREEN_WIDTH / 2, 1)];
-        _lineView.backgroundColor = YYSRGBColor(196, 52, 28, 1);
+        _lineView.backgroundColor = YYSRGBColor(44, 153, 46, 1);
     }
     
     return _lineView;
