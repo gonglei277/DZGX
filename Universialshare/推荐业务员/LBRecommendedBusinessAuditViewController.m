@@ -208,7 +208,20 @@
         if ([cell.adresslb.text rangeOfString:@"null"].location != NSNotFound) {
             cell.adresslb.text  = @"";
         }
-        
+    
+    
+        if ([self.typeStr isEqualToString:@"0"]) {
+            
+            cell.statuesLb.text = @"审核中";
+            
+        }
+        if ([self.typeStr isEqualToString:@"2"]) {
+            
+            cell.statuesLb.text = @"未通过审核";
+            
+        }
+
+    
         return cell;
 
 //    }else if ([self.typeStr isEqualToString:@"2"]){

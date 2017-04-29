@@ -16,4 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *adresslb;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *statuesLb;//审核状态
+
+
 @end

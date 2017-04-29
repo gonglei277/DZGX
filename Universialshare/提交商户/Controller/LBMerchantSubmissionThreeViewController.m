@@ -10,6 +10,7 @@
 #import "LBMerchantSubmissionFourViewController.h"
 #import "LBAddrecomdManChooseAreaViewController.h"
 #import "editorMaskPresentationController.h"
+#import "MerchantInformationModel.h"
 
 @interface LBMerchantSubmissionThreeViewController ()<UITextFieldDelegate,UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning>
 {
@@ -78,7 +79,48 @@
 //点击下一步
 - (IBAction)nextbutton:(UIButton *)sender {
     
-    NSLog(@"%@",self.dataArr[self.selectIndex][@"id"]);
+    //NSLog(@"%@",self.dataArr[self.selectIndex][@"id"]);
+    
+    if (self.banktf.text.length <= 0) {
+        [MBProgressHUD showError:@"请选择开户行"];
+        return;
+    }
+    if (self.bankCode.text.length <= 0) {
+        [MBProgressHUD showError:@"请填写储蓄卡"];
+        return;
+    }
+    
+    if (![predicateModel IsBankCard:self.bankCode.text]) {
+        [MBProgressHUD showError:@"储蓄卡格式不对"];
+        return;
+    }
+    
+    if (self.phonetf.text.length <= 0) {
+        [MBProgressHUD showError:@"请填写手机号"];
+        return;
+    }
+    
+    if (![predicateModel valiMobile:self.bankCode.text]) {
+        [MBProgressHUD showError:@"手机号格式不对"];
+        return;
+    }
+    
+    if (self.nametf.text.length <= 0) {
+        [MBProgressHUD showError:@"请填写户名"];
+        return;
+    }
+    if (self.treebank.text.length <= 0) {
+        [MBProgressHUD showError:@"请填写支行"];
+        return;
+    }
+    
+    
+    [MerchantInformationModel defaultUser].openBankNameid = self.dataArr[self.selectIndex][@"id"];
+    [MerchantInformationModel defaultUser].bankNumbers = self.bankCode.text;
+    [MerchantInformationModel defaultUser].ReservePhone = self.phonetf.text;
+    [MerchantInformationModel defaultUser].SettlementName = self.nametf.text;
+    [MerchantInformationModel defaultUser].SubBranch = self.treebank.text;
+    
     
     self.hidesBottomBarWhenPushed = YES;
     LBMerchantSubmissionFourViewController *vc=[[LBMerchantSubmissionFourViewController alloc]init];
