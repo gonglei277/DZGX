@@ -120,8 +120,46 @@
 //提交
 - (IBAction)submitinfo:(UIButton *)sender {
     
-   NSDictionary *dic=@{};
+    if (!self.handImage.image || self.handImage.image == [UIImage imageNamed:@"手持身份证"]) {
+        [MBProgressHUD showError:@"请上传法人手持证件照"];
+        return;
+    }
+    if (!self.positiveImage.image || self.positiveImage.image == [UIImage imageNamed:@"样板-拷贝"]) {
+        [MBProgressHUD showError:@"请上传身份证正面照"];
+        return;
+    }
+    if (!self.otherSideImage.image || self.otherSideImage.image == [UIImage imageNamed:@"照片框-拷贝"]) {
+        [MBProgressHUD showError:@"请上传身份证反面照"];
+        return;
+    }
+    if (!self.licenseImage.image || self.licenseImage.image == [UIImage imageNamed:@"照片框-拷贝-2"]) {
+        [MBProgressHUD showError:@"请上传营业执照"];
+        return;
+    }
     
+    if ((!self.undertakingOne.image || self.undertakingOne.image == [UIImage imageNamed:@"照片框-拷贝-4"]) && (!self.undertakingTwo.image || self.undertakingTwo.image == [UIImage imageNamed:@"照片框-拷贝-9"])) {
+        [MBProgressHUD showError:@"请至少上传一张商家承诺书"];
+        return;
+    }
+    
+    if (self.doorplateImage.image || self.doorplateImage.image == [UIImage imageNamed:@"照片框-拷贝-10"]) {
+        [MBProgressHUD showError:@"请上传门头照"];
+        return;
+    }
+    
+    if (!self.DoorplateOneimage.image || self.DoorplateOneimage.image == [UIImage imageNamed:@"门牌照"]) {
+        [MBProgressHUD showError:@"请上传门牌照"];
+        return;
+    }
+    
+    if ((!self.InteriorImage.image || self.InteriorImage.image == [UIImage imageNamed:@"照片框-拷贝-12"]) && (!self.InteriorOneImage.image || self.InteriorOneImage.image == [UIImage imageNamed:@"照片框-拷贝-13"])) {
+        [MBProgressHUD showError:@"请上传两张内景照"];
+        return;
+    }
+    
+    
+    
+   NSDictionary *dic=@{};
     
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

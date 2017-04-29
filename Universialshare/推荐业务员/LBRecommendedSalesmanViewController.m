@@ -98,6 +98,8 @@
     vc.returnreslut = ^(NSInteger index){
         _ischosePro = index;
         _proviceTf.text = _provinceArr[index][@"province_name"];
+        _cityTf.text = @"";
+        _areaTf.text = @"";
         
     };
     vc.transitioningDelegate=self;
@@ -119,6 +121,7 @@
     vc.returnreslut = ^(NSInteger index){
         _ischoseCity = index;
         _cityTf.text = _provinceArr[_ischosePro][@"city"][index][@"city_name"];
+        _areaTf.text = @"";
         
     };
     vc.transitioningDelegate=self;
