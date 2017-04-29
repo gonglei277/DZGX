@@ -195,13 +195,14 @@
         
         for (int i = 0; i < imageViewArr.count; i ++) {
             
+            NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+            formatter.dateFormat=@"yyyyMMddHHmmss";
+            NSString *str=[formatter stringFromDate:[NSDate date]];
+            NSString *fileName=[NSString stringWithFormat:@"%@%d.png",str,i];
+            
+            NSData *data = UIImagePNGRepresentation(imageViewArr[i]);
+            [formData appendPartWithFileData:data name:titleArr[i] fileName:fileName mimeType:@"image/png"];
         }
-//            NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
-//            formatter.dateFormat=@"yyyyMMddHHmmss";
-//            NSString *str=[formatter stringFromDate:[NSDate date]];
-//            NSString *fileName=[NSString stringWithFormat:@"%@.png",str];
-//            NSData *data = UIImagePNGRepresentation(self.imagehead);
-//            [formData appendPartWithFileData:data name:@"pic" fileName:fileName mimeType:@"image/png"];
      
         
         
