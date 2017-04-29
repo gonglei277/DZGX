@@ -14,7 +14,7 @@
     [super awakeFromNib];
    
     
-    self.imagev.layer.cornerRadius = 4;
+    self.imagev.layer.cornerRadius = 40;
     self.imagev.clipsToBounds = YES;
     
     self.saleBt.layer.cornerRadius = 3;

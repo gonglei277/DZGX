@@ -18,6 +18,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *saleBt;
 @property (weak, nonatomic) IBOutlet UIButton *businessBt;
+@property (weak, nonatomic) IBOutlet UILabel *allMoney;
+
 
 @property (assign , nonatomic)NSInteger index;
 

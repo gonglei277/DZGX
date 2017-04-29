@@ -18,6 +18,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *adressLb;
 @property (assign , nonatomic)NSInteger index;
 
+@property (weak, nonatomic) IBOutlet UILabel *businessNum;
+@property (weak, nonatomic) IBOutlet UILabel *shopnum;
+
+
 @property (copy , nonatomic)void(^returntapgestureimage)();
 
 @end

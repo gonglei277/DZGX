@@ -10,4 +10,5 @@
 
 @interface LBMySalesmanListDeatilViewController : UIViewController
 
+@property(nonatomic,strong)NSDictionary *dic;
 @end
