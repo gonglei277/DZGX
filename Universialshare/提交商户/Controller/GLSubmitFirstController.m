@@ -33,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *farenNameTextF;
 @property (weak, nonatomic) IBOutlet UITextField *farenIDTextF;
 @property (weak, nonatomic) IBOutlet UITextField *mailboxTextF;
+@property (weak, nonatomic) IBOutlet UITextField *shopNameTextF;
+
 @property (weak, nonatomic) IBOutlet UITextField *mianjiTextF;
 @property (weak, nonatomic) IBOutlet UIView *timeLabel;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextV;
@@ -164,6 +166,10 @@
     }
     else if (textField == self.mailboxTextF && [string isEqualToString:@"\n"]){
         [self.mianjiTextF becomeFirstResponder];
+        return NO;
+    }else if (textField == self.mianjiTextF && [string isEqualToString:@"\n"]){
+        
+        [textField resignFirstResponder];
         return NO;
     }else if (textField == self.mianjiTextF && [string isEqualToString:@"\n"]){
 

@@ -322,29 +322,29 @@
         return;
     }
    
-    
-    CGFloat contentViewH = 200;
-    CGFloat contentViewW = SCREEN_WIDTH - 40;
-    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    
-    _maskV.bgView.alpha = 0.4;
-    
-    GLNoticeView *contentView = [[NSBundle mainBundle] loadNibNamed:@"GLNoticeView" owner:nil options:nil].lastObject;
-    contentView.frame = CGRectMake(20, (SCREEN_HEIGHT - contentViewH)/2, contentViewW, contentViewH);
-    contentView.layer.cornerRadius = 4;
-    contentView.layer.masksToBounds = YES;
-    [contentView.cancelBtn addTarget:self action:@selector(cancelBuyback) forControlEvents:UIControlEventTouchUpInside];
-    [contentView.ensureBtn addTarget:self action:@selector(ensureBuyback) forControlEvents:UIControlEventTouchUpInside];
-    if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
-    
-        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为回购数量的10%%"];
-    }else{
-        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为回购数量的10%%"];
+//    
+//    CGFloat contentViewH = 200;
+//    CGFloat contentViewW = SCREEN_WIDTH - 40;
+//    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+//    
+//    _maskV.bgView.alpha = 0.4;
+//    
+//    GLNoticeView *contentView = [[NSBundle mainBundle] loadNibNamed:@"GLNoticeView" owner:nil options:nil].lastObject;
+//    contentView.frame = CGRectMake(20, (SCREEN_HEIGHT - contentViewH)/2, contentViewW, contentViewH);
+//    contentView.layer.cornerRadius = 4;
+//    contentView.layer.masksToBounds = YES;
+//    [contentView.cancelBtn addTarget:self action:@selector(cancelBuyback) forControlEvents:UIControlEventTouchUpInside];
+//    [contentView.ensureBtn addTarget:self action:@selector(ensureBuyback) forControlEvents:UIControlEventTouchUpInside];
+//    if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
+//    
+//        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为回购数量的10%%"];
+//    }else{
+//        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为回购数量的10%%"];
 //        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗米子\n代扣税为%.2f(颗)米子\n可兑换金额为%.2f元",[self.buybackNumF.text integerValue]*0.0048,([self.buybackNumF.text integerValue]-[self.buybackNumF.text integerValue]*0.0048 - 5)];
         
-    }
+//    }
     
-    [_maskV showViewWithContentView:contentView];
+//    [_maskV showViewWithContentView:contentView];
 
     [self showOkayCancelAlert];
 

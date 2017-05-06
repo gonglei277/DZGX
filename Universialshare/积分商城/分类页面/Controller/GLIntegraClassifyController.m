@@ -106,7 +106,6 @@ static NSString *ID = @"GLClassifyCell";
     }
 }
 
-
 //发送请求
 - (void)updateData:(BOOL)status {
     if (status) {
@@ -119,8 +118,8 @@ static NSString *ID = @"GLClassifyCell";
         
     }
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    dict[@"sel_rank"] = @"1";
-    dict[@"sel_type"] = @(_sortType);
+    dict[@"sel_rank"] = @(_sortType);
+    dict[@"sel_type"] = @"1";
     dict[@"page"] = [NSString stringWithFormat:@"%ld",_page];
 
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];

@@ -67,7 +67,7 @@
         
         self.userableBeanStyleLabel.text = @"可直捐米子:";
     }else{
-        self.userableBeanStyleLabel.text = @"可直捐待交税米子:";
+        self.userableBeanStyleLabel.text = @"可直捐推荐米子:";
     }
     self.bgViewH.constant = SCREEN_HEIGHT - 64;
     self.bgViewW.constant = SCREEN_WIDTH;
@@ -151,12 +151,11 @@
         
         self.userableBeanStyleLabel.text = @"可直捐米子:";
         
-        
     }else{
-        self.beanStyleLabel.text = SpecialMoney;
         
+        self.beanStyleLabel.text = SpecialMoney;
         self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%ld",[[UserModel defaultUser].djs_bean integerValue]];
-        self.userableBeanStyleLabel.text = @"可直捐待交税米子:";
+        self.userableBeanStyleLabel.text = @"可直捐推荐米子:";
     }
     [self dismiss];
 }
