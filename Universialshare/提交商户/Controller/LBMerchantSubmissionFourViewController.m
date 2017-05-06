@@ -105,7 +105,6 @@
     
     [self tapgesturephotoOrCamera];
     
-    
 }
 
 //选择图片来源
@@ -179,7 +178,7 @@
     NSArray *imageViewArr = [NSArray arrayWithObjects:self.positiveImage,self.otherSideImage,self.licenseImage,self.undertakingOne,self.doorplateImage,self.DoorplateOneimage,self.InteriorImage,self.InteriorOneImage, nil];
     
     NSArray *titleArr = [NSArray arrayWithObjects:@"face_pic",@"con_pic",@"license_pic",@"promise_pic",@"store_pic",@"store_one",@"store_two",@"store_three", nil];
-    
+
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
