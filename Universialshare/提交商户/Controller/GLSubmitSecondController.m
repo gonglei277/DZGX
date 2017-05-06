@@ -138,7 +138,11 @@
 //        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue]==1) {
             self.industryArr = responseObject[@"data"];
+        }else{
+           
+            [MBProgressHUD showError:responseObject[@"message"]];
         }
+        
         
     } enError:^(NSError *error) {
         [_loadV removeloadview];
@@ -218,18 +222,23 @@
 - (IBAction)chooseFirstClassify:(id)sender {
     
     LBAddrecomdManChooseAreaViewController *vc=[[LBAddrecomdManChooseAreaViewController alloc]init];
-    vc.provinceArr = self.industryArr;
-    vc.titlestr = @"请选择一级分类";
-    vc.returnreslut = ^(NSInteger index){
-        _isChoseFirstClassify = index;
-        _firstClassifyLabel.text = _industryArr[index][@"trade_name"];
-        _firstClassifyLabel.textColor = [UIColor blackColor];
-        _secondClassifyLabel.text = @"";
-
-    };
-    vc.transitioningDelegate=self;
-    vc.modalPresentationStyle=UIModalPresentationCustom;
-    [self presentViewController:vc animated:YES completion:nil];
+    if (self.industryArr.count != 0) {
+        
+        vc.provinceArr = self.industryArr;
+        vc.titlestr = @"请选择一级分类";
+        vc.returnreslut = ^(NSInteger index){
+            _isChoseFirstClassify = index;
+            _firstClassifyLabel.text = _industryArr[index][@"trade_name"];
+            _firstClassifyLabel.textColor = [UIColor blackColor];
+            _secondClassifyLabel.text = @"";
+            
+        };
+        vc.transitioningDelegate=self;
+        vc.modalPresentationStyle=UIModalPresentationCustom;
+        [self presentViewController:vc animated:YES completion:nil];
+    }else{
+        [MBProgressHUD showError:@"一级分类暂无数据"];
+    }
 
 }
 - (IBAction)chooseSecondClassify:(id)sender {
@@ -239,24 +248,32 @@
     }
     
     LBAddrecomdManChooseAreaViewController *vc=[[LBAddrecomdManChooseAreaViewController alloc]init];
-    vc.provinceArr = self.industryArr[_isChoseFirstClassify][@"son"];
-    vc.titlestr = @"请选择二级分类";
-    vc.returnreslut = ^(NSInteger index){
-        _isChoseSecondClassify = index;
-        NSArray *son = _industryArr[_isChoseFirstClassify][@"son"];
-        if (son.count == 0) {
-            _secondClassifyLabel.text = @"";
-        }else{
+    if(self.industryArr.count != 0){
+        NSArray *arr = self.industryArr[_isChoseFirstClassify][@"son"];
+        if(arr.count != 0){
             
-            _secondClassifyLabel.text = _industryArr[_isChoseFirstClassify][@"son"][index][@"trade_name"];
+            vc.provinceArr = self.industryArr[_isChoseFirstClassify][@"son"];
+            vc.titlestr = @"请选择二级分类";
+            vc.returnreslut = ^(NSInteger index){
+                _isChoseSecondClassify = index;
+                NSArray *son = _industryArr[_isChoseFirstClassify][@"son"];
+                if (son.count == 0) {
+                    _secondClassifyLabel.text = @"";
+                }else{
+                    
+                    _secondClassifyLabel.text = _industryArr[_isChoseFirstClassify][@"son"][index][@"trade_name"];
+                }
+                _secondClassifyLabel.textColor = [UIColor blackColor];
+                
+            };
+            
+            vc.transitioningDelegate=self;
+            vc.modalPresentationStyle=UIModalPresentationCustom;
+            [self presentViewController:vc animated:YES completion:nil];
         }
-        _secondClassifyLabel.textColor = [UIColor blackColor];
-        
-    };
-
-    vc.transitioningDelegate=self;
-    vc.modalPresentationStyle=UIModalPresentationCustom;
-    [self presentViewController:vc animated:YES completion:nil];
+    }else{
+        [MBProgressHUD showError:@"二级分类暂无数据"];
+    }
 
 }
 - (IBAction)chooseAddress:(id)sender {
