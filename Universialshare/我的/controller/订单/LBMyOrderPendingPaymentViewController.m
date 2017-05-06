@@ -72,7 +72,7 @@
         [_loadV removeloadview];
         [self.tableview.mj_header endRefreshing];
         [self.tableview.mj_footer endRefreshing];
-        NSLog(@"%@",responseObject);
+
         if ([responseObject[@"code"] integerValue]==1) {
             
             if (_refreshType == NO) {

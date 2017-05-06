@@ -337,7 +337,7 @@
         _headview = [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                        withReuseIdentifier:@"MineCollectionHeaderV"
                                                               forIndexPath:indexPath];
-        
+
         //待收货
         __weak typeof(self)  weakself = self;
         _headview.returnCollectinGoodsBt = ^(){
@@ -359,14 +359,12 @@
         _headview.returnOrderBt = ^(){
             
             if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
-                
                 weakself.hidesBottomBarWhenPushed=YES;
                 LBMineStoreOrderingViewController *vc=[[LBMineStoreOrderingViewController alloc]init];
                 vc.hideNavB = YES;
                 [weakself.navigationController pushViewController:vc animated:YES];
                 weakself.hidesBottomBarWhenPushed=NO;
             
-                
             }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]){
             
                 [weakself.view addSubview:weakself.maskView];
