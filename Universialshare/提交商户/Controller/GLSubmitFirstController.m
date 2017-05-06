@@ -155,7 +155,6 @@
         [self.farenNameTextF becomeFirstResponder];
         return NO;
     }else if (textField == self.farenNameTextF && [string isEqualToString:@"\n"]) {
-        
         [self.farenIDTextF becomeFirstResponder];
         return NO;
         

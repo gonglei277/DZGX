@@ -201,8 +201,17 @@
     [cell.imagev sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",self.dataarr[indexPath.row][@"dealer_pic"]]] placeholderImage:[UIImage imageNamed:@""]];
     cell.namelb.text =[NSString stringWithFormat:@"商户名:%@",self.dataarr[indexPath.row][@"dealer_name"]];
     cell.name1Lb.text =[NSString stringWithFormat:@"商户类型:%@",self.dataarr[indexPath.row][@"dealer_type"]];
-    cell.adressLb.text =[NSString stringWithFormat:@"商户地址%@",self.dataarr[indexPath.row][@"dealer_address"]];
+    cell.adressLb.text =[NSString stringWithFormat:@"商户地址:%@",self.dataarr[indexPath.row][@"dealer_address"]];
     
+    if ([cell.namelb.text rangeOfString:@"null"].location != NSNotFound) {
+        cell.namelb.text = @"商户名:";
+    }
+    if ([cell.name1Lb.text rangeOfString:@"null"].location != NSNotFound) {
+        cell.name1Lb.text = @"商户类型:";
+    }
+    if ([cell.adressLb.text rangeOfString:@"null"].location != NSNotFound) {
+        cell.adressLb.text = @"商户地址:";
+    }
     __weak typeof(self) weakself =self;
     cell.returnGowhere = ^(NSInteger index){
         if (weakself.HideNavB == YES) {
