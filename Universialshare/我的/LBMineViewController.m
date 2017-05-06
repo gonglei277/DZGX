@@ -104,7 +104,7 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
     
-    return self.titlearr.count;
+    return 6;
 }
 
 

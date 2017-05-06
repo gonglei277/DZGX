@@ -48,7 +48,7 @@
     
     UIBarButtonItem *ba=[[UIBarButtonItem alloc]initWithCustomView:button];
     
-    self.navigationItem.rightBarButtonItem = ba;
+    //self.navigationItem.rightBarButtonItem = ba;
     
 }
 
@@ -61,7 +61,21 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 60;
+    if (indexPath.row == 0) {
+        return 0;
+    }else if (indexPath.row == 1){
+        return 0;
+        
+    }else if (indexPath.row == 2){
+        return 0;
+        
+    }else if (indexPath.row == 3){
+        return 0;
+        
+    }else{
+        return 60;
+        
+    }
     
 }
 
@@ -75,17 +89,21 @@
     
     if (indexPath.row == 0) {
         cell.timelb.hidden = YES;
+        cell.hidden = YES;
     }else if (indexPath.row == 1){
         cell.timelb.hidden = YES;
-    
+        cell.hidden = YES;
     }else if (indexPath.row == 2){
         cell.timelb.hidden = YES;
+        cell.hidden = YES;
         
     }else if (indexPath.row == 3){
         cell.timelb.hidden = YES;
+        cell.hidden = YES;
         
     }else if (indexPath.row == 4){
         cell.timelb.hidden = YES;
+        cell.hidden = NO;
         
     }
     

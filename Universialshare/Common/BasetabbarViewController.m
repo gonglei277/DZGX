@@ -83,12 +83,12 @@
         }else if ([[UserModel defaultUser].usrtype isEqualToString:THREESALER]){//三级业务员
             self.viewControllers = @[firstNav, businessNav, IntegralMallnav, minenav];
         }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]){//普通用户
-            self.viewControllers = @[firstNav, Homenav, IntegralMallnav, minenav];
+            self.viewControllers = @[firstNav, IntegralMallnav, minenav];
         }else if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]){//商家
             self.viewControllers = @[firstNav, myordersNav, IntegralMallnav, minenav];
         }
     }else{//退出状态
-        self.viewControllers = @[firstNav, Homenav, IntegralMallnav, minenav];
+        self.viewControllers = @[firstNav, IntegralMallnav, minenav];
     }
     
     
@@ -112,18 +112,8 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
     
-    if (viewController == [tabBarController.viewControllers objectAtIndex:0]) {
-
-    }
-    if (viewController == [tabBarController.viewControllers objectAtIndex:1]) {
-//        [MBProgressHUD showError:@"此功能暂未开放"];
-//        return NO;
-    }
+  
     if (viewController == [tabBarController.viewControllers objectAtIndex:2]) {
-//        [MBProgressHUD showError:@"此功能暂未开放"];
-//        return NO;
-    }
-    if (viewController == [tabBarController.viewControllers objectAtIndex:3]) {
        
         if ([UserModel defaultUser].loginstatus == YES) {
             
