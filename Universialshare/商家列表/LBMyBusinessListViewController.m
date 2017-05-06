@@ -56,7 +56,6 @@
         // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
     }];
     
-    
     // 设置文字
     
     [header setTitle:@"快扯我，快点" forState:MJRefreshStateIdle];
@@ -68,8 +67,6 @@
     
     self.tableview.mj_header = header;
     self.tableview.mj_footer = footer;
-    
-    
     
 }
 
