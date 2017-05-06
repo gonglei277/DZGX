@@ -33,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *farenNameTextF;
 @property (weak, nonatomic) IBOutlet UITextField *farenIDTextF;
 @property (weak, nonatomic) IBOutlet UITextField *mailboxTextF;
+@property (weak, nonatomic) IBOutlet UITextField *shopNameTextF;
+
 @property (weak, nonatomic) IBOutlet UITextField *mianjiTextF;
 @property (weak, nonatomic) IBOutlet UIView *timeLabel;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextV;
@@ -163,6 +165,10 @@
         return NO;
     }
     else if (textField == self.mailboxTextF && [string isEqualToString:@"\n"]){
+        [self.shopNameTextF becomeFirstResponder];
+        return NO;
+    }else if (textField == self.shopNameTextF && [string isEqualToString:@"\n"]){
+        
         [self.mianjiTextF becomeFirstResponder];
         return NO;
     }else if (textField == self.mianjiTextF && [string isEqualToString:@"\n"]){
@@ -298,6 +304,10 @@
         [MBProgressHUD showError:@"邮箱不合法"];
         return;
     }
+    if (self.shopNameTextF.text.length <=0 ) {
+        [MBProgressHUD showError:@"请输入店铺名称"];
+        return;
+    }
     if (self.mianjiTextF.text.length <=0 ) {
         [MBProgressHUD showError:@"请输入门店面积"];
         return;
@@ -323,6 +333,7 @@
     [MerchantInformationModel defaultUser].legalPerson = self.farenNameTextF.text;
     [MerchantInformationModel defaultUser].legalPersonCode = self.farenIDTextF.text;
     [MerchantInformationModel defaultUser].Email = self.mailboxTextF.text;
+    [MerchantInformationModel defaultUser].shopName = self.shopNameTextF.text;
     [MerchantInformationModel defaultUser].measureRrea = self.mianjiTextF.text;
     [MerchantInformationModel defaultUser].BusinessBegin = [NSString stringWithFormat:@"%@-%@",self.startTimeLabel.text ,self.endTimeLabel.text];
     [MerchantInformationModel defaultUser].BusinessEnd = self.endTimeLabel.text;

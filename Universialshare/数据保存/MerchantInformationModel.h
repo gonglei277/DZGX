@@ -16,6 +16,7 @@
 @property (nonatomic, copy)NSString  *legalPerson;//法人
 @property (nonatomic, copy)NSString  *legalPersonCode;//法人身份证
 @property (nonatomic, copy)NSString  *Email;//邮箱
+@property (nonatomic, copy)NSString  *shopName;//店铺名称
 @property (nonatomic, copy)NSString  *measureRrea;//门店面积
 @property (nonatomic, copy)NSString  *BusinessBegin;//营业开始时间
 @property (nonatomic, copy)NSString  *BusinessEnd;//营业结束时间

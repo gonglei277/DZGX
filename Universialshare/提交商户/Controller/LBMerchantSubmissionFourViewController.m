@@ -162,6 +162,7 @@
     dict[@"phone"] = [MerchantInformationModel defaultUser].loginPhone;
     dict[@"pwd"] = [MerchantInformationModel defaultUser].secret;
     
+    dict[@"shop_name"] = [MerchantInformationModel defaultUser].shopName;
     dict[@"truename"] = [MerchantInformationModel defaultUser].legalPerson;
     dict[@"email"] = [MerchantInformationModel defaultUser].Email;
     dict[@"shop_acreage"] = [MerchantInformationModel defaultUser].measureRrea;
