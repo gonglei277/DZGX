@@ -102,6 +102,7 @@
 }
 - (void)chooseTime:(UIGestureRecognizer *)tap {
 
+    [self.view endEditing:YES];
     _maskV.alpha = 1;
     _contentView.frame = CGRectMake(-SCREEN_WIDTH ,0.3 * SCREEN_HEIGHT, SCREEN_WIDTH - 20, 0.4*SCREEN_HEIGHT);
     [UIView animateWithDuration:0.2 animations:^{
@@ -165,7 +166,7 @@
         [self.mianjiTextF becomeFirstResponder];
         return NO;
     }else if (textField == self.mianjiTextF && [string isEqualToString:@"\n"]){
-//        [self.view endEditing:YES];
+
         [textField resignFirstResponder];
         return NO;
     }
