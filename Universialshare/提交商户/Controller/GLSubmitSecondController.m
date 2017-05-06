@@ -132,7 +132,7 @@
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].uid;
     
-    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[UIApplication sharedApplication].keyWindow];
+//    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[UIApplication sharedApplication].keyWindow];
     [NetworkManager requestPOSTWithURLStr:@"user/getHylist" paramDic:dict finish:^(id responseObject) {
         [_loadV removeloadview];
         NSLog(@"responseObject = %@",responseObject);
@@ -158,8 +158,10 @@
         _ischosePro = index;
         _provinceLabel.text = _provinceArr[index][@"province_name"];
         _provinceLabel.textColor = [UIColor blackColor];
-        _cityLabel.text = @"";
-        _countryLabel.text = @"";
+        _cityLabel.text = @"请选择城市";
+        _cityLabel.textColor = [UIColor lightGrayColor];
+        _countryLabel.text = @"请选择区域";
+        _countryLabel.textColor = [UIColor lightGrayColor];
     };
     vc.transitioningDelegate=self;
     vc.modalPresentationStyle=UIModalPresentationCustom;
@@ -181,15 +183,14 @@
         _ischoseCity = index;
         _cityLabel.text = _provinceArr[_ischosePro][@"city"][index][@"city_name"];
         _cityLabel.textColor = [UIColor blackColor];
-        _countryLabel.text = @"";
+        _countryLabel.text = @"请选择区域";
+        _countryLabel.textColor = [UIColor lightGrayColor];
     };
     vc.transitioningDelegate=self;
     vc.modalPresentationStyle=UIModalPresentationCustom;
     [self presentViewController:vc animated:YES completion:nil];
     
-
 }
-
 
 //选择区域
 - (IBAction)choseArea:(id)sender {
@@ -300,16 +301,24 @@
         [MBProgressHUD showError:@"还没有选择地点"];
         return;
     }
-    if ([self.detailTextF.text isEqualToString:@"请填写具体地址"]) {
+    if ([self.detailTextF.text isEqualToString:@""]) {
         [MBProgressHUD showError:@"还没有填写具体地址"];
         return;
     }
-    [MerchantInformationModel defaultUser].provinceId = self.provinceArr[_provinceIndex][@"province_name"];
-    [MerchantInformationModel defaultUser].cityId = self.provinceArr[_provinceIndex][@"city"][_cityIndex];
-    [MerchantInformationModel defaultUser].countryId = self.provinceArr[_provinceIndex][@"city"][_cityIndex][@"country"][_countryIndex];
-    [MerchantInformationModel defaultUser].PrimaryClassification = self.firstClassifyLabel.text;
-    [MerchantInformationModel defaultUser].TwoClassification = self.industryArr[_isChoseFirstClassify][@"trade_name"];
-    [MerchantInformationModel defaultUser].mapAdress = self.industryArr[_isChoseFirstClassify][@"son"][_isChoseSecondClassify][@"trade_name"];
+    [MerchantInformationModel defaultUser].provinceId = self.provinceArr[_provinceIndex][@"province_code"];
+    [MerchantInformationModel defaultUser].cityId = self.provinceArr[_provinceIndex][@"city"][_cityIndex][@"city_code"];
+    [MerchantInformationModel defaultUser].countryId = self.provinceArr[_provinceIndex][@"city"][_cityIndex][@"country"][_countryIndex][@"country_code"];
+    [MerchantInformationModel defaultUser].PrimaryClassification = self.industryArr[_isChoseFirstClassify][@"trade_id"];
+    
+    NSArray *son = _industryArr[_isChoseFirstClassify][@"son"];
+    if (son.count == 0) {
+        [MerchantInformationModel defaultUser].TwoClassification = @"";
+    }else{
+        
+        [MerchantInformationModel defaultUser].TwoClassification = _industryArr[_isChoseFirstClassify][@"son"][_isChoseSecondClassify][@"trade_id"];
+    }
+
+    [MerchantInformationModel defaultUser].mapAdress = self.addressLabel.text;
     [MerchantInformationModel defaultUser].lat = self.latStr;
     [MerchantInformationModel defaultUser].lng = self.longStr;
     [MerchantInformationModel defaultUser].detailAdress = self.detailTextF.text;

@@ -247,6 +247,7 @@
     GLHourseDetailController *detailVC = [[GLHourseDetailController alloc] init];
     detailVC.navigationItem.title = @"商品详情";
     detailVC.type = 2;
+    detailVC.goods_id = @"18";
     [self.navigationController pushViewController:detailVC animated:YES];
     
 }
