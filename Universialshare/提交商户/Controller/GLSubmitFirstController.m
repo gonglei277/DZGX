@@ -117,20 +117,20 @@
 
 - (void)ensureDate:(UIButton *)btn {
     NSDateFormatter *formatter = [[ NSDateFormatter alloc ] init ];
-    formatter.dateFormat = @"hh:mm a";
+    formatter.dateFormat = @"HH:mm";
 
     NSString *timeStr = [formatter stringFromDate:_contentView.datePicker.date];
 
-    NSString * newTime = [timeStr stringByReplacingOccurrencesOfString:@"上午" withString:@"am"];//替换
-    NSString * newTime1 = [newTime stringByReplacingOccurrencesOfString:@"下午" withString:@"pm"];//替换
+//    NSString * newTime = [timeStr stringByReplacingOccurrencesOfString:@"上午" withString:@"am"];//替换
+//    NSString * newTime1 = [newTime stringByReplacingOccurrencesOfString:@"下午" withString:@"pm"];//替换
     
     if (btn == _contentView.ensureBtn) {
         if (_whichOne == 1) {
             
-            self.startTimeLabel.text = newTime1;
+            self.startTimeLabel.text = timeStr;
         }else{
             
-            self.endTimeLabel.text = newTime1;
+            self.endTimeLabel.text = timeStr;
         }
     }
     [self dismiss];
@@ -166,7 +166,8 @@
         [self.mianjiTextF becomeFirstResponder];
         return NO;
     }else if (textField == self.mianjiTextF && [string isEqualToString:@"\n"]){
-        [self.view endEditing:YES];
+//        [self.view endEditing:YES];
+        [textField resignFirstResponder];
         return NO;
     }
    
@@ -323,7 +324,7 @@
     [MerchantInformationModel defaultUser].legalPersonCode = self.farenIDTextF.text;
     [MerchantInformationModel defaultUser].Email = self.mailboxTextF.text;
     [MerchantInformationModel defaultUser].measureRrea = self.mianjiTextF.text;
-    [MerchantInformationModel defaultUser].BusinessBegin = self.startTimeLabel.text;
+    [MerchantInformationModel defaultUser].BusinessBegin = [NSString stringWithFormat:@"%@-%@",self.startTimeLabel.text ,self.endTimeLabel.text];
     [MerchantInformationModel defaultUser].BusinessEnd = self.endTimeLabel.text;
     [MerchantInformationModel defaultUser].BusinessContent = self.contentTextV.text;
 
