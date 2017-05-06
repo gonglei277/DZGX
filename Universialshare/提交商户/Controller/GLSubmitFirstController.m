@@ -295,6 +295,7 @@
 //        return;
 //    }else if(![predicateModel isValidateEmail:self.mailboxTextF.text]){
 //        [MBProgressHUD showError:@"邮箱不合法"];
+//        return;
 //    }
 //    if (self.mianjiTextF.text.length <=0 ) {
 //        [MBProgressHUD showError:@"请输入门店面积"];
@@ -312,15 +313,6 @@
 //        [MBProgressHUD showError:@"请输入经营内容"];
 //        return;
 //    }
-//    @property (nonatomic, copy)NSString  *loginPhone;//登录手机号
-//    @property (nonatomic, copy)NSString  *secret;//密码
-//    @property (nonatomic, copy)NSString  *legalPerson;//法人
-//    @property (nonatomic, copy)NSString  *legalPersonCode;//法人身份证
-//    @property (nonatomic, copy)NSString  *Email;//邮箱
-//    @property (nonatomic, copy)NSString  *measureRrea;//门店面积
-//    @property (nonatomic, copy)NSString  *BusinessBegin;//营业开始时间
-//    @property (nonatomic, copy)NSString  *BusinessEnd;//营业结束时间
-//    @property (nonatomic, copy)NSString  *BusinessContent;//经营内容
 
 
     [MerchantInformationModel defaultUser].loginPhone = self.phoneTextF.text;
