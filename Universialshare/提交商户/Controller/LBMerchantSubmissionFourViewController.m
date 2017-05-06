@@ -121,10 +121,10 @@
 //提交
 - (IBAction)submitinfo:(UIButton *)sender {
     
-    if (!self.handImage.image || self.handImage.image == [UIImage imageNamed:@"手持身份证"]) {
-        [MBProgressHUD showError:@"请上传法人手持证件照"];
-        return;
-    }
+//    if (!self.handImage.image || self.handImage.image == [UIImage imageNamed:@"手持身份证"]) {
+//        [MBProgressHUD showError:@"请上传法人手持证件照"];
+//        return;
+//    }
     if (!self.positiveImage.image || self.positiveImage.image == [UIImage imageNamed:@"样板-拷贝"]) {
         [MBProgressHUD showError:@"请上传身份证正面照"];
         return;
@@ -138,8 +138,8 @@
         return;
     }
     
-    if ((!self.undertakingOne.image || self.undertakingOne.image == [UIImage imageNamed:@"照片框-拷贝-4"]) && (!self.undertakingTwo.image || self.undertakingTwo.image == [UIImage imageNamed:@"照片框-拷贝-9"])) {
-        [MBProgressHUD showError:@"请至少上传一张商家承诺书"];
+    if ((!self.undertakingOne.image || self.undertakingOne.image == [UIImage imageNamed:@"照片框-拷贝-4"])) {
+        [MBProgressHUD showError:@"请上传商家承诺书"];
         return;
     }
     
@@ -148,13 +148,8 @@
         return;
     }
     
-    if (!self.DoorplateOneimage.image || self.DoorplateOneimage.image == [UIImage imageNamed:@"门牌照"]) {
-        [MBProgressHUD showError:@"请上传门牌照"];
-        return;
-    }
-    
-    if ((!self.InteriorImage.image || self.InteriorImage.image == [UIImage imageNamed:@"照片框-拷贝-12"]) && (!self.InteriorOneImage.image || self.InteriorOneImage.image == [UIImage imageNamed:@"照片框-拷贝-13"])) {
-        [MBProgressHUD showError:@"请上传两张内景照"];
+    if ((!self.InteriorImage.image || self.InteriorImage.image == [UIImage imageNamed:@"照片框-拷贝-12"]) && (!self.InteriorOneImage.image || self.InteriorOneImage.image == [UIImage imageNamed:@"照片框-拷贝-13"]) && (!self.DoorplateOneimage.image || self.InteriorOneImage.image == [UIImage imageNamed:@"内景2-拷贝"])) {
+        [MBProgressHUD showError:@"请上传3张内景照"];
         return;
     }
     
@@ -182,7 +177,7 @@
     dict[@"lng"] = [MerchantInformationModel defaultUser].lng;
     dict[@"two_trade_id"] = [MerchantInformationModel defaultUser].TwoClassification;
     
-    NSArray *imageViewArr = [NSArray arrayWithObjects:self.handImage,self.positiveImage,self.otherSideImage,self.licenseImage,self.undertakingOne,self.undertakingTwo,self.doorplateImage,self.DoorplateOneimage,self.InteriorImage,self.InteriorOneImage, nil];
+    NSArray *imageViewArr = [NSArray arrayWithObjects:self.positiveImage,self.otherSideImage,self.licenseImage,self.undertakingOne,self.doorplateImage,self.DoorplateOneimage,self.InteriorImage,self.InteriorOneImage, nil];
     
     NSArray *titleArr = [NSArray arrayWithObjects:@"face_pic",@"con_pic",@"license_pic",@"promise_pic",@"store_pic",@"store_one",@"store_two",@"store_three", nil];
     
@@ -190,7 +185,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
     manager.requestSerializer.timeoutInterval = 10;
-    [manager POST:[NSString stringWithFormat:@"%@user/userAndShopInfoBq",URL_Base] parameters:dict  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [manager POST:[NSString stringWithFormat:@"%@user/openBusinessOne",URL_Base] parameters:dict  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         //将图片以表单形式上传
         
         for (int i = 0; i < imageViewArr.count; i ++) {

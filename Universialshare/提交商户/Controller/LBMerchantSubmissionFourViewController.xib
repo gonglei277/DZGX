@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -51,11 +51,11 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="手持身份证" translatesAutoresizingMaskIntoConstraints="NO" id="t6l-4X-FOY">
-                                            <rect key="frame" x="10" y="33" width="90" height="110"/>
+                                        <imageView hidden="YES" clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="手持身份证" translatesAutoresizingMaskIntoConstraints="NO" id="t6l-4X-FOY">
+                                            <rect key="frame" x="10" y="33" width="0.0" height="110"/>
                                             <gestureRecognizers/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="90" id="dNh-2q-bPQ"/>
+                                                <constraint firstAttribute="width" id="dNh-2q-bPQ"/>
                                                 <constraint firstAttribute="height" constant="110" id="mVf-EM-Zuo"/>
                                             </constraints>
                                             <connections>
@@ -63,7 +63,7 @@
                                             </connections>
                                         </imageView>
                                         <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="样板-拷贝" translatesAutoresizingMaskIntoConstraints="NO" id="tuG-cf-svE">
-                                            <rect key="frame" x="110" y="33" width="90" height="110"/>
+                                            <rect key="frame" x="10" y="33" width="90" height="110"/>
                                             <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="90" id="IIq-0i-kbs"/>
@@ -74,7 +74,7 @@
                                             </connections>
                                         </imageView>
                                         <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="照片框-拷贝" translatesAutoresizingMaskIntoConstraints="NO" id="ZZN-eB-E6r">
-                                            <rect key="frame" x="210" y="33" width="90" height="110"/>
+                                            <rect key="frame" x="110" y="33" width="90" height="110"/>
                                             <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="110" id="M5o-xK-48s"/>
@@ -104,7 +104,7 @@
                                                 <outletCollection property="gestureRecognizers" destination="pHu-UX-qvc" appends="YES" id="l2E-9q-DPC"/>
                                             </connections>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商家承落诺书（1-2张）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsC-Wt-0yw">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商家承落诺书" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsC-Wt-0yw">
                                             <rect key="frame" x="10" y="301" width="335" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="ON1-CW-YIl"/>
@@ -124,18 +124,18 @@
                                                 <outletCollection property="gestureRecognizers" destination="RNf-tU-pc7" appends="YES" id="zMI-18-Hfn"/>
                                             </connections>
                                         </imageView>
-                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="照片框-拷贝-9" translatesAutoresizingMaskIntoConstraints="NO" id="ZZN-7W-zEz">
-                                            <rect key="frame" x="120" y="329" width="100" height="110"/>
+                                        <imageView hidden="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="照片框-拷贝-9" translatesAutoresizingMaskIntoConstraints="NO" id="ZZN-7W-zEz">
+                                            <rect key="frame" x="120" y="329" width="0.0" height="110"/>
                                             <gestureRecognizers/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="9u5-fv-z3L"/>
+                                                <constraint firstAttribute="width" id="9u5-fv-z3L"/>
                                                 <constraint firstAttribute="height" constant="110" id="yj2-uY-n9G"/>
                                             </constraints>
                                             <connections>
                                                 <outletCollection property="gestureRecognizers" destination="QBL-84-mtt" appends="YES" id="cil-J6-bBw"/>
                                             </connections>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门店门头照，门牌照（2张）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHU-hZ-Xw1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门店门头照，门牌照（" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHU-hZ-Xw1">
                                             <rect key="frame" x="10" y="449" width="335" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="Mq0-2y-z34"/>
@@ -155,18 +155,7 @@
                                                 <outletCollection property="gestureRecognizers" destination="s35-kt-LGI" appends="YES" id="Cil-gP-jpp"/>
                                             </connections>
                                         </imageView>
-                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="门牌照" translatesAutoresizingMaskIntoConstraints="NO" id="mTx-6o-bzZ">
-                                            <rect key="frame" x="120" y="477" width="100" height="110"/>
-                                            <gestureRecognizers/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="9th-jG-FI5"/>
-                                                <constraint firstAttribute="height" constant="110" id="n2g-sw-4FG"/>
-                                            </constraints>
-                                            <connections>
-                                                <outletCollection property="gestureRecognizers" destination="iOU-Hu-EcY" appends="YES" id="syY-Qp-3Ip"/>
-                                            </connections>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门店内景照（2张）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHl-hp-iRq">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门店内景照（3张）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHl-hp-iRq">
                                             <rect key="frame" x="10" y="597" width="335" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="2f8-EK-tA5"/>
@@ -176,10 +165,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="照片框-拷贝-12" translatesAutoresizingMaskIntoConstraints="NO" id="for-wy-2rY">
-                                            <rect key="frame" x="10" y="625" width="100" height="110"/>
+                                            <rect key="frame" x="10" y="625" width="90" height="110"/>
                                             <gestureRecognizers/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="JzR-ZZ-Gsw"/>
+                                                <constraint firstAttribute="width" constant="90" id="JzR-ZZ-Gsw"/>
                                                 <constraint firstAttribute="height" constant="110" id="irX-oG-KjR"/>
                                             </constraints>
                                             <connections>
@@ -187,14 +176,25 @@
                                             </connections>
                                         </imageView>
                                         <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="照片框-拷贝-13" translatesAutoresizingMaskIntoConstraints="NO" id="drQ-m2-kfU">
-                                            <rect key="frame" x="120" y="625" width="100" height="110"/>
+                                            <rect key="frame" x="110" y="625" width="90" height="110"/>
                                             <gestureRecognizers/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="fQb-TS-pW2"/>
+                                                <constraint firstAttribute="width" constant="90" id="fQb-TS-pW2"/>
                                                 <constraint firstAttribute="height" constant="110" id="u1b-9M-0cM"/>
                                             </constraints>
                                             <connections>
                                                 <outletCollection property="gestureRecognizers" destination="zTs-Yq-ogu" appends="YES" id="O9q-F1-u8P"/>
+                                            </connections>
+                                        </imageView>
+                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="内景2-拷贝" translatesAutoresizingMaskIntoConstraints="NO" id="mTx-6o-bzZ">
+                                            <rect key="frame" x="210" y="625" width="90" height="110"/>
+                                            <gestureRecognizers/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="90" id="DgB-fA-ZeY"/>
+                                                <constraint firstAttribute="height" constant="110" id="Vfz-Lp-1Hx"/>
+                                            </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="iOU-Hu-EcY" appends="YES" id="syY-Qp-3Ip"/>
                                             </connections>
                                         </imageView>
                                     </subviews>
@@ -207,27 +207,28 @@
                                         <constraint firstItem="tnQ-Bl-uxw" firstAttribute="top" secondItem="pHU-hZ-Xw1" secondAttribute="bottom" constant="10" id="5En-3f-D1n"/>
                                         <constraint firstItem="for-wy-2rY" firstAttribute="leading" secondItem="0jo-zD-FyS" secondAttribute="leading" constant="10" id="5Qj-TL-amn"/>
                                         <constraint firstItem="QsC-Wt-0yw" firstAttribute="top" secondItem="iBc-IM-d5Q" secondAttribute="bottom" constant="10" id="5U9-2G-Dxq"/>
-                                        <constraint firstItem="mTx-6o-bzZ" firstAttribute="top" secondItem="pHU-hZ-Xw1" secondAttribute="bottom" constant="10" id="7Zk-Rd-24j"/>
                                         <constraint firstItem="t6l-4X-FOY" firstAttribute="leading" secondItem="0jo-zD-FyS" secondAttribute="leading" constant="10" id="7tO-DL-70v"/>
                                         <constraint firstItem="MVX-GZ-Uot" firstAttribute="leading" secondItem="0jo-zD-FyS" secondAttribute="leading" constant="10" id="8bu-wA-LiU"/>
-                                        <constraint firstItem="tuG-cf-svE" firstAttribute="leading" secondItem="t6l-4X-FOY" secondAttribute="trailing" constant="10" id="8hm-F1-Ueh"/>
+                                        <constraint firstItem="tuG-cf-svE" firstAttribute="leading" secondItem="t6l-4X-FOY" secondAttribute="trailing" id="8hm-F1-Ueh"/>
                                         <constraint firstAttribute="trailing" secondItem="MVX-GZ-Uot" secondAttribute="trailing" constant="10" id="Bfb-iY-7yd"/>
                                         <constraint firstAttribute="trailing" secondItem="lHl-hp-iRq" secondAttribute="trailing" constant="10" id="EbP-kQ-pzM"/>
                                         <constraint firstItem="drQ-m2-kfU" firstAttribute="top" secondItem="lHl-hp-iRq" secondAttribute="bottom" constant="10" id="Hke-XF-T2f"/>
                                         <constraint firstAttribute="trailing" secondItem="Uiw-ML-bpy" secondAttribute="trailing" constant="10" id="JPD-D1-wfT"/>
                                         <constraint firstItem="t6l-4X-FOY" firstAttribute="top" secondItem="MVX-GZ-Uot" secondAttribute="bottom" constant="10" id="JYH-Dz-XbR"/>
-                                        <constraint firstItem="mTx-6o-bzZ" firstAttribute="leading" secondItem="tnQ-Bl-uxw" secondAttribute="trailing" constant="10" id="K5L-qg-5ab"/>
                                         <constraint firstItem="tuG-cf-svE" firstAttribute="top" secondItem="MVX-GZ-Uot" secondAttribute="bottom" constant="10" id="LOh-ZW-VWB"/>
                                         <constraint firstItem="lHl-hp-iRq" firstAttribute="leading" secondItem="0jo-zD-FyS" secondAttribute="leading" constant="10" id="MT1-st-609"/>
                                         <constraint firstItem="ZZN-7W-zEz" firstAttribute="top" secondItem="QsC-Wt-0yw" secondAttribute="bottom" constant="10" id="NNu-3G-eCt"/>
-                                        <constraint firstItem="lHl-hp-iRq" firstAttribute="top" secondItem="mTx-6o-bzZ" secondAttribute="bottom" constant="10" id="Nr8-0K-5h0"/>
                                         <constraint firstAttribute="trailing" secondItem="pHU-hZ-Xw1" secondAttribute="trailing" constant="10" id="Pos-qA-NX3"/>
+                                        <constraint firstItem="drQ-m2-kfU" firstAttribute="top" secondItem="mTx-6o-bzZ" secondAttribute="top" id="Qq5-cv-uvS"/>
                                         <constraint firstItem="MVX-GZ-Uot" firstAttribute="top" secondItem="0jo-zD-FyS" secondAttribute="top" constant="5" id="T0Y-cJ-dVi"/>
+                                        <constraint firstItem="drQ-m2-kfU" firstAttribute="bottom" secondItem="mTx-6o-bzZ" secondAttribute="bottom" id="WKD-1v-fCd"/>
                                         <constraint firstItem="ZZN-eB-E6r" firstAttribute="leading" secondItem="tuG-cf-svE" secondAttribute="trailing" constant="10" id="akf-5i-oqn"/>
                                         <constraint firstItem="Uiw-ML-bpy" firstAttribute="top" secondItem="t6l-4X-FOY" secondAttribute="bottom" constant="10" id="c0f-Cr-YKB"/>
                                         <constraint firstItem="ZZN-eB-E6r" firstAttribute="top" secondItem="MVX-GZ-Uot" secondAttribute="bottom" constant="10" id="cZe-NH-NpC"/>
                                         <constraint firstItem="iBc-IM-d5Q" firstAttribute="top" secondItem="Uiw-ML-bpy" secondAttribute="bottom" constant="10" id="eP2-RN-jH9"/>
                                         <constraint firstItem="for-wy-2rY" firstAttribute="top" secondItem="lHl-hp-iRq" secondAttribute="bottom" constant="10" id="huE-GJ-qjI"/>
+                                        <constraint firstItem="lHl-hp-iRq" firstAttribute="top" secondItem="tnQ-Bl-uxw" secondAttribute="bottom" constant="10" id="lEh-Yy-GSk"/>
+                                        <constraint firstItem="mTx-6o-bzZ" firstAttribute="leading" secondItem="drQ-m2-kfU" secondAttribute="trailing" constant="10" id="pr1-8O-s0C"/>
                                         <constraint firstAttribute="trailing" secondItem="QsC-Wt-0yw" secondAttribute="trailing" constant="10" id="qWi-Mj-OwS"/>
                                         <constraint firstItem="drQ-m2-kfU" firstAttribute="leading" secondItem="for-wy-2rY" secondAttribute="trailing" constant="10" id="qcH-PG-gCF"/>
                                         <constraint firstItem="tnQ-Bl-uxw" firstAttribute="leading" secondItem="0jo-zD-FyS" secondAttribute="leading" constant="10" id="sW6-RB-k7x"/>
@@ -335,6 +336,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="内景2-拷贝" width="69" height="69"/>
         <image name="手持身份证" width="65" height="64"/>
         <image name="样板-拷贝" width="65" height="64"/>
         <image name="照片框-拷贝" width="65" height="64"/>
@@ -344,6 +346,5 @@
         <image name="照片框-拷贝-2" width="98" height="96"/>
         <image name="照片框-拷贝-4" width="98" height="96"/>
         <image name="照片框-拷贝-9" width="98" height="96"/>
-        <image name="门牌照" width="98" height="96"/>
     </resources>
 </document>
