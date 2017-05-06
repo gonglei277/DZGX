@@ -100,7 +100,7 @@
         return;
     }
     
-    if (![predicateModel valiMobile:self.bankCode.text]) {
+    if (![predicateModel valiMobile:self.phonetf.text]) {
         [MBProgressHUD showError:@"手机号格式不对"];
         return;
     }

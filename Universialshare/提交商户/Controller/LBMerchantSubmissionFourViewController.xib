@@ -135,7 +135,7 @@
                                                 <outletCollection property="gestureRecognizers" destination="QBL-84-mtt" appends="YES" id="cil-J6-bBw"/>
                                             </connections>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门店门头照，门牌照（" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHU-hZ-Xw1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门店门头照，门牌照" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHU-hZ-Xw1">
                                             <rect key="frame" x="10" y="449" width="335" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="Mq0-2y-z34"/>
