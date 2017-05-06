@@ -245,7 +245,7 @@
                                             </constraints>
                                         </view>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AB3-ow-k0c">
-                                            <rect key="frame" x="10" y="138" width="335" height="80"/>
+                                            <rect key="frame" x="5" y="128" width="340" height="80"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="80" id="fEV-ng-2fV"/>
@@ -276,8 +276,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="㎡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ni-Uf-S75">
-                                            <rect key="frame" x="331.5" y="15.5" width="13.5" height="16"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <rect key="frame" x="329.5" y="14.5" width="15.5" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -291,7 +291,7 @@
                                         <constraint firstItem="91r-2v-GIo" firstAttribute="centerY" secondItem="8Vu-pp-Cac" secondAttribute="centerY" id="Heh-CY-y0R"/>
                                         <constraint firstItem="3W3-r7-FHQ" firstAttribute="top" secondItem="eNb-SC-Mgp" secondAttribute="bottom" constant="15" id="K4B-yu-sKP"/>
                                         <constraint firstItem="eNb-SC-Mgp" firstAttribute="top" secondItem="dLW-Kp-egs" secondAttribute="bottom" constant="15" id="KRR-LY-ubA"/>
-                                        <constraint firstItem="AB3-ow-k0c" firstAttribute="leading" secondItem="SZf-1X-Phy" secondAttribute="leading" id="PDG-go-eBG"/>
+                                        <constraint firstItem="AB3-ow-k0c" firstAttribute="leading" secondItem="SZf-1X-Phy" secondAttribute="leading" constant="-5" id="PDG-go-eBG"/>
                                         <constraint firstAttribute="trailing" secondItem="3W3-r7-FHQ" secondAttribute="trailing" constant="10" id="PuM-ZB-F9D"/>
                                         <constraint firstItem="8Vu-pp-Cac" firstAttribute="leading" secondItem="eNb-SC-Mgp" secondAttribute="trailing" constant="20" id="RjL-fJ-SwQ"/>
                                         <constraint firstAttribute="trailing" secondItem="dLW-Kp-egs" secondAttribute="trailing" constant="4" id="WzI-FW-eX3"/>
@@ -301,7 +301,7 @@
                                         <constraint firstItem="SZf-1X-Phy" firstAttribute="leading" secondItem="eNb-SC-Mgp" secondAttribute="leading" id="cKz-X0-WKr"/>
                                         <constraint firstItem="AB3-ow-k0c" firstAttribute="trailing" secondItem="2ni-Uf-S75" secondAttribute="trailing" id="dd6-pY-hGH"/>
                                         <constraint firstItem="8Vu-pp-Cac" firstAttribute="height" secondItem="eNb-SC-Mgp" secondAttribute="height" id="f1e-BS-Oi6"/>
-                                        <constraint firstItem="AB3-ow-k0c" firstAttribute="top" secondItem="SZf-1X-Phy" secondAttribute="bottom" constant="10" id="fXh-74-ynW"/>
+                                        <constraint firstItem="AB3-ow-k0c" firstAttribute="top" secondItem="SZf-1X-Phy" secondAttribute="bottom" id="fXh-74-ynW"/>
                                         <constraint firstAttribute="trailing" secondItem="ocQ-0q-7wK" secondAttribute="trailing" constant="100" id="j1f-HO-Smq"/>
                                         <constraint firstItem="ocQ-0q-7wK" firstAttribute="height" secondItem="ZKU-gl-Z2n" secondAttribute="height" id="oFg-eF-c14"/>
                                         <constraint firstItem="ZKU-gl-Z2n" firstAttribute="leading" secondItem="fqW-bD-6Lh" secondAttribute="leading" constant="10" id="pAn-fZ-hHZ"/>

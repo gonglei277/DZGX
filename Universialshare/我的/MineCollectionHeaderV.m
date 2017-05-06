@@ -309,7 +309,7 @@
 -(NSArray*)titleArr{
 
     if (!_titleArr) {
-        _titleArr=[NSArray arrayWithObjects:@"米券",@"米袋",@"米子",@"代缴税米子",@"注册奖励",@"获得米子",@"上个激励日", nil];
+        _titleArr=[NSArray arrayWithObjects:@"米券",@"米袋",@"米子",@"推荐米子",@"注册奖励",@"获得米子",@"上个激励日", nil];
     }
 return _titleArr;
 }

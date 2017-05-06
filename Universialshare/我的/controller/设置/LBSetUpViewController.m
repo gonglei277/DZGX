@@ -9,6 +9,7 @@
 #import "LBSetUpViewController.h"
 #import "LBMineCentermodifyAdressViewController.h"
 #import "LBMineCenterAccountSafeViewController.h"
+#import "GLSetup_VersionInfoController.h"
 
 #define PATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) objectAtIndex:0]
 
@@ -29,7 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.title = @"设置";
     
     self.verionLb.text = [UserModel defaultUser].version;
@@ -37,6 +37,12 @@
     self.folderSize = [self filePath];
     
     self.momeryLb.text = [NSString stringWithFormat:@"%.2fM",self.folderSize];
+}
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+    
 }
 //修改收货地址
 - (IBAction)exchangeAdress:(UITapGestureRecognizer *)sender {
@@ -91,6 +97,12 @@
     alert.tag = 10;
     [alert show];
     
+}
+- (IBAction)versionInfo:(id)sender {
+    
+    self.hidesBottomBarWhenPushed = YES;
+    GLSetup_VersionInfoController *versionVC = [[GLSetup_VersionInfoController alloc] init];
+    [self.navigationController pushViewController:versionVC animated:YES];
 }
 
 //*********************清理缓存********************//
