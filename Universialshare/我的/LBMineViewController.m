@@ -107,7 +107,6 @@
 }
 
 
-
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     LBMineCenterCollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"LBMineCenterCollectionViewCell" forIndexPath:indexPath];
@@ -394,10 +393,6 @@
             _headview.namelebel.text = @"用户名";
         }
         
-        
-        
-
-        
     }
     
     return _headview;
@@ -421,7 +416,6 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 }
 
 
-
 #pragma mark ---- button
 //设置
 - (IBAction)setupevent:(UIButton *)sender {
@@ -441,8 +435,6 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
     self.hidesBottomBarWhenPushed=NO;
     
 }
-
-
 
 #pragma mark 懒加载
 

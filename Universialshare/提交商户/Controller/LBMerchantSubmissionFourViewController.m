@@ -203,8 +203,6 @@
             NSData *data = UIImagePNGRepresentation(imageViewArr[i]);
             [formData appendPartWithFileData:data name:titleArr[i] fileName:fileName mimeType:@"image/png"];
         }
-     
-        
         
     }progress:^(NSProgress *uploadProgress){
         [SVProgressHUD showProgress:uploadProgress.fractionCompleted status:@"..."];

@@ -23,7 +23,7 @@
 
 #define ADAPT(x) SCREEN_WIDTH / 375 *(x)
 
-#define URL_Base @"http://192.168.0.138/DZGX/api/"
+#define URL_Base @"http://192.168.0.162/DZGX/api/"
 //#define URL_Base @"http://dzgx.joshuaweb.cn/api/"
 
 #define DOWNLOAD_URL @"www.baidu.com"
@@ -37,7 +37,6 @@
 #define TWOSALER @"7"
 //三级销售员
 #define THREESALER @"8"
-
 
 //http://dzgx.joshuaweb.cn/index.php/Home/Regist/index.html
 //分享
