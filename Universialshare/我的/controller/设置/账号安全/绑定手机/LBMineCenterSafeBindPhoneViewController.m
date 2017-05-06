@@ -9,6 +9,8 @@
 #import "LBMineCenterSafeBindPhoneViewController.h"
 #import "LBMineCenterSafeChangePhoneViewController.h"
 #import "editorMaskPresentationController.h"
+#import "GLLoginController.h"
+#import "BaseNavigationViewController.h"
 
 @interface LBMineCenterSafeBindPhoneViewController ()<UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning>
 {
@@ -25,9 +27,19 @@
   
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.title = @"绑定手机号";
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(LBMineCenterSafeBindPhonePopVc) name:@"LBMineCenterSafeBindPhoneVc" object:nil];
     self.phonelb.text = [NSString stringWithFormat:@"%@*****%@",[[UserModel defaultUser].phone substringToIndex:3],[[UserModel defaultUser].phone substringFromIndex:7]];
 
+}
+
+-(void)LBMineCenterSafeBindPhonePopVc{
+
+   
+    GLLoginController *loginVC = [[GLLoginController alloc] init];
+    BaseNavigationViewController *nav = [[BaseNavigationViewController alloc]initWithRootViewController:loginVC];
+    nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:nav animated:YES completion:nil];
+    
 }
 
 
