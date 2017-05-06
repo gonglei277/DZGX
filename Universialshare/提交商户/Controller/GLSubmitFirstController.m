@@ -314,9 +314,11 @@
 //        return;
 //    }
 
-
     [MerchantInformationModel defaultUser].loginPhone = self.phoneTextF.text;
-    [MerchantInformationModel defaultUser].secret = self.passwordTextF.text;
+    
+    NSString *encryptsecret = [RSAEncryptor encryptString:self.passwordTextF.text publicKey:public_RSA];
+    [MerchantInformationModel defaultUser].secret = encryptsecret;
+    
     [MerchantInformationModel defaultUser].legalPerson = self.farenNameTextF.text;
     [MerchantInformationModel defaultUser].legalPersonCode = self.farenIDTextF.text;
     [MerchantInformationModel defaultUser].Email = self.mailboxTextF.text;

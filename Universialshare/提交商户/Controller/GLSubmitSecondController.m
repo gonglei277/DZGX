@@ -309,7 +309,15 @@
     [MerchantInformationModel defaultUser].cityId = self.provinceArr[_provinceIndex][@"city"][_cityIndex][@"city_code"];
     [MerchantInformationModel defaultUser].countryId = self.provinceArr[_provinceIndex][@"city"][_cityIndex][@"country"][_countryIndex][@"country_code"];
     [MerchantInformationModel defaultUser].PrimaryClassification = self.industryArr[_isChoseFirstClassify][@"trade_id"];
-    [MerchantInformationModel defaultUser].TwoClassification = self.industryArr[_isChoseFirstClassify][@"son"][_isChoseSecondClassify][@"trade_id"];
+    
+    NSArray *son = _industryArr[_isChoseFirstClassify][@"son"];
+    if (son.count == 0) {
+        [MerchantInformationModel defaultUser].TwoClassification = @"";
+    }else{
+        
+        [MerchantInformationModel defaultUser].TwoClassification = _industryArr[_isChoseFirstClassify][@"son"][_isChoseSecondClassify][@"trade_id"];
+    }
+
     [MerchantInformationModel defaultUser].mapAdress = self.addressLabel.text;
     [MerchantInformationModel defaultUser].lat = self.latStr;
     [MerchantInformationModel defaultUser].lng = self.longStr;
