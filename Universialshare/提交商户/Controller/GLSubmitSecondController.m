@@ -193,7 +193,6 @@
     vc.transitioningDelegate=self;
     vc.modalPresentationStyle=UIModalPresentationCustom;
     [self presentViewController:vc animated:YES completion:nil];
-    
 }
 
 //选择区域
@@ -392,7 +391,6 @@
         } completion:^(BOOL finished) {
             
             [transitionContext completeTransition:YES]; //这个必须写,否则程序 认为动画还在执行中,会导致展示完界面后,无法处理用户的点击事件
-            
         }];
     }else{
         
