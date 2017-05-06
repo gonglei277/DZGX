@@ -116,30 +116,23 @@
 }
 - (IBAction)chooseStyle:(id)sender {
 
-    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    _maskV.bgView.alpha = 0.1;
-    
-    _directV = [[NSBundle mainBundle] loadNibNamed:@"GLDirectDnationView" owner:nil options:nil].lastObject;
-    [_directV.normalBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
-    [_directV.taxBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
-    CGRect rect=[self.chooseBtn convertRect: self.chooseBtn.bounds toView:window];
-    
-    _directV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 3 * self.chooseBtn.yy_height);
-//    if([[UserModel defaultUser].userLogin integerValue] == 1){
-//        [_directV.taxBtn setTitle:@"待缴税志愿豆" forState:UIControlStateNormal];
-//        
-//    }else{
-//        
-//        [_directV.taxBtn setTitle:@"待提供发票志愿豆" forState:UIControlStateNormal];
-//    }
-    
-    _directV.backgroundColor = [UIColor whiteColor];
-    _directV.layer.cornerRadius = 4;
-    _directV.layer.masksToBounds = YES;
-    
-    [_maskV showViewWithContentView:_directV];
+//    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+//    _maskV.bgView.alpha = 0.1;
+//    
+//    _directV = [[NSBundle mainBundle] loadNibNamed:@"GLDirectDnationView" owner:nil options:nil].lastObject;
+//    [_directV.normalBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
+//    [_directV.taxBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
+//    CGRect rect=[self.chooseBtn convertRect: self.chooseBtn.bounds toView:window];
+//    
+//    _directV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 3 * self.chooseBtn.yy_height);
+//    
+//    _directV.backgroundColor = [UIColor whiteColor];
+//    _directV.layer.cornerRadius = 4;
+//    _directV.layer.masksToBounds = YES;
+//    
+//    [_maskV showViewWithContentView:_directV];
     
 }
 

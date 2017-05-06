@@ -118,7 +118,7 @@ static NSString *ID = @"GLReceiveBeansCell";
         
         [_loadV removeloadview];
         [self endRefresh];
-//        NSLog(@"%@",responseObject);
+        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
             for (NSDictionary *dict in responseObject[@"data"]) {
@@ -130,6 +130,7 @@ static NSString *ID = @"GLReceiveBeansCell";
             }
             
             _beanSum = [responseObject[@"sum"] floatValue];
+            
         }else if([responseObject[@"code"] integerValue] == 3){
             if (_models.count != 0) {
                 

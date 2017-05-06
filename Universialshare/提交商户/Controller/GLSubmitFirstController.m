@@ -165,11 +165,11 @@
         return NO;
     }
     else if (textField == self.mailboxTextF && [string isEqualToString:@"\n"]){
-        [self.mianjiTextF becomeFirstResponder];
+        [self.shopNameTextF becomeFirstResponder];
         return NO;
-    }else if (textField == self.mianjiTextF && [string isEqualToString:@"\n"]){
+    }else if (textField == self.shopNameTextF && [string isEqualToString:@"\n"]){
         
-        [textField resignFirstResponder];
+        [self.mianjiTextF becomeFirstResponder];
         return NO;
     }else if (textField == self.mianjiTextF && [string isEqualToString:@"\n"]){
 
@@ -304,6 +304,10 @@
         [MBProgressHUD showError:@"邮箱不合法"];
         return;
     }
+    if (self.shopNameTextF.text.length <=0 ) {
+        [MBProgressHUD showError:@"请输入店铺名称"];
+        return;
+    }
     if (self.mianjiTextF.text.length <=0 ) {
         [MBProgressHUD showError:@"请输入门店面积"];
         return;
@@ -329,6 +333,7 @@
     [MerchantInformationModel defaultUser].legalPerson = self.farenNameTextF.text;
     [MerchantInformationModel defaultUser].legalPersonCode = self.farenIDTextF.text;
     [MerchantInformationModel defaultUser].Email = self.mailboxTextF.text;
+    [MerchantInformationModel defaultUser].shopName = self.shopNameTextF.text;
     [MerchantInformationModel defaultUser].measureRrea = self.mianjiTextF.text;
     [MerchantInformationModel defaultUser].BusinessBegin = [NSString stringWithFormat:@"%@-%@",self.startTimeLabel.text ,self.endTimeLabel.text];
     [MerchantInformationModel defaultUser].BusinessEnd = self.endTimeLabel.text;

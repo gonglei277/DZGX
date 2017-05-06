@@ -208,7 +208,7 @@
                 if ([[UserModel defaultUser].groupId isEqualToString:OrdinaryUser]) {
                     
                     self.hidesBottomBarWhenPushed=YES;
-                    GLMine_MyBeansController *vc=[[GLMine_MyBeansController alloc]init];
+                    GLMyHeartController *vc=[[GLMyHeartController alloc]init];
                     [self.navigationController pushViewController:vc animated:YES];
                     self.hidesBottomBarWhenPushed=NO;
                 }else{
@@ -465,15 +465,15 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 
     if (!_titlearr) {
         if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
-            _titlearr=[NSArray arrayWithObjects:@"让利",@"线下下单",@"我的米子",@"兑换",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
+            _titlearr=[NSArray arrayWithObjects:@"让利",@"线下下单",@"我的米柜",@"兑换",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
         }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]) {
-           _titlearr=[NSArray arrayWithObjects:@"米袋",@"直捐",@"我的米子",@"兑换",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
+           _titlearr=[NSArray arrayWithObjects:@"米袋",@"直捐",@"我的米柜",@"兑换",@"转赠",@"我要推荐",@"余额",@"营业额",@"我的积分", nil];
         }
         else if ([[UserModel defaultUser].usrtype isEqualToString:ONESALER] || [[UserModel defaultUser].usrtype isEqualToString:TWOSALER]) {
             _titlearr=[NSArray arrayWithObjects:@"开通商家",@"直捐",@"开通推广员",@"兑换",@"转赠",@"我要推荐", nil];
         }
         else if ([[UserModel defaultUser].usrtype isEqualToString:THREESALER]) {
-           _titlearr=[NSArray arrayWithObjects:@"开通商家",@"直捐",@"我的米子",@"兑换",@"转赠",@"我要推荐", nil];
+           _titlearr=[NSArray arrayWithObjects:@"开通商家",@"直捐",@"我的米柜",@"兑换",@"转赠",@"我要推荐", nil];
         }
     }
     return _titlearr;

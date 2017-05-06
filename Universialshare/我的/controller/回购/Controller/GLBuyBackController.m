@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *beanStyleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *chooseBtn;
 @property (weak, nonatomic) IBOutlet UIButton *ensureBtn;
-//回购数量
+//兑换数量
 @property (weak, nonatomic) IBOutlet UITextField *buybackNumF;
 
 //二级密码
@@ -64,7 +64,7 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.title = @"回购";
+    self.title = @"兑换";
     self.view.backgroundColor = [UIColor whiteColor];
     self.ensureBtn.layer.cornerRadius = 5.f;
     [self.backBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 0, 5, 20)];
@@ -84,7 +84,7 @@
 
 //    if([[UserModel defaultUser].userLogin integerValue] == 1){
 //        
-        self.noticeLabel.text = [NSString stringWithFormat:@" 1. 回购建议优先选择工商银行\n 2. 单笔最多回购50000颗米子\n 3. 单笔%@扣除回购金额10%%的手续费 ",NormalMoney] ;
+        self.noticeLabel.text = [NSString stringWithFormat:@" 1. 兑换建议优先选择工商银行\n 2. 单笔最多兑换50000颗米子\n 3. 单笔%@扣除兑换金额10%%的手续费 ",NormalMoney] ;
 //    }else{
 //        self.noticeLabel.text = @" 1. 回购建议优先选择工商银行\n 2. 单笔普通志愿豆扣除回购金额5%的手续费\n 3. 单笔待提供发票志愿豆回购扣除手续费5(颗)志愿豆手续费,以及回购金额4.8‰的代缴税\n 4. 待提供发票志愿豆任意时间允许回购\n";
 //    }
@@ -92,7 +92,7 @@
 //    [UILabel changeLineSpaceForLabel:self.noticeLabel WithSpace:5.0];
 
     self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
-    self.remainBeanStyleLabel.text = @"可回购米子:";
+    self.remainBeanStyleLabel.text = @"可兑换米子:";
     self.buybackNumF.placeholder = @"请输入100的整数倍";
     
     self.buybackNumF.returnKeyType = UIReturnKeyNext;
@@ -150,11 +150,11 @@
             if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
 
                 self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
-                self.remainBeanStyleLabel.text = @"可回购米子:";
+                self.remainBeanStyleLabel.text = @"可兑换米子:";
             }else{
 
                 self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
-                self.remainBeanStyleLabel.text = @"可回购推荐米子:";
+                self.remainBeanStyleLabel.text = @"可兑换推荐米子:";
             }
             
         }
@@ -292,10 +292,10 @@
         return;
     }
     if ([[NSString stringWithFormat:@"%ld",[self.buybackNumF.text integerValue]] isEqualToString:@"0"]) {
-        [MBProgressHUD showError:@"请输入回购数量"];
+        [MBProgressHUD showError:@"请输入兑换数量"];
         return;
     }else if(![self isPureNumandCharacters:self.buybackNumF.text]){
-        [MBProgressHUD showError:@"回购数量只能为正整数"];
+        [MBProgressHUD showError:@"兑换数量只能为正整数"];
         return;
     }else if([self.buybackNumF.text integerValue] > [self.remainBeanLabel.text integerValue]){
         [MBProgressHUD showError:@"余额不足!"];
@@ -314,7 +314,7 @@
 //        }
 //    }
     if ( [self.buybackNumF.text integerValue] > 50000){
-        [MBProgressHUD showError:[NSString stringWithFormat:@"单笔最多回购50000颗%@",NormalMoney]];
+        [MBProgressHUD showError:[NSString stringWithFormat:@"单笔最多兑换50000颗%@",NormalMoney]];
         return;
     }
     if (self.secondPwdF.text == nil||self.secondPwdF.text.length == 0) {
@@ -353,9 +353,9 @@
     NSString *title = NSLocalizedString(@"请选择类型", nil);
     NSString *message = NSLocalizedString(@"", nil);
     NSString *cancelButtonTitle = NSLocalizedString(@"取消", nil);
-    NSString *T1ButtonTitle = NSLocalizedString(@"T + 1 (收取10%的手续费)", nil);
-    NSString *T3ButtonTitle = NSLocalizedString(@"T + 3 (收取5%的手续费)", nil);
-    NSString *T7ButtonTitle = NSLocalizedString(@"T + 7 (收取0%的手续费)", nil);
+    NSString *T1ButtonTitle = NSLocalizedString(@"T + 1 (手续费为6%)", nil);
+    NSString *T3ButtonTitle = NSLocalizedString(@"T + 3 (手续费为3%)", nil);
+    NSString *T7ButtonTitle = NSLocalizedString(@"T + 7 (手续费为5颗)", nil);
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
@@ -364,30 +364,41 @@
         
     }];
     
+    
+    CGFloat contentViewH = 200;
+    CGFloat contentViewW = SCREEN_WIDTH - 40;
+    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    
+    _maskV.bgView.alpha = 0.4;
+    
+    GLNoticeView *contentView = [[NSBundle mainBundle] loadNibNamed:@"GLNoticeView" owner:nil options:nil].lastObject;
+    contentView.frame = CGRectMake(20, (SCREEN_HEIGHT - contentViewH)/2, contentViewW, contentViewH);
+    contentView.layer.cornerRadius = 4;
+    contentView.layer.masksToBounds = YES;
+    [contentView.cancelBtn addTarget:self action:@selector(cancelBuyback) forControlEvents:UIControlEventTouchUpInside];
+    [contentView.ensureBtn addTarget:self action:@selector(ensureBuyback) forControlEvents:UIControlEventTouchUpInside];
+    
+
     UIAlertAction *T1Action = [UIAlertAction actionWithTitle:T1ButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
-        [MBProgressHUD showError:@"该类型暂不可使用!"];
-    }];
-    UIAlertAction *T3Action = [UIAlertAction actionWithTitle:T3ButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        CGFloat contentViewH = 200;
-        CGFloat contentViewW = SCREEN_WIDTH - 40;
-        _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        
-        _maskV.bgView.alpha = 0.4;
-        
-        GLNoticeView *contentView = [[NSBundle mainBundle] loadNibNamed:@"GLNoticeView" owner:nil options:nil].lastObject;
-        contentView.frame = CGRectMake(20, (SCREEN_HEIGHT - contentViewH)/2, contentViewW, contentViewH);
-        contentView.layer.cornerRadius = 4;
-        contentView.layer.masksToBounds = YES;
-        [contentView.cancelBtn addTarget:self action:@selector(cancelBuyback) forControlEvents:UIControlEventTouchUpInside];
-        [contentView.ensureBtn addTarget:self action:@selector(ensureBuyback) forControlEvents:UIControlEventTouchUpInside];
         if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
             
-            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为回购数量的10%%"];
+            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为兑换数量的6%%"];
         }else{
             
-            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为回购数量的10%%"];
+            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为兑换数量的6%%"];
+        }
+        
+        [_maskV showViewWithContentView:contentView];
+
+    }];
+    UIAlertAction *T3Action = [UIAlertAction actionWithTitle:T3ButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
             
+            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为兑换数量的3%%"];
+        }else{
+            
+            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为兑换数量的3%%"];
         }
         
         [_maskV showViewWithContentView:contentView];
@@ -395,10 +406,18 @@
     }];
     UIAlertAction *T7Action = [UIAlertAction actionWithTitle:T7ButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
-        [MBProgressHUD showError:@"该类型暂不可使用!"];
+        if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
+            
+            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗"];
+        }else{
+            
+            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗"];
+        }
+        
+        [_maskV showViewWithContentView:contentView];
+
     }];
-    
-    // Add the actions.
+
     [alertController addAction:cancelAction];
     [alertController addAction:T1Action];
     [alertController addAction:T3Action];
@@ -448,7 +467,7 @@
             
             //刷新信息
             [self updateData];
-             [MBProgressHUD showSuccess:@"回购申请成功"];
+             [MBProgressHUD showSuccess:@"兑换申请成功"];
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
         }
@@ -463,7 +482,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-//跳转回购记录
+//跳转兑换记录
 - (IBAction)buyBackRecord:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
     GLBuyBackRecordController *recordVC = [[GLBuyBackRecordController alloc] init];
@@ -509,29 +528,22 @@
 
 - (IBAction)chooseStyle:(id)sender {
     
-    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    _maskV.bgView.alpha = 0.1;
+//    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+//    _maskV.bgView.alpha = 0.1;
+////
+//    _directV = [[NSBundle mainBundle] loadNibNamed:@"GLDirectDnationView" owner:nil options:nil].lastObject;
+//    [_directV.normalBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
+//    [_directV.taxBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
 //
-    _directV = [[NSBundle mainBundle] loadNibNamed:@"GLDirectDnationView" owner:nil options:nil].lastObject;
-    [_directV.normalBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
-    [_directV.taxBtn addTarget:self action:@selector(chooseValue:) forControlEvents:UIControlEventTouchUpInside];
-//    if([[UserModel defaultUser].userLogin integerValue] == 1){
-//        [_directV.taxBtn setTitle:@"待缴税志愿豆" forState:UIControlStateNormal];
-//        
-//    }else{
-//        
-//        [_directV.taxBtn setTitle:@"待提供发票志愿豆" forState:UIControlStateNormal];
-//    }
+//    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
+//    CGRect rect=[self.chooseBtn convertRect: self.chooseBtn.bounds toView:window];
 //    
-    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
-    CGRect rect=[self.chooseBtn convertRect: self.chooseBtn.bounds toView:window];
-    
-    _directV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 3 * self.chooseBtn.yy_height);
-    _directV.backgroundColor = [UIColor whiteColor];
-    _directV.layer.cornerRadius = 4;
-    _directV.layer.masksToBounds = YES;
-    
-    [_maskV showViewWithContentView:_directV];
+//    _directV.frame = CGRectMake(0,CGRectGetMaxY(rect), SCREEN_WIDTH, 3 * self.chooseBtn.yy_height);
+//    _directV.backgroundColor = [UIColor whiteColor];
+//    _directV.layer.cornerRadius = 4;
+//    _directV.layer.masksToBounds = YES;
+//    
+//    [_maskV showViewWithContentView:_directV];
     
 }
 - (void)chooseValue:(UIButton *)sender {
@@ -539,7 +551,7 @@
     if (sender== _directV.normalBtn) {
         self.beanStyleLabel.text = NormalMoney;
         self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
-        self.remainBeanStyleLabel.text = @"可回购米子:";
+        self.remainBeanStyleLabel.text = @"可兑换米子:";
     }else{
 //        if([[UserModel defaultUser].userLogin integerValue] == 1){
             self.beanStyleLabel.text = SpecialMoney;
@@ -549,7 +561,7 @@
 //            self.beanStyleLabel.text = @"待提供发票志愿豆";
 //        }
         self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
-        self.remainBeanStyleLabel.text = @"可回购推荐米子:";
+        self.remainBeanStyleLabel.text = @"可兑换推荐米子:";
     }
     [self dismiss];
 }
