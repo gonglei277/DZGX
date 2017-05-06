@@ -9,10 +9,14 @@
 #import "LBMineCenterPayPagesViewController.h"
 #import "LBMineCenterPayPagesTableViewCell.h"
 #import "LBIntegralMallViewController.h"
+#import "GLOrderPayView.h"
+#import "GLSet_MaskVeiw.h"
 
 @interface LBMineCenterPayPagesViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     LoadWaitView *_loadV;
+    GLSet_MaskVeiw *_maskV;
+    GLOrderPayView *_contentView;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
@@ -57,6 +61,8 @@
         [self.selectB addObject:@NO];
         
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"maskView_dismiss" object:nil];
     
 }
 
@@ -121,43 +127,74 @@
     [self.tableview reloadData];
 }
 
+- (void)dismiss{
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        _contentView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH - 40, 300);
+    }completion:^(BOOL finished) {
+        [_maskV removeFromSuperview];
+    }];
+}
 - (IBAction)surebutton:(UIButton *)sender {
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    dict[@"token"] = [UserModel defaultUser].token;
+//    GLOrderPayView *payV = [[NSBundle mainBundle] loadNibNamed:@"GLOrderPayView" owner:nil options:nil].lastObject;
+//    
+//    payV.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 300);
+//    [UIView animateWithDuration:0.3 animations:^{
+//        payV.frame = CGRectMake(0, SCREEN_HEIGHT - 300, SCREEN_WIDTH, 300);
+//        
+//    }];
     
-//    NSString *orderID = [RSAEncryptor encryptString:self.orderNum publicKey:public_RSA];
-//    NSString *uid = [RSAEncryptor encryptString:[UserModel defaultUser].uid publicKey:public_RSA];
-//    dict[@"uid"] = uid;
-//    dict[@"order_id"] = orderID;
     
-    dict[@"uid"] = [UserModel defaultUser].uid;
-    dict[@"order_id"] = self.order_id;
-
-    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"shop/markPay" paramDic:dict finish:^(id responseObject) {
-        
-        [_loadV removeloadview];
-        
-        if ([responseObject[@"code"] integerValue] == 1){
-            
-            NSLog(@"message = %@",responseObject[@"message"]);
-            [MBProgressHUD showSuccess:@"付款成功"];
-            
-//            self.hidesBottomBarWhenPushed = YES;
-//            LBIntegralMallViewController *homeVC = [[LBIntegralMallViewController alloc] init];
+    CGFloat contentViewH = 300;
+    CGFloat contentViewW = SCREEN_WIDTH - 40;
+    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    
+    _maskV.bgView.alpha = 0.4;
+    
+    _contentView = [[NSBundle mainBundle] loadNibNamed:@"GLOrderPayView" owner:nil options:nil].lastObject;
+    [_contentView.passwordF becomeFirstResponder];
+    _contentView.frame = CGRectMake(20, (SCREEN_HEIGHT - contentViewH)/2, contentViewW, contentViewH);
+    _contentView.layer.cornerRadius = 4;
+    _contentView.layer.masksToBounds = YES;
+    
+    [_maskV showViewWithContentView:_contentView];
+    
+//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//    dict[@"token"] = [UserModel defaultUser].token;
+//    
+////    NSString *orderID = [RSAEncryptor encryptString:self.orderNum publicKey:public_RSA];
+////    NSString *uid = [RSAEncryptor encryptString:[UserModel defaultUser].uid publicKey:public_RSA];
+////    dict[@"uid"] = uid;
+////    dict[@"order_id"] = orderID;
+//    
+//    dict[@"uid"] = [UserModel defaultUser].uid;
+//    dict[@"order_id"] = self.order_id;
+//
+//    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+//    [NetworkManager requestPOSTWithURLStr:@"shop/markPay" paramDic:dict finish:^(id responseObject) {
+//        
+//        [_loadV removeloadview];
+//        
+//        if ([responseObject[@"code"] integerValue] == 1){
 //            
-            [self.navigationController popToRootViewControllerAnimated:YES];
-
-//            self.hidesBottomBarWhenPushed = NO;
-        }
-        
-    } enError:^(NSError *error) {
-        [_loadV removeloadview];
-        
-    }];
-
-    
+//            NSLog(@"message = %@",responseObject[@"message"]);
+//            [MBProgressHUD showSuccess:@"付款成功"];
+//            
+////            self.hidesBottomBarWhenPushed = YES;
+////            LBIntegralMallViewController *homeVC = [[LBIntegralMallViewController alloc] init];
+////            
+//            [self.navigationController popToRootViewControllerAnimated:YES];
+//
+////            self.hidesBottomBarWhenPushed = NO;
+//        }
+//        
+//    } enError:^(NSError *error) {
+//        [_loadV removeloadview];
+//        
+//    }];
+//
+//    
 }
 
 

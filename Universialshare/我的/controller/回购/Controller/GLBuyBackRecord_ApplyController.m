@@ -170,7 +170,7 @@ static NSString *ID = @"GLBuyBackRecordCell";
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return ADAPT(40);
+    return 44 *autoSizeScaleY;
 }
 
 

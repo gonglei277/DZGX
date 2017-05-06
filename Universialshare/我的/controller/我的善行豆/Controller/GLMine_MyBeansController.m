@@ -40,11 +40,11 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    self.title = [NSString stringWithFormat:@"我的%@",NormalMoney];
+    self.title = [NSString stringWithFormat:@"我的米柜"];
     
     [self.encourageBtn setTitle:[NSString stringWithFormat:@"激励%@",NormalMoney] forState:UIControlStateNormal];
     [self.recommendBtn setTitle:[NSString stringWithFormat:@"推荐%@",NormalMoney] forState:UIControlStateNormal];
-    [self.receiveBtn setTitle:[NSString stringWithFormat:@"获赠%@",NormalMoney] forState:UIControlStateNormal];
+    [self.receiveBtn setTitle:[NSString stringWithFormat:@"获赠米券"] forState:UIControlStateNormal];
     
     self.navigationController.navigationBar.hidden = NO;
     _encourageVC = [[GLEncourageBeansController alloc]init];
