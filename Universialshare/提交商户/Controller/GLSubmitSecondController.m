@@ -116,7 +116,7 @@
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[UIApplication sharedApplication].keyWindow];
     [NetworkManager requestPOSTWithURLStr:@"user/getCityList" paramDic:@{} finish:^(id responseObject) {
         [_loadV removeloadview];
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue]==1) {
             self.provinceArr = responseObject[@"data"];
         }
@@ -135,7 +135,7 @@
 //    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[UIApplication sharedApplication].keyWindow];
     [NetworkManager requestPOSTWithURLStr:@"user/getHylist" paramDic:dict finish:^(id responseObject) {
         [_loadV removeloadview];
-        NSLog(@"responseObject = %@",responseObject);
+//        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue]==1) {
             self.industryArr = responseObject[@"data"];
         }
@@ -307,9 +307,20 @@
     }
     [MerchantInformationModel defaultUser].provinceId = self.provinceArr[_provinceIndex][@"province_code"];
     [MerchantInformationModel defaultUser].cityId = self.provinceArr[_provinceIndex][@"city"][_cityIndex][@"city_code"];
-    [MerchantInformationModel defaultUser].countryId = self.provinceArr[_provinceIndex][@"city"][_cityIndex][@"country"][_countryIndex][@"country_code"];
+    
+    //区域可能为空
+    NSArray *countryArr = self.provinceArr[_provinceIndex][@"city"][_cityIndex][@"country"];
+    if (countryArr.count == 0) {
+        [MerchantInformationModel defaultUser].countryId = @"";
+        
+    }else{
+        
+        [MerchantInformationModel defaultUser].countryId = self.provinceArr[_provinceIndex][@"city"][_cityIndex][@"country"][_countryIndex][@"country_code"];
+    }
+    
     [MerchantInformationModel defaultUser].PrimaryClassification = self.industryArr[_isChoseFirstClassify][@"trade_id"];
     
+    //二级分类可能为空
     NSArray *son = _industryArr[_isChoseFirstClassify][@"son"];
     if (son.count == 0) {
         [MerchantInformationModel defaultUser].TwoClassification = @"";
