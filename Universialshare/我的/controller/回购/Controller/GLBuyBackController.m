@@ -154,7 +154,7 @@
             }else{
 
                 self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
-                self.remainBeanStyleLabel.text = @"可回购待交税米子:";
+                self.remainBeanStyleLabel.text = @"可回购推荐米子:";
             }
             
         }
@@ -549,7 +549,7 @@
 //            self.beanStyleLabel.text = @"待提供发票志愿豆";
 //        }
         self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].djs_bean floatValue]];
-        self.remainBeanStyleLabel.text = @"可回购待交税米子:";
+        self.remainBeanStyleLabel.text = @"可回购推荐米子:";
     }
     [self dismiss];
 }

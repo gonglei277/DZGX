@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +13,6 @@
             <connections>
                 <outlet property="exitBt" destination="4dy-Rc-ucW" id="vfJ-M3-vU0"/>
                 <outlet property="momeryLb" destination="nLz-YS-mrd" id="3Qn-Ql-RhV"/>
-                <outlet property="verionLb" destination="oWi-YE-cOT" id="fEW-Iy-iaA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -213,16 +213,6 @@
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWi-YE-cOT">
-                            <rect key="frame" x="323" y="13" width="42" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="1YQ-y4-GcK"/>
-                                <constraint firstAttribute="height" constant="20" id="Aih-Va-w0p"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAm-3l-6PC">
                             <rect key="frame" x="0.0" y="44" width="375" height="1"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -230,18 +220,29 @@
                                 <constraint firstAttribute="height" constant="1" id="hRC-4h-3Y1"/>
                             </constraints>
                         </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homepage_details" translatesAutoresizingMaskIntoConstraints="NO" id="Vqw-Ui-CtU">
+                            <rect key="frame" x="355" y="13" width="10" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="10" id="FlX-Rn-YHb"/>
+                                <constraint firstAttribute="height" constant="18" id="vNY-0h-jsm"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="PAm-3l-6PC" secondAttribute="bottom" id="10W-I3-RrR"/>
-                        <constraint firstAttribute="trailing" secondItem="oWi-YE-cOT" secondAttribute="trailing" constant="10" id="24N-NV-PGh"/>
                         <constraint firstItem="NuB-MJ-uDU" firstAttribute="leading" secondItem="DHE-tD-2Oi" secondAttribute="leading" constant="10" id="EIP-Bb-Ww2"/>
                         <constraint firstItem="PAm-3l-6PC" firstAttribute="leading" secondItem="DHE-tD-2Oi" secondAttribute="leading" id="IdW-Ta-MI7"/>
+                        <constraint firstAttribute="trailing" secondItem="Vqw-Ui-CtU" secondAttribute="trailing" constant="10" id="NwR-Tf-MJr"/>
                         <constraint firstAttribute="trailing" secondItem="PAm-3l-6PC" secondAttribute="trailing" id="aCf-1R-wDo"/>
                         <constraint firstItem="NuB-MJ-uDU" firstAttribute="centerY" secondItem="DHE-tD-2Oi" secondAttribute="centerY" id="gWf-Ph-YAw"/>
                         <constraint firstAttribute="height" constant="45" id="kEM-Rs-bMi"/>
-                        <constraint firstItem="oWi-YE-cOT" firstAttribute="centerY" secondItem="DHE-tD-2Oi" secondAttribute="centerY" id="nhZ-Io-E6P"/>
+                        <constraint firstItem="Vqw-Ui-CtU" firstAttribute="centerY" secondItem="DHE-tD-2Oi" secondAttribute="centerY" id="yOc-05-hgP"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="I6j-y6-csC" appends="YES" id="bqf-EU-rUX"/>
+                    </connections>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dy-Rc-ucW">
                     <rect key="frame" x="10" y="567" width="355" height="50"/>
@@ -299,6 +300,11 @@
         <tapGestureRecognizer id="yQw-KD-2TG">
             <connections>
                 <action selector="aboutUs:" destination="-1" id="uFi-Wt-iuG"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="I6j-y6-csC">
+            <connections>
+                <action selector="versionInfo:" destination="-1" id="jIY-Nk-1PI"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

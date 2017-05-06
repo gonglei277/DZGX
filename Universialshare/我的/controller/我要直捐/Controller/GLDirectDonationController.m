@@ -287,7 +287,7 @@
                 
             }else{
                 self.useableBeanNumLabel.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].djs_bean];
-                 self.userableBeanStyleLabel.text = @"可直捐待交税米子:";
+                 self.userableBeanStyleLabel.text = @"可直捐推荐米子:";
             }
 //            [MBProgressHUD showSuccess:@"直捐成功!"];
         }else{

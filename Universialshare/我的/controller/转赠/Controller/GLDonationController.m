@@ -46,15 +46,15 @@
     self.ensureBtn.layer.cornerRadius = 5.f;
     self.automaticallyAdjustsScrollViewInsets = NO;
     //可转赠善行豆
-    self.useableBeanLabel.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].ketiBean];
-    self.userableBeanStyleLabel.text = @"可转赠米子:";
-    NSString *userType;
-    if ([[UserModel defaultUser].groupId isEqualToString:OrdinaryUser]) {
-        userType = @"米家";
-    }else{
-        userType = @"米商";
-    }
-    self.noticeLabel.text = [NSString stringWithFormat:@"*您可以将您的%@转赠给您的%@朋友,或者需要帮助的%@.",NormalMoney,userType,userType];
+    self.useableBeanLabel.text = [NSString stringWithFormat:@"%@",[UserModel defaultUser].mark];
+    self.userableBeanStyleLabel.text = @"可转赠米券:";
+//    NSString *userType;
+//    if ([[UserModel defaultUser].groupId isEqualToString:OrdinaryUser]) {
+//        userType = @"米家";
+//    }else{
+//        userType = @"米商";
+//    }
+    self.noticeLabel.text = [NSString stringWithFormat:@"*您可以将您的米券转赠给您的会员朋友,或者需要帮助的会员."];
 
     self.contentViewWidth.constant = SCREEN_WIDTH;
     self.contentViewHeight.constant = SCREEN_HEIGHT;
@@ -219,7 +219,7 @@
         [MBProgressHUD showError:@"转赠数量只能是正整数"];
         return;
     }
-    if ([self.beanNumF.text integerValue] >[[UserModel defaultUser].ketiBean integerValue]) {
+    if ([self.beanNumF.text integerValue] >[[UserModel defaultUser].mark integerValue]) {
         [MBProgressHUD showError:@"余额不足"];
         return;
     }
@@ -257,7 +257,7 @@
             contentView.layer.masksToBounds = YES;
             [contentView.cancelBtn addTarget:self action:@selector(cancelDonation) forControlEvents:UIControlEventTouchUpInside];
             [contentView.ensureBtn addTarget:self action:@selector(ensureDonation) forControlEvents:UIControlEventTouchUpInside];
-            contentView.contentLabel.text = [NSString stringWithFormat:@"您是否要将%@转赠给%@",NormalMoney,responseObject[@"data"][@"count"]];
+            contentView.contentLabel.text = [NSString stringWithFormat:@"您是否要将米券转赠给%@",responseObject[@"data"][@"count"]];
             [_maskView showViewWithContentView:contentView];
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
@@ -317,10 +317,10 @@
             self.idCodeF.text = nil;
             self.beanNumF.text = nil;
             
-            NSString *useableNum = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue] - [self.beanNumF.text floatValue]];
+            NSString *useableNum = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].mark floatValue] - [self.beanNumF.text floatValue]];
             
             self.useableBeanLabel.text = useableNum;
-            self.userableBeanStyleLabel.text = @"可转赠米子:";
+            self.userableBeanStyleLabel.text = @"可转赠米券:";
             [MBProgressHUD showSuccess:@"转赠成功"];
 
         }else{

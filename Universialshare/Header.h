@@ -26,7 +26,7 @@
 #define URL_Base @"http://192.168.0.162/DZGX/api/"
 //#define URL_Base @"http://dzgx.joshuaweb.cn/api/"
 
-#define DOWNLOAD_URL @"www.baidu.com"
+#define DOWNLOAD_URL @"https://itunes.apple.com/cn/app/id1228047806?mt=8"
 //米家
 #define OrdinaryUser @"10"
 //米商
@@ -52,7 +52,7 @@
 //#define WEIBO_SECRET @"5d4df0f912e9af331adaf718a357176f"
 //虚拟货币名称
 #define NormalMoney @"米子"
-#define SpecialMoney @"代缴税米子"
+#define SpecialMoney @"推荐米子"
 //公钥RSA
 #define public_RSA @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDF4IeiOMGVERr/4oTZWuthQx+eesKBx70SH5xPavN8s07rFbPf3VQ8yhqsX2TuBhsVz5PDjFyn3NgfJPXr5uVCSu3nONGttK3pnYsIlkHLOQAq3uDl3UwvuDnz6j7Urjxkkonh011o8FZ5pGMSSmGkMVyJ8RVTUIKgcQhNk4VXwIDAQAB"
 

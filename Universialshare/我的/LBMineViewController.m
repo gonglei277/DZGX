@@ -85,6 +85,7 @@
     [self refreshDataSource];
 
 }
+
 -(void)pushToInfoVC{
     
     if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser] || [[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
@@ -126,7 +127,6 @@
     
     return CGSizeMake((SCREEN_WIDTH-3)/3, ((SCREEN_WIDTH-3)/3)+13);
 
-    
 }
 
 //选择cell时
@@ -140,7 +140,6 @@
                 GLSubmitFirstController *vc=[[GLSubmitFirstController alloc]init];
                 [self.navigationController pushViewController:vc animated:YES];
                 self.hidesBottomBarWhenPushed=NO;
-                
                 
             }
                 
