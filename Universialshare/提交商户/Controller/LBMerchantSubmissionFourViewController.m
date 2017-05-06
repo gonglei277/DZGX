@@ -143,7 +143,7 @@
         return;
     }
     
-    if (self.doorplateImage.image || self.doorplateImage.image == [UIImage imageNamed:@"照片框-拷贝-10"]) {
+    if (!self.doorplateImage.image || self.doorplateImage.image == [UIImage imageNamed:@"照片框-拷贝-10"]) {
         [MBProgressHUD showError:@"请上传门头照"];
         return;
     }
@@ -193,8 +193,8 @@
             formatter.dateFormat=@"yyyyMMddHHmmss";
             NSString *str=[formatter stringFromDate:[NSDate date]];
             NSString *fileName=[NSString stringWithFormat:@"%@%d.png",str,i];
-            
-            NSData *data = UIImagePNGRepresentation(imageViewArr[i]);
+            UIImageView *imaev = (UIImageView*)imageViewArr[i];
+            NSData *data = UIImagePNGRepresentation(imaev.image);
             [formData appendPartWithFileData:data name:titleArr[i] fileName:fileName mimeType:@"image/png"];
         }
         
