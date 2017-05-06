@@ -215,7 +215,7 @@
             cell.statuesLb.text = @"审核中";
             
         }
-        if ([self.typeStr isEqualToString:@"2"]) {
+        if ([self.typeStr isEqualToString:@"1"]) {
             
             cell.statuesLb.text = @"未通过审核";
             

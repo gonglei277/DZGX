@@ -182,8 +182,8 @@
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
-    manager.requestSerializer.timeoutInterval = 10;
-    [manager POST:[NSString stringWithFormat:@"%@user/openBusinessOne",URL_Base] parameters:dict  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    manager.requestSerializer.timeoutInterval = 20;
+    [manager POST:[NSString stringWithFormat:@"%@user/openOne",URL_Base] parameters:dict  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         //将图片以表单形式上传
         
         for (int i = 0; i < imageViewArr.count; i ++) {
@@ -198,7 +198,10 @@
         }
         
     }progress:^(NSProgress *uploadProgress){
-        [SVProgressHUD showProgress:uploadProgress.fractionCompleted status:@"..."];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        [SVProgressHUD setCornerRadius:8.0];
+        [SVProgressHUD showProgress:uploadProgress.fractionCompleted status:[NSString stringWithFormat:@"上传中%.0f%%",(uploadProgress.fractionCompleted * 100)]];
         
     }success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
@@ -206,7 +209,7 @@
         if ([dic[@"code"]integerValue]==1) {
             
             [MBProgressHUD showError:dic[@"message"]];
-            
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }else{
             [MBProgressHUD showError:dic[@"message"]];
         }
