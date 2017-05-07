@@ -20,7 +20,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -124,6 +124,7 @@
                 <constraint firstItem="ne5-a9-Lfy" firstAttribute="top" secondItem="rXv-eE-YT7" secondAttribute="bottom" id="orb-WS-qfk"/>
                 <constraint firstAttribute="trailing" secondItem="rXv-eE-YT7" secondAttribute="trailing" id="yMc-1i-n35"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="35.5" y="54.5"/>
         </view>
     </objects>
