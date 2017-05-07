@@ -37,7 +37,7 @@
                                 <action selector="backevent:" destination="-1" eventType="touchUpInside" id="FjR-W7-8Qf"/>
                             </connections>
                         </button>
-                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="XRPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="31t-AS-jd5">
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="31t-AS-jd5">
                             <rect key="frame" x="143" y="70" width="90" height="90"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -111,7 +111,6 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="XRPlaceholder" width="391" height="220"/>
         <image name="iv_back" width="27" height="51"/>
     </resources>
 </document>
