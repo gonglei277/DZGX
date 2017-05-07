@@ -32,7 +32,7 @@
 #import "LBSaleManPersonInfoViewController.h"
 #import "LBRecommendedBusinessAuditViewController.h"
 #import "LBBelowTheLineViewController.h"
-
+#import "LBBaiduMapViewController.h"
 #import "GLShoppingCartController.h"
 
 @interface LBMineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
@@ -752,7 +752,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
             NSMutableArray *imageArr=[NSMutableArray array];
             
             for (int i=0; i<[responseObject[@"data"]count]; i++) {
-                UIImage *imagev=[UIImage imageNamed:[NSString stringWithFormat:@"%@", responseObject[@"data"][i][@"img_path"]]];
+                UIImage *imagev=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", responseObject[@"data"][i][@"img_path"]]]]];
                 
                 if (imagev) {
                      [imageArr addObject:responseObject[@"data"][i][@"img_path"]];
