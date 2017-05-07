@@ -56,6 +56,7 @@
     self.mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
     self.mapView.showsUserLocation = YES;//显示定位图层
     self.mapView.isSelectedAnnotationViewFront = YES;
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 //添加标注
