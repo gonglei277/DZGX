@@ -27,6 +27,7 @@
     UIImageView *_imageviewLeft;
     UIImageView *_imageviewRight;
     LoadWaitView * _loadV;
+    NSInteger _page;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong)SDCycleScrollView *cycleScrollView;
@@ -48,10 +49,7 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    if ([UserModel defaultUser].loginstatus == YES) {
-//         [self addMySelfPanGesture];
-//    }
+
     self.view.backgroundColor=[UIColor purpleColor];
     
     _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 160*autoSizeScaleY)
@@ -74,14 +72,35 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
     self.searchView.clipsToBounds = YES;
     
     [self postRequest];
+    __weak __typeof(self) weakSelf = self;
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [weakSelf postRequest];
+        
+    }];
+
+    // 设置文字
+    [header setTitle:@"快扯我，快点" forState:MJRefreshStateIdle];
+    
+    [header setTitle:@"数据要来啦" forState:MJRefreshStatePulling];
+    
+    [header setTitle:@"服务器正在狂奔 ..." forState:MJRefreshStateRefreshing];
+    
+    self.tableView.mj_header = header;
 
 }
+
+- (void)endRefresh {
+    [self.tableView.mj_header endRefreshing];
+}
+
 - (void)postRequest{
 
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"shop/main" paramDic:@{} finish:^(id responseObject) {
         
         [_loadV removeloadview];
+        [self endRefresh];
 //        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
             for (NSDictionary *dict in responseObject[@"data"][@"mall_tabe"]) {
@@ -93,13 +112,13 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
                 GLMall_InterestModel *model = [GLMall_InterestModel mj_objectWithKeyValues:dic];
                 [_interestModels addObject:model];
             }
-            
         }
         
         [self.tableView reloadData];
         
     } enError:^(NSError *error) {
         [_loadV removeloadview];
+        [self endRefresh];
         
     }];
 

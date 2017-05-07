@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *passwordF;
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
 @end
