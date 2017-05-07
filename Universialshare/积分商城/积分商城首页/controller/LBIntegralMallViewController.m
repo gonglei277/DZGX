@@ -21,6 +21,7 @@
 //城市定位 选择
 
 #import "GLCityChooseController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface LBIntegralMallViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 {
@@ -56,14 +57,12 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
                                                           delegate:self
                                                   placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
     
-    _cycleScrollView.localizationImageNamesGroup = @[@"banner01",
-                                                     @"banner02",
-                                                     @"banner03"];
-    
     _cycleScrollView.autoScrollTimeInterval = 2;// 自动滚动时间间隔
     _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;// 翻页 右下角
     _cycleScrollView.titleLabelBackgroundColor = [UIColor clearColor];// 图片对应的标题的 背景色。（因为没有设标题）
     _cycleScrollView.pageControlDotSize = CGSizeMake(10, 10);
+    
+    
     self.tableView.tableHeaderView = _cycleScrollView;
 
     [self.tableView registerNib:[UINib nibWithNibName:@"GLIntegralMallTopCell" bundle:nil] forCellReuseIdentifier:topCellID];
@@ -89,13 +88,49 @@ static NSString *goodsCellID = @"GLIntegralGoodsCell";
     self.tableView.mj_header = header;
 
 }
-
+- (void)updateUI{
+    
+}
 - (void)endRefresh {
     [self.tableView.mj_header endRefreshing];
 }
 
 - (void)postRequest{
 
+    [NetworkManager requestPOSTWithURLStr:@"index/banner_list" paramDic:@{@"type":@"6"} finish:^(id responseObject) {
+
+        if ([responseObject[@"code"] integerValue] == 1){
+            NSMutableArray *arrM = [NSMutableArray array];
+            
+            if (![responseObject[@"data"] isEqual:[NSNull null]]) {
+                
+                for (NSDictionary *dic  in responseObject[@"data"]) {
+                    
+                    UIImageView *imageV = [[UIImageView alloc] init];
+                    [imageV sd_setImageWithURL:[NSURL URLWithString:dic[@"img_path"]]];
+                    
+                    if(imageV.image){
+                        
+                        [arrM addObject:dic[@"img_path"]];
+                    }
+                }
+                if (arrM.count >= 3) {
+                    
+                    _cycleScrollView.imageURLStringsGroup = arrM;
+                }else{
+                    _cycleScrollView.localizationImageNamesGroup = @[@"banner01",
+                                                                     @"banner02",
+                                                                     @"banner03"];
+                }
+                
+            }
+        }
+        
+    } enError:^(NSError *error) {
+        [MBProgressHUD showError:error.description];
+    }];
+
+    
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"shop/main" paramDic:@{} finish:^(id responseObject) {
         

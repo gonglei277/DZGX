@@ -97,8 +97,6 @@
     
     self.buybackNumF.returnKeyType = UIReturnKeyNext;
     self.secondPwdF.returnKeyType = UIReturnKeyDone;
-    self.buybackNumF.delegate = self;
-    self.secondPwdF.delegate = self;
     
     self.contentViewWidth.constant = SCREEN_WIDTH;
     self.contentViewHeight.constant = SCREEN_HEIGHT - 100;
@@ -165,6 +163,30 @@
         
     }];
 
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if (textField == self.buybackNumF) {
+        return [self validateNumber:string];
+    }
+    
+    return YES;
+}
+//只能输入数字
+- (BOOL)validateNumber:(NSString*)number {
+    BOOL res =YES;
+    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    int i =0;
+    while (i < number.length) {
+        NSString * string = [number substringWithRange:NSMakeRange(i,1)];
+        NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+        if (range.length ==0) {
+            res =NO;
+            break;
+        }
+        i++;
+    }
+    return res;
 }
 //移除通知
 - (void)dealloc {
@@ -455,7 +477,7 @@
     }else{
         dict[@"donatetype"] = @"0";
     }
-    NSLog(@"dict  = %@",dict);
+//    NSLog(@"dict  = %@",dict);
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/back" paramDic:dict finish:^(id responseObject) {
         

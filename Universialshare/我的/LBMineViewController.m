@@ -744,7 +744,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 
 -(void)getdatasorce{
     
-    [NetworkManager requestPOSTWithURLStr:@"index/banner_list" paramDic:@{} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"index/banner_list" paramDic:@{@"type":@"5"} finish:^(id responseObject) {
         
         if ([responseObject[@"code"] integerValue] == 1) {
             

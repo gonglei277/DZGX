@@ -149,7 +149,7 @@ static NSString *followID = @"GLFirstFollowCell";
     
     self.dailyLabel.text = @"善心\n日值";
     self.rankingLabel.text = @"善心\n排行";
-    self.rewardLabel.text = @"注册\n奖励";
+    self.rewardLabel.text = @"推荐\n奖励";
 
 }
 - (void)setupUI{
