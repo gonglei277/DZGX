@@ -63,7 +63,7 @@
     self.bottomView.clipsToBounds = YES;
     
     self.contentViewWidth.constant = SCREEN_WIDTH;
-    self.contentViewHeight.constant = SCREEN_HEIGHT;
+    self.contentViewHeight.constant = SCREEN_HEIGHT + 40;
     
     self.nextBtn.layer.cornerRadius = 5.f;
     self.nextBtn.clipsToBounds = YES;

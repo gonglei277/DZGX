@@ -236,7 +236,7 @@
                                             <rect key="frame" x="96.5" y="15" width="248.5" height="17"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                             <connections>
                                                 <outlet property="delegate" destination="-1" id="kPW-xI-j0v"/>
                                             </connections>

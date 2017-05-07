@@ -96,7 +96,7 @@
     self.bottomView.layer.cornerRadius = 5.f;
     self.bottomView.layer.masksToBounds = YES;
     
-    self.contentViewHeight.constant = SCREEN_HEIGHT;
+    self.contentViewHeight.constant = SCREEN_HEIGHT + 40;
     self.contentViewWidth.constant = SCREEN_WIDTH;
     
     self.nextBtn.layer.cornerRadius = 5.f;
