@@ -57,7 +57,7 @@
     self.noticeLabel.text = [NSString stringWithFormat:@"*您可以将您的米券转赠给您的会员朋友,或者需要帮助的会员."];
 
     self.contentViewWidth.constant = SCREEN_WIDTH;
-    self.contentViewHeight.constant = SCREEN_HEIGHT;
+    self.contentViewHeight.constant = SCREEN_HEIGHT - 50;
     [self.backBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 0, 5, 20)];
     
     //设置键盘return键

@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计米袋:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5b-lg-0HW">
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计米袋:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5b-lg-0HW">
                         <rect key="frame" x="10" y="60" width="100" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="0Gq-2R-pbg"/>
@@ -48,22 +48,22 @@
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="激励中米袋:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvH-WN-m3t">
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="激励中米袋:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvH-WN-m3t">
                         <rect key="frame" x="10" y="90" width="100" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="激励完成米袋:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvB-sf-Mh4">
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="激励完成米袋:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvB-sf-Mh4">
                         <rect key="frame" x="10" y="120" width="100" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="待激励米袋:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfr-Mm-F8R">
-                        <rect key="frame" x="10" y="150" width="100" height="25"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="待激励积分:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfr-Mm-F8R">
+                        <rect key="frame" x="10" y="60" width="100" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -77,18 +77,18 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="米袋" translatesAutoresizingMaskIntoConstraints="NO" id="0Q2-kt-R8k">
-                        <rect key="frame" x="203" y="153" width="20" height="20"/>
+                        <rect key="frame" x="203" y="63" width="20" height="20"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的米子" translatesAutoresizingMaskIntoConstraints="NO" id="VK2-JZ-yrY">
                         <rect key="frame" x="203" y="33" width="20" height="20"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="米袋" translatesAutoresizingMaskIntoConstraints="NO" id="OAB-Jv-OFu">
+                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="米袋" translatesAutoresizingMaskIntoConstraints="NO" id="OAB-Jv-OFu">
                         <rect key="frame" x="203" y="63" width="20" height="20"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="米袋" translatesAutoresizingMaskIntoConstraints="NO" id="2su-my-Daf">
+                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="米袋" translatesAutoresizingMaskIntoConstraints="NO" id="2su-my-Daf">
                         <rect key="frame" x="203" y="93" width="20" height="20"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="米袋" translatesAutoresizingMaskIntoConstraints="NO" id="zBS-ud-qyr">
+                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="米袋" translatesAutoresizingMaskIntoConstraints="NO" id="zBS-ud-qyr">
                         <rect key="frame" x="203" y="123" width="20" height="20"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPh-k1-p6h">
@@ -111,7 +111,7 @@
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heL-L0-cZ2">
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heL-L0-cZ2">
                         <rect key="frame" x="233" y="123.5" width="31" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="31" id="xGl-nN-RbW"/>
@@ -122,7 +122,7 @@
                         <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1K4-d8-ynC">
-                        <rect key="frame" x="233" y="153" width="31" height="20"/>
+                        <rect key="frame" x="233" y="63" width="31" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="31" id="nhm-Rc-nRW"/>
                         </constraints>
@@ -132,17 +132,17 @@
                         <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已激励米子:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqu-YS-G4T">
-                        <rect key="frame" x="10" y="180" width="65" height="15.5"/>
+                        <rect key="frame" x="10" y="90" width="65" height="15.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的米子" translatesAutoresizingMaskIntoConstraints="NO" id="rSi-xn-taP">
-                        <rect key="frame" x="203" y="178" width="20" height="20"/>
+                        <rect key="frame" x="203" y="88" width="20" height="20"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEU-m7-cOg">
-                        <rect key="frame" x="233" y="178.5" width="31" height="20"/>
+                        <rect key="frame" x="233" y="88.5" width="31" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="31" id="CSf-Ig-jnu"/>
                         </constraints>
@@ -151,7 +151,7 @@
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFe-Sf-iU1">
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFe-Sf-iU1">
                         <rect key="frame" x="233" y="63" width="31" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="31" id="lCh-PQ-8BU"/>
@@ -161,7 +161,7 @@
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ta-zX-g05">
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ta-zX-g05">
                         <rect key="frame" x="233" y="93" width="31" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="31" id="9p4-aB-9kx"/>
@@ -176,12 +176,12 @@
                     <constraint firstItem="heL-L0-cZ2" firstAttribute="height" secondItem="zBS-ud-qyr" secondAttribute="height" id="13g-3k-P5X"/>
                     <constraint firstItem="rSi-xn-taP" firstAttribute="centerX" secondItem="0Q2-kt-R8k" secondAttribute="centerX" id="1Hf-2b-ChC"/>
                     <constraint firstItem="FFe-Sf-iU1" firstAttribute="height" secondItem="OAB-Jv-OFu" secondAttribute="height" id="3DG-l5-kEd"/>
+                    <constraint firstItem="gfr-Mm-F8R" firstAttribute="top" secondItem="6tq-49-AEW" secondAttribute="bottom" constant="5" id="54i-R7-bZS"/>
                     <constraint firstItem="Lqu-YS-G4T" firstAttribute="top" secondItem="gfr-Mm-F8R" secondAttribute="bottom" constant="5" id="5W3-vb-PgB"/>
                     <constraint firstItem="zBS-ud-qyr" firstAttribute="centerX" secondItem="2su-my-Daf" secondAttribute="centerX" id="5hI-l4-hEz"/>
                     <constraint firstItem="rSi-xn-taP" firstAttribute="width" secondItem="0Q2-kt-R8k" secondAttribute="width" id="69Q-0F-4LI"/>
                     <constraint firstItem="Lqu-YS-G4T" firstAttribute="leading" secondItem="gfr-Mm-F8R" secondAttribute="leading" id="7by-2D-FAW"/>
                     <constraint firstItem="2su-my-Daf" firstAttribute="height" secondItem="OAB-Jv-OFu" secondAttribute="height" id="8lU-5C-j1l"/>
-                    <constraint firstItem="gfr-Mm-F8R" firstAttribute="top" secondItem="fvB-sf-Mh4" secondAttribute="bottom" constant="5" id="8zg-aO-Pd0"/>
                     <constraint firstItem="OAB-Jv-OFu" firstAttribute="height" secondItem="VK2-JZ-yrY" secondAttribute="height" id="91x-Rp-VJ4"/>
                     <constraint firstItem="VK2-JZ-yrY" firstAttribute="centerY" secondItem="6tq-49-AEW" secondAttribute="centerY" id="Bio-ec-hdv"/>
                     <constraint firstItem="6tq-49-AEW" firstAttribute="top" secondItem="8Jf-s3-tle" secondAttribute="bottom" constant="5" id="BnD-c2-3Vm"/>

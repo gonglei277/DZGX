@@ -64,7 +64,7 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.title = @"兑换";
+    self.navigationItem.title = @"兑换";
     self.view.backgroundColor = [UIColor whiteColor];
     self.ensureBtn.layer.cornerRadius = 5.f;
     [self.backBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 0, 5, 20)];
@@ -101,7 +101,7 @@
     self.secondPwdF.delegate = self;
     
     self.contentViewWidth.constant = SCREEN_WIDTH;
-    self.contentViewHeight.constant = SCREEN_HEIGHT + 100;
+    self.contentViewHeight.constant = SCREEN_HEIGHT - 100;
 //    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 //    }else{
 //        self.contentViewHeight.constant = SCREEN_HEIGHT + 100;

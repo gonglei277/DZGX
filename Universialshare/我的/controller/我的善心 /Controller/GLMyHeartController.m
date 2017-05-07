@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的米袋";
+    self.title = @"我的积分";
     
     self.navigationController.navigationBar.hidden = NO;
     self.view.backgroundColor=[UIColor whiteColor];

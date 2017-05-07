@@ -14,6 +14,6 @@
 @property (nonatomic ,strong)GLReceiveBeansModel *model;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *IDLabel;
 
 @end
