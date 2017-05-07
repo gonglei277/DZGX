@@ -16,7 +16,6 @@
 @interface MineCollectionHeaderV ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 
 
-
 @end
 
 @implementation MineCollectionHeaderV
@@ -27,6 +26,7 @@
     if (self) {
         
         [self loadUI];
+
         self.backgroundColor=YYSRGBColor(235, 235, 235, 1);
     }
     return self;
@@ -370,13 +370,11 @@ return _titleArr;
                                                               delegate:self
                                                       placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
         
-        _cycleScrollView.localizationImageNamesGroup = @[@"XRPlaceholder",
-                                                         @"XRPlaceholder",
-                                                         @"XRPlaceholder"];
+        _cycleScrollView.localizationImageNamesGroup = @[];
         
         _cycleScrollView.autoScrollTimeInterval = 2;// 自动滚动时间间隔
         _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;// 翻页 右下角
-        _cycleScrollView.titleLabelBackgroundColor = [UIColor clearColor];// 图片对应的标题的 背景色。（因为没有设标题）
+        _cycleScrollView.titleLabelBackgroundColor = [UIColor groupTableViewBackgroundColor];// 图片对应的标题的 背景色。（因为没有设标题）
         
         _cycleScrollView.pageControlDotSize = CGSizeMake(10, 10);
     }

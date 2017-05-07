@@ -47,6 +47,8 @@
 @property (strong, nonatomic)UIView *maskView;
 @property (strong, nonatomic)NSString *ordertype;//订单类型 默认为线上类型 1 为线上 2线下
 
+@property (strong, nonatomic)NSMutableArray *CarouselArr;//轮播图图片
+
 @end
 
 @implementation LBMineViewController
@@ -83,7 +85,11 @@
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
      self.navigationController.navigationBar.hidden = YES;
     [self refreshDataSource];
-
+    
+    if (self.CarouselArr.count<=0) {
+        [self getdatasorce];
+    }
+    
 }
 
 -(void)pushToInfoVC{
@@ -679,7 +685,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 -(void)refreshDataSource{
 
     [NetworkManager requestPOSTWithURLStr:@"user/refresh" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid} finish:^(id responseObject) {
-        
+
         if ([responseObject[@"code"] integerValue] == 1) {
             
             [UserModel defaultUser].mark = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"mark"]];
@@ -734,7 +740,45 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
         
     }];
 
-
 }
 
+-(void)getdatasorce{
+    
+    [NetworkManager requestPOSTWithURLStr:@"index/banner_list" paramDic:@{} finish:^(id responseObject) {
+        
+        if ([responseObject[@"code"] integerValue] == 1) {
+            
+            self.CarouselArr = responseObject[@"data"];
+            NSMutableArray *imageArr=[NSMutableArray array];
+            
+            for (int i=0; i<[responseObject[@"data"]count]; i++) {
+                UIImage *imagev=[UIImage imageNamed:[NSString stringWithFormat:@"%@", responseObject[@"data"][i][@"img_path"]]];
+                
+                if (imagev) {
+                     [imageArr addObject:responseObject[@"data"][i][@"img_path"]];
+                }
+               
+            }
+            
+            self.headview.cycleScrollView.imageURLStringsGroup = imageArr;
+            
+        }else{
+            
+            
+        }
+        
+    } enError:^(NSError *error) {
+        
+    }];
+    
+}
+
+-(NSMutableArray*)CarouselArr{
+
+    if (!_CarouselArr) {
+        _CarouselArr=[NSMutableArray array];
+    }
+
+    return _CarouselArr;
+}
 @end

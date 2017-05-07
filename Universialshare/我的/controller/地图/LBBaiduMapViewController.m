@@ -33,6 +33,7 @@
 //        self.navigationController.navigationBar.translucent = NO;
 //    }
     _locService = [[BMKLocationService alloc]init];
+    _poisearch = [[BMKPoiSearch alloc]init];
     
     UIBarButtonItem* barItem = [[UIBarButtonItem alloc]init];
     barItem.target = self;
@@ -54,7 +55,7 @@
     self.mapView.showsUserLocation = NO;//先关闭显示的定位图层
     self.mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
     self.mapView.showsUserLocation = YES;//显示定位图层
-    
+    self.mapView.isSelectedAnnotationViewFront = YES;
 }
 
 //添加标注

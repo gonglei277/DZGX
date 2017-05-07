@@ -12,10 +12,11 @@
 #import <BaiduMapAPI_Utils/BMKUtilsComponent.h>
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>
 
-@interface LBBaiduMapViewController : UIViewController <BMKMapViewDelegate,BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate>{
+@interface LBBaiduMapViewController : UIViewController <BMKMapViewDelegate,BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate,BMKPoiSearchDelegate>{
     
     BMKMapView *_mapView;
-
+    BMKPoiSearch *_poisearch;
+    int curPage;
 }
 
 @property (nonatomic, strong) BMKGeoCodeSearch *geoCode;        // 地理编码
