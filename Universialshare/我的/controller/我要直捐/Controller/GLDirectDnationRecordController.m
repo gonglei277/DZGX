@@ -102,13 +102,7 @@ static NSString *ID = @"GLDirectDnationRecordCell";
                 
                 [_models addObject:model];
             }
-//        }else if([responseObject[@"code"] intValue] == 3){
-//            if (_models.count != 0) {
-//                
-//                [MBProgressHUD showError:@"已经没有更多数据了!"];
-//            }
-//            [MBProgressHUD showError:responseObject[@"message"]];
-//            
+
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
         }

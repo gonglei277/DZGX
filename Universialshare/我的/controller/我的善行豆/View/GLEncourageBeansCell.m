@@ -25,8 +25,15 @@
     [dateFormatter1 setDateFormat:@"yyyy-MM-dd"];
     NSString *timeStr = [dateFormatter1 stringFromDate:currentDate];
     
+    if ([model.num floatValue] > 10000) {
+        
+        self.numberLabel.text = [NSString stringWithFormat:@"%.2f",[model.num floatValue] / 10000];
+    }else{
+
+        self.numberLabel.text = model.num;
+    }
+    
     self.dateLabel.text = timeStr;
-    self.numberLabel.text = model.num;
     self.typeLabel.text = model.donatetype;
     
 }

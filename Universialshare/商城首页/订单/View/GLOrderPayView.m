@@ -119,8 +119,8 @@
         //将视图上移计算好的偏移
         if(offset > 0) {
             [UIView animateWithDuration:duration animations:^{
-                self.frame = CGRectMake(0.0f, SCREEN_HEIGHT *0.5 - offset, self.frame.size.width, SCREEN_HEIGHT *0.5);
-                NSLog(@"%@",NSStringFromCGRect(self.frame));
+                self.frame = CGRectMake(20.0f, SCREEN_HEIGHT *0.5 - offset, self.frame.size.width, SCREEN_HEIGHT *0.5);
+//                NSLog(@"%@",NSStringFromCGRect(self.frame));
             }];
         }
     }
@@ -131,7 +131,7 @@
         double duration = [[notify.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
         //视图下沉恢复原状
         [UIView animateWithDuration:duration animations:^{
-            self.frame = CGRectMake(0, SCREEN_HEIGHT *0.5, self.frame.size.width, self.frame.size.height);
+            self.frame = CGRectMake(20, SCREEN_HEIGHT *0.5, self.frame.size.width, self.frame.size.height);
         }];
     }
     

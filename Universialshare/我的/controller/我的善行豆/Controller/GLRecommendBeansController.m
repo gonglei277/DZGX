@@ -135,6 +135,7 @@ static NSString *ID = @"GLRecommendCell";
             }else{
                 [MBProgressHUD showError:responseObject[@"message"]];
             }
+             _beanSum = [responseObject[@"sum"] floatValue];
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
         }
@@ -143,7 +144,13 @@ static NSString *ID = @"GLRecommendCell";
         
         //赋值
         if (self.retureValue) {
-            self.retureValue([NSString stringWithFormat:@"%.2f",_beanSum]);
+            if (_beanSum > 10000) {
+                
+                self.retureValue([NSString stringWithFormat:@"%.2f万",_beanSum/10000]);
+            }else{
+                
+                self.retureValue([NSString stringWithFormat:@"%.2f",_beanSum]);
+            }
         }
         _beanSum = 0;
         
@@ -178,7 +185,7 @@ static NSString *ID = @"GLRecommendCell";
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 44 * autoSizeScaleY;
 }
 
 

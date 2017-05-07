@@ -118,7 +118,7 @@ static NSString *ID = @"GLReceiveBeansCell";
         
         [_loadV removeloadview];
         [self endRefresh];
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
             for (NSDictionary *dict in responseObject[@"data"]) {
@@ -138,6 +138,7 @@ static NSString *ID = @"GLReceiveBeansCell";
             }else{
                 [MBProgressHUD showError:responseObject[@"message"]];
             }
+             _beanSum = [responseObject[@"sum"] floatValue];
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
         }
@@ -145,7 +146,13 @@ static NSString *ID = @"GLReceiveBeansCell";
      
         //赋值
         if (self.retureValue) {
-            self.retureValue([NSString stringWithFormat:@"%.2f",_beanSum]);
+            if (_beanSum > 10000) {
+                
+                self.retureValue([NSString stringWithFormat:@"%.2f万",_beanSum/10000]);
+            }else{
+                
+                self.retureValue([NSString stringWithFormat:@"%.2f",_beanSum]);
+            }
         }
         _beanSum = 0;
         
@@ -181,7 +188,7 @@ static NSString *ID = @"GLReceiveBeansCell";
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 44 * autoSizeScaleY;
 }
 
 @end
