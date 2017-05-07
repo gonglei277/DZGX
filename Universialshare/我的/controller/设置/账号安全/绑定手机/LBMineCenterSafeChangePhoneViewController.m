@@ -94,7 +94,6 @@
     __weak typeof(self) waekself = self;
     [NetworkManager requestPOSTWithURLStr:@"user/check_yzm" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid,@"yzm":self.oldcode.text} finish:^(id responseObject) {
         if ([responseObject[@"code"] integerValue]==1) {
-            
             [waekself submitBindPhone];
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
