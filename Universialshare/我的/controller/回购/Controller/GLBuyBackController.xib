@@ -161,13 +161,13 @@
                                             <rect key="frame" x="86.5" y="51" width="278.5" height="16"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入二级密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDN-WR-A8C">
                                             <rect key="frame" x="86.5" y="91.5" width="278.5" height="16"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                         </textField>
                                         <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kcq-5k-oBG">
                                             <rect key="frame" x="0.0" y="40" width="375" height="1"/>

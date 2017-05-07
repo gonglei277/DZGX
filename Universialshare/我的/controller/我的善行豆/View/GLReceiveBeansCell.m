@@ -31,9 +31,9 @@
         self.numberLabel.text = [NSString stringWithFormat:@"%.2f",[model.num floatValue] / 10000];
     }else{
         
-        self.numberLabel.text = model.num;
+        self.numberLabel.text = [NSString stringWithFormat:@"米券:%@",model.num];
     }
-    
+    self.IDLabel.text = model.username;
 }
 
 @end
