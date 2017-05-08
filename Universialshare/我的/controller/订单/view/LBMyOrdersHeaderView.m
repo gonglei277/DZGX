@@ -30,6 +30,7 @@
     [self addSubview:self.lineview];
     [self addSubview:self.orderStaues];
     [self addSubview:self.payBt];
+    [self addSubview:self.cancelBt];
     [self addSubview:self.DeleteBt];
     
     [self.orderCode mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -61,6 +62,14 @@
     
     [self.payBt mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.equalTo(self).offset(-10);
+        //make.leading.equalTo(self).offset(10);
+        make.top.equalTo(self.orderStaues.mas_bottom).offset(5);
+        make.height.equalTo(@25);
+        make.width.equalTo(@80);
+    }];
+    
+    [self.cancelBt mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(self.payBt.mas_leading).offset(-10);
         //make.leading.equalTo(self).offset(10);
         make.top.equalTo(self.orderStaues.mas_bottom).offset(5);
         make.height.equalTo(@25);
@@ -105,6 +114,12 @@
     }
 
 
+}
+//取消订单
+- (void)cancelOrder {
+    if (self.returnCancelBt) {
+        self.returnCancelBt(self.section);
+    }
 }
 //删除
 -(void)delegeteEvent{
@@ -182,6 +197,23 @@
     }
     
     return _payBt;
+    
+}
+-(UIButton*)cancelBt{
+    
+    if (!_cancelBt) {
+        _cancelBt=[[UIButton alloc]init];
+        _cancelBt.backgroundColor=TABBARTITLE_COLOR;
+        [_cancelBt setTitle:@"取消订单" forState:UIControlStateNormal];
+        _cancelBt.titleLabel.font=[UIFont systemFontOfSize:13];
+        [_cancelBt addTarget:self action:@selector(cancelOrder) forControlEvents:UIControlEventTouchUpInside];
+        [_cancelBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _cancelBt.layer.cornerRadius =4;
+        _cancelBt.clipsToBounds =YES;
+        
+    }
+    
+    return _cancelBt;
     
 }
 -(UIButton*)DeleteBt{

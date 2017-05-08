@@ -118,7 +118,7 @@
                                     <rect key="frame" x="103" y="346" width="257" height="28"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXE-wv-cI9">
                                     <rect key="frame" x="0.0" y="238" width="370" height="1"/>
@@ -138,7 +138,7 @@
                                     <rect key="frame" x="103" y="249" width="257" height="28"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3JV-qO-pKT">
                                     <rect key="frame" x="0.0" y="336" width="370" height="1"/>

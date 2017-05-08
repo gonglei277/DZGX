@@ -88,6 +88,19 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkl-d9-WbY">
+                    <rect key="frame" x="311" y="26.5" width="54" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="jUe-f8-M8k"/>
+                        <constraint firstAttribute="height" constant="30" id="nkd-sB-u9o"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="兑换记录"/>
+                    <connections>
+                        <action selector="recommendRecord:" destination="-1" eventType="touchUpInside" id="UHr-km-DIn"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.1551630795" green="0.58942979569999998" blue="0.2282119095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -95,6 +108,7 @@
                 <constraint firstItem="BGd-tz-2lR" firstAttribute="top" secondItem="Hwp-MZ-H6V" secondAttribute="bottom" constant="20" id="9Mw-HW-JDX"/>
                 <constraint firstItem="zO7-6w-XP3" firstAttribute="width" secondItem="BGd-tz-2lR" secondAttribute="width" id="BAh-yp-IL5"/>
                 <constraint firstItem="SLI-ze-6d8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="27" id="ENk-sa-FhZ"/>
+                <constraint firstItem="dkl-d9-WbY" firstAttribute="centerY" secondItem="YHx-zp-dQA" secondAttribute="centerY" id="Flh-qC-uBx"/>
                 <constraint firstItem="bDh-S5-s7j" firstAttribute="width" secondItem="Hwp-MZ-H6V" secondAttribute="width" id="JLq-PU-wIz"/>
                 <constraint firstAttribute="trailing" secondItem="bDh-S5-s7j" secondAttribute="trailing" constant="110" id="K0k-SK-Wdh"/>
                 <constraint firstItem="3nd-Bw-i2r" firstAttribute="centerX" secondItem="8x9-Fk-EJu" secondAttribute="centerX" id="KJO-TR-pmy"/>
@@ -114,6 +128,7 @@
                 <constraint firstItem="SLI-ze-6d8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="l9f-Nb-sqB"/>
                 <constraint firstItem="Hwp-MZ-H6V" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="110" id="sYB-Of-heA"/>
                 <constraint firstItem="BGd-tz-2lR" firstAttribute="width" secondItem="Hwp-MZ-H6V" secondAttribute="width" id="tT0-jV-juN"/>
+                <constraint firstAttribute="trailing" secondItem="dkl-d9-WbY" secondAttribute="trailing" constant="10" id="ufr-MU-km2"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

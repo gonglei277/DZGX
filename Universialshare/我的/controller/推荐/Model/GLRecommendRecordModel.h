@@ -12,10 +12,10 @@
 
 @property (nonatomic,copy)NSString *picture;
 
-@property (nonatomic,copy)NSString *username;
-
 @property (nonatomic,copy)NSString *usertype;
 
-@property (nonatomic,copy)NSString *reg_time;
+@property (nonatomic,copy)NSString *username;//真实姓名
+
+@property (nonatomic,copy)NSString *reg_time;//推荐时间
 
 @end

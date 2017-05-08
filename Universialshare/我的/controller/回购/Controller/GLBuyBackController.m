@@ -163,7 +163,7 @@
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
-    if (textField == self.buybackNumF) {
+    if (textField == self.buybackNumF || textField == self.secondPwdF) {
         return [self validateNumber:string];
     }
     
