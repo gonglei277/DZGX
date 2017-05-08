@@ -93,6 +93,7 @@ static NSString *followID = @"GLFirstFollowCell";
     
     [self setupUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFunction) name:UIApplicationWillEnterForegroundNotification object:[UIApplication sharedApplication]];
+    
 }
 //重新进入程序  刷新界面
 - (void)updateFunction {
