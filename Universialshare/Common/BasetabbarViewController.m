@@ -91,11 +91,9 @@
         self.viewControllers = @[firstNav, IntegralMallnav, minenav];
     }
     
-    
     self.selectedIndex=0;
     
 }
-
 
 - (UITabBarItem *)barTitle:(NSString *)title image:(NSString *)image selectImage:(NSString *)selectImage {
     UITabBarItem *item = [[UITabBarItem alloc] init];
@@ -133,8 +131,6 @@
         [self presentViewController:nav animated:YES completion:nil];
         return NO;
         
-        
-        
     }
     
     return YES;
@@ -145,7 +141,6 @@
     [self.viewControllers reverseObjectEnumerator];
     
     [self addViewControllers];
-
 
 }
 
