@@ -116,13 +116,62 @@ static NSString *followID = @"GLFirstFollowCell";
     self.navigationController.navigationBar.hidden = YES;
      [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-//    UIImage *imaage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
+    [self refreshData];
     
     [self.head_iconBtn sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].headPic]];
     
     if (!self.head_iconBtn.image) {
         self.head_iconBtn.image = [UIImage imageNamed:@"mine_head"];
     }
+}
+//刷新数据
+-(void)refreshData{
+    
+    [NetworkManager requestPOSTWithURLStr:@"user/refresh" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid} finish:^(id responseObject) {
+        //判空
+        if (![responseObject[@"data"] isEqual:[NSNull null]]) {
+            
+            if ([responseObject[@"code"] integerValue] == 1) {
+                
+                [UserModel defaultUser].mark = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"mark"]];
+                [UserModel defaultUser].loveNum = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"lovenum"]];
+                [UserModel defaultUser].ketiBean = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"common"]];
+                [UserModel defaultUser].djs_bean = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"taxes"]];
+                [UserModel defaultUser].giveMeMark = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"give_me_bean"]];
+                [UserModel defaultUser].lastFanLiTime = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"lasttime"]];
+                [UserModel defaultUser].recommendMark = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"tjtc"]];
+                [UserModel defaultUser].truename = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"truename"]];
+                [UserModel defaultUser].shop_address = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"shop_address"]];
+                [UserModel defaultUser].shop_type = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"shop_type"]];
+                [UserModel defaultUser].idcard = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]];
+                [UserModel defaultUser].headPic = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"pic"]];
+                [UserModel defaultUser].AudiThrough = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"status"]];
+                
+                if ([[UserModel defaultUser].idcard rangeOfString:@"null"].location != NSNotFound) {
+                    
+                    [UserModel defaultUser].idcard = @"";
+                }
+                if ([[UserModel defaultUser].shop_type rangeOfString:@"null"].location != NSNotFound) {
+                    
+                    [UserModel defaultUser].shop_type = @"";
+                }
+                if ([[UserModel defaultUser].shop_address rangeOfString:@"null"].location != NSNotFound) {
+                    
+                    [UserModel defaultUser].shop_address = @"";
+                }
+                if ([[UserModel defaultUser].truename rangeOfString:@"null"].location != NSNotFound) {
+                    
+                    [UserModel defaultUser].banknumber = @"";
+                }
+                
+                [usermodelachivar achive];
+                
+            }
+        }
+        
+    } enError:^(NSError *error) {
+        
+    }];
 }
 
 -(void)updateViewConstraints{
@@ -132,12 +181,7 @@ static NSString *followID = @"GLFirstFollowCell";
     self.slideViewHeight.constant = 230 *autoSizeScaleY;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    //绘制圆角(左上角,左下角)
-//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(self.sidebarView.yy_x, self.sidebarView.yy_y, self.sidebarView.yy_width, self.slideViewHeight.constant) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerBottomLeft cornerRadii:CGSizeMake(5, 5)];
-//    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-//    maskLayer.frame = CGRectMake(self.sidebarView.yy_x, self.sidebarView.yy_y, self.sidebarView.yy_width, self.slideViewHeight.constant);
-//    maskLayer.path = maskPath.CGPath;
-//    self.sidebarView.layer.mask = maskLayer;
+    //绘制圆角
     self.sidebarView.layer.cornerRadius = 5.f;
     self.sidebarView.layer.masksToBounds = YES;
     
