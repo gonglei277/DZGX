@@ -79,9 +79,9 @@
     
     if ([UserModel defaultUser].loginstatus == YES) {//登录状态
         if ([[UserModel defaultUser].usrtype isEqualToString:ONESALER] || [[UserModel defaultUser].usrtype isEqualToString:TWOSALER]) {//一级业务员和二级业务员
-            self.viewControllers = @[firstNav, ManAndBusinessNav, IntegralMallnav, minenav];
+            self.viewControllers = @[firstNav, ManAndBusinessNav, minenav];
         }else if ([[UserModel defaultUser].usrtype isEqualToString:THREESALER]){//三级业务员
-            self.viewControllers = @[firstNav, businessNav, IntegralMallnav, minenav];
+            self.viewControllers = @[firstNav, businessNav, minenav];
         }else if ([[UserModel defaultUser].usrtype isEqualToString:OrdinaryUser]){//普通用户
             self.viewControllers = @[firstNav, IntegralMallnav, minenav];
         }else if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]){//商家
