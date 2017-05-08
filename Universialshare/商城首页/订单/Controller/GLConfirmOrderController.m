@@ -165,7 +165,7 @@ static NSString *ID = @"GLOrderGoodsCell";
 - (void)ensurePassword:(NSNotification *)userInfo{
     [self dismiss];
    
-    NSLog(@"userinfo = %@",userInfo.userInfo[@"password"]);
+//    NSLog(@"userinfo = %@",userInfo.userInfo[@"password"]);
 }
   
 
@@ -204,6 +204,7 @@ static NSString *ID = @"GLOrderGoodsCell";
             payVC.orderScore = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"total_price"]];
             payVC.useableScore = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"user_integal"]];
             payVC.order_id = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"order_id"]];
+            payVC.pushIndex = 1;
             
             [self.navigationController pushViewController:payVC animated:YES];
             

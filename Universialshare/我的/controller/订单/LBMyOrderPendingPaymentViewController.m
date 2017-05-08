@@ -193,6 +193,8 @@
         vc.order_id = model.order_id;
         vc.payType = [model.order_type intValue];
         vc.useableScore = self.useableScore;
+        
+        vc.pushIndex = 2;
         [weakself.navigationController pushViewController:vc animated:YES];
         
         
