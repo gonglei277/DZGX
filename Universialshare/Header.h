@@ -31,11 +31,11 @@
 #define OrdinaryUser @"10"
 //米商
 #define Retailer @"9"
-//一级销售员
+//副总
 #define ONESALER @"6"
-//二级销售员
+//高级推广员
 #define TWOSALER @"7"
-//三级销售员
+//推广员
 #define THREESALER @"8"
 
 //http://dzgx.joshuaweb.cn/index.php/Home/Regist/index.html
