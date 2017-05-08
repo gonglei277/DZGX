@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *sellNumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rangliLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 
 
 
@@ -44,13 +45,23 @@
     self.dateLabel.text = timeStr;
     self.sellNumLabel.text = model.market;
     self.rangliLabel.text = model.rl_money;
-   
+
+    //状态
     if([model.status isEqualToString:@"1"]){
         self.statusLabel.text = @" 成功 ";
     }else if([model.status isEqualToString:@"0"]){
         self.statusLabel.text = @" 失败 ";
     }else{
         self.statusLabel.text = @" 未审核 ";
+    }
+    
+    //让利类型
+    if([model.status integerValue] == 0){
+        self.typeLabel.text = @"5%";
+    }else if ([model.status integerValue] == 1){
+        self.typeLabel.text = @"10%";
+    }else{
+        self.typeLabel.text = @"20%";
     }
 }
 

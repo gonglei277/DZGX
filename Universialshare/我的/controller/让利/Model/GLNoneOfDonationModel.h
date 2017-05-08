@@ -16,7 +16,7 @@
 
 @property (nonatomic,copy)NSString *rl_money;
 
-@property (nonatomic,copy)NSString *status;
+@property (nonatomic,copy)NSString *status;//0: 5%  1: 10%   2: 20%
 
 
 @end
