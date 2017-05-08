@@ -34,6 +34,7 @@
 #import "LBBelowTheLineViewController.h"
 #import "LBBaiduMapViewController.h"
 #import "GLShoppingCartController.h"
+#import <SDWebImage/UIButton+WebCache.h>
 
 @interface LBMineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
     UIImageView *_imageviewLeft;
@@ -733,34 +734,34 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
            
         }else{
             
-            
         }
 
     } enError:^(NSError *error) {
         
     }];
-
 }
 
 -(void)getdatasorce{
     
-    [NetworkManager requestPOSTWithURLStr:@"index/banner_list" paramDic:@{} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"index/banner_list" paramDic:@{@"type":@"5"} finish:^(id responseObject) {
         
         if ([responseObject[@"code"] integerValue] == 1) {
-            
-            self.CarouselArr = responseObject[@"data"];
-            NSMutableArray *imageArr=[NSMutableArray array];
-            
-            for (int i=0; i<[responseObject[@"data"]count]; i++) {
-                UIImage *imagev=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", responseObject[@"data"][i][@"img_path"]]]]];
+            if (![responseObject[@"data"] isEqual:[NSNull null]]) {
+                self.CarouselArr = responseObject[@"data"];
+                NSMutableArray *imageArr=[NSMutableArray array];
                 
-                if (imagev) {
-                     [imageArr addObject:responseObject[@"data"][i][@"img_path"]];
+                for (int i=0; i<[responseObject[@"data"]count]; i++) {
+                    UIImageView *imagev=[[UIImageView alloc]init];
+                    [imagev sd_setImageWithURL:[NSURL URLWithString:responseObject[@"data"][i][@"img_path"]]];
+                    
+                    if (imagev.image) {
+                        [imageArr addObject:responseObject[@"data"][i][@"img_path"]];
+                    }
+                    
                 }
-               
+                
+                self.headview.cycleScrollView.imageURLStringsGroup = imageArr;
             }
-            
-            self.headview.cycleScrollView.imageURLStringsGroup = imageArr;
             
         }else{
             
