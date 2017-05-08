@@ -49,15 +49,13 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+
+@property (weak, nonatomic) IBOutlet UIView *headView;
+
+
 @end
 
 @implementation GLBuyBackController
-//用 bounces 属性
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    scrollView.bounces = (scrollView.contentOffset.y <= 0) ? NO : YES;
-//}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,29 +64,15 @@
     
     self.navigationItem.title = @"兑换";
     self.view.backgroundColor = [UIColor whiteColor];
+    self.headView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
+
     self.ensureBtn.layer.cornerRadius = 5.f;
     [self.backBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 0, 5, 20)];
 
     self.scrollView.delegate = self;
-//    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, 450);
-    
-//    //自定义导航栏右按钮
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    button.frame = CGRectMake(SCREEN_WIDTH - 60, 14, 60, 30);
-//    [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
-//    [button setTitle:@"回购记录" forState:UIControlStateNormal];
-//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    button.titleLabel.font = [UIFont systemFontOfSize:13];
-//    [button addTarget:self action:@selector(pushToBuyBackVC) forControlEvents:UIControlEventTouchUpInside];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
 
-//    if([[UserModel defaultUser].userLogin integerValue] == 1){
-//        
-        self.noticeLabel.text = [NSString stringWithFormat:@" 1. 兑换建议优先选择工商银行\n 2. 单笔最多兑换50000颗米子\n 3. 单笔%@扣除兑换金额10%%的手续费 ",NormalMoney] ;
-//    }else{
-//        self.noticeLabel.text = @" 1. 回购建议优先选择工商银行\n 2. 单笔普通志愿豆扣除回购金额5%的手续费\n 3. 单笔待提供发票志愿豆回购扣除手续费5(颗)志愿豆手续费,以及回购金额4.8‰的代缴税\n 4. 待提供发票志愿豆任意时间允许回购\n";
-//    }
-//    
+    self.noticeLabel.text = [NSString stringWithFormat:@" 1. 兑换建议优先选择工商银行\n 2. 单笔最多兑换50000颗米子\n 3.T+1:一天后到账,手续费为兑换数量的6%%\n    T+3:三天后到账,手续费为兑换数量的3%%\n    T+7:七天后到账,手续费为5颗米子 "] ;
+
 //    [UILabel changeLineSpaceForLabel:self.noticeLabel WithSpace:5.0];
 
     self.remainBeanLabel.text = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].ketiBean floatValue]];
@@ -99,7 +83,7 @@
     self.secondPwdF.returnKeyType = UIReturnKeyDone;
     
     self.contentViewWidth.constant = SCREEN_WIDTH;
-    self.contentViewHeight.constant = SCREEN_HEIGHT - 100;
+    self.contentViewHeight.constant = SCREEN_HEIGHT;
 //    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 //    }else{
 //        self.contentViewHeight.constant = SCREEN_HEIGHT + 100;
@@ -111,6 +95,19 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"maskView_dismiss" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(changeBankNum:) name:@"deleteBankCardNotification" object:nil];
     
+}
+
+- (void)scrollViewDidScroll:(UIScrollView*)scrollView
+{
+    CGFloat offsetY = scrollView.contentOffset.y;
+    
+    if(offsetY < 0) {
+        CGRect currentFrame = self.headView.frame;
+        currentFrame.origin.y = offsetY;
+        currentFrame.size.height = 100 - 1*offsetY;
+        self.headView.frame = currentFrame;
+       
+    }
 }
 - (void)updateData {
     
@@ -172,7 +169,7 @@
     
     return YES;
 }
-//只能输入数字
+//只能输入整数
 - (BOOL)validateNumber:(NSString*)number {
     BOOL res =YES;
     NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
@@ -323,18 +320,12 @@
         [MBProgressHUD showError:@"余额不足!"];
         return;
     }
-//    if([[UserModel defaultUser].groupId integerValue] == [OrdinaryUser integerValue]){
     
-        if ([self.buybackNumF.text integerValue] %100 != 0){
+    if ([self.buybackNumF.text integerValue] %100 != 0){
             [MBProgressHUD showError:@"数量必须是100的整数倍!"];
             return;
-        }
-//    }else{
-//        if ([self.buybackNumF.text integerValue] % 500 != 0){
-//            [MBProgressHUD showError:@"数量必须是500的整数倍!"];
-//            return;
-//        }
-//    }
+    }
+
     if ( [self.buybackNumF.text integerValue] > 50000){
         [MBProgressHUD showError:[NSString stringWithFormat:@"单笔最多兑换50000颗%@",NormalMoney]];
         return;
@@ -343,30 +334,6 @@
         [MBProgressHUD showError:@"请输入二级密码"];
         return;
     }
-   
-//    
-//    CGFloat contentViewH = 200;
-//    CGFloat contentViewW = SCREEN_WIDTH - 40;
-//    _maskV = [[GLSet_MaskVeiw alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-//    
-//    _maskV.bgView.alpha = 0.4;
-//    
-//    GLNoticeView *contentView = [[NSBundle mainBundle] loadNibNamed:@"GLNoticeView" owner:nil options:nil].lastObject;
-//    contentView.frame = CGRectMake(20, (SCREEN_HEIGHT - contentViewH)/2, contentViewW, contentViewH);
-//    contentView.layer.cornerRadius = 4;
-//    contentView.layer.masksToBounds = YES;
-//    [contentView.cancelBtn addTarget:self action:@selector(cancelBuyback) forControlEvents:UIControlEventTouchUpInside];
-//    [contentView.ensureBtn addTarget:self action:@selector(ensureBuyback) forControlEvents:UIControlEventTouchUpInside];
-//    if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
-//    
-//        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为回购数量的10%%"];
-//    }else{
-//        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为回购数量的10%%"];
-//        contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗米子\n代扣税为%.2f(颗)米子\n可兑换金额为%.2f元",[self.buybackNumF.text integerValue]*0.0048,([self.buybackNumF.text integerValue]-[self.buybackNumF.text integerValue]*0.0048 - 5)];
-        
-//    }
-    
-//    [_maskV showViewWithContentView:contentView];
 
     [self showOkayCancelAlert];
 
@@ -377,7 +344,7 @@
     NSString *cancelButtonTitle = NSLocalizedString(@"取消", nil);
     NSString *T1ButtonTitle = NSLocalizedString(@"T + 1 (手续费为6%)", nil);
     NSString *T3ButtonTitle = NSLocalizedString(@"T + 3 (手续费为3%)", nil);
-    NSString *T7ButtonTitle = NSLocalizedString(@"T + 7 (手续费为5颗)", nil);
+    NSString *T7ButtonTitle = NSLocalizedString(@"T + 7 (手续费为5颗米子)", nil);
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
@@ -430,10 +397,10 @@
         
         if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
             
-            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗"];
+            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗米子"];
         }else{
             
-            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗"];
+            contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗米子"];
         }
         
         [_maskV showViewWithContentView:contentView];

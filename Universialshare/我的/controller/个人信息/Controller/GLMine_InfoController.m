@@ -94,7 +94,10 @@ static NSString *ID = @"GLMine_InfoCell";
     
     
     self.ID = [UserModel defaultUser].name;
-    self.imagehead =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]];
+    UIImageView *imageV = [[UIImageView alloc] init];
+    [imageV sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].headPic]];
+    
+    self.imagehead =imageV.image;
     self.username = [UserModel defaultUser].truename;
     self.adress = [UserModel defaultUser].shop_address;
     self.storeType = [UserModel defaultUser].shop_type;

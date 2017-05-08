@@ -38,7 +38,7 @@
     
     LoadWaitView *_loadV;
     
-    int _currentPage;
+    int _currentPage;//右侧三个界面的页数
     NSString *_htmlString;
     
 }
@@ -116,13 +116,11 @@ static NSString *followID = @"GLFirstFollowCell";
     self.navigationController.navigationBar.hidden = YES;
      [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [self refreshData];
-    
-    [self.head_iconBtn sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].headPic]];
-    
-    if (!self.head_iconBtn.image) {
-        self.head_iconBtn.image = [UIImage imageNamed:@"mine_head"];
+    if ([UserModel defaultUser].loginstatus) {
+        
+        [self refreshData];
     }
+    
 }
 //刷新数据
 -(void)refreshData{
@@ -165,7 +163,11 @@ static NSString *followID = @"GLFirstFollowCell";
                 }
                 
                 [usermodelachivar achive];
-                
+                //头像
+                [self.head_iconBtn sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].headPic]];
+                if (!self.head_iconBtn.image) {
+                    self.head_iconBtn.image = [UIImage imageNamed:@"mine_head"];
+                }
             }
         }
         
@@ -230,9 +232,6 @@ static NSString *followID = @"GLFirstFollowCell";
 
     //点击消费系列
     [self.moreOperateView.consumptionBt addTarget:self action:@selector(consumptionbutton) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-
 }
 
 - (IBAction)tapgestureHeadimage:(UITapGestureRecognizer *)sender {
