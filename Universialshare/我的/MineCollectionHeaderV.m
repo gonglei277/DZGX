@@ -151,7 +151,7 @@
         }
     }else if (indexPath.row == 1){
         cell.infoL.text = [UserModel defaultUser].loveNum;
-        if ([cell.infoL.text isEqualToString:@""]) {
+        if ([cell.infoL.text isEqualToString:@""] || [cell.infoL.text rangeOfString:@"null"].location != NSNotFound) {
             cell.infoL.text = @"0";
         }
     }else if (indexPath.row == 2){
