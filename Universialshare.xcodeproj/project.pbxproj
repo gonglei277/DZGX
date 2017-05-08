@@ -677,6 +677,7 @@
 		F94D6E281E9E074300412E64 /* SelectUserTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F94D6E261E9E074300412E64 /* SelectUserTypeView.m */; };
 		F94D6E291E9E074300412E64 /* SelectUserTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94D6E271E9E074300412E64 /* SelectUserTypeView.xib */; };
 		F94D6E2B1E9E2A6D00412E64 /* setUp.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94D6E2A1E9E2A6D00412E64 /* setUp.xcassets */; };
+		F95150891EC06F9100BDCF53 /* https.cer in Resources */ = {isa = PBXBuildFile; fileRef = F95150881EC06F9100BDCF53 /* https.cer */; };
 		F951C76C1EB02DF10014A71D /* LBWaitOrdersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F951C76B1EB02DF10014A71D /* LBWaitOrdersModel.m */; };
 		F951C76F1EB02E050014A71D /* LBWaitOrdersListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F951C76E1EB02E050014A71D /* LBWaitOrdersListModel.m */; };
 		F951C7741EB0C4AA0014A71D /* LBBelowTheLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F951C7721EB0C4AA0014A71D /* LBBelowTheLineViewController.m */; };
@@ -1971,6 +1972,7 @@
 		F94D6E261E9E074300412E64 /* SelectUserTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectUserTypeView.m; sourceTree = "<group>"; };
 		F94D6E271E9E074300412E64 /* SelectUserTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectUserTypeView.xib; sourceTree = "<group>"; };
 		F94D6E2A1E9E2A6D00412E64 /* setUp.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = setUp.xcassets; sourceTree = "<group>"; };
+		F95150881EC06F9100BDCF53 /* https.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = https.cer; sourceTree = "<group>"; };
 		F951C76A1EB02DF10014A71D /* LBWaitOrdersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBWaitOrdersModel.h; sourceTree = "<group>"; };
 		F951C76B1EB02DF10014A71D /* LBWaitOrdersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBWaitOrdersModel.m; sourceTree = "<group>"; };
 		F951C76D1EB02E050014A71D /* LBWaitOrdersListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBWaitOrdersListModel.h; sourceTree = "<group>"; };
@@ -3991,6 +3993,7 @@
 				F923082E1E9B8B6B00ECDC94 /* Address.plist */,
 				F906201D1E83CBAD0080E9D9 /* universialshare.pch */,
 				F906201F1E83CC900080E9D9 /* Header.h */,
+				F95150881EC06F9100BDCF53 /* https.cer */,
 				F9061FCB1E83C4720080E9D9 /* Supporting Files */,
 			);
 			path = Universialshare;
@@ -5388,6 +5391,7 @@
 				4AA0D5FD1EAF675300CB8F77 /* Integral_Mall.xcassets in Resources */,
 				F923095E1E9B8BFF00ECDC94 /* LBMyOrderListTableViewCell.xib in Resources */,
 				4A4608F21E9C9E6D0045824F /* GLRankingView.xib in Resources */,
+				F95150891EC06F9100BDCF53 /* https.cer in Resources */,
 				F961AA1C1E9CDD3400275F52 /* GLRegisterController.xib in Resources */,
 				4A07A8741EA07009005A9B67 /* GLBuyBackChooseController.xib in Resources */,
 				4A4609D51E9CB78E0045824F /* GLBuyBackRecordController.xib in Resources */,
