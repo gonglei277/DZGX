@@ -177,7 +177,6 @@
     dict[@"uid"] = [UserModel defaultUser].uid;
     dict[@"order_id"] = self.order_id;
     dict[@"password"] = [RSAEncryptor encryptString:[sender.userInfo objectForKey:@"password"] publicKey:public_RSA];
-//    NSLog(@"%@",[sender.userInfo objectForKey:@"password"]);
     
     NSLog(@"%@",dict);
     [NetworkManager requestPOSTWithURLStr:@"shop/markPay" paramDic:dict finish:^(id responseObject) {
@@ -185,17 +184,24 @@
         [_loadV removeloadview];
         
         [self dismiss];
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
 
             
-            //            self.hidesBottomBarWhenPushed = YES;
-            //            LBIntegralMallViewController *homeVC = [[LBIntegralMallViewController alloc] init];
+            self.hidesBottomBarWhenPushed = YES;
             
             [MBProgressHUD showSuccess:responseObject[@"message"]];
-//            [self.navigationController popToRootViewControllerAnimated:YES];
             
-            //            self.hidesBottomBarWhenPushed = NO;
+            if(self.pushIndex == 1){
+                
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                
+            }else{
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            
+            self.hidesBottomBarWhenPushed = NO;
+            
         }else{
             
             [MBProgressHUD showError:responseObject[@"message"]];
