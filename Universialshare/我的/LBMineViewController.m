@@ -743,7 +743,18 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 
 -(void)getdatasorce{
     
-    [NetworkManager requestPOSTWithURLStr:@"index/banner_list" paramDic:@{@"type":@"5"} finish:^(id responseObject) {
+    NSDictionary *dic;
+    
+    if ([[UserModel defaultUser].usrtype isEqualToString:Retailer]) {
+        dic = @{@"type":@"1"};
+    }else if ([[UserModel defaultUser].usrtype isEqualToString:ONESALER]){
+        dic = @{@"type":@"2"};
+    }else if ([[UserModel defaultUser].usrtype isEqualToString:TWOSALER]){
+        dic = @{@"type":@"3"};
+    }else if ([[UserModel defaultUser].usrtype isEqualToString:THREESALER]){
+        dic = @{@"type":@"4"};
+    }
+    [NetworkManager requestPOSTWithURLStr:@"index/banner_list" paramDic:dic finish:^(id responseObject) {
         
         if ([responseObject[@"code"] integerValue] == 1) {
             if (![responseObject[@"data"] isEqual:[NSNull null]]) {
