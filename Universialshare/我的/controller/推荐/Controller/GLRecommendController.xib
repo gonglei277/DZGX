@@ -96,7 +96,7 @@
                         <constraint firstAttribute="height" constant="30" id="nkd-sB-u9o"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="兑换记录"/>
+                    <state key="normal" title="推荐记录"/>
                     <connections>
                         <action selector="recommendRecord:" destination="-1" eventType="touchUpInside" id="UHr-km-DIn"/>
                     </connections>

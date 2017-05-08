@@ -43,7 +43,7 @@ static NSString *ID = @"GLRecommendRcordCell";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.navigationController.navigationBar.hidden = NO;
+//    self.navigationController.navigationBar.hidden = NO;
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     //    self.tabBarController.tabBar.hidden = NO;
 }
@@ -52,7 +52,7 @@ static NSString *ID = @"GLRecommendRcordCell";
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"推荐记录";
     [self.view addSubview:self.tableView];
-    [self.view addSubview:self.nodataV];
+    [self.tableView addSubview:self.nodataV];
     self.nodataV.hidden = YES;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -82,7 +82,7 @@ static NSString *ID = @"GLRecommendRcordCell";
     
     self.tableView.mj_header = header;
     self.tableView.mj_footer = footer;
-//    [self updateData:YES];
+    [self updateData:YES];
 }
 
 - (void)updateData:(BOOL)status {
@@ -109,7 +109,7 @@ static NSString *ID = @"GLRecommendRcordCell";
             for (NSDictionary *dict in responseObject[@"data"]) {
                 
                 GLRecommendRecordModel *model = [GLRecommendRecordModel mj_objectWithKeyValues:dict];
-                [_models addObject:model];
+                [self.models addObject:model];
             }
 
         }else{
@@ -120,7 +120,7 @@ static NSString *ID = @"GLRecommendRcordCell";
             }
         }
         
-        if (_models.count <= 0 ) {
+        if (self.models.count <= 0 ) {
             self.nodataV.hidden = NO;
         }else{
             self.nodataV.hidden = YES;
@@ -142,7 +142,7 @@ static NSString *ID = @"GLRecommendRcordCell";
     
     if (!_nodataV) {
         _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
-        _nodataV.frame = CGRectMake(0, 84, SCREEN_WIDTH, SCREEN_HEIGHT- 84);
+        _nodataV.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT- 64);
     }
     return _nodataV;
     

@@ -180,9 +180,10 @@
     headerview.sectionModel = sectionModel;
     headerview.expandCallback = ^(BOOL isExpanded) {
         
-        [tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
     };
     headerview.section = section;
+    headerview.cancelBt.hidden = NO;
     headerview.returnCancelBt = ^(NSInteger index){//取消订单
         weakself.hidesBottomBarWhenPushed=YES;
         
@@ -195,16 +196,15 @@
         
         NSLog(@"dict = %@",dict);
         _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-        [NetworkManager requestPOSTWithURLStr:@"user/qxOrder" paramDic:dict finish:^(id responseObject) {
+        [NetworkManager requestPOSTWithURLStr:@"shop/qxOrder" paramDic:dict finish:^(id responseObject) {
             
             [_loadV removeloadview];
             NSLog(@"responseObject = %@",responseObject);
             if ([responseObject[@"code"] integerValue] == 1){
-                
-                [self.dataarr removeObjectAtIndex:section];
-                [self.tableview reloadData];
+                [self loadNewData];
                                 
             }
+            [MBProgressHUD showSuccess:responseObject[@"message"]];
             
         } enError:^(NSError *error) {
             [_loadV removeloadview];

@@ -10,7 +10,7 @@
 
 @interface GLRecommendRecordModel : NSObject
 
-@property (nonatomic,copy)NSString *picture;
+@property (nonatomic,copy)NSString *uid;//推荐人ID
 
 @property (nonatomic,copy)NSString *usertype;
 

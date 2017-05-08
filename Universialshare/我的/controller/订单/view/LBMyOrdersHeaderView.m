@@ -210,6 +210,7 @@
         [_cancelBt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _cancelBt.layer.cornerRadius =4;
         _cancelBt.clipsToBounds =YES;
+        _cancelBt.hidden = YES;
         
     }
     
