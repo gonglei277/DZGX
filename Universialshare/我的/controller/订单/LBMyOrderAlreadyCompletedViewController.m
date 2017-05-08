@@ -186,8 +186,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    LBMineCenterOrderDetailViewController *vc=[[LBMineCenterOrderDetailViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+//    LBMineCenterOrderDetailViewController *vc=[[LBMineCenterOrderDetailViewController alloc]init];
+//    [self.navigationController pushViewController:vc animated:YES];
     
     
 }
