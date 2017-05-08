@@ -18,6 +18,7 @@
 {
     GLSet_MaskVeiw *_maskView;
     LoadWaitView *_loadV;
+    BOOL _isHaveDian;//是否有小数点
 }
 @property (weak, nonatomic) IBOutlet UIButton *getCodeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *ensureBtn;
@@ -347,4 +348,86 @@
     [self.navigationController pushViewController:recordVC animated:YES];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if(textField == self.beanNumF){
+        
+        if ([textField.text rangeOfString:@"."].location == NSNotFound) {
+            _isHaveDian = NO;
+        }
+        if ([string length] > 0) {
+            
+            unichar single = [string characterAtIndex:0];//当前输入的字符
+            
+            if ((single >= '0' && single <= '9') || single == '.') {//数据格式正确
+                
+                //首字母不能为0和小数点
+                if([textField.text length] == 0){
+                    if(single == '.') {
+                        [MBProgressHUD showError:@"亲，第一个数字不能为小数点"];
+                        [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                        return NO;
+                    }
+                    if (single == '0') {
+                        [MBProgressHUD showError:@"亲，第一个数字不能为0"];
+                        [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                        return NO;
+                    }
+                }
+                
+                //输入的字符是否是小数点
+                if (single == '.') {
+                    if(!_isHaveDian)//text中还没有小数点
+                    {
+                        _isHaveDian = YES;
+                        return YES;
+                        
+                    }else{
+                        [MBProgressHUD showError:@"亲，您已经输入过小数点了"];
+                        [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                        return NO;
+                    }
+                }else{
+                    if (_isHaveDian) {//存在小数点
+                        
+                        //判断小数点的位数
+                        NSRange ran = [textField.text rangeOfString:@"."];
+                        if (range.location - ran.location <= 2) {
+                            return YES;
+                        }else{
+                            [MBProgressHUD showError:@"亲，您最多输入两位小数"];
+                            return NO;
+                        }
+                    }else{
+                        return YES;
+                    }
+                }
+            }else{//输入的数据格式不正确
+                [MBProgressHUD showError:@"亲，您输入的格式不正确"];
+                [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                return NO;
+            }
+        }
+        
+        
+    }
+    
+    return YES;
+}
+//只能输入数字
+//- (BOOL)validateNumber:(NSString*)number {
+//    BOOL res =YES;
+//    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+//    int i =0;
+//    while (i < number.length) {
+//        NSString * string = [number substringWithRange:NSMakeRange(i,1)];
+//        NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+//        if (range.length ==0) {
+//            res =NO;
+//            break;
+//        }
+//        i++;
+//    }
+//    return res;
+//}
 @end
