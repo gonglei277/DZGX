@@ -21,9 +21,11 @@ typedef void(^GWHeadViewExpandCallback)(BOOL isExpanded);
 @property(nonatomic , strong) UIView *lineview;
 
 @property(nonatomic , strong) UIButton *payBt;//支付按钮
+@property(nonatomic , strong) UIButton *cancelBt;//取消按钮
 @property(nonatomic , strong) UIButton *DeleteBt;//支付按钮
 @property(nonatomic , assign) NSInteger section;
 
 @property(nonatomic , copy)void(^returnPayBt)(NSInteger section);
 @property(nonatomic , copy)void(^returnDeleteBt)(NSInteger section);
+@property(nonatomic , copy)void(^returnCancelBt)(NSInteger section);
 @end

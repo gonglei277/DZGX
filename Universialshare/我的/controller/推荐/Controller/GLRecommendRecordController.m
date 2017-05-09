@@ -43,7 +43,7 @@ static NSString *ID = @"GLRecommendRcordCell";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.navigationController.navigationBar.hidden = NO;
+//    self.navigationController.navigationBar.hidden = NO;
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     //    self.tabBarController.tabBar.hidden = NO;
 }
@@ -52,7 +52,7 @@ static NSString *ID = @"GLRecommendRcordCell";
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"推荐记录";
     [self.view addSubview:self.tableView];
-    [self.view addSubview:self.nodataV];
+    [self.tableView addSubview:self.nodataV];
     self.nodataV.hidden = YES;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -82,7 +82,7 @@ static NSString *ID = @"GLRecommendRcordCell";
     
     self.tableView.mj_header = header;
     self.tableView.mj_footer = footer;
-//    [self updateData:YES];
+    [self updateData:YES];
 }
 
 - (void)updateData:(BOOL)status {
@@ -101,7 +101,7 @@ static NSString *ID = @"GLRecommendRcordCell";
     dict[@"page"] = [NSString stringWithFormat:@"%ld",_page];
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:@"user/rec_list" paramDic:dict finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:@"user/rec_all_list" paramDic:dict finish:^(id responseObject) {
         [_loadV removeloadview];
          [self endRefresh];
         if ([responseObject[@"code"] integerValue] == 1) {
@@ -109,7 +109,7 @@ static NSString *ID = @"GLRecommendRcordCell";
             for (NSDictionary *dict in responseObject[@"data"]) {
                 
                 GLRecommendRecordModel *model = [GLRecommendRecordModel mj_objectWithKeyValues:dict];
-                [_models addObject:model];
+                [self.models addObject:model];
             }
 
         }else{
@@ -120,7 +120,7 @@ static NSString *ID = @"GLRecommendRcordCell";
             }
         }
         
-        if (_models.count <= 0 ) {
+        if (self.models.count <= 0 ) {
             self.nodataV.hidden = NO;
         }else{
             self.nodataV.hidden = YES;
@@ -142,15 +142,12 @@ static NSString *ID = @"GLRecommendRcordCell";
     
     if (!_nodataV) {
         _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
-        _nodataV.frame = CGRectMake(0, 84, SCREEN_WIDTH, SCREEN_HEIGHT- 84);
+        _nodataV.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT- 64);
     }
     return _nodataV;
     
 }
 #pragma  UITableviewDatasource
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.models.count;
 }
@@ -163,34 +160,6 @@ static NSString *ID = @"GLRecommendRcordCell";
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
-}
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 300.0, 30)];
-    customView.backgroundColor = YYSRGBColor(244,248, 250,1);
-    
-    UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.opaque = NO;
-    headerLabel.textColor = [UIColor darkGrayColor];
-    headerLabel.highlightedTextColor = [UIColor whiteColor];
-    //    headerLabel.shadowColor = [UIColor lightGrayColor];
-    headerLabel.font = [UIFont systemFontOfSize:14];
-    headerLabel.frame = CGRectMake(10.0, 0.0, 300.0, 30);
-    
-    if (section == 0) {
-        headerLabel.text =  @"本月";
-    }else {
-        headerLabel.text = @"上月";
-    }
-    
-    [customView addSubview:headerLabel];
-    
-    return customView;
-}
-//别忘了设置高度
-- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 30;
 }
 
 @end

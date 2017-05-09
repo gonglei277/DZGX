@@ -180,9 +180,37 @@
     headerview.sectionModel = sectionModel;
     headerview.expandCallback = ^(BOOL isExpanded) {
         
-        [tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
     };
     headerview.section = section;
+    headerview.cancelBt.hidden = NO;
+    headerview.returnCancelBt = ^(NSInteger index){//取消订单
+        weakself.hidesBottomBarWhenPushed=YES;
+        
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        dict[@"token"] = [UserModel defaultUser].token;
+        dict[@"uid"] = [UserModel defaultUser].uid;
+        
+        LBMyOrdersModel *model = self.dataarr[section];
+        dict[@"order_id"] = model.order_id;
+        
+        NSLog(@"dict = %@",dict);
+        _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+        [NetworkManager requestPOSTWithURLStr:@"shop/qxOrder" paramDic:dict finish:^(id responseObject) {
+            
+            [_loadV removeloadview];
+            NSLog(@"responseObject = %@",responseObject);
+            if ([responseObject[@"code"] integerValue] == 1){
+                [self loadNewData];
+                                
+            }
+            [MBProgressHUD showSuccess:responseObject[@"message"]];
+            
+        } enError:^(NSError *error) {
+            [_loadV removeloadview];
+        }];
+        
+    };
     headerview.returnPayBt = ^(NSInteger index){//支付
         weakself.hidesBottomBarWhenPushed=YES;
         

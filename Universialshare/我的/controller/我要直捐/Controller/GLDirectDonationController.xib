@@ -157,7 +157,7 @@
                                             <rect key="frame" x="74" y="86" width="291" height="16"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                         </textField>
                                         <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQX-nB-Sey">
                                             <rect key="frame" x="0.0" y="39" width="375" height="1"/>

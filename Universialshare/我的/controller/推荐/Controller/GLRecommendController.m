@@ -102,12 +102,12 @@
     }];
 }
 //跳转到推荐记录
-
-- (void) pushToRecordVC{
+- (IBAction)recommendRecord:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
     GLRecommendRecordController *recordVC = [[GLRecommendRecordController alloc] init];
     [self.navigationController pushViewController:recordVC animated:YES];
 }
+//返回
 - (IBAction)backToSuperController:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
@@ -116,7 +116,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-//    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 
 }
 //MARK: 二维码中间内置图片,可以是公司logo
