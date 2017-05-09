@@ -192,13 +192,12 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     if (buttonIndex==1) {
-        NSDictionary  * dic=@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].uid , @"username":self.phoneTf , @"yzm":self.codeTf.text,@"rlmodel_type":[NSNumber numberWithInteger:self.userytpe],@"money":self.moneyTf.text,@"shopname":self.nameTf.text,@"shopnum":self.numTf.text,@"code":self.yuliuTf.text ,@"version": @3};
-        
+        NSDictionary  *dic=@{@"token":[UserModel defaultUser].token , @"uid":[UserModel defaultUser].uid , @"username":self.phoneTf.text , @"yzm":self.codeTf.text,@"rlmodel_type":[NSNumber numberWithInteger:self.userytpe],@"money":self.moneyTf.text,@"shopname":self.nameTf.text,@"shopnum":self.numTf.text,@"code":self.yuliuTf.text};
         
         _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
-        manager.requestSerializer.timeoutInterval = 10;
+        manager.requestSerializer.timeoutInterval = 20;
         // 加上这行代码，https ssl 验证。
         [manager setSecurityPolicy:[NetworkManager customSecurityPolicy]];
         [manager POST:[NSString stringWithFormat:@"%@user/placeOrderLine",URL_Base] parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
