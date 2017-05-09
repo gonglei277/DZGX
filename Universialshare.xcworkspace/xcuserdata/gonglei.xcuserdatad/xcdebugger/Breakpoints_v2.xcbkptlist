@@ -13,37 +13,5 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Universialshare/&#x6211;&#x7684;/controller/&#x56de;&#x8d2d;/Controller/GLBuyBackController.m"
-            timestampString = "516015286.935298"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
-            landmarkName = "-ensureBuyback"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Universialshare/&#x6211;&#x7684;/controller/&#x8f6c;&#x8d60;/Controller/GLDonationController.m"
-            timestampString = "516016685.235306"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
-            landmarkName = "-ensureDonation"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

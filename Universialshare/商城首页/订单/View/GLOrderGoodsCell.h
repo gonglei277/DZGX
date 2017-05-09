@@ -13,5 +13,6 @@
 
 @property (nonatomic, strong)GLConfirmOrderModel *model;
 @property (weak, nonatomic) IBOutlet UILabel *fanliLabel;
+@property (weak, nonatomic) IBOutlet UILabel *yuanjiaLabel;
 
 @end

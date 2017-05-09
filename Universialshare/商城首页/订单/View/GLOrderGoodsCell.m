@@ -35,7 +35,8 @@
     [_imageV sd_setImageWithURL:[NSURL URLWithString:model.cart_url] placeholderImage:[UIImage imageNamed:@"XRPlaceholder"]];
     _nameLabel.text = model.cart_name;
     _fanliLabel.text = [NSString stringWithFormat:@"  优惠价格:%@  ",model.cart_discount];
-    _priceLabel.text = [NSString stringWithFormat:@"单价:%@",model.cart_price];
+    _yuanjiaLabel.text = [NSString stringWithFormat:@"原价:%@",model.cart_price];
+    _priceLabel.text = [NSString stringWithFormat:@"优惠后:%.2f",[model.cart_realy_price floatValue] /[model.cart_number floatValue]];
     _sumLabel.text = [NSString stringWithFormat:@"数量:%@",model.cart_number];
     _detailLabel.text = [NSString stringWithFormat:@"类型:%@",model.cart_type];
 }

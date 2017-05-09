@@ -446,9 +446,9 @@
     }else{
         dict[@"donatetype"] = @"0";
     }
-    NSLog(@"dict  = %@",dict);
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/back" paramDic:dict finish:^(id responseObject) {
+        NSLog(@"dict  = %@",dict);
         NSLog(@"%@",responseObject);
         [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue] == 1) {

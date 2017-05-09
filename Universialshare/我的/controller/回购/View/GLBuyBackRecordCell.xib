@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,7 +40,7 @@
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mylove_bean" translatesAutoresizingMaskIntoConstraints="NO" id="H4J-WO-8xk">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的米子" translatesAutoresizingMaskIntoConstraints="NO" id="H4J-WO-8xk">
                         <rect key="frame" x="218.5" y="37" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="8Kb-EF-OGf"/>
@@ -77,6 +78,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="mylove_bean" width="42" height="45"/>
+        <image name="我的米子" width="26" height="26"/>
     </resources>
 </document>

@@ -318,12 +318,13 @@
             self.idCodeF.text = nil;
             self.beanNumF.text = nil;
             
-            NSString *useableNum = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].mark floatValue] - [self.beanNumF.text floatValue]];
-            
-            self.useableBeanLabel.text = useableNum;
-            self.userableBeanStyleLabel.text = @"可转赠米券:";
-            [MBProgressHUD showSuccess:@"转赠成功"];
+//            NSString *useableNum = [NSString stringWithFormat:@"%.2f",[[UserModel defaultUser].mark floatValue] - [self.beanNumF.text floatValue]];
+//            
+//            self.useableBeanLabel.text = useableNum;
+//            self.userableBeanStyleLabel.text = @"可转赠米券:";
+//            [MBProgressHUD showSuccess:@"转赠成功"];
 
+            [self refreshDataSource];
         }else{
             [_loadV removeloadview];
             [MBProgressHUD showError:responseObject[@"message"]];
@@ -337,6 +338,58 @@
         
     }];
 }
+//刷新数据
+-(void)refreshDataSource{
+    
+    [NetworkManager requestPOSTWithURLStr:@"user/refresh" paramDic:@{@"token":[UserModel defaultUser].token,@"uid":[UserModel defaultUser].uid} finish:^(id responseObject) {
+        
+        if ([responseObject[@"code"] integerValue] == 1) {
+            
+            [UserModel defaultUser].mark = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"mark"]];
+            [UserModel defaultUser].loveNum = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"lovenum"]];
+            [UserModel defaultUser].ketiBean = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"common"]];
+            [UserModel defaultUser].djs_bean = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"taxes"]];
+            [UserModel defaultUser].giveMeMark = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"give_me_bean"]];
+            [UserModel defaultUser].lastFanLiTime = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"lasttime"]];
+            [UserModel defaultUser].recommendMark = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"tjtc"]];
+            [UserModel defaultUser].truename = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"truename"]];
+            [UserModel defaultUser].shop_address = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"shop_address"]];
+            [UserModel defaultUser].shop_type = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"shop_type"]];
+            [UserModel defaultUser].idcard = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"idcard"]];
+            [UserModel defaultUser].headPic = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"pic"]];
+            [UserModel defaultUser].AudiThrough = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"status"]];
+            
+            if ([[UserModel defaultUser].idcard rangeOfString:@"null"].location != NSNotFound) {
+                
+                [UserModel defaultUser].idcard = @"";
+            }
+            if ([[UserModel defaultUser].shop_type rangeOfString:@"null"].location != NSNotFound) {
+                
+                [UserModel defaultUser].shop_type = @"";
+            }
+            if ([[UserModel defaultUser].shop_address rangeOfString:@"null"].location != NSNotFound) {
+                
+                [UserModel defaultUser].shop_address = @"";
+            }
+            if ([[UserModel defaultUser].truename rangeOfString:@"null"].location != NSNotFound) {
+                
+                [UserModel defaultUser].banknumber = @"";
+            }
+            
+            [usermodelachivar achive];
+            self.useableBeanLabel.text = [UserModel defaultUser].mark;
+            self.userableBeanStyleLabel.text = @"可转赠米券:";
+            [MBProgressHUD showSuccess:@"转赠成功"];
+
+        }else{
+           
+        }
+        
+    } enError:^(NSError *error) {
+        
+    }];
+}
+
 - (IBAction)back:(id)sender {
     
     [self.navigationController popViewControllerAnimated:YES];

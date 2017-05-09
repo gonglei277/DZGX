@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="344" height="140"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="344" height="140"/>
+                <rect key="frame" x="0.0" y="0.0" width="344" height="139"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某某汽车XX型号豪华版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2A-7H-UdF">
@@ -68,10 +68,17 @@
                             <constraint firstAttribute="width" constant="150" id="EHL-gh-UYA"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 56万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOe-FA-gPs">
+                        <rect key="frame" x="170" y="88" width="42" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.93559116129999997" green="0.2449045181" blue="0.0002224964264" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="eGI-Mm-tLh" secondAttribute="bottom" constant="10" id="2fj-ap-Fl3"/>
                     <constraint firstItem="1FI-AQ-WKW" firstAttribute="leading" secondItem="v2A-7H-UdF" secondAttribute="leading" id="9wv-qF-G9E"/>
+                    <constraint firstItem="eOe-FA-gPs" firstAttribute="leading" secondItem="1FI-AQ-WKW" secondAttribute="leading" id="E2I-ts-bOk"/>
                     <constraint firstItem="m4a-Ea-lth" firstAttribute="leading" secondItem="v2A-7H-UdF" secondAttribute="leading" id="IJt-TX-3xd"/>
                     <constraint firstItem="m4a-Ea-lth" firstAttribute="bottom" secondItem="eGI-Mm-tLh" secondAttribute="bottom" id="NxZ-Vd-PtI"/>
                     <constraint firstItem="v2A-7H-UdF" firstAttribute="leading" secondItem="eGI-Mm-tLh" secondAttribute="trailing" constant="10" id="Rml-Oe-yv2"/>
@@ -85,6 +92,7 @@
                     <constraint firstAttribute="bottom" secondItem="LkW-LN-2zW" secondAttribute="bottom" id="qI2-F9-m0v"/>
                     <constraint firstItem="eGI-Mm-tLh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="tGD-UU-AJj"/>
                     <constraint firstItem="m4a-Ea-lth" firstAttribute="top" secondItem="1FI-AQ-WKW" secondAttribute="bottom" constant="10" id="vC0-ib-DPX"/>
+                    <constraint firstItem="m4a-Ea-lth" firstAttribute="top" secondItem="eOe-FA-gPs" secondAttribute="bottom" constant="10" id="xkd-rh-8z9"/>
                     <constraint firstItem="xXF-74-Czh" firstAttribute="top" secondItem="v2A-7H-UdF" secondAttribute="bottom" constant="15" id="xmr-Oe-lUP"/>
                 </constraints>
             </tableViewCellContentView>
@@ -95,6 +103,7 @@
                 <outlet property="nameLabel" destination="v2A-7H-UdF" id="4AC-EI-Mlp"/>
                 <outlet property="priceLabel" destination="m4a-Ea-lth" id="Bvo-p7-SBM"/>
                 <outlet property="sumLabel" destination="c2R-k4-aV7" id="1wj-J9-WGF"/>
+                <outlet property="yuanjiaLabel" destination="eOe-FA-gPs" id="pXa-2r-BdS"/>
             </connections>
             <point key="canvasLocation" x="11" y="-137"/>
         </tableViewCell>

@@ -37,13 +37,13 @@
                         <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zk-DC-gxu">
-                        <rect key="frame" x="251" y="69" width="91" height="20"/>
+                        <rect key="frame" x="256" y="69" width="86" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.8980392157" green="0.14901960780000001" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mylove_bean" translatesAutoresizingMaskIntoConstraints="NO" id="72d-h7-lgV">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的米子" translatesAutoresizingMaskIntoConstraints="NO" id="72d-h7-lgV">
                         <rect key="frame" x="226" y="69" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="7tZ-Nq-P5R"/>
@@ -62,7 +62,7 @@
                     <constraint firstItem="6zk-DC-gxu" firstAttribute="centerY" secondItem="l1b-NE-VlK" secondAttribute="centerY" id="ecU-XH-J1Y"/>
                     <constraint firstItem="mgJ-gf-BqN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="fLd-Hs-7zK"/>
                     <constraint firstItem="72d-h7-lgV" firstAttribute="height" secondItem="l1b-NE-VlK" secondAttribute="height" id="i4c-PU-yge"/>
-                    <constraint firstItem="6zk-DC-gxu" firstAttribute="leading" secondItem="72d-h7-lgV" secondAttribute="trailing" constant="5" id="kTz-76-YPy"/>
+                    <constraint firstItem="6zk-DC-gxu" firstAttribute="leading" secondItem="72d-h7-lgV" secondAttribute="trailing" constant="10" id="kTz-76-YPy"/>
                     <constraint firstAttribute="trailing" secondItem="6zk-DC-gxu" secondAttribute="trailing" constant="10" id="r5W-b9-jgQ"/>
                 </constraints>
             </tableViewCellContentView>
@@ -75,6 +75,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="mylove_bean" width="42" height="45"/>
+        <image name="我的米子" width="26" height="26"/>
     </resources>
 </document>

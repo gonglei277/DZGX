@@ -194,7 +194,7 @@ static NSString *ID = @"GLOrderGoodsCell";
     [NetworkManager requestPOSTWithURLStr:@"shop/placeOrderEnd" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-//        NSLog(@"responseObject = %@",responseObject);
+        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1){
             
             self.hidesBottomBarWhenPushed = YES;
@@ -239,11 +239,14 @@ static NSString *ID = @"GLOrderGoodsCell";
     GLOrderGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     cell.model = self.models[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if(self.orderType == 1){
+    if(self.orderType == 1){//1:积分商城
         cell.fanliLabel.hidden = YES;
+        cell.yuanjiaLabel.hidden = NO;
     }else{
         cell.fanliLabel.hidden = NO;
+        cell.yuanjiaLabel.hidden = YES;
     }
+
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
