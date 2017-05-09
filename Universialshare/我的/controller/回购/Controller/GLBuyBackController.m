@@ -22,6 +22,7 @@
     GLDirectDnationView *_directV;
     GLSet_MaskVeiw * _maskV;
     LoadWaitView *_loadV;
+    NSInteger _buyBackType;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewWidth;
@@ -371,7 +372,7 @@
     UIAlertAction *T1Action = [UIAlertAction actionWithTitle:T1ButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
-            
+            _buyBackType = 1;
             contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为兑换数量的6%%"];
         }else{
             
@@ -383,7 +384,7 @@
     }];
     UIAlertAction *T3Action = [UIAlertAction actionWithTitle:T3ButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
-            
+            _buyBackType = 2;
             contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为兑换数量的3%%"];
         }else{
             
@@ -396,7 +397,7 @@
     UIAlertAction *T7Action = [UIAlertAction actionWithTitle:T7ButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
-            
+            _buyBackType = 3;
             contentView.contentLabel.text = [NSString stringWithFormat:@"手续费为5颗米子"];
         }else{
             
@@ -436,18 +437,19 @@
     dict[@"num"] = num;
     dict[@"IDcar"] = self.cardNumLabel.text;
     //开户行地址  ???
-    dict[@"address"] = self.cardStyleLabel.text;
+//    dict[@"address"] = self.cardStyleLabel.text;
     NSString *encryptsecret = [RSAEncryptor encryptString:self.secondPwdF.text publicKey:public_RSA];
     dict[@"password"] = encryptsecret;
+    dict[@"type"] = [NSString stringWithFormat:@"%lu",_buyBackType];
     if ([self.beanStyleLabel.text isEqualToString:NormalMoney]) {
         dict[@"donatetype"] = @"1";
     }else{
         dict[@"donatetype"] = @"0";
     }
-//    NSLog(@"dict  = %@",dict);
+    NSLog(@"dict  = %@",dict);
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/back" paramDic:dict finish:^(id responseObject) {
-        
+        NSLog(@"%@",responseObject);
         [_loadV removeloadview];
         if ([responseObject[@"code"] integerValue] == 1) {
             [self cancelBuyback];

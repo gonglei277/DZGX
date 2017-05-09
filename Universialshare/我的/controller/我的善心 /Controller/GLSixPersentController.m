@@ -30,10 +30,10 @@ static NSString *ID = @"GLMine_MyHeartCell";
         dict[@"token"] = [UserModel defaultUser].token;
         dict[@"uid"] = [UserModel defaultUser].uid;
         dict[@"type"] = @"1";
-        
+        NSLog(@"%@",dict);
         _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
         [NetworkManager requestPOSTWithURLStr:@"user/mylove" paramDic:dict finish:^(id responseObject) {
-//            NSLog(@"%@",responseObject);
+            NSLog(@"%@",responseObject);
             [_loadV removeloadview];
            if ([responseObject[@"code"] integerValue] == 1) {
             

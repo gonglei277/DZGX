@@ -75,9 +75,9 @@
         displaylable.text = [self.provinceArr objectAtIndex:row][@"country_name"];
     }else if ([self.titlestr isEqualToString:@"请选择开户行"]){
         displaylable.text = [self.provinceArr objectAtIndex:row][@"bank_name"];
-    }else if ([self.titlestr isEqualToString:@"请选择一级分类"]){
+    }else if ([self.titlestr isEqualToString:@"请选择一级行业分类"]){
         displaylable.text = [self.provinceArr objectAtIndex:row][@"trade_name"];
-    }else if ([self.titlestr isEqualToString:@"请选择二级分类"]){
+    }else if ([self.titlestr isEqualToString:@"请选择二级行业分类"]){
         displaylable.text = [self.provinceArr objectAtIndex:row][@"trade_name"];
     }
     
