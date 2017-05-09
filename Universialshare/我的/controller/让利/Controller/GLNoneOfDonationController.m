@@ -51,7 +51,7 @@ static NSString *ID = @"GLNoneOfDonationCell";
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden = NO;
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"让利捐赠";
+    self.title = @"让利";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor whiteColor];
