@@ -121,7 +121,7 @@
 - (void)changeColor:(UILabel*)label rangeNumber:(float )rangeNum
 {
     NSString *remainBeans = [NSString stringWithFormat:@"%.2f",rangeNum];
-    NSString *totalStr = [NSString stringWithFormat:@"合计:%@颗",remainBeans];
+    NSString *totalStr = [NSString stringWithFormat:@"合计:%@",remainBeans];
     NSMutableAttributedString *textColor = [[NSMutableAttributedString alloc]initWithString:totalStr];
     NSRange rangel = [[textColor string] rangeOfString:remainBeans];
     [textColor addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:rangel];

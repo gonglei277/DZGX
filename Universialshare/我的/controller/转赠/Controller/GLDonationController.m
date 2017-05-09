@@ -55,7 +55,7 @@
 //    }else{
 //        userType = @"米商";
 //    }
-    self.noticeLabel.text = [NSString stringWithFormat:@"*您可以将您的米券转赠给您的会员朋友,或者需要帮助的会员."];
+    self.noticeLabel.text = [NSString stringWithFormat:@"*您可以将您的米券转赠给您的会员朋友,或者需要帮助的会员.\n*转赠只能平级才可以转(会员只能给会员转,商户只能给商户转)"];
 
     self.contentViewWidth.constant = SCREEN_WIDTH;
     self.contentViewHeight.constant = SCREEN_HEIGHT - 50;
@@ -243,7 +243,7 @@
     [NetworkManager requestPOSTWithURLStr:@"user/get_give_id" paramDic:dict finish:^(id responseObject) {
         
         [_loadV removeloadview];
-    
+        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
             CGFloat contentViewH = 200;
@@ -301,7 +301,7 @@
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:@"user/give_to" paramDic:dict finish:^(id responseObject) {
         [_loadV removeloadview];
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
             [UIView animateWithDuration:0.2 animations:^{
@@ -350,7 +350,7 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
-    if (textField == self.beanNumF || textField == self.secondPwdF) {
+    if (textField == self.beanNumF || textField == self.secondPwdF || textField == self.idCodeF) {
         return [self validateNumber:string];
     }
     

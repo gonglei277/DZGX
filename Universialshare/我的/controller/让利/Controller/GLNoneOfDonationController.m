@@ -32,8 +32,6 @@ static NSString *ID = @"GLNoneOfDonationCell";
 - (NSMutableArray *)models {
     if (_models == nil) {
         _models = [NSMutableArray array];
-   
-
         
     }
     return _models;
@@ -90,6 +88,7 @@ static NSString *ID = @"GLNoneOfDonationCell";
     [self updateData:YES];
 }
 - (void)endRefresh {
+    
     [self.tableView.mj_footer endRefreshing];
     [self.tableView.mj_header endRefreshing];
     
@@ -115,7 +114,7 @@ static NSString *ID = @"GLNoneOfDonationCell";
     [NetworkManager requestPOSTWithURLStr:@"user/myRl_list" paramDic:dict finish:^(id responseObject) {
         [_loadV removeloadview];
         [self endRefresh];
-//        NSLog(@"%@",responseObject);
+        NSLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue] == 1) {
             
             for (NSDictionary *dict in responseObject[@"data"]) {

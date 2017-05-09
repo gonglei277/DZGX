@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="283" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="283" height="60"/>
+                <rect key="frame" x="0.0" y="0.0" width="283" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zeh-eb-b40">
@@ -45,7 +46,7 @@
                         <color key="textColor" red="0.8980392157" green="0.14901960780000001" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mylove_bean" translatesAutoresizingMaskIntoConstraints="NO" id="TVm-Vb-tmc">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="米劵" translatesAutoresizingMaskIntoConstraints="NO" id="TVm-Vb-tmc">
                         <rect key="frame" x="111.5" y="20" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="0gu-1O-Kzn"/>
@@ -86,6 +87,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="mylove_bean" width="42" height="45"/>
+        <image name="米劵" width="26" height="26"/>
     </resources>
 </document>

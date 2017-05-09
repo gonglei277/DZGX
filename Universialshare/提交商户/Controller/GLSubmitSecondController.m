@@ -134,7 +134,7 @@
     
 //    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[UIApplication sharedApplication].keyWindow];
     [NetworkManager requestPOSTWithURLStr:@"user/getHylist" paramDic:dict finish:^(id responseObject) {
-        [_loadV removeloadview];
+//        [_loadV removeloadview];
 //        NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"code"] integerValue]==1) {
             self.industryArr = responseObject[@"data"];
@@ -145,7 +145,7 @@
         
         
     } enError:^(NSError *error) {
-        [_loadV removeloadview];
+//        [_loadV removeloadview];
         [MBProgressHUD showError:error.localizedDescription];
         
     }];
@@ -205,16 +205,22 @@
     
     LBAddrecomdManChooseAreaViewController *vc=[[LBAddrecomdManChooseAreaViewController alloc]init];
     vc.provinceArr = self.provinceArr[_ischosePro][@"city"][_ischoseCity][@"country"];
-    vc.titlestr = @"请选择区域";
-    vc.returnreslut = ^(NSInteger index){
-        _ischoseArea = index;
-        _countryLabel.text = _provinceArr[_ischosePro][@"city"][_ischoseCity][@"country"][index][@"country_name"];
-        _countryLabel.textColor = [UIColor blackColor];
+    
+    if (vc.provinceArr.count != 0) {
         
-    };
-    vc.transitioningDelegate=self;
-    vc.modalPresentationStyle=UIModalPresentationCustom;
-    [self presentViewController:vc animated:YES completion:nil];
+        vc.titlestr = @"请选择区域";
+        vc.returnreslut = ^(NSInteger index){
+            _ischoseArea = index;
+            _countryLabel.text = _provinceArr[_ischosePro][@"city"][_ischoseCity][@"country"][index][@"country_name"];
+            _countryLabel.textColor = [UIColor blackColor];
+            
+        };
+        vc.transitioningDelegate=self;
+        vc.modalPresentationStyle=UIModalPresentationCustom;
+        [self presentViewController:vc animated:YES completion:nil];
+    }else{
+        [MBProgressHUD showError:@"区域暂无数据"];
+    }
 
 }
 
@@ -224,7 +230,7 @@
     if (self.industryArr.count != 0) {
         
         vc.provinceArr = self.industryArr;
-        vc.titlestr = @"请选择一级分类";
+        vc.titlestr = @"请选择一级行业分类";
         vc.returnreslut = ^(NSInteger index){
             _isChoseFirstClassify = index;
             _firstClassifyLabel.text = _industryArr[index][@"trade_name"];
@@ -241,8 +247,8 @@
 
 }
 - (IBAction)chooseSecondClassify:(id)sender {
-    if ([self.cityLabel.text isEqualToString:@"请选择一级分类"]) {
-        [MBProgressHUD showError:@"请选择一级分类"];
+    if ([self.cityLabel.text isEqualToString:@"请选择一级行业分类"]) {
+        [MBProgressHUD showError:@"请选择一级行业分类"];
         return;
     }
     
@@ -252,7 +258,7 @@
         if(arr.count != 0){
             
             vc.provinceArr = self.industryArr[_isChoseFirstClassify][@"son"];
-            vc.titlestr = @"请选择二级分类";
+            vc.titlestr = @"请选择二级行业分类";
             vc.returnreslut = ^(NSInteger index){
                 _isChoseSecondClassify = index;
                 NSArray *son = _industryArr[_isChoseFirstClassify][@"son"];
@@ -269,9 +275,9 @@
             vc.transitioningDelegate=self;
             vc.modalPresentationStyle=UIModalPresentationCustom;
             [self presentViewController:vc animated:YES completion:nil];
+        }else{
+            [MBProgressHUD showError:@"二级分类暂无数据"];
         }
-    }else{
-        [MBProgressHUD showError:@"二级分类暂无数据"];
     }
 
 }
@@ -309,10 +315,10 @@
         [MBProgressHUD showError:@"还没有选择分类"];
         return;
     }
-    if ([self.secondClassifyLabel.text isEqualToString:@"请选择分类"]) {
-        [MBProgressHUD showError:@"还没有选择分类"];
-        return;
-    }
+//    if ([self.secondClassifyLabel.text isEqualToString:@"请选择分类"]) {
+//        [MBProgressHUD showError:@"还没有选择分类"];
+//        return;
+//    }
     if ([self.addressLabel.text isEqualToString:@"请选择地点"]) {
         [MBProgressHUD showError:@"还没有选择地点"];
         return;

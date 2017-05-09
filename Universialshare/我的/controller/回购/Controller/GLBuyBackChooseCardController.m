@@ -35,7 +35,7 @@
     [super viewDidLoad];
     self.ensureBtn.layer.cornerRadius = 5.f;
     self.title = @"修改银行卡";
-    self.nameLabel.text =[NSString stringWithFormat:@"%@",[UserModel defaultUser].name];
+    self.nameLabel.text =[NSString stringWithFormat:@"%@",[UserModel defaultUser].truename];
     self.navigationController.navigationBar.hidden = NO;
     //注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:@"maskView_dismiss" object:nil];

@@ -269,61 +269,61 @@
 
 - (IBAction)nextClick:(id)sender {
     
-    if (self.phoneTextF.text.length <=0 ) {
-        [MBProgressHUD showError:@"请输入手机号码"];
-        return;
-    }else{
-        if (![predicateModel valiMobile:self.phoneTextF.text]) {
-            [MBProgressHUD showError:@"手机号格式不对"];
-            return;
-        }
-    }
-    if (self.passwordTextF.text.length < 6 || self.passwordTextF.text.length >20) {
-        [MBProgressHUD showError:@"请输入6~20位的密码"];
-        return;
-    }else if([predicateModel checkIsHaveNumAndLetter:self.passwordTextF.text] != 3){
-        [MBProgressHUD showError:@"密码必须由字母和数字组成"];
-        return;
-    }
-    if (self.farenNameTextF.text.length <=0 ) {
-        [MBProgressHUD showError:@"请输入法人姓名"];
-        return;
-    }
-    if (self.farenIDTextF.text.length <=0 ) {
-        [MBProgressHUD showError:@"请输入法人身份证号"];
-        return;
-    }else if (![predicateModel validateIdentityCard:self.farenIDTextF.text]){
-        [MBProgressHUD showError:@"身份证号不合法"];
-        return;
-
-    }
-    if (self.mailboxTextF.text.length <=0 ) {
-        [MBProgressHUD showError:@"请输入邮箱"];
-        return;
-    }else if(![predicateModel isValidateEmail:self.mailboxTextF.text]){
-        [MBProgressHUD showError:@"邮箱不合法"];
-        return;
-    }
-    if (self.shopNameTextF.text.length <=0 ) {
-        [MBProgressHUD showError:@"请输入店铺名称"];
-        return;
-    }
-    if (self.mianjiTextF.text.length <=0 ) {
-        [MBProgressHUD showError:@"请输入门店面积"];
-        return;
-    }
-    if ([self.startTimeLabel.text isEqualToString:@"开始时间"] ) {
-        [MBProgressHUD showError:@"请输入店铺开始时间"];
-        return;
-    }
-    if ([self.endTimeLabel.text isEqualToString:@"关门时间"]  ) {
-        [MBProgressHUD showError:@"请输入店铺关门时间"];
-        return;
-    }
-    if (self.contentTextV.text.length == 0) {
-        [MBProgressHUD showError:@"请输入经营内容"];
-        return;
-    }
+//    if (self.phoneTextF.text.length <=0 ) {
+//        [MBProgressHUD showError:@"请输入手机号码"];
+//        return;
+//    }else{
+//        if (![predicateModel valiMobile:self.phoneTextF.text]) {
+//            [MBProgressHUD showError:@"手机号格式不对"];
+//            return;
+//        }
+//    }
+//    if (self.passwordTextF.text.length < 6 || self.passwordTextF.text.length >20) {
+//        [MBProgressHUD showError:@"请输入6~20位的密码"];
+//        return;
+//    }else if([predicateModel checkIsHaveNumAndLetter:self.passwordTextF.text] != 3){
+//        [MBProgressHUD showError:@"密码必须由字母和数字组成"];
+//        return;
+//    }
+//    if (self.farenNameTextF.text.length <=0 ) {
+//        [MBProgressHUD showError:@"请输入法人姓名"];
+//        return;
+//    }
+//    if (self.farenIDTextF.text.length <=0 ) {
+//        [MBProgressHUD showError:@"请输入法人身份证号"];
+//        return;
+//    }else if (![predicateModel validateIdentityCard:self.farenIDTextF.text]){
+//        [MBProgressHUD showError:@"身份证号不合法"];
+//        return;
+//
+//    }
+//    if (self.mailboxTextF.text.length <=0 ) {
+//        [MBProgressHUD showError:@"请输入邮箱"];
+//        return;
+//    }else if(![predicateModel isValidateEmail:self.mailboxTextF.text]){
+//        [MBProgressHUD showError:@"邮箱不合法"];
+//        return;
+//    }
+//    if (self.shopNameTextF.text.length <=0 ) {
+//        [MBProgressHUD showError:@"请输入店铺名称"];
+//        return;
+//    }
+//    if (self.mianjiTextF.text.length <=0 ) {
+//        [MBProgressHUD showError:@"请输入门店面积"];
+//        return;
+//    }
+//    if ([self.startTimeLabel.text isEqualToString:@"开始时间"] ) {
+//        [MBProgressHUD showError:@"请输入店铺开始时间"];
+//        return;
+//    }
+//    if ([self.endTimeLabel.text isEqualToString:@"关门时间"]  ) {
+//        [MBProgressHUD showError:@"请输入店铺关门时间"];
+//        return;
+//    }
+//    if (self.contentTextV.text.length == 0) {
+//        [MBProgressHUD showError:@"请输入经营内容"];
+//        return;
+//    }
 
     [MerchantInformationModel defaultUser].loginPhone = self.phoneTextF.text;
     
