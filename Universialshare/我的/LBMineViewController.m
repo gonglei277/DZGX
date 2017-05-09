@@ -32,9 +32,9 @@
 #import "LBSaleManPersonInfoViewController.h"
 #import "LBRecommendedBusinessAuditViewController.h"
 #import "LBBelowTheLineViewController.h"
-#import "LBBaiduMapViewController.h"
 #import "GLShoppingCartController.h"
 #import <SDWebImage/UIButton+WebCache.h>
+
 
 @interface LBMineViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
     UIImageView *_imageviewLeft;
@@ -437,6 +437,9 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
     LBMineMessageViewController *vc=[[LBMineMessageViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
     self.hidesBottomBarWhenPushed=NO;
+    
+    
+    
     
 }
 
