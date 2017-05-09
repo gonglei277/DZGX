@@ -152,11 +152,11 @@
         return;
     }
     
-    if (!self.imageOne.image || self.imageOne.image == [UIImage imageNamed:@"imcc_record_bg"]) {
+    if (!self.imageOne.image || [UIImagePNGRepresentation(self.imageOne.image) isEqual:UIImagePNGRepresentation([UIImage imageNamed:@"照片框-拷贝-9"])]) {
         [MBProgressHUD showError:@"请上传打款凭证"];
         return;
     }
-    if (!self.imageTwo.image || self.imageTwo.image == [UIImage imageNamed:@"imcc_record_bg"]) {
+    if (!self.imageTwo.image || [UIImagePNGRepresentation(self.imageTwo.image) isEqual:UIImagePNGRepresentation([UIImage imageNamed:@"照片框-拷贝-9"])]) {
         [MBProgressHUD showError:@"请上传消费凭证"];
         return;
     }
@@ -226,7 +226,10 @@
             
         }progress:^(NSProgress *uploadProgress){
             
-            [SVProgressHUD showProgress:uploadProgress.fractionCompleted status:@"..."];
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            [SVProgressHUD setCornerRadius:8.0];
+            [SVProgressHUD showProgress:uploadProgress.fractionCompleted status:[NSString stringWithFormat:@"上传中%.0f%%",(uploadProgress.fractionCompleted * 100)]];
             
         }success:^(NSURLSessionDataTask *task, id responseObject) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];

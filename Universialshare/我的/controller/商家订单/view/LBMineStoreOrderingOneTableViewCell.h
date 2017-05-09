@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *modelLb;
 @property (weak, nonatomic) IBOutlet UILabel *moneyLb;
 @property (weak, nonatomic) IBOutlet UILabel *orderCode;
+@property (weak, nonatomic) IBOutlet UILabel *status;
 
 
 @end

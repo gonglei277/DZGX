@@ -133,15 +133,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
     return UITableViewAutomaticDimension;
-    
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
     
     LBMineStoreOrderingOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LBMineStoreOrderingOneTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -151,9 +147,18 @@
     cell.moneyLb.text = [NSString stringWithFormat:@"实付款:%@",self.dataarr[indexPath.row][@"line_money"]];
     cell.orderCode.text = [NSString stringWithFormat:@"订单号:%@",self.dataarr[indexPath.row][@"order_num"]];
     
+    if ([self.dataarr[indexPath.row][@"status"] integerValue] == 0) {
+        cell.status.text = @"审核失败";
+        cell.status.textColor = YYSRGBColor(198, 51, 14, 1);
+    }else if ([self.dataarr[indexPath.row][@"status"] integerValue] == 1){
+        cell.status.text = @"成功";
+        cell.status.textColor = TABBARTITLE_COLOR;
+    }else if ([self.dataarr[indexPath.row][@"status"] integerValue] == 2){
+        cell.status.text = @"未审核";
+        cell.status.textColor = YYSRGBColor(198, 51, 14, 1);
+    }
+    
     return cell;
-    
-    
 }
 
 -(NSMutableArray *)dataarr{

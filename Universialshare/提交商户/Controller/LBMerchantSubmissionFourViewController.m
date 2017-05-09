@@ -124,33 +124,37 @@
 //        [MBProgressHUD showError:@"请上传法人手持证件照"];
 //        return;
 //    }
-    if (!self.positiveImage.image || self.positiveImage.image == [UIImage imageNamed:@"样板-拷贝"]) {
+    
+    if (!self.positiveImage.image || [UIImagePNGRepresentation(self.positiveImage.image) isEqual:UIImagePNGRepresentation([UIImage imageNamed:@"样板-拷贝"])]) {
         [MBProgressHUD showError:@"请上传身份证正面照"];
         return;
     }
-    if (!self.otherSideImage.image || self.otherSideImage.image == [UIImage imageNamed:@"照片框-拷贝"]) {
-        [MBProgressHUD showError:@"请上传身份证反面照"];
+    
+    if (!self.otherSideImage.image || [UIImagePNGRepresentation(self.otherSideImage.image) isEqual:UIImagePNGRepresentation([UIImage imageNamed:@"照片框-拷贝"])]) {
+         [MBProgressHUD showError:@"请上传身份证反面照"];
         return;
     }
-    if (!self.licenseImage.image || self.licenseImage.image == [UIImage imageNamed:@"照片框-拷贝-2"]) {
+    
+    if (!self.licenseImage.image || [UIImagePNGRepresentation(self.licenseImage.image) isEqual:UIImagePNGRepresentation([UIImage imageNamed:@"照片框-拷贝-2"])]) {
         [MBProgressHUD showError:@"请上传营业执照"];
         return;
     }
-    
-    if ((!self.undertakingOne.image || self.undertakingOne.image == [UIImage imageNamed:@"照片框-拷贝-4"])) {
+   
+    if (!self.undertakingOne.image || [UIImagePNGRepresentation(self.undertakingOne.image) isEqual:UIImagePNGRepresentation([UIImage imageNamed:@"照片框-拷贝-4"])]) {
         [MBProgressHUD showError:@"请上传商家承诺书"];
         return;
     }
-    
-    if (!self.doorplateImage.image || self.doorplateImage.image == [UIImage imageNamed:@"照片框-拷贝-10"]) {
+    if (!self.doorplateImage.image || [UIImagePNGRepresentation(self.doorplateImage.image) isEqual:UIImagePNGRepresentation([UIImage imageNamed:@"照片框-拷贝-10"])]) {
         [MBProgressHUD showError:@"请上传门头照"];
         return;
     }
     
-    if ((!self.InteriorImage.image || self.InteriorImage.image == [UIImage imageNamed:@"照片框-拷贝-12"]) && (!self.InteriorOneImage.image || self.InteriorOneImage.image == [UIImage imageNamed:@"照片框-拷贝-13"]) && (!self.DoorplateOneimage.image || self.InteriorOneImage.image == [UIImage imageNamed:@"内景2-拷贝"])) {
-        [MBProgressHUD showError:@"请上传3张内景照"];
+    
+    if ([UIImagePNGRepresentation(self.InteriorImage.image) isEqual:UIImagePNGRepresentation([UIImage imageNamed:@"照片框-拷贝-12"])] || [UIImagePNGRepresentation(self.InteriorOneImage.image) isEqual:UIImagePNGRepresentation([UIImage imageNamed:@"照片框-拷贝-13"])]  || [UIImagePNGRepresentation(self.DoorplateOneimage.image) isEqual:UIImagePNGRepresentation([UIImage imageNamed:@"内景2-拷贝"])]) {
+        [MBProgressHUD showError:@"请上传门头照"];
         return;
     }
+    
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"token"] = [UserModel defaultUser].token;
@@ -212,7 +216,7 @@
         if ([dic[@"code"]integerValue]==1) {
             
             [MBProgressHUD showError:dic[@"message"]];
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            //[self.navigationController popToRootViewControllerAnimated:YES];
         }else{
             [MBProgressHUD showError:dic[@"message"]];
         }
