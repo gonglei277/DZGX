@@ -369,7 +369,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="照片框-拷贝-9" translatesAutoresizingMaskIntoConstraints="NO" id="cZI-h8-XU3">
+                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="照片框-拷贝-9" translatesAutoresizingMaskIntoConstraints="NO" id="cZI-h8-XU3">
                                     <rect key="frame" x="10" y="335" width="90" height="100"/>
                                     <gestureRecognizers/>
                                     <constraints>
@@ -467,7 +467,7 @@
                                         <action selector="submitInfoEvent:" destination="-1" eventType="touchUpInside" id="dfN-5I-onS"/>
                                     </connections>
                                 </button>
-                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="照片框-拷贝-9" translatesAutoresizingMaskIntoConstraints="NO" id="Mev-IB-l6h">
+                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="照片框-拷贝-9" translatesAutoresizingMaskIntoConstraints="NO" id="Mev-IB-l6h">
                                     <rect key="frame" x="144" y="335" width="90" height="100"/>
                                     <gestureRecognizers/>
                                     <constraints>
