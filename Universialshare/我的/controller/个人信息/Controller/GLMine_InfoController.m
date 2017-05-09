@@ -120,10 +120,9 @@ static NSString *ID = @"GLMine_InfoCell";
     }else{//保存
     
         
-        
         NSDictionary *dic;
         
-        if ((self.imagehead == [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].headPic]]] || self.imagehead == [UIImage imageNamed:@"mine_head"]) && [self.username isEqualToString:[UserModel defaultUser].truename] && [self.adress isEqualToString:[UserModel defaultUser].shop_address] && [self.storeType isEqualToString:[UserModel defaultUser].shop_type] && [self.shenfCode isEqualToString:[UserModel defaultUser].idcard] && [self.recomendID isEqualToString:[UserModel defaultUser].tjr] && [self.recomendName isEqualToString:[UserModel defaultUser].tjrname]) {
+        if ((!self.imagehead  || self.imagehead == [UIImage imageNamed:@"mine_head"]) && [self.username isEqualToString:[UserModel defaultUser].truename] && [self.adress isEqualToString:[UserModel defaultUser].shop_address] && [self.storeType isEqualToString:[UserModel defaultUser].shop_type] && [self.shenfCode isEqualToString:[UserModel defaultUser].idcard] && [self.recomendID isEqualToString:[UserModel defaultUser].tjr] && [self.recomendName isEqualToString:[UserModel defaultUser].tjrname]) {
             
             [MBProgressHUD showError:@"未做任何修改"];
             return;
