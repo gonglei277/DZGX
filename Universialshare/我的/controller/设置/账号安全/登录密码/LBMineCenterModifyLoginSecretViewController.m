@@ -7,6 +7,8 @@
 //
 
 #import "LBMineCenterModifyLoginSecretViewController.h"
+#import "GLLoginController.h"
+#import "BaseNavigationViewController.h"
 
 @interface LBMineCenterModifyLoginSecretViewController ()<UITextFieldDelegate>
 
@@ -157,7 +159,10 @@
         if ([responseObject[@"code"] integerValue]==1) {
             
              [MBProgressHUD showError:responseObject[@"message"]];
-            [self.navigationController popViewControllerAnimated:YES];
+            GLLoginController *loginVC = [[GLLoginController alloc] init];
+            BaseNavigationViewController *nav = [[BaseNavigationViewController alloc]initWithRootViewController:loginVC];
+            nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            [self presentViewController:nav animated:YES completion:nil];
            
             
         }else{
