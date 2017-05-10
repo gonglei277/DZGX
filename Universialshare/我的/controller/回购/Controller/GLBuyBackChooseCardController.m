@@ -129,8 +129,7 @@
     [NetworkManager requestPOSTWithURLStr:@"user/add_bank_num" paramDic:dict finish:^(id responseObject) {
         [_loadV removeloadview];
 
-
-        if ([responseObject[@"code"] integerValue] == 1) {
+            if ([responseObject[@"code"] integerValue] == 1) {
             
             if (self.returnBlock) {
                 self.returnBlock(@"ninamhhj");
